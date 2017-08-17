@@ -23,56 +23,56 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/manager/search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
 	Route::resource('/manager', 'ManagerController');
 
-	// Route::get('/feedback', 'AdminContactController@feedback');
+	Route::get('/feedback', 'AdminContactController@feedback');
 
-	// Route::resource('/contact', 'AdminContactController');
+	Route::resource('/contact', 'AdminContactController');
 
-	// Route::resource('/bottomtext', 'BottomTextController');
+	Route::resource('/bottomtext', 'BottomTextController');
 
-	// Route::resource('/newstype', 'NewsTypeController');
+	Route::resource('/newstype', 'NewsTypeController');
 
-	// Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
-	// Route::resource('/news', 'NewsController');
+	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
+	Route::resource('/news', 'NewsController');
 
-	// Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
-	// Route::get('/slider/search', array('uses' => 'AdminSlideController@search', 'as' => 'admin.slide.search'));
-	// Route::resource('/slider', 'AdminSlideController');
+	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
+	Route::get('/slider/search', array('uses' => 'AdminSlideController@search', 'as' => 'admin.slide.search'));
+	Route::resource('/slider', 'AdminSlideController');
 
-	// Route::resource('/des_content', 'DesContentController');
-	// Route::resource('/introduce', 'AdminIntroduceController');
-	// Route::resource('/about_us_company', 'AdminAboutUsController');
-	// Route::resource('/type_about_us', 'AdminTypeAboutController');
+	Route::resource('/des_content', 'DesContentController');
+	Route::resource('/introduce', 'AdminIntroduceController');
+	Route::resource('/about_us_company', 'AdminAboutUsController');
+	Route::resource('/type_about_us', 'AdminTypeAboutController');
 
 });
 
-// Route::group(
-// 	array(
-// 		'prefix' => LaravelLocalization::setLocale(),
-// 		'before' => 'LaravelLocalizationRoutes' // Route translate filter
-// 	),
-// 	function()
-// 	{
+Route::group(
+	array(
+		'prefix' => LaravelLocalization::setLocale(),
+		'before' => 'LaravelLocalizationRoutes' // Route translate filter
+	),
+	function()
+	{
 
-// 		Route::post('/sendLang', 'SiteIndexController@sendLang');
+		Route::post('/sendLang', 'SiteIndexController@sendLang');
 
-// 		Route::post('/sendContact', array('uses' => 'ContactController@contact', 'as' => 'contact'));
+		Route::post('/sendContact', array('uses' => 'ContactController@contact', 'as' => 'contact'));
 
-// 		// Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
-// 		// Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
+		// Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
+		// Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
 
-// 		/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-// 		Route::resource('/', 'SiteIndexController');
-// 		// Route::resource(LaravelLocalization::transRoute('routes.slug'), 'SiteTypeController');
+		/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
+		Route::resource('/', 'SiteIndexController');
+		// Route::resource(LaravelLocalization::transRoute('routes.slug'), 'SiteTypeController');
 
-// 		// Route::get(LaravelLocalization::transRoute('routes.about'),function(){
-// 		// 	return View::make('about');
-// 		// });
-// 		Route::get(LaravelLocalization::transRoute('routes.about'), 'AboutController@index');
-// 		Route::get(LaravelLocalization::transRoute('routes.contact'), 'ContactController@index');
-// 		Route::get(LaravelLocalization::transRoute('routes.slug'), 'SiteTypeController@showSlug');
-// 		Route::get(LaravelLocalization::transRoute('routes.slugDetail'), 'SiteTypeController@showChildSlug');
-// 		// Route::get(LaravelLocalization::transRoute('routes.view'),function($id){
-// 		// 	return View::make('view',array('id'=>$id));
-// 		// });
-// 	}
-// );
+		// Route::get(LaravelLocalization::transRoute('routes.about'),function(){
+		// 	return View::make('about');
+		// });
+		Route::get(LaravelLocalization::transRoute('routes.about'), 'AboutController@index');
+		Route::get(LaravelLocalization::transRoute('routes.contact'), 'ContactController@index');
+		Route::get(LaravelLocalization::transRoute('routes.slug'), 'SiteTypeController@showSlug');
+		Route::get(LaravelLocalization::transRoute('routes.slugDetail'), 'SiteTypeController@showChildSlug');
+		// Route::get(LaravelLocalization::transRoute('routes.view'),function($id){
+		// 	return View::make('view',array('id'=>$id));
+		// });
+	}
+);
