@@ -75,12 +75,14 @@ class AdminController extends BaseController {
 	{
 		//
 	}
+
     public function login()
-    {
+    {	
     	$checkLogin = Auth::admin()->check();
         if($checkLogin) {
 	    	if (Auth::admin()->get()->status == ACTIVE) {
-	    		return Redirect::action('ManagerController@edit', Auth::admin()->get()->id);
+	    		//return Redirect::action('ManagerController@edit', Auth::admin()->get()->id);
+	    		return Redirect::route('admin.dashboard');
 	    	}else{
 	    		return View::make('admin.layout.login')->with(compact('message','chưa kich hoat'));
 	    	}
@@ -88,6 +90,7 @@ class AdminController extends BaseController {
             return View::make('admin.layout.login');
         }
     }
+
     public function doLogin()
     {
         $rules = array(
@@ -103,12 +106,13 @@ class AdminController extends BaseController {
         } else {
             $checkLogin = Auth::admin()->attempt($input);
             if($checkLogin) {
-        		return Redirect::action('NewsController@index');
+        		return Redirect::route('admin.dashboard');
             } else {
                 return Redirect::route('admin.login');
             }
         }
     }
+
     public function logout()
     {
         Auth::admin()->logout();

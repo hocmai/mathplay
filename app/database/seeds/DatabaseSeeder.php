@@ -1,26 +1,22 @@
 <?php
 
-class DatabaseSeeder extends Seeder {
+use Illuminate\Database\Seeder;
 
-	/**
-	 * Run the database seeds.
-	 *
-	 * @return void
-	 */
-	public function run()
-	{
-		Eloquent::unguard();
+class DatabaseSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        // $this->call(UsersTableSeeder::class);
+        //$this->call(UsersTable);
+        //$this->call(GradeTable);
+        //$this->call(SubjectTable);
 
-		$this->call('RoleTableSeeder');
-		$this->call('AdminTableSeeder');
-		$this->call('TypeNewTableSeeder');
-		$this->call('NewTableSeeder');
-		$this->call('DesContentTableSeeder');
-		$this->call('BottomTextTable');
-		$this->call('ContactTableSeeder');
-		$this->call('IntroduceTableSeeder');
-		$this->call('TypeAboutUsTableSeeder');
-		$this->call('LanguageTableSeeder');
-	}
-
+        $this->call(AdminTableSeeder);
+        $this->call(RoleTableSeeder);
+    }
 }

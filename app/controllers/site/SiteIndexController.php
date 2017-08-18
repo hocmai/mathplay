@@ -9,11 +9,7 @@ class SiteIndexController extends SiteController {
 	 */
 	public function index()
 	{
-		$viDes = DesContent::find(1);
-		$enDes = DesContent::find(2);
-		$introduces = AdminLanguage::where('model_name', 'Introduce')->orderBy('position', 'asc')->get();
-		// dd(LaravelLocalization::setLocale());
-		return View::make('site.index')->with(compact('viDes', 'enDes', 'introduces'));
+		return View::make('site.index');
 	}
 
 
@@ -102,67 +98,67 @@ class SiteIndexController extends SiteController {
 		return Redirect::action('SiteIndexController@typeNew');
 	}
 
-	public function sendLang()
-	{
-		$input = Input::all();
-		if ($input['lang'] == $input['lang_current']) {
-			return $input['url'];
-		}
-		else{
-			if($input['lang_current'] == 'vi') {
-				if($input['link_url'] == 'gioi-thieu') {
-					return url('/en/about');
-				}
-				if($input['link_url'] == 'lien-he') {
-					return url('/en/contact');
-				}
-				if(!empty($input['link_url'])) {
-					$type = TypeNew::findBySlug($input['link_url']);
-					if(!empty($type)) {
-						$obj = Common::objectLanguage2('TypeNew', $type->id, LANG_VI);
-						$slug = $obj->slug;
-					}
-				} else {
-					$slug = '';
-				}
-				if(!empty($input['link_url2'])){
-					$news = AdminNew::findBySlug($input['link_url2']);
-					if(!empty($news)) {
-						$obj = Common::objectLanguage2('AdminNew', $news->id, LANG_VI);
-						$slugChild = $obj->slug;
-					}
-				} else {
-					$slugChild = '';
-				}
-				return url('/en/'.$slug.'/'.$slugChild);
-			}
-			if($input['lang_current'] == 'en') {
-				if($input['link_url'] == 'about') {
-					return url('/vi/gioi-thieu');
-				}
-				if($input['link_url'] == 'contact') {
-					return url('/vi/lien-he');
-				}
-				if(!empty($input['link_url'])) {
-					$type = TypeNew::findBySlug($input['link_url']);
-					if(!empty($type)) {
-						$obj = Common::objectLanguage2('TypeNew', $type->id, LANG_EN);
-						$slug = $obj->slug;
-					}
-				} else {
-					$slug = '';
-				}
-				if(!empty($input['link_url2'])){
-					$news = AdminNew::findBySlug($input['link_url2']);
-					if(!empty($news)) {
-						$obj = Common::objectLanguage2('AdminNew', $news->id, LANG_EN);
-						$slugChild = $obj->slug;
-					}
-				} else {
-					$slugChild = '';
-				}
-				return url('/vi/'.$slug.'/'.$slugChild);
-			}
-		}
-	}
+	// public function sendLang()
+	// {
+	// 	$input = Input::all();
+	// 	if ($input['lang'] == $input['lang_current']) {
+	// 		return $input['url'];
+	// 	}
+	// 	else{
+	// 		if($input['lang_current'] == 'vi') {
+	// 			if($input['link_url'] == 'gioi-thieu') {
+	// 				return url('/en/about');
+	// 			}
+	// 			if($input['link_url'] == 'lien-he') {
+	// 				return url('/en/contact');
+	// 			}
+	// 			if(!empty($input['link_url'])) {
+	// 				$type = TypeNew::findBySlug($input['link_url']);
+	// 				if(!empty($type)) {
+	// 					$obj = Common::objectLanguage2('TypeNew', $type->id, LANG_VI);
+	// 					$slug = $obj->slug;
+	// 				}
+	// 			} else {
+	// 				$slug = '';
+	// 			}
+	// 			if(!empty($input['link_url2'])){
+	// 				$news = AdminNew::findBySlug($input['link_url2']);
+	// 				if(!empty($news)) {
+	// 					$obj = Common::objectLanguage2('AdminNew', $news->id, LANG_VI);
+	// 					$slugChild = $obj->slug;
+	// 				}
+	// 			} else {
+	// 				$slugChild = '';
+	// 			}
+	// 			return url('/en/'.$slug.'/'.$slugChild);
+	// 		}
+	// 		if($input['lang_current'] == 'en') {
+	// 			if($input['link_url'] == 'about') {
+	// 				return url('/vi/gioi-thieu');
+	// 			}
+	// 			if($input['link_url'] == 'contact') {
+	// 				return url('/vi/lien-he');
+	// 			}
+	// 			if(!empty($input['link_url'])) {
+	// 				$type = TypeNew::findBySlug($input['link_url']);
+	// 				if(!empty($type)) {
+	// 					$obj = Common::objectLanguage2('TypeNew', $type->id, LANG_EN);
+	// 					$slug = $obj->slug;
+	// 				}
+	// 			} else {
+	// 				$slug = '';
+	// 			}
+	// 			if(!empty($input['link_url2'])){
+	// 				$news = AdminNew::findBySlug($input['link_url2']);
+	// 				if(!empty($news)) {
+	// 					$obj = Common::objectLanguage2('AdminNew', $news->id, LANG_EN);
+	// 					$slugChild = $obj->slug;
+	// 				}
+	// 			} else {
+	// 				$slugChild = '';
+	// 			}
+	// 			return url('/vi/'.$slug.'/'.$slugChild);
+	// 		}
+	// 	}
+	// }
 }

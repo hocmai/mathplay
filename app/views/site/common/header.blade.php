@@ -1,27 +1,38 @@
 <head>
-    <title>@yield('title')</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="format-detection" content="telephone=no"/>
-    <link rel="icon" href="/assets/images/favicon.ico" type="image/x-icon">
+    <title>@yield('title')</title>
 
-    {{ HTML::style('assets/css/bootstrap.min.css') }}
-    {{ HTML::style('assets/css/font-awesome.min.css') }}
-    {{ HTML::style('assets/css/swiper.min.css') }}
-    {{ HTML::style('assets/css/style.css') }}
+    @section('css_header')
+    @show
+    {{ HTML::style('frontend/css/bootstrap.min.css')}}
+    {{ HTML::style('frontend/css/font-awesome.min.css')}}
+    {{ HTML::style('frontend/css/hover-min.css')}}
+    {{ HTML::style('frontend/css/slick-theme.css')}}
+    {{ HTML::style('frontend/css/slick.css')}}
+    {{ HTML::style('frontend/css/jssor.css')}}
+    {{ HTML::style('frontend/css/menu.css')}}
+    {{ HTML::style('frontend/css/default.css')}}
+    {{ HTML::style('frontend/css/menu-mobile.css')}}
+    {{ HTML::style('frontend/css/style.css')}}
+    
+    @section('js_header')
+    @show
+    {{ HTML::script('frontend/js/jquery.min.js')}}
+    {{ HTML::script('frontend/js/bootstrap.min.js')}}
 
-    {{ HTML::script('assets/js/jquery.js') }}
-    {{ HTML::script('assets/js/jquery-ui.min.js') }}
-    {{ HTML::script('assets/js/bootstrap.min.js') }}
-    {{ HTML::script('assets/js/swiper.min.js') }}
-    {{ HTML::script('assets/js/script.js') }}
+    {{ HTML::script('frontend/js/jssor.js')}}
+    {{ HTML::script('frontend/js/jssor.slider.js')}}
 
+    {{ HTML::script('frontend/js/slick.min.js')}}
+    {{ HTML::script('frontend/js/menu-mobile.js')}}
+
+    {{ HTML::script('frontend/js/main.js')}}
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <script src="js/html5shiv.min.js"></script>
+    <script src="js/respond.min.js"></script>
     <![endif]-->
-
 </head>

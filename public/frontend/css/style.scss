@@ -1,0 +1,2909 @@
+$font-main:HelveticaNeue;
+$color-white-main: #fff;
+$color-black-main: #313131;
+
+$xanh-main: #17bebb;
+$do-main: #e4572e;
+$vang-main: #ffc914;
+$xanh-main-2: #76b041;
+
+body,html{
+    font-family: $font-main;
+    font-weight: 400;
+}
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HelveticaNeue-Light.otf);
+    font-style: normal;
+    font-weight: 300
+}
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HelveticaNeue.otf);
+    font-style: normal;
+    font-weight: 400
+}
+
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HelveticaNeue-Medium.otf);
+    font-style: normal;
+    font-weight: 500
+}
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HelveticaNeue-Bold.otf);
+    font-style: normal;
+    font-weight: 600
+}
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HELVETICANEUE-CONDENSEDBOLD.OTF);
+    font-style: normal;
+    font-weight: 700
+}
+@font-face {
+    font-family: comic;
+    src: url(../fonts/comic.ttf);
+    font-style: normal;
+    font-weight: 700
+}
+@font-face {
+    font-family: BreeSerif;
+    src: url(../fonts/BreeSerif.otf);
+    font-style: normal;
+    font-weight: 400
+}
+.full_page{
+    background: url("../images/bg-body-top.png") center top no-repeat;
+    background-color: #fff;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+.clr{
+    clear: both;
+}
+main{
+    //background: url("../images/bg-body-footer.jpg") center bottom no-repeat;
+}
+.box-menu{
+    background: #fff;
+}
+.inline-block{
+    display: inline-block;
+}
+.box-dang-nhap-bracum{
+    float: right;
+}
+.box-dang-nhap{
+    text-align: right;
+    padding: 10px 0;
+    padding-right: 25px;
+
+    .box-info{
+        text-align: right;
+        padding: 4px 0 0;
+        span{
+            padding: 6px 0;
+        }
+        .text{
+            display: inline-block;
+            background: #fff;
+            border-radius: 15px;
+            position: relative;
+            border: 1px solid #ccc;
+            margin-right: 5px;
+            padding: 1px 0 1px 15px;
+            margin-top: 1px;
+            margin-bottom: -1px;
+            .btn-group{
+                margin-right: 55px;
+                a{
+                    height: auto;
+                }
+            }
+            .btn .caret {
+                float: none ;
+                margin-left: 2px;
+                position: relative;
+                top: 5px;
+            }
+            .dropdown-menu {
+                left: inherit;
+                right: 0;
+            }
+        }
+        button{
+            background: none;
+            border: none;
+            color: $xanh-main;
+            margin-left: 5px !important;
+        }
+        .btn-group, span{
+            float: right;
+        }
+        .avatar{
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 1px solid #999;
+            float: right;
+            position: absolute;
+            right: -5px;
+            top: -10px;
+        }
+    }
+
+    a{
+        display: inline-block;
+        height: 45px;
+        font-family: $font-main;
+        color: $color-white-main;
+        font-size: 15px;
+        font-weight: 300;
+        text-align: center;
+        padding: 11px 10px;
+        margin-right: 40px;
+        &.dang-ky{
+            background: url("../images/bg-dangky.png") center top no-repeat;
+            width: 165px;
+        }
+        &.dang-nhap{
+            background: url("../images/bg-dangnhap.png") center top no-repeat;
+            width: 150px;
+        }
+        &:nth-last-child(1){
+            margin-right: 0;
+        }
+    }
+}
+.box-menu{
+    .logo{
+        float: left;
+        padding: 10px 0 5px;
+    }
+    .menu{
+        float: right;
+        .rmm{
+
+            .bg-hv{
+                height: 26px;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+            a {
+                color: $color-black-main;
+            }
+            & >ul>li>a {
+                color: $color-black-main;
+                font-weight: 400;
+                font-size: 15px;
+                padding: 10px 20px 5px;
+                min-width: 120px;
+                span{
+                    display: block;
+                    height: 35px;
+                }
+            }
+            & li:nth-child(1).active,& li:nth-child(1):hover{
+                &>a{
+                    background: $xanh-main;
+                    color: $color-white-main;
+                    span{
+                        background: url("../images/icon-home.png");
+                    }
+                }
+            }
+            & li:nth-child(2).active, & li:nth-child(2):hover{
+                &>a{
+                    background: $do-main;
+                    color: $color-white-main;
+                    span{
+                        background: url("../images/icon-lophoc-hv.png");
+                    }
+                }
+            }
+            & li:nth-child(3).active, & li:nth-child(3):hover{
+                &>a{
+                    background: $vang-main;
+                    color: $color-white-main;
+                    span{
+                        background: url("../images/icon-gioithieu-hv.png");
+                    }
+                }
+            }
+            & li:nth-child(4).active, & li:nth-child(4):hover{
+                &>a{
+                    background: $xanh-main-2;
+                    color: $color-white-main;
+                    span{
+                        background: url("../images/icon-map-hv.png");
+                    }
+                }
+            }
+            & > ul{
+                & >li:nth-child(1) >a{
+                    border-top: 10px solid $xanh-main;
+                    span{
+                        display: inline-block;
+                        background: url("../images/home-nhv.png");
+                        width: 33px;
+                        height: 26px;
+                    }
+                }
+                & >li:nth-child(2) >a{
+                    border-top: 10px solid $do-main;
+                    span{
+                        display: inline-block;
+                        background: url("../images/icon-lophoc.png");
+                        width: 42px;
+                        height: 28px;
+                    }
+                }
+                & >li:nth-child(3) >a{
+                    border-top: 10px solid $vang-main;
+                    span{
+                        display: inline-block;
+                        background: url("../images/icon-gioithieu.png");
+                        width: 25px;
+                        height: 21px;
+                    }
+                }
+                & >li:nth-child(4) >a{
+                    border-top: 10px solid $xanh-main-2;
+                    span{
+                        display: inline-block;
+                        background: url("../images/icon-map.png");
+                        width: 16px;
+                        height: 24px;
+                    }
+                }
+            }
+            .bg-color{
+                height: 5px;
+                padding: 0;
+                background: linear-gradient(to right, #28c2bf 0%, #28c2bf 25%, $do-main 25%, $do-main 50%, $vang-main 50%, $vang-main 75%, $xanh-main-2 75%, $xanh-main-2 100%);
+            }
+            ul ul li:hover a{
+                background: none !important;
+                color: #17bebb !important;
+            }
+        }
+    }
+}
+.jssorb03 {
+    bottom: 100px !important;
+}
+.box-video{
+    background: url(../images/bg-box-video.png) center top no-repeat;
+    margin-top: -140px;
+    position: relative;
+    z-index: 99;
+    padding-top: 130px;
+    .videos{
+        text-align: center;
+        .title{
+            color: $color-white-main;
+            font-size: 24px;
+            text-transform: uppercase;
+            font-weight: 300;
+            background: $xanh-main;
+            display: inline-block;
+            padding: 23px 32px;
+            border-radius: 20px;
+            position: relative;
+            top: 28px;
+            z-index: 9;
+            .span1{
+                background: url(../images/row-left.png) no-repeat;
+                width: 98px;
+                height: 115px;
+                position: absolute;
+                left: -65px;
+                bottom: calc( 100% - 0px );
+                z-index: 9;
+            }
+            .span2{
+                background: url(../images/row-right.png) no-repeat;
+                width: 88px;
+                height: 92px;
+                position: absolute;
+                right: -40px;
+                bottom: calc( 100% - 0px);
+                z-index: 9;
+            }
+        }
+        .video{
+            position: relative;
+            border-radius: 20px;
+            background: #41cac8;
+            padding: 55px 55px 25px 98px;
+            iframe{
+                height: 280px;
+            }
+            &>div{
+                width: 60px;
+                height: 60px;
+                position: absolute;
+                left: 20px;
+                cursor: pointer;
+            }
+            .button-play{
+                background: url("../images/button-play.png") no-repeat;
+                top: 55px;
+                &:focus{
+                    box-shadow: inset 1px 1px 3px #333;
+                }
+            }
+            .button-stop{
+                background: url("../images/button-stop.png") no-repeat;
+                top: 130px;
+            }
+            .button-volum-t{
+                background: url("../images/button-volum-t.png") no-repeat;
+                top: 205px;
+            }
+            .button-volum-g{
+                background: url("../images/button-volum-g.png") no-repeat;
+                top: 280px;
+            }
+        }
+    }
+    .forms{
+        .title-sub{
+            font-size: 15px;
+            padding: 15px 10px 0;
+        }
+        text-align: center;
+        .title{
+            color: $color-white-main;
+            font-size: 24px;
+            text-transform: uppercase;
+            font-weight: 300;
+            background: url(../images/bg-title-form.png) no-repeat;
+            width: 315px;
+            height: 100px;
+            display: inline-block;
+            padding: 43px 20px 20px;
+            border-radius: 20px;
+            position: relative;
+            top: 18px;
+            z-index: 9;
+            text-align: center;
+        }
+        .form{
+
+            margin-top: -38px;
+            background: url("../images/bg-form.png") no-repeat;
+            padding: 55px 55px 40px;
+
+            form{
+                padding-top: 30px;
+            }
+            .form-control, button {
+                margin-bottom: 25px;
+                height: 60px;
+                padding: 16px 32px;
+                border-radius: 20px;
+                border: 1px solid rgba(255, 255, 255, 0);
+            }
+            button{
+                background: none;
+                border: 1px solid #fff;
+                font-size: 22px;
+                color: $color-white-main;
+                width: 100%;
+                margin-bottom: 20px;
+            }
+            p{
+                color: $color-black-main;
+                font-size: 15px;
+            }
+            a{
+                color: #45cbc8;
+                &:hover{
+                    color: #fff;
+                }
+            }
+        }
+        ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+            color: $color-black-main;
+        }
+        ::-moz-placeholder { /* Firefox 19+ */
+            color: $color-black-main;
+        }
+        :-ms-input-placeholder { /* IE 10+ */
+            color: $color-black-main;
+        }
+        :-moz-placeholder { /* Firefox 18- */
+            color: $color-black-main;
+        }
+
+        .btn-default.active.focus, .btn-default.active:focus, .btn-default.active:hover, .btn-default:active.focus, .btn-default:active:focus, .btn-default:active:hover, .open>.dropdown-toggle.btn-default.focus, .open>.dropdown-toggle.btn-default:focus, .open>.dropdown-toggle.btn-default:hover {
+            color: #fff;
+            background-color: #41cac8;
+            border-color: rgb(140, 140, 140);
+            outline: 0;
+        }
+        button:focus{
+            outline: 0;
+        }
+        .avatar{
+            display: block;
+            padding: 28px 0;
+            background: #fff;
+            margin-top: 30px;
+            border-radius: 15px;
+            &:hover{
+                color: #333 !important;
+            }
+            img{
+                width: 118px;
+                height: 118px;
+                border-radius: 50%;
+                border: 1px solid #eee;
+            }
+        }
+    }
+    .dang-xuat{
+        text-align: right;
+
+        a{
+            display: inline-block;
+            background: $do-main;
+            color: $color-white-main !important;
+            padding: 12px 30px;
+            font-size: 15px;
+            margin-top: 20px;
+            border-radius: 20px;
+            transition: 0.3s;
+            &:hover{
+                -webkit-box-shadow: inset 1px 1px 10px rgba(51, 51, 51, 0.5);
+                box-shadow: inset 1px 1px 10px rgba(51, 51, 51, 0.5);
+            }
+            &:focus{
+                -webkit-box-shadow: inset 2px 2px 10px rgba(51, 51, 51, 0.8);
+                box-shadow: inset 2px 2px 10px rgba(51, 51, 51, 0.8);
+            }
+        }
+    }
+}
+.box-intro{
+    margin-top: 20px;
+    padding: 85px 0;
+    background: url("../images/bg-intro-lg.png") top no-repeat;
+    z-index: 9;
+    position: relative;
+
+    .des{
+        background: url(../images/bg-intro.png) center -4px no-repeat;
+        width: 343px;
+        height: 232px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        border-radius: 50%;
+        overflow: hidden;
+        padding: 25px 40px;
+        text-align: center;
+        color: #999;
+        font-weight: 300;
+    }
+}
+.box-chon-lop{
+    background: #f8f8f8;
+    padding: 30px 0 0px;
+    margin-top: -20px;
+    .title{
+        font-family: $font-main;
+        font-weight: 400;
+        font-size: 28px;
+        text-align: center;
+        margin: 10px 0;
+    }
+    .sao{
+        background: url("../images/sao.png") center no-repeat;
+        width: 187px;
+        height: 27px;
+        margin: 0 auto;
+    }
+    .max-width{
+        max-width: 1000px;
+        margin: 0 auto;
+        margin-top: 25px;
+        background: #fff;
+        padding: 35px 15px 10px;
+        position: relative;
+        z-index: 9;
+        .col-sm-4:nth-child(2){
+            text-align: center;
+            .box-lop{
+                .text{
+                    a{
+                        &:hover{
+                            background: url("../images/chon-lop-2-hv.png") center no-repeat;
+                        }
+                    }
+                }
+            }
+
+        }
+        .col-sm-4:nth-child(3){
+            text-align: right;
+            .box-lop{
+                .text{
+                    a{
+                        &:hover{
+                            background: url("../images/chon-lop-3-hv.png") center no-repeat;
+                        }
+                    }
+                }
+            }
+        }
+        .box-lop{
+            .text{
+                a{
+                    font-weight: 700;
+                    color: #313131;
+                    width: 181px;
+                    height: 65px;
+                    transition: 0.3s;
+                    text-align: center;
+                    display: inline-block;
+                    font-size: 28px;
+                    padding: 10px 6px;
+                    margin: 16px 0 10px;
+                    &:hover{
+                        background: url("../images/chon-lop-hv.png") center no-repeat;
+                        color: $color-white-main;
+                    }
+                }
+            }
+        }
+    }
+}
+.box-note-big{
+    background: #f8f8f8 url(../images/box-note-index.png) bottom center no-repeat;
+    padding-top: 165px;
+    margin-top: -25px;
+}
+.box-note{
+    padding-top: 50px;
+    padding-bottom: 168px;
+    position: relative;
+    //background: rgba(65, 136, 52, 0.15);
+    //background: -webkit-linear-gradient(rgba(65, 136, 52, 0.2), rgba(0, 0, 0, 0.08));
+    //background: -o-linear-gradient(rgba(65, 136, 52, 0.2), rgba(0, 0, 0, 0.08));
+    //background: -moz-linear-gradient(rgba(65, 136, 52, 0.2), rgba(0, 0, 0, 0.08));
+    //background: linear-gradient(rgba(65, 136, 52, 0.2), rgba(0, 0, 0, 0.08));
+    .max-width{
+        max-width: 950px;
+        margin: 0 auto;
+        .des{
+            background: rgba(255, 255, 255, 0.60);
+            color: $color-black-main;
+            min-height: 575px;
+            padding: 100px 20px;
+            font-size: 15px;
+            border-radius: 10px;
+            max-height: 575px;
+            overflow: auto;
+        }
+    }
+    .khinh-khi-cau{
+        position: absolute;
+        right: 0;
+    }
+}
+
+footer{
+    background: #86d660;
+    padding: 35px 0 0;
+    .des{
+        background:  url("../images/bg-footer.png") top center no-repeat;
+        max-width: 950px;
+        margin: 0 auto;
+        padding: 13px 50px;
+        color: #fff;
+    }
+    .leg{
+        background: #75b557;
+        margin-top: 15px;
+        padding: 10px 0 0px;
+        .des{
+            color: $color-white-main;
+            background: none;
+            float: left;
+            img{
+                display: inline-block;
+                margin-right: 8px;
+                position: relative;
+                top: -2px;
+            }
+        }
+        .social{
+            float: right;
+            a{
+                display: inline-block;
+                margin-right: 10px;
+            }
+        }
+    }
+
+}
+.boxRight{
+    .box-dang-nhap{
+        position: absolute;
+        top: -64px;
+        right: -10px;
+    }
+}
+.bracum-set-height{
+    height: 66px;
+    .box-dang-nhap{
+        float: right;
+    }
+}
+.modal-open{
+    .closeModel{
+        display: none;
+    }
+}
+.bracum{
+    text-align: center;
+    background: $do-main;
+    //overflow: hidden;
+    .row.m0 >div{
+        width: auto;
+
+    }
+    .inline-block{
+        color: #fff;
+        font-size: 16px;
+        line-height: 66px;
+    }
+    .breadcrumb{
+        background: none;
+        margin: 0;
+        padding-left: 10px;
+
+        float: left;
+        &>li+li:before {
+            color: $color-white-main;
+            content: ">";
+        }
+    }
+    ol{
+
+        li{
+            color: $color-white-main !important;
+            padding: 15px 0;
+            a{
+                color: $color-white-main;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+.box-gradient{
+    background: url(../images/bg-main-ft.png) center bottom no-repeat;
+    padding-bottom: 160px;
+}
+.fullScreen{
+    background: #fff;
+    -webkit-box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.33);
+    box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.33);
+    //overflow-x: hidden;
+    //overflow-y: scroll;
+    position: relative;
+}
+.bg-ff{
+    background: #fff;
+    -webkit-box-shadow: 0 0 5px rgba(51, 51, 51, 0.37);
+    box-shadow: 0 0 5px rgba(51, 51, 51, 0.37);
+    border-radius: 5px;
+    padding: 25px 25px;
+}
+.box-chuong-trinh{
+    position: relative;
+    background: rgba(148, 226, 249, 0.45);
+    background: -webkit-linear-gradient(rgba(148, 226, 249, 0.18),rgba(148, 226, 249, 0),rgba(255, 255, 255, 0));
+    background: -o-linear-gradient(rgba(148, 226, 249, 0.18),rgba(148, 226, 249, 0),rgba(255, 255, 255, 0));
+    background: -moz-linear-gradient(rgba(148, 226, 249, 0.18),rgba(148, 226, 249, 0),rgba(255, 255, 255, 0));
+    background: linear-gradient(rgba(148, 226, 249, 0.18),rgba(148, 226, 249, 0),rgba(255, 255, 255, 0));
+    padding: 30px 0 0px;
+    &.box-dang-ky{
+        background: #86d660 url(../images/bg-dang-ky-big.jpg) center top no-repeat;
+        min-height: 988px;
+        padding: 30px 0 155px;
+    }
+
+    .chuong-trinh{
+        padding: 15px 0;
+        .title{
+            color: $xanh-main;
+            font-size: 15px;
+            text-transform: uppercase;
+            font-weight: 300;
+            display: inline-block;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 8px;
+        }
+        .title-sub{
+            color: $do-main;
+            font-size: 14px;
+            font-weight: 300;
+            text-transform: uppercase;
+            margin: 15px 0;
+        }
+        .chuongs{
+            &>.col-sm-6:nth-child(2){
+                border-left: 1px solid #ddd;
+            }
+        }
+        .chuong{
+            ul{
+                padding-left: 5px;
+                padding-bottom: 15px;
+                li{
+                    background: url(../images/icon-chuong-trinh.png) left 7px no-repeat;
+                    list-style: none;
+                    padding: 5px 0;
+                    padding-left: 35px;
+                    a{
+                        color: #666;
+                        font-size: 15px;
+                        &:hover{
+                            color: $do-main;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .bg-ff >div:nth-last-child(1){
+        border-left: 1px solid $do-main ;
+    }
+    .boxs-right{
+        .tinh-nang-xay-dung{
+            min-height: 420px;
+            margin-top: -70px;
+        }
+        .box-right{
+            margin-bottom: 40px;
+            &.bg-tinh-nang{
+                background: #94bcbb;
+                margin-top: 85px;
+                border-radius: 8px;
+            }
+            .title{
+                background: url(../images/xep-hang-hs.png) no-repeat;
+                width: 356px;
+                height: 167px;
+                color: $color-white-main;
+                font-size: 16px;
+                font-weight: 300;
+                margin-top: 0;
+                display: flex;
+                align-items: center;
+                padding-left: 170px;
+                text-transform: uppercase;
+                padding-top: 20px;
+                padding-right: 10px;
+                position: relative;
+                top: -85px;
+                left: -11px;
+            }
+            &.bg-tin-tuc {
+                .title{
+                    background: url(../images/tin-tuc-hm.png) no-repeat;
+                    width: 343px;
+                    height: 150px;
+                    padding-left: 150px;
+                    padding-top: 13px;
+                    left: 0;
+                    top: 0;
+                }
+            }
+            .news{
+                padding: 10px 0;
+                .new{
+                    clear: both;
+                    margin: 15px 0;
+                    &:after{
+                        content: '';
+                        display: block;
+                        clear: both;
+                    }
+                    .img{
+                        float: left;
+                        margin-right: 20px;
+                    }
+                    .text{
+                        font-size: 16px;
+                        color: $color-black-main;
+                        display: block;
+                        &:hover{
+                            color: $do-main;
+                        }
+                    }
+                    .xemthem{
+                        display: inline-block;
+                        float: right;
+                        padding: 2px 8px;
+                        font-size: 13px;
+                        border-radius: 15px;
+                        background: #03c3d9;
+                        color: $color-white-main;
+                        &:hover{
+                            background: #03b0c6;
+                        }
+                    }
+                }
+            }
+
+        }
+    }
+
+
+    &.box-dang-ky{
+        .bg-ff {
+            background: #fff url("../images/bg-cap-sach.png") right top no-repeat;
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+        .thanh-vien{
+            border-top: 1px solid #ddd;
+            padding: 15px 0;
+            font-size: 15px;
+            text-align: center;
+            a:hover{
+                color: $xanh-main;
+            }
+        }
+        .bor:after{
+            position: absolute;
+            content: '';
+            width: 1px;
+            background: $do-main;
+            height: 77%;
+            top: 85px;
+            right: 0;
+        }
+        .checkbox {
+            label {
+                font-size: 14px;
+                a{
+                    color: $xanh-main;
+                    &:hover{
+                        color: $vang-main;
+                    }
+                }
+            }
+        }
+        .button{
+            text-align: right;
+            button{
+                background: $do-main;
+                color: $color-white-main;
+                padding: 7px 35px;
+                border-radius: 10px;
+                border: none;
+                font-size: 16px;
+                &:hover{
+                    -webkit-box-shadow: inset 2px 2px 10px rgba(51, 51, 51, 0.54);
+                    box-shadow: inset 2px 2px 10px rgba(51, 51, 51, 0.54);
+                }
+
+            }
+        }
+        .chuong-trinh {
+            max-width: 350px;
+            .form{
+                padding-right: 15px;
+                .form-control{
+                    height: 36px;
+                    border-radius: 20px;
+                    border: 1px solid #333;
+                }
+                label {
+                    font-weight: 400;
+                    font-size: 16px;
+                    span{
+                        color: $do-main;
+                    }
+                }
+
+
+            }
+            .title {
+                color: $color-black-main;
+                font-size: 24px;
+                font-weight: 500;
+                text-transform: inherit;
+                margin-top: 5px;
+            }
+            .des{
+                background: $xanh-main;
+                color: $color-white-main;
+                padding: 12px 10px;
+                margin: 15px 0;
+                font-size: 16px;
+            }
+        }
+        .boxs-right{
+            padding-top: 85px;
+            .chuong-trinh {
+                padding-top: 0;
+                margin-left: 50px;
+                width: 100%;
+                .form {
+                    padding-right: 35px;
+                }
+                .des{
+                    background: $vang-main;
+                    margin-top: 0;
+                }
+            }
+            .box-dang-nhap-khac{
+                a{
+                    display: block;
+                    padding: 10px 20px;
+                    padding-left: 70px;
+                    color: $color-white-main;
+                    font-size: 16px;
+                    margin: 15px 0;
+                    transition: 0.3s;
+                    &:hover{
+                        -webkit-box-shadow: inset 2px 2px 10px rgba(51, 51, 51, 0.7);
+                        box-shadow: inset 2px 2px 10px rgba(51, 51, 51, 0.7);
+                    }
+                }
+                .facebook{
+                    background: #3b5998 url("../images/f2.png") 25px 10px no-repeat;
+                    padding: 10px 10px 10px 70px;
+                }
+                .google{
+                    background: #e4572e url("../images/g2.png") 15px 10px no-repeat;
+                }
+
+            }
+        }
+    }
+}
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .boxs-right .chuong-trinh,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .boxs-right .chuong-trinh {
+    margin-left: 0;
+}
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .boxs-right .chuong-trinh .form,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .boxs-right .chuong-trinh .form {
+    padding-right: 0;
+}
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .boxs-right,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .boxs-right {
+    padding-top: 0;
+}
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .boxs-right .chuong-trinh .des,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .boxs-right .chuong-trinh .des {
+    background: none;
+    padding: 10px 0 10px 0;
+    color: #333;
+}
+.box-dang-nhap #myModal-dang-nhap,
+.box-dang-nhap #myModal-dang-ky{
+    text-align: left;
+}
+#myModal-dang-nhap .box-chuong-trinh,
+#myModal-dang-ky .box-chuong-trinh {
+    background: #fff;
+    border-radius: 15px;
+    padding: 40px 0 10px;
+}
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .bg-ff,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .bg-ff {
+    background: #fff;
+    -webkit-box-shadow: 0 0 5px rgba(51, 51, 51, 0);
+    box-shadow: 0 0 5px rgba(51, 51, 51, 0);
+}
+#myModal-dang-nhap .modal-dialog,
+#myModal-dang-ky .modal-dialog {
+    max-width: 720px;
+    margin: 30px auto;
+    padding-left: 17px;
+    width: 100%;
+}
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .bor:after,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .bor:after {
+    background: #ddd;
+    height: 100%;
+    top: 0;
+}
+#myModal-dang-nhap .modal-header,
+#myModal-dang-ky .modal-header {
+    padding: 10px;
+    border-bottom: 1px solid rgba(229, 229, 229, 0);
+    position: relative;
+    top: 35px;
+    z-index: 99;
+}
+#myModal-dang-ky .modal-header {
+    text-align: center;
+    border-bottom: 1px solid rgb(229, 229, 229);
+    top: 42px;
+}
+
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .boxs-right .box-dang-nhap-khac a,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .boxs-right .box-dang-nhap-khac a {
+    //padding: 10px 5px 10px 5px;
+    //text-indent: -9999px;
+    //display: inline-block;
+    //background-position: center;
+}
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .button button,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .button button {
+    background: #c9aa36;
+    padding: 12px 35px;
+    width: 100%;
+}
+#myModal-dang-nhap .box-chuong-trinh.box-dang-ky .chuong-trinh,
+#myModal-dang-ky .box-chuong-trinh.box-dang-ky .chuong-trinh {
+    padding-bottom: 1px;
+    margin: 0 auto;
+}
+.full_page  .da-dang-nhap.menu-mobile>ul {
+    background: $xanh-main;
+    width: 100%;
+    left: -100%;
+}
+.full_page.push_right .da-dang-nhap.menu-mobile>ul {
+    left: 0;
+}
+
+.da-dang-nhap .box-info .avatar img{
+    width: 80px;
+    height:80px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 10px;
+}
+.da-dang-nhap {
+    &.menu-mobile ul li a {
+        color: #fff;
+    }
+    &.menu-mobile ul a:hover, &.menu-mobile ul {
+        color: #fff;
+        background: #139e9c;
+    }
+    .box-info{
+        padding: 10px;
+        .btn-default {
+            background: none;
+            border: none;
+            color: #fff;
+        }
+        i{
+            display: none !important;
+        }
+
+    }
+}
+.log-out{
+    background: $do-main;
+    color: #fff;
+    display: inline-block !important;
+    border-radius: 15px;
+    margin-top: 5px;
+}
+.page404{
+    position: relative;
+    .text{
+        position: absolute;
+        max-width: 400px;
+        max-height: 300px;
+        width: 100%;
+        height: 100%;
+        left: 22%;
+        top: 24%;
+        text-align: center;
+        .title{
+            font-family: comic;
+            font-weight: 600;
+            font-size: 44px;
+            color: #01a0f3;
+        }
+        .des{
+            font-size: 22px;
+            font-family: comic;
+            color: #01a0f3;
+        }
+        .quay-ve{
+            background: $xanh-main;
+            color: #fff;
+            font-size: 22px;
+            border-radius: 15px;
+            text-align: center;
+            display: inline-block;
+            padding: 15px 40px;
+            transition: 0.4s;
+            margin-top: 20px;
+            &:hover{
+                -webkit-box-shadow: inset 2px 2px 10px rgba(51, 51, 51, 0.54);
+                box-shadow: inset 2px 2px 10px rgba(51, 51, 51, 0.54);
+            }
+        }
+    }
+}
+
+.gioi-thieu{
+    position: relative;
+    background: url(../images/bg_ft_leg.png) center bottom no-repeat,
+    url(../images/bg_top_bai_lam_bottom.jpg) center bottom no-repeat;
+    min-height: 1550px;
+    padding: 40px 0;
+}
+.box-bai-lam{
+    background: url(../images/cau-vong.png) left bottom no-repeat,
+            url(../images/bg_top_bai_lam.png) center -75px no-repeat;
+    //url(../images/bg_ft_leg.png) center bottom no-repeat,
+    //url(../images/bg_top_bai_lam_bottom.jpg) center -100px no-repeat;
+    //min-height: 1412px;
+    position: relative;
+    .title{
+        font-size: 16px;
+        color: #fff;
+        text-align: center;
+        padding: 10px
+    }
+}
+.gui-bai{
+    background: #ffc914 url(../images/icon-gui-bai.png) center 15px no-repeat;
+    color: #fff;
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    border: none;
+    padding: 75px 18px 2px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    //position: absolute;
+    //bottom: 0;
+    //left: 50%;
+    //transform: translate(-50%);
+    width: 105px;
+    &:focus{
+        outline: 0;
+    }
+    &:hover{
+        background-color: #ffaf0e;
+    }
+}
+
+.gioi-thieu {
+    .bg-ff {
+        max-width: 1000px;
+        margin: 0 auto;
+    }
+    .videos{
+        .row{
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        iframe{
+            height: 200px;
+            width: 100%;
+        }
+    }
+}
+.anh-gioi-thieu{
+    text-align: right;
+    img{
+        display: inline-block;
+    }
+}
+.gioi-thieu-sub{
+
+    .content{
+        padding: 20px 0;
+    }
+    .title{
+        font-size: 30px;
+        color: #ffc914;
+    }
+    .bg-color {
+        height: 10px;
+        padding: 0;
+        background: -webkit-gradient(linear, left top, right top, from(#28c2bf), color-stop(25%, #28c2bf), color-stop(25%, #e4572e), color-stop(50%, #e4572e), color-stop(50%, #ffc914), color-stop(75%, #ffc914), color-stop(75%, #76b041), to(#76b041));
+        background: -webkit-linear-gradient(left, #28c2bf 0%, #28c2bf 25%, #e4572e 25%, #e4572e 50%, #ffc914 50%, #ffc914 75%, #76b041 75%, #76b041 100%);
+        background: -o-linear-gradient(left, #28c2bf 0%, #28c2bf 25%, #e4572e 25%, #e4572e 50%, #ffc914 50%, #ffc914 75%, #76b041 75%, #76b041 100%);
+        background: linear-gradient(to right, #28c2bf 0%, #28c2bf 25%, #e4572e 25%, #e4572e 50%, #ffc914 50%, #ffc914 75%, #76b041 75%, #76b041 100%);
+        margin-top: 5px;
+        max-width: 400px;
+    }
+}
+.lien-he{
+    &.gioi-thieu {
+        min-height: 1360px;
+    }
+    .bg-ff {
+        padding: 40px 15px 10px;
+    }
+    .title {
+        font-size: 30px;
+        color: #76b041;
+        margin-top: -10px;
+        img{
+            display: inline-block;
+            position: relative;
+            top: -2px;
+            padding-right: 10px;
+        }
+    }
+    .form-control {
+        border-radius: 0;
+        height: 30px;
+    }
+    textarea.form-control {
+        border-radius: 0;
+        height: auto;
+    }
+    .btn{
+        background: #e4572e;
+        font-weight: 700;
+        border: none;
+        color: #fff;
+        float: right;
+    }
+    form{
+        padding-top: 10px;
+        max-width: 395px;
+    }
+    .map{
+        iframe{
+            height: 520px;
+        }
+    }
+}
+.title-head{
+    background: #76b041 url(../images/bg-huong-dan-giai.png) 50px 16px no-repeat;
+    padding: 17px 40px 15px 90px;
+    display: inline-block;
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 18px;
+    position: absolute;
+    top: 30px;
+    left: -20px;
+    z-index: 99;
+    &:after{
+        content: '';
+        width: 0px;
+        height: 0px;
+        border-bottom: 15px solid transparent;
+        border-top: 0 solid transparent;
+        border-right: 35px solid #56842c;
+        position: absolute;
+        left: 0px;
+        bottom: -15px;
+    }
+}
+.container{
+    position: relative;
+}
+.huong-dan-giai{
+
+    .button{
+        text-align: center;
+    }
+    button{
+        margin-top: 15px;
+        font-weight: 700;
+        cursor: pointer;
+        background: #76b041;
+        font-size: 24px;
+        text-align: center;
+        border-radius: 8px;
+        color: #fff;
+        padding: 5px 30px;
+        transition: 0.3s;
+        &:focus{
+            outline: 0 !important;
+            color: #fff !important;
+        }
+    }
+    position: relative;
+    //-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
+    //box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
+    background: #fff;
+    border-radius: 0;
+    //margin: 60px 0 20px 0;
+    padding: 100px 30px 70px;
+    font-size: 22px;
+}
+.box-s-2{
+    display: inline-flex;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%);
+    z-index: 9999999;
+}
+.box-thong-tin-bai-lam{
+    //background: #fff;
+    //-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
+    //box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
+    //overflow: hidden;
+    text-align: center;
+    p{
+        margin-bottom: 0;
+        padding: 20px 0;
+    }
+    .total-number{
+        font-size: 30px;
+        font-weight: 700;
+    }
+    .times{
+        font-size: 24px;
+    }
+    .diem{
+        .span1{
+            font-size: 44px;
+            font-weight: 700;
+            color: $do-main;
+        }
+        .span2{
+            color: $do-main;
+        }
+
+    }
+}
+.box-min-height{
+    min-height: 1098px;
+}
+.box-bai-lam{
+    .box-min-height{
+        min-height: inherit ;
+    }
+}
+#myModal-false{
+    .text {
+        color: #e4572e;
+    }
+    .box-qua-chuan-luon {
+        color: #ffc914;
+    }
+}
+.leftHeight{
+    //height: 424px;
+}
+.bg-box-lam-bai{
+    //background: url("../images/bg-vuong.jpg") center top;
+    text-align: center;
+    //-webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
+    //box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
+    //border-radius: 10px;
+    padding: 25px 0 50px;
+    //background: #fff;
+
+}
+.start{
+    background: url("../images/icon-start.png") left top no-repeat;
+    padding-left: 25px;
+    color: $vang-main;
+    font-size: 16px;
+    display: inline-block;
+    padding-bottom: 50px;
+}
+.hinhs{
+    color: $xanh-main-2;
+    font-size: 30px;
+    font-weight: 500;
+
+    img{
+        display: inline-block;
+        margin-left: 0;
+        padding: 5px 30px;
+        max-width: 310px;
+        max-height: 70px;
+    }
+    .hinh{
+        margin-bottom: 35px;
+        display: inline-block;
+        padding: 0 30px;
+    }
+}
+.padtop{
+    padding-top: 25px;
+}
+.title.bg1{
+    background: $xanh-main;
+}
+.title.bg2{
+    background: $xanh-main-2;
+}
+.title.bg3{
+    background: $do-main;
+}
+.title-bai-lam{
+    position: relative;
+    top: 0;
+    font-size: 24px;
+    color: #fff;
+    font-weight: 700;
+    -webkit-text-shadow: 0 0 3px #fff, 0px 2px 2px #333;
+    text-shadow: 0 0 3px #fff, 0px 2px 2px #333;
+    left: 50px;
+    overflow: hidden;
+    background: url(../images/bg-title-bai-lam.png) center top no-repeat;
+    max-width: 428px;
+    height: 144px;
+    padding: 80px 15px 10px 65px;
+    margin-top: 15px;
+}
+.imgs{
+    margin: 50px 0 20px;
+}
+.bg-box-lam-bai{
+
+    .btn{
+        background: #ffc914;
+        color: #fff;
+        font-size: 24px;
+        font-weight: 600;
+        border-radius: 8px;
+        padding: 3px 20px;
+        margin: 10px 10px;
+
+        img{
+            display: inline-block;
+        }
+        &:focus{
+            outline: 0;
+        }
+    }
+    .modal-content {
+        background-color: rgba(255, 255, 255, 0);
+        border: 1px solid rgba(153, 153, 153, 0);
+        border: 1px solid rgba(0, 0, 0, 0);
+        -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0);
+
+    }
+
+    .box-qua-chuan-luon{
+        background: url(../images/qua-chuan-luon.png) top no-repeat;
+        width: 503px;
+        height: 389px;
+        text-align: center;
+        font-weight: 700;
+        align-items: center;
+        padding: 140px 50px;
+        font-size: 36px;
+        color: $xanh-main-2;
+        margin: 0 auto;
+    }
+    &.co-len .box-qua-chuan-luon{
+        background: url(../images/qua-chuan-luon.png) top no-repeat;
+        width: 503px;
+        height: 389px;
+        text-align: center;
+        font-weight: 700;
+        align-items: center;
+        padding: 140px 50px;
+        font-size: 36px;
+        color: $vang-main;
+        margin: 0 auto;
+    }
+
+    .chon-dap-an{
+        box-shadow: 0 3px 9px rgba(0, 0, 0, 0);
+        position: relative;
+        z-index: 999999;
+    }
+    .checkbox input[type=checkbox], .checkbox-inline input[type=checkbox], .radio input[type=radio], .radio-inline input[type=radio] {
+        display: none;
+    }
+    .text{
+        color: $xanh-main-2;
+        font-size: 15px;
+        display: none;
+        padding-top: 20px;
+    }
+    .radio{
+        display: inline-block;
+        padding: 0 15px;
+        margin-top: 15px;
+    }
+    label{
+        font-weight: 500;
+        cursor: pointer;
+        background: $xanh-main;
+        font-size: 18px;
+        width: 140px;
+        text-align: center;
+        border-radius: 8px;
+        color: #fff;
+        padding: 10px 15px;
+        -webkit-transition: 0.3s;
+        -o-transition: 0.3s;
+        transition: 0.3s;
+    }
+    .checkClicked label{
+        -webkit-box-shadow: inset 0 0 15px rgba(51, 51, 51, 0.7);
+        box-shadow: inset 0 0 15px rgba(51, 51, 51, 0.7);
+        background: #efae1d;
+    }
+
+}
+.modal-open.openmodel .bg-box-lam-bai .text {
+    display: block;
+}
+
+.box-note:after,
+//.box-bai-lam:after,
+.box-chuong-trinh:after,.gioi-thieu:after{
+    display: block;
+    content: '';
+    width: 103px;
+    height: 103px;
+    background: url("../images/chong-chong.png") no-repeat;
+    -webkit-animation: rotating 3s linear infinite;
+    animation: rotating 3s linear infinite;
+    bottom: 15px;
+    position: absolute;
+    right: 450px;
+
+}
+.modal{
+    .box-note:after, .box-bai-lam:after, .box-chuong-trinh:after,
+    .box-note:before, .box-bai-lam:before, .box-chuong-trinh:before {
+        display: none;
+    }
+}
+
+.box-note:before,
+//.box-bai-lam:before,
+.box-chuong-trinh:before,
+.gioi-thieu:before {
+    display: block;
+    content: '';
+    background: url(../images/cay-chong.png) center no-repeat;
+    width: 32px;
+    height: 63px;
+    bottom: -2px;
+    position: absolute;
+    right: 487px;
+}
+
+
+@-webkit-keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+@keyframes rotating {
+    from {
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    to {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
+
+.bao-cao{
+    display: none;
+    position: relative;
+}
+.bg-box-lam-bai .btn.lam-bai-tiep{
+    display: block;
+    background: $vang-main;
+    //border: 1px dashed #76b041;
+    color: #fff;
+    padding: 8px 25px;
+    font-size: 18px;
+    font-weight: 700;
+    &:hover{
+        background: rgb(255, 246, 36);
+    }
+}
+.bg-box-lam-bai{
+    .des{
+        font-size: 18px;
+        padding: 0 10px;
+    }
+}
+
+.form-inline-none {
+    margin-bottom: 10px;
+    label{
+        background: none;
+        color: #555;
+        font-size: 16px;
+        font-weight: 400;
+        width: inherit;
+
+    }
+    .form-group{
+        margin-top: 15px;
+    }
+    input{
+        border-radius: 0;
+        height: 38px;
+        font-size: 18px;
+    }
+}
+.btn-support button{
+    margin: 15px ;
+}
+.bao-cao-gop-y{
+    color: $vang-main;
+    font-size: 16px;
+    float: right;
+    background: url(../images/bg-bao-cao.png) left top no-repeat;
+    padding: 4px 10px 5px 30px;
+    margin-top: -56px;
+
+}
+.ban-phim{
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    width: 948px;
+    margin-left: -570px;
+    height: 171px;
+    -webkit-transition: ease-out 0.5s;
+    transition: ease-out 0.5s;
+    &.clicked{
+        bottom: -136px;
+    }
+    &:after,.col-type:after{
+        content: '';
+        clear: both;
+        display: block;
+    }
+    .text-show{
+        display: inline-block;
+        background: #d7d7d7;
+        padding: 5px 20px;
+        min-width: 150px;
+        border-radius: 8px 8px 0 0;
+        font-size: 18px;
+        cursor: pointer;
+        i{
+            margin-left: 5px;
+
+        }
+    }
+    .col-type{
+        background: #f5f5f5 url(../images/bg-ban-phim.png) top center no-repeat;
+        padding: 10px 15px 0;
+    }
+    .item-number{
+        float: left;
+        margin-right: 15px;
+        border: 1px solid #999;
+        width: 60px;
+        height: 55px;
+        margin-bottom: 8px;
+        border-radius: 15px;
+        font-size: 24px;
+        padding: 8px 0;
+        cursor: pointer;
+    }
+    .col-float-left{
+        float: left;
+    }
+    .items-number{
+        clear: both;
+    }
+    .col-number{
+        .item-number{
+            background: #fff;
+            &:hover{
+                color: #ffc914;
+            }
+        }
+    }
+    .col-unikey{
+        .item-number{
+            color: #fff;
+        }
+        .xanh-main-2{
+            .item-number{
+                background: $xanh-main-2;
+                &:hover{
+                    background: #86d83c;
+                }
+            }
+            .delete{
+                background: url(../images/bg-delete.png) no-repeat;
+                width: 73px;
+                border: none;
+                font-size: 20px;
+                padding: 15px 0 15px 10px;
+                background-size: 100% 100%;
+                float: left;
+                cursor: pointer;
+                color: #fff;
+                &:hover{
+                    background: url(../images/bg-delete.png) no-repeat;
+                    background-size: 100% 100%;
+                    color: #FFEB3B;
+                }
+            }
+        }
+        .xanh-main{
+            .item-number{
+                background: $xanh-main;
+                &:hover{
+                    background: #43dad7;
+                }
+            }
+        }
+    }
+
+}
+.huong-dan-giai {
+    .btn {
+        background: #ffc914;
+        color: #fff;
+        font-weight: 700;
+        border-radius: 8px;
+        margin: 10px 10px;
+        padding: 8px 25px;
+        font-size: 18px;
+        &:hover{
+            background: #fff624;
+        }
+    }
+    &.btn{
+        background: none;
+        border: 1px dashed #76b041;
+        color: #76b041;
+        padding: 7px 25px;
+        font-size: 18px;
+    }
+
+
+    .bao-cao{
+        display: block;
+        background: #f5f5f5;
+        padding: 0px 0;
+        margin: 0 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        width: 948px;
+        margin-left: -570px;
+        .btn{
+            display: inline-block !important;
+        }
+    }
+}
+.modal-open.openmodel {
+    overflow: auto;
+
+    .bao-cao{
+        //display: block;
+        background: #f5f5f5;
+        padding: 0px 0;
+        margin: 0 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        left: 50%;
+        width: 948px;
+        margin-left: -570px;
+        .btn{
+            display: inline-block !important;
+        }
+    }
+    .co-ban-phim .bao-cao {
+        //padding: 37px 0;
+    }
+    .modal {
+        //position: absolute;
+    }
+    .modal-backdrop {
+        background: none;
+    }
+    .radios{
+        display: none;
+    }
+    .bg-box-lam-bai .btn{
+        display: none;
+    }
+
+    .bg-box-lam-bai.co-len .text {
+        color: $do-main;
+        //border-top: 1px dashed;
+    }
+    .dap-an{
+        border: 3px solid $xanh-main;
+    }
+    .huong-dan-giai{
+        display: block;
+        background: none;
+        border: 1px dashed #76b041;
+        color: #76b041;
+        padding: 7px 25px;
+        font-size: 18px;
+        font-weight: 700;
+        &:hover{
+            border: 1px dashed #76b041;
+            color: $vang-main;
+        }
+    }
+}
+.jssora20l{
+    width: 43px;
+    height: 91px;
+    background: url(../images/left.png) no-repeat;
+    left: 120px !important;
+}
+.jssora20r {
+    width: 43px;
+    height: 91px;
+    background: url(../images/next.png) no-repeat;
+    right: 120px !important;
+}
+.jssora20r:hover, .jssora20l:hover {
+    background-position: 0 0;
+}
+.slider {
+    overflow: hidden;
+}
+.modal{
+    z-index: 99999;
+    position: absolute;
+}
+.menu-mobile .dang-nhap{
+    background: $vang-main;
+    -webkit-box-shadow: inset 0 -5px 5px -10px rgba(0, 0, 0, 0.5);
+    box-shadow: inset -1px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.menu-mobile .dang-ky{
+    background: $do-main;
+    -webkit-box-shadow: inset 0 -5px 5px -10px rgba(0, 0, 0, 0.5) ;
+    box-shadow: inset -1px 2px 10px rgba(0, 0, 0, 0.5);
+}
+.menu-mobile ul a:hover {
+    color: $xanh-main;
+}
+.menu-mobile ul li i {
+    width: 48px;
+    height: 48px;
+    background: $xanh-main;
+    padding: 18px 10px;
+}
+.bracum-mobile{
+    display: none;
+}
+.title-sub {
+    i{
+        display: none;
+    }
+    position: relative;
+}
+.modal .box-chuong-trinh.box-dang-ky{
+    min-height: inherit;
+}
+.modal{
+    .box-chuong-trinh .bg-ff > div:nth-last-child(1) {
+        border-left: 1px solid rgba(228, 87, 46, 0);
+    }
+}
+.hoan-thanh{
+    background: rgba(10, 19, 45, 0.5);
+    //border-radius: 15px;
+    text-align: center;
+    color: #fff;
+    padding-bottom: 20px;
+    a{
+        color: #fff;
+        img{
+            max-width: 100px;
+        }
+    }
+    .point{
+        font-size: 48px;
+        font-weight: 500;
+        color: transparent;
+        -webkit-background-clip: text;
+        background-clip: text;
+        background-color: #feeb73;
+        background-image: -webkit-linear-gradient(#ffef04, #fffab2, #fffefb);
+        background-image: -o-linear-gradient(#ffef04, #fffab2, #fffefb);
+        background-image: -moz-linear-gradient(#ffef04, #fffab2, #fffefb);
+        background-image: -webkit-gradient(linear, left top, left bottom, from(#feeb73), color-stop(#fff), to(#fffefb));
+        background-image: linear-gradient(#ffef04, #fffab2, #fffefb);
+        margin: 20px 0;
+    }
+    .img{
+        img{
+            position: relative;
+            padding-top: 20px;
+        }
+    }
+    .button-ul{
+        padding: 0;
+        margin-bottom: 0;
+        li{
+            list-style: none;
+            display: inline-block;
+            padding: 60px 55px;
+        }
+        .text{
+            font-size: 30px;
+            font-weight: 300;
+        }
+        a:hover{
+            img{
+                opacity: 0.8;
+            }
+            color: #bdeb1f;
+        }
+    }
+}
+.like{
+    background: url("../images/like.png") center no-repeat;
+    width: 21px;
+    height: 21px;
+}
+.like:hover{
+    background: url("../images/like-hv.png") center no-repeat;
+}
+
+.dis-like{
+    background: url("../images/dis-like.png") center no-repeat;
+    width: 21px;
+    height: 21px;
+}
+.dis-like:hover{
+    background: url("../images/dis-like-hv.png") center no-repeat;
+}
+.bao-loi{
+    background: url("../images/bao-loi.png") center no-repeat;
+    width: 24px;
+    height: 21px;
+}
+.bao-loi:hover{
+    background: url("../images/bao-loi-hv.png") center no-repeat;
+}
+
+.notify-group {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    padding: 0 30px;
+    transform: translateY(-50%);
+    a{
+        display: inline-block;
+        margin: 10px;
+    }
+}
+.text-end{
+    font-family: BreeSerif;
+    font-size: 48px;
+}
+.form-inline-none .form-group {
+    display: inline-block;
+}
+.open-hd-giai{
+
+    .hd-gui-bai{
+        z-index: 9999999;
+        opacity: 1;
+        bottom: 100px;
+    }
+    .over{
+        position: fixed;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.68);
+        z-index: 999999;
+    }
+    .hd-gui-bai-bt{
+        z-index: 9999999;
+
+    }
+}
+.hd-gui-bai{
+    opacity: 0;
+    position: absolute;
+    bottom: 300px;
+    right: 125px;
+    -webkit-transition: 0.5s;
+    transition: 0.5s;
+    .des{
+        background: url(../images/hd-gui-bai.png) no-repeat center;
+        width: 225px;
+        height: 199px;
+        position: absolute;
+        bottom: 40px;
+        left: -10px;
+        z-index: 9;
+        p{
+            padding: 31px 30px 25px 54px;
+            font-size: 15px;
+            text-align: left;
+        }
+    }
+}
+
+.cu-meo{
+    position: relative;
+    z-index: 99;
+    top: -24px;
+    left: -36px;
+    img{
+        max-width: 100px;
+    }
+}
+.fullScreen2{
+    //background: #fff;
+    -webkit-box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.33);
+    box-shadow: -1px 3px 3px rgba(0, 0, 0, 0.33);
+    position: relative;
+}
+body{
+    //overflow: hidden;
+}
+#myModal-dang-nhap {
+    .button {
+        padding-right: 15px;
+        margin-top: 25px;
+    }
+    .checkbox, .radio {
+        margin-top: 0;
+        margin-bottom: 10px;
+    }
+    .bg-ff {
+        padding: 5px 10px;
+    }
+    .button button {
+        border-radius: 15px;
+    }
+}
+@media screen and (max-width: 1199px){
+    .hoan-thanh{
+        .button-ul li {
+            padding: 60px 15px;
+        }
+    }
+    .ban-phim{
+        display: none;
+    }
+    .huong-dan-giai .bao-cao{
+        left: 50%;
+        width: 782px;
+        margin-left: -470px;
+    }
+    .btn-support-mobile {
+        .huong-dan-giai {
+            display: block !important;
+            width: 70%;
+            margin: 10px auto;
+        }
+        .btn.lam-bai-tiep {
+            width: 70%;
+            display: block;
+            margin: 10px auto;
+        }
+    }
+    .btn-support-mobile{
+        display: none;
+    }
+    .modal-open {
+        .btn-support-mobile{
+            display: block;
+            background: #fff;
+        }
+        .btn-support-mobile {
+            .btn.lam-bai-tiep {
+                display: block;
+            }
+        }
+    }
+    .chon-dap-an{
+        .bao-cao{
+            //display: none !important;
+        }
+    }
+    .modal-open.openmodel .bao-cao {
+        left: 50%;
+        width: 782px;
+        margin-left: -470px;
+    }
+}
+.co-ban-phim{
+    padding-bottom: 180px;
+}
+.box-chuong-trinh.box-dang-ky.mobile {
+    .bg-ff > div:nth-last-child(1) {
+        border-left: 1px solid rgba(228, 87, 46, 0);
+    }
+}
+.bg-box-lam-bai{
+    .row{
+        margin: 0;
+    }
+}
+@media screen and (max-width: 991px){
+    .huong-dan-giai .bao-cao{
+        left: 50%;
+        width: 721px;
+        margin-left: -360px;
+    }
+    .gui-bai{
+        z-index: 9999999;
+        background: #ffc914;
+        width: 100%;
+        border-radius: 0;
+        padding: 10px;
+    }
+    .bg-box-lam-bai {
+        padding: 25px 0 120px;
+    }
+    .gui-bai {
+        position: fixed;
+        left: 50%;
+        bottom: 0;
+        margin-bottom: 0;
+        transform: translate(-50%);
+    }
+    .modal-open.openmodel .bao-cao {
+        left: 50%;
+        width: 721px;
+        margin-left: -360px;
+    }
+    .box-chuong-trinh.box-dang-ky.mobile {
+        .boxs-right .chuong-trinh {
+            margin-left: 0;
+        }
+    }
+    .modal-open.openmodel .bg-box-lam-bai .text {
+        background: #fff;
+    }
+    .modal-open{
+        .closeModel{
+            display: none;
+        }
+    }
+
+
+    .bao-cao{
+        //display: none !important;
+    }
+    .box-dang-nhap,.bracum .inline-block{
+        display: none;
+    }
+
+    .box-thong-tin-bai-lam{
+        display: inline-block;
+        margin-bottom: 30px;
+        .fl{
+            float: left;
+            &:nth-child(1){
+                border-right: 3px solid $xanh-main;
+            }
+            &:nth-child(2){
+                border-right: 3px solid $do-main;
+            }
+            .title,p{
+                display: inline-block;
+                background: none;
+                font-size: 16px;
+                color: #333;
+                font-weight: 400;
+            }
+            p{
+                padding: 15px;
+            }
+            .span1{
+                font-size: 16px;
+            }
+            &:nth-last-child(2){
+                border-right: 2px solid rgba(51, 51, 51, 0);
+            }
+        }
+    }
+    .lien-he{
+        .map iframe {
+            height: 320px;
+        }
+        .gioi-thieu-sub{
+            padding-top: 20px;
+        }
+    }
+    .hoan-thanh {
+        background: url(../images/bg-vuong.jpg) center top;
+        background-size: 25px 25px;
+        position: relative;
+        background-color: rgba(10, 19, 45, 0.5);
+        &:after{
+            content: '';
+            background-color: rgba(10, 19, 45, 0.5);
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+
+        }
+        .porel{
+            position: relative;
+            z-index: 99;
+        }
+        .img img {
+            top: 0;
+            padding: 70px 0 0;
+            max-width: 250px;
+        }
+        .point {
+            font-size: 30px;
+        }
+        .text-end {
+            font-size: 24px;
+        }
+        .button-ul {
+            margin-bottom: -3px;
+            li {
+                padding: 30px 25px;
+                img{
+                    max-width: 70px;
+                }
+            }
+            .text {
+                display: none;
+            }
+        }
+    }
+    .box-gradient {
+        background: url(../images/bg_ft_leg.png) center bottom no-repeat;
+        //padding-bottom: 160px;
+    }
+    //.box-chuong-trinh {
+    //    background: rgba(148, 226, 249, 0.45);
+    //    background: -webkit-linear-gradient(rgba(255, 255, 255, 0), rgba(148, 226, 249, 0.75));
+    //    background: -o-linear-gradient(rgba(255, 255, 255, 0), rgba(148, 226, 249, 0.75));
+    //    background: -moz-linear-gradient(rgba(255, 255, 255, 0), rgba(148, 226, 249, 0.75));
+    //    background: linear-gradient(rgba(255, 255, 255, 0), rgba(148, 226, 249, 0.78));
+    //}
+    .box-chon-lop{
+        .max-width{
+            .box-lop{
+                .text{
+                    a{
+                        margin: 53px 10px 10px;
+                    }
+                }
+            }
+        }
+    }
+    .box-chuong-trinh {
+        background: red;
+        background: -webkit-linear-gradient(rgb(225, 244, 249), rgba(181, 235, 251, 0.11));
+        background: -o-linear-gradient(rgb(225, 244, 249), rgba(181, 235, 251, 0.11));
+        background: -moz-linear-gradient(rgb(225, 244, 249), rgba(181, 235, 251, 0.11));
+        background: linear-gradient(rgb(225, 244, 249), rgba(181, 235, 251, 0.11));
+        .title-sub {
+            background: #fff;
+        }
+
+        .chuong-trinh {
+            .title-sub {
+                margin: 5px 0;
+                padding: 15px;
+                padding-right: 25px;
+                border-radius: 10px;
+            }
+            .title-sub.title-sub-open {
+                background: $do-main;
+                color: #fff;
+            }
+    }
+    }
+    .chuong{
+        ul{
+            display: none;
+        }
+        .title-sub {
+            i{
+                display: block;
+                float: right;
+                position: absolute;
+                top: 10px;
+                right: 0;
+                padding: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .bracum {
+        padding-top: 60px;
+        .breadcrumb {
+            text-align: center;
+            padding: 0 10px 10px;
+        }
+        ol li {
+            padding: 10px 0;
+            a{
+                color: #e4572e;
+                padding: 6px;
+                border-radius: 4px;
+                background: #fff;
+            }
+            &.active{
+                background: rgba(255, 255, 255, 0.5);
+                padding: 5px 0 5px 8px;
+                border-radius: 4px;
+                text-indent: -40px;
+                margin-left: 15px;
+                text-align: center;
+            }
+        }
+        .bracum-mobile{
+            display: block;
+            padding: 0;
+            text-align: center;
+            margin-bottom: 0;
+            li {
+                a{
+                    background: none;
+                    color: #fff
+                }
+                list-style: none;
+            }
+        }
+    }
+
+    .slick-prev, .slick-next{
+        display: none !important;
+    }
+    .slick-dots li button:before {
+        color: rgba(255, 255, 255, 0);
+        -webkit-box-shadow: 0 0 0 1px #fff;
+        box-shadow: 0 0 0 2px #fff;
+        border-radius: 50%;
+        font-size: 14px;
+        opacity: 1;
+        line-height: 1.2;
+        background: rgba(255, 255, 255, 0);
+        width: 14px;
+        height: 14px;
+
+    }
+    .slick-dots li.slick-active button:before {
+        color: #ffffff;
+    }
+    footer .des {
+        background-size: auto 100%;
+        padding: 13px 10px;
+    }
+    /*, #myModal-dang-ky .box-chuong-trinh.box-dang-ky .bor:after */
+    #myModal-dang-nhap .box-chuong-trinh.box-dang-ky .bor:after{
+        //background: rgba(221, 221, 221, 0);
+    }
+    #myModal-dang-ky .box-chuong-trinh.box-dang-ky .bor:after{
+        background: rgba(221, 221, 221, 0);
+    }
+    .push_right .button:after {
+        display: none;
+    }
+    #myModal-dang-nhap .modal-header {
+        top: 42px;
+        z-index: 99;
+        border-bottom: 1px solid rgb(229, 229, 229);
+    }
+    .box-chuong-trinh.box-dang-ky .chuong-trinh .form,#myModal-dang-nhap .button {
+        padding-right: 0;
+    }
+    .box-chuong-trinh.box-dang-ky .chuong-trinh {
+        max-width: 100%;
+    }
+}
+@media screen and (max-width: 767px){
+    .huong-dan-giai .bao-cao{
+        left: 0;
+        width: 100%;
+        margin-left: 0;
+    }
+    .modal-open.openmodel .bao-cao {
+        left: 0;
+        width: 100%;
+        margin-left: 0;
+        padding-top: 50px;
+    }
+    .box-chuong-trinh.box-dang-ky.mobile {
+        .bor:after {
+            background: rgba(228, 87, 46, 0);
+        }
+    }
+    .box-chon-lop .max-width .col-sm-4:nth-child(3){
+        .box-lop {
+            border-bottom: 1px solid rgba(221, 221, 221, 0);
+        }
+    }
+    #myModal-dang-nhap .button button {
+        background: #ffc914 !important;
+    }
+    #myModal-dang-nhap{
+        .box-chuong-trinh.box-dang-ky .chuong-trinh .des {
+            font-size: 14px;
+        }
+    }
+    #myModal-dang-ky .box-chuong-trinh.box-dang-ky .button button {
+        background: #e5572f;
+    }
+
+    .bao-cao{
+        margin-top: 20px !important;
+    }
+    .notify-group {
+        //position: static;
+         top: 0;
+        padding: 0 30px;
+        transform: translateY(0);
+    }
+    .bg-ff {
+        background: none;
+    }
+    .box-dang-nhap .box-info {
+        text-align: right;
+        padding: 0px 0 0;
+    }
+    .gioi-thieu .videos iframe {
+        height: 300px;
+    }
+    .modal-open .bg-box-lam-bai.co-len{
+        .chon-dap-an {
+            padding-top: 70px;
+        }
+    }
+    .content{
+        font-size: 16px;
+    }
+    .box-thong-tin-bai-lam{
+        border-radius: 0 10px 10px 0;
+        background: #fff;
+        -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
+        box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
+    }
+    .modal-open.openmodel .bao-cao .btn {
+        //width: 80%;
+        font-size: 18px;
+        font-weight: 300;
+        min-width: 220px;
+    }
+    .btn-support .huong-dan-giai{
+        background: #fff !important;
+    }
+    .modal-open.openmodel .bg-box-lam-bai .text {
+        border-top: 1px dashed;
+        padding-bottom: 20px;
+    }
+    .bao-cao-gop-y-2{
+        font-weight: 300;
+        cursor: pointer;
+        background: #ffc914;
+        font-size: 18px;
+        border-radius: 8px;
+        color: #fff;
+        padding: 5px 30px;
+        transition: 0.3s;
+        margin: 10px auto 15px;
+        width: 80%;
+        display: block;
+    }
+    .box-bai-lam-mobile .col-sm-9{
+        padding: 0;
+    }
+    .huong-dan-giai {
+        margin: 0 0 0 0;
+        display: none !important;
+    }
+    .huong-dan-giai-mobile{
+        display: block !important;
+    }
+    .huong-dan-giai.fullScreen.rightHeight{
+        display: block !important;
+    }
+    .thong-tin-mobile{
+        text-align: left;
+    }
+    .title-head {
+        top: 1px;
+        position: static;
+        background: #fff;
+        color: #e4572e;
+        display: block;
+        text-align: center;
+        padding: 20px 0 0;
+        margin: 0 -15px;
+    }
+    .huong-dan-giai.fullScreen.rightHeight{
+        overflow: inherit !important;
+        height: auto !important;
+    }
+    .huong-dan-giai .title-head {
+        position: static;
+        display: block;
+        margin-bottom: 10px;
+    }
+    .huong-dan-giai {
+        padding: 25px 30px 70px;
+    }
+    .title-head:after{
+        display: none;
+    }
+    .bg-box-lam-bai {
+        //background: url(../images/bg-vuong.jpg) center top;
+        border-radius: 0;
+        background-size: 25px 25px;
+        
+    }
+    .box-bai-lam-mobile{
+        .row.m0{
+            margin: 0 -15px;
+        }
+    }
+    .box-chuong-trinh,.box-chuong-trinh .bg-ff {
+        padding: 0px 0 0px;
+    }
+    .box-chuong-trinh .chuong-trinh .chuongs > .col-sm-6:nth-child(2) {
+        border-left: 1px solid rgba(221, 221, 221, 0);
+    }
+    footer .leg .des {
+        font-size: 12px;
+        float: none;
+        display: inline-block;
+    }
+    footer .leg .social a {
+        margin-right: 2px;
+        max-width: 33px;
+        position: relative;
+        top: 7px;
+    }
+    footer{
+        text-align: center;
+    }
+    footer .leg .social {
+        float: none;
+        display: inline-block;
+    }
+    .box-chuong-trinh {
+        //padding: 0 0 10px;
+    }
+    #myModal-dang-nhap .box-chuong-trinh.box-dang-ky .boxs-right .box-dang-nhap-khac a, #myModal-dang-ky .box-chuong-trinh.box-dang-ky .boxs-right .box-dang-nhap-khac a {
+        padding: 10px 5px 10px 5px;
+        text-indent: -9999px;
+        display: inline-block;
+        background-position: center;
+        width: 50px;
+        border-radius: 4px;
+    }
+    .bao-cao-gop-y {
+        float: none;
+    }
+    .bg-box-lam-bai .modal-dialog {
+        margin-top: 80px;
+    }
+    .hinhs img {
+        margin-left: 0;
+        max-width: 250px;
+        width: 100%;
+    }
+    .bg-box-lam-bai .box-qua-chuan-luon,.bg-box-lam-bai.co-len .box-qua-chuan-luon {
+        background-size: contain;
+        max-width: 503px;
+        width: 100%;
+        padding: 10px 50px 10px;
+        display: -webkit-flex;
+        display: -webkit-box;
+        display: flex;
+        -webkit-align-items: center;
+        align-items: center;
+
+        height: 380px;
+        div{
+            margin: 0 auto;
+        }
+    }
+
+    .title-bai-lam{
+        background: $do-main;
+        color: #fff;
+        display: block;
+        top: 0;
+        left: 0;
+        font-size: 16px;
+        max-width: 100%;
+        padding: 20px 15px;
+        height: auto;
+        display: none;
+    }
+    .footer-mobile{
+        display: none;
+    }
+    .box-bai-lam-mobile{
+        .padtop {
+            padding-top: 0;
+        }
+        .box-min-height {
+            min-height: inherit;
+        }
+        background: none;
+        min-height: inherit;
+        &.box-bai-lam:after{
+            display: none;
+        }
+    }
+    .chuong .title-sub i {
+        top: 12px;
+        right: 6px;
+    }
+    .box-chuong-trinh .chuong-trinh .chuong ul {
+        margin-top: 20px;
+    }
+    .box-video {
+        margin-top: -100px;
+    }
+    .bracum {
+        //padding-bottom: 10px;
+    }
+    .box-chuong-trinh{
+        .row.m0{
+            .col-sm-12{
+                padding: 0;
+            }
+            .col-sm-12.bor{
+                padding: 0 15px;
+            }
+        }
+        .bg-ff {
+            -webkit-box-shadow: 0 0 5px rgba(51, 51, 51, 0);
+            box-shadow: 0 0 5px rgba(51, 51, 51, 0);
+            //padding: 25px 0;
+            position: relative;
+            z-index: 99;
+        }
+        .chuongs{
+            div{
+                padding: 0;
+            }
+        }
+
+    }
+    .box-note {
+        margin-top: 0;
+        padding-top: 15px;
+    }
+    .box-lop{
+        clear: both;
+        border-bottom: 1px solid #ddd;
+        padding: 15px 0;
+        .avatar{
+            float: left;
+            margin-left: 10px;
+        }
+        &:after{
+            content: '';
+            clear: both;
+            display: block;
+        }
+    }
+    .box-chon-lop .max-width .col-sm-4{
+        text-align: left !important;
+    }
+    .box-note {
+        //background-color: #86d660;
+    }
+    .box-note-big {
+        padding-top: 45px;
+        background: #f8f8f8 url(../images/box-note-index.png) bottom left no-repeat;
+        margin-top: 0;
+    }
+    body {
+        overflow-x: hidden;
+    }
+    .box-note:after, .box-bai-lam:after, .box-chuong-trinh:after {
+        right: 100px;
+    }
+    .box-note:before, .box-bai-lam:before, .box-chuong-trinh:before{
+        right: 131px;
+    }
+    footer .des {
+        background: url(../images/bg-footer-note.png) top center repeat;
+        font-size: 13px;
+        background-size: 100% 100%;
+    }
+    .box-video {
+        background: url(../images/bg-slid.png) center top no-repeat;
+        margin-top: -9%;
+    }
+    .box-note:after, .box-bai-lam:after, .box-chuong-trinh:after, .gioi-thieu:after {
+        right: 50px;
+    }
+    .box-note:before, .box-bai-lam:before, .box-chuong-trinh:before, .gioi-thieu:before {
+        right: 87px;
+    }
+    .gioi-thieu {
+        padding: 40px 0 120px;
+        .bg-ff{
+            background: #fff;
+        }
+    }
+    #myModal-dang-nhap .box-chuong-trinh.box-dang-ky .bor:after{
+        background: rgba(221, 221, 221, 0);
+    }
+    #myModal-dang-nhap .box-chuong-trinh, #myModal-dang-ky .box-chuong-trinh {
+        padding: 42px 0 10px;
+    }
+    #myModal-dang-nhap .modal-header, #myModal-dang-ky .modal-header {
+        border-bottom: 1px solid rgb(229, 229, 229);
+    }
+    
+    .box-note .max-width .des {
+        min-height: 620px;
+        max-height: 620px;
+    }
+    
+}
+//.bg-gradient{
+//    //display: none;
+//    height: 20px;
+//    position: absolute;
+//}
+@media screen and (max-width: 479px){
+
+    .box-note .max-width .des {
+        padding: 20px 20px 100px 20px;
+    }
+    .box-note {
+        //padding-top: 15px;
+    }
+    body{
+        min-width: 320px;
+    }
+    .lien-he{
+        .map iframe {
+            height: 220px;
+        }
+        .title {
+            font-size: 20px;
+            margin-top: 0;
+        }
+    }
+    .gioi-thieu .videos iframe {
+        height: 200px;
+    }
+    .bg-box-lam-bai .box-qua-chuan-luon,.bg-box-lam-bai.co-len .box-qua-chuan-luon {
+        height: 300px;
+        font-size: 25px;
+        img{
+            width: 70px;
+        }
+    }
+    .box-chon-lop .max-width .col-sm-4 {
+        text-align: center !important;
+    }
+    .box-lop .avatar {
+        float: none;
+        margin-left: 0px;
+    }
+    .bg-box-lam-bai label {
+        width: auto;
+    }
+    .box-thong-tin-bai-lam {
+
+        .fl {
+            .title,p {
+                padding: 6px;
+            }
+        }
+    }
+    .box-video .videos {
+        .video > div {
+            width: 40px;
+            height: 40px;
+            background-size: 100% 100% !important;
+            left: 10px;
+        }
+        .video {
+            padding: 55px 10px 25px 55px;
+            left: 0;
+        }
+        iframe {
+            height: 200px !important;
+        }
+        .button-stop {
+            top: 110px !important;
+        }
+        .button-volum-t {
+            top: 165px !important ;
+        }
+        .button-volum-g {
+            top: 220px !important;
+        }
+        .title {
+            font-size: 16px;
+        }
+    }
+    .huong-dan-giai .bao-cao .btn {
+        float: left;
+    }
+}
+
+@media screen and (max-width: 414px){
+  
+    .lien-he .title {
+        font-size: 18px;
+    }
+    .gioi-thieu .videos iframe {
+        height: 160px;
+    }
+    .hoan-thanh .button-ul li {
+        padding: 30px 15px;
+    }
+    .box-video {
+        background: url(../images/may-mobile.png) center top no-repeat;
+        //margin-top: -45px;
+        padding-top: 50px;
+    }
+    footer .des {
+        background: url(../images/bg-footer-note.png) top center repeat;
+        font-size: 13px;
+        background-size: 100% 100%;
+    }
+}
+
+@media screen and (max-width: 359px){
+    .lien-he .title {
+        font-size: 14px;
+    }
+    .gioi-thieu{
+        .videos .row{
+            margin: 0 -15px;
+            &>div{
+                padding: 0;
+            }
+        }
+    }
+
+    .box-intro .des {
+        width: 290px;
+        padding: 25px 20px;
+    }
+    .bg-box-lam-bai .box-qua-chuan-luon,.bg-box-lam-bai.co-len .box-qua-chuan-luon {
+        height: 230px;
+        font-size: 20px;
+        img{
+            width: 60px;
+        }
+    }
+    .container{
+        min-width: 300px;
+    }
+    .hoan-thanh .button-ul li {
+        padding: 30px 5px;
+    }
+}

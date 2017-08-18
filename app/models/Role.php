@@ -15,4 +15,9 @@ class Role extends Eloquent
     {
         return $this->hasMany('Admin', 'role_id', 'id');
     }
+
+    public function user()
+    {
+        return $this->hasMany('Users', 'role_id', 'id');
+    }
 }

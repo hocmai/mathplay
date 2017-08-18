@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
@@ -21,6 +22,7 @@ class CreateAdminsTable extends Migration {
             $table->string('remember_token', 256)->nullable();
             $table->softDeletes();
             $table->timestamps();
+            $table->smallInteger('status')->default(1);
         });
 	}
 

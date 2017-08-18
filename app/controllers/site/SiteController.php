@@ -3,10 +3,10 @@
 class SiteController extends HomeController {
 
 	public function __construct() {
-		$viTypes = Common::getObjectLanguage('TypeNew', LANG_VI, 'position');
-		$enTypes = Common::getObjectLanguage('TypeNew', LANG_EN, 'position');
-		View::share('viTypes', $viTypes);
-		View::share('enTypes', $enTypes);
+		// $viTypes = Common::getObjectLanguage('TypeNew', LANG_VI, 'position');
+		// $enTypes = Common::getObjectLanguage('TypeNew', LANG_EN, 'position');
+		// View::share('viTypes', $viTypes);
+		// View::share('enTypes', $enTypes);
 
 	}
 

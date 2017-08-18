@@ -8,7 +8,8 @@
 		"ollieread/multiauth": "dev-master",
 		"cviebrock/eloquent-sluggable": "2.0.*",
 		"barryvdh/laravel-debugbar": "~1.8",
-		"mcamara/laravel-localization": "0.15.*"
+		"mcamara/laravel-localization": "0.15.*",
+		"fzaninotto/faker": "^1.7"
 	},
 	"autoload": {
 		"classmap": [

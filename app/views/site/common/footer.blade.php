@@ -1,41 +1,24 @@
-<div class="footer">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-4">
-				<h3>{{ trans('captions.menu') }}</h3>
-				<ul class="footerMenu">
-					<li {{ checkActive() }}><a href="{{ action('SiteIndexController@index') }}">{{ trans('captions.home') }}</a></li>
-					<li {{ checkActive(LaravelLocalization::transRoute('routes.about')) }}><a href="{{ action('AboutController@index') }}">{{ trans('captions.aboutus') }}</a></li>
-					@foreach(getTypeLanguage($viTypes, $enTypes) as $type)
-						<li {{ checkActive($type->slug) }}>
-							<a href="{{ action('SiteTypeController@showSlug', $type->slug) }}">{{$type->name}}</a>
-						</li>
-					@endforeach
-					<li {{ checkActive(LaravelLocalization::transRoute('routes.contact')) }}><a href="{{ action('ContactController@index') }}">{{ trans('captions.contact') }}</a></li>
-				</ul>
-			</div>
-			<div class="col-sm-4">
-				<h3>{{ trans('captions.follow') }}</h3>
-				<ul class="footerFollow">
-					<li><a href="">Facebook</a></li>
-					<li><a href="">Google +</a></li>
-				</ul>
-			</div>
-			<div class="col-sm-4">
-				<h3>{{ trans('captions.contact') }}</h3>
-				<div class="footerAddress">
-					{{ Common::objectLanguage('Contact', 1, getLang())->description }}
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-<div class="footerCopyright">
-	<div class="container">
-		<div class="row">
-			<div class="col-sm-12">
-				&copy; Copyright 2016
-			</div>
-		</div>
-	</div>
-</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="des">
+                    Cơ quan chủ quản: Công ty Cổ phần Đầu tư và Dịch vụ Giáo dục <br/>
+                    Địa chỉ: Tầng 4, Tòa nhà 25T2, Đường Nguyễn Thị Thập, Phường Trung Hoà, Quận Cầu Giấy, Hà Nội.<br/>
+                    Tel: +84 (4) 3519-0591 Fax: +84 (4) 3519-0587<br/>
+                    Giấy phép cung cấp dịch vụ mạng xã hội trực tuyến số 597/GP-BTTTT Bộ Thông tin và Truyền thông cấp ngày 30/12/2016.<br/>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="leg">
+        <div class="container">
+            <div class="des"><img src="{{ asset('frontend/images/a-cong.png')}}" class="img-responsive" alt=""/>2017 phát triển và xây dựng bởi HOCMAI</div>
+            <div class="social">
+                <a href="" title=""><img src="{{ asset('frontend/images/f.png')}}" class="img-responsive" alt=""/></a>
+                <a href="" title=""><img src="{{ asset('frontend/images/g.png')}}" class="img-responsive" alt=""/></a>
+            </div>
+        </div>
+
+    </div>
+</footer>
