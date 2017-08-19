@@ -1,5 +1,4 @@
 <?php
-use App\Users;
 class UsersTable extends Seeder
 {
     /**
@@ -8,11 +7,11 @@ class UsersTable extends Seeder
      * @return void
      */
     public function run()
-    {
+    {   
         $faker = Faker\Factory::create();
 
         for ($i = 0; $i < 5; $i++) {
-            Users::create([
+            User::create([
                 'name' => $faker->userName,
                 'username'=> $faker->userName,
                 'email' => $faker->unique()->email,

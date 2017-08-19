@@ -9,7 +9,7 @@ class SubjectModel extends Model
     protected $table = 'subject';
     protected $primaryKey = 'subject_id';
 
-    protected $filltable = ['*'];
+    protected $fillable = ['*'];
     public $timestamps = false;
 
     // 1 subject duoc tao boi 1 user

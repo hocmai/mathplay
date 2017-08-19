@@ -81,8 +81,8 @@ class AdminController extends BaseController {
     	$checkLogin = Auth::admin()->check();
         if($checkLogin) {
 	    	if (Auth::admin()->get()->status == ACTIVE) {
-	    		//return Redirect::action('ManagerController@edit', Auth::admin()->get()->id);
-	    		return Redirect::route('admin.dashboard');
+	    		return Redirect::action('ManagerController@edit', Auth::admin()->get()->id);
+	    		//return Redirect::route('admin.dashboard');
 	    	}else{
 	    		return View::make('admin.layout.login')->with(compact('message','chưa kich hoat'));
 	    	}

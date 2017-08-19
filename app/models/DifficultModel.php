@@ -9,6 +9,6 @@ class DifficultModel extends Model
  	protected $table = 'difficulty';
     protected $primaryKey = 'diff_id';
 
-    protected $filltable = ['*'];
+    protected $fillable = ['*'];
     public $timestamps = false;
 }

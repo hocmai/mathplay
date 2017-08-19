@@ -9,7 +9,7 @@ class QuesionModel extends Model
     protected $table = 'quesion';
     protected $primaryKey = 'quesion_id';
 
-    protected $filltable = ['*'];
+    protected $fillable = ['*'];
     public $timestamps = false;
 
     /**

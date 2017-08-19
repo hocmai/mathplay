@@ -28,14 +28,16 @@ Route::group(['prefix' => 'admin'], function () {
  	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
 	Route::post('/login', array('uses' => 'AdminController@doLogin'));
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
-	Route::resource('/', 'ManagerController@index');
+	Route::resource('/', 'ManagerController');
 
 	Route::group(['prefix' => 'manage'], function(){
-		Route::get('changepassword/{id}', array('uses' => 'ManagerController@changePassword', 'as' => 'admin.manager.chanpassword'));
 		Route::get('/', ['uses' => 'ManagerController@index', 'as' => 'admin.dashboard']);
+		Route::get('changepassword/{id}', array('uses' => 'ManagerController@changePassword', 'as' => 'admin.manager.chanpassword'));
 		Route::post('updatePassword/{id}', array('uses' => 'ManagerController@updatePassword'));
 		Route::get('search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
 	 	Route::resource('/user', 'UserController');
+
+	 	Route::resource('/grade', 'GradeController');
 	});
 	
 // 	Route::get('/feedback', 'AdminContactController@feedback');

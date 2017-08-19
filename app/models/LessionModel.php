@@ -9,7 +9,7 @@ class LessionModel extends Model
     protected $table = 'lession';
     protected $primaryKey = 'lession_id';
 
-    protected $filltable = ['*'];
+    protected $fillable = ['*'];
     public $timestamps = false;
 
     /**

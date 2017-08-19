@@ -1,5 +1,4 @@
 <?php
-
 use Illuminate\Database\Seeder;
 
 class GradeTable extends Seeder
@@ -14,14 +13,16 @@ class GradeTable extends Seeder
         $faker = Faker\Factory::create();
 
         $limit = 5;
-        $users = DB::table('users')->select(['id'])->get();
-        $users = collect($users)->map(function($value){
-            return $value->id;
-        })->toArray();
+        $users = User::select(['id'])->get();
+        $user = [];
+        foreach ($users as $key => $value) {
+            $user[] = $value->id;
+        }
+        //print_r($faker->randomElement($user));
         
         for ($i = 0; $i < $limit; $i++) {
-            DB::table('grade')->insert([ //,
-                'author' => $faker->randomElement($users),
+            GradeModel::create([
+                'author' => $faker->randomElement($user),
                 'title' => $faker->title,
                 'description' => $faker->paragraph,
                 'slug' => $faker->slug,

@@ -9,7 +9,7 @@ class ChapterModel extends Model
     protected $table = 'chapter';
     protected $primaryKey = 'chapter_id';
 
-    protected $filltable = ['*'];
+    protected $fillable = ['*'];
     public $timestamps = false;
 
     /**
