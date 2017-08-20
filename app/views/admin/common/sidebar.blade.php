@@ -28,9 +28,9 @@
 						</ul>
 					</li>
 					<li class="">
-						<a href="#"><i class="fa fa-briefcase"></i> Quản lý Môn học<span class="pull-right-container"></span></a>
-						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
+						<a href="{{ action('SubjectController@index') }}"><i class="fa fa-briefcase"></i> Quản lý Môn học<span class="pull-right-container"></span></a>
+						<ul class="">
+							<li><a href="{{ action('SubjectController@create') }}"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
 						</ul>
 					</li>
 					<li class="">

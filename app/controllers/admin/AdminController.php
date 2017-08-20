@@ -77,7 +77,7 @@ class AdminController extends BaseController {
 	}
 
     public function login()
-    {	
+    {
     	$checkLogin = Auth::admin()->check();
         if($checkLogin) {
 	    	if (Auth::admin()->get()->status == ACTIVE) {

@@ -6,17 +6,16 @@
   <title>Đăng nhập tài khoản</title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <!-- Bootstrap 3.3.5 -->
-  {{HTML::style('adminlte/bootstrap/css/bootstrap.min.css') }}
+ 
+
+  {{HTML::style('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css') }}
   <!-- Font Awesome -->
-  {{HTML::style('adminlte/dist/css/font-awesome.min.css') }}
+  {{HTML::style('adminlte/bower_components/font-awesome/css/font-awesome.min.css') }}
   <!-- Ionicons -->
-  {{HTML::style('adminlte/dist/css/ionicons.min.css') }}
+  {{HTML::style('adminlte/bower_components/Ionicons/css/ionicons.min.css') }}
   <!-- Theme style -->
   {{HTML::style('adminlte/dist/css/AdminLTE.min.css') }}
-  <!-- AdminLTE Skins. Choose a skin from the css/skins
-       folder instead of downloading all of them to reduce the load. -->
-  {{HTML::style('adminlte/dist/css/skins/_all-skins.min.css') }}
+
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,10 +58,11 @@
 </div>
 <!-- /.login-box -->
 
-<!-- jQuery 2.1.4 -->
-{{ HTML::script('adminlte/plugins/jQuery/jQuery-2.1.4.min.js') }}
-<!-- Bootstrap 3.3.5 -->
-{{ HTML::script('adminlte/bootstrap/js/bootstrap.min.js') }}
+<!-- AdminLTE Skins. Choose a skin from the css/skins
+     <!-- jQuery 2.1.4 -->
+  {{ HTML::script('adminlte/bower_components/jquery/dist/jquery.min.js') }}
+  <!-- jQuery UI 1.11.4 -->
+  {{ HTML::script('adminlte/bower_components/jquery-ui/jquery-ui.min.js') }}
 
 </body>
 </html>

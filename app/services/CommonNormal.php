@@ -1,6 +1,6 @@
 <?php
-use Carbon\Carbon;
-class CommonNormal
+	use Carbon\Carbon;
+	class CommonNormal
 {
 	public static function delete($id)
 	{
@@ -27,7 +27,7 @@ class CommonNormal
 	public static function commonName($name = NULL)
 	{
 		if ($name == NULL) {
-			$name = Request::segment(2);
+			$name = Request::segment(3);
 		}
 		if ($name == '') {
 			return 'AdminNew';
@@ -59,6 +59,8 @@ class CommonNormal
 		if ($name == 'about_us_company') {
 			return 'AboutUs';
 		}
-
+		if ($name == 'subject') {
+			return 'Subject';
+		}
 	}
 }

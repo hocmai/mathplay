@@ -4,7 +4,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class GradeController extends AdminController {
+class SubjectController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -13,9 +13,9 @@ class GradeController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = GradeModel::orderBy('weight', 'asc')->paginate(PAGINATE);
-		//dd($data);
-		return View::make('admin.grade.index')->with(compact('data'));
+		$data = Subject::orderBy('weight_number', 'asc')->paginate(PAGINATE);
+		// dd($data);
+		return View::make('admin.subject.index')->with(compact('data'));
 	}
 
 
@@ -25,8 +25,8 @@ class GradeController extends AdminController {
 	 * @return Response
 	 */
 	public function create()
-	{
-		//
+	{	
+		return View::make('admin.subject.create');
 	}
 
 
@@ -37,7 +37,11 @@ class GradeController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+        $input = Input::except('_token');
+        $input['author_id'] = Auth::admin()->get()->id;
+        // dd($input);
+    	$enId = CommonNormal::create($input);
+		return Redirect::action('SubjectController@index');
 	}
 
 
@@ -61,8 +65,8 @@ class GradeController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$data = GradeModel::findOrFail($id);
-        return View::make('admin.grade.edit', array('data'=>$data));
+		$data = Subject::find($id);
+        return View::make('admin.subject.edit', array('data'=>$data));
 	}
 
 
@@ -80,24 +84,9 @@ class GradeController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$rules = array();
-		$rules = array(
-            'title'   => 'required',
-            'description'      => 'required',
-        );
-
         $input = Input::except('_token');
-        $input['changed'] = time();
-
-		$validator = Validator::make($input,$rules);
-		if($validator->fails()) {
-			return Redirect::action('ManagerController@edit', $id)
-	            ->withErrors($validator)
-	            ->withInput();
-        } else {
-        	CommonNormal::update($id, $input, 'GradeModel');
-    		return Redirect::action('GradeController@index');
-        }
+    	CommonNormal::update($id, $input, 'Subject');
+		return Redirect::action('SubjectController@index');
 	}
 
 
@@ -109,8 +98,8 @@ class GradeController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		GradeModel::find($id)->delete();
-        return Redirect::action('GradeController@index');
+		SubjectModel::find($id)->delete();
+        return Redirect::action('SubjectController@index');
 	}
 
 
