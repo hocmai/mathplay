@@ -4,7 +4,7 @@ use Illuminate\Auth\UserInterface;
 use Illuminate\Auth\Reminders\RemindableInterface;
 use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
-class GradeController extends AdminController {
+class ChapterController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -13,8 +13,9 @@ class GradeController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Grade::orderBy('weight', 'asc')->paginate(PAGINATE);
-		return View::make('admin.grade.index')->with(compact('data'));
+		$data = Chapter::orderBy('weight', 'asc')->paginate(PAGINATE);
+		// dd($data);
+		return View::make('admin.chapter.index')->with(compact('data'));
 	}
 
 
@@ -24,8 +25,8 @@ class GradeController extends AdminController {
 	 * @return Response
 	 */
 	public function create()
-	{
-		return View::make('admin.grade.create')->with(compact('data'));
+	{	
+		return View::make('admin.chapter.create');
 	}
 
 
@@ -36,11 +37,11 @@ class GradeController extends AdminController {
 	 */
 	public function store()
 	{
-		$input = Input::except('_token');
+        $input = Input::except('_token');
         $input['author_id'] = Auth::admin()->get()->id;
         // dd($input);
-    	$enId = CommonNormal::create($input, 'grade');
-		return Redirect::action('GradeController@index');
+    	$enId = CommonNormal::create($input);
+		return Redirect::action('ChapterController@index');
 	}
 
 
@@ -64,8 +65,8 @@ class GradeController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$data = Grade::findOrFail($id);
-        return View::make('admin.grade.edit', array('data'=>$data));
+		$data = Chapter::find($id);
+        return View::make('admin.chapter.edit', array('data'=>$data));
 	}
 
 
@@ -83,9 +84,10 @@ class GradeController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_token');
-    	CommonNormal::update($id, $input, 'Subject');
-		return Redirect::action('GradeController@index');
+        $input = Input::except('_token');
+        // dd($input);
+    	CommonNormal::update($id, $input);
+		return Redirect::action('ChapterController@index');
 	}
 
 
@@ -97,8 +99,8 @@ class GradeController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		Grade::find($id)->delete();
-        return Redirect::action('GradeController@index');
+		ChapterModel::find($id)->delete();
+        return Redirect::action('ChapterController@index');
 	}
 
 

@@ -13,7 +13,7 @@ class SubjectController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Subject::orderBy('weight_number', 'asc')->paginate(PAGINATE);
+		$data = Subject::orderBy('weight', 'asc')->paginate(PAGINATE);
 		// dd($data);
 		return View::make('admin.subject.index')->with(compact('data'));
 	}

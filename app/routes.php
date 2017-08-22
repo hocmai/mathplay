@@ -39,6 +39,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 	 	Route::resource('/grade', 'GradeController');
 	 	Route::resource('/subject', 'SubjectController');
+	 	Route::resource('/chapter', 'ChapterController');
+	 	Route::resource('/lession', 'LessionController');
 	});
 	
 // 	Route::get('/feedback', 'AdminContactController@feedback');

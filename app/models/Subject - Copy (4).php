@@ -7,16 +7,15 @@ class Subject extends Eloquent implements SluggableInterface
 {
     use SoftDeletingTrait;
     use SluggableTrait;
-
     protected $table = 'subjects';
     protected $fillable = [
         'title',
-        'author_id',
-        'description',
         'grade_id',
+        'author_id',
         'status',
-        'weight',
+        'weight_number',
         'slug',
+        'description',
     ];
     protected $dates = ['deleted_at'];
 
@@ -24,15 +23,9 @@ class Subject extends Eloquent implements SluggableInterface
         'build_from' => 'title',
         'save_to'    => 'slug',
     );
-    
     public function author()
     {
         return $this->belongsTo('Admin', 'author_id', 'id');
-    }
-    
-    public function grade()
-    {
-        return $this->belongsTo('Grade', 'grade_id', 'id');
     }
  
 }

@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 @if(Admin::isAdmin())
 @section('title')
-{{ $title='Danh sách Môn học' }}
+{{ $title='Danh sách bài tập' }}
 @stop
 
 @section('content')
@@ -10,7 +10,7 @@
 
 	<div class="row margin-bottom">
 		<div class="col-xs-12">
-			<a href="{{ action('SubjectController@create') }}" class="btn btn-primary">Thêm môn học</a>
+			<a href="{{ action('LessionController@create') }}" class="btn btn-primary">Thêm bài tập</a>
 		</div>
 	</div>
 
@@ -18,16 +18,18 @@
 		<div class="col-xs-12">
 		  <div class="box">
 			<div class="box-header">
-			  <h3 class="box-title">Danh sách môn học</h3>
+			  <h3 class="box-title">Danh sách bài tập</h3>
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body table-responsive no-padding">
 			  <table class="table table-hover">
 				<tr>
 				  <th>STT</th>
-				  <th>Môn học</th>
-				  <th>Lớp học</th>
+				  <th>Tên bài tập</th>
 				  <th>Mô tả</th>
+				  <th>Chuyên đề</th>
+				  <th>Môn</th>
+				  <th>Lớp</th>
 				  <th>Người đăng</th>
 				  <th style="width:100px;">Ngày đăng</th>
 				  <th style="width:100px;">sửa lần cuối</th>
@@ -38,15 +40,19 @@
 				<tr>
 				  <td>#{{ $key + 1 }}</td>
 				  <td>{{ $value->title }}</td>
-				  <td><a href="{{ action('GradeController@edit', ['id' => Common::getValueOfObject($value, 'grade', 'id')]) }}">{{ Common::getValueOfObject($value, 'grade', 'title') }}</a></td>
 				  <td>{{ $value->description }}</td>
-				  <td>{{ Common:: getValueOfObject($value, 'author', 'username') }}</td>
+				  
+				  <td>đ</td>
+				  <td><a href="{{ action('ChapterController@edit', ['id' => Common::getValueOfObject($value, 'chapter', 'id')]) }}">{{ Common::getValueOfObject($value, 'chapter', 'title') }}</a></td>
+				  <td>{{ Common::getClassByChapter($value->id)->title }}</td>
+
+				  <td>{{ Common::getValueOfObject($value, 'author', 'username') }}</td>
 				  <td>{{ $value->created_at }}</td>
 				  <td>{{ $value->updated_at }}</td>
 				  <td>{{ ($value->status == 1) ? 'đã công bố' : 'chưa công bố' }}</td>
 				  <td>
-					<a href="{{ action('SubjectController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-					{{ Form::open(array('method'=>'DELETE', 'action' => array('SubjectController@destroy', $value->grade_id), 'style' => 'display: inline-block;')) }}
+					<a href="{{ action('LessionController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+					{{ Form::open(array('method'=>'DELETE', 'action' => array('LessionController@destroy', $value->grade_id), 'style' => 'display: inline-block;')) }}
 					<button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
 

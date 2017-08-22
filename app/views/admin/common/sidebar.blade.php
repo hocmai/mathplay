@@ -34,23 +34,23 @@
 						</ul>
 					</li>
 					<li class="">
-						<a href="#"><i class="fa fa-file-text"></i> Quản lý chuyên đề<span class="pull-right-container"></span></a>
-						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
+						<a href="{{ action('ChapterController@index') }}"><i class="fa fa-file-text"></i> Quản lý chuyên đề<span class="pull-right-container"></span></a>
+						<ul class="">
+							<li><a href="{{ action('ChapterController@create') }}"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
 						</ul>
 					</li>
 					<li class="">
-						<a href="#"><i class="fa fa-list-alt"></i> Quản lý bài tập<span class="pull-right-container"></span></a>
-						<ul class="treeview-menu">
-							<li><a href="#"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
+						<a href="{{ action('LessionController@index') }}"><i class="fa fa-file-text"></i> Quản lý bài tập<span class="pull-right-container"></span></a>
+						<ul class="">
+							<li><a href="{{ action('LessionController@create') }}"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
 						</ul>
 					</li>
-					<li class="">
+					<!-- <li class="">
 						<a href="#"><i class="fa fa-book"></i> Quản lý bài kiểm tra<span class="pull-right-container"></span></a>
 						<ul class="treeview-menu">
 							<li><a href="#"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
 						</ul>
-					</li>
+					</li> -->
 		        </ul>
 			</li>
 			<li class="">

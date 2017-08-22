@@ -32,35 +32,44 @@
 		if ($name == '') {
 			return 'AdminNew';
 		}
-		if($name =='news'){
-			return 'AdminNew';
-		}
-		if($name =='newstype'){
-			return 'TypeNew';
-		}
-		if ($name == 'manager') {
-			return 'Admin';
-		}
-		if ($name == 'introduce') {
-			return 'Introduce';
-		}
-		if ($name == 'bottomtext') {
-			return 'BottomText';
-		}
-		if ($name == 'contact') {
-			return 'Contact';
-		}
-		if ($name == 'slider') {
-			return 'AdminSlide';
-		}
-		if ($name == 'type_about_us') {
-			return 'TypeAboutUs';
-		}
-		if ($name == 'about_us_company') {
-			return 'AboutUs';
+		// if($name =='news'){
+		// 	return 'AdminNew';
+		// }
+		// if($name =='newstype'){
+		// 	return 'TypeNew';
+		// }
+		// if ($name == 'manager') {
+		// 	return 'Admin';
+		// }
+		// if ($name == 'introduce') {
+		// 	return 'Introduce';
+		// }
+		// if ($name == 'bottomtext') {
+		// 	return 'BottomText';
+		// }
+		// if ($name == 'contact') {
+		// 	return 'Contact';
+		// }
+		// if ($name == 'slider') {
+		// 	return 'AdminSlide';
+		// }
+		// if ($name == 'type_about_us') {
+		// 	return 'TypeAboutUs';
+		// }
+		// if ($name == 'about_us_company') {
+		// 	return 'AboutUs';
+		// }
+		if ($name == 'grade') {
+			return 'Grade';
 		}
 		if ($name == 'subject') {
 			return 'Subject';
+		}
+		if ($name == 'chapter') {
+			return 'Chapter';
+		}
+		if ($name == 'lession') {
+			return 'Lession';
 		}
 	}
 }

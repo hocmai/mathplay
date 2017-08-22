@@ -3,20 +3,19 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Subject extends Eloquent implements SluggableInterface
+class Lession extends Eloquent implements SluggableInterface
 {
     use SoftDeletingTrait;
     use SluggableTrait;
-
-    protected $table = 'subjects';
+    protected $table = 'lessions';
     protected $fillable = [
         'title',
+        'chapter_id',
         'author_id',
-        'description',
-        'grade_id',
         'status',
-        'weight',
+        'weight_number',
         'slug',
+        'description',
     ];
     protected $dates = ['deleted_at'];
 
@@ -24,15 +23,15 @@ class Subject extends Eloquent implements SluggableInterface
         'build_from' => 'title',
         'save_to'    => 'slug',
     );
-    
+
     public function author()
     {
         return $this->belongsTo('Admin', 'author_id', 'id');
     }
     
-    public function grade()
+    public function chapter()
     {
-        return $this->belongsTo('Grade', 'grade_id', 'id');
+        return $this->belongsTo('Chapter', 'chapter_id', 'id');
     }
  
 }

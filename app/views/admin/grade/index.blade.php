@@ -10,7 +10,7 @@
 
 	<div class="row margin-bottom">
 		<div class="col-xs-12">
-			<a href="{{ action('ManagerController@create') }}" class="btn btn-primary">Thêm lớp</a>
+			<a href="{{ action('GradeController@create') }}" class="btn btn-primary">Thêm lớp</a>
 		</div>
 	</div>
 
@@ -39,12 +39,12 @@
 				  <td>{{ $value->title }}</td>
 				  <td>{{ $value->description }}</td>
 				  <td></td>
-				  <td><?php echo date('d-m-Y H:i:s', $value['created']); ?></td>
-				  <td><?php echo date('d-m-Y H:i:s', $value['changed']); ?></td>
+				  <td>{{ $value['created_at'] }}</td>
+				  <td>{{ $value['changed_at'] }}</td>
 				  <td>{{ ($value->status == 1) ? 'đã công bố' : 'chưa công bố' }}</td>
 				  <td>
-					<a href="{{ action('GradeController@edit', $value->grade_id) }}" class="btn btn-primary">Sửa</a>
-					{{ Form::open(array('method'=>'DELETE', 'action' => array('GradeController@destroy', $value->grade_id), 'style' => 'display: inline-block;')) }}
+					<a href="{{ action('GradeController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+					{{ Form::open(array('method'=>'DELETE', 'action' => array('GradeController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
 

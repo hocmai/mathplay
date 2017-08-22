@@ -9,7 +9,7 @@
 @if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('SubjectController@index') }}" class="btn btn-success">Danh sách lớp học</a>
+		<a href="{{ action('SubjectController@index') }}" class="btn btn-success">Danh sách môn học</a>
 	</div>
 </div>
 @endif
@@ -26,7 +26,7 @@
 					</div>
 					<div class="form-group">
 						{{ Form::label('grade_id', 'Chọn lớp', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
-						<div class="row col-sm-6">{{ Form::select('grade_id', ['' => 'Chọn lớp'] + Common::getClass(), $data->grade_id, ['class' => 'form-control', 'row' => 10, 'required' => true] ) }}</div><div class="clearfix"></div>
+						<div class="row col-sm-6">{{ Form::select('grade_id', ['' => 'Chọn lớp'] + Common::getGrade(), $data->grade_id, ['class' => 'form-control', 'row' => 10, 'required' => true] ) }}</div><div class="clearfix"></div>
 					</div>
 					<div class="form-group">
 						{{ Form::label('description', 'Mô tả', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>

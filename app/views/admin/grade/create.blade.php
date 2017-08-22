@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Tạo Môn học' }} | Quản lý môn học
+{{ $title='Tạo lớp học' }} | Quản lý lớp học
 @stop
 
 @section('content')
@@ -9,7 +9,7 @@
 @if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('SubjectController@index') }}" class="btn btn-success">Danh sách lớp học</a>
+		<a href="{{ action('GradeController@index') }}" class="btn btn-success">Danh sách lớp học</a>
 	</div>
 </div>
 @endif
@@ -18,15 +18,11 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('SubjectController@store'))) }}
+			{{ Form::open(array('action' => array('GradeController@store'), 'method' => 'POST')) }}
 				<div class="box-body">
 					<div class="form-group">
 						{{ Form::label('title', 'Tiêu đề', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
-						<div class="row col-sm-6">{{ Form::text('title', '', ['class' => 'form-control', 'required' => true, 'size' => 60]) }}</div><div class="clearfix"></div>
-					</div>
-					<div class="form-group">
-						{{ Form::label('grade_id', 'Chọn lớp', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
-						<div class="row col-sm-6">{{ Form::select('grade_id', ['' => 'Chọn lớp'] + Common::getSubjectList(), '', ['class' => 'form-control', 'row' => 10, 'required' => true] ) }}</div><div class="clearfix"></div>
+						<div class="row col-sm-6">{{ Form::text('title', '', ['class' => 'form-control', 'size' => 60]) }}</div><div class="clearfix"></div>
 					</div>
 					<div class="form-group">
 						{{ Form::label('description', 'Mô tả', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
@@ -37,7 +33,7 @@
 						<div class="row col-sm-6">{{ Form::select('status', [
 							0 => 'Unpublic',
 							1 => 'Public'
-						], '1', ['class' => 'form-control', 'row' => 10]) }}</div><div class="clearfix"></div>
+						], 1, ['class' => 'form-control', 'row' => 10]) }}</div><div class="clearfix"></div>
 					</div>
 				</div>
 				<!-- /.box-body -->
