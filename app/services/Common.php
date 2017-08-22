@@ -40,10 +40,11 @@ class Common {
 	public static function getClassByChapter($chapterId)
 	{
 		$chapter = Chapter::find($chapterId);
-		$subjectId = $chapter->subject_id;
-		$subject = Subject::find($subjectId);
-		$classID = $subject->grade_id;
-		$class = Grade::find($classID);
-		return $class;
+		if( isset($chapter)) $subjectId = $chapter->subject_id;
+		if( isset($subjectId)) $subject = Subject::find($subjectId);
+		if( isset($subject)) $classID = $subject->grade_id;
+		if( isset($classID)) $class = Grade::find($classID);
+		if( isset($class)) return $class;
+		return null;
 	}
 }

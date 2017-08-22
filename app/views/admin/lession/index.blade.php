@@ -44,7 +44,7 @@
 				  
 				  <td>đ</td>
 				  <td><a href="{{ action('ChapterController@edit', ['id' => Common::getValueOfObject($value, 'chapter', 'id')]) }}">{{ Common::getValueOfObject($value, 'chapter', 'title') }}</a></td>
-				  <td>{{ Common::getClassByChapter($value->id)->title }}</td>
+				  <td>{{ isset(Common::getClassByChapter($value->id)->title) or '' }}</td>
 
 				  <td>{{ Common::getValueOfObject($value, 'author', 'username') }}</td>
 				  <td>{{ $value->created_at }}</td>
@@ -52,7 +52,7 @@
 				  <td>{{ ($value->status == 1) ? 'đã công bố' : 'chưa công bố' }}</td>
 				  <td>
 					<a href="{{ action('LessionController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-					{{ Form::open(array('method'=>'DELETE', 'action' => array('LessionController@destroy', $value->grade_id), 'style' => 'display: inline-block;')) }}
+					{{ Form::open(array('method'=>'DELETE', 'action' => array('LessionController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
 

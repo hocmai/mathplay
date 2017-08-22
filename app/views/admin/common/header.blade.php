@@ -104,4 +104,7 @@
 	  });
 	</script>
 
+	@section('script')
+	@show
+
 </head>

@@ -99,7 +99,7 @@ class LessionController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		lessionModel::find($id)->delete();
+		lession::find($id)->delete();
         return Redirect::action('LessionController@index');
 	}
 
