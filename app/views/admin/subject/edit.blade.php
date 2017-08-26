@@ -26,7 +26,7 @@
 					</div>
 					<div class="form-group">
 						{{ Form::label('grade_id', 'Chọn lớp', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
-						<div class="row col-sm-6">{{ Form::select('grade_id', ['' => 'Chọn lớp'] + Common::getGrade(), $data->grade_id, ['class' => 'form-control', 'row' => 10, 'required' => true] ) }}</div><div class="clearfix"></div>
+						<div class="row col-sm-6">{{ Form::select('grade_id', ['' => 'Chọn lớp'] + Common::getGradelist(), $data->grade_id, ['class' => 'form-control', 'row' => 10, 'required' => true] ) }}</div><div class="clearfix"></div>
 					</div>
 					<div class="form-group">
 						{{ Form::label('description', 'Mô tả', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>

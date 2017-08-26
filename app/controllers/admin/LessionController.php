@@ -26,6 +26,7 @@ class LessionController extends AdminController {
 	 */
 	public function create()
 	{	
+		dd(TapDem::test2());
 		return View::make('admin.lession.create');
 	}
 
@@ -40,7 +41,28 @@ class LessionController extends AdminController {
         $input = Input::except('_token');
         $input['author_id'] = Auth::admin()->get()->id;
         // dd($input);
-    	$enId = CommonNormal::create($input);
+
+    	$LessionId = CommonNormal::create($input);
+
+    	//// Get query input to array
+		$question_input = [];
+        if($input['question']){
+    		foreach ($input['question'] as $key => $value) {
+    			foreach ($value as $key2 => $value2) {
+    				$question_input[$key2][$key] = $value2;
+    			}
+    		}
+        }
+
+        ///// Get array of question id after create
+        $questions = [];
+        if( count($question_input) ){
+        	foreach ($question_input as $key => $value) {
+        		$questions[] = CommonNormal::create($input, 'Question');
+        	}
+        }
+        dd($questions);
+
 		return Redirect::action('LessionController@index');
 	}
 

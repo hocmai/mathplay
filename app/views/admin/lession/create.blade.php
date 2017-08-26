@@ -58,50 +58,35 @@
 								<!-- Accordion -->
 								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 								  
-									<div class="panel panel-default">
-									    <div class="panel-heading" role="tab" id="headingOne">
+									<div class="panel panel-default" id="1">
+									    <div class="panel-heading" role="tab" id="heading-1">
 									    	<h4 class="panel-title">
-										        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
 										        	#Tạo mới câu hỏi
 										        </a>
 										        <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
 									    	</h4>
 									    </div>
-									    <div id="collapseOne" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+									    <div id="collapse-1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-1">
 									    	<div class="panel-body">
 								    			<div class="form-group">
 								    				<label>Tiêu đề</label>
-								    				{{ Form::text('question[][title]', '', ['class' => 'form-control', 'required' => true]) }}
+								    				{{ Form::text('question[title][]', '', ['class' => 'form-control', 'required' => true]) }}
 								    			</div>
 								    			<div class="form-group">
 								    				<label>Dạng câu hỏi</label>
-								    				{{ Form::select('question[][type]', [
+								    				{{ Form::select('question[type][]', [
 								    					'' => 'Chọn',
 								    					'1' => 'Tập đếm'
 								    				], '', ['class' => 'form-control', 'required' => true]) }}
 								    			</div>
 								    			<div class="form-group">
 								    				<label>Nội dung</label>
-								    				{{ Form::textarea('question[][content]', '', ['class' => 'form-control', 'rows' => 5]) }}
+								    				{{ Form::textarea('question[content][]', '', ['class' => 'form-control', 'rows' => 5]) }}
 								    			</div>
 									    	</div>
 									    </div>
 									</div>
-
-								  <!-- <div class="panel panel-default">
-								    <div class="panel-heading" role="tab" id="headingTwo">
-								      <h4 class="panel-title">
-								        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-								          Collapsible Group Item #2
-								        </a>
-								      </h4>
-								    </div>
-								    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
-								      <div class="panel-body">
-								        Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-								      </div>
-								    </div>
-								  </div> -->
 								</div>
 								<button type="button" class="btn btn-success add-new-question"><i class="glyphicon glyphicon-plus"></i> Thêm mới</button>
 								<!-- End accordion -->

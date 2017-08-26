@@ -18,10 +18,9 @@ class CreateDifficulty extends Migration
             $table->string('title', 225);
             $table->longText('description')->nullable();
             $table->integer('author')->unsigned();
-            $table->integer('created')->nullable();
-            $table->integer('changed')->nullable();
             
-            $table->foreign('author')->references('id')->on('users');
+            $table->softDeletes();
+            $table->timestamps();
         });
     }
 

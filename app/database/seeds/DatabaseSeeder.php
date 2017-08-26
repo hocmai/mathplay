@@ -16,7 +16,8 @@ class DatabaseSeeder extends Seeder
         //$this->call(GradeTable);
         //$this->call(SubjectTable);
 
-        $this->call(AdminTableSeeder);
-        $this->call(RoleTableSeeder);
+        $this->call(AdminTableSeeder::class);
+        $this->call(RoleTableSeeder::class);
+        $this->call(UsersTable::class);
     }
 }

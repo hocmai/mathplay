@@ -128,7 +128,7 @@ class ManagerController extends AdminController {
         	} else {
         		$input['password'] = Auth::admin()->get()->password;
         	}
-        	CommonNormal::update($id, $input);
+        	CommonNormal::update($id, $input, 'Admin');
         	$currentUserId = Auth::admin()->get()->id;
 			$currentRoleId = Auth::admin()->get()->role_id;
 			if($currentRoleId <> ADMIN) {
@@ -147,7 +147,7 @@ class ManagerController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		CommonNormal::delete($id);
+		CommonNormal::delete($id, 'Admin');
         return Redirect::action('ManagerController@index');
 	}
 
@@ -177,7 +177,7 @@ class ManagerController extends AdminController {
 	            ->withInput(Input::except('password'));
         } else {
         		$inputPass['password'] = Hash::make($input['password']);
-        		CommonNormal::update($id, $inputPass);
+        		CommonNormal::update($id, $inputPass, 'Admin');
         }
         return Redirect::action('ManagerController@changePassword', $id)->with('message', 'Đổi mật khẩu thành công!');
 	}

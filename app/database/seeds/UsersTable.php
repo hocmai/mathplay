@@ -12,12 +12,9 @@ class UsersTable extends Seeder
 
         for ($i = 0; $i < 5; $i++) {
             User::create([
-                'name' => $faker->userName,
                 'username'=> $faker->userName,
                 'email' => $faker->unique()->email,
                 'password' => Hash::make('123456'),
-                'created' => time()+$i+5,
-                'changed' => time()+$i+5,
             ]);
         }
     }

@@ -20,11 +20,8 @@ class CreateFileTable extends Migration
             $table->string('filename', 255);
             $table->integer('filesize');
             $table->string('uri', 255)->unique();
-            $table->integer('created')->nullable();
-            $table->integer('changed')->nullable();
             
-            $table->foreign('author')->references('id')->on('users');
-            $table->index(['author']);
+            $table->timestamps();
         });
 
     }

@@ -11,7 +11,7 @@
 					<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
 				</a>
 				<ul class="treeview-menu">
-					<li><a href="{{ action('ManagerController@index') }}">Quản lý người dùng</a></li>
+					<li><a href="{{ action('UserController@index') }}">Quản lý người dùng</a></li>
 					<li><a href="{{ action('ManagerController@index') }}">Quản lý quản trị viên</a></li>
 					<li><a href="#">Quản lý phân quyền</a></li>
 		        </ul>

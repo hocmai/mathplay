@@ -2,9 +2,12 @@
 	use Carbon\Carbon;
 	class CommonNormal
 {
-	public static function delete($id)
+	public static function delete($id, $modelName = NULL)
 	{
 		$name = self::commonName();
+		if($modelName) {
+			$name = $modelName;
+		}
 		$name::find($id)->delete();
 	}
 
@@ -29,9 +32,9 @@
 		if ($name == NULL) {
 			$name = Request::segment(3);
 		}
-		if ($name == '') {
-			return 'AdminNew';
-		}
+		// if ($name == '') {
+		// 	return 'AdminNew';
+		// }
 		// if($name =='news'){
 		// 	return 'AdminNew';
 		// }
@@ -59,6 +62,9 @@
 		// if ($name == 'about_us_company') {
 		// 	return 'AboutUs';
 		// }
+		if ($name == 'user') {
+			return 'User';
+		}
 		if ($name == 'grade') {
 			return 'Grade';
 		}
