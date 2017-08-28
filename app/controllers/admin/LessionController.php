@@ -26,7 +26,6 @@ class LessionController extends AdminController {
 	 */
 	public function create()
 	{	
-		dd(TapDem::test2());
 		return View::make('admin.lession.create');
 	}
 
@@ -58,10 +57,18 @@ class LessionController extends AdminController {
         $questions = [];
         if( count($question_input) ){
         	foreach ($question_input as $key => $value) {
-        		$questions[] = CommonNormal::create($input, 'Question');
+        		$questions[] = CommonNormal::create($value, 'Question');
         	}
         }
-        dd($questions);
+        
+        if(count($questions)){
+        	foreach ($questions as $key => $questionId) {
+        		CommonNormal::create([
+    				'lession_id' => $LessionId,
+    				'qid' => $questionId,
+    			], 'LessionQuestion');
+        	}
+        }
 
 		return Redirect::action('LessionController@index');
 	}

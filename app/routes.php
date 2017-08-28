@@ -22,7 +22,14 @@ Route::get('/logout', array('uses' => 'SiteUserController@logout', 'as' => 'user
 Route::post('/login', array('uses' => 'SiteUserController@doLogin', 'as' => 'user.dologin'));
 Route::post('/register', array('uses' => 'SiteUserController@doRegister', 'as' => 'user.doregister'));
 
+Route::group(['prefix' => 'grade'], function () {
+	Route::get('/', array('uses' => 'SiteGradeController@index', 'as' => 'listgrade'));
+	Route::get('/{grade_id}', array('uses' => 'SiteGradeController@show', 'as' => 'gradedetail'));
+});
+Route::get('/{subject_slug}/{lession_slug}', array('uses' => 'SiteLessionController@show', 'as' =>'showlession'));
 
+
+///////////////// Admin page //////////////////
 Route::group(['prefix' => 'admin'], function () {
 
  	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));

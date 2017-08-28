@@ -1,8 +1,20 @@
-@extends('site.\layout.default')
+@extends('site.layout.default')
 
 @section('title')
     {{ $title = trans('captions.home'); }}
 @stop
+
+@section('js_header')
+    @parent
+    {{ HTML::script('frontend/js/jssor.js')}}
+    {{ HTML::script('frontend/js/jssor.slider.js')}}
+@stop
+
+@section('css_header')
+    @parent
+    {{ HTML::style('frontend/css/jssor.css')}}
+@stop
+
 @section('slide')
     @parent
     <div class="slider">

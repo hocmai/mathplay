@@ -22,3 +22,14 @@
 
     </div>
 </footer>
+
+<div id="lof_go_top">
+    <span class="ico_up"></span>
+</div>
+
+
+
+</div>
+
+</body>
+</html>

@@ -75,15 +75,13 @@
 								    			</div>
 								    			<div class="form-group">
 								    				<label>Dạng câu hỏi</label>
-								    				{{ Form::select('question[type][]', [
-								    					'' => 'Chọn',
-								    					'1' => 'Tập đếm'
-								    				], '', ['class' => 'form-control', 'required' => true]) }}
+								    				{{ Form::select('question[type][]', ['' => '-- Chọn --'] + CommonQuestion::getAllType(), '', ['class' => 'form-control', 'required' => true]) }}
 								    			</div>
 								    			<div class="form-group">
 								    				<label>Nội dung</label>
 								    				{{ Form::textarea('question[content][]', '', ['class' => 'form-control', 'rows' => 5]) }}
 								    			</div>
+								    			<div id="get-config-form"></div>
 									    	</div>
 									    </div>
 									</div>

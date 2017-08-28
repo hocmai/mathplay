@@ -821,7 +821,7 @@ footer .leg .social a {
   margin: 15px 0;
 }
 
-.box-chuong-trinh .chuong-trinh .chuongs > .col-sm-6:nth-child(2) {
+.box-chuong-trinh .chuong-trinh .col-2 {
   border-left: 1px solid #ddd;
 }
 
@@ -846,7 +846,7 @@ footer .leg .social a {
   color: #e4572e;
 }
 
-.box-chuong-trinh .bg-ff > div:nth-last-child(1) {
+.box-chuong-trinh .sidebar-right {
   border-left: 1px solid #e4572e;
 }
 

@@ -5,7 +5,7 @@ use Illuminate\Database\Eloquent\SoftDeletingTrait;
 
 class Question extends Eloquent
 {
-    use SoftDeletingTrait;
+    // use SoftDeletingTrait;
     // use SluggableTrait;
     protected $table = 'questions';
     protected $fillable = [
@@ -19,6 +19,12 @@ class Question extends Eloquent
     public function author()
     {
         return $this->belongsTo('Admin', 'author_id', 'id');
+    }
+
+
+    public function lession()
+    {
+        return $this->belongsToMany('Lession', 'lession_question', 'qid');
     }
  
 }

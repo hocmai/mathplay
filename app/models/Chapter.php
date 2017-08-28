@@ -33,5 +33,10 @@ class Chapter extends Eloquent implements SluggableInterface
     {
         return $this->belongsTo('Subject', 'subject_id', 'id');
     }
+
+    public function lession()
+    {
+        return $this->hasMany('Lession', 'chapter_id', 'id');
+    }
  
 }

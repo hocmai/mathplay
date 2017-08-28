@@ -34,5 +34,10 @@ class Subject extends Eloquent implements SluggableInterface
     {
         return $this->belongsTo('Grade', 'grade_id', 'id');
     }
+    
+    public function chapter()
+    {
+        return $this->hasMany('Chapter');
+    }
  
 }

@@ -20,9 +20,12 @@
 		$name::find($id)->update($input);
 	}
 
-	public static function create($input, $name = NULL)
+	public static function create($input, $modelName = NULL)
 	{
-		$name = self::commonName($name);
+		$name = self::commonName($modelName);
+		if($modelName) {
+			$name = $modelName;
+		}
 		$id = $name::create($input)->id;
 		return $id;
 	}
@@ -76,6 +79,9 @@
 		}
 		if ($name == 'lession') {
 			return 'Lession';
+		}
+		if ($name == 'question') {
+			return 'Question';
 		}
 	}
 }
