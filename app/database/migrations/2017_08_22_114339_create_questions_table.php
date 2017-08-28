@@ -17,7 +17,7 @@ class CreateQuestionsTable extends Migration {
             $table->string('title', 255);
             $table->string('type', 255);
             $table->longText('content')->nullable();
-            $table->binary('config')->nullable();
+            $table->longText('config')->nullable();
             $table->integer('author_id')->unsigned();
             $table->integer('weight')->nullable();
             $table->smallInteger('status')->default(1);

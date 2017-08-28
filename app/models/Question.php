@@ -24,7 +24,7 @@ class Question extends Eloquent
 
     public function lession()
     {
-        return $this->belongsToMany('Lession', 'lession_question', 'qid');
+        return $this->belongsToMany('Lession', 'lession_question', 'qid', 'lession_id');
     }
  
 }

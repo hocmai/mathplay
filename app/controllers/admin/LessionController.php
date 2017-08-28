@@ -37,7 +37,8 @@ class LessionController extends AdminController {
 	 */
 	public function store()
 	{
-        $input = Input::except('_token');
+        $input = Input::except(['_token']);
+        $input['config'] = json_encode($input['config']);
         $input['author_id'] = Auth::admin()->get()->id;
         // dd($input);
 
@@ -53,19 +54,32 @@ class LessionController extends AdminController {
     		}
         }
 
-        ///// Get array of question id after create
+        ///// Get array of question id after insert question table
         $questions = [];
         if( count($question_input) ){
         	foreach ($question_input as $key => $value) {
         		$questions[] = CommonNormal::create($value, 'Question');
         	}
         }
-        
+
+
+    	//// Get question_config input to array
+		$question_config = [];
+        if($input['question_config']){
+    		foreach ($input['question_config'] as $key => $value) {
+    			foreach ($value as $key2 => $value2) {
+    				$question_config[$key2][$key] = $value2;
+    			}
+    		}
+        }
+        // dd($question_config);
+        //// Insert lession_question table
         if(count($questions)){
         	foreach ($questions as $key => $questionId) {
         		CommonNormal::create([
     				'lession_id' => $LessionId,
     				'qid' => $questionId,
+    				'config' => json_encode($question_config[$key])
     			], 'LessionQuestion');
         	}
         }

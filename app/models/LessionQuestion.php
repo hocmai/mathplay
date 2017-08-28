@@ -5,7 +5,7 @@
 
 class LessionQuestion extends Eloquent
 {
-    use SoftDeletingTrait;
+    // use SoftDeletingTrait;
     // use SluggableTrait;
     protected $table = 'lession_question';
     protected $fillable = [

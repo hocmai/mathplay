@@ -24,6 +24,7 @@
 
     {{ HTML::script('frontend/js/slick.min.js')}}
     {{ HTML::script('frontend/js/menu-mobile.js')}}
+    {{ HTML::script('frontend/js/myscript.js')}}
 
     {{ HTML::script('frontend/js/main.js')}}
     @show

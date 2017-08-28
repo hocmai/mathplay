@@ -16,6 +16,7 @@ class Lession extends Eloquent implements SluggableInterface
         'weight_number',
         'slug',
         'description',
+        'config',
     ];
     protected $dates = ['deleted_at'];
 
@@ -36,7 +37,7 @@ class Lession extends Eloquent implements SluggableInterface
     
     public function question()
     {
-        return $this->belongsToMany('Question', 'lession_question', 'lession_id');
+        return $this->belongsToMany('Question', 'lession_question', 'lession_id', 'qid');
     }
  
 }

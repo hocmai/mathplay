@@ -19,7 +19,7 @@ class CreateMenuTable extends Migration
             $table->integer('parent')->default(0)->index();
             $table->string('menu_name', 55)->index();
             $table->string('url', 255);
-            $table->binary('option')->nullable();
+            $table->longText('option')->nullable();
             $table->integer('weight')->default(0);
             $table->smallInteger('depth')->nullable();
             $table->tinyInteger('has_children')->nullable();

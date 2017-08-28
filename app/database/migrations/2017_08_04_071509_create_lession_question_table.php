@@ -16,7 +16,7 @@ class CreateLessionQuestionTable extends Migration
         Schema::create('lession_question', function (Blueprint $table) {
             $table->integer('lession_id');
             $table->integer('qid');
-            $table->binary('config')->nullable();
+            $table->longText('config')->nullable();
             
             $table->primary(['lession_id', 'qid']);
         });

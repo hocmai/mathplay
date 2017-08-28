@@ -27,6 +27,9 @@
 	<!-- Google Font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
+	<!-- Date Picker -->
+	{{HTML::style('frontend/css/bootstrap-select.min.css') }}
+
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,6 +62,7 @@
 	{{ HTML::script('adminlte/bower_components/fastclick/lib/fastclick.js') }}
 	<!-- AdminLTE App -->
 	{{ HTML::script('adminlte/dist/js/app.min.js') }}
+    {{ HTML::script('frontend/js/bootstrap-select.min.js')}}
 
 	<script>
 	  $(function () {

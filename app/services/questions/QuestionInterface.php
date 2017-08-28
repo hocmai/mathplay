@@ -4,5 +4,7 @@ interface QuestionInterface{
 
 	public static function getConfigForm($type, $config);
 
-	public static function render($type, $config); 
+	public static function getRandomData();
+
+	public static function render($type, $config);
 }

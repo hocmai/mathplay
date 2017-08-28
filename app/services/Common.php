@@ -37,6 +37,7 @@ class Common {
 		}
 		return $ob->$method;
 	}
+	
 	public static function getClassByChapter($chapterId)
 	{
 		$chapter = Chapter::find($chapterId);

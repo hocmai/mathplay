@@ -26,8 +26,14 @@ Route::group(['prefix' => 'grade'], function () {
 	Route::get('/', array('uses' => 'SiteGradeController@index', 'as' => 'listgrade'));
 	Route::get('/{grade_id}', array('uses' => 'SiteGradeController@show', 'as' => 'gradedetail'));
 });
-Route::get('/{subject_slug}/{lession_slug}', array('uses' => 'SiteLessionController@show', 'as' =>'showlession'));
+Route::get('mon-hoc/{subject_slug}/{lession_slug}', array(
+	'uses' => 'SiteLessionController@show',
+	'as' =>'showlession'
+));
 
+Route::group(['prefix' => 'ajax'], function(){
+
+});
 
 ///////////////// Admin page //////////////////
 Route::group(['prefix' => 'admin'], function () {

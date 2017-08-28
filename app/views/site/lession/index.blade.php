@@ -4,6 +4,13 @@
     {{ $title = $lession['title']; }}
 @stop
 
+@section('js_header')
+@parent
+{{ HTML::script('frontend/js/question_script.js')}}
+@stop
+
+<?php $config = (array)json_decode($lession->config); ?>
+
 @section('breadcrumb')
 <div class="bracum bracum-set-height">
     <div class="row m0">
@@ -14,11 +21,11 @@
             <ol class="breadcrumb">
                 <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
                 <li><a href="/">Trang chủ</a></li>
-                <li><a href="{{ action('SiteGradeController@show', ['grade_id' => $subject->grade->id]) }}">{{ $subject->grade->title }}</a></li>
+                <li><a href="{{ action('SiteGradeController@show', ['grade_id' => Common::getValueOfObject($subject, 'grade', 'id')]) }}">{{ Common::getValueOfObject($subject, 'grade', 'title') }}</a></li>
                 <li class="active">Môn toán</li>
             </ol>
         </div>
-        <div class="inline-block">{{ $lession->title }}</div>
+        <div class="inline-block">{{ $lession['title'] }}</div>
         <div class="box-dang-nhap">
             <div class="box-info">
                 <div class="text">
@@ -52,67 +59,11 @@
                 <div class="col-sm-12 col-md-10 p0 clr">
                     <div class="box-min-height">
                         <div class="bg-box-lam-bai fullScreen rightHeight">
-                            <div class="hidden-md hidden-lg thong-tin-mobile">
-                                <div class="box-thong-tin-bai-lam">
-                                    <div class="fl">
-                                        <div class="title bg1">Câu :</div>
-                                        <p class="total-number">2/3</p>
-                                    </div>
-                                    <div class="fl">
-                                        <p class="times">00:00:15</p>
-                                    </div>
-                                    <div class="fl">
-                                        <p class="diem">
-                                            <span class="span1">10</span>  điểm
-                                        </p>
-                                    </div>
-                                    <div class="clr"></div>
-                                </div>
-                            </div>
-                            <div class="start">
-                                Hãy chọn nhóm nào nhiều hơn
-                            </div>
-                            <div class="hinhs">
-                                <div class="hinh">
-                                    A <img src="images/te-giac.png" class="img-responsive mauto" alt=""/>
-                                </div>
-                                <div class="clr"></div>
-                                <div class="hinh dap-an">
-                                    B <img src="images/su-tu.png" class="img-responsive mauto" alt=""/>
-                                </div>
-                            </div>
-                            <div class="chon-dap-an">
-                                <div class="bao-cao">
-                                    <div class="btn-support">
-                                        <a href="huong-dan-giai.html" class="btn huong-dan-giai">Hướng dẫn giải</a>
-                                        <button class="btn lam-bai-tiep">Làm bài tiếp</button>
-                                    </div>
-                                    <div class="notify-group">
-                                        <a href="#" class="like" data-toggle="tooltip" data-placement="top" title="Thích"></a>
-                                        <a href="#" class="dis-like" data-toggle="tooltip" data-placement="top" title="Không thích"></a>
-                                        <a href="#" class="bao-loi" data-toggle="tooltip" data-placement="top" title="Báo lỗi"></a>
-                                    </div>
 
-                                </div>
-                                <div class="radios">
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" value="option1" class=""> <!--Neu huong dan gui bai thi them class 'hd-gui-bai-bt'-->
-                                            A
-                                        </label>
-                                    </div>
-                                    <div class="radio">
-                                        <label>
-                                            <input type="radio" name="optionsRadios" value="option2" class=""> <!--Neu huong dan gui bai thi them class 'hd-gui-bai-bt'-->
-                                            B
-                                        </label>
-                                    </div>
-                                </div>
-
-                            </div>
-
-                            <button class="gui-bai closeModel"  data-toggle="modal" data-target="#myModal-true">Gửi bài</button>
-                            <!-- <button class="gui-bai closeModel hdg-btom"  data-toggle="modal" data-target="#myModal-false">Gửi bài</button> -->
+                            {{ CommonQuestion::renderLession($lession) }}
+                            
+                            <!-- <button class="gui-bai closeModel"  data-toggle="modal" data-target="#myModal-true">Gửi bài</button>
+                            <button class="gui-bai closeModel hdg-btom"  data-toggle="modal" data-target="#myModal-false">Gửi bài</button> -->
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal-true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -153,14 +104,14 @@
                     <div class="box-thong-tin-bai-lam fullScreen leftHeight">
                         <div class="box-s-1">
                             <div class="title bg1">Câu hỏi số</div>
-                            <p class="total-number">2/3</p>
+                            <p class="total-number"><span class="current-question">1</span>/{{ !empty($config['num_question']) ? $config['num_question'] : 20 }}</p>
                             <div class="title bg2">Thời gian làm bài</div>
                             <p class="times">00:00:15</p>
                             <div class="title bg3">Điểm</div>
                             <p class="diem">
                                 <span class="span1">10</span> <br/>
                                 trên tổng số <br/>
-                                <span class="span2">100</span>
+                                <span class="span2">{{ !empty($config['score_limit']) ? $config['score_limit'] : 100 }}</span>
                             </p>
                         </div>
                         <div class="box-s-2">

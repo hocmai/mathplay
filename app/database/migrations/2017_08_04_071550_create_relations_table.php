@@ -18,7 +18,7 @@ class CreateRelationsTable extends Migration
             $table->string('source_id', 225);
             $table->string('target_name', 225);
             $table->string('target_id', 225);
-            $table->binary('data')->nullable();
+            $table->longText('data')->nullable();
             $table->tinyInteger('status')->default(1);
             $table->index(['source_name', 'source_id', 'target_name', 'target_id']);
         });

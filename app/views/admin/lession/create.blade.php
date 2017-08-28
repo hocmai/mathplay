@@ -36,7 +36,16 @@
 							</div>
 							<div class="form-group">
 								{{ Form::label('description', 'Mô tả') }}<div class="clearfix"></div>
-								<div class="">{{ Form::textarea('description', '', ['class' => 'form-control', 'row' => 10]) }}</div><div class="clearfix"></div>
+								<div class="">{{ Form::textarea('description', '', ['class' => 'form-control', 'row' => 5]) }}</div><div class="clearfix"></div>
+							</div>
+							<div class="form-group">
+								{{ Form::label('config[num_question]', 'Số câu hỏi', ['class' => '']) }}<div class="clearfix"></div>
+								<div class="">{{ Form::number('config[num_question]', 20, ['class' => 'form-control', 'required' => true, 'size' => 60]) }}</div><div class="clearfix"></div>
+							</div>
+							<div class="form-group">
+								{{ Form::label('config[score_limit]', 'Thang điểm', ['class' => '']) }}<div class="clearfix"></div>
+								<div class="">{{ Form::number('config[score_limit]', 100, ['class' => 'form-control', 'required' => true, 'size' => 60]) }}</div><div class="clearfix"></div>
+								<span class="help">Số điểm tối đa nên chia hết cho tổng số câu hỏi</span>
 							</div>
 							<div class="form-group">
 								{{ Form::label('status', 'trạng thái', ['class' => '']) }}<div class="clearfix"></div>
@@ -73,6 +82,16 @@
 								    				<label>Tiêu đề</label>
 								    				{{ Form::text('question[title][]', '', ['class' => 'form-control', 'required' => true]) }}
 								    			</div>
+								    			<div class="row">
+								    				<div class="form-group col-sm-5">
+								    					<label>Từ câu số</label>
+								    					{{ Form::number('question_config[question_start][]', '', ['class' => 'form-control']) }}
+								    				</div>
+								    				<div class="form-group col-sm-5">
+								    					<label>Đến câu số</label>
+								    					{{ Form::number('question_config[question_end][]', '', ['class' => 'form-control']) }}
+								    				</div>
+								    			</div>
 								    			<div class="form-group">
 								    				<label>Dạng câu hỏi</label>
 								    				{{ Form::select('question[type][]', ['' => '-- Chọn --'] + CommonQuestion::getAllType(), '', ['class' => 'form-control', 'required' => true]) }}
@@ -81,7 +100,9 @@
 								    				<label>Nội dung</label>
 								    				{{ Form::textarea('question[content][]', '', ['class' => 'form-control', 'rows' => 5]) }}
 								    			</div>
-								    			<div id="get-config-form"></div>
+								    			<div id="get-config-form">
+								    				{{ CommonQuestion::callServiceByType('SoSanh2HinhAnh', 'getConfigForm') }}
+								    			</div>
 									    	</div>
 									    </div>
 									</div>
