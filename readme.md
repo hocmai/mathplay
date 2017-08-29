@@ -6,9 +6,9 @@ git config --global user.email "tantanb2@gmail.com"
 
 Create a new repository
 
-git clone https://gitlab.com/hocmai/mathplay-v4
+git clone https://gitlab.com/hocmai/mathplay-v4 .
 
-cd sdfsdfsdf
+cd folder
 
 touch README.md
 
