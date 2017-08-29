@@ -1,6 +1,7 @@
 Git global setup
 
 git config --global user.name "Nguyen Tan"
+
 git config --global user.email "tantanb2@gmail.com"
 
 Create a new repository
@@ -20,6 +21,7 @@ git push -u origin master
 Existing folder
 
 cd existing_folder
+
 git init
 
 git remote add origin https://gitlab.com/hocmai/mathplay-v4
