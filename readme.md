@@ -1,3 +1,33 @@
+Git global setup
+
+git config --global user.name "Nguyen Tan"
+git config --global user.email "tantanb2@gmail.com"
+
+Create a new repository
+
+git clone git@gitlab.com:tantana5/sdfsdfsdf.git
+cd sdfsdfsdf
+touch README.md
+git add README.md
+git commit -m "add README"
+git push -u origin master
+
+Existing folder
+
+cd existing_folder
+git init
+git remote add origin git@gitlab.com:tantana5/sdfsdfsdf.git
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Existing Git repository
+
+cd existing_repo
+git remote add origin git@gitlab.com:tantana5/sdfsdfsdf.git
+git push -u origin --all
+git push -u origin --tags
+
 ## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
