@@ -10,7 +10,6 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
-
 Route::get('/', 'SiteIndexController@index');
 
 Route::resource('user', 'SiteUserController');
@@ -106,3 +105,30 @@ Route::group(['prefix' => 'admin'], function () {
 // 		// });
 // 	}
 // );
+
+App::missing( function($exception)
+{
+    return View::make('errors.404');
+});
+
+App::error( function(Exception $exception, $code){
+	$pathInfo = Request::getPathInfo();
+    $message = $exception->getMessage() ?: 'Exception';
+    Log::error("$code - $message @ $pathInfo\r\n$exception");
+
+    if (Config::get('app.debug')) {
+        return;
+    }
+
+    switch ($code)
+    {
+        // case 403:
+        //     return Response::view( 'error/403', compact('message'), 403);
+
+        // case 500:
+            // return Response::view('error/500', compact('message'), 500);
+
+        default:
+            return View::make('errors.404');
+    }
+});
