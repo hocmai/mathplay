@@ -32,6 +32,9 @@ class Common {
 
 	public static function getObject($ob, $method)
 	{
+		if (!$ob) {
+			return null;
+		}
 		if (!$ob->$method) {
 			return null;
 		}
@@ -47,5 +50,26 @@ class Common {
 		if( isset($classID)) $class = Grade::find($classID);
 		if( isset($class)) return $class;
 		return null;
+	}
+
+	public static function scanDir($dir) {
+	    $arrfiles = array();
+	    if (is_dir($dir)) {
+	        if ($handle = opendir($dir)) {
+	            chdir($dir);
+	            while (false !== ($file = readdir($handle))) { 
+	                if ($file != "." && $file != "..") { 
+	                    if (!is_dir($file)){
+	                        $info = pathinfo($dir."\\".$file);
+	                        $extension = str_replace($info['filename'].'.', '', $info['basename']);
+	                        $arrfiles[] = $dir."\\".$file;
+	                    }
+	                }
+	            }
+	            chdir("../");
+	        }
+	        closedir($handle);
+	    }
+	    return $arrfiles;
 	}
 }

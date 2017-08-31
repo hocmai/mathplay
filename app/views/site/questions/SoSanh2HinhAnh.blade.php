@@ -1,15 +1,45 @@
+<?php
+///////// get random 2 image
+$randomdata = SoSanh2HinhAnh::getRandomData();
+if( $randomdata ){
+	$randomdata = array_map( function($val) {
+		return str_replace('\\', '/', str_replace(public_path(), '', $val));
+	}, $randomdata);
+	$randimg = array_rand($randomdata, 2);
+	$img1 = $randomdata[$randimg[0]];
+	$img2 = $randomdata[$randimg[1]];
+}
+
+/////////// Get random 2 number in range
+$config['min_value'] = !empty($config['min_value']) ? $config['min_value'] : 1;
+$config['max_value'] = !empty($config['max_value']) ? $config['max_value'] : 1;
+$range = range($config['min_value'], $config['max_value']);
+shuffle($range);
+$randnum = array_rand($range, 2);
+$num1 = $range[$randnum[0]];
+$num2 = $range[$randnum[1]];
+
+// dd($config);
+?>
+
 @if($config['answer_type'] and $config['answer_type'] == "true_false")
-	{{ SoSanh2HinhAnh::getRandomData() }}
+
 	<div class="start">
 	    {{ $question['title'] }}
 	</div>
 	<div class="hinhs">
 	    <div class="hinh">
-	        A <img src="images/te-giac.png" class="img-responsive mauto" alt=""/>
+	        A 
+	        @for($i = 1; $i <= $num1; $i++)
+				<img src="{{ $img1 }}" class="img-responsive mauto" alt=""/>
+	        @endfor
 	    </div>
 	    <div class="clr"></div>
 	    <div class="hinh dap-an">
-	        B <img src="images/su-tu.png" class="img-responsive mauto" alt=""/>
+	        B 
+	        @for($i = 1; $i <= $num2; $i++)
+				<img src="{{ $img2 }}" class="img-responsive mauto" alt=""/>
+	        @endfor
 	    </div>
 	</div>
 	<div class="chon-dap-an">
@@ -42,5 +72,5 @@
 
 	</div>
 @else
-	sdfsdf
+	
 @endif

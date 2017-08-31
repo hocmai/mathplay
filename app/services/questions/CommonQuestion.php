@@ -3,25 +3,39 @@ Class CommonQuestion implements QuestionInterface{
 
 	public static function getAllType(){
 		return [
-			'SoSanh2HinhAnh' => 'So sánh 2 hình ảnh',
-			'ChonHinhVuongTronTamGiac' => 'Hình vuông, Hình tròn',
+			'SoSanh2HinhAnh' => 'So sánh 2 hình ảnh', // test
+			'DemSoTrongKhung10' => 'Đếm số trong khung 10 ô', // dang 1,2,4
+			'DienSoHangChucVaDonVi' => 'Điền số hàng chục và đơn vị', //dang 3
+			'DemHangChuc' => 'Đếm số theo hàng chục', //dang 5
+			'DemSoLonNhoVoiDonVi' => 'Đếm số ngược xuôi cộng/trừ 1-2',// dang 6,
+			'TimSoTrenTiaSo' => 'Tìm 1 số trên dãy số', // dang 7
+			'DienSoConThieu100' => 'Tìm số trong dãy 100 số', //dang 8,9
+			'TimSoTheoQuyLuat' => 'Tìm số theo quy luật (tự sinh)', // dang 10
+			'TimSoTrongDaySoCoQuyLuat' => 'Điền số trong dãy số có quy luật cộng dồn ngẫu nhiên', // Dang 11
+			'ChonMauSacPhuHop' => 'Chọn màu đúng với ô chỉ định (tự sinh)', // dang 12
+			'Cong2HinhAnh' => 'Phép cộng với hình ảnh', // dang 13
+			'DienBieuThuc' => 'Biểu thức với phép cộng hình ảnh', // dang 14
+			'ChonBieuThucVoiTiaSo' => 'Biểu thức phép cộng với tia số (Tự sinh)', // dang 15
+			'TinhTongDonGian' => 'Tính Tổng (dạng cơ bản)', // dang 16
+			'DienBieuThucTinhTongConThieu' => 'Điền biểu thức còn thiếu với tổng là 1 số', // dang 17
+			'TimBieuThucCoTongDung' => 'Tìm biểu thức đúng với tổng cho trước', // dang 18
+			'SoHangConThieu' => 'Tìm số hạng còn thiếu trong phép cộng', // dang 19
+			'TimDapSoDungVoiCauHoi' => 'Tìm đáp án cho câu hỏi được nhập ngẫu nhiên', // dang 20
 		];
 	}
 
-	public static function callServiceByType($slug, $method, $para = []){
+	public static function callServiceByType($slug, $method, $para = null){
 		if( !class_exists($slug) | empty($slug) ) return null;
-		if( !call_user_func_array($slug.'::'.$method, $para) ) return null;
+		if( !method_exists($slug, $method) ) return null;
 		return call_user_func_array($slug.'::'.$method, $para);
 	}
 	
-	public static function getConfigForm($type, $config){
-
+	public static function getConfigForm($type = null, $config = null){
+		if( !self::callServiceByType($type, 'getConfigForm', ['', $config]) ){
+			return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
+		}
+		return self::callServiceByType($type, 'getConfigForm', ['', $config]);
 	}
-	
-	public static function render($type, $config){
-
-	}
-
 
 	/**
 	 * Render all of questions in a lession
@@ -30,7 +44,7 @@ Class CommonQuestion implements QuestionInterface{
 	public static function renderLession($lession){
 		$quesions = $lession->question;
 		$lession_conf = (array) json_decode($lession->config);
-		$max_question = $lession_conf['num_question'] ? $lession_conf['num_question'] : 20;
+		$max_question = !empty($lession_conf['num_question']) ? $lession_conf['num_question'] : 20;
 
 		$question_order = [];
 		foreach ($lession->question as $key => $question) {
@@ -83,5 +97,9 @@ Class CommonQuestion implements QuestionInterface{
 
 	public static function getRandomData(){
 		
+	}
+	
+	public static function render($type, $config){
+
 	}
 }

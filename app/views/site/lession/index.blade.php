@@ -11,6 +11,27 @@
 
 <?php $config = (array)json_decode($lession->config); ?>
 
+<!-- Get style and script for each question type -->
+<?php
+$types = [];
+foreach($lession->question as $question){
+    if(!in_array($question->type, $types)){
+        $types[] = $question->type;
+    }
+} 
+?>
+@foreach ($types as $type)
+    @section('js_header')
+    @parent
+        {{ HTML::script('questions/'.$type.'/js/script.js') }}
+    @stop
+
+    @section('css_header')
+    @parent
+        {{ HTML::style('questions/'.$type.'/css/style.css') }}
+    @stop
+@endforeach
+
 @section('breadcrumb')
 <div class="bracum bracum-set-height">
     <div class="row m0">
@@ -60,6 +81,7 @@
                     <div class="box-min-height">
                         <div class="bg-box-lam-bai fullScreen rightHeight">
 
+                            
                             {{ CommonQuestion::renderLession($lession) }}
                             
                             <!-- <button class="gui-bai closeModel"  data-toggle="modal" data-target="#myModal-true">Gửi bài</button>

@@ -8,6 +8,7 @@
 
 @section('script')
 {{ HTML::script('adminlte/custom/script.js') }}
+{{ HTML::script('adminlte/custom/ajax.js') }}
 @stop
 
 @if(Admin::isAdmin())
@@ -22,9 +23,12 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			<div class="box-body">
-				<div class="row">
-					{{ Form::open(['action' => ['LessionController@store'], 'method' => 'POST']) }}
+			<div class="hidden question-template-form">
+				@include('admin.lession.question_form')
+			</div>
+			{{ Form::open(['action' => ['LessionController@store'], 'method' => 'POST']) }}
+				<div class="box-body">
+					<div class="row">
 						<div class="col-xs-12 col-sm-5">
 							<div class="form-group">
 								{{ Form::label('title', 'Tiêu đề', ['class' => '']) }}<div class="clearfix"></div>
@@ -63,57 +67,20 @@
 						<div class="col-xs-12 col-sm-7">
 							<div class="box col-sm-12 form-add-question">
 								<h3>Danh sách câu hỏi</h3>
-
 								<!-- Accordion -->
 								<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-								  
-									<div class="panel panel-default" id="1">
-									    <div class="panel-heading" role="tab" id="heading-1">
-									    	<h4 class="panel-title">
-										        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
-										        	#Tạo mới câu hỏi
-										        </a>
-										        <button type="button" class="close"><span aria-hidden="true">&times;</span></button>
-									    	</h4>
-									    </div>
-									    <div id="collapse-1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="heading-1">
-									    	<div class="panel-body">
-								    			<div class="form-group">
-								    				<label>Tiêu đề</label>
-								    				{{ Form::text('question[title][]', '', ['class' => 'form-control', 'required' => true]) }}
-								    			</div>
-								    			<div class="row">
-								    				<div class="form-group col-sm-5">
-								    					<label>Từ câu số</label>
-								    					{{ Form::number('question_config[question_start][]', '', ['class' => 'form-control']) }}
-								    				</div>
-								    				<div class="form-group col-sm-5">
-								    					<label>Đến câu số</label>
-								    					{{ Form::number('question_config[question_end][]', '', ['class' => 'form-control']) }}
-								    				</div>
-								    			</div>
-								    			<div class="form-group">
-								    				<label>Dạng câu hỏi</label>
-								    				{{ Form::select('question[type][]', ['' => '-- Chọn --'] + CommonQuestion::getAllType(), '', ['class' => 'form-control', 'required' => true]) }}
-								    			</div>
-								    			<div class="form-group">
-								    				<label>Nội dung</label>
-								    				{{ Form::textarea('question[content][]', '', ['class' => 'form-control', 'rows' => 5]) }}
-								    			</div>
-								    			<div id="get-config-form">
-								    				{{ CommonQuestion::callServiceByType('SoSanh2HinhAnh', 'getConfigForm') }}
-								    			</div>
-									    	</div>
-									    </div>
-									</div>
+									@include('admin.lession.question_form', array('key' => 1))
 								</div>
-								<button type="button" class="btn btn-success add-new-question"><i class="glyphicon glyphicon-plus"></i> Thêm mới</button>
-								<!-- End accordion -->
-
+								<div class="form-group">
+									<button type="button" class="btn btn-success add-new-question"><i class="glyphicon glyphicon-plus"></i> Thêm mới</button>
+								</div>
 							</div>
+							<!-- End accordion -->
+
 						</div>
-					{{ Form::close() }}
+					</div>
 				</div>
+			{{ Form::close() }}
 			</div>
 		</div>
 		<!-- /.box -->

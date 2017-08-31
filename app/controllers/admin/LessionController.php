@@ -109,7 +109,7 @@ class LessionController extends AdminController {
 	public function edit($id)
 	{
 		$data = lession::find($id);
-        return View::make('admin.lession.edit', array('data'=>$data));
+        return View::make('admin.lession.edit', array('lession'=>$data));
 	}
 
 
@@ -127,9 +127,56 @@ class LessionController extends AdminController {
 	 */
 	public function update($id)
 	{
+
         $input = Input::except('_token');
-        // dd($input);
+        $input['config'] = json_encode($input['config']);
+
     	CommonNormal::update($id, $input);
+
+    	//// Get Question infomations -> fetch array
+		$question_input = [];
+        if($input['question']){
+    		foreach ($input['question'] as $key => $value) {
+    			foreach ($value as $key2 => $value2) {
+    				$question_input[$key2][$key] = $value2;
+    			}
+    		}
+        }
+
+        /////// Get Question config -> fetch array
+        if($input['question_config']){
+    		foreach ($input['question_config'] as $name => $config) {
+    			foreach ($config as $key => $value) {
+    				$question_input[$key]['config'][$name] = $value;
+    			}
+    		}
+        }
+
+        ///// Get array of question id after insert question table
+        $questions = [];
+        if( count($question_input) ){
+        	foreach ($question_input as $key => $value) {
+        		$questionId = Common::getObject(Lession::find($id)->question->find($value['id']), 'id');
+
+        		///// Chinh sua cau hoi
+        		if( $questionId ){
+        			CommonNormal::update($questionId, array_except($value, ['config']), 'Question');
+        		} else{
+        			$questionId = CommonNormal::create(array_except($value, ['config']), 'Question');
+        		}
+        		$lessionQuestion = LessionQuestion::where('lession_id', '=', $id)->where('qid', '=', $questionId);
+        		if( $lessionQuestion->count() ){
+        			$lessionQuestion->update( ['config' => json_encode($value['config']) ] );
+        		} else{
+        			CommonNormal::create([
+	    				'lession_id' => $id,
+	    				'qid' => $questionId,
+	    				'config' => json_encode($value['config'])
+	    			], 'LessionQuestion');
+        		}
+        	}
+        }
+
 		return Redirect::action('LessionController@index');
 	}
 
