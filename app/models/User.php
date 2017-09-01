@@ -13,9 +13,8 @@ class User extends Eloquent
     protected $table = 'users';
 
     protected $hidden = array('password', 'remember_token');
+    protected $fillable = array('email', 'password', 'username', 'status');
     protected $dates = ['deleted_at'];
-
-    protected $fillable = ['username', 'email', 'status'];
 
     /**
      * 1-n

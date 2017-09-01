@@ -72,7 +72,7 @@ Class CommonQuestion implements QuestionInterface{
 			} else{
 				$ques = $question_order[$i];
 			}
-			$html .= '<div class="question-rendered '.( ($current_ques && $current_ques == $i) ? 'active' : 'hide' ).'" qid="'.$ques->id.'" q-order="'.$i.'">'.self::renderQuestion($ques, $ques->conf).'</div>';
+			$html .= '<div class="question-rendered '.( ($current_ques && $current_ques == $i) ? 'active' : 'hide' ).'" qid="'.$ques->id.'" q-order="'.$i.'">'.self::renderQuestion($ques, $ques->conf, $lession, $i).'</div>';
 		}
 		return $html;
 	}
@@ -81,9 +81,9 @@ Class CommonQuestion implements QuestionInterface{
 	/**
 	 * Render question by config
 	 */
-	public static function renderQuestion($question, $config = []){
+	public static function renderQuestion($question, $config = [], $lession = null, $question_num = 1){
 		// $config = json_decode($config);
-		return View::make('site.questions.'.$question->type)->with(compact(['question', 'config']));
+		return View::make('site.questions.'.$question->type)->with(compact(['question', 'config', 'lession', 'question_num']));
 	}
 
 	public static function getAnswerType(){

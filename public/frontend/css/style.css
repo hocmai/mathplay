@@ -1301,8 +1301,10 @@ footer .leg .social a {
   outline: 0;
 }
 
-.gui-bai:hover {
+.gui-bai:hover,
+.gui-bai:focus {
   background-color: #ffaf0e;
+  color: #fff;
 }
 
 .gioi-thieu .bg-ff {
@@ -1473,7 +1475,6 @@ footer .leg .social a {
   -webkit-transform: translate(-50%);
   -ms-transform: translate(-50%);
   transform: translate(-50%);
-  z-index: 9999999;
 }
 
 .box-thong-tin-bai-lam {
@@ -1626,7 +1627,7 @@ footer .leg .social a {
   -webkit-align-items: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 140px 50px;
+  padding: 100px 50px;
   font-size: 36px;
   color: #76b041;
   margin: 0 auto;
@@ -1693,7 +1694,7 @@ footer .leg .social a {
   background: #efae1d;
 }
 
-.modal-open.openmodel .bg-box-lam-bai .text {
+.modal-open .bg-box-lam-bai .text {
   display: block;
 }
 
@@ -1752,7 +1753,6 @@ footer .leg .social a {
 }
 
 .bao-cao {
-  display: none;
   position: relative;
 }
 
@@ -1957,11 +1957,11 @@ footer .leg .social a {
   display: inline-block !important;
 }
 
-.modal-open.openmodel {
+.modal-open {
   overflow: auto;
 }
 
-.modal-open.openmodel .bao-cao {
+.modal-open .bao-cao {
   background: #f5f5f5;
   padding: 0px 0;
   margin: 0 0;
@@ -1973,31 +1973,31 @@ footer .leg .social a {
   margin-left: -570px;
 }
 
-.modal-open.openmodel .bao-cao .btn {
+.modal-open .bao-cao .btn {
   display: inline-block !important;
 }
 
-.modal-open.openmodel .modal-backdrop {
+.modal-open .modal-backdrop {
   background: none;
 }
 
-.modal-open.openmodel .radios {
+.modal-open .radios {
   display: none;
 }
 
-.modal-open.openmodel .bg-box-lam-bai .btn {
+.modal-open .bg-box-lam-bai .btn {
   display: none;
 }
 
-.modal-open.openmodel .bg-box-lam-bai.co-len .text {
+.modal-open .bg-box-lam-bai.co-len .text {
   color: #e4572e;
 }
 
-.modal-open.openmodel .dap-an {
+.modal-open .dap-an {
   border: 3px solid #17bebb;
 }
 
-.modal-open.openmodel .huong-dan-giai {
+.modal-open .huong-dan-giai {
   display: block;
   background: none;
   border: 1px dashed #76b041;
@@ -2007,7 +2007,7 @@ footer .leg .social a {
   font-weight: 700;
 }
 
-.modal-open.openmodel .huong-dan-giai:hover {
+.modal-open .huong-dan-giai:hover {
   border: 1px dashed #76b041;
   color: #ffc914;
 }
@@ -2309,7 +2309,7 @@ footer .leg .social a {
   .modal-open .btn-support-mobile .btn.lam-bai-tiep {
     display: block;
   }
-  .modal-open.openmodel .bao-cao {
+  .modal-open .bao-cao {
     left: 50%;
     width: 782px;
     margin-left: -470px;
@@ -2353,7 +2353,7 @@ footer .leg .social a {
     -ms-transform: translate(-50%);
     transform: translate(-50%);
   }
-  .modal-open.openmodel .bao-cao {
+  .modal-open .bao-cao {
     left: 50%;
     width: 721px;
     margin-left: -360px;
@@ -2361,7 +2361,7 @@ footer .leg .social a {
   .box-chuong-trinh.box-dang-ky.mobile .boxs-right .chuong-trinh {
     margin-left: 0;
   }
-  .modal-open.openmodel .bg-box-lam-bai .text {
+  .modal-open .bg-box-lam-bai .text {
     background: #fff;
   }
   .modal-open .closeModel {
@@ -2571,7 +2571,7 @@ footer .leg .social a {
     width: 100%;
     margin-left: 0;
   }
-  .modal-open.openmodel .bao-cao {
+  .modal-open .bao-cao {
     left: 0;
     width: 100%;
     margin-left: 0;
@@ -2624,7 +2624,7 @@ footer .leg .social a {
     -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
     box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.33);
   }
-  .modal-open.openmodel .bao-cao .btn {
+  .modal-open .bao-cao .btn {
     font-size: 18px;
     font-weight: 300;
     min-width: 220px;
@@ -2632,7 +2632,7 @@ footer .leg .social a {
   .btn-support .huong-dan-giai {
     background: #fff !important;
   }
-  .modal-open.openmodel .bg-box-lam-bai .text {
+  .modal-open .bg-box-lam-bai .text {
     border-top: 1px dashed;
     padding-bottom: 20px;
   }

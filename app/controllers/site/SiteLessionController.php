@@ -1,6 +1,10 @@
 <?php
 
 class SiteLessionController extends BaseController {
+	public function __construct() {
+        $this->beforeFilter('user');
+    }
+
 
 	/**
 	 * Display a listing of the resource.

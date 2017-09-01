@@ -71,6 +71,13 @@ Route::filter('auth.basic', function()
 |
 */
 
+Route::filter('user', function()
+{
+	if (Auth::admin()->guest()){
+		return Redirect::action('SiteUserController@loginForm');
+	}
+});
+
 Route::filter('guest', function()
 {
 	if (Auth::check()) return Redirect::to('/');

@@ -167,13 +167,13 @@ $(document).ready(function(){
     });
 
 
-    $('#myModal-false').on('shown.bs.modal', function () {
-        $('.bao-cao').show();
-    });
+    // $('#myModal-false').on('shown.bs.modal', function () {
+    //     $('.bao-cao').show();
+    // });
 
-    $('#myModal-false').on('hidden.bs.modal', function (e) {
-        $('.bao-cao').hide();
-    });
+    // $('#myModal-false').on('hidden.bs.modal', function (e) {
+    //     $('.bao-cao').hide();
+    // });
 
 
     $('body').on('click','.hdg-btom',(function () {
@@ -328,19 +328,6 @@ $(document).ready(function(){
             $(this).html("Thu nhỏ <i class='fa fa-angle-double-down'></i>")
         }
     });
-
-
-    $('.hd-gui-bai-bt').click(function () {
-       $('body').toggleClass('open-hd-giai');
-    });
-    $('.over').click(function () {
-        $('body').removeClass('open-hd-giai');
-    });
-
-    if(Hw < 767){
-        // $('.title-head').prependTo('.huong-dan-giai');
-    }
-
 
 });
 

@@ -9,13 +9,10 @@ class UsersTable extends Seeder
     public function run()
     {   
         $faker = Faker\Factory::create();
-
-        for ($i = 0; $i < 5; $i++) {
-            User::create([
-                'username'=> $faker->userName,
-                'email' => $faker->unique()->email,
-                'password' => Hash::make('123456'),
-            ]);
-        }
+        User::create([
+            'username'=> $faker->unique()->userName,
+            'email' => $faker->unique()->email,
+            'password' => Hash::make('123456'),
+        ]);
     }
 }

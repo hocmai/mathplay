@@ -4,23 +4,31 @@
 @stop
 
 @section('content')
+
 <div class="box-chuong-trinh box-dang-ky">
     <div class="row m0">
         <div class="container">
             <div class="row m0 bg-ff">
                 <div class="col-sm-5 bor">
-                    {{ Form::open(['route' => ['user.dologin']]) }}
+                    {{ Form::open(['action' => array('SiteUserController@doLogin'), 'method' => 'POST']) }}
                         <div class="chuong-trinh">
                             <h3 class="title">Đăng nhập tài khoản</h3>
                             <div class="des">
                                 Đăng nhập thành viên bằng tài khoản HOCMAI
                             </div>
                             <div class="form" >
+                                @if( $errors->has('failed') )
+                                    <div class="alert alert-warning" role="alert">
+                                        {{ $errors->first('failed') }}
+                                    </div>
+                                @endif
                                 <div class="form-group">
                                     {{ Form::text('username', '', ['required' => true,'class' => 'form-control', 'placeholder' => 'Email / Tên đăng nhập']) }}
+                                    {{ $errors->first('username' ) }}
                                 </div>
                                 <div class="form-group">
-                                    {{ Form::text('pasword', '', ['required' => true,'class' => 'form-control', 'placeholder' => 'Mật khẩu']) }}
+                                    {{ Form::password('password', ['required' => true,'class' => 'form-control', 'placeholder' => 'Mật khẩu']) }}
+                                    {{ $errors->first('password' ) }}
                                 </div>
                             </div>
                         </div>

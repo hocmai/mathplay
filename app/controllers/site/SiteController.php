@@ -7,7 +7,6 @@ class SiteController extends HomeController {
 		// $enTypes = Common::getObjectLanguage('TypeNew', LANG_EN, 'position');
 		// View::share('viTypes', $viTypes);
 		// View::share('enTypes', $enTypes);
-
 	}
 
 	public function returnPage404()

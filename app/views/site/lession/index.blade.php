@@ -22,14 +22,14 @@ foreach($lession->question as $question){
 ?>
 @foreach ($types as $type)
     @section('js_header')
-    @parent
-        {{ HTML::script('questions/'.$type.'/js/script.js') }}
-    @stop
+     @parent
+        @if(File::exists(public_path().'/questions/'.$type.'/js/script.js')) {{ HTML::script('questions/'.$type.'/js/script.js') }} @endif
+     @stop
 
     @section('css_header')
-    @parent
-        {{ HTML::style('questions/'.$type.'/css/style.css') }}
-    @stop
+     @parent
+        @if(File::exists(public_path().'/questions/'.$type.'/css/style.css')) {{ HTML::style('questions/'.$type.'/css/style.css') }} @endif
+     @stop
 @endforeach
 
 @section('breadcrumb')
@@ -77,7 +77,7 @@ foreach($lession->question as $question){
     <div class="box-bai-lam box-bai-lam-mobile">
         <div class="container">
             <div class="row m0">
-                <div class="col-sm-12 col-md-10 p0 clr">
+                <div class="col-sm-12 col-md-10 p0 clr boxLeft">
                     <div class="box-min-height">
                         <div class="bg-box-lam-bai fullScreen rightHeight">
 
@@ -89,12 +89,19 @@ foreach($lession->question as $question){
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal-true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <div class="modal-dialog" role="document">
+                                <div class="audio">
+                                    <audio><source src="{{ asset('questions/sounds/yeah1.wav') }}" type="audio/wav"></audio>
+                                    <audio><source src="{{ asset('questions/sounds/yeah2.wav') }}" type="audio/wav"></audio>
+                                </div>
+                                <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
                                     <div class="modal-content">
                                         <div class="box-qua-chuan-luon">
                                             <div>
-                                                QUÁ CHUẨN LUÔN!
-                                                <img src="images/cuoi.png" class="img-responsive mauto" alt=""/>
+                                                <span><?php
+                                                $strings = ['QUÁ CHUẨN LUÔN!', 'BẠN THẬT TUYỆT VỜI!', 'XUẤT SẮC!', 'QUÁ ĐỈNH!', 'THẬT VI DIỆU!'];
+                                                echo $strings[array_rand($strings)];
+                                                ?></span>
+                                                <img src="{{ asset('frontend/images/cuoi.png') }}" class="img-responsive mauto" alt=""/>
                                             </div>
 
                                         </div>
@@ -104,58 +111,107 @@ foreach($lession->question as $question){
                             </div>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal-false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <div class="modal-dialog" role="document">
+                                <div class="audio">
+                                    <audio><source src="{{ asset('questions/sounds/ngu1.wav') }}" type="audio/wav"></audio>
+                                    <audio><source src="{{ asset('questions/sounds/ngu2.wav') }}" type="audio/wav"></audio>
+                                </div>
+                                <div class="bao-cao">
+                                    <div class="btn-support">
+                                        <a href="#" class="btn huong-dan-giai">Hướng dẫn giải</a>
+                                        <button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+                                    </div>
+                                    <div class="notify-group">
+                                        <a href="#" class="like" data-toggle="tooltip" data-placement="top" title="Thích"></a>
+                                        <a href="#" class="dis-like" data-toggle="tooltip" data-placement="top" title="Không thích"></a>
+                                        <a href="#" class="bao-loi" data-toggle="tooltip" data-placement="top" title="Báo lỗi"></a>
+                                    </div>
+
+                                </div>
+                                <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
                                     <div class="modal-content">
                                         <div class="box-qua-chuan-luon">
-                                            <div>
+                                            <div>KHÔNG ĐÚNG RỒI!<br/>
                                                 CỐ GẮNG LÊN NHÉ!
-                                                <img src="images/meu.png" class="img-responsive mauto" alt=""/>
+                                                <img src="{{ asset('frontend/images/meu.png') }}" class="img-responsive mauto" alt=""/>
                                             </div>
 
                                         </div>
-                                        <div class="text">Câu trả lời của Bạn chưa chính xác đáp án đúng là ...</div>
-
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> <!-- End bai lam -->
+                        
                     </div>
-                </div>
-                <div class="col-sm-12 col-md-2 hidden-xs hidden-sm p0 boxRight">
+                </div> <!-- End left -->
 
+                <div class="col-sm-12 col-md-2 hidden-xs hidden-sm p0 boxRight">
                     <div class="box-thong-tin-bai-lam fullScreen leftHeight">
                         <div class="box-s-1">
                             <div class="title bg1">Câu hỏi số</div>
                             <p class="total-number"><span class="current-question">1</span>/{{ !empty($config['num_question']) ? $config['num_question'] : 20 }}</p>
                             <div class="title bg2">Thời gian làm bài</div>
-                            <p class="times">00:00:15</p>
+                            <p class="times" data-start="0"><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></p>
                             <div class="title bg3">Điểm</div>
                             <p class="diem">
-                                <span class="span1">10</span> <br/>
+                                <span class="span1 your-score">0</span> <br/>
                                 trên tổng số <br/>
-                                <span class="span2">{{ !empty($config['score_limit']) ? $config['score_limit'] : 100 }}</span>
+                                <span class="span2 max-score">{{ !empty($config['score_limit']) ? $config['score_limit'] : 100 }}</span>
                             </p>
                         </div>
                         <div class="box-s-2">
                             <!--<button class="gui-bai closeModel"  data-toggle="modal" data-target="#myModal-true">Gửi bài</button>-->
                             <!--<button class="gui-bai closeModel hdg-btom"  data-toggle="modal" data-target="#myModal-false">Gửi bài</button>-->
                             <button class="gui-bai closeModel hd-gui-bai-bt">Gửi bài</button>
-                            <div class="hd-gui-bai">
-                                <div class="cu-meo">
-                                    <img src="images/cu-meo.png" class="img-responsive mauto" alt=""/>
-                                </div>
-                                <div class="des">
-                                    <p>
-                                        Sau khi lựa chọn đáp án, bạn hãy ấn nút gửi bài nhé
-                                    </p>
-                                </div>
+                        </div>
+                        <div class="hd-gui-bai">
+                            <div class="cu-meo">
+                                <img src="images/cu-meo.png" class="img-responsive mauto" alt=""/>
+                            </div>
+                            <div class="des">
+                                <p>
+                                    Sau khi lựa chọn đáp án, bạn hãy ấn nút gửi bài nhé
+                                </p>
                             </div>
                         </div>
-
                         <div class="over"></div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
+
+                <div class="hoan-thanh fullScreen2 hidden" style="display: none;">
+                    <div class="porel">
+                        <div class="img">
+                            <img src="{{ asset('frontend/images/sao-xuat-sac.png') }}" class="img-responsive mauto" alt=""/>
+                        </div>
+                        <div class="point">100 điểm</div>
+                        <div class="text-end">
+                            Bạn thật xuất sắc
+                        </div>
+                        <div class="button-uls">
+                            <ul class="inline button-ul">
+                                <li>
+                                    <a href="/grade/1" title="">
+                                        <img src="{{ asset('frontend/images/list-bai-hoc.png') }}" class="img-responsive mauto" alt=""/>
+                                        <div class="text">Danh mục bài học</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" title="">
+                                        <img src="{{ asset('frontend/images/quay-lai.png') }}" class="img-responsive mauto" alt=""/>
+                                        <div class="text">Quay lại</div>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="" title="">
+                                        <img src="{{ asset('frontend/images/next-bai.png') }}" class="img-responsive mauto" alt=""/>
+                                        <div class="text">Bài học tiếp theo</div>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div> <!-- End box hoan thanh -->
+
+            </div> <!-- End row -->
+        </div> <!-- End container -->
+    </div> <!-- ENd box lam bai -->
 @stop

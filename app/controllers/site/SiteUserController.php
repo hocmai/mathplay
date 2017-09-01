@@ -2,13 +2,51 @@
 
 class SiteUserController extends SiteController {
 
+	
+
 	/**
 	 * Show User login form
 	 *
 	 */
 	public function loginForm()
 	{
-		return View::make('site.user.login');
+		if( Auth::user()->check() ){
+			return Redirect::action('SiteUserController@show', ['id' => Auth::user()->get()->id]);
+		} else{
+			return View::make('site.user.login');
+		}
+	}
+
+	/**
+	 * Show User login form
+	 *
+	 */
+	public function doLogin()
+	{
+		$rules = array(
+            'username'   => 'required',
+            'password'   => 'required',
+        );
+        $messsages = array(
+			'username.required'=>'Tên đăng nhập/Email chưa được nhập',
+			'password.required'=>'Mật khẩu không thể bỏ trống',
+		);
+
+        $input = Input::except('_token');
+        $validator = Validator::make($input, $rules, $messsages);
+
+        if ($validator->fails()) {
+            return Redirect::back()
+            	->withErrors($validator)
+                ->withInput(Input::except('password'));
+        } else {
+            if( Auth::user()->attempt($input, true) ) {
+        		return Redirect::action('SiteIndexController@index');
+            } else {
+                return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
+            }
+        }
+
 	}
 	
 	/**
@@ -102,5 +140,11 @@ class SiteUserController extends SiteController {
 		//
 	}
 
+    public function logout()
+    {
+        Auth::user()->logout();
+        Session::flush();
+        return Redirect::back();
+    }
 
 }
