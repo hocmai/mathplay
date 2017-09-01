@@ -11,7 +11,8 @@ class SiteUserController extends SiteController {
 	public function loginForm()
 	{
 		if( Auth::user()->check() ){
-			return Redirect::action('SiteUserController@show', ['id' => Auth::user()->get()->id]);
+			// return Redirect::action('SiteUserController@show', ['id' => Auth::user()->get()->id]);
+			return Redirect::to('/');
 		} else{
 			return View::make('site.user.login');
 		}
@@ -32,7 +33,7 @@ class SiteUserController extends SiteController {
 			'password.required'=>'Mật khẩu không thể bỏ trống',
 		);
 
-        $input = Input::except('_token');
+        $input = Input::except(['_token', 'remember']);
         $validator = Validator::make($input, $rules, $messsages);
 
         if ($validator->fails()) {
@@ -40,7 +41,7 @@ class SiteUserController extends SiteController {
             	->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
-            if( Auth::user()->attempt($input, true) ) {
+            if( Auth::user()->attempt($input) ) {
         		return Redirect::action('SiteIndexController@index');
             } else {
                 return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
