@@ -7,7 +7,7 @@ $(document).ready(function($) {
 		q_num = parent.parent().find('>.question-rendered').length,
 		qid = parent.attr('qid'),
 		q_order = parseInt(parent.attr('q-order')),
-		your_score = $('.diem. your-score');
+		your_score = parseInt($('.diem. your-score').text());
 
 		$.each(data, function (i, value) {
 	        input[value.name] = value.value;
