@@ -6,7 +6,7 @@
 
 @section('js_header')
 @parent
-{{ HTML::script('frontend/js/question_script.js')}}
+{{ HTML::script('frontend/js/question_script.js') }}
 @stop
 
 <?php $config = (array)json_decode($lession->config); ?>

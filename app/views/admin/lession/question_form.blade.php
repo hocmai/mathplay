@@ -9,10 +9,10 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 ?>
 
 <div class="panel panel-default" id="{{$key}}">
-	{{ Form::hidden('question[id][]', '') }}
+	{{ Form::hidden('question[id][]', Common::getObject($question, 'id')) }}
     <div class="panel-heading" role="tab" id="heading-{{$key}}">
     	<h4 class="panel-title">
-	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="{{ ($key>0) ? 'false' : 'true' }}" aria-controls="collapse-{{$key}}">@if($question) {{ $question->title }} (câu {{$lessionQuestionConf['question_start'] or '?'}} - câu {{$lessionQuestionConf['question_end'] or '?'}}) @else Tạo mới câu hỏi @endif</a>
+	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="{{ ($key>0) ? 'false' : 'true' }}" aria-controls="collapse-{{$key}}">@if($question) {{ $question->title }} (câu {{ !empty($lessionQuestionConf['question_start']) ? $lessionQuestionConf['question_start'] : '?'}} - câu {{ !empty($lessionQuestionConf['question_end']) ? $lessionQuestionConf['question_end'] : '?' }}) @else Tạo mới câu hỏi @endif</a>
 	        <button type="button" class="close"><span aria-hidden="false">&times;</span></button>
     	</h4>
     </div>

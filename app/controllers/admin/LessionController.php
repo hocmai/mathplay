@@ -151,7 +151,7 @@ class LessionController extends AdminController {
     			}
     		}
         }
-
+        
         ///// Get array of question id after insert question table
         $questions = [];
         if( count($question_input) ){
@@ -189,7 +189,7 @@ class LessionController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		lession::find($id)->delete();
+		CommonNormal::delete($id);
         return Redirect::action('LessionController@index');
 	}
 

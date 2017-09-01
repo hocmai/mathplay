@@ -50,7 +50,7 @@
 				  <td>{{ ($value->status == 1) ? 'đã công bố' : 'chưa công bố' }}</td>
 				  <td>
 					<a href="{{ action('ChapterController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-					{{ Form::open(array('method'=>'DELETE', 'action' => array('ChapterController@destroy', $value->grade_id), 'style' => 'display: inline-block;')) }}
+					{{ Form::open(array('method'=>'DELETE', 'action' => array('ChapterController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
 

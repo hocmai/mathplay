@@ -99,7 +99,7 @@ class ChapterController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		ChapterModel::find($id)->delete();
+		CommonNormal::delete($id);
         return Redirect::action('ChapterController@index');
 	}
 
