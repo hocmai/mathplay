@@ -30,6 +30,19 @@
 		return $id;
 	}
 
+	public static function findOrCreate($input = [], $modelName = NULL)
+	{
+		$data = $modelName::orderBy('created_at', 'asc');
+		foreach ($input as $key => $value) {
+			$data = $data->where($key, $value);
+		}
+		$data = $data->first();
+		if(!$data){
+			$data = $modelName::create($input)->first();
+		}
+		return $data;
+	}
+
 	public static function commonName($name = NULL)
 	{
 		if ($name == NULL) {

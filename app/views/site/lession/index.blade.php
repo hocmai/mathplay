@@ -48,26 +48,30 @@ foreach($lession->question as $question){
         </div>
         <div class="inline-block">{{ $lession['title'] }}</div>
         <div class="box-dang-nhap">
-            <div class="box-info">
-                <div class="text">
-                    <div class="avatar">
-                        <img src="images/avata.jpg" class="img-responsive mauto" alt=""/>
+            @if(Auth::user()->check())
+                <div class="box-info">
+                    <div class="text">
+                        <div class="avatar">
+                            <img src="{{ asset('frontend/images/avata.jpg') }}" class="img-responsive mauto" alt="">
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->get()->username }}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ action('SiteUserController@logout') }}">Thoát</a></li>
+                            </ul>
+                        </div>
+                        <span>Xin chào</span>
+                        <div class="clr"></div>
                     </div>
-                    <div class="btn-group" role="group">
-                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Trần Văn Bi
-                            <span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Dropdown link</a></li>
-                            <li><a href="index.html">Thoát</a></li>
-                        </ul>
-                    </div>
-                    <span>Xin chào</span>
-                    <div class="clr"></div>
                 </div>
-
-            </div>
+            @else
+            
+                <a class="dang-ky hvr-shadow" href="{{ action('SiteUserController@registerForm') }}" title="">Đăng ký</a>
+                <a class="dang-nhap hvr-shadow" href="{{ action('SiteUserController@loginForm') }}" title="">Đăng nhập</a>
+            @endif
         </div>
     </div>
 </div>
@@ -81,8 +85,14 @@ foreach($lession->question as $question){
                     <div class="box-min-height">
                         <div class="bg-box-lam-bai fullScreen rightHeight">
 
-                            
-                            {{ CommonQuestion::renderLession($lession) }}
+                            <?php
+                            $history = Common::getLessionHistory($lession);
+                            $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question) ) ? $history->current_question : 1;
+                            $current_score = (!empty($history) && $history->status != 1 && !empty($history->score) ) ? $history->score : 0;
+                            // dd($current_ques);
+                            ?>
+
+                            {{ CommonQuestion::renderLession($lession, $history) }}
                             
                             <!-- <button class="gui-bai closeModel"  data-toggle="modal" data-target="#myModal-true">Gửi bài</button>
                             <button class="gui-bai closeModel hdg-btom"  data-toggle="modal" data-target="#myModal-false">Gửi bài</button> -->
@@ -148,12 +158,12 @@ foreach($lession->question as $question){
                     <div class="box-thong-tin-bai-lam fullScreen leftHeight">
                         <div class="box-s-1">
                             <div class="title bg1">Câu hỏi số</div>
-                            <p class="total-number"><span class="current-question">1</span>/{{ !empty($config['num_question']) ? $config['num_question'] : 20 }}</p>
+                            <p class="total-number"><span class="current-question">{{ $current_ques }}</span>/{{ !empty($config['num_question']) ? $config['num_question'] : 20 }}</p>
                             <div class="title bg2">Thời gian làm bài</div>
                             <p class="times" data-start="0"><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></p>
                             <div class="title bg3">Điểm</div>
                             <p class="diem">
-                                <span class="span1 your-score">0</span> <br/>
+                                <span class="span1 your-score">{{ $current_score }}</span> <br/>
                                 trên tổng số <br/>
                                 <span class="span2 max-score">{{ !empty($config['score_limit']) ? $config['score_limit'] : 100 }}</span>
                             </p>

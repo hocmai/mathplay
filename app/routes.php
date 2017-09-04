@@ -32,6 +32,7 @@ Route::get('mon-hoc/{subject_slug}/{lession_slug}', array(
 
 Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/getquestionformconfig',array('as'=>'getquestionformconfig','uses'=>'AjaxController@getQuestionConfigForm'));
+	Route::post('/updatestudyhistory',array('as'=>'updatestudyhistory','uses'=>'AjaxController@updateStudyHistory'));
 });
 
 ///////////////// Admin page //////////////////

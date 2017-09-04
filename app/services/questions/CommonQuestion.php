@@ -7,7 +7,7 @@ Class CommonQuestion implements QuestionInterface{
 			'DemSoTrongKhung10' => 'Đếm số trong khung 10 ô', // dang 1,2,4
 			'DienSoHangChucVaDonVi' => 'Điền số hàng chục và đơn vị', //dang 3
 			'DemHangChuc' => 'Đếm số theo hàng chục', //dang 5
-			'DemSoLonNhoVoiDonVi' => 'Đếm số ngược xuôi cộng/trừ 1-2',// dang 6,
+			'DemSoLonNhoVoiDonVi' => 'Đếm số ngược xuôi cộng/trừ 1-2-5-10',// dang 6,
 			'TimSoTrenTiaSo' => 'Tìm 1 số trên dãy số', // dang 7
 			'DienSoConThieu100' => 'Tìm số trong dãy 100 số', //dang 8,9
 			'TimSoTheoQuyLuat' => 'Tìm số theo quy luật (tự sinh)', // dang 10
@@ -30,6 +30,10 @@ Class CommonQuestion implements QuestionInterface{
 		return call_user_func_array($slug.'::'.$method, $para);
 	}
 	
+
+	/**
+	 * Get config form
+	 **/
 	public static function getConfigForm($type = null, $config = null){
 		if( !self::callServiceByType($type, 'getConfigForm', ['', $config]) ){
 			return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
@@ -37,14 +41,18 @@ Class CommonQuestion implements QuestionInterface{
 		return self::callServiceByType($type, 'getConfigForm', ['', $config]);
 	}
 
+
 	/**
 	 * Render all of questions in a lession
 	 *
 	 **/
-	public static function renderLession($lession){
+	public static function renderLession($lession, $history = []){
 		$quesions = $lession->question;
 		$lession_conf = (array) json_decode($lession->config);
 		$max_question = !empty($lession_conf['num_question']) ? $lession_conf['num_question'] : 20;
+		$max_score = !empty($lession_conf['max_score']) ? $lession_conf['max_score'] : 100;
+		$score = floor($max_score/20);
+		$data_history = ['grade_id' => $lession->chapter->subject->grade->id, 'subject_id' => $lession->chapter->subject->id, 'chapter_id' => $lession->chapter->id, 'lession_id' => $lession->id, 'author' => Common::getObject(Auth::user()->get(), 'id')];
 
 		$question_order = [];
 		foreach ($lession->question as $key => $question) {
@@ -64,7 +72,8 @@ Class CommonQuestion implements QuestionInterface{
 
 		/// hien thi du 20 cau hoi theo dung thu tu da config hoac tu dong lay random cac cau hoi cho cac vi tri con thieu
 		$html = '';
-		$current_ques = 1;
+        $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question)) ? $history->current_question : 1;
+
 		for($i = 1; $i <= $max_question; $i++){
 			if( !isset($question_order[$i]) ){
 				$rand = rand(0, count($lession->question) - 1);
@@ -72,7 +81,7 @@ Class CommonQuestion implements QuestionInterface{
 			} else{
 				$ques = $question_order[$i];
 			}
-			$html .= '<div class="question-rendered '.( ($current_ques && $current_ques == $i) ? 'active' : 'hide' ).'" qid="'.$ques->id.'" q-order="'.$i.'">'.self::renderQuestion($ques, $ques->conf, $lession, $i).'</div>';
+			$html .= '<div class="question-rendered '.( ($current_ques && $current_ques == $i) ? 'active' : 'hide' ).'" data-history=\''. json_encode($data_history) .'\' lession-id ="'.$lession->id.'" qid="'.$ques->id.'" q-order="'.$i.'" score="'.$score.'" max-score="'.$max_score.'">'.self::renderQuestion($ques, $ques->conf, $lession, $i).'</div>';
 		}
 		return $html;
 	}

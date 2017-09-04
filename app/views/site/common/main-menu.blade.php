@@ -31,8 +31,30 @@
 <header class="hidden-xs hidden-sm">
     <div class="box-dang-nhap">
         <div class="container">
-            <a class="dang-ky hvr-shadow" href="{{ route('user.register') }}" title="">Đăng ký</a>
-            <a class="dang-nhap hvr-shadow" href="{{ route('user.login') }}" title="">Đăng nhập</a>
+            @if(Auth::user()->check())
+                <div class="box-info">
+                    <div class="text">
+                        <div class="avatar">
+                            <img src="{{ asset('frontend/images/avata.jpg') }}" class="img-responsive mauto" alt="">
+                        </div>
+                        <div class="btn-group" role="group">
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ Auth::user()->get()->username }}
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ action('SiteUserController@logout') }}">Thoát</a></li>
+                            </ul>
+                        </div>
+                        <span>Xin chào</span>
+                        <div class="clr"></div>
+                    </div>
+                </div>
+            @else
+            
+                <a class="dang-ky hvr-shadow" href="{{ route('user.register') }}" title="">Đăng ký</a>
+                <a class="dang-nhap hvr-shadow" href="{{ route('user.login') }}" title="">Đăng nhập</a>
+            @endif
         </div>
     </div>
     <div class="box-menu">

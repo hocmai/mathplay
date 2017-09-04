@@ -2,7 +2,7 @@
 
 class SiteLessionController extends BaseController {
 	public function __construct() {
-        $this->beforeFilter('user');
+        // $this->beforeFilter('user');
     }
 
 
@@ -47,6 +47,7 @@ class SiteLessionController extends BaseController {
 	 */
 	public function show($subject_slug, $lession_slug)
 	{
+		// dd(Common::getObject(Auth::user()->get(), 'id'));
 		$subject = Subject::findBySlug($subject_slug);
 		$lession = Lession::findBySlug($lession_slug);
 		// dd($subject, $lession);

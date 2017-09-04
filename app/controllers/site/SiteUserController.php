@@ -9,7 +9,7 @@ class SiteUserController extends SiteController {
 	 *
 	 */
 	public function loginForm()
-	{
+	{	
 		if( Auth::user()->check() ){
 			// return Redirect::action('SiteUserController@show', ['id' => Auth::user()->get()->id]);
 			return Redirect::to('/');
@@ -42,7 +42,7 @@ class SiteUserController extends SiteController {
                 ->withInput(Input::except('password'));
         } else {
             if( Auth::user()->attempt($input) ) {
-        		return Redirect::action('SiteIndexController@index');
+        		return Redirect::back();
             } else {
                 return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
             }
@@ -145,7 +145,7 @@ class SiteUserController extends SiteController {
     {
         Auth::user()->logout();
         Session::flush();
-        return Redirect::back();
+        return Redirect::action('SiteUserController@loginForm');
     }
 
 }
