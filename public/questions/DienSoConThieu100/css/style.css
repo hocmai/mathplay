@@ -1,0 +1,25 @@
+.number-line-100{
+	
+}
+.number-line-100 table{
+	border-color: #ddd;
+}
+.number-line-100 tr>td{
+	
+}
+.number-line-100 td>.text{
+	display: inline-block;
+	height: 50px;
+	width: 50px;
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 40px;
+	text-align: center;
+	padding: 5px;
+	color: #111;
+}
+.number-line-100 td>.text>input{
+    height: 30px;
+    width: 40px;
+    text-align: center;
+}

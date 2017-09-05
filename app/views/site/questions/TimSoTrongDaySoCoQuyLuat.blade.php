@@ -1,11 +1,13 @@
 <?php
-$min = !empty($config['min_value']) ? $config['min_value'] : 1;
-$max = !empty($config['max_value']) ? $config['max_value'] : 100;
-$answer = rand($min, $max);
+$min = !empty($config['min_value']) ? $config['min_value'] : rand(5,50);
+$max = rand(5,10);
+$start = rand(1,10);
+$position = rand(2,$max);
+$answer = $start*$position;
 ?>
 
 <div class="start">
-	{{ $question->title }}
+	{{ $question->title }}?
 </div>
 
 <div class="container-fluid question-wrapper">
@@ -15,15 +17,12 @@ $answer = rand($min, $max);
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
 		
-		<div class="form-group number-line">
+		<div class="form-group find-number-in-list">
 			<div class="content inline-block">
-				
-			</div>
-		</div>
-		
-		<div class="form-group inline-block">
-			<div class="col-sm-12">
-				{{ Form::number('answer', '', ['class' => 'form-control', 'required' => true]) }}
+				@for( $i = 1; $i <= $max; $i++ )
+					<?php $num = $start*$i; ?>
+					<div class="pull-left number">{{ ($answer == $num) ? Form::text('answer', '') : $num }}{{ ($i < $max) ? ', ' : '' }}</div>
+				@endfor
 			</div>
 		</div>
 		

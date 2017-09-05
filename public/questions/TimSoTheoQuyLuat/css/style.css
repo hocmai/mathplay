@@ -1,0 +1,29 @@
+.find-number-table table{
+}
+.find-number-table table th{
+	text-align: center;
+	line-height: 40px;
+	font-size: 16px;
+}
+.find-number-table td>.text{
+	display: inline-block;
+    text-align: center;
+    line-height: 30px;
+    width: 120px;
+    padding: 5px;
+    color: #333;
+    font-weight: 500;
+}
+.find-number-table td>.text>input{
+    width: 50px;
+    text-align: center;
+}
+.find-number-table{
+	
+}
+.find-number-table{
+	
+}
+.find-number-table{
+	
+}

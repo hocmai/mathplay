@@ -14,17 +14,17 @@ if( $plus == '' ){
 	$plus = [1,2,5,10];
 	$plus = $plus[array_rand($plus)];
 }
-if( $method = 'plus' ){
+if( $method == 'plus' ){
 	$answer = $number + $plus;
-	$text = 'Đằng sau số '.$number.' '.$plus.' đơn vị là số mấy?';
+	$text = ['Đếm với '.$plus.' đơn vị. Đằng sau số '.$number.' là số mấy?', 'Số nào đứng sau số '.$number.' nếu cộng thêm '.$plus.' đơn vị?'];
 } else{
 	$answer = $number - $plus;
-	$text = 'Đằng trước số '.$number.' '.$plus.' đơn vị là số mấy?';
+	$text = ['Đếm với '.$plus.' đơn vị. Đứng trước số '.$number.' là số mấy?', 'Số nào đứng trước số '.$number.' nếu trừ đi '.$plus.' đơn vị?'];
 }
 ?>
 
 <div class="start">
-	{{ $text }}
+	{{ $text[array_rand($text)] }}
 </div>
 
 <div class="container-fluid question-wrapper">

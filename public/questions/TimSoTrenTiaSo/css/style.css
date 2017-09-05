@@ -1,0 +1,41 @@
+.number-line .content{
+	padding: 0 15px;
+	position: relative;
+    border-top: 2px solid #ddd;
+}
+.number-line .content:before,
+.number-line .content:after{
+	content: "<";
+	position: absolute;
+    line-height: 15px;
+    left: 0;
+    font-weight: 400;
+    color: #ddd;
+    font-size: 26px;
+    top: -11px;
+}
+.number-line .content:after{
+	content: ">";
+	left: auto;
+	right: 0;
+}
+.number-line .line{
+    float: left;
+    width: 65px;
+    font-size: 18px;
+    font-weight: 400;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    line-height: 35px;
+}
+.number-line .line::before{
+	content: "";
+    width: 0px;
+    height: 15px;
+    border-left: 2px solid #ddd;
+    position: absolute;
+    left: 0;
+    margin-left: 50%;
+    top: -8px;
+}
