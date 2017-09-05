@@ -8,22 +8,33 @@ for($i = 0; $i < $range; $i++){
 	$min += $plus;
 }
 
-$type = array('inline', 'input');
-shuffle($type);
+$type_rand = array('input-total', 'input','inline');
+$type = !empty($config['answer_type']) ? $config['answer_type'] : $type_rand[array_rand($type_rand)];
 
 if($type == 'inline'){
 	$answer = $lines[array_rand($lines)];
 } else{
-	$position = array_rand($lines);
+	$position = rand(1, $range - 2);
 	$answer = $lines[$position];
-	$target = array_rand( array_except($lines, $position) );
+	$target = rand($position-1,$position+1);
 }
-
-
 ?>
 
 <div class="start">
-	{{ ($type[0] == 'inline') ? 'Điền số còn thiếu trong tia số' : '' }}
+	@if($type == 'inline')
+		Điền số còn thiếu trong tia số
+	@elseif($type == 'input')
+		@if($target < $position)
+			Số nào bên phải cạnh số {{ $lines[$target] }}?
+		@elseif( $target > $position )
+			Số nào bên trái cạnh số {{ $lines[$target] }}?
+		@else
+			Ở vị trí số {{ $position + 1 }} là số mấy?
+		@endif
+	@elseif($type == 'input-total')
+		<?php $target = $position-1 ?>
+		Hoàn thành phép tính tổng theo mẫu dưới đây
+	@endif
 </div>
 
 <div class="container-fluid question-wrapper">
@@ -35,19 +46,24 @@ if($type == 'inline'){
 		
 		<div class="form-group number-line">
 			<div class="content inline-block">
-				@foreach($lines as $value)
-					<div class="line inline-block">
-						{{ ($value == $answer && $type[0] == 'inline') ? Form::text('answer', '', ['class' => 'form-control padding0 text-center']) : $value }}
+				@foreach($lines as $key => $value)
+					<div class="line inline-block {{ ( ($key == $target | $key == $position) && $type == 'input-total') ? 'active'.( $key == $target ? ' first' : '' ) : '' }}">
+						{{ ( ($key == $target ) && $type == 'input-total') ? '<div class="sub">+ '.$plus.'</div>' : '' }}
+						{{ ($value == $answer && $type == 'inline') ? Form::text('answer', '', ['class' => 'form-control padding0 text-center']) : $value }}
 					</div>
 				@endforeach
 			</div>
 		</div>
 		
-		@if($type[0] == 'input')
+		@if($type == 'input')
 			<div class="form-group inline-block">
 				<div class="col-sm-12">
-					{{ Form::number('answer', '', ['class' => 'form-control', 'required' => true]) }}
+					{{ Form::number('answer', '', ['class' => 'form-control', 'min' => 1]) }}
 				</div>
+			</div>
+		@elseif($type == 'input-total')
+			<div class="form-group inline-block" style="font-size:18px">
+				{{ $lines[$target].' + '.$plus.' = '.Form::number('answer', '', ['class' => 'form-control', 'style' => 'width:80px;display:inline-block;font-size:18px', 'min' => 1]) }}
 			</div>
 		@endif
 		

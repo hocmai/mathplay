@@ -1,0 +1,38 @@
+.plus-with-puzzle .radio{
+	margin: 0;
+    padding: 0;
+}
+.plus-with-puzzle .radio>label,
+.plus-with-puzzle .preview>.item{
+	background: #fff;
+	border-radius: 3px;
+	padding: 10px;
+	border: 2px solid #ddd;
+    display: inline-block;
+    width: auto;
+    padding-left: 25px;
+}
+.plus-with-puzzle .preview>.item{
+	border: none;
+}
+.plus-with-puzzle .radio>label._H_,
+.plus-with-puzzle .preview>.item._H_{
+	padding-left: 35px;
+}
+.plus-with-puzzle .radio>input:checked + label,
+.plus-with-puzzle .radio>label:hover{
+    border: 2px solid #03ABE4;
+    box-shadow: 0 0 0 1px #03ABE4;
+}
+.plus-with-puzzle .radio>label>img,
+.plus-with-puzzle .preview>.item>img{
+	margin-left: -18px;
+}
+.plus-with-puzzle .radio>label._H_>img,
+.plus-with-puzzle .preview>.item._H_>img{
+	margin-left: -27px;
+}
+.plus-with-puzzle .radio>label>img.rotate,
+.plus-with-puzzle .preview>.item>img.rotate{
+    transform: rotate(90deg);
+}

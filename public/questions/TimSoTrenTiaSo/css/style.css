@@ -2,6 +2,7 @@
 	padding: 0 15px;
 	position: relative;
     border-top: 2px solid #ddd;
+    margin-top: 15px;
 }
 .number-line .content:before,
 .number-line .content:after{
@@ -21,13 +22,39 @@
 }
 .number-line .line{
     float: left;
-    width: 65px;
+    width: 30px;
     font-size: 18px;
     font-weight: 400;
-    padding: 15px;
+    margin: 15px;
     position: relative;
     text-align: center;
-    line-height: 35px;
+    line-height: 25px;
+}
+.number-line .line.active{
+    box-shadow: 0px 0px 0px 2px #1fb2e4;
+    border-radius: 2px;
+}
+.number-line .line.active.first::after{
+    content: "";
+    position: absolute;
+    z-index: 1;
+    width: 200%;
+    height: 30px;
+    background: url(../img/arrow.png) no-repeat;
+    background-size: 100%;
+    top: -209%;
+    left: 50%;
+}
+.number-line .line.active.first .sub{
+    position: absolute;
+    top: calc(-200% - 22px);
+    z-index: 2;
+    width: 200%;
+    text-align: center;
+    left: 40%;
+    color: #1fb2e4;
+    font-size: 16px;
+    font-weight: 500;
 }
 .number-line .line::before{
 	content: "";
@@ -37,5 +64,5 @@
     position: absolute;
     left: 0;
     margin-left: 50%;
-    top: -8px;
+    top: -24px;
 }

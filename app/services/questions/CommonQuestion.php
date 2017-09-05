@@ -8,17 +8,15 @@ Class CommonQuestion implements QuestionInterface{
 			'DienSoHangChucVaDonVi' => 'Điền số hàng chục và đơn vị', //dang 3
 			'DemHangChuc' => 'Đếm số theo hàng chục', //dang 5
 			'DemSoLonNhoVoiDonVi' => 'Đếm số ngược xuôi cộng/trừ 1-2-5-10',// dang 6,
-			'TimSoTrenTiaSo' => 'Tìm 1 số trên dãy số', // dang 7
+			'TimSoTrenTiaSo' => 'Bài tập về tia số', // dang 7,15
 			'DienSoConThieu100' => 'Tìm số trong dãy 100 số', //dang 8,9
 			'TimSoTheoQuyLuat' => 'Tìm số theo quy luật (tự sinh)', // dang 10
 			'TimSoTrongDaySoCoQuyLuat' => 'Điền số trong dãy số có quy luật cộng dồn ngẫu nhiên', // Dang 11
 			'ChonMauSacPhuHop' => 'Chọn màu đúng với ô chỉ định (tự sinh)', // dang 12
 			'Cong2HinhAnh' => 'Phép cộng với hình ảnh', // dang 13
 			'DienBieuThuc' => 'Biểu thức với phép cộng hình ảnh', // dang 14
-			'ChonBieuThucVoiTiaSo' => 'Biểu thức phép cộng với tia số (Tự sinh)', // dang 15
 			'TinhTongDonGian' => 'Tính Tổng (dạng cơ bản)', // dang 16
-			'DienBieuThucTinhTongConThieu' => 'Điền biểu thức còn thiếu với tổng là 1 số', // dang 17
-			'TimBieuThucCoTongDung' => 'Tìm biểu thức đúng với tổng cho trước', // dang 18
+			'TimBieuThucCoTongDung' => 'Tìm biểu thức đúng với tổng cho trước', // dang 17, 18
 			'SoHangConThieu' => 'Tìm số hạng còn thiếu trong phép cộng', // dang 19
 			'TimDapSoDungVoiCauHoi' => 'Tìm đáp án cho câu hỏi được nhập ngẫu nhiên', // dang 20
 		];

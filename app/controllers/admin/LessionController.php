@@ -13,7 +13,7 @@ class LessionController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = lession::orderBy('weight', 'asc')->paginate(PAGINATE);
+		$data = Lession::orderBy('weight', 'asc')->paginate(PAGINATE);
 		// dd($data);
 		return View::make('admin.lession.index')->with(compact('data'));
 	}
@@ -108,7 +108,7 @@ class LessionController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$data = lession::find($id);
+		$data = Lession::find($id);
         return View::make('admin.lession.edit', array('lession'=>$data));
 	}
 

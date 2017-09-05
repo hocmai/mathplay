@@ -6,11 +6,9 @@
 		$answertype = ['trac-nghiem', 'dien-dap-an'];
 		$answertype = $answertype[array_rand($answertype)];
 	}
-	$countType = !empty($config['count_type']) ? $config['count_type'] : 'rand';
-	if( $countType == 'rand' ){
-		$countType = ['dem-o-trong-khung', 'dem-o-con-thieu', 'dem-hinh-anh'];
-		$countType = $answertype[array_rand($countType)];
-	}
+
+	$countType = ['dem-o-trong-khung', 'dem-o-con-thieu', 'dem-hinh-anh'];
+	$countType = !empty($config['count_type']) ? $config['count_type'] : $countType[array_rand($countType)];
 	
 	if( $countType == 'dem-o-con-thieu' ){
 		$max = 9;
@@ -36,7 +34,7 @@
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form '.$answertype, 'id' => 'question-'.$question->id]) }}
-		<input type="hidden" name="true_answer" value="{{ ($countType == 'dem-o-trong-khung') ? $answer : 10 - $answer }}" />
+		<input type="hidden" name="true_answer" value="{{ ($countType == 'dem-o-trong-khung' | $countType == 'dem-hinh-anh') ? $answer : 10 - $answer }}" />
 		<input type="hidden" name="qid" value="{{ $question->id }}" />
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
@@ -48,25 +46,27 @@
 					</div>
 					@if( $i == 5 ) <div class="clearfix"></div> @endif
 				@endfor
+
 			@else
-			@for( $j = 1; $j <= floor($answer/10); $j++ )
-				<table class="frame pull-left" style="margin: 10px">
-					<tr>
-						@for($i = 1; $i <= 5; $i++)
-							<td style="border: 5px solid #bee8fb; padding: 10px">
-								<div class="{{ $shape[$rand_shape] }}"></div>
-							</td>
-						@endfor
-					</tr>
-					<tr>
-						@for($i = 6; $i <= 10; $i++)
-							<td style="border: 5px solid #bee8fb; padding: 10px">
-								<div class="{{ $shape[$rand_shape] }}"></div>
-							</td>
-						@endfor
-					</tr>
-				</table>
-			@endfor
+				@for( $j = 1; $j <= floor($answer/10); $j++ )
+					<table class="frame pull-left" style="margin: 10px">
+						<tr>
+							@for($i = 1; $i <= 5; $i++)
+								<td style="border: 5px solid #bee8fb; padding: 10px">
+									<div class="{{ $shape[$rand_shape] }}"></div>
+								</td>
+							@endfor
+						</tr>
+						<tr>
+							@for($i = 6; $i <= 10; $i++)
+								<td style="border: 5px solid #bee8fb; padding: 10px">
+									<div class="{{ $shape[$rand_shape] }}"></div>
+								</td>
+							@endfor
+						</tr>
+					</table>
+				@endfor
+
 			@if( $answer % 10 > 0 )
 				<table class="frame pull-left" style="margin: 10px">
 					<tr>
@@ -84,6 +84,7 @@
 						@endfor
 					</tr>
 				</table>
+
 			@endif
 				<style type="text/css">
 					.unknown.shape-none::before{content: "?";line-height: 50px;font-size: 35px;font-weight: 600;color: #ddd;}

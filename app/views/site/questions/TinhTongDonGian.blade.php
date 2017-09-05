@@ -1,7 +1,8 @@
 <?php
 $min = !empty($config['min_value']) ? $config['min_value'] : 1;
-$max = !empty($config['max_value']) ? $config['max_value'] : 100;
+$max = !empty($config['max_value']) ? $config['max_value'] : 10;
 $answer = rand($min, $max);
+// dd($images);
 ?>
 
 <div class="start">
@@ -15,15 +16,10 @@ $answer = rand($min, $max);
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
 		
-		<div class="form-group number-line">
+		<div class="form-group plus-with-0">
 			<div class="content inline-block">
 				
-			</div>
-		</div>
-		
-		<div class="form-group inline-block">
-			<div class="col-sm-12">
-				{{ Form::number('answer', '', ['class' => 'form-control', 'required' => true]) }}
+				<div class="tong pull-left" style="font-size: 18px;">0 + {{ $answer }} = {{ Form::number('answer', '', ['style' => 'width: 50px;text-align: center;']) }}</div>
 			</div>
 		</div>
 		
