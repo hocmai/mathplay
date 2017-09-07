@@ -9,5 +9,6 @@ return array(
     'include_trashed' => false,
     'on_update'       => true,
     'reserved'        => null,
+    'include_trashed' => true,
     'use_cache'       => false,
 );

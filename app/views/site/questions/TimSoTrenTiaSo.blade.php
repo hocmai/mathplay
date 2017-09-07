@@ -10,7 +10,7 @@ for($i = 0; $i < $range; $i++){
 
 $type_rand = array('input-total', 'input','inline');
 $type = !empty($config['answer_type']) ? $config['answer_type'] : $type_rand[array_rand($type_rand)];
-
+$position = 0;
 if($type == 'inline'){
 	$answer = $lines[array_rand($lines)];
 } else{
@@ -36,7 +36,6 @@ if($type == 'inline'){
 		Hoàn thành phép tính tổng theo mẫu dưới đây
 	@endif
 </div>
-
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
 		<input type="hidden" name="true_answer" value="{{ $answer }}" />
@@ -47,10 +46,17 @@ if($type == 'inline'){
 		<div class="form-group number-line">
 			<div class="content inline-block">
 				@foreach($lines as $key => $value)
-					<div class="line inline-block {{ ( ($key == $target | $key == $position) && $type == 'input-total') ? 'active'.( $key == $target ? ' first' : '' ) : '' }}">
-						{{ ( ($key == $target ) && $type == 'input-total') ? '<div class="sub">+ '.$plus.'</div>' : '' }}
-						{{ ($value == $answer && $type == 'inline') ? Form::text('answer', '', ['class' => 'form-control padding0 text-center']) : $value }}
-					</div>
+					@if( $type == 'input-total' )
+						<div class="line inline-block {{ ( $key == $target | $key == $position ) ? 'active'.( $key == $target ? ' first' : '' ) : '' }}">
+							{{ ( $key == $target ) ? '<div class="sub">+ '.$plus.'</div>' : '' }}
+							{{ $value }}
+						</div>
+					@else
+						<div class="line inline-block">
+							{{ ( $value == $answer && $type == 'inline' ) ? Form::text('answer', '', ['class' => 'form-control padding0 text-center']) : $value }}
+						</div>
+					@endif
+					
 				@endforeach
 			</div>
 		</div>

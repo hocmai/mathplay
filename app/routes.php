@@ -21,14 +21,10 @@ Route::get('/logout', array('uses' => 'SiteUserController@logout', 'as' => 'user
 Route::post('/login', array('uses' => 'SiteUserController@doLogin', 'as' => 'user.dologin'));
 Route::post('/register', array('uses' => 'SiteUserController@doRegister', 'as' => 'user.doregister'));
 
-Route::group(['prefix' => 'grade'], function () {
-	Route::get('/', array('uses' => 'SiteGradeController@index', 'as' => 'listgrade'));
-	Route::get('/{grade_id}', array('uses' => 'SiteGradeController@show', 'as' => 'gradedetail'));
-});
-Route::get('mon-hoc/{subject_slug}/{lession_slug}', array(
-	'uses' => 'SiteLessionController@show',
-	'as' =>'showlession'
-));
+// Route::get('mon-hoc/{subject_slug}/{lession_slug}', array(
+// 	'uses' => 'SiteLessionController@show',
+// 	'as' =>'showlession'
+// ));
 
 Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/getquestionformconfig',array('as'=>'getquestionformconfig','uses'=>'AjaxController@getQuestionConfigForm'));
@@ -133,3 +129,17 @@ App::error( function(Exception $exception, $code){
             return View::make('errors.404');
     }
 });
+
+Route::get('grade', array('uses' => 'SiteGradeController@index', 'as' => 'listgrade'));
+
+Route::get('{grade_slug}', array('uses' => 'SiteGradeController@show', 'as' => 'gradedetail'));
+
+Route::get('{grade_slug}/{subject_slug}', array(
+	'uses' => 'SiteSubjectController@show',
+	'as' =>'showsubject'
+));
+
+Route::get('{grade_slug}/{subject_slug}/{lession_slug}', array(
+	'uses' => 'SiteLessionController@show',
+	'as' =>'showlession'
+));

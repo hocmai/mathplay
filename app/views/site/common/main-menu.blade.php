@@ -1,3 +1,5 @@
+<?php $grades = Grade::all(); ?>
+
 <div class="menu-mobile header-content clearfix hidden-lg">
     <a class="logo" href="#" title="">
         <img src="{{ asset('frontend/images/logo.png')}}" class="img-responsive" alt=""/>
@@ -18,8 +20,11 @@
                 Lớp học
             </a>
             <ul>
-                <li><a href="{{ action('SiteGradeController@show', ['grade_id' => 1]) }}">Lớp 1</a></li>
-                <li><a href="{{ action('SiteGradeController@show', ['grade_id' => 2]) }}">Lớp 2</a></li>
+                @foreach($grades as $grade)
+                    <li>
+                        {{ link_to_action('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
+                    </li>
+                @endforeach
             </ul>
         </li>
         <li><a href="#" title="">Giới thiệu</a></li>
@@ -77,8 +82,11 @@
                                 Lớp học
                             </a>
                             <ul>
-                                <li><a href="{{ action('SiteGradeController@show', ['grade_id' => 1]) }}">Lớp 1</a></li>
-                                <li><a href="{{ action('SiteGradeController@show', ['grade_id' => 2]) }}">Lớp 2</a></li>
+                                @foreach($grades as $grade)
+                                    <li>
+                                        {{ link_to_action('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
+                                    </li>
+                                @endforeach
                                 <li class="bg-color"></li>
                             </ul>
                         </li>

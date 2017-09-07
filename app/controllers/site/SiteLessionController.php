@@ -16,79 +16,20 @@ class SiteLessionController extends BaseController {
 		return 'test';
 	}
 
-
-	/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function create()
-	{
-		//
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @return Response
-	 */
-	public function store()
-	{
-		//
-	}
-
-
 	/**
 	 * Display the specified resource.
 	 *
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function show($subject_slug, $lession_slug)
+	public function show($grade_slug, $subject_slug, $lession_slug)
 	{
 		// dd(Common::getObject(Auth::user()->get(), 'id'));
+		$grade   = Grade::findBySlug($grade_slug);
 		$subject = Subject::findBySlug($subject_slug);
 		$lession = Lession::findBySlug($lession_slug);
 		// dd($subject, $lession);
-		return View::make('site.lession.index')->with(compact(['subject', 'lession']));
+		return View::make('site.lession.index')->with(compact(['grade', 'subject', 'lession']));
 	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
-	}
-
 
 }

@@ -18,18 +18,35 @@ foreach($lession->question as $question){
     if(!in_array($question->type, $types)){
         $types[] = $question->type;
     }
-} 
+}
+
+$all_types = [];
+foreach (glob('app/services/questions/*.php') as $file)
+{
+
+    // get the file name of the current file without the extension
+    // which is essentially the class name
+    $class = basename($file, '.php');
+
+    if (class_exists($class))
+    {
+        $all_types[] = $class;
+    }
+}
 ?>
 @foreach ($types as $type)
     @section('js_header')
-     @parent
-        @if(File::exists(public_path().'/questions/'.$type.'/js/script.js')) {{ HTML::script('questions/'.$type.'/js/script.js') }} @endif
-     @stop
-
+        @parent
+        @if( File::exists(public_path().'/questions/'.$type.'/js/script.js') )
+            {{ HTML::script('questions/'.$type.'/js/script.js') }} 
+        @endif
+    @stop
     @section('css_header')
-     @parent
-        @if(File::exists(public_path().'/questions/'.$type.'/css/style.css')) {{ HTML::style('questions/'.$type.'/css/style.css') }} @endif
-     @stop
+        @parent
+        @if( File::exists(public_path().'/questions/'.$type.'/css/style.css') )
+            {{ HTML::style('questions/'.$type.'/css/style.css') }}
+        @endif
+    @stop
 @endforeach
 
 @section('breadcrumb')
@@ -42,8 +59,12 @@ foreach($lession->question as $question){
             <ol class="breadcrumb">
                 <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
                 <li><a href="/">Trang chủ</a></li>
-                <li><a href="{{ action('SiteGradeController@show', ['grade_id' => Common::getValueOfObject($subject, 'grade', 'id')]) }}">{{ Common::getValueOfObject($subject, 'grade', 'title') }}</a></li>
-                <li class="active">Môn toán</li>
+                <li>
+                    {{ link_to_action('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
+                </li>
+                <li class="active">
+                    {{ link_to_action('SiteSubjectController@show', Common::getObject($subject, 'title'), ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')])  }}
+                </li>
             </ol>
         </div>
         <div class="inline-block">{{ $lession['title'] }}</div>

@@ -3,7 +3,7 @@ Class CommonQuestion implements QuestionInterface{
 
 	public static function getAllType(){
 		return [
-			'SoSanh2HinhAnh' => 'So sánh 2 hình ảnh', // test
+			SOSANH => 'So sánh 2 hình ảnh', // test
 			'DemSoTrongKhung10' => 'Đếm số trong khung 10 ô', // dang 1,2,4
 			'DienSoHangChucVaDonVi' => 'Điền số hàng chục và đơn vị', //dang 3
 			'DemHangChuc' => 'Đếm số theo hàng chục', //dang 5
@@ -56,16 +56,22 @@ Class CommonQuestion implements QuestionInterface{
 		foreach ($lession->question as $key => $question) {
 			$lessionQuestionConf = LessionQuestion::where('lession_id', '=' , $lession->id)
 			->where('qid', '=' , $question->id)
-			->pluck('config');
-
-			//////// kiem tra thu tu cac cau hoi va sap xep dung vi tri nhu config, 1 cau hoi co the duoc lap lai nhieu lan
-			$lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestionConf) : [];
-			$question->conf = $lessionQuestionConf;
-			if( $lessionQuestionConf['question_start'] && $lessionQuestionConf['question_end'] && $lessionQuestionConf['question_end'] > $lessionQuestionConf['question_start'] ){
-				for( $j = $lessionQuestionConf['question_start']; $j <= $lessionQuestionConf['question_end']; $j++ ){
-					$question_order[$j] = $question;
+			->first();
+			// ->pluck('config');
+			if ($lessionQuestionConf) {
+				$lessionQuestionConf = $lessionQuestionConf->config;
+				$lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestionConf) : [];
+				$question->conf = $lessionQuestionConf;
+				if( $lessionQuestionConf['question_start'] && $lessionQuestionConf['question_end'] && $lessionQuestionConf['question_end'] > $lessionQuestionConf['question_start'] ){
+					for( $j = $lessionQuestionConf['question_start']; $j <= $lessionQuestionConf['question_end']; $j++ ){
+						$question_order[$j] = $question;
+					}
 				}
 			}
+
+
+			//////// kiem tra thu tu cac cau hoi va sap xep dung vi tri nhu config, 1 cau hoi co the duoc lap lai nhieu lan
+			
 		}
 
 		/// hien thi du 20 cau hoi theo dung thu tu da config hoac tu dong lay random cac cau hoi cho cac vi tri con thieu
@@ -84,13 +90,18 @@ Class CommonQuestion implements QuestionInterface{
 		return $html;
 	}
 
+	public static function view_exists($view){
+		return View::exists($view);
+	}
 
 	/**
 	 * Render question by config
 	 */
 	public static function renderQuestion($question, $config = [], $lession = null, $question_num = 1){
 		// $config = json_decode($config);
-		return View::make('site.questions.'.$question->type)->with(compact(['question', 'config', 'lession', 'question_num']));
+		if (View::exists('site.questions.'.$question->type)) {
+			return View::make('site.questions.'.$question->type)->with(compact(['question', 'config', 'lession', 'question_num']));
+		}
 	}
 
 	public static function getAnswerType(){

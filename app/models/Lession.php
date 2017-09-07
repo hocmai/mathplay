@@ -25,6 +25,8 @@ class Lession extends Eloquent implements SluggableInterface
         'save_to'    => 'slug',
     );
 
+    protected $include_trashed = true;
+
     public function author()
     {
         return $this->belongsTo('Admin', 'author_id', 'id');
