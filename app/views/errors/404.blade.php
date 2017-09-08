@@ -13,17 +13,17 @@ if( $now > 17 | $now < 6 ) $day = false;
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       
 
-        <script type="text/javascript" src="{{ asset('errors/js/jquery-1.8.3.min.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/errors/js/jquery-1.8.3.min.js') }}"></script>
 
         <link href='http://fonts.googleapis.com/css?family=Finger+Paint' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="{{ asset('errors/css/animate.min.css') }}">
-        <script src="{{ asset('errors/js/preloader.js') }}"></script> 
-        <link rel="stylesheet" href="{{ asset('errors/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('/errors/css/animate.min.css') }}">
+        <script src="{{ asset('/errors/js/preloader.js') }}"></script> 
+        <link rel="stylesheet" href="{{ asset('/errors/css/style.css') }}">
 
-        <script type="text/javascript" src="{{ asset('errors/js/css_browser_selector.js') }}"></script>
-         <script type="text/javascript" src="{{ asset('errors/js/plax.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('errors/js/jquery.spritely-0.6.1.js') }}"></script>
-        <script type="text/javascript" src="{{ asset('errors/js/script.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/errors/js/css_browser_selector.js') }}"></script>
+         <script type="text/javascript" src="{{ asset('/errors/js/plax.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/errors/js/jquery.spritely-0.6.1.js') }}"></script>
+        <script type="text/javascript" src="{{ asset('/errors/js/script.js') }}"></script>
     </head>
     <body class="{{ ($day) ? 'day' : 'night' }}">
         <div id="indicator"></div>
@@ -37,7 +37,7 @@ if( $now > 17 | $now < 6 ) $day = false;
             <div class="owl init">
                  <div class="eyes"></div>
                
-                <img src="{{ asset('errors/images/noface.png') }}" />
+                <img src="{{ asset('/errors/images/noface.png') }}" />
                  <div class="balloon init">
                 <div class="text">
                     <h2>Tin xấu!!</h2>
@@ -52,7 +52,7 @@ if( $now > 17 | $now < 6 ) $day = false;
                
                 <div class="moon init"></div>
                 <div class="owl init">
-                    <img src="{{ asset('errors/images/owl_night.png') }}" />
+                    <img src="{{ asset('/errors/images/owl_night.png') }}" />
                      <div class="balloon init">
                     <div class="text">
                         <h2>Tin xấu!!</h2>

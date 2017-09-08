@@ -6,6 +6,7 @@ $(window).on('load', function(e) {
 $(document).ready(function(){
 	console.log('Myscript loaded');
 
+	///// Add multi questions
 	$('.form-add-question').on('click', 'button.add-new-question', function(){
 		var form = $(this).parents('.box.box-primary').find('.question-template-form'),
 	 		parent = $(this).parents('form').find('.panel-group'),

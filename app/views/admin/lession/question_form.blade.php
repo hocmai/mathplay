@@ -12,8 +12,16 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 	{{ Form::hidden('question[id][]', Common::getObject($question, 'id')) }}
     <div class="panel-heading" role="tab" id="heading-{{$key}}">
     	<h4 class="panel-title">
-	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="{{ ($key>0) ? 'false' : 'true' }}" aria-controls="collapse-{{$key}}">@if($question) {{ $question->title }} (câu {{ !empty($lessionQuestionConf['question_start']) ? $lessionQuestionConf['question_start'] : '?'}} - câu {{ !empty($lessionQuestionConf['question_end']) ? $lessionQuestionConf['question_end'] : '?' }}) @else Tạo mới câu hỏi @endif</a>
-	        <button type="button" class="close"><span aria-hidden="false">&times;</span></button>
+	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="{{ ($key>0) ? 'false' : 'true' }}" aria-controls="collapse-{{$key}}">
+		        @if($question) 
+		        	{{ $question->title }} (câu {{ !empty($lessionQuestionConf['question_start']) ? $lessionQuestionConf['question_start'] : '?'}} - câu {{ !empty($lessionQuestionConf['question_end']) ? $lessionQuestionConf['question_end'] : '?' }})
+		        @else
+		        	Tạo mới câu hỏi 
+		        @endif
+	        </a>
+	        @if(!$question)
+	        	<button type="button" class="close"><span aria-hidden="false">&times;</span></button>
+	        @endif
     	</h4>
     </div>
     <div id="collapse-{{$key}}" class="panel-collapse collapse {{ ($key==0) ? 'in' : '' }}" role="tabpanel" aria-labelledby="heading-{{$key}}">
@@ -43,6 +51,11 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 			<div id="get-config-form" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading">
 				{{ CommonQuestion::getConfigForm(Common::getObject($question, 'type'), $lessionQuestionConf) }}
 			</div>
+			@if($lession && $question)
+				<div class="form-group">
+					<a class="btn btn-danger delete-question pull-right" qid="{{ Common::getObject($question, 'id') }}" lession_id="{{ Common::getObject($lession, 'id') }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+				</div>
+			@endif
     	</div>
     </div>
 </div>

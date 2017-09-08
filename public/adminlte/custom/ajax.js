@@ -20,4 +20,19 @@ $(document).ready(function(){
 		}
 	})
 
+	////////// Delete question in lession
+	$('.form-add-question').on('click', '.delete-question', function(){
+		var qid = $(this).attr('qid'),
+		lessionId = $(this).attr('lession_id');
+		$.ajax({
+			url:'/ajax/delete/question',
+			method:'DELETE',
+			data: {qid: qid, lessionId: lessionId},
+			cache:false,
+			success:function(data){
+				console.log(data);
+			}
+		});
+	})
+
 });

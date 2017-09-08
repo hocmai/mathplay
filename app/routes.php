@@ -29,6 +29,7 @@ Route::post('/register', array('uses' => 'SiteUserController@doRegister', 'as' =
 Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/getquestionformconfig',array('as'=>'getquestionformconfig','uses'=>'AjaxController@getQuestionConfigForm'));
 	Route::post('/updatestudyhistory',array('as'=>'updatestudyhistory','uses'=>'AjaxController@updateStudyHistory'));
+	Route::delete('/delete/question',array('as'=>'deletequestion','uses'=>'AjaxController@deleteQuestion'));
 });
 
 ///////////////// Admin page //////////////////
@@ -53,6 +54,8 @@ Route::group(['prefix' => 'admin'], function () {
 	 	Route::resource('/grade', 'GradeController');
 	 	Route::resource('/subject', 'SubjectController');
 	 	Route::resource('/chapter', 'ChapterController');
+	 	Route::resource('/lession/config', 'ConfLessionController');
+	 	Route::resource('/lession/question-type', 'QuestionTypeController');
 	 	Route::resource('/lession', 'LessionController');
 	});
 	

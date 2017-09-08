@@ -1,18 +1,18 @@
 var slider;
 var images = [
-"errors/images/balloon.png",
-"errors/images/clouds.png",
-"errors/images/grass.png",
-"errors/images/owl.png",
-"errors/images/sun.png"
+"/errors/images/balloon.png",
+"/errors/images/clouds.png",
+"/errors/images/grass.png",
+"/errors/images/owl.png",
+"/errors/images/sun.png"
 ];
 if($('.night').length){
     images = [
-    "errors/images/balloon_night.png",
-    "errors/images/stars.png",
-    "errors/images/grass_night.png",
-    "errors/images/owl_night.png",
-    "errors/images/moon.png"
+    "/errors/images/balloon_night.png",
+    "/errors/images/stars.png",
+    "/errors/images/grass_night.png",
+    "/errors/images/owl_night.png",
+    "/errors/images/moon.png"
     ]; 
 }
 
@@ -48,7 +48,7 @@ $(document).ready(function() {
 		
         $.preload(images, {
             init: function(loaded, total) {
-                $("#indicator").html("<img src='errors/images/load.gif' />");			
+                $("#indicator").html("<img src='/errors/images/load.gif' />");			
             },
 			
             loaded_all: function(loaded, total) { 
@@ -80,21 +80,14 @@ $(document).ready(function() {
                         } else{
                             $('.sun').addClass('animated bounceInDown');
                         }
-                        
                                       
-                                  setTimeout(function(){
-                                       $('.owl').plaxify({"xRange":10,"yRange":0}) 
-                                $('.grass').plaxify({"xRange":100})   
+                        setTimeout(function(){
+                            $('.owl').plaxify({"xRange":10,"yRange":0}) 
+                            $('.grass').plaxify({"xRange":100})   
                             $.plax.enable(); 
-                                  },1000)    
-                                      
-                                      
-                                       
+                        },1000)    
                     })
                                          
-                                        
-                                        
-					
                 });
             }
         });

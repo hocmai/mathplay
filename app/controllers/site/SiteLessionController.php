@@ -28,7 +28,10 @@ class SiteLessionController extends BaseController {
 		$grade   = Grade::findBySlug($grade_slug);
 		$subject = Subject::findBySlug($subject_slug);
 		$lession = Lession::findBySlug($lession_slug);
-		// dd($subject, $lession);
+
+		if( !$grade | !$subject | !$lession ){
+			App::abort(404);
+		}
 		return View::make('site.lession.index')->with(compact(['grade', 'subject', 'lession']));
 	}
 

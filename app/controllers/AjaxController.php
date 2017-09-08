@@ -16,6 +16,17 @@ class AjaxController extends BaseController {
 	*/
 
 	/**
+	 * Delete question of a lession
+	 */
+	public function deleteQuestion(){
+		if (Auth::admin()->guest()){
+			App::abort(403);
+		}
+		$input = Input::all();
+		return Response::json(Request::ajax());
+	}
+
+	/**
 	 * Get question config form by question type
 	 */
 	public function getQuestionConfigForm()

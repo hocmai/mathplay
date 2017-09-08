@@ -2,6 +2,7 @@
 $min = !empty($config['min_value']) ? $config['min_value'] : 1;
 $max = !empty($config['max_value']) ? $config['max_value'] : 5;
 $range = range($min, $max);
+$answer_rand = array_rand($range, 4);
 $answer_rand = [ array_rand($range, 2), array_rand($range, 2), array_rand($range, 2), array_rand($range, 2) ];
 
 $type = [ '_H_' => ['blue', 'orange', 'pink', 'purple'], '_piece_' => ['green', 'pink', 'purple', 'yellow'], '_piece2_' => ['green', 'purple', 'red', 'yellow'] ];
@@ -15,7 +16,7 @@ $type_answer = $type_answer[array_rand($type_answer)];
 	@if($type_answer == 'trac-nghiem')
 		Hình ảnh nào dưới đây đúng với biểu thức {{ $range[$answer_rand[0][0]]." + ".$range[$answer_rand[0][1]].' = '.($range[$answer_rand[0][0]] + $range[$answer_rand[0][1]]) }}
 	@else
-		Viết biểu thức tương ứng với hình ảnh bên dưới (Ví dụ: 3 + 5 = 8)
+		Viết biểu thức tương ứng với hình ảnh bên dưới (Ví dụ: 1 + 1 = 2)
 	@endif
 </div>
 
@@ -32,7 +33,7 @@ $type_answer = $type_answer[array_rand($type_answer)];
 				@foreach( $answer_rand as $key => $answer )
 					<div class="form-group">
 						<div class="radio">
-							<input type="radio" value="{{ $range[$answer[0]] + $range[$answer[1]] }}" name="answer" id="answer-{{ $question_num.'-'.$key }}">
+							<input type="radio" value="{{ $range[$answer[0]].'+'.$range[$answer[1]].'='.($range[$answer[0]] + $range[$answer[1]]) }}" name="answer" id="answer-{{ $question_num.'-'.$key }}">
 							<?php
 								$type_rand = array_rand($type);
 								$images = array_rand($type[$type_rand], 2);

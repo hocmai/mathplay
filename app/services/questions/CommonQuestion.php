@@ -85,7 +85,7 @@ Class CommonQuestion implements QuestionInterface{
 			} else{
 				$ques = $question_order[$i];
 			}
-			$html .= '<div class="question-rendered '.( ($current_ques && $current_ques == $i) ? 'active' : 'hide' ).'" data-history=\''. json_encode($data_history) .'\' lession-id ="'.$lession->id.'" qid="'.$ques->id.'" q-order="'.$i.'" score="'.$score.'" max-score="'.$max_score.'">'.self::renderQuestion($ques, $ques->conf, $lession, $i).'</div>';
+			$html .= '<div id="'. $ques->type .'" class="question-rendered '.( ($current_ques && $current_ques == $i) ? 'active' : 'hide' ).'" data-history=\''. json_encode($data_history) .'\' lession-id ="'.$lession->id.'" qid="'.$ques->id.'" q-order="'.$i.'" score="'.$score.'" max-score="'.$max_score.'">'.self::renderQuestion($ques, $ques->conf, $lession, $i).'</div>';
 		}
 		return $html;
 	}

@@ -43,6 +43,8 @@
 						<a href="{{ action('LessionController@index') }}"><i class="fa fa-file-text"></i> Quản lý bài tập<span class="pull-right-container"></span></a>
 						<ul class="">
 							<li><a href="{{ action('LessionController@create') }}"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
+							<li><a href="{{ action('ConfLessionController@index') }}"><i class="fa fa-plus-square"></i> Cấu hình bài tập</a></li>
+							<li><a href="{{ action('QuestionTypeController@index') }}"><i class="fa fa-plus-square"></i> Quản lý dạng bài</a></li>
 						</ul>
 					</li>
 					<!-- <li class="">
