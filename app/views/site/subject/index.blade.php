@@ -72,7 +72,7 @@
                                                         </h4>
                                                         <ul>
                                                             @foreach($chapters[$i]->lession as $lession)
-                                                                <li><a href="{{ action('SiteLessionController@show', ['subject_id' => $chapters[$i]->subject->slug, 'lession_id' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                                <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
                                                             @endforeach
                                                         </ul>
                                                     </div> <!-- End chuong -->
