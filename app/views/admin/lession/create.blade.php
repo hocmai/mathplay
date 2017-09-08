@@ -42,7 +42,13 @@
 								{{ Form::label('description', 'Mô tả') }}<div class="clearfix"></div>
 								<div class="">{{ Form::textarea('description', '', ['class' => 'form-control', 'row' => 5]) }}</div><div class="clearfix"></div>
 							</div>
+
 							<div class="form-group">
+								{{ Form::label('status', 'Cài đặt', ['class' => '']) }}<div class="clearfix"></div>
+								<div class="">{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), '', ['class' => 'form-control', 'required' => true]) }}</div><div class="clearfix"></div>
+							</div>
+
+							<!-- <div class="form-group">
 								{{ Form::label('config[num_question]', 'Số câu hỏi', ['class' => '']) }}<div class="clearfix"></div>
 								<div class="">{{ Form::number('config[num_question]', 20, ['class' => 'form-control', 'required' => true, 'size' => 60]) }}</div><div class="clearfix"></div>
 							</div>
@@ -50,9 +56,9 @@
 								{{ Form::label('config[score_limit]', 'Thang điểm', ['class' => '']) }}<div class="clearfix"></div>
 								<div class="">{{ Form::number('config[score_limit]', 100, ['class' => 'form-control', 'required' => true, 'size' => 60]) }}</div><div class="clearfix"></div>
 								<span class="help">Số điểm tối đa nên chia hết cho tổng số câu hỏi</span>
-							</div>
+							</div> -->
 							<div class="form-group">
-								{{ Form::label('status', 'trạng thái', ['class' => '']) }}<div class="clearfix"></div>
+								{{ Form::label('status', 'Trạng thái', ['class' => '']) }}<div class="clearfix"></div>
 								<div class="">{{ Form::select('status', [
 									0 => 'Unpublic',
 									1 => 'Public'

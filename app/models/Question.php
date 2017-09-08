@@ -1,5 +1,5 @@
 <?php
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+// use Illuminate\Database\Eloquent\SoftDeletingTrait;
 // use Cviebrock\EloquentSluggable\SluggableInterface;
 // use Cviebrock\EloquentSluggable\SluggableTrait;
 
@@ -14,7 +14,7 @@ class Question extends Eloquent
         'content',
         'config',
     ];
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
     public function author()
     {

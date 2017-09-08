@@ -38,7 +38,11 @@ class LessionController extends AdminController {
 	public function store()
 	{
         $input = Input::except(['_token']);
-        $input['config'] = json_encode($input['config']);
+        // if( !empty($input['config']) ){
+        // 	$config = CommonConfig::get($input['config']);
+        // 	$config['config_name'] = $input['config'];
+        // 	$input['config'] = json_encode(array_except($config, ['name', '_method', 'description']));
+        // }
         $input['author_id'] = Auth::admin()->get()->id;
         // dd($input);
 
@@ -46,7 +50,7 @@ class LessionController extends AdminController {
 
     	//// Get query input to array
 		$question_input = [];
-        if($input['question']){
+        if( !empty($input['question']) ){
     		foreach ($input['question'] as $key => $value) {
     			foreach ($value as $key2 => $value2) {
     				$question_input[$key2][$key] = $value2;
@@ -65,7 +69,7 @@ class LessionController extends AdminController {
 
     	//// Get question_config input to array
 		$question_config = [];
-        if($input['question_config']){
+        if( !empty($input['question_config']) ){
     		foreach ($input['question_config'] as $key => $value) {
     			foreach ($value as $key2 => $value2) {
     				$question_config[$key2][$key] = $value2;
@@ -129,13 +133,18 @@ class LessionController extends AdminController {
 	{
 
         $input = Input::except('_token');
-        $input['config'] = json_encode($input['config']);
+        // if( !empty($input['config']) ){
+        // 	$config = CommonConfig::get($input['config']);
+        // 	$config['config_name'] = $input['config'];
+        // 	$input['config'] = json_encode(array_except($config, ['name', '_method', 'description']));
+        // }
+        // dd($input);
 
     	CommonNormal::update($id, $input);
 
     	//// Get Question infomations -> fetch array
 		$question_input = [];
-        if($input['question']){
+        if( !empty($input['question']) ){
     		foreach ($input['question'] as $key => $value) {
     			foreach ($value as $key2 => $value2) {
     				$question_input[$key2][$key] = $value2;
@@ -144,7 +153,7 @@ class LessionController extends AdminController {
         }
 
         /////// Get Question config -> fetch array
-        if($input['question_config']){
+        if( !empty($input['question_config']) ){
     		foreach ($input['question_config'] as $name => $config) {
     			foreach ($config as $key => $value) {
     				$question_input[$key]['config'][$name] = $value;

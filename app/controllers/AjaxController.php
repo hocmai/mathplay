@@ -19,11 +19,18 @@ class AjaxController extends BaseController {
 	 * Delete question of a lession
 	 */
 	public function deleteQuestion(){
-		if (Auth::admin()->guest()){
+		if (Auth::admin()->guest() | !Request::ajax()){
 			App::abort(403);
 		}
 		$input = Input::all();
-		return Response::json(Request::ajax());
+		try {
+			LessionQuestion::where('lession_id', '=', $input['lession_id'])->where('qid', '=', $input['qid'])->delete();
+			CommonNormal::delete($input['qid'], 'Question');
+		} catch (Exception $e) {
+			return Response::json($e);
+		}
+
+		return Response::json(true);
 	}
 
 	/**

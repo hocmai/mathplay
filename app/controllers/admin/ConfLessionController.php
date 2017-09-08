@@ -8,7 +8,8 @@ class ConfLessionController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = CommonConfig::getCollection('lession');
+		$data = CommonConfig::collect('lession');
+		// dd($data[0]->name);
 		return View::make('admin.lession.config')->with(compact('data'));
 	}
 
@@ -20,7 +21,7 @@ class ConfLessionController extends AdminController {
 	 */
 	public function create()
 	{
-		//
+		return View::make('admin.lession.add_config');
 	}
 
 
@@ -31,7 +32,15 @@ class ConfLessionController extends AdminController {
 	 */
 	public function store()
 	{
-		//
+		$input = Input::except(['_token', '_method']);
+		foreach ($input as $key => $value) {
+			if( is_string($value) ){
+				$input[$key] = trim($value);
+			}
+		}
+		CommonConfig::set('lession', 'lession.config.'.Str::slug($input['name'], '_'), $input);
+		return Redirect::action('ConfLessionController@index');
+		// dd($input);
 	}
 
 
@@ -43,7 +52,7 @@ class ConfLessionController extends AdminController {
 	 */
 	public function show($id)
 	{
-		//
+		
 	}
 
 
@@ -53,9 +62,15 @@ class ConfLessionController extends AdminController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function edit($id)
+	public function edit($name)
 	{
-		//
+		$data = ConfigModel::where('name', '=', $name)->get()->first();
+		$config = CommonConfig::get($name);
+		if(!$config | !$data){
+			App::abort(404);
+		}
+		// dd($config);
+		return View::make('admin.lession.add_config')->with(compact('config', 'data'));
 	}
 
 
@@ -67,7 +82,14 @@ class ConfLessionController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except(['_token', '_method']);
+		foreach ($input as $key => $value) {
+			if( is_string($value) ){
+				$input[$key] = trim($value);
+			}
+		}
+		CommonConfig::set('lession', 'lession.config.'.Str::slug($input['name'], '_'), $input);
+		return Redirect::action('ConfLessionController@index');
 	}
 
 
@@ -77,9 +99,10 @@ class ConfLessionController extends AdminController {
 	 * @param  int  $id
 	 * @return Response
 	 */
-	public function destroy($id)
+	public function destroy($name)
 	{
-		//
+		ConfigModel::where('name', '=', $name)->delete();
+		return Redirect::action('ConfLessionController@index');
 	}
 
 

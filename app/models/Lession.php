@@ -1,11 +1,11 @@
 <?php
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+// use Illuminate\Database\Eloquent\SoftDeletingTrait;
 use Cviebrock\EloquentSluggable\SluggableInterface;
 use Cviebrock\EloquentSluggable\SluggableTrait;
 
 class Lession extends Eloquent implements SluggableInterface
 {
-    use SoftDeletingTrait;
+    // use SoftDeletingTrait;
     use SluggableTrait;
     protected $table = 'lessions';
     protected $fillable = [
@@ -18,7 +18,7 @@ class Lession extends Eloquent implements SluggableInterface
         'description',
         'config',
     ];
-    protected $dates = ['deleted_at'];
+    // protected $dates = ['deleted_at'];
 
     protected $sluggable = array(
         'build_from' => 'title',

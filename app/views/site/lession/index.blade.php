@@ -9,7 +9,7 @@
 {{ HTML::script('frontend/js/question_script.js') }}
 @stop
 
-<?php $config = (array)json_decode($lession->config); ?>
+<?php $config = CommonConfig::get($lession->config); ?>
 
 <!-- Get style and script for each question type -->
 <?php
@@ -110,7 +110,7 @@ foreach (glob('app/services/questions/*.php') as $file)
                             $history = Common::getLessionHistory($lession);
                             $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question) ) ? $history->current_question : 1;
                             $current_score = (!empty($history) && $history->status != 1 && !empty($history->score) ) ? $history->score : 0;
-                            // dd($current_ques);
+
                             ?>
 
                             {{ CommonQuestion::renderLession($lession, $history) }}
@@ -186,7 +186,7 @@ foreach (glob('app/services/questions/*.php') as $file)
                             <p class="diem">
                                 <span class="span1 your-score">{{ $current_score }}</span> <br/>
                                 trên tổng số <br/>
-                                <span class="span2 max-score">{{ !empty($config['score_limit']) ? $config['score_limit'] : 100 }}</span>
+                                <span class="span2 max-score">{{ !empty($config['max_score']) ? $config['max_score'] : 100 }}</span>
                             </p>
                         </div>
                         <div class="box-s-2">
