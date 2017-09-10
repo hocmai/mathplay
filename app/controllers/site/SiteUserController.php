@@ -6,6 +6,10 @@ class SiteUserController extends SiteController {
 	 * Hoc mai OAuth2
 	 */
 	public function hocmaiOAuth2(){
+		return '
+			<script>window.opener.hocmaiOAuth.oauthCallback(window.location.href);
+    		window.close();</script>';
+    		
 		$ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
 
 		// get access token from authorize code
@@ -20,6 +24,7 @@ class SiteUserController extends SiteController {
 		        echo 'Error: authorize code is invalid';
 		    } else {    
 		        $res = $ssoLib->getResource($accessToken);
+		        dd($res);
 		    }
 		}
 	}

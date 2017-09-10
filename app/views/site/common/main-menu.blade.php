@@ -1,4 +1,7 @@
-<?php $grades = Grade::all(); ?>
+<?php $grades = Grade::all();
+$ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
+
+?>
 
 <div class="menu-mobile header-content clearfix hidden-lg">
     <a class="logo" href="#" title="">
@@ -7,10 +10,10 @@
     <div id="button" class="button"></div>
     <ul class="header-menu-left no-list-style">
         <li>
-            <a class="dang-nhap hvr-shadow" data-toggle="modal" data-target="/user/login" href="#" title="">Đăng nhập <span class="fa fa-key"></span></a>
+            <a class="dang-nhap hvr-shadow hocmai-oauth-login" data-toggle="modal" data-target="/user/login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng nhập <span class="fa fa-key"></span></a>
         </li>
         <li>
-            <a class="dang-ky hvr-shadow" data-toggle="modal" data-target="/user/register" href="#" title="">Đăng ký <span class="fa fa-lock"></span></a>
+            <a class="dang-ky hvr-shadow hocmai-oauth-login" data-toggle="modal" data-target="/user/register" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng ký <span class="fa fa-lock"></span></a>
         </li>
 
         <li><a href="index.php" title="Trang chủ">Trang chủ</a></li>
@@ -57,8 +60,8 @@
                 </div>
             @else
             
-                <a class="dang-ky hvr-shadow" href="{{ route('user.register') }}" title="">Đăng ký</a>
-                <a class="dang-nhap hvr-shadow" href="{{ route('user.login') }}" title="">Đăng nhập</a>
+                <a class="dang-ky hvr-shadow hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng ký</a>
+                <a class="dang-nhap hvr-shadow hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng nhập</a>
             @endif
         </div>
     </div>
