@@ -50,9 +50,7 @@ var hocmaiOAuth = (function () {
      * OAuth workflow.
      */
     function oauthCallback(url) {
-        // Parse the OAuth data received from Facebook
-        var queryString = ,
-            obj;
+        
     	if (loginCallback) loginCallback(parseQueryString(url));
         loginProcessed = true;
         // if (url.indexOf("access_token=") > 0) {
