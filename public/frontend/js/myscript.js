@@ -37,6 +37,9 @@ var hocmaiOAuth = (function () {
 	        //
 	    }
 
+        loginCallback = callback;
+        loginProcessed = false;
+        
 		loginWindow = window.open(href, '_blank', 'location=no,clearcache=yes,width='+width+',height='+height+',top='+top+',left='+left);
 		return false;
 	}
@@ -52,7 +55,7 @@ var hocmaiOAuth = (function () {
         // Parse the OAuth data received from Facebook
         var queryString,
             obj;
-    	loginCallback(parseQueryString(queryString));
+    	if (loginCallback) loginCallback(parseQueryString(queryString));
         loginProcessed = true;
         // if (url.indexOf("access_token=") > 0) {
         //     queryString = url.substr(url.indexOf('#') + 1);
