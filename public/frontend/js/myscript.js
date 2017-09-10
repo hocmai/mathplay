@@ -24,8 +24,6 @@ var hocmaiOAuth = (function () {
 		left = w_width/2 - (width/2),
 		href = jQuery(link).attr('href');
 
-		console.log(width, height, href);
-
 		if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|WindowPhone|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
 			width = w_width;
 			height = w_height;
@@ -39,7 +37,7 @@ var hocmaiOAuth = (function () {
 
         loginCallback = callback;
         loginProcessed = false;
-        
+
 		loginWindow = window.open(href, '_blank', 'location=no,clearcache=yes,width='+width+',height='+height+',top='+top+',left='+left);
 		return false;
 	}
@@ -53,9 +51,9 @@ var hocmaiOAuth = (function () {
      */
     function oauthCallback(url) {
         // Parse the OAuth data received from Facebook
-        var queryString,
+        var queryString = ,
             obj;
-    	if (loginCallback) loginCallback(parseQueryString(queryString));
+    	if (loginCallback) loginCallback(parseQueryString(url));
         loginProcessed = true;
         // if (url.indexOf("access_token=") > 0) {
         //     queryString = url.substr(url.indexOf('#') + 1);
