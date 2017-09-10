@@ -59,9 +59,19 @@ class CommonConfig
 			}
 			ConfigModel::where('name', '=', $name)->where('collection', '=', $collection)->update(['data' => json_encode($data, JSON_UNESCAPED_UNICODE )]);
 		} else{
-			///// Create if exists
+			///// Create if no exists
 			ConfigModel::create(['name' => $name, 'collection' => $collection, 'data' => json_encode($value, JSON_UNESCAPED_UNICODE )]);
 		}
+	}
+
+	/**
+	* {@inheritdoc}
+	* Set data for config by name
+	*/
+	public static function delete($collection = '', $name){
+		ConfigModel::where('collection', '=', $collection)
+			->where('name', '=', $name)
+			->delete();
 	}
 
 }

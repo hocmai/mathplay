@@ -36,7 +36,7 @@
 				</tr>
 				@foreach($data as $key => $value)
 				<tr>
-				  <td>#{{ $key + 1 }}</td>
+				  <td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }}</td>
 				  <td>{{ $value->title }}</td>
 				  <td><a href="{{ action('GradeController@edit', ['id' => Common::getValueOfObject($value, 'grade', 'id')]) }}">{{ Common::getValueOfObject($value, 'grade', 'title') }}</a></td>
 				  <td>{{ $value->description }}</td>

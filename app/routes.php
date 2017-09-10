@@ -15,6 +15,7 @@ Route::get('/', 'SiteIndexController@index');
 Route::resource('user', 'SiteUserController');
 
 Route::get('/login', array('uses' => 'SiteUserController@loginForm', 'as' => 'user.login'));
+Route::get('/sso/index.php', array('uses' => 'SiteUserController@hocmaiOAuth2', 'as' => 'user.hocmaiOAuth2'));
 Route::get('/register', array('uses' => 'SiteUserController@registerForm', 'as' => 'user.register'));
 Route::get('/logout', array('uses' => 'SiteUserController@logout', 'as' => 'user.logout'));
 
@@ -54,6 +55,10 @@ Route::group(['prefix' => 'admin'], function () {
 	 	Route::resource('/grade', 'GradeController');
 	 	Route::resource('/subject', 'SubjectController');
 	 	Route::resource('/chapter', 'ChapterController');
+	 	
+	 	Route::get('/lession/question-type/refresh', ['uses' => 'QuestionTypeController@refresh', 'as' => 'QuestionTypeRefresh']);
+	 	Route::get('/lession/question-type/{type}/edit', ['uses' => 'QuestionTypeController@edit', 'as' => 'QuestionTypeEdit']);
+	 	Route::post('/lession/question-type/{type}/update', ['uses' => 'QuestionTypeController@update', 'as' => 'QuestionTypeUpdate']);
 	 	Route::resource('/lession/config', 'ConfLessionController');
 	 	Route::resource('/lession/question-type', 'QuestionTypeController');
 	 	Route::resource('/lession', 'LessionController');

@@ -13,9 +13,73 @@ class QuestionTypeController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Lession::orderBy('weight', 'asc')->paginate(PAGINATE);
+		$data = ConfigModel::where('collection', '=', 'question_type')->paginate(30);
+		// $data = Lession::orderBy('weight', 'asc')->paginate(15);
 		// dd($data);
-		return View::make('admin.lession.index')->with(compact('data'));
+		return View::make('admin.lession.question_type')->with(compact('data'));
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function refresh()
+	{
+		$getType = CommonQuestion::getAllType();
+		foreach ($getType as $key => $value) {
+			$config = CommonConfig::get('question_type.config.'.$key);
+			if(!$config){
+				CommonConfig::set('question_type', 'question_type.config.'.$key, [
+					'name' => $value,
+					'key' => $key,
+				]);
+			}
+		}
+		// dd(CommonConfig::collect('question_type'));
+		return Redirect::action('QuestionTypeController@index');
+	}
+
+
+	/**
+	 * Show the form for editing the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function edit($type)
+	{
+		$data = ConfigModel::where('collection', '=', 'question_type')
+			->where('name', '=', 'question_type.config.'.$type)
+			->firstOrFail();;
+        return View::make('admin.lession.question_type_edit', array('data'=>$data));
+	}
+
+
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	/**
+	 * Update the specified resource in storage.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function update($type)
+	{
+        $input = Input::except('_token');
+        $config = ['description' => $input['description']];
+        if (Input::hasFile('image')){
+        	$path = '/questions/'. str_replace('question_type.config.', '', $type).'/img';
+        	$file = Input::file('image');
+		    $file->move( public_path().$path, $file->getClientOriginalName());
+        	$config['image'] = $path.'/'.$file->getClientOriginalName();
+		}
+        CommonConfig::set('question_type', $type, $config);
+    	return Redirect::action('QuestionTypeController@index');
 	}
 
 
@@ -53,39 +117,6 @@ class QuestionTypeController extends AdminController {
 	public function show($id)
 	{
 		//
-	}
-
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		$data = Lession::find($id);
-        return View::make('admin.lession.edit', array('lession'=>$data));
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-        $input = Input::except('_token');
-    	CommonNormal::update($id, $input);
-    	return Redirect::action('QuestionTypeController@index');
 	}
 
 

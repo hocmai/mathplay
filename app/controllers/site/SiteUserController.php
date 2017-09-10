@@ -2,7 +2,27 @@
 
 class SiteUserController extends SiteController {
 
-	
+	/**
+	 * Hoc mai OAuth2
+	 */
+	public function hocmaiOAuth2(){
+		$ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
+
+		// get access token from authorize code
+		$authCode = $ssoLib->getAuthorizeCode();
+
+		if (!$authCode) {
+		    print '<a href="'.$ssoLib->getAuthorizeUri().'">Đăng nhập bằng tài khoản HOCMAI</a>';
+
+		} else {
+		    $accessToken = $ssoLib->getAccessToken();
+		    if (!$accessToken) {
+		        echo 'Error: authorize code is invalid';
+		    } else {    
+		        $res = $ssoLib->getResource($accessToken);
+		    }
+		}
+	}
 
 	/**
 	 * Show User login form

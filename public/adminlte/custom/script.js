@@ -6,6 +6,26 @@ $(window).on('load', function(e) {
 $(document).ready(function(){
 	console.log('Myscript loaded');
 
+	/////// Upload image preview
+	function readURL(input) {
+    	$(input).parent().find('>.preview').remove();
+    	if (input.files && input.files[0]) {
+	        var reader = new FileReader();
+	        reader.onload = function (e) {
+	        	$(input).parent().append('<div class="preview"><img src="'+e.target.result+'" width="100"/></div>');
+	        	// console.log(e.target.result);
+	        	// $(input).parent().find('.preview').
+	            // $('#blah').attr('src', e.target.result);
+	        }
+	        reader.readAsDataURL(input.files[0]);
+	    }
+	}
+
+	$('input[type="file"][preview]').change(function(){
+	    readURL(this);
+	    console.log('test');
+	});
+
 	///// Add multi questions
 	$('.form-add-question').on('click', 'button.add-new-question', function(){
 		var form = $(this).parents('.box.box-primary').find('.question-template-form'),

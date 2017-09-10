@@ -11,7 +11,7 @@ define('EDITOR', 2);
 define('SEO', 3);
 
 //pagination manager admin
-define('PAGINATE', 10);
+define('PAGINATE', 15);
 //pagination frontend
 define('FRONENDPAGINATE', 15);
 //url upload img
@@ -83,4 +83,9 @@ define('IMAGE_BOTTOM', 3);
 //language
 // define('LANG_VI', 'vi');
 // define('LANG_EN', 'en');
+
+define('CLIENT_ID', '4UMMmM26a43SZL8nPFDcz3DM7YpFxGyh');
+define('CLIENT_SECRET', 'fmHCxaFZQsRfaAgeZj2ctUpPULCP3k4T');
+define('CLIENT_REDIRECT_URI', 'http://tieuhoc.hocmai.vn/sso/index.php');
+
 define('SOSANH', 'SoSanh2HinhAnh');
