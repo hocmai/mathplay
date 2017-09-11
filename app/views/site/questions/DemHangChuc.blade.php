@@ -3,9 +3,9 @@ $min = (!empty($config['min_value']) && $config['min_value'] >= 10) ? $config['m
 $max = !empty($config['max_value']) ? $config['max_value'] : 100;
 $answer = floor(rand($min, $max)/10);
 
-$image = !empty($config['image_data']) ? $config['image_data'] : 'rand';
+$image_data = DemHangChuc::getImageData()['data'];
+$image = !empty($config['image_data']) ? $image_data[$config['image_data']] : 'rand';
 if( $image == 'rand' ){
-	$image_data = DemHangChuc::getImageData()['data'];
 	$image = $image_data[array_rand($image_data)];
 }
 

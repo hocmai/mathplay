@@ -25,6 +25,11 @@ class SiteGradeController extends SiteController {
 		if(!$data){
 			App::abort(404);
 		}
+
+		if( !Auth::admin()->check() && $data->status == 0 ){
+			App::abort(403);
+		}
+
 		$chapters = [];
 		if( $data->subject()->count() && $data->subject()->first()->chapter()->count() ){
 			$chapters = $data->subject()->first()->chapter()->orderBy('weight', 'asc')->get();

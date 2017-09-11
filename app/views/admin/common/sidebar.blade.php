@@ -24,7 +24,7 @@
 					<li class="">
 						<a href="{{ action('GradeController@index') }}"><i class="fa fa-graduation-cap"></i> Quản lý lớp học<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
 						<ul class="">
-							<li><a href="#"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
+							<li><a href="{{ action('GradeController@create') }}"><i class="fa fa-plus-square"></i> Thêm mới</a></li>
 						</ul>
 					</li>
 					<li class="">

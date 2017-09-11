@@ -31,6 +31,7 @@ Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/getquestionformconfig',array('as'=>'getquestionformconfig','uses'=>'AjaxController@getQuestionConfigForm'));
 	Route::post('/updatestudyhistory',array('as'=>'updatestudyhistory','uses'=>'AjaxController@updateStudyHistory'));
 	Route::delete('/delete/question',array('as'=>'deletequestion','uses'=>'AjaxController@deleteQuestion'));
+	Route::post('/oauthcallback',array('as'=>'oauthcallback','uses'=>'AjaxController@oauthCallback'));
 });
 
 ///////////////// Admin page //////////////////
@@ -111,30 +112,24 @@ Route::group(['prefix' => 'admin'], function () {
 // 	}
 // );
 
-App::missing( function($exception)
-{
-    return View::make('errors.404');
-});
 
 App::error( function(Exception $exception, $code){
 	$pathInfo = Request::getPathInfo();
     $message = $exception->getMessage() ?: 'Exception';
     Log::error("$code - $message @ $pathInfo\r\n$exception");
 
-    if (Config::get('app.debug')) {
-        return;
-    }
-
     switch ($code)
     {
-        // case 403:
-        //     return Response::view( 'error/403', compact('message'), 403);
+        case 403:
+            return View::make('errors.404', array('code' => 403, 'message' => 'Quyền truy cập bị từ chối!'));
 
-        // case 500:
-            // return Response::view('error/500', compact('message'), 500);
+        case 404:
+            return View::make('errors.404', array('code' => 404, 'message' => 'Trang không tìm thấy!'));
 
         default:
-            return View::make('errors.404');
+		    if (Config::get('app.debug')) {
+		        return;
+		    }
     }
 });
 

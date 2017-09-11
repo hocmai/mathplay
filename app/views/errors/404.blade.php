@@ -9,7 +9,7 @@ if( $now > 17 | $now < 6 ) $day = false;
     <head>
         <!--[if lt IE 9]>
     <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
-        <title>404 Page</title>
+        <title>{{ $code or '404' }} Page</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
       
 
@@ -41,8 +41,10 @@ if( $now > 17 | $now < 6 ) $day = false;
                  <div class="balloon init">
                 <div class="text">
                     <h2>Tin xấu!!</h2>
-                    <h3>Trang không tìm thấy!</h3>
-                    <h4>LỖI 404</h4>
+                    <h3>
+                        {{ $message }}
+                    </h3>
+                    <h4>LỖI {{ $code or 'unknow' }}</h4>
                 </div>
             </div>
             </div>
@@ -57,7 +59,7 @@ if( $now > 17 | $now < 6 ) $day = false;
                     <div class="text">
                         <h2>Tin xấu!!</h2>
                         <h3>Trang không tìm thấy!</h3>
-                        <h4>LỖI 404</h4>
+                        <h4>LỖI {{ $code or '404' }}</h4>
                     </div>
                 </div>
                 </div>

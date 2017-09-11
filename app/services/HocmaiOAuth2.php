@@ -31,14 +31,14 @@ class HocmaiOAuth2 {
     }
 
     // if app is not authorized, get access token form authorization_code
-    function getAccessToken() {
+    function getAccessToken($code = '') {
         // define client information
         $fields = array(
             'client_id'     => $this->CLIENT_ID,
             'client_secret' => $this->CLIENT_SECRET,
             'redirect_uri'  => $this->CLIENT_REDIRECT_URI,
             'grant_type'    => 'authorization_code',
-            'code'          => $this->getAuthorizeCode()
+            'code'          => !empty($code) ? $code : $this->getAuthorizeCode()
         );
         // submit authorize code to token endpoint
         $curl = curl_init();
@@ -49,7 +49,6 @@ class HocmaiOAuth2 {
 
         $result = curl_exec($curl);
         curl_close($curl);
-
         // get access token
         $token          = json_decode($result);
         $accessToken    = isset($token->access_token) ? $token->access_token : NULL;

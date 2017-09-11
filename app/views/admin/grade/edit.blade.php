@@ -22,12 +22,12 @@
 			{{ Form::open(array('action' => array('GradeController@update', $data->grade_id), 'method' => 'PUT')) }}
 				<div class="box-body">
 					<div class="form-group">
-						{{ Form::label('title', 'Tiêu đề', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
+						{{ Form::label('title', 'Tiêu đề', ['class' => 'row col-sm-6', 'required' => true]) }}<div class="clearfix"></div>
 						<div class="row col-sm-6">{{ Form::text('title', $data->title, ['class' => 'form-control', 'size' => 60]) }}</div><div class="clearfix"></div>
 					</div>
 					<div class="form-group">
 						{{ Form::label('description', 'Mô tả', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
-						<div class="row col-sm-6">{{ Form::textarea('description', $data->description, ['class' => 'form-control', 'row' => 10]) }}</div><div class="clearfix"></div>
+						<div class="row col-sm-6">{{ Form::textarea('description', $data->description, ['class' => 'form-control', 'row' => 10, 'required' => true]) }}</div><div class="clearfix"></div>
 					</div>
 					<div class="form-group">
 						{{ Form::label('status', 'trạng thái', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>

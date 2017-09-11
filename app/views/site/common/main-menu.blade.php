@@ -25,7 +25,9 @@ $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
             <ul>
                 @foreach($grades as $grade)
                     <li>
-                        {{ link_to_action('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
+                        @if(Auth::admin()->check() | $grade->status == 1)
+                            {{ link_to_action('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
+                        @endif
                     </li>
                 @endforeach
             </ul>
@@ -87,7 +89,9 @@ $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
                             <ul>
                                 @foreach($grades as $grade)
                                     <li>
-                                        {{ link_to_action('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
+                                        @if(Auth::admin()->check() | $grade->status == 1)
+                                            {{ link_to_action('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
+                                        @endif
                                     </li>
                                 @endforeach
                                 <li class="bg-color"></li>
