@@ -15,6 +15,42 @@ class AjaxController extends BaseController {
 	|
 	*/
 
+
+	/**
+	 * Hoc mai oauthCallback ajax
+	 **/
+	public function oauthCallback(){
+		$input = Input::all();
+		// return Response::Json(Input::all());
+		$messages = ['message' => 'Đăng nhập không thành công! Có thể tài khoản đang bị tạm khóa, hãy liên hệ với quản trị viên để được hỗ trợ', 'status' => 'error'];
+
+		if( Auth::user()->check() ){
+			$messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
+		}
+		elseif( $input['success'] ){
+			if( isset($input['email'], $input['username']) ){
+				$checkUserExists = User::where('email', '=', $input['email'])
+					->where('username', '=', $input['username'])
+					->where('status', '=', 1)->first();
+				$uid = Common::getObject($checkUserExists, 'id');
+				if( empty($uid) ){
+					// Neu chua ton tai thi dang ky tai khoan moi
+					$user = User::create([
+						'username' => $input['username'],
+						'email' => $input['email'],
+					]);
+					$uid = Common::getObject($user, 'id');
+				}
+				if(Auth::user()->loginUsingId($uid, true)){
+					$messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
+				}
+			}
+		}
+		// return '';
+		return Response::json($messages);
+	}
+
+
 	/**
 	 * Delete question of a lession
 	 */

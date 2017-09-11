@@ -1,7 +1,32 @@
 $(document).ready(function(){
 	$('.hocmai-oauth-login').on('click', function(event){
 		hocmaiOAuth.login(this, function(response){
-			console.log(response);
+            $('body>.loading').remove();
+            var response = JSON.parse(response);
+            if( typeof response.success != 'undefined'  ){
+                $('body').append('<div class="loading"><span>Đang đăng nhập bằng tài khoản HocMai...</span></div>');
+                $.ajax({
+                    url: '/ajax/oauthcallback',
+                    method: 'POST',
+                    data: response,
+                    success: function(data){
+                        $('body>.loading').html('<span>'+data.message+'</span>');
+                        window.setTimeout(function(){
+                            if( typeof data.status != 'undefined' && data.status == 'success' ){
+                                window.location.href = '';
+                            } else{
+                                $('body>.loading').hide('normal');
+                            }
+                        }, 800)
+                    },
+                    error: function(error) {
+                        $('body>.loading').html('<span>Xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại</span>');
+                        window.setTimeout(function(){
+                            $('body>.loading').hide('normal');
+                        }, 800)
+                    },
+                });
+            }
 		});
 		return false;
 	})
@@ -31,10 +56,6 @@ var hocmaiOAuth = (function () {
 			left = 0;
 		}
 
-		function loginWindow_loadStartHandler(event) {
-	        //
-	    }
-
         loginCallback = callback;
         loginProcessed = false;
 
@@ -49,44 +70,14 @@ var hocmaiOAuth = (function () {
      * @param url - The oautchRedictURL called by Facebook with the access_token in the querystring at the ned of the
      * OAuth workflow.
      */
-    function oauthCallback(url) {
-        
-    	if (loginCallback) loginCallback(parseQueryString(url));
-        loginProcessed = true;
-        // if (url.indexOf("access_token=") > 0) {
-        //     queryString = url.substr(url.indexOf('#') + 1);
-        //     obj = parseQueryString(queryString);
-        //     tokenStore.fbAccessToken = obj['access_token'];
-        //     if (loginCallback) loginCallback({status: 'connected', authResponse: {accessToken: obj['access_token']}});
-        // } else if (url.indexOf("error=") > 0) {
-        //     queryString = url.substring(url.indexOf('?') + 1, url.indexOf('#'));
-        //     obj = parseQueryString(queryString);
-        //     if (loginCallback) loginCallback({status: 'not_authorized', error: obj.error});
-        // } else {
-        //     if (loginCallback) loginCallback({status: 'not_authorized'});
-        // }
-    }
-
-    function parseQueryString(queryString) {
-        var qs = decodeURIComponent(queryString),
-            obj = {},
-            params = qs.split('&');
-        params.forEach(function (param) {
-            var splitter = param.split('=');
-            obj[splitter[0]] = splitter[1];
-        });
-        return obj;
+    function oauthCallback(messages) {
+    	if (loginCallback) loginCallback(messages);
     }
 
 	// The public API
     return {
-        // init: init,
         login: login,
-        // logout: logout,
-        // revokePermissions: revokePermissions,
-        // api: api,
         oauthCallback: oauthCallback,
-        // getLoginStatus: getLoginStatus
     }
 
 }());

@@ -89,9 +89,9 @@ foreach (glob('app/services/questions/*.php') as $file)
                     </div>
                 </div>
             @else
-            
-                <a class="dang-ky hvr-shadow" href="{{ action('SiteUserController@registerForm') }}" title="">Đăng ký</a>
-                <a class="dang-nhap hvr-shadow" href="{{ action('SiteUserController@loginForm') }}" title="">Đăng nhập</a>
+                <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI); ?>
+                <a class="dang-ky hvr-shadow hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng ký</a>
+                <a class="dang-nhap hvr-shadow hocmai-oauth-logins" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng nhập</a>
             @endif
         </div>
     </div>

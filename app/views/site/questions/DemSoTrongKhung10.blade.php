@@ -11,12 +11,13 @@
 	$countType = !empty($config['count_type']) ? $config['count_type'] : $countType[array_rand($countType)];
 	
 	if( $countType == 'dem-o-con-thieu' ){
-		$max = 9;
+		$max = ($max <= 10) ? $max : 9;
 	}
 	if( $countType == 'dem-hinh-anh' ){
 		$img_data = DemSoTrongKhung10::getImageData()['data'];
-		$select_img = !empty($config['select_img']) ? $img_data[$config['select_img']] : $img_data[array_rand($img_data)];
-		$max = 10;
+		$img_rand = array_rand($img_data);
+		$select_img = !empty($config['select_img']) ? $img_data[$config['select_img']] : $img_data[$img_rand];
+		$max = ($max <= 10) ? $max : 10;
 	}
 	if( $max > 10 ){
 		$answertype = 'dien-dap-an';
@@ -29,12 +30,22 @@
 	$rand_shape = array_rand($shape);
 ?>
 <div class="start">
-	{{ $question->title }}
+	@if( empty($config['count_type']) )
+		@if( $countType == 'dem-o-trong-khung' )
+			Đếm số hình có trong khung
+		@elseif( $countType == 'dem-o-con-thieu' )
+			Đếm số ô trống trong khung dưới đây
+		@else
+			Có bao nhiêu {{ DemSoTrongKhung10::getImageData()['list'][$img_rand] }}?
+		@endif
+	@else
+		{{ $question->title }}
+	@endif
 </div>
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form '.$answertype, 'id' => 'question-'.$question->id]) }}
-		<input type="hidden" name="true_answer" value="{{ ($countType == 'dem-o-trong-khung' | $countType == 'dem-hinh-anh') ? $answer : 10 - $answer }}" />
+		<input type="hidden" name="true_answer" value="{{ $answer }}" />
 		<input type="hidden" name="qid" value="{{ $question->id }}" />
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
@@ -67,25 +78,33 @@
 					</table>
 				@endfor
 
-			@if( $answer % 10 > 0 )
-				<table class="frame pull-left" style="margin: 10px">
-					<tr>
-						@for($i = 1; $i <= 5; $i++)
-							<td style="border: 5px solid #bee8fb; padding: 10px">
-								<div class="{{ ($i <= $answer % 10 ) ? $shape[$rand_shape] : (($countType == 'dem-o-con-thieu') ? 'unknown ' : '').'shape-none' }}"></div>
-							</td>
-						@endfor
-					</tr>
-					<tr>
-						@for($i = 6; $i <= 10; $i++)
-							<td style="border: 5px solid #bee8fb; padding: 10px">
-								<div class="{{ ($i <= $answer % 10 ) ? $shape[$rand_shape] : (($countType == 'dem-o-con-thieu') ? 'unknown ' : '').'shape-none' }}"></div>
-							</td>
-						@endfor
-					</tr>
-				</table>
+				@if( $answer % 10 > 0 )
+					<table class="frame pull-left" style="margin: 10px">
+						<tr>
+							@for($i = 1; $i <= 5; $i++)
+								<td style="border: 5px solid #bee8fb; padding: 10px">
+									@if( $countType == 'dem-o-con-thieu' )
+										<div class="{{ ($i <= (10 - $answer) % 10 ) ? $shape[$rand_shape] : 'unknown shape-none' }}"></div>
+									@else
+										<div class="{{ ($i <= $answer % 10 ) ? $shape[$rand_shape] : 'shape-none' }}"></div>
+									@endif
+								</td>
+							@endfor
+						</tr>
+						<tr>
+							@for($i = 6; $i <= 10; $i++)
+								<td style="border: 5px solid #bee8fb; padding: 10px">
+									@if( $countType == 'dem-o-con-thieu' )
+										<div class="{{ ($i <= (10 - $answer) % 10 ) ? $shape[$rand_shape] : 'unknown shape-none' }}"></div>
+									@else
+										<div class="{{ ($i <= $answer % 10 ) ? $shape[$rand_shape] : 'shape-none' }}"></div>
+									@endif
+								</td>
+							@endfor
+						</tr>
+					</table>
 
-			@endif
+				@endif
 				<style type="text/css">
 					.unknown.shape-none::before{content: "?";line-height: 50px;font-size: 35px;font-weight: 600;color: #ddd;}
 					.shape-none{width: 50px; height: 50px;}
