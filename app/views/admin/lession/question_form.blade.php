@@ -42,7 +42,7 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 			</div>
 			<div class="form-group">
 				<label>Nội dung</label>
-				{{ Form::textarea('question[content][]', Common::getObject($question, 'description'), ['class' => 'form-control', 'rows' => 5]) }}
+				{{ Form::textarea('question[content][]', Common::getObject($question, 'content'), ['class' => 'form-control', 'rows' => 5]) }}
 			</div>
 			<div class="form-group">
 				<label>Dạng câu hỏi</label>

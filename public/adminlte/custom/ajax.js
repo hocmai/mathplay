@@ -14,6 +14,7 @@ $(document).ready(function(){
 				//dataType:'json',
 				cache:false,
 				success:function(data){
+					console.log(data);
 					_this.parents('form').find('#get-config-form').empty().append(data);
 				}
 			});

@@ -1,7 +1,5 @@
 <?php
-$min = !empty($config['min_value']) ? $config['min_value'] : 1;
-$max = !empty($config['max_value']) ? $config['max_value'] : 100;
-$answer = rand($min, $max);
+$answer = !empty($config['answer']) ? $config['answer'] : 100;
 ?>
 
 <div class="start">
@@ -16,14 +14,14 @@ $answer = rand($min, $max);
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
 		
 		<div class="form-group number-line">
-			<div class="content inline-block">
-				
+			<div class="content text-left">
+				{{ Common::getObject($question, 'content') }}
 			</div>
 		</div>
 		
 		<div class="form-group inline-block">
 			<div class="col-sm-12">
-				{{ Form::number('answer', '', ['class' => 'form-control', 'required' => true]) }}
+				{{ Form::text('answer', '', ['class' => 'form-control', 'required' => true]) }}
 			</div>
 		</div>
 		

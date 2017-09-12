@@ -1,5 +1,5 @@
 <?php
-Class CommonQuestion implements QuestionInterface{
+Class CommonQuestion {
 
 	public static function getAllType(){
 		return [
@@ -33,10 +33,15 @@ Class CommonQuestion implements QuestionInterface{
 	 * Get config form
 	 **/
 	public static function getConfigForm($type = null, $config = null){
-		if( !self::callServiceByType($type, 'getConfigForm', ['', $config]) ){
-			return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
+		if (View::exists('site.questions_form.'.$type)) {
+			return View::make('site.questions_form.'.$type, ['config' => $config])->render();
 		}
-		return self::callServiceByType($type, 'getConfigForm', ['', $config]);
+		return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
+
+		// if( !self::callServiceByType($type, 'getConfigForm', ['', $config]) ){
+		// 	return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
+		// }
+		// return self::callServiceByType($type, 'getConfigForm', ['', $config]);
 	}
 
 
@@ -51,8 +56,9 @@ Class CommonQuestion implements QuestionInterface{
 		$max_score = !empty($lession_conf['max_score']) ? $lession_conf['max_score'] : 100;
 		$score = floor($max_score/20);
 		$data_history = ['grade_id' => $lession->chapter->subject->grade->id, 'subject_id' => $lession->chapter->subject->id, 'chapter_id' => $lession->chapter->id, 'lession_id' => $lession->id, 'author' => Common::getObject(Auth::user()->get(), 'id')];
-
 		$question_order = [];
+
+		//////// kiem tra thu tu cac cau hoi va sap xep dung vi tri nhu config, 1 cau hoi co the duoc lap lai nhieu lan
 		foreach ($lession->question as $key => $question) {
 			$lessionQuestionConf = LessionQuestion::where('lession_id', '=' , $lession->id)
 			->where('qid', '=' , $question->id)
@@ -68,10 +74,6 @@ Class CommonQuestion implements QuestionInterface{
 					}
 				}
 			}
-
-
-			//////// kiem tra thu tu cac cau hoi va sap xep dung vi tri nhu config, 1 cau hoi co the duoc lap lai nhieu lan
-			
 		}
 
 		/// hien thi du 20 cau hoi theo dung thu tu da config hoac tu dong lay random cac cau hoi cho cac vi tri con thieu
@@ -93,10 +95,6 @@ Class CommonQuestion implements QuestionInterface{
 		return $html;
 	}
 
-	public static function view_exists($view){
-		return View::exists($view);
-	}
-
 	/**
 	 * Render question by config
 	 */
@@ -116,11 +114,4 @@ Class CommonQuestion implements QuestionInterface{
 		];
 	}
 
-	public static function getRandomData(){
-		
-	}
-	
-	public static function render($type, $config){
-
-	}
 }
