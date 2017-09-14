@@ -242,6 +242,46 @@ foreach (glob('app/services/questions/*.php') as $file)
                     </div>
                 </div> <!-- End box hoan thanh -->
 
+                <div class="ban-phim clicked">
+                    <div class="text-show">
+                        Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>
+                    </div>
+                    <div class="col-type">
+                        <div class="col-float-left col-number">
+                            <div class="col-float-left items-number">
+                                <div class="item-number" data-number = "1" >1</div>
+                                <div class="item-number" data-number = "2" >2</div>
+                                <div class="item-number" data-number = "3" >3</div>
+                                <div class="item-number" data-number = "4" >4</div>
+                                <div class="item-number" data-number = "5" >5</div>
+                            </div>
+                            <div class="col-float-left items-number">
+                                <div class="item-number" data-number = "6" >6</div>
+                                <div class="item-number" data-number = "7" >7</div>
+                                <div class="item-number" data-number = "8" >8</div>
+                                <div class="item-number" data-number = "9" >9</div>
+                                <div class="item-number" data-number = "0" >0</div>
+                            </div>
+                        </div>
+                        <div class="col-float-left col-unikey">
+                            <div class="col-float-left items-number xanh-main-2">
+                                <div class="item-number" data-number = "+" >+</div>
+                                <div class="item-number" data-number = "-" >-</div>
+                                <div class="item-number" data-number = "x" >x</div>
+                                <div class="item-number" data-number = ":" >:</div>
+                                <div class="delete" data-number = "delete" >Xóa</div>
+                            </div>
+                            <div class="col-float-left items-number xanh-main">
+                                <div class="item-number" data-number = ">" > > </div>
+                                <div class="item-number" data-number = "<" > < </div>
+                                <div class="item-number" data-number = "=" > = </div>
+                                <div class="item-number" data-number = "," > , </div>
+                                <a class="gui-bai" href="">Xong</a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- End ban phim ao -->
+
             </div> <!-- End row -->
         </div> <!-- End container -->
     </div> <!-- ENd box lam bai -->

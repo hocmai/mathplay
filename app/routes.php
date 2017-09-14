@@ -32,6 +32,8 @@ Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/updatestudyhistory',array('as'=>'updatestudyhistory','uses'=>'AjaxController@updateStudyHistory'));
 	Route::delete('/delete/question',array('as'=>'deletequestion','uses'=>'AjaxController@deleteQuestion'));
 	Route::post('/oauthcallback',array('as'=>'oauthcallback','uses'=>'AjaxController@oauthCallback'));
+	Route::post('/uploadfile',array('as'=>'uploadfile','uses'=>'AjaxController@uploadFile'));
+	Route::post('/removefile',array('as'=>'removefile','uses'=>'AjaxController@removeFile'));
 });
 
 ///////////////// Admin page //////////////////

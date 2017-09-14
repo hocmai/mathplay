@@ -22,8 +22,8 @@ $(document).ready(function(){
 	}
 
 	$('input[type="file"][preview]').change(function(){
-	    readURL(this);
-	    console.log('test');
+	    // readURL(this);
+	    // console.log('test');
 	});
 
 	///// Add multi questions

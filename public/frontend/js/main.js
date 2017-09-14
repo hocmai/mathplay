@@ -176,13 +176,13 @@ $(document).ready(function(){
     // });
 
 
-    $('body').on('click','.hdg-btom',(function () {
-        if($('#myModal-false').is("visible")){
-            $('.ban-phim').removeClass('clicked');
-        }else {
-            $('.ban-phim').addClass('clicked');
-        }
-    }));
+    // $('body').on('click','.hdg-btom',(function () {
+    //     if($('#myModal-false').is("visible")){
+    //         $('.ban-phim').removeClass('clicked');
+    //     }else {
+    //         $('.ban-phim').addClass('clicked');
+    //     }
+    // }));
 
 
     var documentHeight = $( document ).outerHeight();
@@ -267,13 +267,6 @@ $(document).ready(function(){
         $('[data-toggle="tooltip"]').tooltip()
     });
 
-    $('body').on("click",".item-number" ,(function () {
-       var currentValue = $(this).attr('data-number');
-       var nextValue = $('.get-value').val();
-        $('.get-value').val(nextValue+""+currentValue);
-        console.log(nextValue);
-    }));
-
     $('body').on("click",".delete" ,function () {
         $('.get-value').val(
             function(index, value){
@@ -281,18 +274,4 @@ $(document).ready(function(){
         });
     });
 
-    $('.ban-phim .text-show').click(function () {
-        $('.ban-phim').toggleClass('clicked');
-        if($('.ban-phim').hasClass('clicked')){
-            $(this).html("Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>")
-        }else {
-            $(this).html("Thu nhỏ <i class='fa fa-angle-double-down'></i>")
-        }
-    });
-
 });
-
-
-
-
-

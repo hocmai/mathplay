@@ -6,17 +6,17 @@ class CommonUpload
 	*uploadImage Upload image
 	*/
 
-	public static function uploadImage($id, $path, $imageUrl, $folder, $image = NULL)
+	public static function uploadImage($path, $imageFile, $imageUrl = NULL)
 	{
-		$destinationPath = public_path().'/'.$path.'/'.$folder.'/'.$id.'/';
-		if(Input::hasFile($imageUrl)){
-			$file = Input::file($imageUrl);
+		$destinationPath = public_path().$path;
+		if(Input::hasFile($imageFile)){
+			$file = Input::file($imageFile);
 			$filename = $file->getClientOriginalName();
 			$uploadSuccess = $file->move($destinationPath, $filename);
-			return $filename;
+			return $path.'/'.$filename;
 		}
-		if ($image) {
-			return $image;
+		if ($imageUrl) {
+			return $imageUrl;
 		}
 	}
 
@@ -29,6 +29,25 @@ class CommonUpload
 			return 'Đối tác';
 		}
 
+	}
+
+	/**
+	 * Form file element
+	 */
+	public static function file($name, $default = [], $attributes = [], $options = []){
+		return View::make('form_element.field_file')->with(compact('name', 'default', 'attributes', 'options'))->render();
+	}
+
+
+	/**
+	 * Upload file ajax
+	 **/
+	public function uploadFile($file, $path){
+		if(Input::hasFile($path)){
+			$file = Input::file($imageUrlFile);
+		}
+		$uploadSuccess = $file->move( public_path().'/'.$path, $file->getClientOriginalName());
+		return $file;
 	}
 
 }

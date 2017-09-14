@@ -15,6 +15,41 @@ class AjaxController extends BaseController {
 	|
 	*/
 
+	/**
+	 * Upload file ajax
+	 **/
+	public function uploadFile(){
+		try{
+			if( !empty($_FILES['file']) ){
+				$name = $_FILES['file']['name'];
+				$path = Input::get('path') ? Input::get('path') : "/uploads/".date('Y').'/'.date('m');
+				if ( move_uploaded_file($_FILES['file']['tmp_name'], public_path().$path.'/'.$name) ) {
+	                return Response::json(['url' => $path.'/'.$name, 'name' => $name]);
+	            }
+			}
+		}
+		catch( Exception $e ){
+			return Response::json($e->getMessage());
+		}
+		return Response::json(false);
+	}
+
+
+	/**
+	 * Remove file ajax
+	 **/
+	public function removeFile(){
+		try{
+			if( Input::get('path') ){
+				return Response::Json( File::delete(public_path().Input::get('path')) );
+			}
+		}
+		catch( Exception $e ){
+			return Response::json($e->getMessage());
+		}
+		return Response::json(false);
+	}
+
 
 	/**
 	 * Hoc mai oauthCallback ajax

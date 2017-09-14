@@ -1,4 +1,6 @@
 $(document).ready(function(){
+
+    ///////////////////// Login hoc OAuth //////////////////////////
 	$('.hocmai-oauth-login').on('click', function(event){
 		hocmaiOAuth.login(this, function(response){
             $('body>.loading').remove();
@@ -31,8 +33,61 @@ $(document).ready(function(){
 		return false;
 	})
 
+    /////////////////////// hien thi ban phim ao //////////////////////
+    $(window).on('click', function(e){
+        if( $('.ban-phim').length == 0 ) return;
+        if( $(e.target).get(0).tagName == 'INPUT' && $.inArray($(e.target).attr('type'), ['text','number']) >= 0 ){
+            keyboardToggle('show');
+            $('input.virtual-focus').removeClass('virtual-focus');
+            $(e.target).addClass('virtual-focus');
+        }
+        else if($(e.target).parents('.ban-phim').length == 0)
+        {
+            $('input.virtual-focus').removeClass('virtual-focus');
+            keyboardToggle('hide');
+        }
+    })
+
+    $('.ban-phim .text-show').click(function () {
+        keyboardToggle();
+    });
+
+    /////// nhap input qua ban phim ao ///////////
+    $('.ban-phim').on('click', '.item-number', function(){
+        if( $('input.virtual-focus').is(":visible") ){
+            var origin = $('input.virtual-focus').val(),
+            value = $(this).text();
+            $('input.virtual-focus').val(origin + value).focus();
+        }
+    })
+    $('.ban-phim').on('click', '.delete', function(){
+        if( $('input.virtual-focus').is(":visible") ){
+            var origin = $('input.virtual-focus').val();
+            $('input.virtual-focus').val(origin.substring(0, origin.length - 1)).focus();
+        }
+    })
 
 });
+
+keyboardToggle = function(action = ''){
+    var $ = jQuery;
+    if( action == '' | action == 'toggle' ){
+        $('.ban-phim').toggleClass('clicked');
+    }
+    else if( action == 'show' ){
+        $('.ban-phim').removeClass('clicked');
+    } 
+    else{
+        $('.ban-phim').addClass('clicked');
+    }
+
+    if($('.ban-phim').hasClass('clicked')){
+        $('.ban-phim .text-show').html("Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>")
+    }else {
+        $('.ban-phim .text-show').html("Thu nhỏ <i class='fa fa-angle-double-down'></i>")
+    }
+}
+
 
 var hocmaiOAuth = (function () {
 

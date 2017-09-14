@@ -51,7 +51,7 @@ class QuestionTypeController extends AdminController {
 	{
 		$data = ConfigModel::where('collection', '=', 'question_type')
 			->where('name', '=', 'question_type.config.'.$type)
-			->firstOrFail();;
+			->firstOrFail();
         return View::make('admin.lession.question_type_edit', array('data'=>$data));
 	}
 
@@ -72,12 +72,24 @@ class QuestionTypeController extends AdminController {
 	{
         $input = Input::except('_token');
         $config = ['description' => $input['description']];
-        if (Input::hasFile('image')){
-        	$path = '/questions/'. str_replace('question_type.config.', '', $type).'/img';
-        	$file = Input::file('image');
-		    $file->move( public_path().$path, $file->getClientOriginalName());
-        	$config['image'] = $path.'/'.$file->getClientOriginalName();
-		}
+        $config['images'] = [];
+        $new_images = Input::get('images_new');
+    	// dd($new_images);
+        if( !empty($new_images['image_url']) ){
+        	foreach ($new_images['image_url'] as $key => $value) {
+        		$config['images'][] = [
+        			'image_url' => $value,
+        			'image_title' => !empty($new_images['image_title'][$key]) ? $new_images['image_title'][$key] : ''
+        		];
+        	}
+        }
+  //      	if (Input::hasFile('images_new')){
+  //       	$path = '/questions/'. str_replace('question_type.config.', '', $type).'/img';
+  //       	$file = Input::file('image');
+		//     $file->move( public_path().$path, $file->getClientOriginalName());
+  //       	$config['images'][] = $path.'/'.$file->getClientOriginalName();
+		// }
+
         CommonConfig::set('question_type', $type, $config);
     	return Redirect::action('QuestionTypeController@index');
 	}
