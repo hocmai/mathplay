@@ -120,10 +120,9 @@ foreach (glob('app/services/questions/*.php') as $file)
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal-true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <div class="audio">
-                                    <audio><source src="{{ asset('questions/sounds/yeah1.wav') }}" type="audio/wav"></audio>
-                                    <audio><source src="{{ asset('questions/sounds/yeah2.wav') }}" type="audio/wav"></audio>
-                                </div>
+                                <!-- <div class="audio">
+                                    <audio><source src="" type="audio/wav"></audio>
+                                </div> -->
                                 <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
                                     <div class="modal-content">
                                         <div class="box-qua-chuan-luon">
@@ -142,10 +141,9 @@ foreach (glob('app/services/questions/*.php') as $file)
                             </div>
                             <!-- Modal -->
                             <div class="modal fade" id="myModal-false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <div class="audio">
-                                    <audio><source src="{{ asset('questions/sounds/ngu1.wav') }}" type="audio/wav"></audio>
-                                    <audio><source src="{{ asset('questions/sounds/ngu2.wav') }}" type="audio/wav"></audio>
-                                </div>
+                                <!-- <div class="audio">
+                                    <audio><source src="" type="audio/wav"></audio>
+                                </div> -->
                                 <div class="bao-cao">
                                     <div class="btn-support">
                                         <a href="#" class="btn huong-dan-giai">Hướng dẫn giải</a>
@@ -220,7 +218,7 @@ foreach (glob('app/services/questions/*.php') as $file)
                         <div class="button-uls">
                             <ul class="inline button-ul">
                                 <li>
-                                    <a href="/grade/1" title="">
+                                    <a href="{{ action('SiteSubjectController@show', ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')]) }}" title="">
                                         <img src="{{ asset('frontend/images/list-bai-hoc.png') }}" class="img-responsive mauto" alt=""/>
                                         <div class="text">Danh mục bài học</div>
                                     </a>

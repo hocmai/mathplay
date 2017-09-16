@@ -46,8 +46,9 @@
 								{{ Form::textarea('description', $lession->description, ['class' => 'form-control', 'row' => 10]) }}
 							</div>
 							<div class="form-group">
-								{{ Form::label('status', 'Cài đặt', ['class' => '']) }}<div class="clearfix"></div>
-								<div class="">{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), ($lession->config) ? $lession->config : '', ['class' => 'form-control', 'row' => 10]) }}</div><div class="clearfix"></div>
+								{{ Form::label('status', 'Cài đặt', ['class' => '']) }}
+								{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), ($lession->config) ? $lession->config : '', ['class' => 'form-control', 'row' => 10]) }}
+								<span class="description"><a href="{{ action('ConfLessionController@index') }}">Cài đặt độ khó</a></span>
 							</div>
 
 							<!-- <div class="form-group">

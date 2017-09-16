@@ -79,14 +79,14 @@ $(document).ready(function($) {
 
 			$('#myModal-true').modal('show');
 			var audio = $('#myModal-true').find('.audio > audio');
-			audio.get(rand-1).play();
+			if(audio.length) audio.get(rand-1).play();
 		}
 		else{
 			///////// Tra loi sai
 			// Hien modal
 			$('#myModal-false').modal('show');
 			var audio = $('#myModal-false').find('.audio > audio');
-			audio.get(rand-1).play();
+			if(audio.length) audio.get(rand-1).play();
 		}
 
 	    // console.log(input);

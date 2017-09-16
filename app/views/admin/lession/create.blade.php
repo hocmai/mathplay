@@ -44,8 +44,9 @@
 							</div>
 
 							<div class="form-group">
-								{{ Form::label('status', 'Cài đặt', ['class' => '']) }}<div class="clearfix"></div>
-								<div class="">{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), '', ['class' => 'form-control', 'required' => true]) }}</div><div class="clearfix"></div>
+								{{ Form::label('status', 'Cài đặt', ['class' => '']) }}
+								{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), '', ['class' => 'form-control', 'row' => 10]) }}
+								<span class="description"><a href="{{ action('ConfLessionController@index') }}">Cài đặt độ khó</a></span>
 							</div>
 
 							<!-- <div class="form-group">
