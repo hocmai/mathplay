@@ -17,6 +17,12 @@
     border-radius: 15px;
     border: 1px solid #999;
 }
+.ban-phim.clicked {
+    bottom: -140px;
+}
+.ban-phim .text-show{
+    font-size: 15px;
+}
 body>.loading{
 	width: 100%;
     height: 100%;

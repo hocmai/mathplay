@@ -179,7 +179,7 @@ foreach (glob('app/services/questions/*.php') as $file)
                     <div class="box-thong-tin-bai-lam fullScreen leftHeight">
                         <div class="box-s-1">
                             <div class="title bg1">Câu hỏi số</div>
-                            <p class="total-number"><span class="current-question">{{ $current_ques }}</span>/{{ !empty($config['num_question']) ? $config['num_question'] : 20 }}</p>
+                            <p class="total-number"><span class="current-question">{{ $current_ques }}</span>/{{ !empty($config['number_ques']) ? $config['number_ques'] : 20 }}</p>
                             <div class="title bg2">Thời gian làm bài</div>
                             <p class="times" data-start="0"><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></p>
                             <div class="title bg3">Điểm</div>
