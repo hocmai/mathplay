@@ -5,8 +5,9 @@ $rand = range($min, $max);
 shuffle($rand);
 $answer = array_rand($rand, 2);
 $images = SoSanh2HinhAnh::getRandomData();
-$image_rand = array_rand($images, 2);
-// dd($images, $image_rand);
+if(!empty($images)) {
+    $image_rand = array_rand($images, 2);
+}
 
 $num1 = $rand[$answer[0]];
 $num2 = $rand[$answer[1]];
@@ -27,14 +28,14 @@ $num2 = $rand[$answer[1]];
             <div class="hinh">
                 A 
                 @for($i = 1; $i <= $num_rand[0]; $i++)
-                	<img src="{{ $images[$image_rand[0]] }}" class="img-responsive mauto" alt=""/>
+                	<img src="{{ !empty($images) ? $images[$image_rand[0]] : '' }}" class="img-responsive mauto" alt=""/>
             	@endfor
             </div>
             <div class="clr"></div>
             <div class="hinh">
                 B 
                 @for($i = 1; $i <= $num_rand[1]; $i++)
-                	<img src="{{ $images[$image_rand[1]] }}" class="img-responsive mauto" alt=""/>
+                	<img src="{{ !empty($images) ? $images[$image_rand[1]] : '' }}" class="img-responsive mauto" alt=""/>
             	@endfor
             </div>
         </div>
