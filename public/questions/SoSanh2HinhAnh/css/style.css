@@ -1,0 +1,5 @@
+#SoSanh2HinhAnh .radio input:checked + label{
+    -webkit-box-shadow: inset 0 0 15px rgba(51, 51, 51, 0.7);
+    box-shadow: inset 0 0 15px rgba(51, 51, 51, 0.7);
+    background: #efae1d;
+}

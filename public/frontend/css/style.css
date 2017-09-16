@@ -1543,8 +1543,7 @@ footer .leg .social a {
 
 .hinhs img {
   display: inline-block;
-  margin-left: 0;
-  padding: 5px 30px;
+  padding: 5px;
   max-width: 310px;
   max-height: 70px;
 }

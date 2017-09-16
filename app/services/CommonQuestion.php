@@ -3,7 +3,7 @@ Class CommonQuestion {
 
 	public static function getAllType(){
 		return [
-			// SOSANH => 'So sánh 2 hình ảnh', // test
+			'SoSanh2HinhAnh' => 'So sánh 2 hình ảnh', // test
 			'DemSoTrongKhung10' => 'Đếm số trong khung 10 ô', // dang 1,2,4
 			'DienSoHangChucVaDonVi' => 'Điền số hàng chục và đơn vị', //dang 3
 			'DemHangChuc' => 'Đếm số theo hàng chục', //dang 5
@@ -54,7 +54,7 @@ Class CommonQuestion {
 		$lession_conf = CommonConfig::get($lession->config);
 		$max_question = !empty($lession_conf['number_ques']) ? $lession_conf['number_ques'] : 20;
 		$max_score = !empty($lession_conf['max_score']) ? $lession_conf['max_score'] : 100;
-		$score = floor($max_score/20);
+		$score = floor($max_score/$max_question);
 		$data_history = ['grade_id' => $lession->chapter->subject->grade->id, 'subject_id' => $lession->chapter->subject->id, 'chapter_id' => $lession->chapter->id, 'lession_id' => $lession->id, 'author' => Common::getObject(Auth::user()->get(), 'id')];
 		$question_order = [];
 
