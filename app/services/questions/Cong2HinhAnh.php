@@ -12,7 +12,7 @@ Class Cong2HinhAnh extends CommonQuestion{
 	}
 
 	public static function getRandomData(){
-		$dir = public_path().'\questions\Cong2HinhAnh\img';
+		$dir = public_path().'/questions/Cong2HinhAnh/img';
 		$files = Common::scanDir($dir);
 		$randomdata = array_map( function($val) {
 			return str_replace('\\', '/', str_replace(public_path(), '', $val));

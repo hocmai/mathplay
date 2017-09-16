@@ -12,7 +12,7 @@ Class DienBieuThuc extends CommonQuestion{
 	}
 
 	public static function getRandomData(){
-		$dir = public_path().'\questions\DienBieuThuc\img';
+		$dir = public_path().'/questions/DienBieuThuc/img';
 		$files = Common::scanDir($dir);
 		$randomdata = array_map( function($val) {
 			return str_replace('\\', '/', str_replace(public_path(), '', $val));
