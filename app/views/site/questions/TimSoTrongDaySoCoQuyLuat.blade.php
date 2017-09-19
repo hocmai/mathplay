@@ -1,8 +1,7 @@
 <?php
-$min = !empty($config['min_value']) ? $config['min_value'] : rand(5,50);
-$max = rand(5,10);
-$start = rand(1,10);
-$position = rand(2,$max);
+$num_col = !empty($config['number_count']) ? $config['number_count'] : rand(5,10);
+$start = !empty($config['start_value']) ? $config['start_value'] : rand(1,10);
+$position = rand(2,$num_col);
 $answer = $start*$position;
 ?>
 
@@ -19,16 +18,10 @@ $answer = $start*$position;
 		
 		<div class="form-group find-number-in-list">
 			<div class="content inline-block">
-				@for( $i = 1; $i <= $max; $i++ )
-					<?php $num = $start*$i; ?>
-					<div class="pull-left number">{{ ($answer == $num) ? Form::text('answer', '') : $num }}{{ ($i < $max) ? ', ' : '' }}</div>
+				@for( $i = 1; $i <= $num_col; $i++ )
+					<div class="pull-left number">{{ ($answer == $start*$i) ? Form::text('answer', '') : $start*$i }}{{ ($i < $num_col) ? ', ' : '' }}</div>
 				@endfor
 			</div>
-		</div>
-		
-		<div class="clearfix"></div>
-		<div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
 		</div>
 	{{ Form::close() }}
 </div>

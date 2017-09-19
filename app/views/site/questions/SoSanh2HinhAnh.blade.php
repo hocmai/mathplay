@@ -49,10 +49,5 @@ $num2 = $rand[$answer[1]];
                 <label for="sosanh-answer-{{ $question_num }}2">B</label>
             </div>
         </div>
-		
-		<div class="clearfix"></div>
-		<!-- <div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
-		</div> -->
 	{{ Form::close() }}
 </div>

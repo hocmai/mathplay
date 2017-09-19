@@ -61,10 +61,5 @@ if( $type == 'choose' ){
 				@endforeach
 			</div>
 		@endif
-		
-		<div class="clearfix"></div>
-		<div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
-		</div>
 	{{ Form::close() }}
 </div>

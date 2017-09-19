@@ -2112,9 +2112,15 @@ footer .leg .social a {
   margin: 20px 0;
 }
 
+.hoan-thanh .img{
+  display: inline-block;
+  margin: auto;
+  text-align: center;
+}
 .hoan-thanh .img img {
   position: relative;
   padding-top: 20px;
+  margin: auto;
 }
 
 .hoan-thanh .button-ul {

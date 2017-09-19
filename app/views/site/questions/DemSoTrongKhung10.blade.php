@@ -105,31 +105,6 @@
 					</table>
 
 				@endif
-				<style type="text/css">
-					.unknown.shape-none::before{content: "?";line-height: 50px;font-size: 35px;font-weight: 600;color: #ddd;}
-					.shape-none{width: 50px; height: 50px;}
-					.circle{border-radius: 100%; background: #8CC713}
-					.star{
-						-webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-					    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
-					    background: #ffca19;
-					}
-					.pentagon{
-						-webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-						clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
-					    background: yellow;
-					}
-					.heptagon{
-						-webkit-clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
-						clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
-					    background: red;
-					}
-					.octagon{
-						-webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-						clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
-					    background: orange;
-					}
-				</style>
 			@endif
 		</div>
 		<div class="clearfix"></div>
@@ -162,30 +137,5 @@
 				</tr>
 			</table>
 		@endif
-
-		<div class="clearfix"></div>
-		<div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
-		</div>
 	{{ Form::close() }}
 </div>
-
-<style type="text/css">
-	td > div{
-	    width: 50px;
-	    height: 50px;
-	}
-	.question-wrapper .choose td>label{
-		width: 64px;
-	    height: 64px;
-	    text-align: center;
-	    line-height: 45px;
-	    margin: 5px;
-	    font-size: 30px;
-	    background: #6a8bf3;
-	}
-	.question-wrapper .choose td>input:checked + label,
-	.question-wrapper .choose td>label:hover{
-		background: #32437c;
-	}
-</style>

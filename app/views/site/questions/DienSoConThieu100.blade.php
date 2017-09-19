@@ -33,10 +33,5 @@ foreach ($answer_rand as $value) {
 				</table>
 			</div>
 		</div>
-		
-		<div class="clearfix"></div>
-		<div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
-		</div>
 	{{ Form::close() }}
 </div>

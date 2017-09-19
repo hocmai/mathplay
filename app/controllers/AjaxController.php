@@ -94,8 +94,11 @@ class AjaxController extends BaseController {
 			App::abort(403);
 		}
 		$input = Input::all();
-		try {
+		try{
+			//////// Xoa quan he n-n
 			LessionQuestion::where('lession_id', '=', $input['lession_id'])->where('qid', '=', $input['qid'])->delete();
+
+			//////// Xoa question
 			CommonNormal::delete($input['qid'], 'Question');
 		} catch (Exception $e) {
 			return Response::json($e);

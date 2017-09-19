@@ -1,7 +1,7 @@
 <?php
 $min = !empty($config['min_value']) ? $config['min_value'] : rand(1,10);
 $plus = !empty($config['number_plus']) ? $config['number_plus'] : rand(1,10);
-$range = rand(5, 10);
+$range = (!empty($config['number_count']) && $config['number_count'] >= 3) ? $config['number_count'] : rand(5, 10);
 $lines = [];
 for($i = 0; $i < $range; $i++){
 	$lines[] = $min;
@@ -72,10 +72,5 @@ if($type == 'inline'){
 				{{ $lines[$target].' + '.$plus.' = '.Form::number('answer', '', ['class' => 'form-control', 'style' => 'width:80px;display:inline-block;font-size:18px', 'min' => 1]) }}
 			</div>
 		@endif
-		
-		<div class="clearfix"></div>
-		<div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
-		</div>
 	{{ Form::close() }}
 </div>

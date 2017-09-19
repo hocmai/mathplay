@@ -34,18 +34,32 @@ $(document).ready(function(){
 	})
 
     /////////////////////// hien thi ban phim ao //////////////////////
+    if( $('.question-rendered.active input[type="text"]').length ){
+        $('.question-rendered.active input[type="text"]')[0].focus();
+        keyboardToggle('show');
+    }
+    else if( $('.question-rendered.active input[type="number"]').length ){
+        $('.question-rendered.active input[type="number"]')[0].focus();
+        keyboardToggle('show');
+    }
+
     $(window).on('click', function(e){
         if( $('.ban-phim').length == 0 ) return;
-        if( $(e.target).get(0).tagName == 'INPUT' && $.inArray($(e.target).attr('type'), ['text','number']) >= 0 ){
-            keyboardToggle('show');
-            $('input.virtual-focus').removeClass('virtual-focus');
-            $(e.target).addClass('virtual-focus');
-        }
-        else if($(e.target).parents('.ban-phim').length == 0)
+
+        if( $(e.target).get(0).tagName != 'INPUT' 
+            && $.inArray($(e.target).attr('type'), ['text','number']) < 0 
+            && $(e.target).parents('.ban-phim').length == 0
+            && !$('.ban-phim').hasClass('clicked') )
         {
             $('input.virtual-focus').removeClass('virtual-focus');
             keyboardToggle('hide');
         }
+    })
+
+    $('input[type="text"], input[type="number"]').on('focus', function(){
+        $('input.virtual-focus').removeClass('virtual-focus');
+        $(this).addClass('virtual-focus');
+        keyboardToggle('show');
     })
 
     $('.ban-phim .text-show').click(function () {

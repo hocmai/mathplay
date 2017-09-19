@@ -245,7 +245,7 @@ foreach (glob('app/services/questions/*.php') as $file)
                         Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>
                     </div>
                     <div class="col-type">
-                        <div class="col-float-left col-number">
+                        <div class="inline-block col-number">
                             <div class="col-float-left items-number">
                                 <div class="item-number" data-number = "1" >1</div>
                                 <div class="item-number" data-number = "2" >2</div>
@@ -261,20 +261,20 @@ foreach (glob('app/services/questions/*.php') as $file)
                                 <div class="item-number" data-number = "0" >0</div>
                             </div>
                         </div>
-                        <div class="col-float-left col-unikey">
+                        <div class="inline-block col-unikey">
                             <div class="col-float-left items-number xanh-main-2">
-                                <div class="item-number" data-number = "+" >+</div>
-                                <div class="item-number" data-number = "-" >-</div>
-                                <div class="item-number" data-number = "x" >x</div>
-                                <div class="item-number" data-number = ":" >:</div>
+                                <div class="item-number" data-number = "+">+</div>
+                                <div class="item-number" data-number = "-">-</div>
+                                <div class="item-number" data-number = "x">x</div>
+                                <div class="item-number" data-number = ":">:</div>
                                 <div class="delete" data-number = "delete" >Xóa</div>
                             </div>
                             <div class="col-float-left items-number xanh-main">
-                                <div class="item-number" data-number = ">" > > </div>
-                                <div class="item-number" data-number = "<" > < </div>
-                                <div class="item-number" data-number = "=" > = </div>
-                                <div class="item-number" data-number = "," > , </div>
-                                <a class="gui-bai" href="">Xong</a>
+                                <div class="item-number" data-number = ">" >></div>
+                                <div class="item-number" data-number = "<" ><</div>
+                                <div class="item-number" data-number = "=" >=</div>
+                                <div class="item-number" data-number = "," >,</div>
+                                <a class="gui-bai" href="">Gửi bài</a>
                             </div>
                         </div>
                     </div>

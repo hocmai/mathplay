@@ -49,16 +49,6 @@ $(document).ready(function($) {
 				}
 			});
 			
-			
-
-			// Chuyen cau tiep theo
-			if( q_order < q_num ){
-				parent.fadeOut('300', function(){
-					parent.removeClass('active').addClass('hide');
-					parent.next().hide().removeClass('hide');
-				});
-			}
-			
 			window.setTimeout(function(){
 				$('#myModal-true').modal('hide'); // Hide modal chuc mung
 
@@ -66,13 +56,14 @@ $(document).ready(function($) {
 				$('.diem .your-score').text(your_score+score);
 				if( q_order < q_num ){
 					$('.total-number .current-question').text(q_order+1);
-					parent.next().fadeIn('400').addClass('active');
+					show_next_question(parent);
 				} else{
 					// Cau hoi cuoi cung, hien tong so diem
 					$('.box-bai-lam .hoan-thanh .point').text((your_score+score)+' điểm');
 					window.setTimeout(function(){
 						$('.box-bai-lam .boxLeft, .box-bai-lam .boxRight').hide('400');
-						$('.box-bai-lam .hoan-thanh').removeClass('hidden').fadeIn();
+						$('.box-bai-lam .hoan-thanh').removeClass('hidden').show();
+						$('.ban-phim').hide();
 					},500);
 				}
 			},1000)
@@ -93,6 +84,24 @@ $(document).ready(function($) {
 	    e.preventDefault();
 	    // return false;
 	});
+
+	////////////// Chuyen cau hoi tiep theo ////////////////////
+	function show_next_question(parent){
+		parent.fadeOut('300', function(){
+			parent.removeClass('active').addClass('hide');
+			parent.next().hide().removeClass('hide');
+			parent.next().fadeIn('400').addClass('active');
+			if(parent.next().find('input[type="number"]').length){
+				parent.next().find('input[type="number"]')[0].focus();
+			}
+			else if(parent.next().find('input[type="text"]').length){
+				parent.next().find('input[type="text"]')[0].focus();
+			}
+			else{
+				keyboardToggle('hide');
+			}
+		});
+	}
 
 	//////// Send your answer
 	$('.gui-bai').click(function(){

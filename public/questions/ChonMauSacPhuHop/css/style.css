@@ -4,6 +4,9 @@
     display: inline-block;
     float: left;
     border: 1px solid #ddd;
+    line-height: 50px;
+    text-shadow: 0 0 1px #fff;
+    font-weight: 500;
 }
 .find-color-answer{
 	float: left;
@@ -16,9 +19,24 @@ div.find-color-answer label{
     border-radius: 0;
     margin: 5px;
     font-weight: 400;
+    position: relative;
 }
-.find-color-answer input:checked + label,
-.find-color-answer label:hover{
-	background: #32437c;
-	color: #fff;
+.find-color-answer input:checked + label>.color-hover,
+.find-color-answer label:hover>.color-hover{
+    opacity: 1;
+}
+div.find-color-answer label>.color-hover{
+    opacity: 0;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    line-height: 45px;
+    text-shadow: 0 0 1px #000;
+    color: #fff;
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
 }

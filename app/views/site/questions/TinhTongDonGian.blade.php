@@ -22,10 +22,5 @@ $answer = rand($min, $max);
 				<div class="tong pull-left" style="font-size: 18px;">0 + {{ $answer }} = {{ Form::number('answer', '', ['style' => 'width: 50px;text-align: center;']) }}</div>
 			</div>
 		</div>
-		
-		<div class="clearfix"></div>
-		<div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
-		</div>
 	{{ Form::close() }}
 </div>

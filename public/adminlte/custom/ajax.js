@@ -22,24 +22,27 @@ $(document).ready(function(){
 	})
 
 	////////// Delete question in lession
-	$('.form-add-question').on('click', '.delete-question', function(){
+	$('.form-add-question').on('click', '.panel .delete-question', function(){
 		var qid = $(this).attr('qid'),
 		lessionId = $(this).attr('lession_id'),
 		_this = $(this);
-		$.ajax({
-			url:'/ajax/delete/question',
-			method:'DELETE',
-			data: {qid: qid, lession_id: lessionId},
-			cache:false,
-			success:function(data){
-				if(data){
-					_this.parents('.panel-collapse').collapse('hide');
-					window.setTimeout(function(){
-						_this.parents('.panel.panel-default').remove();
-					},300)
+		if( confirm('Bạn có chắc chắn muốn xóa?') ){
+			$.ajax({
+				url:'/ajax/delete/question',
+				method:'DELETE',
+				data: {qid: qid, lession_id: lessionId},
+				cache:false,
+				success:function(data){
+					console.log(data);
+					if(data){
+						_this.parents('.panel-collapse').collapse('hide');
+						window.setTimeout(function(){
+							_this.parents('.panel.panel-default').remove();
+						},300)
+					}
 				}
-			}
-		});
+			});
+		}
 	})
 
 });

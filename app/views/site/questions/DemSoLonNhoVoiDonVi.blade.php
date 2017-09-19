@@ -3,11 +3,8 @@ $min = (!empty($config['min_value']) && $config['min_value'] >= 10) ? $config['m
 $max = !empty($config['max_value']) ? $config['max_value'] : 90;
 $number = rand($min, $max);
 
-$method = !empty($config['method']) ? $config['method'] : '';
-if( $method == '' ){
-	$method = ['plus', 'devide'];
-	$method = $method[array_rand($method)];
-}
+$method = ['plus', 'devide'];
+$method = !empty($config['method']) ? $config['method'] : $method[array_rand($method)];
 
 $plus = !empty($config['number_plus']) ? $config['number_plus'] : '';
 if( $plus == '' ){
@@ -19,6 +16,10 @@ if( $method == 'plus' ){
 	$text = ['Đếm với '.$plus.' đơn vị. Đằng sau số '.$number.' là số mấy?', 'Số nào đứng sau số '.$number.' nếu cộng thêm '.$plus.' đơn vị?'];
 } else{
 	$answer = $number - $plus;
+	if( $answer <= 0 ){
+		$answer = 1;
+		$number = $plus + 1;
+	}
 	$text = ['Đếm với '.$plus.' đơn vị. Đứng trước số '.$number.' là số mấy?', 'Số nào đứng trước số '.$number.' nếu trừ đi '.$plus.' đơn vị?'];
 }
 ?>
@@ -38,11 +39,6 @@ if( $method == 'plus' ){
 			<div class="col-sm-12">
 				{{ Form::number('answer', '', ['class' => 'form-control', 'required' => true]) }}
 			</div>
-		</div>
-		
-		<div class="clearfix"></div>
-		<div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
 		</div>
 	{{ Form::close() }}
 </div>

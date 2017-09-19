@@ -18,7 +18,7 @@ $answer = array_rand($colors, rand(4,6));
 		<div class="form-group find-color">
 			<div class="content inline-block">
 				@foreach( $colors as $key => $value )
-					<div class="color-item" style="background: {{ $value[1] }}"></div>
+					<div class="color-item" style="background: {{ $value[1] }}">{{ $key+1 }}</div>
 				@endforeach
 			</div>
 		</div>
@@ -29,14 +29,11 @@ $answer = array_rand($colors, rand(4,6));
 				<input class="hidden" id="answer-{{ $question_num.$key }}" type="radio" name="answer" value="{{ $colors[$value][0] }}"/>
 				<label for="answer-{{ $question_num.$key }}">
 					{{ $colors[$value][0] }}
+					<span class="color-hover" style="background: {{ $colors[$value][1] }}">{{ $colors[$value][0] }}</span>
 				</label>
 			</div>
 		@endforeach
 		
-		
 		<div class="clearfix"></div>
-		<div class="form-group">
-			<a href="javascript:void(0)" class="inline-block gui-bai closeModel hd-gui-bai-bt">Gửi bài</a>
-		</div>
 	{{ Form::close() }}
 </div>

@@ -53,7 +53,7 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 			</div>
 			@if($lession && $question)
 				<div class="form-group">
-					<a class="btn btn-danger delete-question pull-right" qid="{{ Common::getObject($question, 'id') }}" lession_id="{{ Common::getObject($lession, 'id') }}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+					<a class="btn btn-danger delete-question pull-right" qid="{{ Common::getObject($question, 'id') }}" lession_id="{{ Common::getObject($lession, 'id') }}">Xóa</a>
 				</div>
 			@endif
     	</div>
