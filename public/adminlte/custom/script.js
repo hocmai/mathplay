@@ -6,6 +6,19 @@ $(window).on('load', function(e) {
 $(document).ready(function(){
 	console.log('Myscript loaded');
 
+
+	//////////////////////// Change question config in form
+	$('.form-add-question').on('change', '.panel select, .panel input:not(.question-config-hidden)', function(){
+		var _data = $(this).parents('#get-config-form').find('select, textarea, input:not(.question-config-hidden)').serializeArray(),
+		_out = {};
+		$.each(_data, function(index, el) {
+			el.name = el.name.replace('question_config[', '').replace('][]', '');
+			_out[el.name] = el.value;
+		});
+		$(this).parents('#get-config-form').find('input.question-config-hidden').val(JSON.stringify(_out)).change();
+		// console.log($(this).val());
+	})
+
 	/////// Upload image preview
 	function readURL(input) {
     	$(input).parent().find('>.preview').remove();
@@ -47,7 +60,7 @@ $(document).ready(function(){
 		parent.find('.panel-collapse.in').collapse('hide');
 		parent.append(clone.html());
 		parent.find('#collapse-'+(length+1)+' select.get-question-form-config').selectpicker('refresh');
-	})
+	});
 
 	/////// Delete a question
 	$('.form-add-question').on('click', '.panel-title>.close', function(){

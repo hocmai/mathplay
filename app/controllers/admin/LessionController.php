@@ -13,7 +13,7 @@ class LessionController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Lession::orderBy('weight', 'asc')->paginate(PAGINATE);
+		$data = Lession::orderBy('updated_at', 'desc')->paginate(PAGINATE);
 		// dd($data);
 		return View::make('admin.lession.index')->with(compact('data'));
 	}
@@ -152,35 +152,30 @@ class LessionController extends AdminController {
     		}
         }
 
-        /////// Get Question config -> fetch array
-        if( !empty($input['question_config']) ){
-    		foreach ($input['question_config'] as $name => $config) {
-    			foreach ($config as $key => $value) {
-    				$question_input[$key]['config'][$name] = $value;
-    			}
-    		}
-        }
-        
+        // dd($question_input);
         ///// Get array of question id after insert question table
         $questions = [];
         if( count($question_input) ){
         	foreach ($question_input as $key => $value) {
         		$questionId = Common::getObject(Lession::find($id)->question->find($value['id']), 'id');
 
-        		///// Chinh sua cau hoi
+        		///// Tao/Chinh sua cau hoi
         		if( $questionId ){
         			CommonNormal::update($questionId, array_except($value, ['config']), 'Question');
         		} else{
         			$questionId = CommonNormal::create(array_except($value, ['config']), 'Question');
         		}
         		$lessionQuestion = LessionQuestion::where('lession_id', '=', $id)->where('qid', '=', $questionId);
+
+                ///////// Tao/chinh sua config cho tung cau hoi
+                $config = !empty($input['question_config']['config'][$key]) ? $input['question_config']['config'][$key] : json_encode([]);
         		if( $lessionQuestion->count() ){
-        			$lessionQuestion->update( ['config' => json_encode($value['config']) ] );
+        			$lessionQuestion->update( ['config' => $config ] );
         		} else{
         			CommonNormal::create([
 	    				'lession_id' => $id,
 	    				'qid' => $questionId,
-	    				'config' => json_encode($value['config'])
+	    				'config' => $config,
 	    			], 'LessionQuestion');
         		}
         	}

@@ -34,7 +34,7 @@ Class CommonQuestion {
 	 **/
 	public static function getConfigForm($type = null, $config = null){
 		if (View::exists('site.questions_form.'.$type)) {
-			return View::make('site.questions_form.'.$type, ['config' => $config])->render();
+			return View::make('site.questions_form.'.$type, ['config' => $config])->render().Form::hidden('question_config[config][]', json_encode($config), ['class' => 'question-config-hidden']);
 		}
 		return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
 
