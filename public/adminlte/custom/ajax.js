@@ -2,11 +2,11 @@ $(document).ready(function(){
 
 	console.log('Ajax script loaded');
 	///// Get config question form
-	$('form').on('change', '.get-question-form-config', function(e){
+	$('.form-add-question').on('change', '.get-question-form-config', function(e){
 		var type = $(this).val(), _this = $(this);
-		$(this).parents('form').find('#get-config-form').empty();
+		$(this).parents('.panel-body').find('#get-config-form').empty();
 		if(type != ''){
-			$(this).parents('form').find('#get-config-form').button('loading');
+			$(this).parents('.panel-body').find('#get-config-form').button('loading');
 			$.ajax({
 				url:'/ajax/getquestionformconfig',
 				method:'POST',
@@ -15,7 +15,7 @@ $(document).ready(function(){
 				cache:false,
 				success:function(data){
 					console.log(data);
-					_this.parents('form').find('#get-config-form').empty().append(data);
+					_this.parents('.panel-body').find('#get-config-form').empty().append(data);
 				}
 			});
 		}
