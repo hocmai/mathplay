@@ -1,8 +1,9 @@
 <?php
 $num_col = !empty($config['number_count']) ? $config['number_count'] : rand(5,10);
 $start = !empty($config['start_value']) ? $config['start_value'] : rand(1,10);
-$position = rand(2,$num_col);
-$answer = $start*$position;
+$plus = !empty($config['number_plus']) ? $config['number_plus'] : rand(1,10);
+$position = rand(1,$num_col);
+$answer = $start+( $plus*($position -1) );
 ?>
 
 <div class="start">
@@ -19,7 +20,7 @@ $answer = $start*$position;
 		<div class="form-group find-number-in-list">
 			<div class="content inline-block">
 				@for( $i = 1; $i <= $num_col; $i++ )
-					<div class="pull-left number">{{ ($answer == $start*$i) ? Form::text('answer', '') : $start*$i }}{{ ($i < $num_col) ? ', ' : '' }}</div>
+					<div class="pull-left number">{{ ($answer == $start+( $plus*($i-1) )) ? Form::text('answer', '') : $start+( $plus*($i-1) ) }}{{ ($i < $num_col) ? ', ' : '' }}</div>
 				@endfor
 			</div>
 		</div>

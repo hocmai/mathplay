@@ -186,7 +186,7 @@ class LessionController extends AdminController {
         	}
         }
 
-		return Redirect::action('LessionController@index');
+		return Redirect::back()->with('success', 'Lưu thành công!');
 	}
 
 

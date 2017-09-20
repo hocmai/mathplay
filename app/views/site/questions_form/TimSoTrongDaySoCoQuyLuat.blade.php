@@ -10,6 +10,6 @@
 </div>
 <div class="form-group">
 	{{ Form::label('', 'Dãy số có bao nhiêu phần tử?') }}
-	{{ Form::number('question_config[number_count][]', !empty($config['number_count']) ? $config['number_count'] : 0,  ['class' => 'form-control', 'placeholder' => 'Số lượng phần tử', 'min' => 5, 'max' => 15]) }}
+	{{ Form::number('question_config[number_count][]', !empty($config['number_count']) ? $config['number_count'] : 0,  ['class' => 'form-control', 'placeholder' => 'Số lượng phần tử', 'min' => 0, 'max' => 15]) }}
 	<div class="description">Nhập 0 để tạo ngẫu nhiên n số (n <= 10).</div>
 </div>

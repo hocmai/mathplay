@@ -55,6 +55,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
+			// 'port'		=> 3306,
 			'database'  => 'mathplay_lar4',
 			'username'  => 'root',
 			'password'  => '',
