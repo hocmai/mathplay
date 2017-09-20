@@ -38,6 +38,7 @@ class SiteUserController extends SiteController {
 		if( Auth::user()->check() ){
 			// return Redirect::action('SiteUserController@show', ['id' => Auth::user()->get()->id]);
 			return Redirect::to('/');
+			// return Redirect::back()->with('success', 'Đăng nhập thành công!');
 		} else{
 			return View::make('site.user.login');
 		}
@@ -57,7 +58,6 @@ class SiteUserController extends SiteController {
 			'username.required'=>'Tên đăng nhập/Email chưa được nhập',
 			'password.required'=>'Mật khẩu không thể bỏ trống',
 		);
-
         $input = Input::except(['_token', 'remember']);
         $validator = Validator::make($input, $rules, $messsages);
 
@@ -66,7 +66,7 @@ class SiteUserController extends SiteController {
             	->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
-            if( Auth::user()->attempt($input, Input::get('remember')) ) {
+            if( Auth::user()->attempt($input, !empty(Input::get('remember')) ? true : false ) ) {
         		return Redirect::back();
             } else {
                 return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);

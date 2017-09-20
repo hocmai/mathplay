@@ -3,7 +3,8 @@ $(document).ready(function($) {
 	//////////// Submit answer form
 	$('.question-wrapper').on('submit', 'form.answer-question-form', function(e){
 		console.log('Form global process');
-		var data = $(this).serializeArray(), input = {},
+		var data = $(this).serializeArray(),
+		input = {},
 		parent = $(this).parents('.question-rendered'),
 		q_num = parent.parent().find('>.question-rendered').length,
 		qid = parent.attr('qid'),
@@ -30,10 +31,12 @@ $(document).ready(function($) {
 			///// Cap nhat lich su
 			data_history.score = your_score+score;
 			data_history.current_question = q_order+1;
+			data_history.time_use = parseInt($('.times>.time-use').text());
 
 			// Neu la cau cuoi cung thi chuyen trang thai lich su
+			data_history.completed = 0;
 			if( q_order == q_num ){
-				data_history.status = 1;
+				data_history.completed = 1;
 				data_history.current_question = q_num;
 			}
 
@@ -109,38 +112,34 @@ $(document).ready(function($) {
 		return false;
 	});
 
-	/////// Dismiss modal alert
-    $('.over').click(function () {
-        $('body').removeClass('open-hd-giai');
-    });
-
     /////// Timer counter
     if($('.times>.hours, .times>.minutes, .times>.seconds').length){
-    	var start = $('.times').attr('data-start'),
+    	var start = parseInt($('.times>.time-use').text()),
     	hours = $('.times>.hours'),
     	minutes = $('.times>.minutes'),
     	seconds = $('.times>.seconds'),
-    	second_start = min_start = hour_start = 0;
-
-    	if(typeof start == 'undefined') start = 0;
+    	second_start = parseInt(seconds.text()),
+    	min_start = parseInt(minutes.text()),
+    	hour_start = parseInt(hours.text());
 
     	counterSecond = setInterval(function () {
     		second_start ++;
 	        seconds.text( ((second_start < 10) ? '0' : '' )+second_start );
     		if( second_start >= 60 ) second_start = -1;
+    		start++;
+    		$('.times>.time-use').text(start)
 	    }, 1000);
 
     	counterMinute = setInterval(function () {
     		min_start ++;
 	        minutes.text( ((min_start < 10) ? '0' : '' )+min_start );
     		if( min_start >= 59 ) min_start = -1;
-	    }, 60000);
+	    }, 1000*60);
 
     	counterHour = setInterval(function () {
     		hour_start ++;
 	        hours.text( ((hour_start < 10) ? '0' : '' )+hour_start );
-    		// if( hour_start >= 60 ) hour_start = -1;
-	    }, 60000*60);
+	    }, 1000*60*60);
 	    // clearInterval(counter);
     }
 

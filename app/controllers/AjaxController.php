@@ -128,10 +128,14 @@ class AjaxController extends BaseController {
 			$author = Common::getObject(Auth::user()->get(), 'id');
 			$data = (array)json_decode($data);
 			$data['author'] = $author;
+			$data['status'] = 0;
 
-			$study_history = StudyHistory::firstOrCreate(array_except($data, ['score' , 'current_question', 'status']));
+			$study_history = StudyHistory::firstOrCreate(array_except($data, ['score' , 'current_question', 'completed', 'time_use']));
+			if( $data['completed'] == 1 ){
+				$data['status'] = 1;
+			}
 			StudyHistory::find($study_history->id)->update($data);
-			return Response::json(true);
+			return Response::json($study_history);
 		}
 	}
 

@@ -46,9 +46,13 @@
                                     <h3 class="title hidden-xs">DANH MỤC CHƯƠNG TRÌNH {{ $subject->title }}</h3>
 
                                     @if( count($chapters) )
+                                        <?php
+                                        $col1 = (count($chapters) % 2 == 0) ? count($chapters)/2 - 1 : floor(count($chapters)/2);
+                                        $col2 = (count($chapters) % 2 == 0) ? $col1 + 1 : $col1;
+                                        ?>
                                         <div class="row">
                                             <div class="col-sm-6 col-1">
-                                                @for($i = 0; $i <= floor(count($chapters)/2); $i++)
+                                                @for($i = 0; $i <= $col1; $i++)
                                                     <div class="chuong">
                                                         <h4 class="title-sub">
                                                             {{ 'Chương '.($i+1).': '.$chapters[$i]['title'] }}
@@ -62,9 +66,8 @@
                                                     </div> <!-- End chuong -->
                                                 @endfor
                                             </div> <!-- End col-sm-6 -->
-
                                             <div class="col-sm-6 col-2">
-                                                @for($i = round(count($chapters)/2); $i < count($chapters); $i++)
+                                                @for($i = $col2; $i < count($chapters); $i++)
                                                     <div class="chuong">
                                                         <h4 class="title-sub">
                                                             {{ 'Chương '.($i+1).': '.$chapters[$i]['title'] }}

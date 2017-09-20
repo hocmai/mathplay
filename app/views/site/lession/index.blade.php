@@ -110,13 +110,13 @@ foreach (glob('app/services/questions/*.php') as $file)
                             $history = Common::getLessionHistory($lession);
                             $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question) ) ? $history->current_question : 1;
                             $current_score = (!empty($history) && $history->status != 1 && !empty($history->score) ) ? $history->score : 0;
-
+                            $timeUsed = !empty($history->time_use) ? $history->time_use : 0;
+                            $hours = floor($timeUsed/3600);
+                            $minutes = floor(($timeUsed - ($hours*3600))/60);
+                            $seconds = $timeUsed - ($hours*3600) - ($minutes*60);
                             ?>
 
                             {{ CommonQuestion::renderLession($lession, $history) }}
-                            
-                            <!-- <button class="gui-bai closeModel"  data-toggle="modal" data-target="#myModal-true">Gửi bài</button>
-                            <button class="gui-bai closeModel hdg-btom"  data-toggle="modal" data-target="#myModal-false">Gửi bài</button> -->
 
                             <!-- Modal -->
                             <div class="modal fade" id="myModal-true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -179,7 +179,10 @@ foreach (glob('app/services/questions/*.php') as $file)
                             <div class="title bg1">Câu hỏi số</div>
                             <p class="total-number"><span class="current-question">{{ $current_ques }}</span>/{{ !empty($config['number_ques']) ? $config['number_ques'] : 20 }}</p>
                             <div class="title bg2">Thời gian làm bài</div>
-                            <p class="times" data-start="0"><span class="hours">00</span>:<span class="minutes">00</span>:<span class="seconds">00</span></p>
+                            <p class="times" data-start="0">
+                                <span class="time-use hidden">{{$timeUsed}}</span>
+                                <span class="hours">{{ (($hours < 10) ? '0' : '').$hours }}</span>:<span class="minutes">{{ (($minutes < 10) ? '0' : '').$minutes }}</span>:<span class="seconds">{{ (($seconds < 10) ? '0' : '').$seconds }}</span>
+                            </p>
                             <div class="title bg3">Điểm</div>
                             <p class="diem">
                                 <span class="span1 your-score">{{ $current_score }}</span> <br/>
@@ -188,8 +191,6 @@ foreach (glob('app/services/questions/*.php') as $file)
                             </p>
                         </div>
                         <div class="box-s-2">
-                            <!--<button class="gui-bai closeModel"  data-toggle="modal" data-target="#myModal-true">Gửi bài</button>-->
-                            <!--<button class="gui-bai closeModel hdg-btom"  data-toggle="modal" data-target="#myModal-false">Gửi bài</button>-->
                             <button class="gui-bai closeModel hd-gui-bai-bt">Gửi bài</button>
                         </div>
                         <div class="hd-gui-bai">

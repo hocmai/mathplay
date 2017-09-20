@@ -3,11 +3,22 @@ class Common {
 
 	public static function getLessionHistory($lession){
 		if( Auth::user()->check() ){
-			$data_history = ['grade_id' => $lession->chapter->subject->grade->id, 'subject_id' => $lession->chapter->subject->id, 'chapter_id' => $lession->chapter->id, 'lession_id' => $lession->id, 'author' => Common::getObject(Auth::user()->get(), 'id')];
-            $history = (Common::getObject(Auth::user()->get(), 'id')) ? CommonNormal::findOrCreate($data_history, 'StudyHistory') : [];
-            return $history;
+			$fields = [
+				'grade_id' => $lession->chapter->subject->grade->id,
+				'subject_id' => $lession->chapter->subject->id,
+				'chapter_id' => $lession->chapter->id,
+				'lession_id' => $lession->id,
+				'author' => Common::getObject(Auth::user()->get(), 'id'),
+				'status' => 0
+			];
+
+			$data =  CommonNormal::multiWhere(StudyHistory::orderBy('updated_at', 'desc'), $fields)->first();
+			if(!$data){
+				$data = StudyHistory::create($fields)->first();
+			}
+			return $data;
 		}else{
-			
+			return false;
 		}
 	}
 
