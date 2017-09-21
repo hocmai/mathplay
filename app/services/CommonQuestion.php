@@ -20,6 +20,20 @@ Class CommonQuestion {
 			'SoHangConThieu' => 'Tìm số hạng còn thiếu trong phép cộng', // dang 19
 			'TimDapSoDungVoiCauHoi' => 'Tìm đáp án cho câu hỏi được nhập ngẫu nhiên', // dang 20
 		];
+				
+		$all_types = [];
+		foreach (glob('app/services/questions/*.php') as $file)
+		{
+
+		    // get the file name of the current file without the extension
+		    // which is essentially the class name
+		    $class = basename($file, '.php');
+
+		    if (class_exists($class))
+		    {
+		        $all_types[] = $class;
+		    }
+		}
 	}
 
 	public static function callServiceByType($slug, $method, $para = null){
@@ -68,7 +82,7 @@ Class CommonQuestion {
 				$lessionQuestionConf = $lessionQuestionConf->config;
 				$lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestionConf) : [];
 				$question->conf = $lessionQuestionConf;
-				if( $lessionQuestionConf['question_start'] && $lessionQuestionConf['question_end'] && $lessionQuestionConf['question_end'] > $lessionQuestionConf['question_start'] ){
+				if( isset($lessionQuestionConf['question_start'], $lessionQuestionConf['question_end']) && $lessionQuestionConf['question_end'] > $lessionQuestionConf['question_start'] ){
 					for( $j = $lessionQuestionConf['question_start']; $j <= $lessionQuestionConf['question_end']; $j++ ){
 						$question_order[$j] = $question;
 					}

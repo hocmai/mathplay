@@ -131,16 +131,9 @@ class LessionController extends AdminController {
 	 */
 	public function update($id)
 	{
-
         $input = Input::except('_token');
-        // if( !empty($input['config']) ){
-        // 	$config = CommonConfig::get($input['config']);
-        // 	$config['config_name'] = $input['config'];
-        // 	$input['config'] = json_encode(array_except($config, ['name', '_method', 'description']));
-        // }
         // dd($input);
-
-    	CommonNormal::update($id, $input);
+    	CommonNormal::update($id, Input::except(['_token', 'question_config', 'question']));
 
     	//// Get Question infomations -> fetch array
 		$question_input = [];
@@ -152,7 +145,6 @@ class LessionController extends AdminController {
     		}
         }
 
-        // dd($question_input);
         ///// Get array of question id after insert question table
         $questions = [];
         if( count($question_input) ){
@@ -168,9 +160,12 @@ class LessionController extends AdminController {
         		$lessionQuestion = LessionQuestion::where('lession_id', '=', $id)->where('qid', '=', $questionId);
 
                 ///////// Tao/chinh sua config cho tung cau hoi
-                $config = !empty($input['question_config']['config'][$key]) ? $input['question_config']['config'][$key] : json_encode([]);
+                $config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
+                $config['question_start'] = $input['question_config']['question_start'][$key];
+                $config['question_end'] = $input['question_config']['question_end'][$key];
+
         		if( $lessionQuestion->count() ){
-        			$lessionQuestion->update( ['config' => $config ] );
+        			$lessionQuestion->update( ['config' => json_encode($config) ] );
         		} else{
         			CommonNormal::create([
 	    				'lession_id' => $id,

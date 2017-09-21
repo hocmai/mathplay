@@ -19,20 +19,6 @@ foreach($lession->question as $question){
         $types[] = $question->type;
     }
 }
-
-$all_types = [];
-foreach (glob('app/services/questions/*.php') as $file)
-{
-
-    // get the file name of the current file without the extension
-    // which is essentially the class name
-    $class = basename($file, '.php');
-
-    if (class_exists($class))
-    {
-        $all_types[] = $class;
-    }
-}
 ?>
 @foreach ($types as $type)
     @section('js_header')
