@@ -41,7 +41,7 @@ class ChapterController extends AdminController {
         $input['author_id'] = Auth::admin()->get()->id;
         // dd($input);
     	$enId = CommonNormal::create($input);
-		return Redirect::action('ChapterController@index');
+		return Redirect::action('ChapterController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -87,7 +87,7 @@ class ChapterController extends AdminController {
         $input = Input::except('_token');
         // dd($input);
     	CommonNormal::update($id, $input);
-		return Redirect::action('ChapterController@index');
+		return Redirect::action('ChapterController@index')->with('success', 'Lưu thành công!');
 	}
 
 

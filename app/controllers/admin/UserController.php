@@ -52,7 +52,7 @@ class UserController extends AdminController {
         	if($id) {
         		return Redirect::action('UserController@index')->with('message', 'Người dùng <ins>'.$input['username'].'<ins> được tạo thành công!');
         	} else {
-        		dd('Error');
+        		return Redirect::back()->with('error', 'Lưu thất bại!');
         	}
         }
 	}
@@ -142,7 +142,7 @@ class UserController extends AdminController {
     		$inputPass['password'] = Hash::make($input['password']);
     		CommonNormal::update($id, $inputPass, 'User');
         }
-        return Redirect::action('UserController@changePassword', $id)->with('message', 'Đổi mật khẩu thành công!');
+        return Redirect::action('UserController@changePassword', $id)->with('success', 'Đổi mật khẩu thành công!');
 	}
 
 

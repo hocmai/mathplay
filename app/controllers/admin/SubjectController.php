@@ -41,7 +41,7 @@ class SubjectController extends AdminController {
         $input['author_id'] = Auth::admin()->get()->id;
         // dd($input);
     	$enId = CommonNormal::create($input);
-		return Redirect::action('SubjectController@index');
+		return Redirect::action('SubjectController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -86,7 +86,7 @@ class SubjectController extends AdminController {
 	{
         $input = Input::except('_token');
     	CommonNormal::update($id, $input, 'Subject');
-		return Redirect::action('SubjectController@index');
+		return Redirect::action('SubjectController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -99,7 +99,7 @@ class SubjectController extends AdminController {
 	public function destroy($id)
 	{
 		SubjectModel::find($id)->delete();
-        return Redirect::action('SubjectController@index');
+        return Redirect::action('SubjectController@index')->with('success', 'Xóa thành công!');
 	}
 
 

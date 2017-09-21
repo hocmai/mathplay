@@ -39,7 +39,7 @@ class ConfLessionController extends AdminController {
 			}
 		}
 		CommonConfig::set('lession', 'lession.config.'.Str::slug($input['name'], '_'), $input);
-		return Redirect::action('ConfLessionController@index');
+		return Redirect::action('ConfLessionController@index')->with('success', 'Lưu thành công!');
 		// dd($input);
 	}
 
@@ -89,7 +89,7 @@ class ConfLessionController extends AdminController {
 			}
 		}
 		CommonConfig::set('lession', 'lession.config.'.Str::slug($input['name'], '_'), $input);
-		return Redirect::action('ConfLessionController@index');
+		return Redirect::action('ConfLessionController@index')->with('success', 'Cập nhật thành công!');
 	}
 
 

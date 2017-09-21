@@ -24,33 +24,40 @@
 			<div class="box-body table-responsive no-padding">
 			  <table class="table table-hover">
 				<tr>
-				  <th>STT</th>
-				  <th>Môn học</th>
-				  <th>Lớp học</th>
-				  <th>Mô tả</th>
-				  <th>Người đăng</th>
-				  <th style="width:100px;">Ngày đăng</th>
-				  <th style="width:100px;">sửa lần cuối</th>
-				  <th style="width:100px;">Trạng thái</th>
-				  <th style="width:150px;">Action</th>
+					<th>STT</th>
+					<th>Tên môn học</th>
+					<th>Lớp học</th>
+					<th>Mô tả</th>
+					<th>Người đăng</th>
+					<th style="width:100px;">Ngày đăng</th>
+					<th style="width:100px;">sửa lần cuối</th>
+					<th style="width:100px;">Trạng thái</th>
+					<th style="width:150px;">Action</th>
 				</tr>
 				@foreach($data as $key => $value)
 				<tr>
-				  <td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }}</td>
-				  <td>{{ $value->title }}</td>
-				  <td><a href="{{ action('GradeController@edit', ['id' => Common::getValueOfObject($value, 'grade', 'id')]) }}">{{ Common::getValueOfObject($value, 'grade', 'title') }}</a></td>
-				  <td>{{ $value->description }}</td>
-				  <td>{{ Common:: getValueOfObject($value, 'author', 'username') }}</td>
-				  <td>{{ $value->created_at }}</td>
-				  <td>{{ $value->updated_at }}</td>
-				  <td>{{ ($value->status == 1) ? 'đã công bố' : 'chưa công bố' }}</td>
-				  <td>
-					<a href="{{ action('SubjectController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-					{{ Form::open(array('method'=>'DELETE', 'action' => array('SubjectController@destroy', $value->grade_id), 'style' => 'display: inline-block;')) }}
-					<button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-					{{ Form::close() }}
-
-				  </td>
+				 	<td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }}</td>
+				 	<td>{{ link_to_action('SiteSubjectController@show', $value->title, 
+				 		['gradeSlug' => Common::getValueOfObject($value, 'grade', 'slug'),
+						'subjectSlug' => $value->slug
+				 		]) }}
+				 	</td>
+				 	<td>{{ link_to_action(
+						'SiteGradeController@show',
+						Common::getValueOfObject($value, 'grade', 'title'),
+						['gradeSlug' => Common::getValueOfObject($value, 'grade', 'slug')], ['target' => '_blank'])}}
+					</td>
+				 	<td>{{ $value->description }}</td>
+				 	<td>{{ Common:: getValueOfObject($value, 'author', 'username') }}</td>
+					<td>{{ date_format(date_create($value->created_at), 'd/m/Y H:i') }}</td>
+					<td>{{ date_format(date_create($value->updated_at), 'd/m/Y H:i') }}</td>
+				 	<td>{{ ($value->status == 1) ? 'đã công bố' : 'chưa công bố' }}</td>
+				 	<td>
+						<a href="{{ action('SubjectController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+						{{ Form::open(array('method'=>'DELETE', 'action' => array('SubjectController@destroy', $value->grade_id), 'style' => 'display: inline-block;')) }}
+						<button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+						{{ Form::close() }}
+				 	</td>
 				</tr>
 				@endforeach
 			  </table>

@@ -37,7 +37,7 @@ class QuestionTypeController extends AdminController {
 			}
 		}
 		// dd(CommonConfig::collect('question_type'));
-		return Redirect::action('QuestionTypeController@index');
+		return Redirect::action('QuestionTypeController@index')->with('success', 'Cập nhật thành công!');
 	}
 
 
@@ -91,7 +91,7 @@ class QuestionTypeController extends AdminController {
 		// }
 
         CommonConfig::set('question_type', $type, $config);
-    	return Redirect::action('QuestionTypeController@index');
+    	return Redirect::action('QuestionTypeController@index')->with('success', 'Lưu thành công!');
 	}
 
 
