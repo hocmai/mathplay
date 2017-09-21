@@ -66,7 +66,8 @@ class SiteUserController extends SiteController {
             	->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
-            if( Auth::user()->attempt($input, !empty(Input::get('remember')) ? true : false ) ) {
+        	$remember = !empty(Input::get('remember')) ? true : false;
+            if( Auth::user()->attempt($input, $remember ) ) {
         		return Redirect::back();
             } else {
                 return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
