@@ -24,17 +24,17 @@ class Common {
 
 	public static function getGradeList()
 	{
-		return Grade::orderBy('created_at', 'asc')->lists('title','id');
+		return Grade::orderBy('created_at', 'desc')->lists('title','id');
 	}
 
 	public static function getSubjectList()
 	{
-		return Subject::orderBy('created_at', 'asc')->lists('title','id');
+		return Subject::orderBy('created_at', 'desc')->lists('title','id');
 	}
 
 	public static function getChapterList()
 	{
-		return Chapter::orderBy('created_at', 'asc')->lists('title','id');
+		return Chapter::orderBy('created_at', 'desc')->lists('title','id');
 	}
 
 	public static function getValueOfObject($ob, $method, $field)

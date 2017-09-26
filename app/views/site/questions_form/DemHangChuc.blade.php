@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
 	{{ Form::label('', 'Hình ảnh hiển thị') }}
-	{{ Form::select('question_config[image_data][]', DemHangChuc::getImageData()['list'], !empty($config['image_data']) ? $config['image_data'] : '', ['class' => 'form-control']) }}
+	{{ Form::select('question_config[image_data][][]', DemHangChuc::getImageData()['list'], !empty($config['image_data']) ? $config['image_data'] : '', ['class' => 'form-control']) }}
 </div>
 <div class="row">
 	<div class="form-group col-sm-5">

@@ -29,6 +29,7 @@
 
 	<!-- Date Picker -->
 	{{HTML::style('frontend/css/bootstrap-select.min.css') }}
+	{{HTML::style('adminlte/custom/mystyle.css') }}
 
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -63,7 +64,8 @@
 	<!-- AdminLTE App -->
 	{{ HTML::script('adminlte/dist/js/app.min.js') }}
     {{ HTML::script('frontend/js/bootstrap-select.min.js')}}
-
+	
+	{{ HTML::script('adminlte/custom/script.js') }}
 	<script>
 	  $(function () {
 	    $('#start_date').timepicker({

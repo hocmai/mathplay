@@ -17,6 +17,39 @@ class AdminController extends BaseController {
             return View::make('admin.layout.login');
         }
 	}
+
+	/**
+	 * Delete or update multi content
+	 *
+	 */
+	public function operation(){
+		$model = Input::get('model');
+		if( empty($model) ) return Redirect::back()->with('success', 'Xóa thành công!');
+
+		$data = (array)json_decode(Input::get('data'));
+		$action = Input::get('action');
+		if(count($data) == 0 | empty($action)){
+			return Redirect::back()->with('error', 'Không có nội dung nào được chọn.');
+		}
+
+		$message = '';
+		foreach ($data as $key => $value) {
+			if( $action == 'delete' ){
+				CommonNormal::delete($value, $model);
+				$message = 'Đã xóa thành công '.($key+1).' nội dung';
+			}
+			else if( $action == 'unpublic' ){
+				CommonNormal::update($value, ['status' => 0], $model);
+				$message = 'Bỏ công bố '.($key+1).' nội dung';
+			}
+			else if( $action == 'public' ){
+				CommonNormal::update($value, ['status' => 1], $model);
+				$message = 'Đã công bố '.($key+1).' nội dung';
+			}
+		}
+		// dd($data);
+		return Redirect::back()->with('success', $message);
+	}
 	/**
 	 * Show the form for creating a new resource.
 	 *

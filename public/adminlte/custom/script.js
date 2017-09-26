@@ -2,10 +2,37 @@ $(window).on('load', function(e) {
 	
 });
 
-
 $(document).ready(function(){
 	console.log('Myscript loaded');
 
+
+	//////////// Delete multi row
+	$('table').on('change', 'input#check-all', function(){
+		if($(this).is(':checked')){
+			$('input#check-option').prop('checked', 'checked');
+		} else{
+			$('input#check-option').prop('checked', false);
+		}
+		change_val_operation();
+	})
+
+	$('table input#check-option').on('change', function(){
+		if(!$(this).is(':checked')){
+			$('input#check-all').prop('checked', false);
+		}
+		change_val_operation();
+	})
+
+	function change_val_operation(){
+		var data = [];
+		$('table input#check-option').each( function(){
+			if($(this).is(':checked')){
+				data.push($(this).val());
+			}
+		});
+		$('#bulk-operation-form input[name="data"]').val(JSON.stringify(data)).change();
+	}
+	///////////////////////////////////////////////////
 
 	//////////////////////// Change question config in form
 	$('.form-add-question').on('change', '.panel select, .panel input:not(.question-config-hidden)', function(){
@@ -16,7 +43,6 @@ $(document).ready(function(){
 			_out[el.name] = el.value;
 		});
 		$(this).parents('#get-config-form').find('input.question-config-hidden').val(JSON.stringify(_out)).change();
-		// console.log($(this).val());
 	})
 
 	/////// Upload image preview
@@ -26,18 +52,10 @@ $(document).ready(function(){
 	        var reader = new FileReader();
 	        reader.onload = function (e) {
 	        	$(input).parent().append('<div class="preview"><img src="'+e.target.result+'" width="100"/></div>');
-	        	// console.log(e.target.result);
-	        	// $(input).parent().find('.preview').
-	            // $('#blah').attr('src', e.target.result);
 	        }
 	        reader.readAsDataURL(input.files[0]);
 	    }
 	}
-
-	$('input[type="file"][preview]').change(function(){
-	    // readURL(this);
-	    // console.log('test');
-	});
 
 	///// Add multi questions
 	$('.form-add-question').on('click', 'button.add-new-question', function(){

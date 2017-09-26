@@ -13,9 +13,47 @@ class LessionController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Lession::orderBy('updated_at', 'desc')->paginate(PAGINATE);
+		$data = Lession::orderBy('created_at', 'desc')->paginate(PAGINATE);
 		// dd($data);
 		return View::make('admin.lession.index')->with(compact('data'));
+	}
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function search()
+	{
+		$input = Input::all();
+		$data = Lession::select('lessions.*');
+		if( !empty($input['title']) ){
+			$data = $data->where('lessions.title', 'LIKE' , '%'.$input['title'].'%');
+		}
+		$data = $data->join('chapters', 'lessions.chapter_id', '=', 'chapters.id')
+			->join('subjects', 'chapters.subject_id', '=', 'subjects.id')
+			->join('grades', 'subjects.grade_id', '=', 'grades.id');
+
+		if( !empty($input['chapter']) ){
+			$data = $data->where('chapters.id', $input['chapter']);
+		}
+		if( !empty($input['subject']) ){
+			$data = $data->where('subjects.id', $input['subject']);
+		}
+		if( !empty($input['grade']) ){
+			$data = $data->where('grades.id', $input['grade']);
+		}
+		if( isset($input['status']) && $input['status'] != ''){
+			$data = $data->where('lessions.status', $input['status']);
+		}
+		if( !empty($input['order_by']) ){
+			$data = $data->orderBy('lessions.'.$input['order_by'], !empty($input['order']) ? $input['order'] : 'desc');
+		} else{
+			$data = $data->orderBy('lessions.created_at', 'desc');
+		}
+		$data = $data->paginate(PAGINATE);
+		// dd(Input::get('order'));
+		return View::make('admin.lession.index')->with(compact('data'))->with(compact('input'));
 	}
 
 
@@ -44,7 +82,7 @@ class LessionController extends AdminController {
         // 	$input['config'] = json_encode(array_except($config, ['name', '_method', 'description']));
         // }
         $input['author_id'] = Auth::admin()->get()->id;
-        // dd($input);
+        dd($input);
 
     	$LessionId = CommonNormal::create($input);
 

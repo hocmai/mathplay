@@ -10,6 +10,6 @@
 </div>
 <div class="form-group">
 	{{ Form::label('', 'Số các số hạng') }}
-	{{ Form::number('question_config[number_count][]', !empty($config['number_count']) ? $config['number_count'] : 0,  ['class' => 'form-control', 'placeholder' => 'Số các số hạng', 'min' => 2, 'max' => 4]) }}
+	{{ Form::number('question_config[number_count][]', !empty($config['number_count']) ? $config['number_count'] : 0,  ['class' => 'form-control', 'placeholder' => 'Số các số hạng', 'min' => 0, 'max' => 4]) }}
 	<div class="description">Nhập 0 để tạo ngẫu nhiên n số hạng (n≥2 & n≤4).</div>
 </div>

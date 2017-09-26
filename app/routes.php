@@ -42,6 +42,8 @@ Route::group(['prefix' => 'admin'], function () {
  	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
 	Route::post('/login', array('uses' => 'AdminController@doLogin'));
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
+	Route::post('/operation', array('uses' => 'AdminController@operation', 'as' => 'admin.operation'));
+
 	Route::resource('/', 'ManagerController');
 
 	Route::group(['prefix' => 'manage'], function(){
@@ -60,6 +62,7 @@ Route::group(['prefix' => 'admin'], function () {
 	 	Route::resource('/chapter', 'ChapterController');
 	 	
 	 	Route::get('/lession/question-type/refresh', ['uses' => 'QuestionTypeController@refresh', 'as' => 'QuestionTypeRefresh']);
+	 	Route::get('/lession/search', ['uses' => 'LessionController@search', 'as' => 'LessionFilter']);
 	 	Route::get('/lession/question-type/{type}/edit', ['uses' => 'QuestionTypeController@edit', 'as' => 'QuestionTypeEdit']);
 	 	Route::post('/lession/question-type/{type}/update', ['uses' => 'QuestionTypeController@update', 'as' => 'QuestionTypeUpdate']);
 	 	Route::resource('/lession/config', 'ConfLessionController');
