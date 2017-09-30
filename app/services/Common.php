@@ -113,7 +113,7 @@ class Common {
 
 	public static function getValueOfObject($ob, $method, $field)
 	{
-		if (!$ob) {
+		if (!($ob)) {
 			return null;
 		}
 		if (!($ob->$method)) {
@@ -127,10 +127,10 @@ class Common {
 
 	public static function getObject($ob, $method)
 	{
-		if (!$ob) {
+		if (!($ob)) {
 			return null;
 		}
-		if (!$ob->$method) {
+		if (!($ob->$method)) {
 			return null;
 		}
 		return $ob->$method;

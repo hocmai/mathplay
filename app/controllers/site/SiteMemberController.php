@@ -13,7 +13,7 @@ class SiteMemberController extends BaseController {
 	}
 
 	/**
-	 * Display Study history of a member.
+	 * Bang diem.
 	 *
 	 * @return Response
 	 */
@@ -44,14 +44,14 @@ class SiteMemberController extends BaseController {
 	}
 
 	/**
-	 * Display Study history of a member.
+	 * Tien trinh hoc.
 	 *
 	 * @return Response
 	 */
 	public function historyScore()
 	{
 		$uid = Auth::user()->get()->id;
-		$data = StudyHistory::select('study_history.*')
+		$data = Studyhistory::select('study_history.*', 'grades.title as grade_title', 'chapters.title as chapter_title', 'lessions.title as lession_title')
 			->join( 
 				DB::raw("(SELECT id, MAX(score) AS MaxScore, lession_id 
 				FROM study_history
@@ -60,27 +60,30 @@ class SiteMemberController extends BaseController {
 					$join->on('study_history.lession_id', '=', 'groupedtt.lession_id')
 					  ->on('study_history.score', '=', 'groupedtt.MaxScore');
 				})
-			// ->join('grades', 'study_history.grade_id', '=', 'grades.id')
-			// ->join('chapters', 'study_history.chapter_id', '=', 'chapters.id')
-			// ->join('lessions', 'study_history.lession_id', '=', 'lessions.id')
+			->join('grades', 'study_history.grade_id', '=', 'grades.id')
+			->join('chapters', 'study_history.chapter_id', '=', 'chapters.id')
+			->join('lessions', 'study_history.lession_id', '=', 'lessions.id')
 			->where('author', $uid)
-			->orderBy('updated_at', 'asc')
+			->orderBy('study_history.updated_at', 'asc')
 			->get();
 		$dataH = [];
 		foreach($data as $key => $value){
-			$dataH[$value->grade_id][$value->chapter_id][$value->lession_id] = $value;
+			$dataH[$value->grade_id]['title'] = Common::getObject($value, 'grade_title');
+			$dataH[$value->grade_id]['chapters'][$value->chapter_id]['title'] = Common::getObject($value, 'chapter_title');
+			$dataH[$value->grade_id]['chapters'][$value->chapter_id]['lessions'][$value->lession_id] = $value;
 		}
+		// dd($data->count());
 		return View::make('site.member.history.history-progress')->with(['data' => $dataH]);
 	}
 
 	/**
-	 * Display Study history of a member.
+	 * Lich su lam bai.
 	 *
 	 * @return Response
 	 */
 	public function historyQuestion()
 	{
-		$tree = Common::getLessionTree();
+		$tree = Common::getLessionTree();		
 		$data = [];
 		$input = Input::get('lession');
 		if( !empty($input) ){

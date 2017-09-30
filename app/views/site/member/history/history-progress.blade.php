@@ -31,27 +31,46 @@
         <div class="container">
             <div class="main-content">
                 <h1 class="page-title">Chương trình đã học</h1>
-                <div class="class-history-process">
+                <div class="class-history-progress">
                     
                     <div class="question-log-result">
                         <!-- <h2 class="title">Học bạ</h2> -->
                         <div class="result-content">
                             @if(count($data))
-                            	<table class="table table-bordered table-hover">
-                                    <thead>
-                                        <th>Tên bài</th>
-                                        <th>Thời gian</th>
-                                        <th>Số câu đã làm</th>
-                                        <th>Tiến trình</th>
-                                    </thead>
-	                                @foreach($data as $gradeId => $chapter)
-	                                	@foreach($chapter as $chapterId => $lession)
-	                                		@foreach($lession as $lessionId => $history)
-
-	                                		@endforeach
+                            	<div class="tb-row tb-head">
+                            		<div class="tb-col col-title">Tên bài</div>
+                            		<div class="tb-col col-time">Thời gian</div>
+                            		<div class="tb-col col-number text-center">Số câu đã làm</div>
+                            		<div class="tb-col col-progress">Số điểm</div>
+                            	</div>
+                                @foreach($data as $gradeId => $grade)
+                                	<div class="tb-row">
+	                            		<a class="collapse-head grade" role="button" data-toggle="collapse" href="#collapseGrade-{{ $gradeId }}" aria-expanded="true" aria-controls="collapseGrade-{{ $gradeId }}">{{ $grade['title'] }}</a>
+	                            	</div>
+	                                <div class="collapse in" id="collapseGrade-{{ $gradeId }}">
+	                                	@foreach($grade['chapters'] as $chapterId => $chapter)
+		                                	<div class="tb-row">
+			                            		<a class="collapse-head chapter" role="button" data-toggle="collapse" href="#collapseChapter-{{ $chapterId }}" aria-expanded="true" aria-controls="collapseChapter-{{ $chapterId }}">{{ $chapter['title'] }}</a>
+			                            	</div>
+			                                <div class="collapse in" id="collapseChapter-{{ $chapterId }}"><tr>
+		                                		@foreach($chapter['lessions'] as $lessionId => $history)
+		                                			<a class="tb-row tb-body" href="{{ action('SiteMemberController@historyQuestion', ['uid' => Auth::user()->get()->id, 'lession' => Common::getObject($history, 'lession_id')]) }}">
+					                            		<div class="tb-col col-title">{{ Common::getObject($history, 'lession_title') }}</div>
+					                            		<div class="tb-col col-time">{{ !empty($history->time_use) ? Common::convertTimeUsed($history->time_use)['text'] : '' }}</div>
+					                            		<div class="tb-col col-number text-center">{{ Common::getObject($history, 'current_question') }}</div>
+					                            		<div class="tb-col col-progress">
+					                            			<span class="score-start">0</span>
+					                            			<div class="bar">
+					                            				<div class="progress" style="width: {{ $history->score }}%"></div>
+					                            				<span class="score">{{ $history->score }}</span>
+					                            			</div>
+					                            		</div>
+					                            	</a>
+		                                		@endforeach
+	                                		</div>
 	                                	@endforeach
-	                                @endforeach
-                                </table>
+                                	</div>
+                                @endforeach
                             @else
                                 <em>Bạn chưa học chương trình nào.</em>
                             @endif

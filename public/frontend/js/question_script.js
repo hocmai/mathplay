@@ -88,6 +88,13 @@ $(document).ready(function($) {
 	    // return false;
 	});
 
+	///////////////// loai bo khoang trang khi nhap dap an ///////////////
+	$('.question-rendered form input[type="text"], .question-rendered form input[type="number"]').on('input', function(){
+		var val = $(this).val().replace(/\s/g,"");
+		$(this).val(val).change();
+		// console.log(val);
+	})
+
 	////////////// Chuyen cau hoi tiep theo ////////////////////
 	function show_next_question(parent){
 		parent.fadeOut('300', function(){

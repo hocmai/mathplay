@@ -49,10 +49,13 @@ Route::group(['prefix' => 'ajax'], function(){
 Route::group(['prefix' => 'member'], function () {
 	Route::get('/{uid}/bang-diem', ['as' => 'memeber.history', 'uses' => 'SiteMemberController@history'])
 		->where('uid', '[0-9]+');
+		
 	Route::get('/{uid}/tien-trinh', ['as' => 'memeber.history.score', 'uses' => 'SiteMemberController@historyScore'])
 		->where('uid', '[0-9]+');
+
 	Route::get('/{uid}/lich-su-lam-bai', ['as' => 'memeber.history.question', 'uses' => 'SiteMemberController@historyQuestion'])
 		->where('uid', '[0-9]+');
+
 	Route::get('/{uid}/profile', ['as' => 'memeber.profile', 'uses' => 'SiteMemberController@index'])
 		->where('uid', '[0-9]+');
 });
