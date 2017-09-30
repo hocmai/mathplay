@@ -23,7 +23,7 @@ class SiteMemberController extends BaseController {
 		$input = Input::get('grade');
 		if( !empty($input) ){
 			$uid = Auth::user()->get()->id;
-			$subject = subject::where('grade_id', $input)->orderBy('updated_at', 'desc')->first();
+			$subject = Subject::where('grade_id', $input)->orderBy('updated_at', 'desc')->first();
 			$chapter = Common::getObject($subject, 'chapter');
 			// $data = StudyHistory::orderBy('updated_at', 'desc')->where('grade_id', $input)->where('author', $uid)->get();
 			$data = StudyHistory::select('study_history.*')
