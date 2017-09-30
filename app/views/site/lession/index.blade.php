@@ -97,9 +97,7 @@ foreach($lession->question as $question){
                             $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question) ) ? $history->current_question : 1;
                             $current_score = (!empty($history) && $history->status != 1 && !empty($history->score) ) ? $history->score : 0;
                             $timeUsed = !empty($history->time_use) ? $history->time_use : 0;
-                            $hours = floor($timeUsed/3600);
-                            $minutes = floor(($timeUsed - ($hours*3600))/60);
-                            $seconds = $timeUsed - ($hours*3600) - ($minutes*60);
+                            $convertTime = Common::convertTimeUsed($timeUsed);
                             ?>
 
                             {{ CommonQuestion::renderLession($lession, $history) }}
@@ -167,7 +165,7 @@ foreach($lession->question as $question){
                             <div class="title bg2">Thời gian làm bài</div>
                             <p class="times" data-start="0">
                                 <span class="time-use hidden">{{$timeUsed}}</span>
-                                <span class="hours">{{ (($hours < 10) ? '0' : '').$hours }}</span>:<span class="minutes">{{ (($minutes < 10) ? '0' : '').$minutes }}</span>:<span class="seconds">{{ (($seconds < 10) ? '0' : '').$seconds }}</span>
+                                <span class="hours">{{ (($convertTime['hours'] < 10) ? '0' : '').$convertTime['hours'] }}</span>:<span class="minutes">{{ (($convertTime['minutes'] < 10) ? '0' : '').$convertTime['minutes'] }}</span>:<span class="seconds">{{ (($convertTime['seconds'] < 10) ? '0' : '').$convertTime['seconds'] }}</span>
                             </p>
                             <div class="title bg3">Điểm</div>
                             <p class="diem">

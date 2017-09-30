@@ -35,4 +35,23 @@ class SiteLessionController extends BaseController {
 		return View::make('site.lession.index')->with(compact(['grade', 'subject', 'lession']));
 	}
 
+	/**
+	 * Display the specified resource.
+	 *
+	 * @param  int  $id
+	 * @return Response
+	 */
+	public function detail($id)
+	{
+		$lession = Lession::find($id);
+		if( !$lession ){
+			App::abort(404);
+		}
+		$subject = Common::getValueOfObject($lession, 'chapter', 'subject');
+		$grade   = Common::getObject($subject, 'grade');
+
+		
+		return View::make('site.lession.index')->with(compact(['grade', 'subject', 'lession']));
+	}
+
 }

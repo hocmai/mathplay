@@ -290,3 +290,49 @@ function removeTagsHtml($text)
 	$text = html_entity_decode($text);
 	return $text;
 }
+
+if ( ! function_exists('renderUrl'))
+{
+	/**
+	 * Generate a HTML link to a controller action.
+	 *
+	 * @param  string  $action
+	 * @param  string  $title
+	 * @param  array   $parameters
+	 * @param  array   $attributes
+	 * @return string
+	 */
+	function renderUrl($action, $title = null, $parameters = array(), $attributes = array())
+	{
+		if( action($action, $parameters) == Request::url() ){
+			if(!isset($attributes['class'])){
+				$attributes['class'] = 'active';
+			} else{
+				$attributes['class'] .= ' active';
+			}
+		}
+		return app('html')->linkAction($action, $title, $parameters, $attributes);
+	}
+}
+
+if ( ! function_exists('get_order_link'))
+{
+	/**
+	 * Generate a HTML link to a controller action.
+	 *
+	 * @param  string  $field
+	 * @param  string  $title
+	 * @param  array   $route
+	 * @return string
+	 */
+	function get_order_link($field = '', $title = '', $route = '')
+	{
+		$input = Input::all();
+		unset($input['order']);
+		if( Input::get('order_by') == $field && Input::get('order') != 'asc' ){
+			$input['order'] = 'asc';
+		}
+		$input['order_by'] = $field;
+		return '<a title="Sắp xếp theo '.$title.'" href="'. action($route, $input). '">'.$title. ((Input::get('order_by') == $field) ? ' <span class="'.( (Input::get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : ''). '</a>';
+	}
+}

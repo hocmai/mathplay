@@ -1,5 +1,40 @@
 $(document).ready(function(){
 
+    ////////////////////// An modal thong bao khi chua nhap dap an //////////////
+    $('.box-thong-tin-bai-lam .over').on('click', function(){
+        $('body').removeClass('open-hd-giai');
+    });
+
+    ///////////////////////// Multi select question log /////////////////
+    $('.question-log-filter .dropdown-menu').off().on('click', 'a', function(){
+        var key = $(this).attr('data-key'),
+        id = $(this).attr('data-id');
+        $(this).parents('form#filter-question-log-form').find('input[type="submit"]').attr('disabled', true);
+
+        if(!$(this).hasClass('has-child')){
+            if( key == 'lession_id' ){
+                $('.question-log-filter .dropdown-menu li a.active').removeClass('active');
+                $(this).addClass('active');
+                $(this).parents('form#filter-question-log-form').find('input[name="lession"]').val(id).change();
+                $(this).parents('form#filter-question-log-form').find('input[type="submit"]').removeAttr('disabled');
+            }
+            return false;
+        }
+        $('.question-log-filter .menu-content.active').removeClass('active');
+        $('.question-log-filter .menu-content[parent-name="'+key+'"][parent-id="'+id+'"]').addClass('active');
+        return false;
+    })
+    $('.question-log-filter .menu-content').off().on('click', '.menu-header', function(){
+        var key = $(this).parent().attr('parent-name'),
+        id = $(this).parent().attr('parent-id');
+        if( key == '' | id == '' ){
+            return false;
+        }
+        $(this).parent().removeClass('active');
+        $('.question-log-filter li a[data-key="'+key+'"][data-id="'+id+'"]').parents('.menu-content').addClass('active');
+        return false;
+    })
+
     ///////////////////// Login hoc OAuth //////////////////////////
 	$('.hocmai-oauth-login').on('click', function(event){
 		hocmaiOAuth.login(this, function(response){

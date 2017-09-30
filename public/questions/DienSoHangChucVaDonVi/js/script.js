@@ -1,7 +1,8 @@
 $(document).ready(function($) {
 	
 	//////////// Submit answer form
-	$('.question-wrapper').on('submit', 'form.answer-question-form', function(e){
+	$('#DienSoHangChucVaDonVi .question-wrapper').on('submit', 'form.answer-question-form', function(e){
+		if( !$(this).parents('#DienSoHangChucVaDonVi').hasClass('active') ) return;
 		var num1 = $(this).find('[name="answer_1"]').val(),
 		num2 = $(this).find('[name="answer_2"]').val();
 		if( num1 == '' ) num1 = 0;

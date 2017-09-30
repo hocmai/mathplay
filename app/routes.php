@@ -22,6 +22,15 @@ Route::get('/logout', array('uses' => 'SiteUserController@logout', 'as' => 'user
 Route::post('/login', array('uses' => 'SiteUserController@doLogin', 'as' => 'user.dologin'));
 Route::post('/register', array('uses' => 'SiteUserController@doRegister', 'as' => 'user.doregister'));
 
+Route::get('/lession/{id}', array(
+	'uses' => 'SiteLessionController@detail',
+	'as' =>'showlessionDetail'
+))->where('uid', '[0-9]+');
+
+Route::get('/grade/{id}', array(
+	'uses' => 'SiteGradeController@detail',
+	'as' =>'showGradeDetail'
+))->where('uid', '[0-9]+');
 // Route::get('mon-hoc/{subject_slug}/{lession_slug}', array(
 // 	'uses' => 'SiteLessionController@show',
 // 	'as' =>'showlession'
@@ -34,6 +43,18 @@ Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/oauthcallback',array('as'=>'oauthcallback','uses'=>'AjaxController@oauthCallback'));
 	Route::post('/uploadfile',array('as'=>'uploadfile','uses'=>'AjaxController@uploadFile'));
 	Route::post('/removefile',array('as'=>'removefile','uses'=>'AjaxController@removeFile'));
+});
+
+///////////////// User page //////////////////
+Route::group(['prefix' => 'member'], function () {
+	Route::get('/{uid}/bang-diem', ['as' => 'memeber.history', 'uses' => 'SiteMemberController@history'])
+		->where('uid', '[0-9]+');
+	Route::get('/{uid}/tien-trinh', ['as' => 'memeber.history.score', 'uses' => 'SiteMemberController@historyScore'])
+		->where('uid', '[0-9]+');
+	Route::get('/{uid}/lich-su-lam-bai', ['as' => 'memeber.history.question', 'uses' => 'SiteMemberController@historyQuestion'])
+		->where('uid', '[0-9]+');
+	Route::get('/{uid}/profile', ['as' => 'memeber.profile', 'uses' => 'SiteMemberController@index'])
+		->where('uid', '[0-9]+');
 });
 
 ///////////////// Admin page //////////////////

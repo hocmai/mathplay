@@ -1,44 +1,8 @@
 <?php $grades = Grade::all();
 $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
-
 ?>
-
-<div class="menu-mobile header-content clearfix hidden-lg">
-    <a class="logo" href="#" title="">
-        <img src="{{ asset('frontend/images/logo.png')}}" class="img-responsive" alt=""/>
-    </a>
-    <div id="button" class="button"></div>
-    <ul class="header-menu-left no-list-style">
-        <li>
-            <a class="dang-nhap hvr-shadow hocmai-oauth-login" data-toggle="modal" data-target="/user/login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng nhập <span class="fa fa-key"></span></a>
-        </li>
-        <li>
-            <a class="dang-ky hvr-shadow hocmai-oauth-login" data-toggle="modal" data-target="/user/register" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng ký <span class="fa fa-lock"></span></a>
-        </li>
-
-        <li><a href="index.php" title="Trang chủ">Trang chủ</a></li>
-        <li>
-            <a href="#">
-                <div class="bg-hv"><span></span></div>
-                Lớp học
-            </a>
-            <ul>
-                @foreach($grades as $grade)
-                    <li>
-                        @if(Auth::admin()->check() | $grade->status == 1)
-                            {{ link_to_action('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
-                        @endif
-                    </li>
-                @endforeach
-            </ul>
-        </li>
-        <li><a href="#" title="">Giới thiệu</a></li>
-        <li><a href="#" title="">Liên hệ</a></li>
-    </ul>
-</div>
-
 <!-- Desktop screen -->
-<header class="hidden-xs hidden-sm">
+<header class="">
     <div class="box-dang-nhap">
         <div class="container">
             @if(Auth::user()->check())
@@ -53,7 +17,8 @@ $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li><a href="{{ action('SiteUserController@logout') }}">Thoát</a></li>
+                                <li>{{ renderUrl('SiteMemberController@history', 'Lịch sử làm bài', ['uid' => Auth::user()->get()->id]) }}</li>
+                                <li>{{ renderUrl('SiteUserController@logout', 'Thoát') }}</li>
                             </ul>
                         </div>
                         <span>Xin chào</span>
@@ -90,7 +55,7 @@ $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
                                 @foreach($grades as $grade)
                                     <li>
                                         @if(Auth::admin()->check() | $grade->status == 1)
-                                            {{ link_to_action('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
+                                            {{ renderUrl('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
                                         @endif
                                     </li>
                                 @endforeach

@@ -1,6 +1,80 @@
 <?php
 class Common {
 
+	public static function convertTimeUsed($timeUsed = 0){
+        $hours = floor($timeUsed/3600);
+        $minutes = floor(($timeUsed - ($hours*3600))/60);
+        $seconds = $timeUsed - ($hours*3600) - ($minutes*60);
+        return ['hours' => $hours, 'minutes' => $minutes, 'seconds' => $seconds, 'text' => (($hours > 0) ? ' '.$hours.' giờ' : '').(($minutes > 0) ? ' '.$minutes.' phút' : '').(($seconds > 0) ? ' '.$seconds.' giây' : '')];
+	}
+
+	public static function getLessionTree(){
+		$tree = [];
+		$gradeList = Grade::orderBy('created_at', 'asc')->get();
+		foreach ($gradeList as $key => $grade) {
+			$subjectTree = [];
+			$subjectList = $grade->subject()->orderBy('created_at', 'asc')->get();
+			foreach ($subjectList as $key1 => $subject) {
+				$chapterTree = [];
+				$chapterList = $subject->chapter()->orderBy('created_at', 'asc')->get();
+				foreach ($chapterList as $key2 => $chapter) {
+					$lessionTree = [];
+					$lessionList = $chapter->lession()->orderBy('created_at', 'asc')->get();
+					foreach ($lessionList as $key3 => $lession) {
+						$lessionTree[] = [
+							'id' => $lession->id,
+							'slug' => 'lession_id',
+							'name' => 'bài kiểm tra',
+							'title' => $lession->title,
+						];
+					}
+					$chapterTree[] = [
+						'id' => $chapter->id,
+						'slug' => 'chapter_id',
+						'name' => 'chuyên đề',
+						'title' => $chapter->title,
+						'child' => $lessionTree,
+					];
+				}
+				$subjectTree[] = [
+					'id' => $subject->id,
+					'slug' => 'subject_id',
+					'name' => 'môn học',
+					'title' => $subject->title,
+					'child' => $chapterTree,
+				];
+			}
+			$tree[] = [
+				'id' => $grade->id,
+				'slug' => 'grade_id',
+				'name' => 'lớp học',
+				'title' => $grade->title,
+				'child' => $subjectTree,
+			];
+		}
+
+		return self::renderLessionChild($tree);
+	}
+
+	public static function renderLessionChild($parent, $parent_name = '', $parent_id = ''){
+		$output = $child = '';
+		if(count($parent)){
+			$output .= '
+			<div class="menu-content'.( ($parent[0]['slug'] == 'grade_id') ? ' active' : '' ).' '.$parent[0]['slug'].'" parent-name="'.$parent_name.'" parent-id="'.$parent_id.'">
+				<div class="menu-header">'. $parent[0]['name'] .'</div>
+				<ul class="select-list '. $parent[0]['slug'] .'">';
+					foreach ($parent as $key => $value) {
+						$output .= '<li>
+							<a href="#" data-key="'. $value['slug'] .'" data-id="'. $value['id'] .'"  class="'.( !empty($value['child']) ? 'has-child' : '' ).'">'. $value['title'] .'</a>
+						</li>';
+						$child .= !empty($value['child']) ? self::renderLessionChild($value['child'], $value['slug'], $value['id']) : '';
+					}
+			$output .= '</ul></div>';
+			$output .= $child;
+		}
+		return $output;
+	}
+
 	public static function getLessionHistory($lession){
 		if( Auth::user()->check() ){
 			$fields = [

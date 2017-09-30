@@ -1,18 +1,12 @@
 @extends('admin.layout.default')
 @if(Admin::isAdmin())
 @section('title')
-{{ $title='Danh sách bài tập' }}
+{{ $title = 'Danh sách bài tập' }}
+<h4 class="inline-block" style="margin-left: 15px"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{ link_to_action('LessionController@create', 'Thêm mới') }}</h4>
 @stop
 
 <?php $input['order'] = 'desc'; ?>
 @section('content')
-
-	<div class="row margin-bottom">
-		<div class="col-xs-12">
-			<a href="{{ action('LessionController@create') }}" class="btn btn-primary">Thêm bài tập</a>
-		</div>
-	</div>
-
 	<!-- inclue Search form -->
 	@include('admin.lession.filter')
 
@@ -21,18 +15,10 @@
 		 	<div class="box">
 				<div class="box-header">
 					@if($data->count())
-						<h3 class="box-title">Danh sách bài tập</h3>
-						<p><em>
+						@include('admin.common.bulk-operations', ['model' => 'Lession'])
+						<span class="pull-right"><em>
 							Hiển thị {{ 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }} - {{ ( $data->getTotal() <= ($data->getPerPage() * $data->getCurrentPage() ) ) ? $data->getTotal() : $data->getPerPage() + ($data->getPerPage() * ($data->getCurrentPage() -1) ) }} trong tổng số {{ ($data->getTotal()) }} kết quả
-						</em></p>
-						{{ Form::open(['action' => 'AdminController@operation', 'method' => 'POST', 'id' => 'bulk-operation-form']) }}
-							{{ Form::hidden('model', 'Lession') }}
-							{{ Form::hidden('data') }}
-							<div class="inline-block input-group">
-								{{ Form::select('action', ['' => '- Thao tác -', 'delete' => 'Xóa', 'unpublic' => 'Bỏ công bố', 'public' => 'Công bố'], '', ['class' => 'form-control', 'required' => true]) }}
-							</div>
-							<div class="inline-block input-group" style="vertical-align: top;">{{ Form::submit('Áp dụng cho các mục được chọn', ['class' => 'btn btn-primary	']) }}</div>
-						{{ Form::close() }}
+						</em></span>
 					@else
 						<div class="alert alert-info" style="margin: 0" role="alert">Không tìm thấy kết quả nào.</div>
 					@endif
@@ -44,36 +30,16 @@
 							<tr class="success">
 								<th><input type="checkbox" id="check-all"/></th>
 								<th>STT</th>
-								<th>
-									<?php
-									$input['order'] = 'asc';
-									if( Input::get('order_by') == 'title' && Input::get('order') == 'asc' ){
-										unset($input['order']);
-									}
-									$input['order_by'] = 'title'; ?>
-									<a title="Sắp xếp theo tiêu đề" href="{{ action('LessionController@search', $input) }}">Tên bài tập{{ (Input::get('order_by') == 'title') ? ' <span class="'.( (Input::get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : '' }}</a>
-								</th>
+								<th>{{ get_order_link('title', 'Tiêu đề', 'LessionController@search') }}</th>
 								<th>Chuyên đề</th>
 								<th>Môn</th>
 								<th style="min-width:90px;">Lớp</th>
 								<th style="min-width:90px;">Người đăng</th>
 								<th style="width:120px;">
-									<?php
-									unset($input['order']);
-									if( Input::get('order_by') == 'created_at' && Input::get('order') != 'asc' ){
-										$input['order'] = 'asc';
-									}
-									$input['order_by'] = 'created_at';?>
-									<a title="Sắp xếp theo ngày đăng" href="{{ action('LessionController@search', $input) }}">Ngày đăng{{ (Input::get('order_by') == 'created_at') ? ' <span class="'.( (Input::get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : '' }}</a>
+									{{ get_order_link('created_at', 'Ngày đăng', 'LessionController@search') }}
 								</th>
 								<th style="width:120px;">
-									<?php
-									unset($input['order']);
-									if( Input::get('order_by') == 'updated_at' && Input::get('order') != 'asc' ){
-										$input['order'] = 'asc';
-									}
-									$input['order_by'] = 'updated_at';?>
-									<a title="Sắp xếp theo ngày sửa cuối cùng" href="{{ action('LessionController@search', $input) }}">Sửa lần cuối{{ (Input::get('order_by') == 'updated_at') ? ' <span class="'.( (Input::get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : '' }}</a>
+									{{ get_order_link('updated_at', 'Sửa lần cuối', 'LessionController@search') }}
 								</th>
 								<th style="width:90px;">Trạng thái</th>
 								<th style="width:115px;">Action</th>

@@ -1,8 +1,0 @@
-{{ Form::open(['action' => 'LessionController@index', 'method' => 'GET', 'id' => 'bulk-operation-form']) }}
-	{{ Form::hidden('model', 'Lession') }}
-	{{ Form::hidden('data') }}
-	<div class="inline-block input-group">
-		{{ Form::select('action', ['' => '- Thao tác -'], '', ['class' => 'form-control', 'required' => true]) }}
-	</div>
-	<div class="inline-block input-group" style="vertical-align: top;">{{ Form::submit('Áp dụng cho các mục được chọn', ['class' => 'btn btn-primary	']) }}</div>
-{{ Form::close() }}

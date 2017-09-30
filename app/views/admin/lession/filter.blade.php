@@ -1,4 +1,4 @@
-<div class="margin-bottom">
+<div class="box alert">
 	{{ Form::open(['action' => 'LessionController@search', 'method' => 'GET']) }}
 		<div class="input-group inline-block">
 			<label>Tiêu đề</label>
