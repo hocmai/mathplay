@@ -51,7 +51,7 @@ class SiteMemberController extends BaseController {
 	public function historyScore()
 	{
 		$uid = Auth::user()->get()->id;
-		$data = Studyhistory::select('study_history.*', 'grades.title as grade_title', 'chapters.title as chapter_title', 'lessions.title as lession_title')
+		$data = StudyHistory::select('study_history.*', 'grades.title as grade_title', 'chapters.title as chapter_title', 'lessions.title as lession_title')
 			->join( 
 				DB::raw("(SELECT id, MAX(score) AS MaxScore, lession_id 
 				FROM study_history
