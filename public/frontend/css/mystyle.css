@@ -75,6 +75,9 @@ body>.loading>span::after{
     animation: rotate 1s infinite linear;
     margin: 0 10%;
 }
+.tabs-head{
+    background: #fff;
+}
 .tabs-head ul.nav li>a{
     border: none;
     border-right: 1px solid #ddd;

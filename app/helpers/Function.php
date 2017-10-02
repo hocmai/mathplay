@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * Get random value of an array
+ */
+function getRandArrayVal($arr){
+	$rand = array_rand($arr);
+	return $arr[$rand];
+}
+
 /* mm/dd/yyyy to Y-m-d H:i:s */
 function convertDateTime($dateString, $paramString = '/')
 {

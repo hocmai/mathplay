@@ -1,6 +1,7 @@
 <?php
 class Common {
 
+	//////////// Doi so giay thanh gio - phut - giay
 	public static function convertTimeUsed($timeUsed = 0){
         $hours = floor($timeUsed/3600);
         $minutes = floor(($timeUsed - ($hours*3600))/60);

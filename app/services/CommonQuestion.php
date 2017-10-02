@@ -5,10 +5,11 @@ Class CommonQuestion {
 		$allType = [];
 		foreach (glob(app_path().'/services/questions/*.php') as $key => $value) {
 			$class = basename($value, '.php');
-			if( class_exists($class) ){
-				if(method_exists($class, 'getTitle')) $allType[$class] = $class::getTitle();
+			if( class_exists($class) && method_exists($class, 'getTitle')){
+				$allType[$class] = $class::getTitle();
 			}
 		}
+		// dd($allType);
 		return $allType;
 	}
 

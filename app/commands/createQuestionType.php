@@ -69,13 +69,12 @@ class CreateQuestionType extends Command {
 		// we will grab the path and options. We allow the developers to include or
 		// exclude given methods from the resourceful controllers we're building.
 		$questionType = $this->argument('name');
-
-		$options = $this->getBuildOptions();
+		$desc = $this->option('desc');
 
 		// Finally, we're ready to generate the actual controller file on disk and let
 		// the developer start using it. The controller will be stored in the right
 		// place based on the namespace of this controller specified by commands.
-		if(!$this->generator->make($questionType, $options)){
+		if(!$this->generator->make($questionType, $desc)){
 			$this->error('Dang bai nay da ton tai!');
 			return false;
 		}
@@ -86,18 +85,6 @@ Added file: app/services/question/'.$questionType.'.php
 Added file: app/views/site/questions/'.$questionType.'.blade.php
 Added file: app/views/site/questions_form/'.$questionType.'.blade.php
 Added directory: public/questions/'.$questionType);
-	}
-
-	/**
-	 * Get the options for controller generation.
-	 *
-	 * @return array
-	 */
-	protected function getBuildOptions()
-	{
-		$name = $this->argument('name');
-		$desc = $this->option('desc');
-		return compact('name', 'desc');
 	}
 
 	/**

@@ -39,10 +39,10 @@ class QuestionTypeGenerator {
 	 * @param  array   $options
 	 * @return void
 	 */
-	public function make($name, array $options = array())
+	public function make($name, $desc)
 	{
 		//////// Add service file services/questions/{name}.php
-		$stubService = $this->getServiceQuestionType($name);
+		$stubService = $this->getServiceQuestionType($name, $desc);
 		$servicePath = app_path().'/services/questions';
 		$addService = $this->writeFile($stubService, $name, $servicePath);
 		if(!$addService){
@@ -116,7 +116,7 @@ class QuestionTypeGenerator {
 	 * @param  string  $controller
 	 * @return string
 	 */
-	protected function getServiceQuestionType($name)
+	protected function getServiceQuestionType($name, $desc = 'No description.')
 	{
 		$stub = $this->files->get(__DIR__.'/stubs/questionType.stub');
 		$stub =  str_replace('{{class}}', $name, $stub);

@@ -1,44 +1,45 @@
 <?php
 $min = 2;
 $max = !empty($config['max_value']) ? $config['max_value'] : 10;
+$range = range($min, $max);
 $total = rand($min, $max);
-
 $type_rand = TimBieuThucCoTongDung::getAnswerType();
 $type = !empty($config['answer_type']) ? $config['answer_type'] : array_rand($type_rand);
 
-$sentence = [];
-for( $i = 0; $i <= $total; $i++ ){
-	$sentence[] = $i.'+'.($total - $i).'='.$total;
+$answer_rand = array_rand($range, 4);
+if( $type == 'input' ){
+	$sentence = [];
+	for( $i = 0; $i <= $total; $i++ ){
+		$sentence[] = $i.'+'.($total - $i).'='.$total;
+	}
+	$positionAnswer = array_rand($sentence);
+	$answer_text = $sentence[$positionAnswer];
 }
-$answer = $sentence[array_rand($sentence)];
-
-if( $type == 'choose' ){
-	$range = range($min, $max);
-	$answer = array_rand($range, 4);
+else if( $type == 'choose' ){
+	$answer_text = $range[$answer_rand[0]];
 }
 ?>
 
 <div class="start">
 	@if( $type == 'input' )
 		Dưới đây là các cách tính tổng của {{ $total }}. Hãy viết biểu thức còn thiếu.
-	@else
-		Biểu thức nào có tổng = {{ $range[$answer[0]] }}?
+	@elseif( $type == 'choose' )
+		Biểu thức nào có tổng = {{ $range[$answer_rand[0]] }}?
 	@endif
 </div>
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
-		<input type="hidden" name="true_answer" value="{{ ($type == 'input') ? $answer : $range[$answer[0]] }}" />
+		<input type="hidden" name="true_answer" value="{{ $answer_text }}" />
 		<input type="hidden" name="qid" value="{{ $question->id }}" />
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
-		
 		@if( $type == 'input' )
 			<div class="form-group missing-addition-sentence">
 				<div class="content items">
 					@foreach( $sentence as $i => $value )
 						<div class="item">
-							@if($value != $answer)
+							@if($value != $positionAnswer)
 								{{ $i.' + '.($total - $i).' = '.$total }}
 							@else
 								{{ Form::text('answer', '', ['class' => 'form-control']) }}
@@ -48,9 +49,8 @@ if( $type == 'choose' ){
 				</div>
 			</div>
 		@elseif( $type == 'choose' )
-			<?php shuffle($answer); ?>
 			<div class="form-group find-addition-sentence">
-				@foreach($answer as $key => $value)
+				@foreach($answer_rand as $key => $value)
 					<?php $sub = rand(1,$range[$value]); ?>
 					<div class="form-group inline-block">
 						<input class="hidden" id="answer-{{ $question_num.'-'.$key }}" type="radio" name="answer" value="{{ $range[$value] }}">
