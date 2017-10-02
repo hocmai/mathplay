@@ -1,15 +1,9 @@
 <?php
 Class DemHangChuc extends CommonQuestion{
 
-	protected $type = 'DemHangChuc';
-	protected $name = 'Đếm theo hàng chục';
-
-	public static function getTypeName(){
-		return $name;
-	}
-	
-	public static function getConfigForm($type = null, $config = null){
-		
+	protected static $title = 'Đếm theo hàng chục';
+	public static function getTitle(){
+		return self::$title;
 	}
 
 	public static function getImageData(){

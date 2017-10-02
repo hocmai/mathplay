@@ -1,0 +1,8 @@
+<?php
+class {{class}} extends CommonQuestion {
+
+	protected static $title = '{{title}}';
+	public static function getTitle(){
+		return self::$title;
+	}
+}

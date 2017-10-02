@@ -153,10 +153,10 @@ class Common {
 	        if ($handle = opendir($dir)) {
 	            chdir($dir);
 	            while (false !== ($file = readdir($handle))) { 
-	                if ($file != "." && $file != "..") { 
+	                if ($file != "." && $file != "..") {
 	                    if (!is_dir($file)){
 	                        $info = pathinfo($dir."\\".$file);
-	                        $extension = str_replace($info['filename'].'.', '', $info['basename']);
+	                        // $extension = str_replace($info['filename'].'.', '', $info['basename']);
 	                        $arrfiles[] = $dir."\\".$file;
 	                    }
 	                }

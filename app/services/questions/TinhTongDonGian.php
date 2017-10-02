@@ -1,14 +1,8 @@
 <?php
 Class TinhTongDonGian extends CommonQuestion{
 
-	protected $type = 'TinhTongDonGian';
-
-	public static function getTypeName(){
-		return parent::getAllType()[$type];
+	protected static $title = 'Tính Tổng (dạng cơ bản)';
+	public static function getTitle(){
+		return self::$title;
 	}
-	
-	public static function getConfigForm($type = null, $config = null){
-		
-	}
-
 }

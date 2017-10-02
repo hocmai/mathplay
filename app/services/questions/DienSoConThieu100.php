@@ -1,13 +1,8 @@
 <?php
 Class DienSoConThieu100 extends CommonQuestion{
 
-	protected $type = 'DienSoConThieu100';
-
-	public static function getTypeName(){
-		return parent::getAllType()[$type];
-	}
-	
-	public static function getConfigForm($type = null, $config = null){
-		
+	protected static $title = 'Tìm số trong dãy 100 số';
+	public static function getTitle(){
+		return self::$title;
 	}
 }

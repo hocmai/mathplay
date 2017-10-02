@@ -1,16 +1,11 @@
 <?php
 Class TimBieuThucCoTongDung extends CommonQuestion{
 
-	protected $type = 'TimBieuThucCoTongDung';
-
-	public static function getTypeName(){
-		return parent::getAllType()[$type];
+	protected static $title = 'Tìm biểu thức đúng với tổng cho trước';
+	public static function getTitle(){
+		return self::$title;
 	}
 	
-	public static function getConfigForm($type = null, $config = null){
-		
-	}
-
 	public static function getAnswerType(){
 		return [
 			'input' => 'Viết biểu thức còn thiếu',

@@ -1,22 +1,17 @@
 <?php
 Class SoSanh2HinhAnh extends CommonQuestion{
 
-	protected $type = 'SoSanh2HinhAnh';
-
-	public static function getTypeName(){
-		return parent::getAllType()[$type];
-	}
-	
-	public static function getConfigForm($type = null, $config = null){
-		
+	protected static $title = 'So sánh 2 hình ảnh';
+	public static function getTitle(){
+		return self::$title;
 	}
 
 	public static function getRandomData(){
-		$dir = public_path().'/questions/SoSanh2HinhAnh/img';
-		$files = Common::scanDir($dir);
-		$randomdata = array_map( function($val) {
-			return str_replace('\\', '/', str_replace(public_path(), '', $val));
-		}, $files);
-		return $randomdata;
-	}
+        $dir = public_path().'/questions/SoSanh2HinhAnh/img';
+        $files = Common::scanDir($dir);
+        $randomdata = array_map( function($val) {
+                return str_replace('\\', '/', str_replace(public_path(), '', $val));
+        }, $files);
+        return $randomdata;
+    }
 }

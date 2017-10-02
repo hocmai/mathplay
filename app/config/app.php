@@ -124,7 +124,7 @@ return array(
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 	    'Barryvdh\Debugbar\ServiceProvider',
 	    'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-
+	    // 'Way\Generators\GeneratorsServiceProvider',
 	),
 
 	/*

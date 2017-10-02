@@ -1,14 +1,9 @@
 <?php
 Class DienBieuThuc extends CommonQuestion{
 
-	protected $type = 'DienBieuThuc';
-
-	public static function getTypeName(){
-		return parent::getAllType()[$type];
-	}
-	
-	public static function getConfigForm($type = null, $config = null){
-		
+	protected static $title = 'Đếm số trong khung 10 ô';
+	public static function getTitle(){
+		return self::$title;
 	}
 
 	public static function getRandomData(){

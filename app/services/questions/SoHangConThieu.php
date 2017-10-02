@@ -1,14 +1,8 @@
 <?php
 Class SoHangConThieu extends CommonQuestion{
 
-	protected $type = 'SoHangConThieu';
-
-	public static function getTypeName(){
-		return parent::getAllType()[$type];
+	protected static $title = 'Tìm số hạng còn thiếu trong phép cộng';
+	public static function getTitle(){
+		return self::$title;
 	}
-	
-	public static function getConfigForm($type = null, $config = null){
-		
-	}
-
 }

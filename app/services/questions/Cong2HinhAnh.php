@@ -1,14 +1,9 @@
 <?php
 Class Cong2HinhAnh extends CommonQuestion{
 
-	protected $type = 'Cong2HinhAnh';
-
-	public static function getTypeName(){
-		return parent::getAllType()[$type];
-	}
-	
-	public static function getConfigForm($type = null, $config = null){
-		
+	protected static $title = 'Phép cộng với hình ảnh';
+	public static function getTitle(){
+		return self::$title;
 	}
 
 	public static function getRandomData(){

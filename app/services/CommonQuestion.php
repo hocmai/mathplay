@@ -2,38 +2,14 @@
 Class CommonQuestion {
 
 	public static function getAllType(){
-		return [
-			'SoSanh2HinhAnh' => 'So sánh 2 hình ảnh', // test
-			'DemSoTrongKhung10' => 'Đếm số trong khung 10 ô', // dang 1,2,4
-			'DienSoHangChucVaDonVi' => 'Điền số hàng chục và đơn vị', //dang 3
-			'DemHangChuc' => 'Đếm số theo hàng chục', //dang 5
-			'DemSoLonNhoVoiDonVi' => 'Đếm số ngược xuôi cộng/trừ 1-2-5-10',// dang 6,
-			'TimSoTrenTiaSo' => 'Bài tập về tia số', // dang 7,15
-			'DienSoConThieu100' => 'Tìm số trong dãy 100 số', //dang 8,9
-			'TimSoTheoQuyLuat' => 'Tìm số theo quy luật (tự sinh)', // dang 10
-			'TimSoTrongDaySoCoQuyLuat' => 'Điền số trong dãy số có quy luật cộng dồn ngẫu nhiên', // Dang 11
-			'ChonMauSacPhuHop' => 'Chọn màu đúng với ô chỉ định (tự sinh)', // dang 12
-			'Cong2HinhAnh' => 'Phép cộng với hình ảnh', // dang 13
-			'DienBieuThuc' => 'Biểu thức với phép cộng hình ảnh', // dang 14
-			'TinhTongDonGian' => 'Tính Tổng (dạng cơ bản)', // dang 16
-			'TimBieuThucCoTongDung' => 'Tìm biểu thức đúng với tổng cho trước', // dang 17, 18
-			'SoHangConThieu' => 'Tìm số hạng còn thiếu trong phép cộng', // dang 19
-			'TimDapSoDungVoiCauHoi' => 'Tìm đáp án cho câu hỏi được nhập ngẫu nhiên', // dang 20
-		];
-				
-		$all_types = [];
-		foreach (glob('app/services/questions/*.php') as $file)
-		{
-
-		    // get the file name of the current file without the extension
-		    // which is essentially the class name
-		    $class = basename($file, '.php');
-
-		    if (class_exists($class))
-		    {
-		        $all_types[] = $class;
-		    }
+		$allType = [];
+		foreach (glob(app_path().'/services/questions/*.php') as $key => $value) {
+			$class = basename($value, '.php');
+			if( class_exists($class) ){
+				if(method_exists($class, 'getTitle')) $allType[$class] = $class::getTitle();
+			}
 		}
+		return $allType;
 	}
 
 	public static function callServiceByType($slug, $method, $para = null){

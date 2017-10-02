@@ -61,8 +61,7 @@
 					                            		<div class="tb-col col-progress">
 					                            			<span class="score-start">0</span>
 					                            			<div class="bar">
-					                            				<div class="progress" style="width: {{ $history->score }}%"></div>
-					                            				<span class="score">{{ $history->score }}</span>
+					                            				<div class="progress" style="width: {{ $history->score }}%"><span class="score">{{ $history->score }}</span></div>
 					                            			</div>
 					                            		</div>
 					                            	</a>

@@ -1,15 +1,8 @@
 <?php
 Class DemSoLonNhoVoiDonVi extends CommonQuestion{
 
-	protected $type = 'DemSoLonNhoVoiDonVi';
-	protected $name = 'Đếm số ngược xuôi cộng/trừ 1-2-5-10';
-
-	public static function getTypeName(){
-		return $name;
+	protected static $title = 'Đếm số ngược xuôi cộng/trừ 1-2-5-10';
+	public static function getTitle(){
+		return self::$title;
 	}
-	
-	public static function getConfigForm($type = null, $config = null){
-		
-	}
-	
 }

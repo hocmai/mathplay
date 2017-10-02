@@ -410,7 +410,7 @@ body>.loading>span::after{
     display: inline-block;
 }
 .class-history-progress .result-content .col-progress .bar{
-    width: calc(100% - 45px);
+    width: calc(100% - 50px);
     height: 10px;
     display: inline-block;
 }
@@ -437,6 +437,8 @@ body>.loading>span::after{
 .class-history-progress .result-content .col-progress .bar .score{
     float: left;
     margin: -3px 0 0 10px;
+    position: absolute;
+    left: 100%;
 }
 .class-history-progress .result-content .col-progress .bar{
     

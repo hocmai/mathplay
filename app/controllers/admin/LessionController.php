@@ -76,15 +76,10 @@ class LessionController extends AdminController {
 	public function store()
 	{
         $input = Input::except(['_token']);
-        // if( !empty($input['config']) ){
-        // 	$config = CommonConfig::get($input['config']);
-        // 	$config['config_name'] = $input['config'];
-        // 	$input['config'] = json_encode(array_except($config, ['name', '_method', 'description']));
-        // }
         $input['author_id'] = Auth::admin()->get()->id;
-        dd($input);
+        // dd($input);
 
-    	$LessionId = CommonNormal::create($input);
+    	$LessionId = CommonNormal::create(Input::except(['_token', 'question_config', 'question']));
 
     	//// Get query input to array
 		$question_input = [];
@@ -96,32 +91,23 @@ class LessionController extends AdminController {
     		}
         }
 
-        ///// Get array of question id after insert question table
-        $questions = [];
-        if( count($question_input) ){
-        	foreach ($question_input as $key => $value) {
-        		$questions[] = CommonNormal::create($value, 'Question');
-        	}
-        }
-
-
-    	//// Get question_config input to array
-		$question_config = [];
-        if( !empty($input['question_config']) ){
-    		foreach ($input['question_config'] as $key => $value) {
-    			foreach ($value as $key2 => $value2) {
-    				$question_config[$key2][$key] = $value2;
-    			}
-    		}
-        }
         // dd($question_config);
         //// Insert lession_question table
-        if(count($questions)){
-        	foreach ($questions as $key => $questionId) {
+        if(count($question_input)){
+        	foreach ($question_input as $key => $value) {
+        		//// Create new question
+        		$questionId = CommonNormal::create(array_except($value, ['config']), 'Question');
+
+        		/////// Get cònig of question
+        		$config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
+                $config['question_start'] = $input['question_config']['question_start'][$key];
+                $config['question_end'] = $input['question_config']['question_end'][$key];
+
+                /////// Save the question
         		CommonNormal::create([
     				'lession_id' => $LessionId,
     				'qid' => $questionId,
-    				'config' => json_encode($question_config[$key])
+    				'config' => json_encode($config)
     			], 'LessionQuestion');
         	}
         }
@@ -208,7 +194,7 @@ class LessionController extends AdminController {
         			CommonNormal::create([
 	    				'lession_id' => $id,
 	    				'qid' => $questionId,
-	    				'config' => $config,
+	    				'config' => json_encode($config),
 	    			], 'LessionQuestion');
         		}
         	}

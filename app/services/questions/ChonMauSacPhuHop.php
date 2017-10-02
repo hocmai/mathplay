@@ -1,10 +1,9 @@
 <?php
 Class ChonMauSacPhuHop extends CommonQuestion{
 
-	protected $type = 'ChonMauSacPhuHop';
-
-	public static function getTypeName(){
-		return parent::getAllType()[$type];
+	protected static $title = 'Chọn màu đúng với ô chỉ định (tự sinh)';
+	public static function getTitle(){
+		return self::$title;
 	}
 	
 }

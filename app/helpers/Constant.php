@@ -87,5 +87,3 @@ define('IMAGE_BOTTOM', 3);
 define('CLIENT_ID', '4UMMmM26a43SZL8nPFDcz3DM7YpFxGyh');
 define('CLIENT_SECRET', 'fmHCxaFZQsRfaAgeZj2ctUpPULCP3k4T');
 define('CLIENT_REDIRECT_URI', 'http://tieuhoc.hocmai.vn/sso/index.php');
-
-define('SOSANH', 'SoSanh2HinhAnh');
