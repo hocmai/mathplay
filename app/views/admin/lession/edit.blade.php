@@ -50,16 +50,6 @@
 								{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), ($lession->config) ? $lession->config : '', ['class' => 'form-control', 'row' => 10]) }}
 								<span class="description"><a href="{{ action('ConfLessionController@index') }}">Cài đặt độ khó</a></span>
 							</div>
-
-							<!-- <div class="form-group">
-								{{ Form::label('config[num_question]', 'Số câu hỏi', ['class' => '']) }}<div class="clearfix"></div>
-								<div class="">{{ Form::number('config[num_question]', 20, ['class' => 'form-control', 'required' => true, 'size' => 60]) }}</div><div class="clearfix"></div>
-							</div>
-							<div class="form-group">
-								{{ Form::label('config[score_limit]', 'Thang điểm', ['class' => '']) }}<div class="clearfix"></div>
-								<div class="">{{ Form::number('config[score_limit]', 100, ['class' => 'form-control', 'required' => true, 'size' => 60]) }}</div><div class="clearfix"></div>
-								<span class="help">Số điểm tối đa nên chia hết cho tổng số câu hỏi</span>
-							</div> -->
 							<div class="form-group">
 								{{ Form::label('status', 'trạng thái', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
 								{{ Form::select('status', [

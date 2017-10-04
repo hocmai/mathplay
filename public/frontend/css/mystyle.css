@@ -3,6 +3,10 @@ body{
     line-height: 1.4;
     font-family: 'Roboto', sans-serif;
 }
+img{
+    max-width: 100%;
+    height: auto;
+}
 .padding0{
 	padding: 0 !important;
 }
@@ -443,17 +447,12 @@ body>.loading>span::after{
     position: absolute;
     left: 100%;
 }
-.class-history-progress .result-content .col-progress .bar{
-    
+
+.radio-box.form-group > label{
+    width: auto
 }
-.class-history-progress .result-content .col-progress{
-    
-}
-.class-history-progress .result-content .col-progress{
-    
-}
-.class-history-progress .result-content .col-progress{
-    
+.radio-box.form-group > input:checked + label{
+    background: #129694;
 }
 
 @keyframes rotate {

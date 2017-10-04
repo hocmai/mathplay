@@ -23,15 +23,15 @@ foreach($lession->question as $question){
 @foreach ($types as $type)
     @section('js_header')
         @parent
-        @if( File::exists(public_path().'/questions/'.$type.'/js/script.js') )
-            {{ HTML::script('questions/'.$type.'/js/script.js') }} 
-        @endif
+        @foreach( glob(public_path().'/questions/'.$type.'/js/*.js') as $file)
+            {{ HTML::script( asset('/questions/'.$type.'/js/'.basename($file)) ) }} 
+        @endforeach
     @stop
     @section('css_header')
         @parent
-        @if( File::exists(public_path().'/questions/'.$type.'/css/style.css') )
-            {{ HTML::style('questions/'.$type.'/css/style.css') }}
-        @endif
+        @foreach( glob(public_path().'/questions/'.$type.'/css/*.css') as $file)
+            {{ HTML::style( asset('/questions/'.$type.'/css/'.basename($file)) ) }} 
+        @endforeach
     @stop
 @endforeach
 

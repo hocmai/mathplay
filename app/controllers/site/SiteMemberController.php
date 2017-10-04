@@ -2,15 +2,9 @@
 
 class SiteMemberController extends BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
-	public function index()
-	{
-		//
-	}
+	public function __construct() {
+        $this->beforeFilter('owner');
+    }
 
 	/**
 	 * Bang diem.
@@ -95,6 +89,16 @@ class SiteMemberController extends BaseController {
 		return View::make('site.member.history.question-log')->with(compact(['tree', 'data', 'lession']));
 	}
 
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function index()
+	{
+		//
+	}
 
 	/**
 	 * Show the form for creating a new resource.

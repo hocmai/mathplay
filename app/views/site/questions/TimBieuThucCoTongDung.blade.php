@@ -52,7 +52,7 @@ else if( $type == 'choose' ){
 			<div class="form-group find-addition-sentence">
 				@foreach($answer_rand as $key => $value)
 					<?php $sub = rand(1,$range[$value]); ?>
-					<div class="form-group inline-block">
+					<div class="form-group inline-block radio-box">
 						<input class="hidden" id="answer-{{ $question_num.'-'.$key }}" type="radio" name="answer" value="{{ $range[$value] }}">
 						<label for="answer-{{ $question_num.'-'.$key }}">
 							{{ ($range[$value]-$sub).' + '.$sub }}

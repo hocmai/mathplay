@@ -101,3 +101,14 @@ Route::filter('csrf', function()
 		throw new Illuminate\Session\TokenMismatchException;
 	}
 });
+
+Route::filter('owner', function($route)
+{
+	if (!Auth::user()->check()){
+		return Redirect::action('SiteUserController@loginForm');
+	}
+	$id = $route->parameter('uid');
+	if( $id != Auth::user()->get()->id ){
+		App::abort(403);
+	}
+});

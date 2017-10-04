@@ -69,7 +69,7 @@ class CreateQuestionType extends Command {
 		// we will grab the path and options. We allow the developers to include or
 		// exclude given methods from the resourceful controllers we're building.
 		$questionType = $this->argument('name');
-		$desc = $this->option('desc');
+		$desc = !empty($this->option('desc')) ? $this->option('desc') : $questionType;
 
 		// Finally, we're ready to generate the actual controller file on disk and let
 		// the developer start using it. The controller will be stored in the right
@@ -79,12 +79,13 @@ class CreateQuestionType extends Command {
 			return false;
 		}
 
-		$this->info('New Question-Type Service created successfully!
-			
+		$this->info('		
 Added file: app/services/question/'.$questionType.'.php
 Added file: app/views/site/questions/'.$questionType.'.blade.php
 Added file: app/views/site/questions_form/'.$questionType.'.blade.php
 Added directory: public/questions/'.$questionType);
+		$this->call('optimize');
+		$this->info('New Question-Type Service created successfully!');
 	}
 
 	/**
@@ -109,7 +110,7 @@ Added directory: public/questions/'.$questionType);
 	{
 		return array(
 			array('name', null, InputOption::VALUE_OPTIONAL, 'The name of question type.', null),
-			array('desc', null, InputOption::VALUE_REQUIRED, 'The descriptions of question type.', 'The descriptions of question type.'),
+			array('desc', null, InputOption::VALUE_REQUIRED, 'The descriptions of question type.', ''),
 		);
 	}
 

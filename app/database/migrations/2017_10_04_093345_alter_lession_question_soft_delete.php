@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuestionTypeTable extends Migration {
+class AlterLessionQuestionSoftDelete extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,7 +12,9 @@ class CreateQuestionTypeTable extends Migration {
 	 */
 	public function up()
 	{
-		//
+		Schema::table('lession_question', function($table){
+			$table->softDeletes();
+		});
 	}
 
 	/**

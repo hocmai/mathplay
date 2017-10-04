@@ -1,0 +1,41 @@
+#NhanDienCacHinh .content.single .shapes .shape{
+    display: inline-block;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+}
+#NhanDienCacHinh .check-multi{
+
+}
+#NhanDienCacHinh .check-multi label{
+	border: 3px solid #17bebb;
+    background: #fff;
+    opacity: 0.6;
+    padding-bottom: 20px;
+    position: relative;
+    width: 236px;
+    height: 245px;
+}
+#NhanDienCacHinh .check-multi>input:checked + label{
+    opacity: 1;
+
+}
+#NhanDienCacHinh .check-multi>input:checked + label:after{
+    content: "\e013";
+    font-family: 'Glyphicons Halflings';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 1;
+    background: #17bebb;
+}
+#NhanDienCacHinh .check-multi{
+
+}
+#NhanDienCacHinh .check-multi{
+
+}

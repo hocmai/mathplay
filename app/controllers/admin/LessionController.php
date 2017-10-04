@@ -91,13 +91,12 @@ class LessionController extends AdminController {
     		}
         }
 
-        // dd($question_config);
+        // dd($question_input);
         //// Insert lession_question table
         if(count($question_input)){
         	foreach ($question_input as $key => $value) {
         		//// Create new question
-        		$questionId = CommonNormal::create(array_except($value, ['config']), 'Question');
-
+        		$questionId = CommonNormal::create(array_except($value, ['config', 'id']), 'Question');
         		/////// Get cònig of question
         		$config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
                 $config['question_start'] = $input['question_config']['question_start'][$key];
@@ -137,6 +136,7 @@ class LessionController extends AdminController {
 	public function edit($id)
 	{
 		$data = Lession::find($id);
+		// dd($data->question->toArray());
         return View::make('admin.lession.edit', array('lession'=>$data));
 	}
 
@@ -212,6 +212,14 @@ class LessionController extends AdminController {
 	 */
 	public function destroy($id)
 	{
+		$questions = Lession::find($id)->question;
+		foreach ($questions as $key => $value) {
+			/// Delete in Lession_question and question table
+			CommonNormal::delete($value->id, 'Question');
+			LessionQuestion::where('lession_id', $id)
+				->where('qid', $value->id)
+				->delete();
+		}
 		CommonNormal::delete($id);
         return Redirect::action('LessionController@index');
 	}
