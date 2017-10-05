@@ -81,10 +81,10 @@ class CreateQuestionType extends Command {
 		}
 
 		$this->info('		
-Added file: app/services/question/'.$questionType.'.php
-Added file: app/views/site/questions/'.$questionType.'.blade.php
-Added file: app/views/site/questions_form/'.$questionType.'.blade.php
-Added directory: public/questions/'.$questionType);
+Added service: app/services/question/'.$questionType.'.php
+Added view: app/views/site/questions/'.$questionType.'/display.blade.php
+Added view: app/views/site/questions/'.$questionType.'/form.blade.php
+Added public directory: public/questions/'.$questionType);
 		$this->call('optimize');
 		$this->info('New Question-Type Service created successfully!');
 	}
