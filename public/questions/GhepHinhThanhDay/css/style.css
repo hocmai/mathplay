@@ -1,0 +1,48 @@
+#GhepHinhThanhDay{
+	
+}
+#GhepHinhThanhDay .list-img{
+	
+}
+#GhepHinhThanhDay .list-img .item,
+#GhepHinhThanhDay .item-source .item,
+#GhepHinhThanhDay .item-source .item:before{
+    margin: 5px;
+    padding: 10px;
+    height: 50px;
+    width: 50px;
+    background: #fff;
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    z-index: 1;
+}
+#GhepHinhThanhDay .list-img .item.none{
+	background: #eee;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px -1px #ddd;
+    position: all 0.3s ease;
+}
+#GhepHinhThanhDay .list-img .item.none.hover{
+	transform: scale(1.2);
+}
+#GhepHinhThanhDay .item-source .item{
+	background: #fff;
+    cursor: pointer;
+    box-shadow: 3px 3px 3px -1px #ddd;
+    position: relative;
+}
+#GhepHinhThanhDay .item-source .item:not(.ui-draggable-dragging):before{
+	content: "";
+	position: absolute;
+	top: 2px;
+    left: 2px;
+    box-shadow: 3px 3px 9px -3px #ddd;
+    z-index: -1;
+    margin: 0
+}
+#GhepHinhThanhDay{
+	
+}
+#GhepHinhThanhDay{
+	
+}

@@ -18,7 +18,7 @@ class CreateQuestionType extends Command {
 	 *
 	 * @var string
 	 */
-	protected $description = 'Create new question type. Add new file in app/services/questions/TypeName.php, view.site.questions.TypeName.blade.php, view.site.questions_form.TypeName.blade.php. Add new directory in public/questions/TypeName with "js/script.js", "img" and "css/style.css"';
+	protected $description = 'Create new question type. Add new file in app/services/questions/TypeName.php, view.site.questions.TypeName.display.blade.php, view.site.questions.TypeName.form.blade.php. Add new directory in public/questions/TypeName with "js/script.js", "img" and "css/style.css"';
 
 	/**
 	 * The controller generator instance.

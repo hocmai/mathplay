@@ -105,4 +105,17 @@ Class CommonQuestion {
 		];
 	}
 
+
+	/**
+	 * Get random image for render
+	 **/
+	public static function getRandImg($type){
+		$dir = public_path().'/questions/'.$type.'/img';
+		$files = Common::scanDir($dir);
+		$randomdata = array_map( function($val) {
+			return str_replace('\\', '/', str_replace(public_path(), '', $val));
+		}, $files);
+		return $randomdata;
+	}
+
 }

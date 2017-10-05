@@ -80,7 +80,7 @@ class LessionController extends AdminController {
         // dd($input);
 
     	$LessionId = CommonNormal::create(Input::except(['_token', 'question_config', 'question']));
-
+    	// dd($LessionId);
     	//// Get query input to array
 		$question_input = [];
         if( !empty($input['question']) ){

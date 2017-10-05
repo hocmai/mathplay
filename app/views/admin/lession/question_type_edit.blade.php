@@ -46,7 +46,7 @@ $config = !empty($data->data) ? json_decode($data->data, true) : [];
 						<div class="form-group">
 							<label>Thư viện hình ảnh</label>
 							
-							{{ CommonUpload::file( 'images_new', !empty($config['images']) ? $config['images'] : [], ['class' => 'form-control', 'accept' => ".png, .jpg, .jpeg, .gif", 'maxsize' => 1000, 'multiple' => true, 'data-target' => !empty($config['key']) ? '/questions/'.$config['key'].'/img' : '' ], ['ajax' => true, 'preview' => true] ) }}
+							{{ CommonUpload::file( 'images_new', !empty($config['images']) ? $config['images'] : [], ['class' => 'form-control', 'accept' => ".png, .jpg, .jpeg, .gif, .svg", 'maxsize' => 1000, 'multiple' => true, 'data-target' => !empty($config['key']) ? '/questions/'.$config['key'].'/img' : '' ], ['ajax' => true, 'preview' => true] ) }}
 						</div>
 						<div class="form-group">
 							{{ Form::submit('Lưu', ['class' => 'btn btn-primary']) }}
