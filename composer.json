@@ -25,7 +25,8 @@
 		],
 		"files": [
             "app/helpers/Constant.php",
-            "app/helpers/Function.php"
+            "app/helpers/Function.php",
+            "app/services/generators/QuestionTypeGenerator.php"
         ]
 	},
 	"scripts": {

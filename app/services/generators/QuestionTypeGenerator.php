@@ -49,11 +49,12 @@ class QuestionTypeGenerator {
 			return false;
 		}
 
+		$this->makeDirectory(app_path().'/views/site/questions/'.$name);
 		/////// Set question display view
-		$this->createQuestionType($name.'.blade', '/stubs/display.stub', '/views/site/questions');
+		$this->createQuestionType('display.blade', '/stubs/display.stub', '/views/site/questions/'.$name);
 
 		/////// Set question form
-		$this->createQuestionType($name.'.blade', '/stubs/form.stub', '/views/site/questions_form');
+		$this->createQuestionType('form.blade', '/stubs/form.stub', '/views/site/questions/'.$name);
 
 		/////// Create public directory
 		$this->makeDirectory(public_path().'/questions/'.$name);
@@ -81,11 +82,6 @@ class QuestionTypeGenerator {
 	 */
 	protected function writeFile($stub, $name, $path)
 	{
-		if (str_contains($name, '\\'))
-		{
-			$this->makeDirectory($name, $path);
-		}
-
 		$name = str_replace('\\', DIRECTORY_SEPARATOR, $name);
 
 		if ( ! $this->files->exists($fullPath = $path."/{$name}.php"))

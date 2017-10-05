@@ -25,7 +25,7 @@ Class CommonQuestion {
 	 **/
 	public static function getConfigForm($type = null, $config = null){
 		if (View::exists('site.questions_form.'.$type)) {
-			return View::make('site.questions_form.'.$type, ['config' => $config])->render().Form::hidden('question_config[config][]', json_encode($config), ['class' => 'question-config-hidden']);
+			return View::make('site.questions.'.$type.'.form', ['config' => $config])->render().Form::hidden('question_config[config][]', json_encode($config), ['class' => 'question-config-hidden']);
 		}
 		return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
 
@@ -91,8 +91,8 @@ Class CommonQuestion {
 	 */
 	public static function renderQuestion($question, $config = [], $lession = null, $question_num = 1){
 		// $config = json_decode($config);
-		if (View::exists('site.questions.'.$question->type)) {
-			return View::make('site.questions.'.$question->type)->with(compact(['question', 'config', 'lession', 'question_num']));
+		if (View::exists('site.questions.'.$question->type.'.display')) {
+			return View::make('site.questions.'.$question->type.'.display')->with(compact(['question', 'config', 'lession', 'question_num']));
 		}
 	}
 
