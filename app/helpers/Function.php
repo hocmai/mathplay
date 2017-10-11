@@ -3,9 +3,18 @@
 /**
  * Get random value of an array
  */
-function getRandArrayVal($arr){
-	$rand = array_rand($arr);
-	return $arr[$rand];
+function getRandArrayVal($arr, $num = 1){
+	if( $num == 1 ){
+		$rand = array_rand($arr);
+		return $arr[$rand];
+	} else{
+		$rand = array_rand($arr, $num);
+		$return = [];
+		foreach ($rand as $key => $value) {
+			$return[] = $arr[$value];
+		}
+		return $return;
+	}
 }
 
 /* mm/dd/yyyy to Y-m-d H:i:s */
