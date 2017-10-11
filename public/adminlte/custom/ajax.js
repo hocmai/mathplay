@@ -45,4 +45,35 @@ $(document).ready(function(){
 		}
 	})
 
+	/////////////// Delete image in question type form
+
+
+	////////////// Remove image ///////////////
+	$('#question-type-config-form .js-form-item-file').on('click', 'button.deleteImage', function(){
+		$(this).attr('disabled', 'disabled').addClass('loading');
+		var target = $(this).attr('data-target'),
+		type = $(this).parents('#question-type-config-form').find('input[name="question_type"]').val(),
+		_this = $(this);
+
+		$.ajax({
+			url: '/ajax/question-type/removefileconfig',
+			method: 'POST',
+			data: {path: target, type: type},
+			cache: false,
+			success: function(data){
+				console.log(data);
+				if(data){
+					_this.parents('.item').fadeOut('400', function() {
+						_this.parents('.item').remove();
+					});
+				}
+				_this.removeAttr('disabled');
+			},
+			error: function(error){
+				console.log(error);
+				_this.removeAttr('disabled');
+			}
+		});
+	});
+
 });

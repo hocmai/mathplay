@@ -83,31 +83,4 @@
 	    /////////////////// End for //////////////////
 	})
 
-
-	////////////// Remove image ///////////////
-	$('.js-form-item-file').on('click', 'button.deleteImage', function(){
-		$(this).attr('disabled', 'disabled').addClass('loading');
-		var target = $(this).attr('data-target'),
-		_this = $(this);
-
-		$.ajax({
-			url: '/ajax/removefile',
-			method: 'POST',
-			data: {path: target},
-			cache: false,
-			success: function(data){
-				if(data){
-					_this.parents('.item').fadeOut('400', function() {
-						_this.parents('.item').remove();
-					});
-				}
-				_this.removeAttr('disabled');
-			},
-			error: function(error){
-				console.log(error);
-				_this.removeAttr('disabled');
-			}
-		});
-	});
-
 })(jQuery);

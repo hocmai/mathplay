@@ -37,7 +37,7 @@ foreach($numArr as $value){
 } ?>
 
 <div class="start">
-	{{ $question->title.' '.(($sort == 'desc') ? 'giảm dần' : 'tăng dần') }}
+	{{ $question->title.' <strong>'.(($sort == 'desc') ? 'giảm dần' : 'tăng dần').'</strong>' }}
 </div>
 
 <div class="container-fluid question-wrapper">

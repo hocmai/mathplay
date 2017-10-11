@@ -15,6 +15,30 @@ class AjaxController extends BaseController {
 	|
 	*/
 
+	public function removeQuestionTypeImgage(){
+		try{
+			$this->removeFile();
+			$path = Input::get('path');
+			$type = Input::get('type');
+			$config = CommonConfig::get('question_type.config.'.$type);
+
+			if( !empty($config['images']) ){
+				foreach ($config['images'] as $key => $value) {
+					if( isset($value['image_url']) && $value['image_url'] == $path ){
+						unset($config['images'][$key]);
+						break;
+					}
+				}
+				CommonConfig::set('question_type', 'question_type.config.'.$type, $config);
+			}
+			return Response::json($config['images']);
+		}
+		catch( Exception $e ){
+			return Response::json($e->getMessage());
+		}
+		// return Response::json(CommonConfig::get('question_type.config.'.$type));
+	}
+
 	/**
 	 * Upload file ajax
 	 **/
@@ -38,7 +62,7 @@ class AjaxController extends BaseController {
 	/**
 	 * Remove file ajax
 	 **/
-	public function removeFile(){
+	public function removeFile($path = ''){
 		try{
 			if( Input::get('path') ){
 				return Response::Json( File::delete(public_path().Input::get('path')) );

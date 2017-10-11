@@ -43,6 +43,7 @@ Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/oauthcallback',array('as'=>'oauthcallback','uses'=>'AjaxController@oauthCallback'));
 	Route::post('/uploadfile',array('as'=>'uploadfile','uses'=>'AjaxController@uploadFile'));
 	Route::post('/removefile',array('as'=>'removefile','uses'=>'AjaxController@removeFile'));
+	Route::post('/question-type/removefileconfig',array('as'=>'removequestiontypeconfig','uses'=>'AjaxController@removeQuestionTypeImgage'));
 });
 
 ///////////////// User page //////////////////

@@ -28,7 +28,8 @@ $config = !empty($data->data) ? json_decode($data->data, true) : [];
 		<div class="box box-primary">
 			<div class="box-body">
 				<div class="col-xs-12 col-sm-6">
-					{{ Form::open(['action' => ['QuestionTypeController@update', $data->name], 'method' => 'POST', 'files' => true]) }}
+					{{ Form::open(['action' => ['QuestionTypeController@update', $data->name], 'method' => 'POST', 'files' => true, 'id' => 'question-type-config-form']) }}
+						{{ Form::hidden('question_type', $config['key']) }}
 						<div class="form-group">
 							<label>Mã dạng bài</label>
 							{{ Form::text('key', !empty($config['key']) ? $config['key'] : '', ['class' => 'form-control', 'disabled' => true]) }}
