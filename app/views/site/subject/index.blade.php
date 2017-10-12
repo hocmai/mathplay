@@ -19,7 +19,7 @@
         <ol class="breadcrumb">
             <li><a href="/">Trang chủ</a></li>
             <li>
-                {{ link_to_action('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
+                {{ renderUrl('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
             </li>
             <li class="active">
                 {{ Common::getObject($subject, 'title') }}
@@ -47,12 +47,12 @@
 
                                     @if( count($chapters) )
                                         <?php
-                                        $col1 = (count($chapters) % 2 == 0) ? count($chapters)/2 - 1 : floor(count($chapters)/2);
-                                        $col2 = (count($chapters) % 2 == 0) ? $col1 + 1 : $col1;
+                                        $count = count($chapters);
+                                        $middle = ($count % 2 == 0) ? $count/2 : ($count+1)/2;
                                         ?>
                                         <div class="row">
                                             <div class="col-sm-6 col-1">
-                                                @for($i = 0; $i <= $col1; $i++)
+                                                @for($i = 0; $i < $middle; $i++)
                                                     <div class="chuong">
                                                         <h4 class="title-sub">
                                                             {{ 'Chương '.($i+1).': '.$chapters[$i]['title'] }}
@@ -67,7 +67,7 @@
                                                 @endfor
                                             </div> <!-- End col-sm-6 -->
                                             <div class="col-sm-6 col-2">
-                                                @for($i = $col2; $i < count($chapters); $i++)
+                                                @for($i = $middle; $i < $count; $i++)
                                                     <div class="chuong">
                                                         <h4 class="title-sub">
                                                             {{ 'Chương '.($i+1).': '.$chapters[$i]['title'] }}

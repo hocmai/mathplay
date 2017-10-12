@@ -27,7 +27,7 @@ $images = $images[array_rand($images)];
 						<div class="img">
 							{{ ($value == 0) ? '<div class="item none"></div>' : '' }}
 							@for($j = 1; $j <= $value; $j++)
-								<div class="item"><img src="{{ $images }}" height="50"></div>
+								<div class="item"><img src="{{ $images }}" width="50"></div>
 							@endfor
 						</div>
 						<span class="number">{{ $value }}</span>

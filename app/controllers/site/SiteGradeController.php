@@ -45,20 +45,21 @@ class SiteGradeController extends SiteController {
 	 */
 	public function show($gradeSlug)
 	{
-		$data = Grade::findBySlug($gradeSlug);
-		if(!$data){
+		$grade = Grade::findBySlug($gradeSlug);
+		if(!$grade){
 			App::abort(404);
 		}
 
-		if( !Auth::admin()->check() && $data->status == 0 ){
+		if( !Auth::admin()->check() && $grade->status == 0 ){
 			App::abort(403);
 		}
-
+		
+		$subject = $grade->subject()->first();
 		$chapters = [];
-		if( $data->subject()->count() && $data->subject()->first()->chapter()->count() ){
-			$chapters = $data->subject()->first()->chapter()->orderBy('weight', 'asc')->get();
+		if( $grade->subject()->count() && $grade->subject()->first()->chapter()->count() ){
+			$chapters = $grade->subject()->first()->chapter()->orderBy('weight', 'asc')->get();
 		}
-		return View::make('site.grade.default')->with(compact(['data', 'chapters']));
+		return View::make('site.subject.index')->with(compact(['grade', 'chapters', 'subject']));
 	}
 
 }

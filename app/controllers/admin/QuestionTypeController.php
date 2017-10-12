@@ -13,7 +13,7 @@ class QuestionTypeController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = ConfigModel::where('collection', '=', 'question_type')->paginate(30);
+		$data = ConfigModel::where('collection', '=', 'question_type')->paginate(50);
 		// $data = Lession::orderBy('weight', 'asc')->paginate(15);
 		// dd($data);
 		return View::make('admin.lession.question_type')->with(compact('data'));

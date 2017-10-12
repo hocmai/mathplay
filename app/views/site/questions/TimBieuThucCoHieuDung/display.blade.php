@@ -1,30 +1,43 @@
 <?php
-$min = 2;
 $max = !empty($config['max_value']) ? $config['max_value'] : 10;
-$range = range($min, $max);
-$total = rand($min, $max);
-$type_rand = TimBieuThucCoTongDung::getAnswerType();
-$type = !empty($config['answer_type']) ? $config['answer_type'] : array_rand($type_rand);
+$range = range(0, $max);
+
+$type = !empty($config['answer_type']) ? $config['answer_type'] : getRandArrayVal(['input', 'input_a', 'choose']);
 
 $answer_rand = array_rand($range, 4);
-if( $type == 'input' ){
+if( $type == 'input' | $type == 'input_a' ){
 	$sentence = [];
-	for( $i = 0; $i <= $total; $i++ ){
-		$sentence[] = $i.'+'.($total - $i).'='.$total;
+	$answer = rand(3,10);
+	$limit = rand(5,8);
+	if( $type == 'input' ){
+		for( $i = 0; $i <= $answer; $i++ ){
+			$sentence[] = $answer.' - '.$i.' = '.($answer-$i);
+		}
+		$positionAnswer = rand(1, $limit-2);
+	} else if( $type == 'input_a' ){
+		for( $i = ($answer+$limit); $i >= $answer; $i-- ){
+			$sentence[] = $i.' - '.($i-$answer).' = '.$answer;
+		}
+		$positionAnswer = rand(1, $answer-1);
 	}
-	$positionAnswer = array_rand($sentence);
-	$answer_text = $sentence[$positionAnswer];
+	$answer_text = str_replace(' ', '', $sentence[$positionAnswer]);
 }
 else if( $type == 'choose' ){
-	$answer_text = $range[$answer_rand[0]];
+	$answer = [];
+	$_arr = getRandArrayVal($range, 4);
+	foreach ($_arr as $key => $value) {
+		$rand = rand($value, $max);
+		$answer[] = ['label' => $rand.' - '.($rand-$value), 'val' => $value];
+	}
+	$answer_text = $_arr[0];
 }
 ?>
 
 <div class="start">
 	@if( $type == 'input' )
-		Dưới đây là các cách tính tổng của {{ $total }}. Hãy viết biểu thức còn thiếu.
+		Dưới đây là các cách tính hiệu của {{ $answer }}. Hãy viết biểu thức còn thiếu theo mẫu dưới đây.
 	@elseif( $type == 'choose' )
-		Biểu thức nào có tổng = {{ $range[$answer_rand[0]] }}?
+		Biểu thức nào có hiệu = {{ $_arr[0] }}?
 	@endif
 </div>
 
@@ -35,14 +48,14 @@ else if( $type == 'choose' ){
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
 		@if( $type == 'input' )
-			<div class="form-group missing-addition-sentence">
+			<div class="form-group missing-addition-sentence inline-block">
 				<div class="content items">
 					@foreach( $sentence as $i => $value )
 						<div class="item">
-							@if($value != $positionAnswer)
-								{{ $i.' + '.($total - $i).' = '.$total }}
+							@if($i != $positionAnswer)
+								{{ $value }}
 							@else
-								{{ Form::text('answer', '', ['class' => 'form-control']) }}
+								{{ Form::text('answer', '', ['class' => 'form-control text-right padding0', 'style' => 'font-size:16px']) }}
 							@endif
 						</div>
 					@endforeach
@@ -50,13 +63,11 @@ else if( $type == 'choose' ){
 			</div>
 		@elseif( $type == 'choose' )
 			<div class="form-group find-addition-sentence">
-				@foreach($answer_rand as $key => $value)
-					<?php $sub = rand(1,$range[$value]); ?>
+				<?php shuffle($answer) ?>
+				@foreach($answer as $key => $value)
 					<div class="form-group inline-block radio-box">
-						<input class="hidden" id="answer-{{ $question_num.'-'.$key }}" type="radio" name="answer" value="{{ $range[$value] }}">
-						<label for="answer-{{ $question_num.'-'.$key }}">
-							{{ ($range[$value]-$sub).' + '.$sub }}
-						</label>
+						<input class="hidden" id="answer-{{ $question_num.'-'.$key }}" type="radio" name="answer" value="{{ $value['val'] }}">
+						<label for="answer-{{ $question_num.'-'.$key }}">{{ $value['label'] }}</label>
 					</div>
 				@endforeach
 			</div>
