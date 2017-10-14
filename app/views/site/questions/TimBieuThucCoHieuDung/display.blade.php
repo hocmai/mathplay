@@ -3,7 +3,6 @@ $max = !empty($config['max_value']) ? $config['max_value'] : 10;
 $range = range(0, $max);
 
 $type = !empty($config['answer_type']) ? $config['answer_type'] : getRandArrayVal(['input', 'input_a', 'choose']);
-
 $answer_rand = array_rand($range, 4);
 if( $type == 'input' | $type == 'input_a' ){
 	$sentence = [];
@@ -18,7 +17,7 @@ if( $type == 'input' | $type == 'input_a' ){
 		for( $i = ($answer+$limit); $i >= $answer; $i-- ){
 			$sentence[] = $i.' - '.($i-$answer).' = '.$answer;
 		}
-		$positionAnswer = rand(1, $answer-1);
+		$positionAnswer = rand(1, count($sentence)-1);
 	}
 	$answer_text = str_replace(' ', '', $sentence[$positionAnswer]);
 }
@@ -36,6 +35,8 @@ else if( $type == 'choose' ){
 <div class="start">
 	@if( $type == 'input' )
 		Dưới đây là các cách tính hiệu của {{ $answer }}. Hãy viết biểu thức còn thiếu theo mẫu dưới đây.
+	@elseif( $type == 'input_a' )
+		Dưới đây là các cách tính hiệu của {{ $answer }}. Hãy viết biểu thức còn thiếu theo mẫu dưới đây.
 	@elseif( $type == 'choose' )
 		Biểu thức nào có hiệu = {{ $_arr[0] }}?
 	@endif
@@ -47,7 +48,7 @@ else if( $type == 'choose' ){
 		<input type="hidden" name="qid" value="{{ $question->id }}" />
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
-		@if( $type == 'input' )
+		@if( $type == 'input' | $type == 'input_a' )
 			<div class="form-group missing-addition-sentence inline-block">
 				<div class="content items">
 					@foreach( $sentence as $i => $value )

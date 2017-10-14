@@ -7,7 +7,6 @@
 @section('content')
 
 @section('script')
-{{ HTML::script('adminlte/custom/script.js') }}
 {{ HTML::script('adminlte/custom/ajax.js') }}
 @stop
 
@@ -35,8 +34,8 @@
 								<div class="">{{ Form::text('title', '', ['class' => 'form-control', 'required' => true, 'size' => 60]) }}</div><div class="clearfix"></div>
 							</div>
 							<div class="form-group">
-								{{ Form::label('chapter_id', 'Chọn chuyên đề', ['class' => '']) }}<div class="clearfix"></div>
-								<div class="">{{ Form::select('chapter_id', ['' => 'Chọn'] + Common::getChapterList(), '', ['class' => 'form-control', 'row' => 10, 'required' => true] ) }}</div><div class="clearfix"></div>
+								{{ Form::label('chapter_id', 'Chọn chuyên đề', ['class' => '']) }}
+								<select name="chapter_id" class="form-control selectpicker" data-live-search="1" required="true">{{ Common::getChapterSelect() }}</select>
 							</div>
 							<div class="form-group">
 								{{ Form::label('description', 'Mô tả') }}<div class="clearfix"></div>

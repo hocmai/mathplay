@@ -5,7 +5,6 @@
 @stop
 
 @section('script')
-{{ HTML::script('adminlte/custom/script.js') }}
 {{ HTML::script('adminlte/custom/ajax.js') }}
 @stop
 
@@ -17,10 +16,6 @@
 	</div>
 </div>
 @endif
-
-<?php 
-// $lessionConf = !empty($lession->config) ? (array)json_decode($lession->config) : [];
-?>
 
 <div class="row">
 	<div class="col-xs-12">
@@ -38,8 +33,8 @@
 								{{ Form::text('title', $lession->title, ['class' => 'form-control', 'required' => true, 'size' => 60]) }}
 							</div>
 							<div class="form-group">
-								{{ Form::label('chapter_id', 'Chọn chuyên đề', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
-								{{ Form::select('chapter_id', ['' => 'Chọn'] + Common::getChapterList(), $lession->chapter_id, ['class' => 'form-control', 'row' => 10, 'required' => true] ) }}
+								{{ Form::label('chapter_id', 'Chọn chuyên đề', ['class' => '']) }}
+								<select name="chapter_id" class="form-control selectpicker" data-live-search="1" required="true">{{ Common::getChapterSelect($lession->chapter_id) }}</select>
 							</div>
 							<div class="form-group">
 								{{ Form::label('description', 'Mô tả', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>

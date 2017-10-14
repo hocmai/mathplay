@@ -59,6 +59,7 @@ $(document).ready(function(){
 
 	///// Add multi questions
 	$('.form-add-question').on('click', 'button.add-new-question', function(){
+		console.log('test');
 		var form = $(this).parents('.box.box-primary').find('.question-template-form'),
 	 		parent = $(this).parents('form').find('.panel-group'),
 	 		length = parseInt(parent.find('>.panel').length),

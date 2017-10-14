@@ -13,7 +13,7 @@ class ChapterController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Chapter::orderBy('weight', 'desc')->paginate(PAGINATE);
+		$data = Chapter::orderBy('created_at', 'desc')->paginate(PAGINATE);
 		// dd($data);
 		return View::make('admin.chapter.index')->with(compact('data'));
 	}

@@ -7,7 +7,7 @@ Tiêu đề và nội dung câu hỏi sẽ được tạo tự động
 			'input' => 'Nhập biểu thức còn thiếu với số c cố định',
 			'input_a' => 'Nhập biểu thức còn thiếu với số a cố định',
 			'choose' => 'Chọn biểu thức đúng',
-		], 
+		],
 	!empty($config['answer_type']) ? $config['answer_type'] : '', ['class' => 'form-control pull-left']) }}
 </div>
 

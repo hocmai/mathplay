@@ -1,8 +1,12 @@
 <?php
-$min = !empty($config['min_value']) ? $config['min_value'] : 1;
-$max = !empty($config['max_value']) ? $config['max_value'] : 10;
-$answer1 = rand($min, $max);
-$answer2 = rand($min, $max);
+$min_a = !empty($config['min_value_a']) ? $config['min_value_a'] : 1;
+$max_a = !empty($config['max_value_a']) ? $config['max_value_a'] : 10;
+
+$min_b = !empty($config['min_value_b']) ? $config['min_value_b'] : 1;
+$max_b = !empty($config['max_value_b']) ? $config['max_value_b'] : 10;
+
+$answer1 = rand($min_a, $max_a);
+$answer2 = rand($min_b, $max_b);
 $display = ['ngang', 'doc'];
 // dd($images);
 ?>
@@ -21,7 +25,7 @@ $display = ['ngang', 'doc'];
 		<div class="form-group plus-with-0">
 			<div class="content inline-block">
 				
-				<div class="tong pull-left {{ !empty($config['display']) ? $config['display'] : $display[array_rand($display)] }}" style="font-size: 18px;"><span class="num1">{{ $answer1 }}</span><span class="num2"><span class="plus"> + </span>{{ $answer2 }}</span><span class="result"> = {{ Form::number('answer', '') }}</span></div>
+				<div class="tong pull-left {{ !empty($config['display']) ? $config['display'] : $display[array_rand($display)] }}" style="font-size: 18px;"><span class="num1">{{ $answer1 }}</span><span class="num2"><span class="plus"> + </span>{{ $answer2 }}</span><span class="result"> = {{ Form::text('answer', '') }}</span></div>
 			</div>
 		</div>
 	{{ Form::close() }}

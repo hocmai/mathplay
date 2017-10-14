@@ -112,6 +112,24 @@ class Common {
 		return Chapter::orderBy('created_at', 'desc')->lists('title','id');
 	}
 
+	public static function getChapterSelect($default = '')
+	{
+		$chapter_group = [];
+		$chapterList = DB::table('chapters')->orderBy('chapters.created_at', 'desc')->join('subjects', 'subjects.id', '=', 'chapters.subject_id')->select('chapters.title as chapter_title','chapters.id as chapter_id', 'subjects.id as subject_id', 'subjects.title as subject_title')->get();
+		foreach ($chapterList as $key => $value) {
+			$chapter_group[$value->subject_title][] = $value;
+		}
+		$chapterOption = '<option>-- Chọn --</option>';
+		foreach ($chapter_group as $key => $value) {
+			$chapterOption .= '<optgroup label="'. $key .'">';
+			foreach ($value as $key2 => $chapter) {
+				$chapterOption .= '<option'.(  ($default == $chapter->chapter_id) ? ' selected="selected"' : '' ).' data-tokens="'. Str::slug($chapter->chapter_title, ' ').' '.$chapter->chapter_title .'" value="'. $chapter->chapter_id .'">'.$chapter->chapter_title.'</option>';
+			}
+			$chapterOption .= '</optgroup>';
+		}
+		return $chapterOption;
+	}
+
 	public static function getValueOfObject($ob, $method, $field)
 	{
 		if (!($ob)) {

@@ -16,7 +16,7 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 		        @if($question) 
 		        	{{ $question->title }} (câu {{ !empty($lessionQuestionConf['question_start']) ? $lessionQuestionConf['question_start'] : '?'}} - câu {{ !empty($lessionQuestionConf['question_end']) ? $lessionQuestionConf['question_end'] : '?' }})
 		        @else
-		        	Tạo mới câu hỏi 
+		        	Tạo mới câu hỏi
 		        @endif
 	        </a>
 	        @if(!$question)
@@ -46,7 +46,12 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 			</div>
 			<div class="form-group">
 				<label>Dạng câu hỏi</label>
-				{{ Form::select('question[type][]', ['' => '-- Chọn --'] + CommonQuestion::getAllType(), Common::getObject($question, 'type'), ['class' => 'form-control get-question-form-config '.(($key>0) ? 'selectpicker' : ''), 'required' => true, 'data-live-search' => true]) }}
+				<select name="question[type][]" class="form-control get-question-form-config{{ ($key>0) ? ' selectpicker' : '' }}", required="true" data-live-search="true">
+					<option>-- Chọn --</option>
+					@foreach( CommonQuestion::getAllType() as $key => $value )
+						<option{{ ($key == Common::getObject($question, 'type')) ? ' selected' : '' }} data-tokens="{{ Str::slug($value, ' ').' '.$value }}" value="{{ $key }}">{{ $value }}</option>
+					@endforeach
+				</select>
 			</div>
 			<div id="get-config-form" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading">
 				{{ CommonQuestion::getConfigForm(Common::getObject($question, 'type'), $lessionQuestionConf) }}
