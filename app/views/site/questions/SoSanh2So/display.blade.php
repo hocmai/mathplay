@@ -13,6 +13,43 @@ else if( $num1 < $num2 ){
 }
 else {
 	$answer = '=';
+}
+
+$method = !empty($config['method']) ? $config['method'] : getRandArrayVal(['tong-so', 'tong-tong', 'hieu-so', 'hieu-hieu']);
+switch ($method) {
+	case 'tong-so':
+		$tong = rand(0, $num1);
+		$num1 = $tong.' + '.($num1 - $tong);
+		break;
+
+	case 'tong-tong':
+		$tong1 = rand(0, $num1);
+		$num1 = $tong1.' + '.($num1 - $tong1);
+		$tong2 = rand(0, $num2);
+		$num2 = $tong2.' + '.($num2 - $tong2);
+		break;
+
+	case 'hieu-so':
+		if( $num1 >= $max ){
+			$num1 = rand($min, $max - 1);
+		}
+		$hieu1 = rand($num1,$max);
+		$num1 = $hieu1.' - '.($hieu1 - $num1);
+		break;
+
+	case 'hieu-hieu':
+		if( $num1 >= $max ){
+			$num1 = rand($min, $max - 1);
+		}
+		$hieu1 = rand($num1,$max);
+		$num1 = $hieu1.' - '.($hieu1 - $num1);
+
+		if( $num2 >= $max ){
+			$num2 = rand($min, $max - 1);
+		}
+		$hieu2 = rand($num2,$max);
+		$num2 = $hieu2.' - '.($hieu2 - $num2);
+		break;
 }?>
 
 <div class="start">

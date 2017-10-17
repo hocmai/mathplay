@@ -1,6 +1,4 @@
-<?php $grades = Grade::all();
-$ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
-?>
+<?php $grades = Grade::all(); ?>
 <!-- Desktop screen -->
 <header class="">
     <div class="box-dang-nhap">

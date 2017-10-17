@@ -8,13 +8,24 @@
 	], !empty($config['type']) ? $config['type'] : '', ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
+	{{ Form::label('', 'Phép so sánh') }}
+	{{ Form::select('question_config[method][]', [
+		'' => 'Mặc định',
+		'2so' => 'So sánh 2 số',
+		'tong-so' => 'So sánh tổng & 1 số',
+		'tong-tong' => 'So sánh 2 tổng',
+		'hieu-so' => 'So sánh hiệu & 1 số',
+		'hieu-hieu' => 'So sánh 2 hiệu'
+	], !empty($config['method']) ? $config['method'] : '', ['class' => 'form-control']) }}
+</div>
+<div class="form-group">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
-			{{ Form::label('', 'Số nhỏ nhất') }}
+			{{ Form::label('', 'Giá trị nhỏ nhất') }}
 			{{ Form::number('question_config[min][]', !empty($config['min']) ? $config['min'] : 1, ['class' => 'form-control']) }}
 		</div>
 		<div class="col-xs-12 col-sm-6">
-			{{ Form::label('', 'Số lớn nhất') }}
+			{{ Form::label('', 'Giá trị lớn nhất') }}
 			{{ Form::number('question_config[max][]', !empty($config['max']) ? $config['max'] : 100, ['class' => 'form-control']) }}
 		</div>
 	</div>
