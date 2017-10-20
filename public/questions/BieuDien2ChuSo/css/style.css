@@ -1,0 +1,53 @@
+#BieuDien2ChuSo .number .hang-chuc,
+#BieuDien2ChuSo .number .hang-dv{
+	float: left;
+    vertical-align: bottom;
+    height: 270px;
+    padding: 5px;
+    margin: 0 2px;
+}
+#BieuDien2ChuSo .number>div:nth-child(2n){
+	transform: scale(0.98);
+}
+#BieuDien2ChuSo .number .hang-chuc>.item,
+#BieuDien2ChuSo .number .hang-dv>.item{
+    width: 25px;
+    height: 25px;
+    display: block;
+    background-size: 90%;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: all 1s ease;
+}
+#BieuDien2ChuSo .number .hang-chuc>.item:hover,
+#BieuDien2ChuSo .number .hang-dv>.item:hover{
+	transform: rotateY(360deg);
+}
+#BieuDien2ChuSo .numbers .radio>label{
+    width: auto;
+    background: #fff;
+    border-radius: 4px;
+    border: 2px solid #ddd;
+}
+#BieuDien2ChuSo .numbers .radio>input:checked + label{
+    background: #f9f9f9;
+    border-color: #ffc914;
+}
+#BieuDien2ChuSo{
+	
+}
+#BieuDien2ChuSo{
+	
+}
+#BieuDien2ChuSo{
+	
+}
+#BieuDien2ChuSo{
+	
+}
+#BieuDien2ChuSo{
+	
+}
+#BieuDien2ChuSo{
+	
+}

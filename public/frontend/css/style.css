@@ -2205,6 +2205,7 @@ footer .leg .social a {
   z-index: 9999999;
   opacity: 1;
   bottom: 100px;
+  visibility: visible;
 }
 
 .open-hd-giai .over {
@@ -2223,6 +2224,7 @@ footer .leg .social a {
 
 .hd-gui-bai {
   opacity: 0;
+  visibility: hidden;
   position: absolute;
   bottom: 300px;
   right: 125px;

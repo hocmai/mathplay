@@ -24,7 +24,7 @@
 			<div class="hidden question-template-form">
 				@include('admin.lession.question_form', array('lession' => $lession))
 			</div>
-			{{ Form::open(array('action' => array('LessionController@update', $lession->id), 'method' => 'PUT')) }}
+			{{ Form::open(array('action' => array('LessionController@update', $lession->id), 'files' => true, 'method' => 'PUT')) }}
 				<div class="box-body">
 					<div class="row">
 						<div class="col-xs-12 col-sm-5">

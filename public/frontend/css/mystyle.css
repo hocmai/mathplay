@@ -16,6 +16,49 @@ img{
 .clear{
 	clear: both !important;
 }
+
+.bg-box-lam-bai .radio>label{
+    width: auto;
+    border-radius: 5px;
+    opacity: 0.8;
+}
+.bg-box-lam-bai .radio>input:checked + label,
+.bg-box-lam-bai .radio>input:checked ~ label{
+    opacity: 1;
+    background: #37a09f;
+}
+.question-rendered .start{
+    background: none;
+    padding-left: 0;
+}
+.play-question-sound{
+    display: inline-block;
+}
+.play-question-sound>button.control{
+    width: 22px;
+    height: 22px;
+    border: none;
+    border-radius: 100%;
+    background: #17bebb;
+    display: inline-block;
+    text-align: center;
+    line-height: 20px;
+    position: relative;
+    margin-right: 5px;
+}
+.play-question-sound>button.control:focus{
+    outline: none;
+    border: none;
+}
+.play-question-sound>button.control:before{
+    content: "\e073";
+    font-family: 'Glyphicons Halflings';
+    color: #fff;
+    font-size: 11px;
+}
+.play-question-sound>button.control.play:before{
+    content: "\e072";
+}
 .ban-phim .gui-bai{
     margin: 0;
     padding: 15px 12px;

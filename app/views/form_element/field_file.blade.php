@@ -34,7 +34,7 @@
             </div>
 
             <div class="panel panel-default" style="margin: 0">
-                <div class="panel-heading"><label>Thêm file mới</label></div>
+                <div class="panel-heading"><label>{{ !empty($attributes['multiple']) ? 'Thêm file mới' : 'Tải lên'}}</label></div>
                 <div class="panel-body">
                     <div class="pull-left">
                         {{ Form::file($name, $attributes) }}
@@ -47,7 +47,7 @@
                     <span class="help">
                         {{ !empty($attributes['multiple']) ? 'Không giới hạn số lượng file mỗi lần upload<br/>' : ''}}
                         {{ !empty($attributes['accept']) ? 'Định dạng file: '.$attributes['accept'].'<br/>' : '' }}
-                        Dung lượng tối đa: {{ !empty($attributes['accept']) ? number_format($attributes['maxsize'], 0, ',', '.').'KB' : ini_get('upload_max_filesize') }}
+                        Dung lượng tối đa: {{ !empty($attributes['maxsize']) ? number_format($attributes['maxsize'], 0, ',', '.').'KB' : ini_get('upload_max_filesize') }}
                     </span>
                 </div>
             </div>

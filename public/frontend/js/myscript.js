@@ -1,5 +1,19 @@
 $(document).ready(function(){
 
+    ///////// Play question sound
+    $('.play-question-sound>button.control').on('click', function(){
+        if($(this).hasClass('play')){
+            $(this).parent().find('>video')[0].play();
+        } else{
+            $(this).parent().find('>video')[0].pause();
+            $(this).parent().find('>video')[0].load();
+        }
+        $(this).toggleClass('play');
+    })
+    $('.play-question-sound>video').on('ended', function(){
+        $(this).parent().find('button.control').addClass('play');
+    })
+
     ////////////////////// An modal thong bao khi chua nhap dap an //////////////
     $('.box-thong-tin-bai-lam .over').on('click', function(){
         $('body').removeClass('open-hd-giai');

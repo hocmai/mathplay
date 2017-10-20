@@ -5,6 +5,14 @@ $(window).on('load', function(e) {
 $(document).ready(function(){
 	console.log('Myscript loaded');
 
+	//////////// Add question sound in form
+	$('.form-add-question').on('change', '#get-auto-sound >input[type="checkbox"]', function(){
+		if($(this).is(':checked')){
+			$(this).parents('form').find('#upload-sound').hide();
+		} else{
+			$(this).parents('form').find('#upload-sound').show();
+		}
+	})
 
 	//////////// Delete multi row
 	$('table').on('change', 'input#check-all', function(){

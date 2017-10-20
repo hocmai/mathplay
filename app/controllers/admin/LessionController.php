@@ -97,7 +97,32 @@ class LessionController extends AdminController {
         	foreach ($question_input as $key => $value) {
         		//// Create new question
         		$questionId = CommonNormal::create(array_except($value, ['config', 'id']), 'Question');
-        		/////// Get cònig of question
+
+        		///////// Get sound by google translate
+    			if( !empty($input['question_config']['get_auto_sound'][$key]) ){
+    				$ch = curl_init('https://translate.google.com.vn/translate_tts?ie=UTF-8&q='. str_replace(' ', '%20', $value['title']) .'&tl=vi&client=tw-op');
+					curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
+					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					$data = curl_exec($ch);
+					$http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+					if(curl_errno($ch) == 0 && $http == 200 && !empty($data)) {
+		        		$sound_path = !empty($config['sound_title']) ? $config['sound_title'] : '/upload/question_sound_'.Str::slug($value['title'],'-').'.mp3';
+		        		file_put_contents(public_path().$sound_path, $data);
+		        		$config['sound_title'] = $sound_path;
+					}
+        		}
+        		else{
+        			$file = Input::file('question_config');
+        			if( !empty($file['sound_input'][$key]) ){
+        				$fileName = 'question_sound_'.Str::slug($value['title'],'-').'.mp3';
+        				$sound = $file['sound_input'][$key];
+        				$sound->move(public_path().'/upload', $fileName);
+        				$config['sound_title'] = '/upload/'.$fileName;
+        			}
+        		}
+
+        		/////// Get config of question
         		$config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
                 $config['question_start'] = $input['question_config']['question_start'][$key];
                 $config['question_end'] = $input['question_config']['question_end'][$key];
@@ -157,7 +182,7 @@ class LessionController extends AdminController {
 	{
         $input = Input::except('_token');
         // dd($input);
-    	CommonNormal::update($id, Input::except(['_token', 'question_config', 'question']));
+    	CommonNormal::update($id, Input::except(['_token', 'question_config', 'question', 'sound_title']));
 
     	//// Get Question infomations -> fetch array
 		$question_input = [];
@@ -187,6 +212,33 @@ class LessionController extends AdminController {
                 $config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
                 $config['question_start'] = $input['question_config']['question_start'][$key];
                 $config['question_end'] = $input['question_config']['question_end'][$key];
+
+        		///////// Get sound by google translate
+        		if( !empty($input['sound_title'][$key]) ){
+        			$config['sound_title'] = $input['sound_title'][$key];
+        		}
+        		if( !empty($input['question_config']['get_auto_sound'][$key]) ){
+    				$ch = curl_init('https://translate.google.com.vn/translate_tts?ie=UTF-8&q='. str_replace(' ', '%20', $value['title']) .'&tl=vi&client=tw-op');
+					curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
+					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+					$data = curl_exec($ch);
+					$http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+					if(curl_errno($ch) == 0 && $http == 200 && !empty($data)) {
+		        		$sound_path = !empty($config['sound_title']) ? $config['sound_title'] : '/upload/question_sound_'.Str::slug($value['title'],'-').'.mp3';
+		        		file_put_contents(public_path().$sound_path, $data);
+		        		$config['sound_title'] = $sound_path;
+					}
+        		}
+        		else{
+        			$file = Input::file('question_config');
+        			if( !empty($file['sound_input'][$key]) ){
+        				$fileName = 'question_sound_'.Str::slug($value['title'],'-').'.mp3';
+        				$sound = $file['sound_input'][$key];
+        				$sound->move(public_path().'/upload', $fileName);
+        				$config['sound_title'] = '/upload/'.$fileName;
+        			}
+        		}
 
         		if( $lessionQuestion->count() ){
         			$lessionQuestion->update( ['config' => json_encode($config) ] );

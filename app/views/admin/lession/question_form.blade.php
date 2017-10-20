@@ -2,10 +2,10 @@
 if(!isset($key)) $key = 0;
 if(!isset($question)) $question = null;
 if(!isset($question)) $lession = null;
-$lessionQuestionConf = LessionQuestion::where('lession_id', '=' , Common::getObject($lession, 'id'))
+$_lessionQuestionConf = LessionQuestion::where('lession_id', '=' , Common::getObject($lession, 'id'))
 ->where('qid', '=' , Common::getObject($question, 'id'))
 ->pluck('config');
-$lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestionConf) : [];
+$lessionQuestionConf = !empty($_lessionQuestionConf) ? (array)json_decode($_lessionQuestionConf) : [];
 ?>
 
 <div class="panel panel-default" id="{{$key}}">
@@ -13,8 +13,9 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
     <div class="panel-heading" role="tab" id="heading-{{$key}}">
     	<h4 class="panel-title">
 	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="{{ ($key>0) ? 'false' : 'true' }}" aria-controls="collapse-{{$key}}">
-		        @if($question) 
+		        @if($question)
 		        	{{ $question->title }} (câu {{ !empty($lessionQuestionConf['question_start']) ? $lessionQuestionConf['question_start'] : '?'}} - câu {{ !empty($lessionQuestionConf['question_end']) ? $lessionQuestionConf['question_end'] : '?' }})
+		        	}
 		        @else
 		        	Tạo mới câu hỏi
 		        @endif
@@ -24,6 +25,7 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 	        @endif
     	</h4>
     </div>
+
     <div id="collapse-{{$key}}" class="panel-collapse collapse {{ ($key==0) ? 'in' : '' }}" role="tabpanel" aria-labelledby="heading-{{$key}}">
     	<div class="panel-body">
 			<div class="form-group">
@@ -43,6 +45,28 @@ $lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestio
 			<div class="form-group">
 				<label>Nội dung</label>
 				{{ Form::textarea('question[content][]', Common::getObject($question, 'content'), ['class' => 'form-control', 'rows' => 5]) }}
+			</div>
+			{{ Form::hidden('sound_title[]', !empty($lessionQuestionConf['sound_title']) ? $lessionQuestionConf['sound_title'] : '') }}
+			<div class="form-group" id="get-auto-sound">
+				{{ Form::checkbox('question_config[get_auto_sound][]', 'auto', false, ['id' => 'auto-sound-'.$key]) }}
+				<label for="{{ 'auto-sound-'.$key }}">Tự động tải về âm thanh</label>
+			</div>
+			<div class="form-group" id="upload-sound">
+				<div class="panel panel-default" style="margin: 0">
+	                <div class="panel-heading"><label>Tải file âm thanh</label></div>
+	                <div class="panel-body">
+	                	@if(!empty($lessionQuestionConf['sound_title']))
+	                		<a href="{{ $lessionQuestionConf['sound_title'] }}" target="_blank">{{ basename($lessionQuestionConf['sound_title']) }}</a>
+	                		<p></p>
+	                	@endif
+                        {{ Form::file('question_config[sound_input][]', ['accept' => '.mp3, .mav, .MIDI']) }}
+	                    <div class="clear clearfix"></div>
+	                    <span class="help">
+	                        Định dạng file: <br/>
+	                        Dung lượng tối đa: {{ ini_get('upload_max_filesize') }}
+	                    </span>
+	                </div>
+	            </div>
 			</div>
 			<div class="form-group">
 				<label>Dạng câu hỏi</label>

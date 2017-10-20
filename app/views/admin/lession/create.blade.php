@@ -25,7 +25,7 @@
 			<div class="hidden question-template-form">
 				@include('admin.lession.question_form')
 			</div>
-			{{ Form::open(['action' => ['LessionController@store'], 'method' => 'POST']) }}
+			{{ Form::open(['action' => ['LessionController@store'], 'files' => true, 'method' => 'POST']) }}
 				<div class="box-body">
 					<div class="row">
 						<div class="col-xs-12 col-sm-5">
