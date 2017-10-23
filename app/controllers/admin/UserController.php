@@ -102,7 +102,8 @@ class UserController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		//
+		CommonNormal::delete($id, 'User');
+		return Redirect::action('UserController@index')->with('success', 'Tài khoản đã bị xóa!');;
 	}
 
 

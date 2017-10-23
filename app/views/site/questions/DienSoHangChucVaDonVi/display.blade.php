@@ -1,4 +1,4 @@
-<?php
+          <?php
 $min = !empty($config['min_value']) ? $config['min_value'] : 1;
 $max = !empty($config['max_value']) ? $config['max_value'] : 99;
 $answer = rand($min, $max);
