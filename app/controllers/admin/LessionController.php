@@ -98,11 +98,16 @@ class LessionController extends AdminController {
         		//// Create new question
         		$questionId = CommonNormal::create(array_except($value, ['config', 'id']), 'Question');
 
+        		/////// Get config of question
+        		$config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
+                $config['question_start'] = $input['question_config']['question_start'][$key];
+                $config['question_end'] = $input['question_config']['question_end'][$key];
+
         		///////// Get sound by google translate
-    			if( !empty($input['question_config']['get_auto_sound'][$key]) ){
+        		if( !empty($input['question_config']['get_auto_sound'][$key]) ){
     				$ch = curl_init('https://translate.google.com.vn/translate_tts?ie=UTF-8&q='. str_replace(' ', '%20', $value['title']) .'&tl=vi&client=tw-op');
 					curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 					$data = curl_exec($ch);
 					$http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
@@ -121,11 +126,6 @@ class LessionController extends AdminController {
         				$config['sound_title'] = '/upload/'.$fileName;
         			}
         		}
-
-        		/////// Get config of question
-        		$config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
-                $config['question_start'] = $input['question_config']['question_start'][$key];
-                $config['question_end'] = $input['question_config']['question_end'][$key];
 
                 /////// Save the question
         		CommonNormal::create([
@@ -220,7 +220,7 @@ class LessionController extends AdminController {
         		if( !empty($input['question_config']['get_auto_sound'][$key]) ){
     				$ch = curl_init('https://translate.google.com.vn/translate_tts?ie=UTF-8&q='. str_replace(' ', '%20', $value['title']) .'&tl=vi&client=tw-op');
 					curl_setopt($ch, CURLOPT_FRESH_CONNECT, true);
-					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 5);
+					curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 15);
 					curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 					$data = curl_exec($ch);
 					$http = curl_getinfo($ch, CURLINFO_HTTP_CODE);

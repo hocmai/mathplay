@@ -122,8 +122,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		"Ollieread\Multiauth\MultiauthServiceProvider",
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
-	    'Barryvdh\Debugbar\ServiceProvider',
 	    'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
+	    // 'Barryvdh\Debugbar\ServiceProvider',
 	    // 'Way\Generators\GeneratorsServiceProvider',
 	),
 
@@ -191,8 +191,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Debugbar' 	      => 'Barryvdh\Debugbar\Facade',
 		'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
+		// 'Debugbar' 	      => 'Barryvdh\Debugbar\Facade',
 
 	),
 
