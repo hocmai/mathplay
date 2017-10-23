@@ -39,7 +39,7 @@
 
 	public static function findOrCreate($input = [], $modelName = NULL)
 	{
-		$data = self::multiWhere($modelName::orderBy('created_at', 'desc'), $input)->first();
+		$data = self::multiWhere($modelName::withTrashed()->orderBy('created_at', 'desc'), $input)->first();
 		if(!$data){
 			$data = $modelName::create($input)->first();
 		}

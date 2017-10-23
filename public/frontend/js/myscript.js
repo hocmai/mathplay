@@ -52,9 +52,8 @@ $(document).ready(function(){
     ///////////////////// Login hoc OAuth //////////////////////////
 	$('.hocmai-oauth-login').on('click', function(event){
 		hocmaiOAuth.login(this, function(response){
-            $('body>.loading').remove();
             var response = JSON.parse(response);
-            console.log(response);
+            $('body>.loading').remove();
             if( typeof response.success != 'undefined'  ){
                 $('body').append('<div class="loading"><span>Đang đăng nhập bằng tài khoản HocMai...</span></div>');
                 $.ajax({
@@ -63,6 +62,10 @@ $(document).ready(function(){
                     data: response,
                     success: function(data){
                         console.log(data);
+                        var timeOut = 800;
+                        if( typeof data.status != 'undefined' && data.status == 'error' ){
+                            timeOut = 5000;
+                        }
                         $('body>.loading').html('<span>'+data.message+'</span>');
                         window.setTimeout(function(){
                             if( typeof data.status != 'undefined' && data.status == 'success' ){
@@ -70,10 +73,10 @@ $(document).ready(function(){
                             } else{
                                 $('body>.loading').hide('normal');
                             }
-                        }, 800)
+                        }, timeOut)
                     },
                     error: function(error) {
-                        console.log(error);
+                        console.log(error.responseText);
                         $('body>.loading').html('<span>Xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại</span>');
                         window.setTimeout(function(){
                             $('body>.loading').hide('normal');

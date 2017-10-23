@@ -91,9 +91,14 @@ class AjaxController extends BaseController {
 					'username' => $input['username'],
 					'email' => $input['email'],
 				], 'User');
-				$uid = Common::getObject($checkUserExists, 'id');
-				if(Auth::user()->loginUsingId($uid, true)){
-					$messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
+
+				if( Common::getObject($checkUserExists, 'deleted_at') == null &&  Common::getObject($checkUserExists, 'status') == 1 ){
+					$uid = Common::getObject($checkUserExists, 'id');
+					if(Auth::user()->loginUsingId($uid, true)){
+						$messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
+					}
+				}else{
+					$messages['message'] = 'Tài khoản đã bị xóa hoặc tạm khóa! Vui lòng liên hệ với Admin để được hỗ trợ.';
 				}
 			}
 		}
