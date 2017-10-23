@@ -75,6 +75,7 @@ class LessionController extends AdminController {
 	 */
 	public function store()
 	{
+		$notice = '';
         $input = Input::except(['_token']);
         $input['author_id'] = Auth::admin()->get()->id;
         // dd($input);
@@ -115,6 +116,9 @@ class LessionController extends AdminController {
 		        		$sound_path = !empty($config['sound_title']) ? $config['sound_title'] : '/upload/question_sound_'.Str::slug($value['title'],'-').'.mp3';
 		        		file_put_contents(public_path().$sound_path, $data);
 		        		$config['sound_title'] = $sound_path;
+		        		$notice = 'Tải file âm thanh thành công từ Google Translate';
+					} else{
+						$notice = 'Không thể tải file âm thanh từ Google. Điều này nằm ngoài khả năng của hệ thống.';
 					}
         		}
         		else{
@@ -136,7 +140,7 @@ class LessionController extends AdminController {
         	}
         }
 
-		return Redirect::action('LessionController@index')->with('success', 'Lưu thành công!');
+		return Redirect::action('LessionController@index')->with(['success'=>'Lưu thành công!', 'notice'=>$notice]);
 	}
 
 
@@ -180,6 +184,7 @@ class LessionController extends AdminController {
 	 */
 	public function update($id)
 	{
+		$notice = '';
         $input = Input::except('_token');
         // dd($input);
     	CommonNormal::update($id, Input::except(['_token', 'question_config', 'question', 'sound_title']));
@@ -228,6 +233,9 @@ class LessionController extends AdminController {
 		        		$sound_path = !empty($config['sound_title']) ? $config['sound_title'] : '/upload/question_sound_'.Str::slug($value['title'],'-').'.mp3';
 		        		file_put_contents(public_path().$sound_path, $data);
 		        		$config['sound_title'] = $sound_path;
+		        		$notice = 'Tải file âm thanh thành công từ Google Translate';
+					} else{
+						$notice = 'Không thể tải file âm thanh từ Google. Điều này nằm ngoài khả năng của hệ thống.';
 					}
         		}
         		else{
@@ -252,7 +260,7 @@ class LessionController extends AdminController {
         	}
         }
 
-		return Redirect::back()->with('success', 'Lưu thành công!');
+		return Redirect::back()->with(['success'=>'Lưu thành công!', 'notice' => $notice]);
 	}
 
 

@@ -119,7 +119,7 @@ class Common {
 		foreach ($chapterList as $key => $value) {
 			$chapter_group[$value->subject_title][] = $value;
 		}
-		$chapterOption = '<option>-- Chọn --</option>';
+		$chapterOption = '<option value="">-- Chọn --</option>';
 		foreach ($chapter_group as $key => $value) {
 			$chapterOption .= '<optgroup label="'. $key .'">';
 			foreach ($value as $key2 => $chapter) {

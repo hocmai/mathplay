@@ -70,8 +70,8 @@ $lessionQuestionConf = !empty($_lessionQuestionConf) ? (array)json_decode($_less
 			</div>
 			<div class="form-group">
 				<label>Dạng câu hỏi</label>
-				<select name="question[type][]" class="form-control get-question-form-config{{ ($key>0) ? ' selectpicker' : '' }}", required="true" data-live-search="true">
-					<option>-- Chọn --</option>
+				<select name="question[type][]" class="form-control get-question-form-config{{ ($key>0) ? ' selectpicker' : '' }}" required="1" data-live-search="true">
+					<option value="">-- Chọn --</option>
 					@foreach( CommonQuestion::getAllType() as $key => $value )
 						<option{{ ($key == Common::getObject($question, 'type')) ? ' selected' : '' }} data-tokens="{{ Str::slug($value, ' ').' '.$value }}" value="{{ $key }}">{{ $value }}</option>
 					@endforeach
