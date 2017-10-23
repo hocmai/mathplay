@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
 	{{ Form::label('', 'Nhập các câu trả lời (Chỉ dành cho trắc nghiệm)') }}
-	{{ Form::text('question_config[answer_arr][]', !empty($config['answer_arr']) ? $config['answer_arr'] : '', ['class' => 'form-control', 'required' => true]) }}
+	{{ Form::text('question_config[answer_arr][]', !empty($config['answer_arr']) ? $config['answer_arr'] : '', ['class' => 'form-control']) }}
 	<span><i>Nhập bất kỳ số, ký tự, hoặc biểu thức,... cho đáp án của câu hỏi. Mỗi đáp án ngăn cách bằng dấu chấm phẩy ";".</i></span>
 </div>
 <div class="form-group">
