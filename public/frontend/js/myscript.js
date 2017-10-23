@@ -61,6 +61,7 @@ $(document).ready(function(){
                     method: 'POST',
                     data: response,
                     success: function(data){
+                        console.log(data);
                         $('body>.loading').html('<span>'+data.message+'</span>');
                         window.setTimeout(function(){
                             if( typeof data.status != 'undefined' && data.status == 'success' ){
@@ -71,6 +72,7 @@ $(document).ready(function(){
                         }, 800)
                     },
                     error: function(error) {
+                        console.log(error);
                         $('body>.loading').html('<span>Xảy ra lỗi trong quá trình đăng nhập. Vui lòng thử lại</span>');
                         window.setTimeout(function(){
                             $('body>.loading').hide('normal');

@@ -80,7 +80,7 @@ class AjaxController extends BaseController {
 	 **/
 	public function oauthCallback(){
 		$input = Input::all();
-		// return Response::Json(Input::all());
+		return Response::Json(Input::all());
 		$messages = ['message' => 'Đăng nhập không thành công! Có thể tài khoản đang bị tạm khóa, hãy liên hệ với quản trị viên để được hỗ trợ', 'status' => 'error'];
 
 		if( Auth::user()->check() ){
