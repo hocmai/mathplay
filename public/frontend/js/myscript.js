@@ -54,6 +54,7 @@ $(document).ready(function(){
 		hocmaiOAuth.login(this, function(response){
             $('body>.loading').remove();
             var response = JSON.parse(response);
+            console.log(response);
             if( typeof response.success != 'undefined'  ){
                 $('body').append('<div class="loading"><span>Đang đăng nhập bằng tài khoản HocMai...</span></div>');
                 $.ajax({
