@@ -25,8 +25,16 @@ if( $method == 'plus' ){
 ?>
 
 <div class="start">
-	{{ $text[array_rand($text)] }}
+	@if(!empty($config['sound_title']))
+		<div class="play-question-sound">
+			<button class="control play"></button>
+			<video class="hidden">
+				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
+			</video>
+		</div>
+	@endif
 </div>
+<div class="description">{{ $text[array_rand($text)] }}</div>
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

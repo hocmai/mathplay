@@ -30,6 +30,17 @@ elseif( $type == 'write' ){
 ?>
 
 <div class="start">
+	@if(!empty($config['sound_title']))
+		<div class="play-question-sound">
+			<button class="control play"></button>
+			<video class="hidden">
+				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
+			</video>
+		</div>
+	@endif
+	{{ $question->title }}
+</div>
+<div class="description">
 	{{ ($type == 'input' | $type == 'write') ? $question->title : 'Hình ảnh nào biểu diễn đúng biểu thức '.$num1.' - '.$num2.' = '.($num1-$num2) }}
 </div>
 

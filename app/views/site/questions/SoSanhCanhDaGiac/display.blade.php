@@ -5,8 +5,17 @@ $answer = $range[getRandArrayVal($num)];
 ?>
 
 <div class="start">
-	Hình nào có số {{ getRandArrayVal(['cạnh', 'đỉnh']) }} {{ ($answer < $range[$num[1]]) ? 'bé' : 'lớn' }} hơn?
+    @if(!empty($config['sound_title']))
+        <div class="play-question-sound">
+            <button class="control play"></button>
+            <video class="hidden">
+                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
+            </video>
+        </div>
+    @endif
+    {{ $question->title }}
 </div>
+<div class="description">Hình nào có số {{ getRandArrayVal(['cạnh', 'đỉnh']) }} {{ ($answer < $range[$num[1]]) ? 'bé' : 'lớn' }} hơn?</div>
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

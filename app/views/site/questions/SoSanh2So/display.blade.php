@@ -53,7 +53,15 @@ switch ($method) {
 }?>
 
 <div class="start">
-	{{ $question->title }}
+    @if(!empty($config['sound_title']))
+        <div class="play-question-sound">
+            <button class="control play"></button>
+            <video class="hidden">
+                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
+            </video>
+        </div>
+    @endif
+    {{ $question->title }}
 </div>
 
 <div class="container-fluid question-wrapper">

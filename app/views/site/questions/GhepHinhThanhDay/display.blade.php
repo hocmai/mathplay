@@ -1,7 +1,3 @@
-<div class="start">
-	{{ $question->title }}
-</div>
-
 <?php 
 $img = CommonQuestion::getRandImg('GhepHinhThanhDay');
 $imgRand = array_rand($img, 2);
@@ -13,6 +9,18 @@ for ($i=($numTotal - $numHide); $i < $numTotal; $i++) {
 	$answer .= $i%2;
 }
 ?>
+
+<div class="start">
+	@if(!empty($config['sound_title']))
+		<div class="play-question-sound">
+			<button class="control play"></button>
+			<video class="hidden">
+				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
+			</video>
+		</div>
+	@endif
+	{{ $question->title }}
+</div>
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

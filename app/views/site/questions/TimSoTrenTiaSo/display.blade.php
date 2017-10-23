@@ -21,6 +21,17 @@ if($type == 'inline'){
 ?>
 
 <div class="start">
+	@if(!empty($config['sound_title']))
+        <div class="play-question-sound">
+            <button class="control play"></button>
+            <video class="hidden">
+                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
+            </video>
+        </div>
+    @endif
+    {{ $question->title }}
+</div>
+<div class="description">
 	@if($type == 'inline')
 		Điền số còn thiếu trong tia số
 	@elseif($type == 'input')
@@ -36,6 +47,7 @@ if($type == 'inline'){
 		Hoàn thành phép tính tổng theo mẫu dưới đây
 	@endif
 </div>
+
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
 		<input type="hidden" name="true_answer" value="{{ $answer }}" />

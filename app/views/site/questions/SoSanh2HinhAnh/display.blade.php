@@ -14,8 +14,17 @@ $num2 = $rand[$answer[1]];
 ?>
 
 <div class="start">
-	{{ ( $num1 > $num2 ) ? 'Số nào lớn hơn?' : 'Số nào bé hơn?' }}
+    @if(!empty($config['sound_title']))
+        <div class="play-question-sound">
+            <button class="control play"></button>
+            <video class="hidden">
+                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
+            </video>
+        </div>
+    @endif
+    {{ $question->title }}
 </div>
+<div class="description">{{ ( $num1 > $num2 ) ? 'Số nào lớn hơn?' : 'Số nào bé hơn?' }}</div>
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

@@ -33,6 +33,17 @@ else if( $type == 'choose' ){
 ?>
 
 <div class="start">
+    @if(!empty($config['sound_title']))
+        <div class="play-question-sound">
+            <button class="control play"></button>
+            <video class="hidden">
+                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
+            </video>
+        </div>
+    @endif
+    {{ $question->title }}
+</div>
+<div class="description">
 	@if( $type == 'input' )
 		Dưới đây là các cách tính hiệu của {{ $answer }}. Hãy viết biểu thức còn thiếu theo mẫu dưới đây.
 	@elseif( $type == 'input_a' )
