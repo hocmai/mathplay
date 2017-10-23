@@ -4,6 +4,9 @@ a + b = c, a - b = c<br>
 	{{ Form::select('question_config[type][]', [''=>'Mặc định', 'plus'=>'Phép cộng', 'sub'=>'Phép trừ'], !empty($config['type']) ? $config['type'] : '', ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
+	{{ Form::checkbox('question_config[remember][]', ) }}
+</div>
+<div class="form-group">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
 			{{ Form::label('', 'Số a nhỏ nhất') }}
