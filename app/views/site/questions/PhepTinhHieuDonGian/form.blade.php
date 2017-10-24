@@ -11,11 +11,11 @@
 <div class="row">
 	<div class="form-group col-sm-5">
 		{{ Form::label('', 'Số a nhỏ nhất') }}
-		{{ Form::number('question_config[min_value_1][]', !empty($config['min_value_1']) ? $config['min_value_1'] : 1, ['class' => 'form-control pull-left', 'placeholder' => 'Số a nhỏ nhất']) }}
+		{{ Form::number('question_config[min_value_1][]', isset($config['min_value_1']) ? $config['min_value_1'] : 1, ['class' => 'form-control pull-left', 'placeholder' => 'Số a nhỏ nhất']) }}
 	</div>
 	<div class="form-group col-sm-5">
 		{{ Form::label('', 'Số a lớn nhất') }}
-		{{ Form::number('question_config[max_value_1][]', !empty($config['max_value_1']) ? $config['max_value_1'] : 10, ['class' => 'form-control pull-left', 'placeholder' => 'Số a lớn nhất']) }}
+		{{ Form::number('question_config[max_value_1][]', isset($config['max_value_1']) ? $config['max_value_1'] : 10, ['class' => 'form-control pull-left', 'placeholder' => 'Số a lớn nhất']) }}
 	</div>
 </div>
 <div class="row">
@@ -25,6 +25,6 @@
 	</div>
 	<div class="form-group col-sm-5">
 		{{ Form::label('', 'Số b lớn nhất') }}
-		{{ Form::number('question_config[max_value_2][]', !empty($config['max_value_2']) ? $config['max_value_2'] : 10, ['class' => 'form-control pull-left', 'placeholder' => 'Số b lớn nhất']) }}
+		{{ Form::number('question_config[max_value_2][]', isset($config['max_value_2']) ? $config['max_value_2'] : 10, ['class' => 'form-control pull-left', 'placeholder' => 'Số b lớn nhất']) }}
 	</div>
 </div>
