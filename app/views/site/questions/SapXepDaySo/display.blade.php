@@ -1,6 +1,6 @@
 <?php 
 $sort = !empty($config['sort']) ? $config['sort'] : getRandArrayVal(['asc', 'desc']); /////// Thu tu sap xep
-$rule = (empty($config['rule']) | $config['rule'] != 1) ? false : true; //////// Quy luat day so
+$rule = (empty($config['rule']) | (!empty($config['rule']) && $config['rule'] != 1)) ? false : true; //////// Quy luat day so
 $numValue = (!empty($config['num_value']) && (int)$config['num_value'] > 3) ? (int)$config['num_value'] : rand(5,10); //// So luong phan tu cua day so
 $min = (!empty($config['min_value']) && (int)$config['min_value'] > 0) ? (int)$config['min_value'] : rand(1,100);
 $max = (!empty($config['max_value']) && (int)$config['max_value'] > ($min + $numValue)) ? (int)$config['max_value'] : rand($min + $numValue + 10, $min + $numValue + 15); ///// Gia tri max phai lon hon gia tri nho nhat + so luong phan tu
