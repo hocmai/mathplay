@@ -1,16 +1,16 @@
 <?php
-$min = !empty($config['min_value']) ? $config['min_value'] : 1;
-$max = !empty($config['max_value']) ? $config['max_value'] : 5;
+$min = (isset($config['min_value']) && $config['min_value'] > 1) ? $config['min_value'] : 2;
+$max = isset($config['max_value']) ? $config['max_value'] : 5;
 $max = (($max - $min) < 3) ? $min + 3 : $max;
 $range = range($min, $max);
-$answer_range = array_rand($range, 4);
+$answer_range = getRandArrayVal($range, 4);
 
 $answer_rand = [];
 foreach ($answer_range as $key => $value) {
-	$_rr = range(1, $range[$value]+1);
-	$_rr2 = array_rand($_rr, 2);
-	$answer_rand[] = [ $_rr[$_rr2[0]], $_rr[$_rr2[1]] ];
+	$num1 = rand(1, $value-1);
+	$answer_rand[] = [ $num1, $value-$num1 ];
 }
+// dd($answer_rand, $answer_range);
 // $answer_rand = [ array_rand($range, 2), array_rand($range, 2), array_rand($range, 2), array_rand($range, 2) ];
 
 $type = [ '_H_' => ['blue', 'orange', 'pink', 'purple'], '_piece_' => ['green', 'pink', 'purple', 'yellow'], '_piece2_' => ['green', 'purple', 'red', 'yellow'] ];

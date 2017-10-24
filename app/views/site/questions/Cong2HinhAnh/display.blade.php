@@ -2,7 +2,11 @@
 $min = !empty($config['min_value']) ? $config['min_value'] : 0;
 $max = !empty($config['max_value']) ? $config['max_value'] : 5;
 $num_count = !empty($config['number_count']) ? $config['number_count'] : rand(2,4);
-$answer = array_rand(range($min, $max), $num_count);
+$range = range($min, $max);
+if( $num_count > count($range) ){
+	$num_count = count($range);
+}
+$answer = array_rand($range, $num_count);
 
 $images = Cong2HinhAnh::getRandomData();
 $images = $images[array_rand($images)];

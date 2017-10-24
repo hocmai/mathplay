@@ -1,7 +1,8 @@
 <?php
 $type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['input', 'choose']);
+$max = !empty($config['max']) ? $config['max'] : 100;
 $img = getRandArrayVal(CommonQuestion::getRandImg('BieuDien2ChuSo'));
-$num1 = $answer = rand(1, 100);
+$num1 = $answer = rand(1, $max);
 $num2 = $num1+rand(-5, 5);
 
 if( $type == 'choose' ){

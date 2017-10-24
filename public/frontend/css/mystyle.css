@@ -30,6 +30,14 @@ img{
 .question-rendered .start{
     background: none;
     padding-left: 0;
+    padding-bottom: 20px;
+}
+.question-rendered .description{
+    margin: -15px 0 40px;
+    color: #17bebb;
+}
+.bg-box-lam-bai .question-wrapper{
+    padding-bottom: 50px;
 }
 .play-question-sound{
     display: inline-block;

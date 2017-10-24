@@ -88,6 +88,11 @@ $(document).ready(function($) {
 	    // return false;
 	});
 
+	//////////////////// Lam bai tiep ///////////////////
+	$('.bg-box-lam-bai .lam-bai-tiep').on('click', function(){
+		
+	})
+
 	///////////////// loai bo khoang trang khi nhap dap an ///////////////
 	$('.question-rendered form input[type="text"], .question-rendered form input[type="number"]').on('input', function(){
 		var val = $(this).val().replace(/\s/g,"");

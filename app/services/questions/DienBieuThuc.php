@@ -1,7 +1,7 @@
 <?php
 Class DienBieuThuc extends CommonQuestion{
 
-	protected static $title = 'Đếm số trong khung 10 ô';
+	protected static $title = 'Chọn biểu thức đúng với hình ảnh minh họa';
 	public static function getTitle(){
 		return self::$title;
 	}

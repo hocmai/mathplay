@@ -26,11 +26,12 @@
 }
 .plus-with-puzzle .radio>label>img,
 .plus-with-puzzle .preview>.item>img{
-	margin-left: -18px;
+	margin-left: -13px;
+	float: left;
 }
 .plus-with-puzzle .radio>label._H_>img,
 .plus-with-puzzle .preview>.item._H_>img{
-	margin-left: -27px;
+	margin-left: -22px;
 }
 .plus-with-puzzle .radio>label>img.rotate,
 .plus-with-puzzle .preview>.item>img.rotate{
