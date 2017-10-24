@@ -118,4 +118,51 @@ Class CommonQuestion {
 		return $randomdata;
 	}
 
+	/**
+	 * Read time
+	 **/
+	public static function readHourMinute($hour = 0, $min = 0){
+		if( $min == 30 ){
+			return self::readNumber((int)$hour).' rưỡi';
+		}
+		else if( $min > 30 ){
+			return self::readNumber((int)$hour + 1).' giờ kém '.self::readNumber( 60 - (int)$min );
+		}
+		else{
+			return self::readNumber((int)$hour).' giờ '.self::readNumber((int)$min).' phút';
+		}
+	}
+
+	/**
+	 * Read time
+	 **/
+	public static function readNumber($num = 0){
+		if( $num >= 100 ) return 'Số này lớn hơn 99. Chịu không đọc được! :(';
+		$text_ = [
+			0 => 'không',
+			1 => 'một',
+			2 => 'hai',
+			3 => 'ba',
+			4 => 'bốn',
+			5 => 'năm',
+			6 => 'sáu',
+			7 => 'bảy',
+			8 => 'tám',
+			9 => 'chín',
+			10 => 'mười',
+		];
+		if( $num > 20 ){
+			$text_[1] = 'mốt';
+		}
+		if( $num <= 10 ){
+			return $text_[$num];
+		} elseif( $num > 10 && $num <= 19 ){
+			return 'mười '.( ($text_[$num%10] == 'năm') ? 'lăm' : $text_[$num%10] );
+		} elseif( $num >= 20 && $num%10 == 0 ){
+			return $text_[$num/10].' mươi';
+		} elseif( $num > 20 && $num%10 > 0 ){
+			return $text_[floor($num/10)].' mươi '.( ($text_[$num%10] == 'năm') ? 'lăm' : $text_[$num%10] );
+		}
+	}
+
 }

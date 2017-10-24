@@ -1,6 +1,6 @@
 <?php
-$answer = !empty($config['answer']) ? $config['answer'] : 100;
-$type = !empty($config['type']) ? $config['type'] : 'input';
+$answer = isset($config['answer']) ? $config['answer'] : '';
+$type = isset($config['type']) ? $config['type'] : 'input';
 ?>
 
 <div class="start">

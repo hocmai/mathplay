@@ -498,6 +498,59 @@ body>.loading>span::after{
     background: #129694;
 }
 
+
+/********  Clock ********/
+.analog-clock{
+    position: relative;
+}
+.analog-clock .center-point{
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    border: 3px solid #ddd;
+    background: #fff;
+    top: 0;
+    right: -3px;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    z-index: 2;
+}
+.analog-clock .hour-line,
+.analog-clock .min-line{
+    width: 50px;
+    height: 6px;
+    background: #111;
+    left: calc(50% + 2px);
+    position: absolute;
+    top: 3px;
+    bottom: 0;
+    margin: auto;
+    z-index: 1;
+    transform-origin: left;
+    transition: all 2s ease;
+}
+.analog-clock .hour-line:before,
+.analog-clock .min-line:before{
+    content: "";
+    border-left: 5px solid #111;
+    border-top: 3px solid transparent;
+    border-bottom: 3px solid transparent;
+    position: absolute;
+    right: -5px;
+}
+.analog-clock .min-line:before{
+    border-left-width: 4px;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    right: -4px;
+}
+.analog-clock .min-line{
+    width: 60px;
+    height: 4px;
+}
+
 @keyframes rotate {
     0% {
     	transform: rotate(0deg);

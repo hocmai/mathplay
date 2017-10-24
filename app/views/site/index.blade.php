@@ -292,9 +292,9 @@
                                 Với việc học thêm chi phí tối thiểu mỗi tháng cũng từ vài trăm nghìn đồng trở lên.
                                 <br/>
                                 <br/>
-                                Còn với thẻ VIP Luyện Thi 123 con của bạn có thể học cả năm (365 ngày) tất cả các chương trình, nội dung có trên website sẽ có giá bao nhiêu?
+                                Còn với thẻ VIP MATHPLAY con của bạn có thể học cả năm (365 ngày) tất cả các chương trình, nội dung có trên website sẽ có giá bao nhiêu?
                                 <br/>
-                                Với mong muốn mọi học sinh đều có thể tiếp cận và được sử dụng LUYỆN THI 123, nhân dịp ra mắt thẻ VIP chỉ có giá: 150.000 đồng/năm (Tức là chỉ khoảng 400 đồng/ngày) là con bạn truy cập và học được toàn bộ nội dung trên website với toàn bộ các chương trình ôn tập, bài tập luyện tập toán lớp 1,2,3,4,5. Quá rẻ phải không nào?
+                                Với mong muốn mọi học sinh đều có thể tiếp cận và được sử dụng MATHPLAY, nhân dịp ra mắt thẻ VIP chỉ có giá: 800.000 đồng/năm (Tức là chỉ khoảng 2.000 đồng/ngày) là con bạn truy cập và học được toàn bộ nội dung trên website với toàn bộ các chương trình ôn tập, bài tập luyện tập toán lớp 1,2. Quá rẻ phải không nào?
                                 <br/>
                                 Bạn đã sẵn sàng tặng nó cho con yêu chưa?
                             </div>
