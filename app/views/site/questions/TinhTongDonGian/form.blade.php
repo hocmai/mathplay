@@ -10,7 +10,7 @@
 	</div>
 	<div class="form-group col-sm-6">
 		{{ Form::label('', 'Số a lớn nhất') }}
-		{{ Form::number('question_config[max_value_a][]', !empty($config['max_value_a']) ? $config['max_value_a'] : 10, ['class' => 'form-control pull-left', 'placeholder' => 'Số a lớn nhất']) }}
+		{{ Form::number('question_config[max_value_a][]', isset($config['max_value_a']) ? $config['max_value_a'] : 10, ['class' => 'form-control pull-left', 'placeholder' => 'Số a lớn nhất']) }}
 	</div>
 </div>
 <div class="row">
@@ -20,6 +20,6 @@
 	</div>
 	<div class="form-group col-sm-6">
 		{{ Form::label('', 'Số b lớn nhất') }}
-		{{ Form::number('question_config[max_value_b][]', !empty($config['max_value_b']) ? $config['max_value_b'] : 10, ['class' => 'form-control pull-left', 'placeholder' => 'Số b lớn nhất']) }}
+		{{ Form::number('question_config[max_value_b][]', isset($config['max_value_b']) ? $config['max_value_b'] : 10, ['class' => 'form-control pull-left', 'placeholder' => 'Số b lớn nhất']) }}
 	</div>
 </div>

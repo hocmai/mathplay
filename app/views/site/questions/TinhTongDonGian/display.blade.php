@@ -1,9 +1,9 @@
 <?php
-$min_a = !empty($config['min_value_a']) ? $config['min_value_a'] : 1;
-$max_a = !empty($config['max_value_a']) ? $config['max_value_a'] : 10;
+$min_a = isset($config['min_value_a']) ? $config['min_value_a'] : 1;
+$max_a = isset($config['max_value_a']) ? $config['max_value_a'] : 10;
 
-$min_b = !empty($config['min_value_b']) ? $config['min_value_b'] : 1;
-$max_b = !empty($config['max_value_b']) ? $config['max_value_b'] : 10;
+$min_b = isset($config['min_value_b']) ? $config['min_value_b'] : 1;
+$max_b = isset($config['max_value_b']) ? $config['max_value_b'] : 10;
 
 $answer1 = rand($min_a, $max_a);
 $answer2 = rand($min_b, $max_b);
