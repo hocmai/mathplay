@@ -122,7 +122,10 @@ Class CommonQuestion {
 	 * Read time
 	 **/
 	public static function readHourMinute($hour = 0, $min = 0){
-		if( $min == 30 ){
+		if( $min == 0 ){
+			return self::readNumber((int)$hour).' đúng';
+		}
+		else if( $min == 30 ){
 			return self::readNumber((int)$hour).' rưỡi';
 		}
 		else if( $min > 30 ){

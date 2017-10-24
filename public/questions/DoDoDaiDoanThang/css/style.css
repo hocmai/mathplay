@@ -1,0 +1,20 @@
+#DoDoDaiDoanThang .work-area{
+    width: 100%;
+}
+#DoDoDaiDoanThang .work-area .line-wrapper{
+	display: inline-block;
+    width: 300px;
+    margin-bottom: 5px;
+}
+#DoDoDaiDoanThang .work-area .line-wrapper .line{
+    height: 5px;
+    background: #17bebb;
+    display: inline-block;
+}
+#DoDoDaiDoanThang .sort-area .ruller{
+	cursor: move;
+    opacity: 0.85;
+}
+#DoDoDaiDoanThang{
+	
+}

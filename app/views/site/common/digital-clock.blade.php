@@ -1,7 +1,7 @@
 <?php
 $color = getRandArrayVal(['#F7B2E6', '#ffc914', '#e4572e', '#17bebb', '#d7d7d7', '#ffd443']);
 $rand_str = str_random(10);
-$rand_num = 2;
+$rand_num = isset($num) ? $num : rand(1,3);
 $hour = isset($hour) ? (string)$hour : '00';
 $min = isset($min) ? (string)$min : '00';
 if( strlen($hour) < 2 ) $hour = '0'.$hour;
@@ -390,11 +390,11 @@ if( strlen($min) < 2 ) $min = '0'.$min;
 	    <path fill="#fff" d="M639.1 2037.4h418.1v33H639.1zm1741.3 0h123.5v33h-123.5zm-163.8 0h124.3v33h-124.3zm-163.9 0H2177v33h-124.3z"></path>
 	    <g class="clock-digit-area-2"></g>
 
-	    <use xlink:href="#digit{{ substr($hour, 0, 1) .'-'. $rand_str }}" x="520" y="1217" height="55%" fill="#fff" style=""></use>
-			<use xlink:href="#digit{{ substr($hour, 1, 1) .'-'. $rand_str }}" x="900" y="1217" height="55%" fill="#fff" style=""></use>
-			<use xlink:href="#colon-{{ $rand_str }}" x="120" y="0" height="40%" fill="#fff" style=""></use>
-			<use xlink:href="#digit{{ substr($min, 0, 1) .'-'. $rand_str }}" x="1380" y="1217" height="55%" fill="#fff" style=""></use>
-			<use xlink:href="#digit{{ substr($min, 1, 1) .'-'. $rand_str }}" x="1760" y="1217" height="55%" fill="#fff" style=""></use>
+	    <use xlink:href="#digit{{ substr($hour, 0, 1) .'-'. $rand_str }}" x="520" y="1217" height="96%" fill="#fff" style=""></use>
+			<use xlink:href="#digit{{ substr($hour, 1, 1) .'-'. $rand_str }}" x="900" y="1217" height="96%" fill="#fff" style=""></use>
+			<use xlink:href="#colon-{{ $rand_str }}" x="120" y="0" height="100%" fill="#fff" style=""></use>
+			<use xlink:href="#digit{{ substr($min, 0, 1) .'-'. $rand_str }}" x="1380" y="1217" height="96%" fill="#fff" style=""></use>
+			<use xlink:href="#digit{{ substr($min, 1, 1) .'-'. $rand_str }}" x="1760" y="1217" height="96%" fill="#fff" style=""></use>
 		</g>
 		<desc>Created with Snap</desc>
 	</svg>
