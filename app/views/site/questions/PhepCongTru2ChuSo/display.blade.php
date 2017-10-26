@@ -23,7 +23,21 @@ if( $method == 'plus' ){
 	if( $min_b > $max_b ){
 		$max_b = $min_b;
 	}
-	$b = rand($min_a, $max_b);
+	$b = rand($min_b, $max_b);
+
+	if( $remember ){
+		//// phep cong co nho
+		$a2 = str_split((string)$a);
+		$a2 = (int)end( $a2 );
+		$b2 = rand(10-$a2,9);
+		$b1 = floor($b/10)*10;
+		if( $b1+$b2 > $max_b ){
+			$b = rand($min_b, $max_b-10);
+			$b1 = floor($b/10)*10;
+		}
+		$b = $b1 + $b2;
+	}
+
 	$c = $a + $b;
 } else{
 	///// phep tru, so a >= b
@@ -33,7 +47,25 @@ if( $method == 'plus' ){
 	if( $min_b > $max_b ){
 		$max_b = $min_b;
 	}
-	$b = rand($min_a, $max_b);
+	$b = rand($min_b, $max_b);
+
+	if( $remember ){
+		//// phep tru co nho
+		$a2 = str_split((string)$a);
+		$a2 = (int)end( $a2 );
+		if( $a2 == 9 ){
+			$a2 = rand(0,8);
+			$a = floor($a/10)*10 + $a2;
+		}
+		$b2 = rand($a2+1,9);
+		$b1 = floor($b/10)*10;
+		if( $b1+$b2 > $max_b ){
+			$b = rand($min_b, $max_b-10);
+			$b1 = floor($b/10)*10;
+		}
+		$b = $b1 + $b2;
+	}
+
 	$c = $a - $b;
 }
 

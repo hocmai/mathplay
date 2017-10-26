@@ -7,9 +7,4 @@
     @section('content')
     @show
 </main>
-
-
-</div>
-
-</body>
-</html>
+@include('site.common.footer')

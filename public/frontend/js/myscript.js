@@ -89,14 +89,18 @@ $(document).ready(function(){
 	})
 
     /////////////////////// hien thi ban phim ao //////////////////////
-    if( $('.question-rendered.active input[type="text"]').length ){
-        $('.question-rendered.active input[type="text"]')[0].focus();
-        keyboardToggle('show');
-    }
-    else if( $('.question-rendered.active input[type="number"]').length ){
-        $('.question-rendered.active input[type="number"]')[0].focus();
-        keyboardToggle('show');
-    }
+    // window.setTimeout(function(){
+        if( $('.question-rendered.active input[type="text"]').length ){
+            $('.question-rendered.active input[type="text"]:first').focus();
+            $('.question-rendered.active input[type="text"]:first').addClass('virtual-focus');
+            keyboardToggle('show');
+        }
+        else if( $('.question-rendered.active input[type="number"]').length ){
+            $('.question-rendered.active input[type="number"]:first').focus();
+            $('.question-rendered.active input[type="number"]:first').addClass('virtual-focus');
+            keyboardToggle('show');
+        }
+    // },300)
 
     $(window).on('click', function(e){
         if( $('.ban-phim').length == 0 ) return;
@@ -111,7 +115,7 @@ $(document).ready(function(){
         }
     })
 
-    $('input[type="text"], input[type="number"]').on('focus', function(){
+    $(document).on('focus', '.question-rendered input[type="text"], .question-rendered input[type="number"]', function(){
         $('input.virtual-focus').removeClass('virtual-focus');
         $(this).addClass('virtual-focus');
         keyboardToggle('show');
