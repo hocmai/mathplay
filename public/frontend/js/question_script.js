@@ -1,6 +1,13 @@
 $(document).ready(function($) {
 	
 	//////////// Submit answer form
+	$(window).on('keypress', function(event) {
+		////////////// Submit form when press ENTER key
+		if( event.keyCode == 13 ){
+			$('.question-rendered.active form.answer-question-form').trigger('submit');
+		}
+	});
+
 	$('.question-wrapper').on('submit', 'form.answer-question-form', function(e){
 		console.log('Form global process');
 		var data = $(this).serializeArray(),
@@ -58,7 +65,6 @@ $(document).ready(function($) {
 				// Hide cau hien tai, Hien cau tiep theo
 				$('.diem .your-score').text(your_score+score);
 				if( q_order < q_num ){
-					$('.total-number .current-question').text(q_order+1);
 					show_next_question(parent);
 				} else{
 					// Cau hoi cuoi cung, hien tong so diem
@@ -78,6 +84,7 @@ $(document).ready(function($) {
 		else{
 			///////// Tra loi sai
 			// Hien modal
+			keyboardToggle('hide');
 			$('#myModal-false').modal('show');
 			var audio = $('#myModal-false').find('.audio > audio');
 			if(audio.length) audio.get(rand-1).play();
@@ -90,7 +97,7 @@ $(document).ready(function($) {
 
 	//////////////////// Lam bai tiep ///////////////////
 	$('.bg-box-lam-bai .lam-bai-tiep').on('click', function(){
-		
+		next_question_anyway();
 	})
 
 	///////////////// loai bo khoang trang khi nhap dap an ///////////////
@@ -101,7 +108,53 @@ $(document).ready(function($) {
 	})
 
 	////////////// Chuyen cau hoi tiep theo ////////////////////
+	function next_question_anyway(){
+		///// Cap nhat lich su
+		parent = $('.question-rendered.active'),
+		q_num = parent.parent().find('>.question-rendered').length,
+		q_order = parseInt(parent.attr('q-order')),
+		your_score = parseInt($('.diem .your-score').text()),
+		max_score = parseInt(parent.attr('max-score')),
+		data_history = $.parseJSON(parent.attr('data-history'));
+
+		data_history.score = your_score;
+		data_history.current_question = q_order+1;
+		data_history.time_use = parseInt($('.times>.time-use').text());
+
+		// Neu la cau cuoi cung thi chuyen trang thai lich su
+		data_history.completed = 0;
+		if( q_order == q_num ){
+			data_history.completed = 1;
+			data_history.current_question = q_num;
+		}
+
+		$.ajax({
+			url: '/ajax/updatestudyhistory',
+			type: 'POST',
+			data: {data: JSON.stringify(data_history)},
+			success: function(result){
+				console.log(result);
+				if( q_order == q_num ){
+					// Cau hoi cuoi cung, hien tong so diem
+					$('.box-bai-lam .hoan-thanh .point').text((your_score)+' điểm');
+					window.setTimeout(function(){
+						$('.box-bai-lam .boxLeft, .box-bai-lam .boxRight').hide('400');
+						$('.box-bai-lam .hoan-thanh').removeClass('hidden').show();
+						$('.ban-phim').hide();
+					},500);
+				}else{
+					show_next_question(parent);
+				}
+			},
+			error: function(error){
+				console.log(error.responseText);
+			}
+		});
+	}
+
+	///////////// CHuyen cau tiep theo sau khi tra loi dung ////////////////
 	function show_next_question(parent){
+		var q_order = parseInt($('.question-rendered.active').attr('q-order'));
 		parent.fadeOut('300', function(){
 			parent.removeClass('active').addClass('hide');
 			parent.next().hide().removeClass('hide');
@@ -115,6 +168,7 @@ $(document).ready(function($) {
 			else{
 				keyboardToggle('hide');
 			}
+			$('.total-number .current-question').text(q_order+1);
 		});
 	}
 

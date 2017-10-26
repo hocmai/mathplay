@@ -126,12 +126,14 @@ $(document).ready(function(){
         if( $('input.virtual-focus').is(":visible") ){
             var origin = $('input.virtual-focus').val(),
             value = $(this).text();
+            $('input.virtual-focus').val(origin + value).change();
             $('input.virtual-focus').val(origin + value).focus();
         }
     })
     $('.ban-phim').on('click', '.delete', function(){
         if( $('input.virtual-focus').is(":visible") ){
             var origin = $('input.virtual-focus').val();
+            $('input.virtual-focus').val(origin.substring(0, origin.length - 1)).change();
             $('input.virtual-focus').val(origin.substring(0, origin.length - 1)).focus();
         }
     })
