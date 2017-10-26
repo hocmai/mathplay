@@ -45,8 +45,12 @@ $config = !empty($data->data) ? json_decode($data->data, true) : [];
 							{{ Form::textarea('description', !empty($config['description']) ? $config['description'] : '', ['class' => 'form-control', 'rows' => 5]) }}
 						</div>
 						<div class="form-group">
+							<label>Hình ảnh minh họa</label>
+							{{ !empty($config['thumb_url']) ? '<p><a target="_blank" href="'.asset($config['thumb_url']).'">'.basename($config['thumb_url']).'</a></p>' : '' }}
+							{{ Form::file('thumb', ['class' => 'form-control', 'accept' => ".png, .jpg, .jpeg, .gif, .svg"]) }}
+						</div>
+						<div class="form-group">
 							<label>Thư viện hình ảnh</label>
-							
 							{{ CommonUpload::file( 'images_new', !empty($config['images']) ? $config['images'] : [], ['class' => 'form-control', 'accept' => ".png, .jpg, .jpeg, .gif, .svg", 'maxsize' => 1000, 'multiple' => true, 'data-target' => !empty($config['key']) ? '/questions/'.$config['key'].'/img' : '' ], ['ajax' => true, 'preview' => true] ) }}
 						</div>
 						<div class="form-group">

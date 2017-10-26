@@ -83,6 +83,12 @@ class QuestionTypeController extends AdminController {
         		];
         	}
         }
+
+        $thumb = Input::file('thumb');
+		if( !empty($thumb) ){
+			$ext = pathinfo($thumb->getClientOriginalName());
+			$config['thumb_url'] = CommonUpload::uploadImage( '/upload/question_type', 'thumb', $type.'.'.$ext['extension'] );
+		}
   //      	if (Input::hasFile('images_new')){
   //       	$path = '/questions/'. str_replace('question_type.config.', '', $type).'/img';
   //       	$file = Input::file('image');

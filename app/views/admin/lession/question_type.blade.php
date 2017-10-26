@@ -37,7 +37,7 @@
 					  <td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() - 1)) }}</td>
 					  <td>{{ $config['key'] or '' }}</td>
 					  <td>{{ $config['name'] or '' }}</td>
-					  <td>{{ $config['description'] or '' }}</td>
+					  <td>{{ !empty($config['thumb_url']) ? '<a href="'.$config['thumb_url'].'" target="_blank"><img width="200px" src="'.$config['thumb_url'].'"></a>' : '' }}</td>
 					  <td>
 						<a href="{{ action('QuestionTypeController@edit', !empty($config['key']) ? $config['key'] : 'none') }}" class="btn btn-primary">Sửa</a>
 					  </td>

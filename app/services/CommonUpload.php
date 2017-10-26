@@ -6,12 +6,14 @@ class CommonUpload
 	*uploadImage Upload image
 	*/
 
-	public static function uploadImage($path, $imageFile, $imageUrl = NULL)
+	public static function uploadImage($path, $imageFile, $filename = NULL, $imageUrl = NULL)
 	{
 		$destinationPath = public_path().$path;
 		if(Input::hasFile($imageFile)){
 			$file = Input::file($imageFile);
-			$filename = $file->getClientOriginalName();
+			if( empty($filename) ){
+				$filename = $file->getClientOriginalName();
+			}
 			$uploadSuccess = $file->move($destinationPath, $filename);
 			return $path.'/'.$filename;
 		}
