@@ -2,10 +2,17 @@
 $method = !empty($config['type']) ? $config['type'] : getRandArrayVal(['plus','sub']);
 $remember = !empty($config['remember']) ? true : false;
 $find = !empty($config['find']) ? $config['find'] : getRandArrayVal(['a','b','c']);
-$min_a = (isset($config['min_a']) && is_numeric($config['min_a'])) ? $config['min_a'] : 0;
+$min_a = (isset($config['min_a']) && is_numeric($config['min_a'])) ? $config['min_a'] : 1;
 $max_a = (isset($config['max_a']) && is_numeric($config['max_a'])) ? $config['max_a'] : 99;
-$min_b = (isset($config['min_b']) && is_numeric($config['min_b'])) ? $config['min_b'] : 0;
+$min_b = (isset($config['min_b']) && is_numeric($config['min_b'])) ? $config['min_b'] : 1;
 $max_b = (isset($config['max_b']) && is_numeric($config['max_b'])) ? $config['max_b'] : 99;
+
+if( $remember && $method == 'plus' ){
+	$max_a = 89;
+}
+if( $remember && $method == 'sub' ){
+	$min_a = 11;
+}
 
 if( $min_a > $max_a ){
 	$max_a = $min_a;
@@ -17,15 +24,15 @@ if( $min_b > $max_b ){
 $a = rand($min_a, $max_a);
 if( $method == 'plus' ){
 	/// Phep cong se khong qua 100
-	if( 99-$a < $max_b ){
+	if( (99-$a) < $max_b ){
 		$max_b = 99-$a;
 	}
 	if( $min_b > $max_b ){
-		$max_b = $min_b;
+		$min_b = $max_b;
 	}
 	$b = rand($min_b, $max_b);
 
-	if( $remember ){
+	if( $remember && ($a+$b) < 100 ){
 		//// phep cong co nho
 		$a2 = str_split((string)$a);
 		$a2 = (int)end( $a2 );
@@ -45,7 +52,7 @@ if( $method == 'plus' ){
 		$max_b = $a;
 	}
 	if( $min_b > $max_b ){
-		$max_b = $min_b;
+		$min_b = $max_b;
 	}
 	$b = rand($min_b, $max_b);
 
@@ -57,9 +64,14 @@ if( $method == 'plus' ){
 			$a2 = rand(0,8);
 			$a = floor($a/10)*10 + $a2;
 		}
+
 		$b2 = rand($a2+1,9);
 		$b1 = floor($b/10)*10;
 		if( $b1+$b2 > $max_b ){
+			if( $max_b <= 10 ){
+				$min_b = 0;
+				$max_b = 20;
+			}
 			$b = rand($min_b, $max_b-10);
 			$b1 = floor($b/10)*10;
 		}
