@@ -28,9 +28,7 @@
                             <ul>
                                 @foreach($grades as $grade)
                                     <li>
-                                        @if(Auth::admin()->check() | $grade->status == 1)
-                                            {{ renderUrl('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
-                                        @endif
+                                        {{ renderUrl('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
                                     </li>
                                 @endforeach
                                 <li class="bg-color"></li>

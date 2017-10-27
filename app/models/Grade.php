@@ -8,6 +8,9 @@ class Grade extends Eloquent implements SluggableInterface
     use SoftDeletingTrait;
     use SluggableTrait;
 
+    //// Use custom publish status, get only published
+    use PublishedTrait;
+
     protected $table = 'grades';
     protected $dates = ['deleted_at'];
 

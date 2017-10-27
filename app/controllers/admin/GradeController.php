@@ -17,6 +17,30 @@ class GradeController extends AdminController {
 		return View::make('admin.grade.index')->with(compact('data'));
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function search()
+	{
+		$input = Input::all();
+		$data = Chapter::select('grades.*');
+		if( !empty($input['title']) ){
+			$data = $data->where('grades.title', 'LIKE' , '%'.$input['title'].'%');
+		}
+		if( isset($input['status']) && $input['status'] != ''){
+			$data = $data->where('grades.status', $input['status']);
+		}
+		if( !empty($input['order_by']) ){
+			$data = $data->orderBy('grades.'.$input['order_by'], !empty($input['order']) ? $input['order'] : 'desc');
+		} else{
+			$data = $data->orderBy('grades.created_at', 'desc');
+		}
+		$data = $data->paginate(PAGINATE);
+		// dd(Input::get('order'));
+		return View::make('admin.grade.index')->with(compact('data'))->with(compact('input'));
+	}
 
 	/**
 	 * Show the form for creating a new resource.

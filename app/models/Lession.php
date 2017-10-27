@@ -7,6 +7,10 @@ class Lession extends Eloquent implements SluggableInterface
 {
     // use SoftDeletingTrait;
     use SluggableTrait;
+
+    //// Use custom publish status, get only published
+    use PublishedTrait;
+
     protected $table = 'lessions';
     protected $fillable = [
         'title',

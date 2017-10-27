@@ -1,68 +1,74 @@
 @extends('admin.layout.default')
 @if(Admin::isAdmin())
 @section('title')
-{{ $title='Danh sách chuyên đề' }}
+	{{ $title='Danh sách chuyên đề' }}
+	<h4 class="inline-block" style="margin-left: 15px"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{ link_to_action('ChapterController@create', 'Thêm mới') }}</h4>
 @stop
 
 @section('content')
 	<!-- inclue Search form -->
-	<!-- @include('admin.grade.search') -->
-
-	<div class="row margin-bottom">
-		<div class="col-xs-12">
-			<a href="{{ action('ChapterController@create') }}" class="btn btn-primary">Thêm chuyên đề</a>
-		</div>
-	</div>
+	@include('admin.chapter.search')
 
 	<div class="row">
 		<div class="col-xs-12">
 		  <div class="box">
 			<div class="box-header">
-			  <h3 class="box-title">Danh sách chuyên đề</h3>
+				@if($data->count())
+					@include('admin.common.bulk-operations', ['model' => 'Chapter'])
+					<span class="pull-right"><em>
+						Hiển thị {{ 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }} - {{ ( $data->getTotal() <= ($data->getPerPage() * $data->getCurrentPage() ) ) ? $data->getTotal() : $data->getPerPage() + ($data->getPerPage() * ($data->getCurrentPage() -1) ) }} trong tổng số {{ ($data->getTotal()) }} kết quả
+					</em></span>
+				@else
+					<div class="alert alert-info" style="margin: 0" role="alert">Không tìm thấy kết quả nào.</div>
+				@endif
 			</div>
 			<!-- /.box-header -->
+
 			<div class="box-body table-responsive no-padding">
 			  <table class="table table-hover">
 				<tr>
-				  <th>STT</th>
-				  <th>Tên chuyên đề</th>
-				  <th>Môn</th>
-				  <th>Lớp</th>
-				  <th>Người đăng</th>
-				  <th style="width:100px;">Ngày đăng</th>
-				  <th style="width:100px;">sửa lần cuối</th>
-				  <th style="width:100px;">Trạng thái</th>
-				  <th style="width:150px;">Action</th>
+					<th><input type="checkbox" id="check-all"/></th>
+					<th>STT</th>
+					<th>Tên chuyên đề</th>
+					<th>Môn</th>
+					<th>Lớp</th>
+					<th>Người đăng</th>
+					<th style="width:100px;">Ngày đăng</th>
+					<th style="width:100px;">sửa lần cuối</th>
+					<th style="width:100px;">Trạng thái</th>
+					<th style="width:150px;">Action</th>
 				</tr>
-				@foreach($data as $key => $value)
-				<tr>
-				 	<td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }}</td>
-				 	<td>{{ $value->title }}</td>
-					<td>{{ link_to_action(
-						'SiteSubjectController@show',
-						Common::getValueOfObject($value, 'subject', 'title'),
-						[
-							'gradeSlug' => Common::getObject(Common::getValueOfObject($value, 'subject', 'grade'), 'slug'),
-							'subjectSlug' => Common::getValueOfObject($value, 'subject', 'slug')
-						], ['target' => '_blank'])}}
-					</td>
-					<td>{{ link_to_action(
-						'SiteGradeController@show',
-						Common::getObject(Common::getValueOfObject($value, 'subject', 'grade'), 'title'),
-						['gradeSlug' => Common::getObject(Common::getValueOfObject($value, 'subject', 'grade'), 'slug')], ['target' => '_blank'])}}
-					</td>
-					<td>{{ Common::getValueOfObject($value, 'author', 'username') }}</td>
-					<td>{{ date_format(date_create($value->created_at), 'd/m/Y H:i') }}</td>
-					<td>{{ date_format(date_create($value->updated_at), 'd/m/Y H:i') }}</td>
-					<td>{{ ($value->status == 1) ? 'đã công bố' : 'chưa công bố' }}</td>
-					<td>
-						<a href="{{ action('ChapterController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-						{{ Form::open(array('method'=>'DELETE', 'action' => array('ChapterController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
-						<button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
-						{{ Form::close() }}
 
-					</td>
-				</tr>
+				@foreach($data as $key => $value)
+					<tr>
+						<td><input type="checkbox" name="checkbox" id="check-option" value="{{$value->id}}"></td>
+					 	<td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }}</td>
+					 	<td>{{ $value->title }}</td>
+						<td>{{ link_to_action(
+							'SiteSubjectController@show',
+							Common::getValueOfObject($value, 'subject', 'title'),
+							[
+								'gradeSlug' => Common::getObject(Common::getValueOfObject($value, 'subject', 'grade'), 'slug'),
+								'subjectSlug' => Common::getValueOfObject($value, 'subject', 'slug')
+							], ['target' => '_blank'])}}
+						</td>
+						<td>{{ link_to_action(
+							'SiteGradeController@show',
+							Common::getObject(Common::getValueOfObject($value, 'subject', 'grade'), 'title'),
+							['gradeSlug' => Common::getObject(Common::getValueOfObject($value, 'subject', 'grade'), 'slug')], ['target' => '_blank'])}}
+						</td>
+						<td>{{ Common::getValueOfObject($value, 'author', 'username') }}</td>
+						<td>{{ date_format(date_create($value->created_at), 'd/m/Y H:i') }}</td>
+						<td>{{ date_format(date_create($value->updated_at), 'd/m/Y H:i') }}</td>
+						<td>{{ ($value->status == 1) ? 'đã công bố' : 'chưa công bố' }}</td>
+						<td>
+							<a href="{{ action('ChapterController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+							{{ Form::open(array('method'=>'DELETE', 'action' => array('ChapterController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+							<button type="submit" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
+							{{ Form::close() }}
+
+						</td>
+					</tr>
 				@endforeach
 			  </table>
 			</div>

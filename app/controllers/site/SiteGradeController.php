@@ -49,12 +49,9 @@ class SiteGradeController extends SiteController {
 		if(!$grade){
 			App::abort(404);
 		}
-
-		if( !Auth::admin()->check() && $grade->status == 0 ){
-			App::abort(403);
-		}
 		
 		$subject = $grade->subject()->first();
+		
 		$chapters = [];
 		if( $grade->subject()->count() && $grade->subject()->first()->chapter()->count() ){
 			$chapters = $grade->subject()->first()->chapter()->orderBy('weight', 'asc')->get();

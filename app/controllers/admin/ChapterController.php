@@ -18,6 +18,43 @@ class ChapterController extends AdminController {
 		return View::make('admin.chapter.index')->with(compact('data'));
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function search()
+	{
+		$input = Input::all();
+		$data = Chapter::select('chapters.*');
+		if( !empty($input['title']) ){
+			$data = $data->where('chapters.title', 'LIKE' , '%'.$input['title'].'%');
+		}
+		$data = $data->join('subjects', 'chapters.subject_id', '=', 'subjects.id')
+			->join('grades', 'subjects.grade_id', '=', 'grades.id');
+
+		if( !empty($input['chapter']) ){
+			$data = $data->where('chapters.id', $input['chapter']);
+		}
+		if( !empty($input['subject']) ){
+			$data = $data->where('subjects.id', $input['subject']);
+		}
+		if( !empty($input['grade']) ){
+			$data = $data->where('grades.id', $input['grade']);
+		}
+		if( isset($input['status']) && $input['status'] != ''){
+			$data = $data->where('chapters.status', $input['status']);
+		}
+		if( !empty($input['order_by']) ){
+			$data = $data->orderBy('chapters.'.$input['order_by'], !empty($input['order']) ? $input['order'] : 'desc');
+		} else{
+			$data = $data->orderBy('chapters.created_at', 'desc');
+		}
+		$data = $data->paginate(PAGINATE);
+		// dd(Input::get('order'));
+		return View::make('admin.chapter.index')->with(compact('data'))->with(compact('input'));
+	}
+
 
 	/**
 	 * Show the form for creating a new resource.

@@ -82,8 +82,14 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::get('user/changepassword/{id}', array('uses' => 'UserController@changePassword', 'as' => 'admin.user.changepassword'));
 		Route::post('user/updatepassword/{id}', array('uses' => 'UserController@updatePassword'));
 
+
+	 	Route::get('/grade/search', ['uses' => 'GradeController@search', 'as' => 'GradeFilter']);
 	 	Route::resource('/grade', 'GradeController');
+
+	 	Route::get('/subject/search', ['uses' => 'SubjectController@search', 'as' => 'SubjectFilter']);
 	 	Route::resource('/subject', 'SubjectController');
+
+	 	Route::get('/chapter/search', ['uses' => 'ChapterController@search', 'as' => 'ChapterFilter']);
 	 	Route::resource('/chapter', 'ChapterController');
 	 	
 	 	Route::get('/lession/question-type/refresh', ['uses' => 'QuestionTypeController@refresh', 'as' => 'QuestionTypeRefresh']);

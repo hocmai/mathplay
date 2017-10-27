@@ -18,6 +18,36 @@ class SubjectController extends AdminController {
 		return View::make('admin.subject.index')->with(compact('data'));
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function search()
+	{
+		$input = Input::all();
+		$data = Chapter::select('subjects.*');
+		if( !empty($input['title']) ){
+			$data = $data->where('subjects.title', 'LIKE' , '%'.$input['title'].'%');
+		}
+		$data = $data->join('grades', 'subjects.grade_id', '=', 'grades.id');
+
+		if( !empty($input['grade']) ){
+			$data = $data->where('grades.id', $input['grade']);
+		}
+		if( isset($input['status']) && $input['status'] != ''){
+			$data = $data->where('subjects.status', $input['status']);
+		}
+		if( !empty($input['order_by']) ){
+			$data = $data->orderBy('subjects.'.$input['order_by'], !empty($input['order']) ? $input['order'] : 'desc');
+		} else{
+			$data = $data->orderBy('subjects.created_at', 'desc');
+		}
+		$data = $data->paginate(PAGINATE);
+		// dd(Input::get('order'));
+		return View::make('admin.subject.index')->with(compact('data'))->with(compact('input'));
+	}
+
 
 	/**
 	 * Show the form for creating a new resource.

@@ -19,7 +19,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
 			<!-- form start -->
-			{{ Form::open(array('action' => array('GradeController@update', $data->grade_id), 'method' => 'PUT')) }}
+			{{ Form::open(array('action' => array('GradeController@update', $data->id), 'method' => 'PUT')) }}
 				<div class="box-body">
 					<div class="form-group">
 						{{ Form::label('title', 'Tiêu đề', ['class' => 'row col-sm-6', 'required' => true]) }}<div class="clearfix"></div>

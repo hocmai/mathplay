@@ -8,6 +8,9 @@ class Subject extends Eloquent implements SluggableInterface
     use SoftDeletingTrait;
     use SluggableTrait;
 
+    //// Use custom publish status, get only published
+    use PublishedTrait;
+
     protected $table = 'subjects';
     protected $fillable = [
         'title',

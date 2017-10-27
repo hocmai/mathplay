@@ -43,48 +43,53 @@
                                     </a>
                                 </div> -->
                                 <div class="chuong-trinh">
-                                    <h3 class="title hidden-xs">DANH MỤC CHƯƠNG TRÌNH {{ $subject->title }}</h3>
+                                    @if($subject)
+                                        <h3 class="title hidden-xs">DANH MỤC CHƯƠNG TRÌNH {{ $subject->title }}</h3>
 
-                                    @if( count($chapters) )
-                                        <?php
-                                        $count = count($chapters);
-                                        $middle = ($count % 2 == 0) ? $count/2 : ($count+1)/2;
-                                        ?>
-                                        <div class="row">
-                                            <div class="col-sm-6 col-1">
-                                                @for($i = 0; $i < $middle; $i++)
-                                                    <div class="chuong">
-                                                        <h4 class="title-sub">
-                                                            {{ 'Chương '.($i+1).': '.$chapters[$i]['title'] }}
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </h4>
-                                                        <ul>
-                                                            @foreach($chapters[$i]->lession as $lession)
-                                                                <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div> <!-- End chuong -->
-                                                @endfor
-                                            </div> <!-- End col-sm-6 -->
-                                            <div class="col-sm-6 col-2">
-                                                @for($i = $middle; $i < $count; $i++)
-                                                    <div class="chuong">
-                                                        <h4 class="title-sub">
-                                                            {{ 'Chương '.($i+1).': '.$chapters[$i]['title'] }}
-                                                            <i class="fa fa-angle-down"></i>
-                                                        </h4>
-                                                        <ul>
-                                                            @foreach($chapters[$i]->lession as $lession)
-                                                                <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
-                                                            @endforeach
-                                                        </ul>
-                                                    </div> <!-- End chuong -->
-                                                @endfor
-                                            </div> <!-- End col-sm-6 -->
-                                        </div> <!-- End row -->
+                                        @if( count($chapters) )
+                                            <?php
+                                            $count = count($chapters);
+                                            $middle = ($count % 2 == 0) ? $count/2 : ($count+1)/2;
+                                            ?>
+                                            <div class="row">
+                                                <div class="col-sm-6 col-1">
+                                                    @for($i = 0; $i < $middle; $i++)
+                                                        <div class="chuong">
+                                                            <h4 class="title-sub">
+                                                                {{ 'Chương '.($i+1).': '.$chapters[$i]['title'] }}
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </h4>
+                                                            <ul>
+                                                                @foreach($chapters[$i]->lession as $lession)
+                                                                    <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div> <!-- End chuong -->
+                                                    @endfor
+                                                </div> <!-- End col-sm-6 -->
+                                                <div class="col-sm-6 col-2">
+                                                    @for($i = $middle; $i < $count; $i++)
+                                                        <div class="chuong">
+                                                            <h4 class="title-sub">
+                                                                {{ 'Chương '.($i+1).': '.$chapters[$i]['title'] }}
+                                                                <i class="fa fa-angle-down"></i>
+                                                            </h4>
+                                                            <ul>
+                                                                @foreach($chapters[$i]->lession as $lession)
+                                                                    <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                                @endforeach
+                                                            </ul>
+                                                        </div> <!-- End chuong -->
+                                                    @endfor
+                                                </div> <!-- End col-sm-6 -->
+                                            </div> <!-- End row -->
+                                        @else
+                                            <div class="alert alert-warning  alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Dữ liệu đang được cập nhật.</div>
+                                        @endif <!-- Check chapter exists -->
+
                                     @else
                                         <div class="alert alert-warning  alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Dữ liệu đang được cập nhật.</div>
-                                    @endif <!-- Check chapter exists -->
+                                    @endif <!-- Check subject exists -->
                                 
                                 </div> <!-- End chuong-trinh -->
                             </div> <!-- End content left -->
