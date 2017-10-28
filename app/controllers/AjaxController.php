@@ -15,6 +15,21 @@ class AjaxController extends BaseController {
 	|
 	*/
 
+	/**
+	 * Save file to tmp
+	 */
+	public function saveTmpFile(){
+		try{
+			if( !empty($_FILES['file']) ){
+				move_uploaded_file( $_FILES['file']['tmp_name'], public_path().'/upload/studio/tmp.wav');
+				return Response::json(['data' => '/upload/studio/tmp.wav']);
+			}
+		}
+		catch( Exception $e ){
+			return Response::json($e->getMessage());
+		}
+	}
+
 	public function removeQuestionTypeImgage(){
 		try{
 			$this->removeFile();

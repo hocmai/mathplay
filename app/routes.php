@@ -41,6 +41,7 @@ Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/updatestudyhistory',array('as'=>'updatestudyhistory','uses'=>'AjaxController@updateStudyHistory'));
 	Route::delete('/delete/question',array('as'=>'deletequestion','uses'=>'AjaxController@deleteQuestion'));
 	Route::post('/oauthcallback',array('as'=>'oauthcallback','uses'=>'AjaxController@oauthCallback'));
+	Route::post('/savetmpfile',array('as'=>'savetmpfile','uses'=>'AjaxController@saveTmpFile'));
 	Route::post('/uploadfile',array('as'=>'uploadfile','uses'=>'AjaxController@uploadFile'));
 	Route::post('/removefile',array('as'=>'removefile','uses'=>'AjaxController@removeFile'));
 	Route::post('/question-type/removefileconfig',array('as'=>'removequestiontypeconfig','uses'=>'AjaxController@removeQuestionTypeImgage'));
@@ -85,6 +86,8 @@ Route::group(['prefix' => 'admin'], function () {
 
 	 	Route::get('/grade/search', ['uses' => 'GradeController@search', 'as' => 'GradeFilter']);
 	 	Route::resource('/grade', 'GradeController');
+
+	 	Route::resource('/audio', 'AudioController');
 
 	 	Route::get('/subject/search', ['uses' => 'SubjectController@search', 'as' => 'SubjectFilter']);
 	 	Route::resource('/subject', 'SubjectController');

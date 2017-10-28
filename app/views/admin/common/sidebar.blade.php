@@ -55,6 +55,14 @@
 					</li> -->
 		        </ul>
 			</li>
+			<li class="treeview">
+				<a href="{{ action('AudioController@index') }}"><i class="fa fa-microphone"></i> <span>Phòng thu</span>
+				<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
+				
+				<ul class="treeview-menu">
+					<li><a href="{{ action('AudioController@create') }}"><i class="fa fa-plus-square"></i> Tạo mới</a></li>
+				</ul>
+			</li>
 			<li class="">
 				<a href="#"><i class="fa fa-envelope"> </i> <span>Contact form</span></a>
 			</li>
