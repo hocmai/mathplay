@@ -90,7 +90,7 @@ class AjaxController extends BaseController {
 				$checkUserExists =  CommonNormal::findOrCreate([
 					'username' => $input['username'],
 					'email' => $input['email'],
-				], 'User');
+				], 'User', false);
 
 				if( Common::getObject($checkUserExists, 'deleted_at') == null &&  Common::getObject($checkUserExists, 'status') == 1 ){
 					$uid = Common::getObject($checkUserExists, 'id');
