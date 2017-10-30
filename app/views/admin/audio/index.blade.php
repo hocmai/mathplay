@@ -11,7 +11,7 @@
 		  <div class="box">
 			<div class="box-header">
 			  	@if($data->count())
-					@include('admin.common.bulk-operations', ['model' => 'Grade'])
+					@include('admin.common.bulk-operations', ['model' => 'Audio'])
 					<span class="pull-right"><em>
 						Hiển thị {{ 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }} - {{ ( $data->getTotal() <= ($data->getPerPage() * $data->getCurrentPage() ) ) ? $data->getTotal() : $data->getPerPage() + ($data->getPerPage() * ($data->getCurrentPage() -1) ) }} trong tổng số {{ ($data->getTotal()) }} kết quả
 					</em></span>
@@ -27,6 +27,7 @@
 					<th><input type="checkbox" id="check-all"/></th>
 			  		<th>STT</th>
 		  			<th>Tiêu đề</th>
+		  			<th>Âm thanh</th>
 			  		<th>tag</th>
 					<th style="width:100px;">Ngày đăng</th>
 					<th style="width:100px;">sửa lần cuối</th>
@@ -38,10 +39,10 @@
 						<td><input type="checkbox" name="checkbox" id="check-option" value="{{$value->id}}"></td>
 						<td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }}</td>
 						<td>{{ $value->title }}</td>
+						<td>{{ !empty($value->url) ? '<a href="'.$value->url.'" target="_blank">'. basename($value->url) .'</a>' : '' }}</td>
 						<td>{{ $value->slug }}</td>
-						<td></td>
 						<td>{{ $value['created_at'] }}</td>
-						<td>{{ $value['changed_at'] }}</td>
+						<td>{{ $value['updated_at'] }}</td>
 						<td>
 							<a href="{{ action('AudioController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
 							{{ Form::open(array('method'=>'DELETE', 'action' => array('AudioController@destroy', $value->id), 'style' => 'display: inline-block;')) }}

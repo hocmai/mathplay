@@ -60,6 +60,7 @@
 				<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
 				
 				<ul class="treeview-menu">
+					<li><a href="{{ action('AudioController@index') }}"><i class="fa fa-list"></i> Danh sách</a></li>
 					<li><a href="{{ action('AudioController@create') }}"><i class="fa fa-plus-square"></i> Tạo mới</a></li>
 				</ul>
 			</li>

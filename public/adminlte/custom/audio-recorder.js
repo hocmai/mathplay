@@ -62,6 +62,20 @@ $(document).ready(function(){
         });
     }
 
+    ///// Select file save method
+    $('input#use-record').on('change', function(){
+        var val = $(this).val();
+       if($(this).is(':checked')){
+            $('.record-area').removeClass('hide');
+            $('#upload-sound').addClass('hide');
+            $('.record-button').trigger('click');
+       } else{
+            $('.record-area').addClass('hide');
+            $('#upload-sound').removeClass('hide');
+       }
+    })
+
+    ///// Start record
     $('.record-controls >button.play').on('click', function(){
         $('.record-controls >button.stop').removeClass('disabled');
         if( $(this).hasClass('play') ){
@@ -75,44 +89,60 @@ $(document).ready(function(){
             $(this).switchClass('pause', 'play');
             $('>i', this).switchClass('fa-pause', 'fa-play', 0);
         }
+        // $('button.save-record').addClass('disabled');
     })
 
+    ////// Stop record and already save
+    var record_blob;
     $('.record-controls >button.stop').on('click', function(){
         if( !$(this).hasClass('disabled') ){
             $('.record-controls >button.pause>i').switchClass('fa-pause', 'fa-play', 0);
             $('.record-controls >button.pause').switchClass('pause', 'play');
             recorder && recorder.stop();
             cancelAnalyserUpdates();
+            $('.record-download').addClass('loading');
+            $('.record-download').removeClass('hide');
 
             recorder && recorder.exportWAV(function(blob) {
                 var url = URL.createObjectURL(blob);
-                $('.record-download').empty().append('<audio controls="" src="'+ url +'"></audio>');
-                console.log(blob, URL);
-
-                var data = new FormData();
-                data.append('file', blob);
-
-                $.ajax({
-                    url :  "/ajax/savetmpfile",
-                    type: 'POST',
-                    data: data,
-                    contentType: false,
-                    processData: false,
-                    success: function(data) {
-                        console.log(data);
-                        if( typeof data.data != 'undefined' ){
-                            $('input.tmp-record-input').val(data.data).change();
-                        }
-                    },    
-                    error: function(e) {
-                        console.log(e);
-                    }
-                });
+                $('.record-download .audio').empty().append('<video width="100%" height="32px" controls=""><source src="'+ url +'" type="audio/wav"></video>');
+                $('.record-download').removeClass('loading');
+                record_blob = blob;
+                $('button.save-record').removeClass('disabled');
             });
 
             recorder.clear();
         }
         $(this).addClass('disabled');
+    })
+
+    ////////// save tmp record
+    $('button.save-record').on('click', function(){
+        if($(this).hasClass('disabled')){
+            return;
+        }
+        $(this).addClass('loading');
+        var data = new FormData();
+        var _this = $(this);
+        data.append('file', record_blob);
+        $.ajax({
+            url :  "/ajax/savetmpfile",
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                console.log(data);
+                _this.removeClass('loading');
+                if( typeof data.data != 'undefined' ){
+                    $('input.tmp-record-input').val(data.data).change();
+                }
+            },    
+            error: function(e) {
+                _this.removeClass('loading');
+                console.log(e);
+            }
+        });
     })
 
     $('.record-button').on('click', function(){
@@ -221,14 +251,14 @@ function updateAnalysers(time) {
     if (!analyserContext) {
         var canvas = document.getElementById("analyser");
         canvasWidth = canvas.width;
-        canvasHeight = canvas.height + 15;
+        canvasHeight = canvas.height + 10;
         analyserContext = canvas.getContext('2d');
     }
 
     // analyzer draw code here
     {
         var SPACING = 5;
-        var BAR_WIDTH = 3;
+        var BAR_WIDTH = 4;
         var numBars = 200;
         var freqByteData = new Uint8Array(analyserNode.frequencyBinCount);
         analyserNode.getByteFrequencyData(freqByteData);
@@ -247,7 +277,8 @@ function updateAnalysers(time) {
                 magnitude += freqByteData[offset + j];
             }
             magnitude = magnitude / multiplier;
-            var magnitude2 = freqByteData[i * multiplier];
+            var magnitude2 = freqByteData[i * multiplier] - 5;
+            // console.log(magnitude);
             analyserContext.fillStyle = "hsl( " + Math.round((i*360)/numBars) + ", 100%, 50%)";
             analyserContext.fillRect((i-20) * SPACING, canvasHeight, BAR_WIDTH, -magnitude);
         }

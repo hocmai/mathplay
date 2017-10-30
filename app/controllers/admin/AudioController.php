@@ -33,23 +33,33 @@ class AudioController extends \BaseController {
 	public function store()
 	{
 		$title = Input::get('title');
-		$tmp_record = Input::get('tmp_record');
 		$slug = Str::slug($title, '');
 		$url = '';
-		// dd($tmp_record);
-		if( !empty($tmp_record) ){
-			$url = '/upload/studio/'.$slug.'.wav';
-			copy( public_path().$tmp_record, public_path().$url );
-			// $file = move_uploaded_file( $tmp_record, public_path().$url);
+		// dd(Input::all());
+
+		if( Input::get('use-record') ){
+			/// record sound
+			$tmp_record = Input::get('tmp_record');
+			if( !empty($tmp_record) ){
+				$url = '/upload/studio/'.$slug.'.wav';
+				copy( $tmp_record, public_path().$url );
+				@unlink($tmp_record);
+			}
+		} else{
+			//// upload file
+			$file = Input::file('sound');
+			if( !empty($file) ){
+				$url = '/upload/studio/'.$slug.'.wav';
+				CommonUpload::uploadImage('/upload/studio/', 'sound', $slug.'.wav');
+			}
 		}
 
-		// dd($url, $tmp_record);
-		CommonNormal::create([
+		$id = CommonNormal::create([
 			'title' => $title,
 			'slug' => $slug,
 			'url' => $url,
 		], 'Audio');
-		return Redirect::action('AudioController@index')->with('success', 'Lưu thành công!');
+		return Redirect::action('AudioController@edit', ['id' => $id])->with('success', 'Lưu thành công!');
 	}
 
 
@@ -73,7 +83,11 @@ class AudioController extends \BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+		$data = Audio::find($id);
+		if( !($data) ){
+			return App::abort(404);
+		}
+		return View::make('admin.audio.create')->with(compact('data'));
 	}
 
 
@@ -85,7 +99,43 @@ class AudioController extends \BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		$title = Input::get('title');
+		$slug = Str::slug($title, '');
+		$url = Input::get('url');
+		// dd(Input::all());
+
+		if( Input::get('use-record') ){
+			/// record sound
+			$tmp_record = Input::get('tmp_record');
+			if( !empty($tmp_record) ){
+				if( !empty($url) ){
+					///// Remove old file
+					@unlink(public_path().$url);
+				}
+				$url = '/upload/studio/'.$slug.'.wav';
+				copy( $tmp_record, public_path().$url );
+				@unlink($tmp_record);
+			}
+		} else{
+			//// upload file
+			$file = Input::file('sound');
+			if( !empty($file) ){
+				if( !empty($url) ){
+					///// Remove old file
+					@unlink(public_path().$url);
+				}
+				$url = '/upload/studio/'.$slug.'.wav';
+				CommonUpload::uploadImage('/upload/studio/', 'sound', $slug.'.wav');
+			}
+		}
+
+		CommonNormal::update($id ,[
+			'title' => $title,
+			'slug' => $slug,
+			'url' => $url,
+		], 'Audio');
+
+		return Redirect::back()->with('success', 'Lưu thành công!');
 	}
 
 
