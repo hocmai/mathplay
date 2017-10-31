@@ -110,11 +110,11 @@ class AudioController extends \BaseController {
 			if( !empty($tmp_record) ){
 				if( !empty($url) ){
 					///// Remove old file
-					@unlink($url);
+					@unlink(public_path().$url);
 				}
 				$url = '/upload/studio/'.$slug.'.wav';
 				@rename( public_path().$tmp_record, public_path().$url );
-				unlink($tmp_record);
+				// @unlink(public_path().$tmp_record);
 			}
 		} else{
 			//// upload file
@@ -122,7 +122,7 @@ class AudioController extends \BaseController {
 			if( !empty($file) ){
 				if( !empty($url) ){
 					///// Remove old file
-					@unlink($url);
+					@unlink(public_path().$url);
 				}
 				$url = '/upload/studio/'.$slug.'.wav';
 				CommonUpload::uploadImage('/upload/studio/', 'sound', $slug.'.wav');
