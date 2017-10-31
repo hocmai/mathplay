@@ -42,8 +42,8 @@ class AudioController extends \BaseController {
 			$tmp_record = Input::get('tmp_record');
 			if( !empty($tmp_record) ){
 				$url = '/upload/studio/'.$slug.'.wav';
-				@copy( public_path().$tmp_record, public_path().$url );
-				// @unlink(public_path().$tmp_record);
+				@rename( public_path().$tmp_record, public_path().$url );
+				@unlink(public_path().$tmp_record);
 			}
 		} else{
 			//// upload file
@@ -114,7 +114,7 @@ class AudioController extends \BaseController {
 				}
 				$url = '/upload/studio/'.$slug.'.wav';
 				@rename( public_path().$tmp_record, public_path().$url );
-				// @unlink(public_path().$tmp_record);
+				@unlink(public_path().$tmp_record);
 			}
 		} else{
 			//// upload file
