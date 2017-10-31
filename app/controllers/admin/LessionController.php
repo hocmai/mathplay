@@ -13,10 +13,11 @@ class LessionController extends AdminController {
 	 */
 	public function index()
 	{
-		$data = Lession::orderBy('created_at', 'desc')->paginate(PAGINATE);
+		$data = Lession::orderBy('weight', 'asc')->orderBy('created_at', 'desc')->paginate(PAGINATE);
 		// dd($data);
 		return View::make('admin.lession.index')->with(compact('data'));
 	}
+
 
 	/**
 	 * Display a listing of the resource.
@@ -49,7 +50,7 @@ class LessionController extends AdminController {
 		if( !empty($input['order_by']) ){
 			$data = $data->orderBy('lessions.'.$input['order_by'], !empty($input['order']) ? $input['order'] : 'desc');
 		} else{
-			$data = $data->orderBy('lessions.created_at', 'desc');
+			$data = $data->orderBy('lessions.weight', 'asc')->orderBy('lessions.created_at', 'desc');
 		}
 		$data = $data->paginate(PAGINATE);
 		// dd(Input::get('order'));

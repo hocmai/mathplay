@@ -60,7 +60,8 @@
                                                                 <i class="fa fa-angle-down"></i>
                                                             </h4>
                                                             <ul>
-                                                                @foreach($chapters[$i]->lession as $lession)
+                                                                <?php $lessions = Lession::orderBy('weight', 'asc')->where('chapter_id', $chapters[$i]->id)->get(); ?>
+                                                                @foreach( $lessions as $lession)
                                                                     <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
                                                                 @endforeach
                                                             </ul>

@@ -16,6 +16,30 @@ class AjaxController extends BaseController {
 	*/
 
 	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function sortLession()
+	{
+		try{
+			$nodeIds = Input::get('node_ids');
+			if( count($nodeIds) ){
+				// return Response::json($nodeIds);
+				foreach ($nodeIds as $key => $value) {
+					if( isset($value['id'], $value['weight']) ){
+						CommonNormal::update($value['id'], ['weight' => $value['weight']], 'Lession');
+					}
+				}
+				return Response::json('Thứ tự được sắp xếp thành công');
+			}
+		}
+		catch( Exception $e ){
+			return Response::json($e->getMessage());
+		}
+	}
+
+	/**
 	 * Save file to tmp
 	 */
 	public function saveTmpFile(){

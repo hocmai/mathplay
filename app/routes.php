@@ -45,6 +45,7 @@ Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/uploadfile',array('as'=>'uploadfile','uses'=>'AjaxController@uploadFile'));
 	Route::post('/removefile',array('as'=>'removefile','uses'=>'AjaxController@removeFile'));
 	Route::post('/question-type/removefileconfig',array('as'=>'removequestiontypeconfig','uses'=>'AjaxController@removeQuestionTypeImgage'));
+ 	Route::post('/lession-sort', 'AjaxController@sortLession');
 });
 
 ///////////////// User page //////////////////
@@ -94,7 +95,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 	 	Route::get('/chapter/search', ['uses' => 'ChapterController@search', 'as' => 'ChapterFilter']);
 	 	Route::resource('/chapter', 'ChapterController');
-	 	
+
 	 	Route::get('/lession/question-type/refresh', ['uses' => 'QuestionTypeController@refresh', 'as' => 'QuestionTypeRefresh']);
 	 	Route::get('/lession/search', ['uses' => 'LessionController@search', 'as' => 'LessionFilter']);
 	 	Route::get('/lession/question-type/{type}/edit', ['uses' => 'QuestionTypeController@edit', 'as' => 'QuestionTypeEdit']);

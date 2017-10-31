@@ -24,7 +24,7 @@
 		if($modelName) {
 			$name = $modelName;
 		}
-		$name::find($id)->update($input);
+		return $name::find($id)->update($input);
 	}
 
 	public static function create($input, $modelName = NULL)
