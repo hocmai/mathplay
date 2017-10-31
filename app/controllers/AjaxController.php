@@ -45,8 +45,8 @@ class AjaxController extends BaseController {
 	public function saveTmpFile(){
 		try{
 			if( !empty($_FILES['file']) ){
-				move_uploaded_file( $_FILES['file']['tmp_name'], sys_get_temp_dir().'/'.time().'.wav');
-				return Response::json(['data' => sys_get_temp_dir().'/'.time().'.wav']);
+				move_uploaded_file( $_FILES['file']['tmp_name'], public_path().'/upload/tmp/'.time().'.wav');
+				return Response::json(['data' => public_path().'/upload/tmp/'.time().'.wav']);
 			}
 		}
 		catch( Exception $e ){
