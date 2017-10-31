@@ -4,7 +4,7 @@
 	{{ Form::select('question_config[sort][]', ['' => 'Mặc định', 'asc' => 'Tăng dần', 'desc' => 'Giảm dần'], !empty($config['sort']) ? $config['sort'] : '', ['class' => 'form-control']) }}
 </div>
 <div class="form-group ">
-	{{ Form::checkbox('question_config[rule][]', 1, (empty($config['rule']) | $config['rule'] != 1) ? false : true, ['class' => 'form-radio', 'id' => $string]) }}
+	{{ Form::checkbox('question_config[rule][]', 1, (empty($config['rule']) | (!empty($config['rule']) && $config['rule'] != 1)) ? false : true, ['class' => 'form-radio', 'id' => $string]) }}
 	<label for="{{ $string }}">Dãy số có quy luật</label>
 </div>
 <div class="form-group">
