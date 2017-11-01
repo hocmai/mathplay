@@ -44,13 +44,8 @@ class AjaxController extends BaseController {
 	 */
 	public function saveTmpFile(){
 		try{
-			$data = Input::get('file');
-			if( !empty($data) ){
-				list($type, $data) = explode(';', $data);
-				list(, $data)      = explode(',', $data);
-				$data = base64_decode($data);
-				file_put_contents(public_path().'/upload/tmp/'.time().'.wav', $data);
-				// move_uploaded_file( $_FILES['file']['tmp_name'], public_path().'/upload/tmp/'.time().'.wav');
+			if( !empty($_FILES['file']) ){
+				move_uploaded_file( $_FILES['file']['tmp_name'], public_path().'/upload/tmp/'.time().'.wav');
 				return Response::json(['data' => '/upload/tmp/'.time().'.wav']);
 			}
 		}
@@ -131,13 +126,28 @@ class AjaxController extends BaseController {
 		}
 		elseif( $input['success'] ){
 			if( isset($input['email'], $input['username']) ){
-				$checkUserExists =  CommonNormal::findOrCreate([
-					'username' => $input['username'],
-					'email' => $input['email'],
-				], 'User', false);
+				$checkUserExists = User::::withTrashed()
+					->where('username' => $input['username'])
+					->where('email' => $input['email'])->first();
+				
+				$exists = true;
+				$uid = Common::getObject($checkUserExists, 'id');
+				if( empty($uid) ){
+					$uid = CommonNormal::create([
+						'username' => $input['username'],
+						'email' => $input['email'],
+					], 'User');
+					$exists = false;
+				}
 
-				if( Common::getObject($checkUserExists, 'deleted_at') == null &&  Common::getObject($checkUserExists, 'status') == 1 ){
-					$uid = Common::getObject($checkUserExists, 'id');
+				// if( Common::getObject($checkUserExists, 'id') )
+				// $checkUserExists =  CommonNormal::findOrCreate([
+				// 	'username' => $input['username'],
+				// 	'email' => $input['email'],
+				// ], 'User', false);
+
+				if( !$exists | (Common::getObject($checkUserExists, 'deleted_at') == null &&  Common::getObject($checkUserExists, 'status') == 1) ){
+					// $uid = Common::getObject($checkUserExists, 'id');
 					if(Auth::user()->loginUsingId($uid, true)){
 						$messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
 					}

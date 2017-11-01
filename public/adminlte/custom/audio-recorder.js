@@ -122,39 +122,28 @@ $(document).ready(function(){
             return;
         }
         $(this).addClass('loading');
-        // var data = new FormData();
+        var data = new FormData();
         var _this = $(this);
 
-        // console.log(record_blob);
-
-        var reader = new window.FileReader();
-        reader.readAsDataURL(record_blob); 
-        reader.onloadend = function() {
-
-            $.ajax({
-                url :  "/ajax/savetmpfile",
-                type: 'POST',
-                data: { file: reader.result },
-                cache:false,
-                // contentType: false,
-                // processData: false,
-                success: function(data) {
-                    console.log(data);
-                    _this.removeClass('loading');
-                    if( typeof data.data != 'undefined' ){
-                        $('input.tmp-record-input').val(data.data).change();
-                    }
-                },    
-                error: function(e) {
-                    _this.removeClass('loading');
-                    console.log(e);
+        data.append('file', record_blob);
+        $.ajax({
+            url :  "/ajax/savetmpfile",
+            type: 'POST',
+            data: data,
+            contentType: false,
+            processData: false,
+            success: function(data) {
+                console.log(data);
+                _this.removeClass('loading');
+                if( typeof data.data != 'undefined' ){
+                    $('input.tmp-record-input').val(data.data).change();
                 }
-            });
-
-        }
-
-        // data.append('file', record_blob);
-        
+            },    
+            error: function(e) {
+                _this.removeClass('loading');
+                console.log(e);
+            }
+        });
     })
 
     $('.record-button').on('click', function(){
