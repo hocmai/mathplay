@@ -1479,6 +1479,7 @@ footer .leg .social a {
 
 .box-thong-tin-bai-lam {
   text-align: center;
+  min-height: calc( 100vh - 66px );
 }
 
 .box-thong-tin-bai-lam p {
@@ -1505,14 +1506,6 @@ footer .leg .social a {
   color: #e4572e;
 }
 
-.box-min-height {
-  min-height: 1098px;
-}
-
-.box-bai-lam .box-min-height {
-  min-height: inherit;
-}
-
 #myModal-false .text {
   color: #e4572e;
 }
@@ -1524,6 +1517,7 @@ footer .leg .social a {
 .bg-box-lam-bai {
   text-align: center;
   padding: 25px 0 50px;
+  min-height: calc( 100vh - 66px );
 }
 
 .start {

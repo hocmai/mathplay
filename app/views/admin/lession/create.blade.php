@@ -64,6 +64,14 @@
 									1 => 'Public'
 								], '1', ['class' => 'form-control', 'row' => 10]) }}</div><div class="clearfix"></div>
 							</div>
+							<div class="form-group">
+								<?php $weight_options = [];
+								for( $i = -99; $i < 100; $i++ ){
+									$weight_options[$i] = $i;
+								}?>
+								{{ Form::label('weight', 'Thứ tự', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
+								{{ Form::select('weight', $weight_options, -99, ['class' => 'form-control']) }}
+							</div>
 
 							<input type="submit" class="btn btn-primary" value="Lưu lại" />
 							<input type="button" class="btn btn-default" value="Hủy" />
