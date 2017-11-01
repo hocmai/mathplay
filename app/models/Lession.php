@@ -9,7 +9,7 @@ class Lession extends Eloquent implements SluggableInterface
     use SluggableTrait;
 
     //// Use custom publish status, get only published
-    // use PublishedTrait;
+    use PublishedTrait;
 
     protected $table = 'lessions';
     protected $fillable = [
