@@ -126,7 +126,7 @@ class AjaxController extends BaseController {
 		}
 		elseif( $input['success'] ){
 			if( isset($input['email'], $input['username']) ){
-				$checkUserExists = User::::withTrashed()
+				$checkUserExists = User::withTrashed()
 					->where('username' => $input['username'])
 					->where('email' => $input['email'])->first();
 				
