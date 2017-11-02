@@ -48,7 +48,7 @@ class ChapterController extends AdminController {
 		if( !empty($input['order_by']) ){
 			$data = $data->orderBy('chapters.'.$input['order_by'], !empty($input['order']) ? $input['order'] : 'desc');
 		} else{
-			$data = $data->orderBy('chapters.created_at', 'desc');
+			$data = $data->orderBy('chapters.weight', 'asc')->orderBy('chapters.created_at', 'desc');
 		}
 		$data = $data->paginate(PAGINATE);
 		// dd(Input::get('order'));

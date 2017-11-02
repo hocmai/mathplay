@@ -103,7 +103,7 @@
 					</div><!-- /.box-body -->
 				@endif
 			</div> <!-- /.box -->
-			<button type="button" class="btn btn-primary disabled" id="sort-lession-save">Lưu thứ tự</button>
+			<button type="button" class="btn btn-primary disabled" id="sort-node-save" data-model="lession">Lưu thứ tự</button>
 		</div>
 	</div>
 

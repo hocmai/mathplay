@@ -45,7 +45,7 @@ Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/uploadfile',array('as'=>'uploadfile','uses'=>'AjaxController@uploadFile'));
 	Route::post('/removefile',array('as'=>'removefile','uses'=>'AjaxController@removeFile'));
 	Route::post('/question-type/removefileconfig',array('as'=>'removequestiontypeconfig','uses'=>'AjaxController@removeQuestionTypeImgage'));
- 	Route::post('/lession-sort', 'AjaxController@sortLession');
+ 	Route::post('/node-sort/{model}', 'AjaxController@nodeSort');
 });
 
 ///////////////// User page //////////////////

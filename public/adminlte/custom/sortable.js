@@ -9,7 +9,7 @@ $(document).ready(function(){
 			$(ui.item).addClass('sorted');
 			var per_page = parseInt($(ui.item).attr('data-perpage'));
 			var page = parseInt($(ui.item).attr('data-page'));
-			$('#sort-lession-save').removeClass('disabled');
+			$('#sort-node-save').removeClass('disabled');
 
 		    $(this).children().each(function(index) {
 		    	$(this).find('td.order-number').html('#'+(index+(per_page*page)));
@@ -28,16 +28,17 @@ $(document).ready(function(){
 			$('table.sortable td>.handle').hide();
 			$('table.sortable td>select#node_weight').show();
 			$(this).text('Ẩn thứ tự');
-			$('button#sort-lession-save').removeClass('disabled');
+			$('button#sort-node-save').removeClass('disabled');
 		}
 		$(this).toggleClass('show');
 	})
 
-	$('#sort-lession-save').on('click', function(){
+	$('#sort-node-save').on('click', function(){
 		if( $(this).hasClass('loading') | $(this).hasClass('disabled') | $('table.sortable').length == 0 ) return false;
 		$(this).addClass('loading');
 
 		var _this = $(this),
+		model = $(this).attr('data-model');
 		node_ids = [];
 
 		$('table.sortable td>select#node_weight').each(function(index, el) {
@@ -46,7 +47,7 @@ $(document).ready(function(){
 
 		$.ajax({
 			method: 'POST',
-			url : '/ajax/lession-sort',
+			url : '/ajax/node-sort/'+model,
 			cache:false,
 			data: {node_ids: node_ids},
 			success: function(data){

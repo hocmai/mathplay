@@ -20,15 +20,15 @@ class AjaxController extends BaseController {
 	 *
 	 * @return Response
 	 */
-	public function sortLession()
+	public function nodeSort($model)
 	{
 		try{
 			$nodeIds = Input::get('node_ids');
-			if( count($nodeIds) ){
-				// return Response::json($nodeIds);
+			if( count($nodeIds) && !empty($model) ){
+				$model = studly_case($model);
 				foreach ($nodeIds as $key => $value) {
 					if( isset($value['id'], $value['weight']) ){
-						CommonNormal::update($value['id'], ['weight' => $value['weight']], 'Lession');
+						CommonNormal::update($value['id'], ['weight' => $value['weight']], $model);
 					}
 				}
 				return Response::json('Thứ tự được sắp xếp thành công');
