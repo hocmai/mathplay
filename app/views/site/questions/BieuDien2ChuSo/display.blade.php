@@ -15,7 +15,7 @@ if( $type == 'choose' ){
 <div class="start">
 	<?php 
 	$str_arr = ['Hình nào dưới đây biểu diễn số', $answer];
-	$title = $str_arr[0].' '.answer;
+	$title = $str_arr[0].' '.$answer;
 	$title_slug = Str::slug($str_arr[0], '').'_'.$answer;
 	?>
 	<script type="text/javascript">
