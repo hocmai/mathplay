@@ -27,11 +27,13 @@ if( $type == 'giao-hoan' ){
 
 @include('site.questions.render-title', ['question' => $question])
 
-@if( $type == 'giao-hoan' )
-	Viết lại biểu thức giao hoán của phép cộng {{ $sub.'+'.($total-$sub).'='.$total }}?
-@else
-	Biểu thức nào là phép giao hoán của phép cộng {{ $sub.'+'.($total-$sub).'='.$total }}?
-@endif
+<div class="description">
+	@if( $type == 'giao-hoan' )
+		Viết lại biểu thức giao hoán của phép cộng {{ $sub.'+'.($total-$sub).'='.$total }}?
+	@else
+		Biểu thức nào là phép giao hoán của phép cộng {{ $sub.'+'.($total-$sub).'='.$total }}?
+	@endif
+</div>
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

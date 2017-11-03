@@ -1,11 +1,8 @@
-.number-line-100{
-	
+#DienSoConThieu100{
+	padding-bottom: 80px;	
 }
 .number-line-100 table{
 	border-color: #ddd;
-}
-.number-line-100 tr>td{
-	
 }
 .number-line-100 td>.text{
 	display: inline-block;

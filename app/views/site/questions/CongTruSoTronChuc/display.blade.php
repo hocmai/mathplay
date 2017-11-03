@@ -1,6 +1,6 @@
 <?php
 $type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['plus', 'sub']);
-$max  = !empty($config['max']) ? $config['max'] : 100;
+$max  = (!empty($config['max']) && $config['max'] > 10) ? $config['max'] : 100;
 $max = floor($max/10);
 
 if( $type == 'plus' ){
