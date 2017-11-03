@@ -1,5 +1,5 @@
 <?php
-$min = isset($config['min_value']) ? $config['min_value'] : rand(0,10);
+$min = (isset($config['min_value']) && $config['min_value'] > -1) ? $config['min_value'] : rand(0,10);
 $plus = isset($config['number_plus']) ? $config['number_plus'] : rand(1,10);
 $range = (!empty($config['number_count']) && $config['number_count'] >= 3) ? $config['number_count'] : rand(5, 10);
 $lines = [];

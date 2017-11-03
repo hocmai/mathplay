@@ -32,7 +32,7 @@ elseif( $type == 'write' ){
 @include('site.questions.render-title', ['question' => $question])
 
 <div class="description">
-	{{ ($type == 'input' | $type == 'write') ? $question->title : 'Hình ảnh nào biểu diễn đúng biểu thức '.$num1.' - '.$num2.' = '.($num1-$num2) }}
+	{{ ($type == 'choose') ? 'Hình ảnh nào biểu diễn đúng biểu thức '.$num1.' - '.$num2.' = '.($num1-$num2) : '' }}
 </div>
 
 <div class="container-fluid question-wrapper">
