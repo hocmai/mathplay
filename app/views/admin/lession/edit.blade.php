@@ -12,7 +12,9 @@
 @if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
+		<a href="{{ action('SiteLessionController@show', ['lession_slug' => $lession->slug, 'subject_slug' => Common::getObject( Common::getValueOfObject($lession, 'chapter', 'subject'), 'slug'), 'grade_slug' => Common::getValueOfObject( Common::getValueOfObject($lession, 'chapter', 'subject'), 'grade', 'slug')]) }}" class="btn btn-success" target="_blank">Xem</a>
 		<a href="{{ action('LessionController@index') }}" class="btn btn-success">Danh sách bài tập</a>
+		<a href="{{ action('LessionController@create') }}" class="btn btn-primary">Thêm mới</a>
 	</div>
 </div>
 @endif

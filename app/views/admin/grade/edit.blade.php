@@ -9,6 +9,7 @@
 @if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
+		<a href="{{ action('SiteSubjectController@show', ['gradeSlug' => $data->slug]) }}" class="btn btn-success" target="_blank">Xem</a>
 		<a href="{{ action('GradeController@index') }}" class="btn btn-success">Danh sách lớp học</a>
 		<a href="{{ action('GradeController@create') }}" class="btn btn-primary">Thêm mới</a>
 	</div>

@@ -22,19 +22,14 @@ if( $method == 'plus' ){
 	}
 	$text = ['Đếm với '.$plus.' đơn vị. Đứng trước số '.$number.' là số mấy?', 'Số nào đứng trước số '.$number.' nếu trừ đi '.$plus.' đơn vị?'];
 }
+$rand_title = array_rand($text);
 ?>
 
-<div class="start">
-	@if(!empty($config['sound_title']))
-		<div class="play-question-sound">
-			<button class="control play"></button>
-			<video class="hidden">
-				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-			</video>
-		</div>
-	@endif
-</div>
-<div class="description">{{ $text[array_rand($text)] }}</div>
+@if( $rand_title == 0 )
+	@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Đếm với', $plus, 'đơn vị.', 'Đứng trước số', $number, 'là số mấy?',] ] )
+@else
+	@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Số nào đứng trước số', $number, 'nếu trừ đi', $plus,'đơn vị?'] ] )
+@endif
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

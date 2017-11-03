@@ -4,24 +4,7 @@ shuffle($colors);
 $answer = array_rand($colors, rand(4,6));
 ?>
 
-<div class="start">
-	<?php 
-	$str_arr = ['Trong ô thứ', $answer[3] + 1, 'có màu gì?'];
-	$title = 'Trong ô thứ '.($answer[3] + 1).' có màu gì?';
-	$title_slug = Str::slug($str_arr[0], '').'_'.Str::slug($str_arr[1], '').'_'.Str::slug($str_arr[2], '');
-	?>
-	<script type="text/javascript">
-		@foreach( $str_arr as $key => $str )
-		if( !checkIdExist('{{ Str::slug($str, '') }}') ){
-			audioList.push({id: '{{Str::slug($str, '')}}', url: '{{ CommonQuestion::getAudioPath($str) }}' });
-		}
-		@endforeach
-	</script>
-	<div class="play-question-sound">
-		<button class="control play" onclick="return PlaySoundManage(this, '{{ $title_slug }}' );"></button>
-	</div>
-	{{ $title }}
-</div>
+@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Trong ô thứ', $answer[3] + 1, 'có màu gì?']])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

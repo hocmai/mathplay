@@ -17,17 +17,9 @@ if( $type == 'min' ){
 	$answer = (int)$time1[1];
 }
 ?>
-<div class="start">
-	@if(!empty($config['sound_title']))
-		<div class="play-question-sound">
-			<button class="control play"></button>
-			<video class="hidden">
-				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-			</video>
-		</div>
-	@endif
-	{{ $question->title }}
-</div>
+
+@include('site.questions.render-title', ['question' => $question])
+
 <div class="description">
 	@if( $type == 'hour' )
 		Kim giờ đang chỉ số mấy (không chứa số 0 ở đầu)

@@ -25,24 +25,13 @@ if( $type == 'giao-hoan' ){
 // dd($type);
 ?>
 
-<div class="start">
-	@if(!empty($config['sound_title']))
-        <div class="play-question-sound">
-            <button class="control play"></button>
-            <video class="hidden">
-                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-            </video>
-        </div>
-    @endif
-    {{ $question->title }}
-</div>
-<div class="description">
-	@if( $type == 'giao-hoan' )
-		Viết lại biểu thức giao hoán của phép cộng {{ $sub.'+'.($total-$sub).'='.$total }}?
-	@else
-		Biểu thức nào là phép giao hoán của phép cộng {{ $sub.'+'.($total-$sub).'='.$total }}?
-	@endif
-</div>
+@include('site.questions.render-title', ['question' => $question])
+
+@if( $type == 'giao-hoan' )
+	Viết lại biểu thức giao hoán của phép cộng {{ $sub.'+'.($total-$sub).'='.$total }}?
+@else
+	Biểu thức nào là phép giao hoán của phép cộng {{ $sub.'+'.($total-$sub).'='.$total }}?
+@endif
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

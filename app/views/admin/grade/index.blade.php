@@ -42,7 +42,8 @@
 					<tr>
 						<td><input type="checkbox" name="checkbox" id="check-option" value="{{$value->id}}"></td>
 						<td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }}</td>
-						<td>{{ $value->title }}</td>
+						<td>{{ link_to_action('SiteGradeController@show', $value->title, 
+					 		['gradeSlug' => $value->slug], ['target' => '_blank']) }}</td>
 						<td>{{ $value->description }}</td>
 						<td></td>
 						<td>{{ $value['created_at'] }}</td>

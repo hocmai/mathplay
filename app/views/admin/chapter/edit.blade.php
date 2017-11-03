@@ -10,6 +10,7 @@
 <div class="row margin-bottom">
 	<div class="col-xs-12">
 		<a href="{{ action('ChapterController@index') }}" class="btn btn-success">Danh sách chuyên đề</a>
+		<a href="{{ action('ChapterController@create') }}" class="btn btn-primary">Thêm mới</a>
 	</div>
 </div>
 @endif

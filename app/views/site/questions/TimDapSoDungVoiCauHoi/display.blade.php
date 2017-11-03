@@ -3,17 +3,7 @@ $answer = isset($config['answer']) ? $config['answer'] : '';
 $type = isset($config['type']) ? $config['type'] : 'input';
 ?>
 
-<div class="start">
-	@if(!empty($config['sound_title']))
-        <div class="play-question-sound">
-            <button class="control play"></button>
-            <video class="hidden">
-                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-            </video>
-        </div>
-    @endif
-    {{ $question->title }}
-</div>
+@include('site.questions.render-title', ['question' => $question])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

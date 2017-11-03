@@ -8,8 +8,7 @@ for($i = 0; $i < $range; $i++){
 	$min += $plus;
 }
 
-$type_rand = array('input-total', 'input','inline');
-$type = !empty($config['answer_type']) ? $config['answer_type'] : $type_rand[array_rand($type_rand)];
+$type = !empty($config['answer_type']) ? $config['answer_type'] : getRandArrayVal(['input-total', 'input','inline']);
 $position = 0;
 if($type == 'inline'){
 	$answer = $lines[array_rand($lines)];
@@ -18,35 +17,27 @@ if($type == 'inline'){
 	$answer = $lines[$position];
 	$target = rand($position-1,$position+1);
 }
+
+if($type == 'inline'){
+	$str_arr = ['Điền số còn thiếu trong tia số'];
+}
+elseif($type == 'input'){
+	if($target < $position)
+		$str_arr = ['Số nào bên phải cạnh số', $lines[$target] ];
+	elseif( $target > $position ){
+		$str_arr = ['Số nào bên trái cạnh số', $lines[$target] ];
+	}
+	else{
+		$str_arr = ['Ở vị trí số', $position + 1, 'là số mấy'];
+	}
+}	
+elseif($type == 'input-total'){
+	$target = $position-1;
+	$str_arr = ['Hoàn thành phép tính tổng theo mẫu dưới đây'];
+}
 ?>
 
-<div class="start">
-	@if(!empty($config['sound_title']))
-        <div class="play-question-sound">
-            <button class="control play"></button>
-            <video class="hidden">
-                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-            </video>
-        </div>
-    @endif
-    {{ $question->title }}
-</div>
-<div class="description">
-	@if($type == 'inline')
-		Điền số còn thiếu trong tia số
-	@elseif($type == 'input')
-		@if($target < $position)
-			Số nào bên phải cạnh số {{ $lines[$target] }}?
-		@elseif( $target > $position )
-			Số nào bên trái cạnh số {{ $lines[$target] }}?
-		@else
-			Ở vị trí số {{ $position + 1 }} là số mấy?
-		@endif
-	@elseif($type == 'input-total')
-		<?php $target = $position-1 ?>
-		Hoàn thành phép tính tổng theo mẫu dưới đây
-	@endif
-</div>
+@include('site.questions.render-title', ['question' => $question, 'str_arr' => $str_arr])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

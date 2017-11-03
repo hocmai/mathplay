@@ -7,8 +7,7 @@
 		$answertype = $answertype[array_rand($answertype)];
 	}
 
-	$countType = ['dem-o-trong-khung', 'dem-o-con-thieu', 'dem-hinh-anh'];
-	$countType = !empty($config['count_type']) ? $config['count_type'] : $countType[array_rand($countType)];
+	$countType = !empty($config['count_type']) ? $config['count_type'] : getRandArrayVal(['dem-o-trong-khung', 'dem-o-con-thieu', 'dem-hinh-anh']);
 	
 	if( $countType == 'dem-o-con-thieu' ){
 		$max = ($max <= 10) ? $max : 9;
@@ -29,30 +28,20 @@
 	$shape = ['circle', 'pentagon', 'star', 'heptagon' ,'octagon'];
 	$rand_shape = array_rand($shape);
 ?>
-<div class="start">
-	@if(!empty($config['sound_title']))
-		<div class="play-question-sound">
-			<button class="control play"></button>
-			<video class="hidden">
-				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-			</video>
-		</div>
-	@endif
-	{{ $question->title }}
-</div>
-<div class="description">
-	@if( empty($config['count_type']) )
-		@if( $countType == 'dem-o-trong-khung' )
-			Đếm số hình có trong khung
-		@elseif( $countType == 'dem-o-con-thieu' )
-			Đếm số ô trống trong khung dưới đây
-		@else
-			Có bao nhiêu {{ DemSoTrongKhung10::getImageData()['list'][$img_rand] }}?
-		@endif
-	@else
-		{{ $question->title }}
-	@endif
-</div>
+
+
+<?php $str_arr = [];
+if( $countType == 'dem-o-trong-khung' ){
+	$str_arr = ['Đếm số hình có trong khung'];
+}
+elseif( $countType == 'dem-o-con-thieu' ){
+	$str_arr = ['Đếm số ô trống trong khung dưới đây'];
+}
+else{
+	$str_arr = ['Có bao nhiêu', DemSoTrongKhung10::getImageData()['list'][$img_rand]];
+}?>
+
+@include('site.questions.render-title', ['question' => $question, 'str_arr' => $str_arr])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form '.$answertype, 'id' => 'question-'.$question->id]) }}

@@ -18,26 +18,18 @@ if( $type == 'input' ){
 else if( $type == 'choose' ){
 	$answer_text = $range[$answer_rand[0]];
 }
-?>
 
-<div class="start">
-	@if(!empty($config['sound_title']))
-        <div class="play-question-sound">
-            <button class="control play"></button>
-            <video class="hidden">
-                <source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-            </video>
-        </div>
-    @endif
-    {{ $question->title }}
-</div>
-<div class="description">
-	@if( $type == 'input' )
-		Dưới đây là các cách tính tổng của {{ $total }}. Hãy viết biểu thức còn thiếu.
-	@elseif( $type == 'choose' )
-		Biểu thức nào có tổng = {{ $range[$answer_rand[0]] }}?
-	@endif
-</div>
+if( $type == 'input' ){
+	$str_arr = ['Dưới đây là các cách tính tổng của', $total.'.', 'Hãy viết biểu thức còn thiếu.'];
+}
+elseif( $type == 'choose' ){
+	$str_arr = ['Biểu thức nào có tổng bằng', $range[$answer_rand[0]] ];
+}
+else{
+	$str_arr = [$question->title];
+}?>
+
+@include('site.questions.render-title', ['question' => $question, 'str_arr' => $str_arr ])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

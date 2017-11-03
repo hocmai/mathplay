@@ -21,17 +21,8 @@ $type_answer = !empty($config['answer_type']) ? $config['answer_type'] : $type_a
 shuffle($answer_rand);
 ?>
 
-<div class="start">
-	@if(!empty($config['sound_title']))
-		<div class="play-question-sound">
-			<button class="control play"></button>
-			<video class="hidden">
-				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-			</video>
-		</div>
-	@endif
-	{{ $question->title }}
-</div>
+@include('site.questions.render-title', ['question' => $question])
+
 <div class="description">
 	@if($type_answer == 'trac-nghiem')
 		Hình ảnh nào dưới đây đúng với biểu thức {{ $answer_rand[0][0]." + ".$answer_rand[0][1].' = '.($answer_rand[0][0] + $answer_rand[0][1]) }}

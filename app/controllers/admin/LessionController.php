@@ -14,7 +14,7 @@ class LessionController extends AdminController {
 	public function index()
 	{
 		$data = Lession::orderBy('weight', 'asc')->orderBy('created_at', 'desc')->paginate(PAGINATE);
-		// dd($data);
+		// dd($data->first());
 		return View::make('admin.lession.index')->with(compact('data'));
 	}
 
@@ -261,7 +261,7 @@ class LessionController extends AdminController {
         	}
         }
 
-		return Redirect::back()->with(['success'=>'Lưu thành công!', 'notice' => $notice]);
+		return Redirect::action('LessionController@edit', ['id'=>$id])->with(['success'=>'Lưu thành công!', 'notice' => $notice]);
 	}
 
 

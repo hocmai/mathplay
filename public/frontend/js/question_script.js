@@ -28,7 +28,7 @@ function playAudio(id_list, playlistId, button){
 	}
 }
 
-soundManager.useConsole = false;
+soundManager.useConsole = soundManager.setupOptions.debugMode = false;
 var onReady = function() {
     for(var i = 0; i< audioList.length; i++){
         soundManager.createSound(audioList[i]);

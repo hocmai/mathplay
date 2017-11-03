@@ -5,10 +5,10 @@ if( $answertype == 'rand' ){
 }
 $answertype = 'multi';
 $shapes = NhanDienCacHinh::getShape();
-$title = '';
+$title = [$question->title];
 
 if($answertype == 'single'){
-	$title = 'Hình dưới đây là hình gì nhỉ?';
+	$title = ['Hình dưới đây là hình gì nhỉ?'];
 	$shapesList = array_rand($shapes, rand(3,5));
 	$answer = getRandArrayVal($shapesList);
 }
@@ -17,22 +17,10 @@ elseif($answertype == 'multi'){
 	$shapesList2 = array_rand($shapes, 2);
 	$shapesList = array_merge($shapesList1, $shapesList2);
 	$answer = getRandArrayVal($shapesList);
-	$title = 'Những hình nào dưới đây là '.$shapes[$answer];
- 	// dd($shapesList, $answer);
+	$title = ['Những hình nào dưới đây là', $shapes[$answer] ];
 }?>
 
-<div class="start">
-	@if(!empty($config['sound_title']))
-		<div class="play-question-sound">
-			<button class="control play"></button>
-			<video class="hidden">
-				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-			</video>
-		</div>
-	@endif
-	{{ $question->title }}
-</div>
-<div class="description">{{ $title }}</div>
+@include('site.questions.render-title', ['question' => $question, 'str_arr' => $title])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

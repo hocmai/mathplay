@@ -115,7 +115,12 @@ class Common {
 	public static function getChapterSelect($default = '')
 	{
 		$chapter_group = [];
-		$chapterList = DB::table('chapters')->orderBy('chapters.created_at', 'desc')->join('subjects', 'subjects.id', '=', 'chapters.subject_id')->select('chapters.title as chapter_title','chapters.id as chapter_id', 'subjects.id as subject_id', 'subjects.title as subject_title')->get();
+		$chapterList = DB::table('chapters')
+			->orderBy('chapters.created_at', 'desc')
+			->join('subjects', 'subjects.id', '=', 'chapters.subject_id')
+			->select('chapters.title as chapter_title','chapters.id as chapter_id', 'subjects.id as subject_id', 'subjects.title as subject_title')
+			->whereNull('chapters.deleted_at')
+			->get();
 		foreach ($chapterList as $key => $value) {
 			$chapter_group[$value->subject_title][] = $value;
 		}

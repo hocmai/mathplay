@@ -45,8 +45,7 @@
 					 	<td>#{{ $key + 1 + ($data->getPerPage() * ($data->getCurrentPage() -1)) }}</td>
 					 	<td>{{ link_to_action('SiteSubjectController@show', $value->title, 
 					 		['gradeSlug' => Common::getValueOfObject($value, 'grade', 'slug'),
-							'subjectSlug' => $value->slug
-					 		]) }}
+							'subjectSlug' => $value->slug], ['target' => '_blank']) }}
 					 	</td>
 					 	<td>{{ link_to_action(
 							'SiteGradeController@show',

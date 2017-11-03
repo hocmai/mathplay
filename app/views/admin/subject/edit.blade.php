@@ -1,18 +1,18 @@
 @extends('admin.layout.default')
 
 @section('title')
-{{ $title='Tạo Môn học' }} | Quản lý môn học
+{{ $title='Sửa Môn học '.$data->title }} | Quản lý môn học
 @stop
 
 @section('content')
 
-@if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
+		<a href="{{ action('SiteSubjectController@show', ['gradeSlug' => Common::getValueOfObject($data, 'grade', 'slug'), 'subjectSlug' => $data->slug]) }}" class="btn btn-success" target="_blank">Xem</a>
 		<a href="{{ action('SubjectController@index') }}" class="btn btn-success">Danh sách môn học</a>
+		<a href="{{ action('SubjectController@create') }}" class="btn btn-primary">Thêm mới</a>
 	</div>
 </div>
-@endif
 
 <div class="row">
 	<div class="col-xs-12">
@@ -47,8 +47,7 @@
 					<input type="button" class="btn btn-default" value="Hủy" />
 				</div>
 			{{ Form::close() }}
-		</div>
-		<!-- /.box -->
+		</div> <!-- /.box -->
 	</div>
 </div>
 

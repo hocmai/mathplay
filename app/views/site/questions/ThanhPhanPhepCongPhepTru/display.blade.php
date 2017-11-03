@@ -14,20 +14,8 @@ if($type == 'plus'){
 }
 $total = [$num1, $num2, $num3];
 ?>
-<div class="start">
-	@if(!empty($config['sound_title']))
-		<div class="play-question-sound">
-			<button class="control play"></button>
-			<video class="hidden">
-				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-			</video>
-		</div>
-	@endif
-	{{ $question->title }}
-</div>
-<div class="description">
-	Trong phép tính dưới đây, số <b style="font-size: 16px;">{{ $total[$answer] }}</b> là thành phần gì?
-</div>
+
+@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Trong phép tính dưới đây,', 'số', $total[$answer], 'là thành phần gì?'] ])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

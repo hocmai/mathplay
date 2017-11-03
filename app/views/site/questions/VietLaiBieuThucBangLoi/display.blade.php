@@ -6,17 +6,8 @@ shuffle($range);
 // debug($range);
 ?>
 
-<div class="start">
-	@if(!empty($config['sound_title']))
-		<div class="play-question-sound">
-			<button class="control play"></button>
-			<video class="hidden">
-				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-			</video>
-		</div>
-	@endif
-	{{ $question->title }}
-</div>
+@include('site.questions.render-title', ['question' => $question])
+
 <div class="description">
 	Số {{ $num }} gồm {{ floor($num/10) }} chục và {{ $num-(floor($num/10)*10) }} đơn vị. Đáp án nào dưới đây đúng với số {{ $num }}?
 </div>
