@@ -88,6 +88,7 @@ Route::group(['prefix' => 'admin'], function () {
 	 	Route::get('/grade/search', ['uses' => 'GradeController@search', 'as' => 'GradeFilter']);
 	 	Route::resource('/grade', 'GradeController');
 
+	 	Route::get('/audio/save-confirm', 'AudioController@saveConfirm');
 	 	Route::resource('/audio', 'AudioController');
 
 	 	Route::get('/subject/search', ['uses' => 'SubjectController@search', 'as' => 'SubjectFilter']);

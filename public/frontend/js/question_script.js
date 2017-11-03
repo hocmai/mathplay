@@ -1,5 +1,70 @@
+////////////////////////////////////////////////
+/////////////// soundManager ///////////////////
+////////////////////////////////////////////////
+var nowPlaying = false;
+function PlaySoundManage(element, id){
+	jQuery(element).switchClass('play', 'stop', 0);
+	nowPlaying = false;
+	soundManager.stopAll();
+	var id_list = id.split('_');
+	playAudio(id_list, 0 , element);
+}
+
+function playAudio(id_list, playlistId, button){
+    // Default playlistId to 0 if not supplied 
+    playlistId = playlistId ? playlistId : 0;
+    // Standard Sound Manager play sound function...
+    nowPlaying = soundManager.play(id_list[playlistId],{
+		onfinish: function() {
+			playlistId ++;
+            playAudio(id_list, playlistId, button);
+			if(playlistId == id_list.length){
+				jQuery(button).switchClass('stop', 'play', 0);
+			}
+	 	}
+	});
+	if( typeof nowPlaying.readyState != 'undefined' && nowPlaying.readyState == 0 ){
+		jQuery(button).switchClass('stop', 'play', 0);
+	}
+}
+
+soundManager.useConsole = false;
+var onReady = function() {
+    for(var i = 0; i< audioList.length; i++){
+        soundManager.createSound(audioList[i]);
+    }
+}
+
+if(soundManager.readyState != 3){
+	soundManager.onready(function(){ onReady() });
+}
+else {
+    onReady();
+}
+//////////////////////////////////////////////////
+//////////////// End soundManager ////////////////
+//////////////////////////////////////////////////
+
+
 $(document).ready(function($) {
 	
+    ///////// Play question sound
+    $('.play-question-sound>button.control').on('click', function(){
+    	if( $(this).parent().find('>video').length ){
+	        if($(this).hasClass('play')){
+	            $(this).parent().find('>video')[0].play();
+	        } else{
+	            $(this).parent().find('>video')[0].pause();
+	            $(this).parent().find('>video')[0].load();
+	        }
+	        $(this).toggleClass('play');
+    	}
+    })
+    $('.play-question-sound>video').on('ended', function(){
+        $(this).parent().find('button.control').addClass('play');
+    })
+
+
 	//////////// Submit answer form
 	$(window).on('keypress', function(event) {
 		////////////// Submit form when press ENTER key

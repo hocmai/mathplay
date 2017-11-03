@@ -9,7 +9,7 @@
 @if(Admin::isAdmin())
 <div class="row margin-bottom">
 	<div class="col-xs-12">
-		<a href="{{ action('GradeController@index') }}" class="btn btn-success">Danh sách bản ghi</a>
+		<a href="{{ action('AudioController@index') }}" class="btn btn-success">Danh sách bản ghi</a>
 	</div>
 </div>
 @endif

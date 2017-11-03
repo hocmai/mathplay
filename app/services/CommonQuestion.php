@@ -1,6 +1,11 @@
 <?php
 Class CommonQuestion {
 
+	public static function getAudioPath($text = ''){
+		$slug = Str::slug($text, '');
+		return Common::getObject( Audio::where('slug', $slug)->first(), 'url' );
+	}
+
 	public static function getAllType(){
 		$allType = [];
 		foreach (glob(app_path().'/services/questions/*.php') as $key => $value) {

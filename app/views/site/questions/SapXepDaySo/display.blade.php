@@ -37,15 +37,22 @@ foreach($numArr as $value){
 } ?>
 
 <div class="start">
-	@if(!empty($config['sound_title']))
-		<div class="play-question-sound">
-			<button class="control play"></button>
-			<video class="hidden">
-				<source src="{{ $config['sound_title'] }}" type="" type="audio/mpeg">
-			</video>
-		</div>
-	@endif
-	{{ $question->title.' <strong>'.(($sort == 'desc') ? 'giảm dần' : 'tăng dần').'</strong>' }}
+	<?php 
+	$str_arr = [$question->title, 'giảm dần', 'tăng dần'];
+	$title = $question->title.' '.(($sort == 'desc') ? $str_arr[1] : $str_arr[0]);
+	$title_slug = Str::slug($str_arr[0], '').'_'.( ($sort == 'desc') ? Str::slug($str_arr[1], '') : Str::slug($str_arr[2], '') );
+	?>
+	<script type="text/javascript">
+		@foreach( $str_arr as $key => $str )
+		if( !checkIdExist('{{ Str::slug($str, '') }}') ){
+			audioList.push({id: '{{Str::slug($str, '')}}', url: '{{ CommonQuestion::getAudioPath($str) }}' });
+		}
+		@endforeach
+	</script>
+	<div class="play-question-sound">
+		<button class="control play" onclick="return PlaySoundManage(this, '{{ $title_slug }}' );"></button>
+	</div>
+	{{ $title }}
 </div>
 
 <div class="container-fluid question-wrapper">

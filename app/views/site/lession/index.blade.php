@@ -4,6 +4,22 @@
     {{ $title = $lession['title']; }}
 @stop
 
+@section('css_header')
+@parent
+{{ HTML::script('frontend/js/soundmanager2-jsmin.js') }}
+<script type="text/javascript">
+    audioList = [];
+    function checkIdExist(id){
+        for(var i = 0; i < audioList.length ; i++){
+            if( audioList[i].id == id ){
+                return true;
+            }
+        }
+        return false;
+    }
+</script>
+@stop
+
 @section('js_header')
 @parent
 {{ HTML::script('frontend/js/question_script.js') }}

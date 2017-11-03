@@ -7,6 +7,18 @@ class AudioController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+	public function saveConfirm(){
+		$data = Session::get('data');
+		return View::make('admin.audio.confirm');
+		dd($data);
+	}
+
+
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
 	public function index()
 	{
 		$data = Audio::orderBy('created_at', 'desc')->paginate(PAGINATE);
@@ -99,8 +111,18 @@ class AudioController extends \BaseController {
 	 */
 	public function update($id)
 	{
+		$data = Audio::find($id);
 		$title = Input::get('title');
 		$slug = Str::slug($title, '');
+
+		// if( Common::getObject($data, 'slug') != $slug ){
+		// 	//// Slug & title changed
+		// 	$checkExists = Audio::where('slug', $slug)->whereNotIn('id', [$id])->count();
+		// 	if( $checkExists > 0 ){
+		// 		/// Neu da ton tai 1 ban ghi trung ten
+		// 		return Redirect::action('AudioController@saveConfirm')->with(['data' => Input::all()]);
+		// 	}
+		// }
 		$url = Input::get('url');
 		// dd(Input::all());
 
@@ -128,12 +150,11 @@ class AudioController extends \BaseController {
 				CommonUpload::uploadImage('/upload/studio/', 'sound', $slug.'.wav');
 			}
 		}
-
-		CommonNormal::update($id ,[
+		$data->update([
 			'title' => $title,
 			'slug' => $slug,
 			'url' => $url,
-		], 'Audio');
+		]);
 
 		return Redirect::back()->with('success', 'Lưu thành công!');
 	}
