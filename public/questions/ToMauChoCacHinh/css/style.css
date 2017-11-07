@@ -1,0 +1,29 @@
+canvas.draw-shape-color{
+	border: 2px solid #f89a24;
+}
+.canvas-wrapper>.options{
+	margin: 10px 0;
+}
+.canvas-wrapper>.options>label{
+	font-size: inherit;
+    background: none;
+    color: inherit;
+    padding: 0;
+    font-weight: 400;
+    width: auto;
+    margin: 0;
+    line-height: 25px;
+}
+.canvas-wrapper>.options>span{
+    height: 25px;
+    width: 50px;
+    margin: 0 5px;
+    border: 2px solid transparent;
+    cursor: pointer;
+}
+.canvas-wrapper>.options>span:hover,
+.canvas-wrapper>.options>span:focus,
+.canvas-wrapper>.options>span.active{
+    border-color: yellow;
+    box-shadow: 0px 0px 10px #666;
+}

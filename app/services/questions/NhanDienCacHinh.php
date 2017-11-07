@@ -26,24 +26,31 @@ class NhanDienCacHinh extends CommonQuestion {
 		if($answer == 'tam-giac')
 			$icon = getRandArrayVal(['<svg width="200" height="200"><polygon points="5,195 195,195 100,5" stroke="'.getRandArrayVal($color).'" stroke-width="5" fill="'.getRandArrayVal($color).'"/></svg>']);
 		elseif($answer == 'vuong')
-			$icon = getRandArrayVal(['<svg width="200" height="200"><rect x="5" y="5" width="190" height="190" style="stroke:'.getRandArrayVal($color).';stroke-width:5;fill:'.getRandArrayVal($color).'"/></svg>', '<img src="'.asset('/questions/NhanDienCacHinh/img/vuong.jpg').'"/>']);
+			$icon = getRandArrayVal([
+				'<svg width="200" height="200"><rect x="5" y="5" width="190" height="190" style="stroke:'.getRandArrayVal($color).';stroke-width:5;fill:'.getRandArrayVal($color).'"/></svg>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/vuong.jpg').'" width="200" height="200"/>
+			']);
 		elseif($answer == 'tron')
-			$icon = getRandArrayVal(['<svg width="200" height="200"><circle cx="100" cy="100" r="95" stroke="'.getRandArrayVal($color).'" stroke-width="5" fill="'.getRandArrayVal($color).'"/></svg>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-1.jpg').'"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-2.svg').'"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-3').'.svg"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-4.jpg').'"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-5.jpg').'"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-6.jpg').'"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-7.jpg').'"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-8.png').'"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-9.png').'"/>'
-			, '<img src="'.asset('/questions/NhanDienCacHinh/img/tron-10.jp').'g"/>']);
+			$icon = getRandArrayVal([
+				'<svg width="200" height="200"><circle cx="100" cy="100" r="95" stroke="'.getRandArrayVal($color).'" stroke-width="5" fill="'.getRandArrayVal($color).'"/></svg>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-1.jpg').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-2.svg').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-3.svg').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-4.jpg').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-5.jpg').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-6.jpg').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-7.jpg').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-8.png').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-9.png').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/tron-10.jpg').'" width="200" height="200"/>',
+			]);
 		elseif($answer == 'chu-nhat')
-			$icon = getRandArrayVal(['<svg width="200" height="200"><rect x="5" y="50" width="190" height="100" style="stroke:'.getRandArrayVal($color).';stroke-width:5;fill:'.getRandArrayVal($color).'"/></svg>',
-				'<img src="'.asset('/questions/NhanDienCacHinh/img/chu-nhat-1.png').'"/>',
-				'<img src="'.asset('/questions/NhanDienCacHinh/img/chu-nhat-2.jpg').'"/>',
-				'<img src="'.asset('/questions/NhanDienCacHinh/img/chu-nhat-3.jpg').'"/>']);
+			$icon = getRandArrayVal([
+				'<svg width="200" height="200"><rect x="5" y="50" width="190" height="100" style="stroke:'.getRandArrayVal($color).';stroke-width:5;fill:'.getRandArrayVal($color).'"/></svg>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/chu-nhat-1.png').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/chu-nhat-2.jpg').'" width="200" height="200"/>',
+				'<img src="'.asset('/questions/NhanDienCacHinh/img/chu-nhat-3.jpg').'" width="200" height="200"/>'
+			]);
 		elseif($answer == 'hinh-thang')
 			$icon = '<svg width="200" height="200"><polygon points="5,180 195,180 150,5 50,5" stroke="'.getRandArrayVal($color).'" stroke-width="5" fill="'.getRandArrayVal($color).'"/></svg>';
 		elseif($answer == 'binh-hanh')

@@ -1,24 +1,30 @@
 <?php
 $answertype = !empty($config['answer_type']) ? $config['answer_type'] : 'rand';
+
 if( $answertype == 'rand' ){
 	$answertype = getRandArrayVal(['single', 'multi']);
 }
-$answertype = 'multi';
+
 $shapes = NhanDienCacHinh::getShape();
+$answer = !empty($config['shape']) ? $config['shape'] : array_rand($shapes);
+
 $title = [$question->title];
 
 if($answertype == 'single'){
 	$title = ['Hình dưới đây là hình gì nhỉ?'];
 	$shapesList = array_rand($shapes, rand(3,5));
-	$answer = getRandArrayVal($shapesList);
 }
 elseif($answertype == 'multi'){
 	$shapesList1 = array_rand($shapes, 2);
 	$shapesList2 = array_rand($shapes, 2);
 	$shapesList = array_merge($shapesList1, $shapesList2);
-	$answer = getRandArrayVal($shapesList);
-	$title = ['Những hình nào dưới đây là', $shapes[$answer] ];
-}?>
+	$title = ['Hình nào dưới đây là', $shapes[$answer].'?' ];
+}
+if( !in_array($answer, $shapesList) ){
+	$shapesList[0] = $answer;
+}
+shuffle($shapesList);
+?>
 
 @include('site.questions.render-title', ['question' => $question, 'str_arr' => $title])
 
@@ -31,9 +37,10 @@ elseif($answertype == 'multi'){
 		
 		@if($answertype == 'single')
 			<div class="content inline-block {{ $answertype }}">
-				<div class="shapes {{ $answer }}">
-					<svg class="shape">{{ NhanDienCacHinh::renderShape($answer) }}</svg>
+				<div class="shapes {{ $answer }} form-group inline-block">
+					{{ NhanDienCacHinh::renderShape($answer) }}
 				</div>
+				<div class="clear clearfix"></div>
 				@foreach($shapesList as $key => $value)
 					<div class="form-group inline-block radio-box">
 						<input id="answer-{{ $question_num.'-'.$key }}" type="radio" name="answer" class="hidden" value="{{ $value }}">
