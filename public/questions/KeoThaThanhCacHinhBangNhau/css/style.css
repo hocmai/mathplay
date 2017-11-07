@@ -1,0 +1,50 @@
+#KeoThaThanhCacHinhBangNhau .drag-icons .item{
+	display: inline-block;
+	background-color: #ddd;
+	border-radius: 3px;
+	width: 100%;
+    height: 100%;
+    box-shadow: -1px 1px 5px -1px #666;
+    opacity: 0.85;
+}
+#KeoThaThanhCacHinhBangNhau .drag-icons .item.even{
+	background-color: #ff5500;
+}
+#KeoThaThanhCacHinhBangNhau .row-as{
+    margin: 0 5px;
+}
+#KeoThaThanhCacHinhBangNhau .drag-controls .item{
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    cursor: pointer;
+    z-index: 2;
+    opacity: 1;
+}
+#KeoThaThanhCacHinhBangNhau .row-as .wrap{
+	margin: 2px;
+    border: 1px solid #999;
+    padding: 4px;
+    display: inline-block;
+    float: left;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    position: relative;
+    transition: all 0.2s ease;
+}
+#KeoThaThanhCacHinhBangNhau .row-as .wrap.hover{
+	transform: scale(1.1);
+}
+#KeoThaThanhCacHinhBangNhau .row-as .wrap.blank::before{
+	content: "?";
+	line-height: 25px;
+    font-weight: 600;
+    color: #666;
+    position: absolute;
+    width: 100%;
+    left: 0;
+}
+#KeoThaThanhCacHinhBangNhau .row-as .wrap.blank .item{
+	cursor: pointer;
+}
