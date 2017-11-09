@@ -1460,23 +1460,6 @@ footer .leg .social a {
   color: #fff !important;
 }
 
-.box-s-2 {
-  display: -webkit-inline-box;
-  display: -webkit-inline-flex;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  -webkit-box-align: end;
-  -webkit-align-items: flex-end;
-  -ms-flex-align: end;
-  align-items: flex-end;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translate(-50%);
-  -ms-transform: translate(-50%);
-  transform: translate(-50%);
-}
-
 .box-thong-tin-bai-lam {
   text-align: center;
   min-height: calc( 100vh - 66px );
@@ -1484,7 +1467,7 @@ footer .leg .social a {
 
 .box-thong-tin-bai-lam p {
   margin-bottom: 0;
-  padding: 20px 0;
+  padding: 10px 0;
 }
 
 .box-thong-tin-bai-lam .total-number {
@@ -1493,7 +1476,7 @@ footer .leg .social a {
 }
 
 .box-thong-tin-bai-lam .times {
-  font-size: 24px;
+  font-size: 20px;
 }
 
 .box-thong-tin-bai-lam .diem .span1 {
@@ -1961,9 +1944,7 @@ footer .leg .social a {
   text-align: center;
   position: fixed;
   bottom: 0;
-  left: 50%;
-  width: 948px;
-  margin-left: -570px;
+  width: 100%;
 }
 
 .modal-open .bao-cao .btn {
@@ -2029,7 +2010,6 @@ footer .leg .social a {
 
 .modal {
   z-index: 99999;
-  position: absolute;
 }
 
 .menu-mobile .dang-nhap {
@@ -2232,9 +2212,9 @@ footer .leg .social a {
   width: 225px;
   height: 199px;
   position: absolute;
-  bottom: 40px;
-  left: -10px;
-  z-index: 9;
+  bottom: 75px;
+  left: 50px;
+  z-index: 9999;
 }
 
 .hd-gui-bai .des p {
@@ -2246,8 +2226,8 @@ footer .leg .social a {
 .cu-meo {
   position: relative;
   z-index: 99;
-  top: -24px;
-  left: -36px;
+  top: 0;
+  left: 20px;
 }
 
 .cu-meo img {

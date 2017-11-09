@@ -122,17 +122,19 @@ foreach($lession->question as $question){
                                     <audio><source src="" type="audio/wav"></audio>
                                 </div> -->
                                 <div class="bao-cao">
-                                    <div class="btn-support">
-                                        <a href="#" class="btn huong-dan-giai">Hướng dẫn giải</a>
-                                        <button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+                                    <div class="container">
+                                        <div class="btn-support">
+                                            <a href="#" class="btn huong-dan-giai">Hướng dẫn giải</a>
+                                            <button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+                                        </div>
+                                        {{-- <div class="notify-group">
+                                            <a href="#" class="like" data-toggle="tooltip" data-placement="top" title="Thích"></a>
+                                            <a href="#" class="dis-like" data-toggle="tooltip" data-placement="top" title="Không thích"></a>
+                                            <a href="#" class="bao-loi" data-toggle="tooltip" data-placement="top" title="Báo lỗi"></a>
+                                        </div> --}}
                                     </div>
-                                    <div class="notify-group">
-                                        <a href="#" class="like" data-toggle="tooltip" data-placement="top" title="Thích"></a>
-                                        <a href="#" class="dis-like" data-toggle="tooltip" data-placement="top" title="Không thích"></a>
-                                        <a href="#" class="bao-loi" data-toggle="tooltip" data-placement="top" title="Báo lỗi"></a>
-                                    </div>
-
                                 </div>
+
                                 <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
                                     <div class="modal-content">
                                         <div class="box-qua-chuan-luon">
@@ -162,9 +164,7 @@ foreach($lession->question as $question){
                             </p>
                             <div class="title bg3">Điểm</div>
                             <p class="diem">
-                                <span class="span1 your-score">{{ $current_score }}</span> <br/>
-                                trên tổng số <br/>
-                                <span class="span2 max-score">{{ !empty($config['max_score']) ? $config['max_score'] : 100 }}</span>
+                                <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ !empty($config['max_score']) ? $config['max_score'] : 100 }}</span>
                             </p>
                         </div>
                         <div class="box-s-2">
@@ -172,7 +172,7 @@ foreach($lession->question as $question){
                         </div>
                         <div class="hd-gui-bai">
                             <div class="cu-meo">
-                                <img src="images/cu-meo.png" class="img-responsive mauto" alt=""/>
+                                <img src="{{ asset('frontend/images/cu-meo.png') }}" class="img-responsive mauto" alt=""/>
                             </div>
                             <div class="des">
                                 <p>

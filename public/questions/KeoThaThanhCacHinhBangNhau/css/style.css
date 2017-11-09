@@ -20,6 +20,8 @@
     cursor: pointer;
     z-index: 2;
     opacity: 1;
+    -webkit-animation: scales 1.5s infinite ease;
+    animation: scales 1.5s infinite ease;
 }
 #KeoThaThanhCacHinhBangNhau .row-as .wrap{
 	margin: 2px;
@@ -48,3 +50,32 @@
 #KeoThaThanhCacHinhBangNhau .row-as .wrap.blank .item{
 	cursor: pointer;
 }
+
+@keyframes scales{
+    0%{
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+    50%{
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+} 
+@-webkit-keyframes scales{
+    0%{
+        transform: scale(1.1);
+        -webkit-transform: scale(1.1);
+    }
+    50%{
+        transform: scale(1.2);
+        -webkit-transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+        -webkit-transform: scale(1);
+    }
+} 
