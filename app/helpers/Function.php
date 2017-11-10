@@ -4,16 +4,17 @@
  * Get random value of an array
  */
 function getRandArrayVal($arr, $num = 1){
-	if( $num == 1 ){
-		$rand = array_rand($arr);
-		return $arr[$rand];
-	} else{
+	if( $num > 1 ){
 		$rand = array_rand($arr, $num);
 		$return = [];
 		foreach ($rand as $key => $value) {
 			$return[] = $arr[$value];
 		}
+		shuffle($return);
 		return $return;
+	} else{
+		$rand = array_rand($arr);
+		return $arr[$rand];
 	}
 }
 

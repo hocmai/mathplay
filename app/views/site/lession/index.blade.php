@@ -101,7 +101,7 @@ foreach($lession->question as $question){
                                     <audio><source src="" type="audio/wav"></audio>
                                 </div> -->
                                 <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
-                                    <div class="modal-content">
+                                    <div class="modal-content col-sm-pull-2">
                                         <div class="box-qua-chuan-luon">
                                             <div>
                                                 <span><?php
@@ -123,20 +123,22 @@ foreach($lession->question as $question){
                                 </div> -->
                                 <div class="bao-cao">
                                     <div class="container">
-                                        <div class="btn-support">
-                                            <a href="#" class="btn huong-dan-giai">Hướng dẫn giải</a>
-                                            <button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+                                        <div class="row">
+                                            <div class="btn-support col-sm-10">
+                                                <a href="#" class="btn huong-dan-giai">Hướng dẫn giải</a>
+                                                <button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+                                            </div>
+                                            {{-- <div class="notify-group">
+                                                <a href="#" class="like" data-toggle="tooltip" data-placement="top" title="Thích"></a>
+                                                <a href="#" class="dis-like" data-toggle="tooltip" data-placement="top" title="Không thích"></a>
+                                                <a href="#" class="bao-loi" data-toggle="tooltip" data-placement="top" title="Báo lỗi"></a>
+                                            </div> --}}
                                         </div>
-                                        {{-- <div class="notify-group">
-                                            <a href="#" class="like" data-toggle="tooltip" data-placement="top" title="Thích"></a>
-                                            <a href="#" class="dis-like" data-toggle="tooltip" data-placement="top" title="Không thích"></a>
-                                            <a href="#" class="bao-loi" data-toggle="tooltip" data-placement="top" title="Báo lỗi"></a>
-                                        </div> --}}
                                     </div>
                                 </div>
 
                                 <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
-                                    <div class="modal-content">
+                                    <div class="modal-content col-sm-pull-2">
                                         <div class="box-qua-chuan-luon">
                                             <div>KHÔNG ĐÚNG RỒI!<br/>
                                                 CỐ GẮNG LÊN NHÉ!

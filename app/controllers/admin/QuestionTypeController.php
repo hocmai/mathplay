@@ -97,7 +97,7 @@ class QuestionTypeController extends AdminController {
 		// }
 
         CommonConfig::set('question_type', $type, $config);
-    	return Redirect::action('QuestionTypeController@index')->with('success', 'Lưu thành công!');
+		return Redirect::back()->with('success', 'Cập nhật thành công!');
 	}
 
 

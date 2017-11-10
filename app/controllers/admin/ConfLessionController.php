@@ -89,7 +89,7 @@ class ConfLessionController extends AdminController {
 			}
 		}
 		CommonConfig::set('lession', 'lession.config.'.Str::slug($input['name'], '_'), $input);
-		return Redirect::action('ConfLessionController@index')->with('success', 'Cập nhật thành công!');
+		return Redirect::back()->with('success', 'Cập nhật thành công!');
 	}
 
 

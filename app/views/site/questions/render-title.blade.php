@@ -21,3 +21,6 @@
 	</div>
 	{{ implode(' ', $title) }}
 </div>
+@if( !empty($desc) )
+	<div class="description">{{ $desc }}</div>
+@endif
