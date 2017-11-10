@@ -26,6 +26,14 @@ if( $type == 'true-false' ){
 else if( $type == 'select' ){
     $desc = 'Hãy chọn nhóm có số '.$image_rand[0].' bằng nhóm dưới đây.';
 }
+else{
+    $compare = getRandArrayVal(['nhiều hơn', 'ít hơn']);
+    $answer = $num2;
+    if( ($compare == 'nhiều hơn' && $num1 > $num2) | ($compare == 'ít hơn' && $num1 < $num2) ){
+        $answer = $num1;
+    }
+    $desc = 'Nhóm nào '.$compare;
+}
 ?>
 
 @include('site.questions.render-title', ['question' => $question, 'desc' => $desc ])
@@ -93,7 +101,7 @@ else if( $type == 'select' ){
                     <label for="sosanh-answer-{{ $question_num }}1">A</label>
                 </div>
                 <div class="radio">
-                    <input id="sosanh-answer-{{ $question_num }}2" type="radio" name="answer" value="{{ $num1 }}" class="">
+                    <input id="sosanh-answer-{{ $question_num }}2" type="radio" name="answer" value="{{ $num2 }}" class="">
                     <label for="sosanh-answer-{{ $question_num }}2">B</label>
                 </div>
             @endif
