@@ -1,6 +1,24 @@
 <?php
 Class CommonQuestion {
 
+
+	public static function getImgData($type = ''){
+		$config = CommonConfig::get("question_type.config.$type");
+        if( $config && !empty($config['images']) ){
+            foreach ($config['images'] as $key => $value) {
+                $randomdata[$value['image_title']] = $value['image_url'];
+            }
+        }
+        else{
+            $files = Common::scanDir( public_path()."/questions/$type/img" );
+            $randomdata = array_map( function($val) {
+                return str_replace('\\', '/', str_replace(public_path(), '', $val));
+            }, $files);
+        }
+        return $randomdata;
+	}
+
+
 	public static function getAudioPath($text = ''){
 		$slug = Str::slug($text, '');
 		return Common::getObject( Audio::where('slug', $slug)->first(), 'url' );
@@ -33,11 +51,6 @@ Class CommonQuestion {
 			return View::make('site.questions.'.$type.'.form', ['config' => $config])->render().Form::hidden('question_config[config][]', json_encode($config), ['class' => 'question-config-hidden']);
 		}
 		return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
-
-		// if( !self::callServiceByType($type, 'getConfigForm', ['', $config]) ){
-		// 	return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
-		// }
-		// return self::callServiceByType($type, 'getConfigForm', ['', $config]);
 	}
 
 

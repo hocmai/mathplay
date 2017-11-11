@@ -1,0 +1,9 @@
+#DemHinhAnh .image-show-area{
+	display: inline-block;
+    width: 500px;
+    padding: 10px;
+    border: 1px solid #999;
+}
+#DemHinhAnh .image-show-area .img{
+	display: inline-block;
+}

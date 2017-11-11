@@ -16,6 +16,12 @@ img{
 .clear{
 	clear: both !important;
 }
+.modal-backdrop.fade{
+    visibility: hidden;
+}
+.modal-backdrop.fade.in{
+    visibility: visible;
+}
 
 .bg-box-lam-bai .radio>label{
     width: auto;
