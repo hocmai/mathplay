@@ -141,7 +141,7 @@ class LessionController extends AdminController {
         	}
         }
 
-		return Redirect::action('LessionController@index')->with(['success'=>'Lưu thành công!', 'notice'=>$notice]);
+		return Redirect::action('LessionController@edit', ['id' => $LessionId])->with(['success'=>'Lưu thành công!', 'notice'=>$notice]);
 	}
 
 
