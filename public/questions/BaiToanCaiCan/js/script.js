@@ -18,7 +18,8 @@ $(document).ready(function(){
 		var id = $(this).attr('id'),
   		_this = $(this),
   		data_balance = $(this).attr('data-balance'),
-  		data_rand = parseInt($(this).attr('data-rand'));
+  		data_rand = parseInt($(this).attr('data-rand')),
+  		index = id;
 
 		canvas_weight[index] = this.__canvas = new fabric.Canvas(id, {
 			hasControls: false,
