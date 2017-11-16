@@ -30,7 +30,6 @@
 	<!-- Date Picker -->
 	{{HTML::style('frontend/css/bootstrap-select.min.css') }}
 	{{HTML::style('adminlte/custom/mystyle.css') }}
-
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -63,8 +62,40 @@
 	{{ HTML::script('adminlte/bower_components/fastclick/lib/fastclick.js') }}
 	<!-- AdminLTE App -->
 	{{ HTML::script('adminlte/dist/js/app.min.js') }}
-    {{ HTML::script('frontend/js/bootstrap-select.min.js')}}
-	
+	{{ HTML::script('frontend/js/bootstrap-select.min.js')}}
+
+	{{ HTML::script('admins/ckeditor/ckeditor.js') }}
+	<script type="text/javascript">
+		var ckeditor_config = {
+			// entities_latin: false,
+			// entities_greek: false,
+			// filebrowserBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html") }}',
+			// filebrowserImageBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html?type=Images") }}',
+			// filebrowserFlashBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html?type=Flash") }}',
+			// filebrowserUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files") }}',
+			// filebrowserImageUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images") }}',
+			// filebrowserFlashUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash") }}',
+			// toolbarGroups: [
+			//     // { name: 'clipboard',   groups: [ 'clipboard', 'undo' ] },
+			//     // { name: 'editing',     groups: [ 'find', 'selection', 'spellchecker' ] },
+			//     // { name: 'links' },
+			//     // { name: 'insert' },
+			//     // { name: 'forms' },
+			//     // { name: 'tools' },
+			//     // { name: 'document',    groups: [ 'mode', 'document', 'doctools' ] },
+			//     // { name: 'others' },
+			//     // '/',
+			//     { name: 'basicstyles', groups: [ 'basicstyles'] },
+			//     { name: 'paragraph',   groups: [ 'list', 'indent',  'align' ] },
+			//     '/',
+			//     // { name: 'styles' },
+			//     { name: 'colors' },
+			//     // { name: 'about' }
+			// ],
+			// toolbarCanCollapse : true,
+		};
+	</script>
+
 	{{ HTML::script('adminlte/custom/script.js') }}
 	<script>
 	  $(function () {
@@ -100,7 +131,7 @@
 			startView: 2,
 			forceParse: 0,
 	    });
-	
+
 	    $('#datepickerStartdate').datepicker({
 	    	dateFormat: 'yy-mm-dd',
 			});
@@ -111,6 +142,6 @@
 	</script>
 
 	@section('script')
-	@show
+	@show	
 
 </head>

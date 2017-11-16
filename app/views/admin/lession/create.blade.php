@@ -18,6 +18,8 @@
 </div>
 @endif
 
+<?php $uique = str_random(10); ?>
+
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box box-primary">
@@ -39,9 +41,12 @@
 							</div>
 							<div class="form-group">
 								{{ Form::label('description', 'Mô tả') }}<div class="clearfix"></div>
-								<div class="">{{ Form::textarea('description', '', ['class' => 'form-control', 'row' => 5]) }}</div><div class="clearfix"></div>
+								<div class="">{{ Form::textarea('description', '', ['class' => 'form-control editor', 'row' => 5, 'id' => 'editor-'.$uique]) }}</div><div class="clearfix"></div>
+								<script type="text/javascript">
+									CKEDITOR.replace( 'editor-{{ $uique }}', ckeditor_config );
+									CKEDITOR.add
+								</script>
 							</div>
-
 							<div class="form-group">
 								{{ Form::label('status', 'Cài đặt', ['class' => '']) }}
 								{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), '', ['class' => 'form-control', 'row' => 10]) }}

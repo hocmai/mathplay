@@ -2,6 +2,29 @@ $(window).on('load', function(e) {
 	
 });
 
+// $('textarea.editor').ckeditor({
+//     entities_latin: false,
+//     entities_greek: false,
+//     filebrowserBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html") }}',
+//     filebrowserImageBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html?type=Images") }}',
+//     filebrowserFlashBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html?type=Flash") }}',
+//     filebrowserUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files") }}',
+//     filebrowserImageUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images") }}',
+//     filebrowserFlashUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash") }}'
+// });
+// CKEDITOR.replace( 'editor',
+// {
+//     entities_latin: false,
+//     entities_greek: false,
+//     filebrowserBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html") }}',
+//     filebrowserImageBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html?type=Images") }}',
+//     filebrowserFlashBrowseUrl : '{{ url("/admins/ckeditor/ckfinder/ckfinder.html?type=Flash") }}',
+//     filebrowserUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files") }}',
+//     filebrowserImageUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images") }}',
+//     filebrowserFlashUploadUrl : '{{ url("/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash") }}'
+//     }
+// );
+
 $(document).ready(function(){
 	console.log('Myscript loaded');
 
@@ -83,6 +106,7 @@ $(document).ready(function(){
 		clone.find('[aria-controls="collapse-0"]').attr('aria-controls', 'collapse-'+(length+1));
 		clone.find('[aria-labelledby="heading-0"]').attr('aria-labelledby', 'heading-'+(length+1));
 		clone.find('>.panel').attr('id', length+1);
+		clone.find('script').
 
 		parent.find('.panel-collapse.in').collapse('hide');
 		parent.append(clone.html());

@@ -18,6 +18,7 @@
 	</div>
 </div>
 @endif
+<?php $uique = str_random(10); ?>
 
 <div class="row">
 	<div class="col-xs-12">
@@ -39,8 +40,12 @@
 								<select name="chapter_id" class="form-control selectpicker" data-live-search="1" required="true">{{ Common::getChapterSelect($lession->chapter_id) }}</select>
 							</div>
 							<div class="form-group">
-								{{ Form::label('description', 'Mô tả', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
-								{{ Form::textarea('description', $lession->description, ['class' => 'form-control', 'row' => 10]) }}
+								{{ Form::label('description', 'Mô tả') }}<div class="clearfix"></div>
+								<div class="">{{ Form::textarea('description', $lession->description, ['class' => 'form-control editor', 'row' => 5, 'id' => 'editor-'.$uique]) }}</div><div class="clearfix"></div>
+								<script type="text/javascript">
+									CKEDITOR.replace( 'editor-{{ $uique }}', ckeditor_config );
+									CKEDITOR.add
+								</script>
 							</div>
 							<div class="form-group">
 								{{ Form::label('status', 'Cài đặt', ['class' => '']) }}

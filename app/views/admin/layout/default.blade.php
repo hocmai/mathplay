@@ -40,6 +40,6 @@
 </div>
 <!-- ./wrapper -->
 
-{{-- @include('admin.common.footer') --}}
+@include('admin.common.footer')
 </body>
 </html>

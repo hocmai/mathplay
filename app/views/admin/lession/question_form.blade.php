@@ -6,6 +6,7 @@ $_lessionQuestionConf = LessionQuestion::where('lession_id', '=' , Common::getOb
 ->where('qid', '=' , Common::getObject($question, 'id'))
 ->pluck('config');
 $lessionQuestionConf = !empty($_lessionQuestionConf) ? (array)json_decode($_lessionQuestionConf) : [];
+$uique = str_random(10);
 ?>
 
 <div class="panel panel-default" id="{{$key}}">
@@ -44,7 +45,11 @@ $lessionQuestionConf = !empty($_lessionQuestionConf) ? (array)json_decode($_less
 			</div>
 			<div class="form-group">
 				<label>Nội dung</label>
-				{{ Form::textarea('question[content][]', Common::getObject($question, 'content'), ['class' => 'form-control', 'rows' => 5]) }}
+				{{ Form::textarea('question[content][]', Common::getObject($question, 'content'), ['class' => 'form-control editor', 'rows' => 5, 'id' => 'editor-'.$uique]) }}
+				<script type="text/javascript">
+					CKEDITOR.replace( 'editor-{{ $uique }}' );
+					CKEDITOR.add
+				</script>
 			</div>
 			{{ Form::hidden('sound_title[]', !empty($lessionQuestionConf['sound_title']) ? $lessionQuestionConf['sound_title'] : '') }}
 			<div class="form-group" id="get-auto-sound">
