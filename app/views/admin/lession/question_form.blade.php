@@ -53,7 +53,7 @@ $uique = str_random(10);
 					</script>
 				@endif
 			</div>
-			{{ Form::hidden('sound_title[]', !empty($lessionQuestionConf['sound_title']) ? $lessionQuestionConf['sound_title'] : '') }}
+			{{-- {{ Form::hidden('sound_title[]', !empty($lessionQuestionConf['sound_title']) ? $lessionQuestionConf['sound_title'] : '') }}
 			<div class="form-group" id="get-auto-sound">
 				{{ Form::checkbox('question_config[get_auto_sound][]', 'auto', false, ['id' => 'auto-sound-'.$key]) }}
 				<label for="{{ 'auto-sound-'.$key }}">Tự động tải về âm thanh</label>
@@ -74,7 +74,7 @@ $uique = str_random(10);
 	                    </span>
 	                </div>
 	            </div>
-			</div>
+			</div> --}}
 			<div class="form-group">
 				<label>Dạng câu hỏi</label>
 				<select name="question[type][]" class="form-control get-question-form-config{{ ($key>0) ? ' selectpicker' : '' }}" required="1" data-live-search="true">

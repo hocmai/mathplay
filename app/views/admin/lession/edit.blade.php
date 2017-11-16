@@ -81,7 +81,7 @@
 
 									<!-- Accordion -->
 									<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-										@if( empty(Common::getObject($lession, 'question')) | (!empty($lession) && count($lession->question) == 0) )
+										@if( !Common::getObject($lession, 'question') | (!empty($lession) && count($lession->question) == 0) )
 											@include('admin.lession.question_form', array('lession' => $lession, 'key' => 1))
 										@else
 											@foreach($lession->question as $key => $question)
