@@ -65,7 +65,7 @@ class LessionController extends AdminController {
 	 */
 	public function create()
 	{	
-		return View::make('admin.lession.create');
+		return View::make('admin.lession.edit');
 	}
 
 

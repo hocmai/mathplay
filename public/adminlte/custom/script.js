@@ -90,7 +90,7 @@ $(document).ready(function(){
 
 	///// Add multi questions
 	$('.form-add-question').on('click', 'button.add-new-question', function(){
-		console.log('test');
+		console.log('add new item');
 		var form = $(this).parents('.box.box-primary').find('.question-template-form'),
 	 		parent = $(this).parents('form').find('.panel-group'),
 	 		length = parseInt(parent.find('>.panel').length),
@@ -106,7 +106,18 @@ $(document).ready(function(){
 		clone.find('[aria-controls="collapse-0"]').attr('aria-controls', 'collapse-'+(length+1));
 		clone.find('[aria-labelledby="heading-0"]').attr('aria-labelledby', 'heading-'+(length+1));
 		clone.find('>.panel').attr('id', length+1);
-		clone.find('script').
+
+		////////// add editor to textarea
+		clone.find('script').remove();
+		if( clone.find('textarea.editor').length ){
+			clone.find('textarea.editor').each(function(index, el) {
+				var rand = 'editor-' + $.now() + Math.floor((Math.random() * 10) + 1);
+				$(this).attr('id', rand);
+				window.setTimeout(function(){
+					CKEDITOR.replace( rand );
+				},400)
+			});
+		}
 
 		parent.find('.panel-collapse.in').collapse('hide');
 		parent.append(clone.html());

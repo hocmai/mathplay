@@ -64,8 +64,8 @@
 	{{ HTML::script('adminlte/dist/js/app.min.js') }}
 	{{ HTML::script('frontend/js/bootstrap-select.min.js')}}
 
-	{{ HTML::script('admins/ckeditor/ckeditor.js') }}
-	<script type="text/javascript">
+	{{-- {{ HTML::script('admins/ckeditor/ckeditor.js') }} --}}
+	{{-- <script type="text/javascript">
 		var ckeditor_config = {
 			// entities_latin: false,
 			// entities_greek: false,
@@ -94,10 +94,10 @@
 			// ],
 			// toolbarCanCollapse : true,
 		};
-	</script>
+	</script> --}}
 
 	{{ HTML::script('adminlte/custom/script.js') }}
-	<script>
+	{{-- <script>
 	  $(function () {
 	    $('#start_date').timepicker({
 	    	format: "yyyy-mm-dd hh:ii:00",
@@ -139,7 +139,7 @@
 	    	dateFormat: 'yy-mm-dd',
 			});
 	  });
-	</script>
+	</script> --}}
 
 	@section('script')
 	@show	

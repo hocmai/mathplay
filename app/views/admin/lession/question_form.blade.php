@@ -46,10 +46,12 @@ $uique = str_random(10);
 			<div class="form-group">
 				<label>Nội dung</label>
 				{{ Form::textarea('question[content][]', Common::getObject($question, 'content'), ['class' => 'form-control editor', 'rows' => 5, 'id' => 'editor-'.$uique]) }}
-				<script type="text/javascript">
-					CKEDITOR.replace( 'editor-{{ $uique }}' );
-					CKEDITOR.add
-				</script>
+				@if($key > 0)
+					<script type="text/javascript">
+						CKEDITOR.replace( 'editor-{{ $uique }}' );
+						CKEDITOR.add
+					</script>
+				@endif
 			</div>
 			{{ Form::hidden('sound_title[]', !empty($lessionQuestionConf['sound_title']) ? $lessionQuestionConf['sound_title'] : '') }}
 			<div class="form-group" id="get-auto-sound">
