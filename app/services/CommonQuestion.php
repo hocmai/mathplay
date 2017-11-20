@@ -159,7 +159,7 @@ Class CommonQuestion {
 	 * Read time
 	 **/
 	public static function readNumber($num = 0){
-		if( $num >= 100 ) return 'Số này lớn hơn 99. Chịu không đọc được! :(';
+		$text = '';
 		$text_ = [
 			0 => 'không',
 			1 => 'một',
@@ -173,18 +173,37 @@ Class CommonQuestion {
 			9 => 'chín',
 			10 => 'mười',
 		];
-		if( $num > 20 ){
-			$text_[1] = 'mốt';
+
+		$thousand = floor($num/1000);
+		$hundred = floor(($num-($thousand*1000))/100);
+		$tens = floor( ($num-($thousand*1000)-($hundred*100))/10 );
+		$one = $num-($thousand*1000)-($hundred*100)-($tens*10);
+		if( $num >= 1000 ){
+			$text .= $text_[$thousand].' nghìn ';
+			$text .= $text_[$hundred].' trăm ';
+			$text .= (($tens == 0 && $one > 0 ) ? ' linh ' : '').self::readNumber($num-($hundred*100));
 		}
-		if( $num <= 10 ){
-			return $text_[$num];
-		} elseif( $num > 10 && $num <= 19 ){
-			return 'mười '.( ($text_[$num%10] == 'năm') ? 'lăm' : $text_[$num%10] );
-		} elseif( $num >= 20 && $num%10 == 0 ){
-			return $text_[$num/10].' mươi';
-		} elseif( $num > 20 && $num%10 > 0 ){
-			return $text_[floor($num/10)].' mươi '.( ($text_[$num%10] == 'năm') ? 'lăm' : $text_[$num%10] );
+		elseif( $num >= 100 ){
+			$text .= $text_[$hundred].' trăm';
+			if( $tens > 0 | $one > 0 ){
+				$text .= ' '.(($tens == 0 && $one > 0 ) ? 'linh ' : '').self::readNumber($num-($hundred*100));
+			}
 		}
+		else{
+			if( $num > 20 ){
+				$text_[1] = 'mốt';
+			}
+			if( $num <= 10 ){
+				$text = $text_[$num];
+			} elseif( $num > 10 && $num <= 19 ){
+				$text = 'mười '.( ($text_[$num%10] == 'năm') ? 'lăm' : $text_[$num%10] );
+			} elseif( $num >= 20 && $num%10 == 0 ){
+				$text = $text_[$num/10].' mươi';
+			} elseif( $num > 20 && $num%10 > 0 ){
+				$text = $text_[floor($num/10)].' mươi '.( ($text_[$num%10] == 'năm') ? 'lăm' : $text_[$num%10] );
+			}
+		}
+		return $text;
 	}
 
 }
