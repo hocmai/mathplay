@@ -1,6 +1,7 @@
 <?php
 $answer = isset($config['answer']) ? $config['answer'] : '';
 $type = isset($config['type']) ? $config['type'] : 'input';
+// dd($config);
 ?>
 
 @include('site.questions.render-title', ['question' => $question])
@@ -18,22 +19,18 @@ $type = isset($config['type']) ? $config['type'] : 'input';
 			</div>
 		</div>
 		
-		<div class="form-group inline-block">
+		<div class="form-group pull-left">
 			@if( $type == 'input' )
 				<div class="col-sm-12">
 					{{ Form::text('answer', '', ['class' => 'form-control', 'required' => true]) }}
 				</div>
-			@else
-				<?php
-					$answer_arr = !empty($config['answer_arr']) ? explode(';', $config['answer_arr']) : []; 
-					shuffle($answer_arr);
-				?>
-				@foreach( $answer_arr as $key => $value )
-					<?php $value = trim($value); ?>
+			@elseif( isset($config['answer_key']) )
+				@foreach( $config['answer_key'] as $key => $value )
 					<div class="radio form-group radio-box">
 						{{ Form::radio('answer', $value, false, ['id' => $question_num.'-'.$key]) }}
-						<label for="{{ $question_num.'-'.$key }}">{{ $value }}</label>
+						<label for="{{ $question_num.'-'.$key }}">{{ (isset($config['answer_value'][$key])) ? $config['answer_value'][$key] : '' }}</label>
 					</div>
+					<div class="clear clearfix"></div>
 				@endforeach
 			@endif
 		</div>

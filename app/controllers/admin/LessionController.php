@@ -98,7 +98,15 @@ class LessionController extends AdminController {
         if( !empty($input['question_config']) ){
     		foreach ($input['question_config'] as $key => $value) {
     			foreach ($value as $key2 => $value2) {
-    				$question_config[$key2][$key] = $value2;
+    				if( is_string($value2) ){
+    					$question_config[$key2][$key] = $value2;
+    				}
+    				elseif( is_array($value2) ){
+    					foreach ($value2 as $key3 => $value3) {
+    						$question_config[$key2][$key][$key3] = $value3;
+    					}
+    				}
+    				
     			}
     		}
         }
@@ -215,7 +223,14 @@ class LessionController extends AdminController {
         if( !empty($input['question_config']) ){
     		foreach ($input['question_config'] as $key => $value) {
     			foreach ($value as $key2 => $value2) {
-    				$question_config[$key2][$key] = $value2;
+    				if( is_string($value2) ){
+    					$question_config[$key2][$key] = $value2;
+    				}
+    				elseif( is_array($value2) ){
+    					foreach ($value2 as $key3 => $value3) {
+    						$question_config[$key2][$key][$key3] = $value3;
+    					}
+    				}
     			}
     		}
         }

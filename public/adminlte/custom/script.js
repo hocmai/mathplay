@@ -30,6 +30,7 @@ $(document).ready(function(){
 
 	//////////////// Dang toan co loi van - cau trac nghiem
 	$('.form-add-question').on('click', '.add-new-answer-arr', function(){
+		console.log('add new value-key');
 		var parent = $(this).parents('.answer-arr-section').find('.wrapper-content');
 		clone = parent.find('>.row').first().clone();
 		clone.find('.textarea-editor > div').remove();
@@ -38,34 +39,34 @@ $(document).ready(function(){
 		var rand = 'editor-' + $.now() + Math.floor((Math.random() * 10) + 1);
 		clone.find('input').attr('value', '');
 		clone.find('input').val('').change();
-		if( clone.find('textarea.editor').length ){
-			clone.find('textarea.editor').each(function(index, el) {
-				var rand = 'editor-' + $.now() + Math.floor((Math.random() * 10) + 1);
-				$(this).attr('id', rand);
-				$(this).empty();
-				window.setTimeout(function(){
-					CKEDITOR.replace( rand );
-					CKEDITOR.add;
+		clone.hide();
+		window.setTimeout(function(){
+			if( clone.find('textarea.editor').length ){
+				clone.find('textarea.editor').each(function(index, el) {
+					var rand = 'editor-' + $.now() + Math.floor((Math.random() * 10) + 1);
+					$(this).attr('id', rand);
+					$(this).empty();
+						CKEDITOR.replace( rand );
+						CKEDITOR.add;
 
-					//////////// Change input name for all
-					parent.find('>.row').each(function(index, el) {
-						var name_input = $('input[type="text"]', this).attr('name'),
-						name_match = name_input.match(/\[+[\w]+\]/gi);
-						if( name_match.length == 2 ){
-							$('input[type="text"]', this).attr('name', name_input.replace(name_match[0], "[answer_key_"+ (index+1) +"]") );
-						}
+						//////////// Change input name for all
+						// parent.find('>.row').each(function(index, el) {
+						// 	var name_input = $('input[type="text"]', this).attr('name'),
+						// 	name_match = name_input.match(/\[+[\w]+\]/gi);
+						// 	if( name_match.length == 2 ){
+						// 		// $('input[type="text"]', this).attr('name', name_input.replace(name_match[0], "[answer_key_"+ (index+1) +"]") );
+						// 	}
 
-						var name_textarea = $('input[type="text"]', this).attr('name'),
-						name_match = name_textarea.match(/\[+[\w]+\]/gi);
-						if( name_match.length == 2 ){
-							$('textarea', this).attr('name', name_textarea.replace(name_match[0], "[answer_value_"+ (index+1) +"]") );
-						}
-						// $('input[type="text"]', this).attr('name', 'question_config[answer_key_'+ (index+1) +'][]');
-						// $('textarea', this).attr('name', 'question_config[answer_value_'+ (index+1) +'][]');
-					});
-				},200)
-			});
-		}
+						// 	var name_textarea = $('input[type="text"]', this).attr('name'),
+						// 	name_match = name_textarea.match(/\[+[\w]+\]/gi);
+						// 	if( name_match.length == 2 ){
+						// 		// $('textarea', this).attr('name', name_textarea.replace(name_match[0], "[answer_value_"+ (index+1) +"]") );
+						// 	}
+						// });
+				});
+			}
+			clone.show();
+		},200)
 		parent.append(clone);
 	})
 	/////////////////////// Remove answer arr
@@ -77,6 +78,12 @@ $(document).ready(function(){
 			$(this).remove();
 		})
 	})
+	/////////////////////// hide-show
+	$('.form-add-question').on('change', 'select.choose-type-answer-nhap-dap-an', function(){
+		$(this).parents('#get-config-form').find('.multi-key-value-array').toggleClass('hide');
+	})
+
+
 
 	//////////// Add question sound in form
 	$('.form-add-question').on('change', '#get-auto-sound >input[type="checkbox"]', function(){
@@ -127,19 +134,19 @@ $(document).ready(function(){
 		});
 		$(this).parents('#get-config-form').find('input.question-config-hidden').val(JSON.stringify(_out)).change();
 	})
-	$('form.lession-form-update').on('submit', function(e){
-		$('.form-add-question #get-config-form', this).each(function(index, val){
-			var _data = $(this).find('select, textarea, input:not(.question-config-hidden)').serializeArray(),
-			_out = {};
-			console.log(_data);
-			$.each(_data, function(index, el) {
-				el.name = el.name.replace('question_config[', '').replace('][]', '');
-				_out[el.name] = el.value;
-			});
-			$(this).find('input.question-config-hidden').val(JSON.stringify(_out)).change();
-		})
-		// e.preventDefault();
-	})
+	// $('form.lession-form-update').on('submit', function(e){
+	// 	$('.form-add-question #get-config-form', this).each(function(index, val){
+	// 		var _data = $(this).find('select, textarea, input:not(.question-config-hidden)').serializeArray(),
+	// 		_out = {};
+	// 		console.log(_data);
+	// 		$.each(_data, function(index, el) {
+	// 			el.name = el.name.replace('question_config[', '').replace('][]', '');
+	// 			_out[el.name] = el.value;
+	// 		});
+	// 		$(this).find('input.question-config-hidden').val(JSON.stringify(_out)).change();
+	// 	})
+	// 	// e.preventDefault();
+	// })
 	/////////////////////////////////////////////////////////
 
 
