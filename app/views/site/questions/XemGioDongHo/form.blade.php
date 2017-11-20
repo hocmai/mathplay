@@ -1,11 +1,11 @@
 <em>Nội dung câu hỏi được tạo tự động.</em>
 <div class="form-group">
 	<label>Loại đồng hồ</label>
-	{{ Form::select('question_config[clock][]', ['analog' => 'Đồng hồ kim', 'digital' => 'Đồng hồ số'], !empty($config['clock']) ? $config['clock'] : '', ['class'=>'form-control']) }}
+	{{ Form::select('question_config[clock]['.$id.']', ['analog' => 'Đồng hồ kim', 'digital' => 'Đồng hồ số'], !empty($config['clock']) ? $config['clock'] : '', ['class'=>'form-control']) }}
 </div>
 <div class="form-group">
 	<label>Hình thức câu hỏi</label>
-	{{ Form::select('question_config[type][]', [
+	{{ Form::select('question_config[type]['.$id.']', [
 		'' => 'Mặc định',
 		'hour' => 'Nhập số giờ',
 		'min' => 'Nhập số phút',

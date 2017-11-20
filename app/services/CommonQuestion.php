@@ -46,11 +46,12 @@ Class CommonQuestion {
 	/**
 	 * Get config form
 	 **/
-	public static function getConfigForm($type = null, $config = null){
+	public static function getConfigForm($type = null, $config = null, $id = 0){
 		if (View::exists('site.questions.'.$type.'.form')) {
-			return View::make('site.questions.'.$type.'.form', ['config' => $config])->render().Form::hidden('question_config[config][]', json_encode($config), ['class' => 'question-config-hidden']);
+			return View::make('site.questions.'.$type.'.form', ['config' => $config, 'id' => $id])->render();
+			// .Form::hidden('question_config[config]['.$id.']', json_encode($config), ['class' => 'question-config-hidden']);
 		}
-		return Form::hidden('question_config[empty][]').'<span>Không có cài đặt nào cho dạng bài này.</span>';
+		return Form::hidden('question_config[empty]['.$id.']').'<span>Không có cài đặt nào cho dạng bài này.</span>';
 	}
 
 

@@ -1,7 +1,7 @@
 <em>Tiêu đề và nội dung sẽ được tạo tự động</em>
 <div class="form-group">
 	{{ Form::label('', 'Loại câu hỏi') }}
-	{{ Form::select('question_config[answer_type][]', [
+	{{ Form::select('question_config[answer_type]['.$id.']', [
 		''=>'Mặc định',
 		'single'=>'Đọc tên hình',
 		'multi' => 'Chọn hình đúng'
@@ -10,5 +10,5 @@
 
 <div class="form-group">
 	{{ Form::label('', 'Chọn hình') }}
-	{{ Form::select('question_config[shape][]', [''=>'Mặc định'] + NhanDienCacHinh::getShape(), !empty($config['shape']) ? $config['shape'] : '', ['class' => 'form-control']) }}
+	{{ Form::select('question_config[shape]['.$id.']', [''=>'Mặc định'] + NhanDienCacHinh::getShape(), !empty($config['shape']) ? $config['shape'] : '', ['class' => 'form-control']) }}
 </div>

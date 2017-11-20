@@ -1,6 +1,6 @@
 <div class="form-group">
 	{{ Form::label('', 'Hình thức câu hỏi') }}
-	{{ Form::select('question_config[question_type][]', [
+	{{ Form::select('question_config[question_type]['.$id.']', [
 		'' => 'Mặc định',
 		'input' => 'Nhập đáp án',
 		'choose' => 'Chọn biểu thức đúng',
@@ -9,5 +9,5 @@
 </div>
 <div class="form-group">
 	{{ Form::label('', 'Giá trị lớn nhất') }}
-	{{ Form::text('question_config[max_value][]', !empty($config['max_value']) ? $config['max_value'] : 10, ['class' => 'form-control']) }}
+	{{ Form::text('question_config[max_value]['.$id.']', !empty($config['max_value']) ? $config['max_value'] : 10, ['class' => 'form-control']) }}
 </div>

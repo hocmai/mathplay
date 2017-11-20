@@ -3,19 +3,35 @@ $(document).ready(function(){
 	console.log('Ajax script loaded');
 	///// Get config question form
 	$('.form-add-question').on('change', '.get-question-form-config', function(e){
-		var type = $(this).val(), _this = $(this);
+		var type = $(this).val(), _this = $(this),
+		panel_id = $(this).parents('.panel').attr('id');
 		$(this).parents('.panel-body').find('#get-config-form').empty();
 		if(type != ''){
 			$(this).parents('.panel-body').find('#get-config-form').button('loading');
 			$.ajax({
 				url:'/ajax/getquestionformconfig',
 				method:'POST',
-				data: {type: type},
+				data: {type: type, id: panel_id},
 				//dataType:'json',
 				cache:false,
 				success:function(data){
-					console.log(data);
+					// console.log($(data).find(''), panel_id);
+					if( data instanceof HTMLElement ){
+						$(data).find('input, select, textarea').each(function(index2, el){
+							var name = $(this).attr('name'),
+							panel_id = $(this).parents('.panel').attr('id');
+							if( typeof name == 'undefined' ) return;
+
+							var name_match = name.match(/\[+[\w]+\]/gi);
+							if( name_match.length == 2 ){
+								$(this).attr('name', name.replace(name_match[1], "["+ panel_id +"]") );
+							}
+						})
+					}
 					_this.parents('.panel-body').find('#get-config-form').empty().append(data);
+				},
+				error: function(error){
+					console.log(error);
 				}
 			});
 		}

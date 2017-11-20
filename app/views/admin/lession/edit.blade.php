@@ -31,8 +31,8 @@
 					@include('admin.lession.question_form', array('lession' => (!empty($lession)) ? $lession : null))
 				</div>
 				{{ (!empty($lession))
-					 ? Form::open(array('action' => array('LessionController@update', $lession->id), 'files' => true, 'method' => 'PUT'))
-					 : Form::open(['action' => ['LessionController@store'], 'files' => true, 'method' => 'POST']) }}
+					 ? Form::open(array('action' => array('LessionController@update', $lession->id), 'files' => true, 'method' => 'PUT', 'class' => 'lession-form-update'))
+					 : Form::open(['action' => ['LessionController@store'], 'files' => true, 'method' => 'POST', 'class' => 'lession-form-update']) }}
 					<div class="box-body">
 						<div class="row">
 							<div class="col-xs-12 col-sm-5">
@@ -54,14 +54,14 @@
 								</div>
 								<div class="form-group">
 									{{ Form::label('status', 'Cài đặt', ['class' => '']) }}
-									{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), ( Common::getObject($lession,'config') ) ? $lession->config : '', ['class' => 'form-control', 'row' => 10]) }}
+									{{ Form::select('config', ['' => '-- Chọn --'] + CommonConfig::getConfigLession(), Common::getObject($lession,'config'), ['class' => 'form-control', 'row' => 10]) }}
 									<span class="description"><a href="{{ action('ConfLessionController@index') }}">Cài đặt độ khó</a></span>
 								</div>
 								<div class="form-group">
 									{{ Form::label('status', 'trạng thái', ['class' => 'row col-sm-6']) }}<div class="clearfix"></div>
 									{{ Form::select('status', [
-										0 => 'Unpublic',
-										1 => 'Public'
+										1 => 'Public',
+										0 => 'UnPublic'
 									], Common::getObject($lession, 'status'), ['class' => 'form-control']) }}
 								</div>
 								<div class="form-group">
@@ -85,7 +85,7 @@
 											@include('admin.lession.question_form', array('lession' => $lession, 'key' => 1))
 										@else
 											@foreach($lession->question as $key => $question)
-												@include('admin.lession.question_form', array('lession' => $lession, 'question' => $question, 'key' => $key+2))
+												@include('admin.lession.question_form', array('lession' => $lession, 'question' => $question, 'key' => $key+1))
 											@endforeach
 										@endif
 									</div>

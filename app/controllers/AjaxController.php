@@ -187,7 +187,8 @@ class AjaxController extends BaseController {
 	public function getQuestionConfigForm()
 	{
 		$type = Input::get('type');
-		$form = CommonQuestion::getConfigForm($type);
+		$id = Input::get('id');
+		$form = CommonQuestion::getConfigForm($type, null, $id);
 		return Response::json($form);
 	}
 

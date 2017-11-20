@@ -10,7 +10,7 @@ $uique = str_random(10);
 ?>
 
 <div class="panel panel-default" id="{{$key}}">
-	{{ Form::hidden('question[id][]', Common::getObject($question, 'id')) }}
+	{{ Form::hidden('question[id]['.$key.']', Common::getObject($question, 'id')) }}
     <div class="panel-heading" role="tab" id="heading-{{$key}}">
     	<h4 class="panel-title">
 	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="{{ ($key>0) ? 'false' : 'true' }}" aria-controls="collapse-{{$key}}">
@@ -31,21 +31,21 @@ $uique = str_random(10);
     	<div class="panel-body">
 			<div class="form-group">
 				<label>Tiêu đề</label>
-				{{ Form::text('question[title][]', Common::getObject($question, 'title'), ['class' => 'form-control', 'required' => true]) }}
+				{{ Form::text('question[title]['.$key.']', Common::getObject($question, 'title'), ['class' => 'form-control', 'required' => true]) }}
 			</div>
 			<div class="row">
 				<div class="form-group col-sm-5">
 					<label>Từ câu số</label>
-					{{ Form::number('question_config[question_start][]', !empty($lessionQuestionConf['question_start']) ? $lessionQuestionConf['question_start'] : '', ['class' => 'form-control']) }}
+					{{ Form::number('question_config[question_start]['.$key.']', !empty($lessionQuestionConf['question_start']) ? $lessionQuestionConf['question_start'] : '', ['class' => 'form-control']) }}
 				</div>
 				<div class="form-group col-sm-5">
 					<label>Đến câu số</label>
-					{{ Form::number('question_config[question_end][]', !empty($lessionQuestionConf['question_end']) ? $lessionQuestionConf['question_end'] : '', ['class' => 'form-control']) }}
+					{{ Form::number('question_config[question_end]['.$key.']', !empty($lessionQuestionConf['question_end']) ? $lessionQuestionConf['question_end'] : '', ['class' => 'form-control']) }}
 				</div>
 			</div>
 			<div class="form-group">
 				<label>Nội dung</label>
-				{{ Form::textarea('question[content][]', Common::getObject($question, 'content'), ['class' => 'form-control editor', 'rows' => 5, 'id' => 'editor-'.$uique]) }}
+				{{ Form::textarea('question[content]['.$key.']', Common::getObject($question, 'content'), ['class' => 'form-control editor', 'rows' => 3, 'id' => 'editor-'.$uique]) }}
 				@if($key > 0)
 					<script type="text/javascript">
 						CKEDITOR.replace( 'editor-{{ $uique }}' );
@@ -77,15 +77,15 @@ $uique = str_random(10);
 			</div> --}}
 			<div class="form-group">
 				<label>Dạng câu hỏi</label>
-				<select name="question[type][]" class="form-control get-question-form-config{{ ($key>0) ? ' selectpicker' : '' }}" required="1" data-live-search="true">
+				<select name="question[type][{{$key}}]" class="form-control get-question-form-config{{ ($key>0) ? ' selectpicker' : '' }}" required="1" data-live-search="true">
 					<option value="">-- Chọn --</option>
-					@foreach( CommonQuestion::getAllType() as $key => $value )
-						<option{{ ($key == Common::getObject($question, 'type')) ? ' selected' : '' }} data-tokens="{{ Str::slug($value, ' ').' '.$value }}" value="{{ $key }}">{{ $value }}</option>
+					@foreach( CommonQuestion::getAllType() as $index => $value )
+						<option{{ ($index == Common::getObject($question, 'type')) ? ' selected' : '' }} data-tokens="{{ Str::slug($value, ' ').' '.$value }}" value="{{ $index }}">{{ $value }}</option>
 					@endforeach
 				</select>
 			</div>
 			<div id="get-config-form" data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Loading">
-				{{ CommonQuestion::getConfigForm(Common::getObject($question, 'type'), $lessionQuestionConf) }}
+				{{ CommonQuestion::getConfigForm(Common::getObject($question, 'type'), $lessionQuestionConf, $key) }}
 			</div>
 			@if($lession && $question)
 				<div class="form-group">

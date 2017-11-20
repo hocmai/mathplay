@@ -27,6 +27,7 @@ class LessionController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
+		dd($input);
 		$data = Lession::select('lessions.*');
 		if( !empty($input['title']) ){
 			$data = $data->where('lessions.title', 'LIKE' , '%'.$input['title'].'%');
@@ -93,6 +94,15 @@ class LessionController extends AdminController {
     		}
         }
 
+        $question_config = [];
+        if( !empty($input['question_config']) ){
+    		foreach ($input['question_config'] as $key => $value) {
+    			foreach ($value as $key2 => $value2) {
+    				$question_config[$key2][$key] = $value2;
+    			}
+    		}
+        }
+
         // dd($question_input);
         //// Insert lession_question table
         if(count($question_input)){
@@ -101,10 +111,11 @@ class LessionController extends AdminController {
         		$questionId = CommonNormal::create(array_except($value, ['config', 'id']), 'Question');
 
         		/////// Get config of question
-        		$config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
-                $config['question_start'] = $input['question_config']['question_start'][$key];
-                $config['question_end'] = $input['question_config']['question_end'][$key];
-
+        		// $config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
+          //       $config['question_start'] = $input['question_config']['question_start'][$key];
+          //       $config['question_end'] = $input['question_config']['question_end'][$key];
+        		$config = $question_config[$key];
+        		
         		///////// Get sound by google translate
         		if( !empty($input['question_config']['get_auto_sound'][$key]) ){
     				$ch = curl_init('https://translate.google.com.vn/translate_tts?ie=UTF-8&q='. str_replace(' ', '%20', $value['title']) .'&tl=vi&client=tw-op');
@@ -200,24 +211,33 @@ class LessionController extends AdminController {
     		}
         }
 
+        $question_config = [];
+        if( !empty($input['question_config']) ){
+    		foreach ($input['question_config'] as $key => $value) {
+    			foreach ($value as $key2 => $value2) {
+    				$question_config[$key2][$key] = $value2;
+    			}
+    		}
+        }
+
+        // dd($question_config);
         ///// Get array of question id after insert question table
-        $questions = [];
+        // $questions = [];
         if( count($question_input) ){
         	foreach ($question_input as $key => $value) {
         		$questionId = Common::getObject(Lession::find($id)->question->find($value['id']), 'id');
-
         		///// Tao/Chinh sua cau hoi
         		if( $questionId ){
         			CommonNormal::update($questionId, array_except($value, ['config']), 'Question');
         		} else{
         			$questionId = CommonNormal::create(array_except($value, ['config']), 'Question');
         		}
-        		$lessionQuestion = LessionQuestion::where('lession_id', '=', $id)->where('qid', '=', $questionId);
 
                 ///////// Tao/chinh sua config cho tung cau hoi
-                $config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
-                $config['question_start'] = $input['question_config']['question_start'][$key];
-                $config['question_end'] = $input['question_config']['question_end'][$key];
+                // $config = !empty($input['question_config']['config'][$key]) ? (array)json_decode($input['question_config']['config'][$key]) : [];
+                // $config['question_start'] = $input['question_config']['question_start'][$key];
+                // $config['question_end'] = $input['question_config']['question_end'][$key];
+        		$config = $question_config[$key];
 
         		///////// Get sound by google translate
         		if( !empty($input['sound_title'][$key]) ){
@@ -249,7 +269,8 @@ class LessionController extends AdminController {
         			}
         		}
 
-        		if( $lessionQuestion->count() ){
+        		$lessionQuestion = LessionQuestion::where('lession_id', '=', $id)->where('qid', '=', $questionId);
+        		if( $lessionQuestion->count() > 0 ){
         			$lessionQuestion->update( ['config' => json_encode($config) ] );
         		} else{
         			CommonNormal::create([

@@ -10,11 +10,11 @@
 	<div class="row">
 		<div class="col-xs-12 col-sm-6">
 			<label>Nhỏ nhất</label>
-			{{ Form::number('question_config[min][]', !empty($config['min']) ? $config['min'] : 1, ['class'=>'form-control']) }}
+			{{ Form::number('question_config[min]['.$id.']', !empty($config['min']) ? $config['min'] : 1, ['class'=>'form-control']) }}
 		</div>
 		<div class="col-xs-12 col-sm-6">
 			<label>Nhỏ nhất</label>
-			{{ Form::number('question_config[max][]', !empty($config['max']) ? $config['max'] : 100, ['class'=>'form-control']) }}
+			{{ Form::number('question_config[max]['.$id.']', !empty($config['max']) ? $config['max'] : 100, ['class'=>'form-control']) }}
 		</div>
 	</div>
 </div>
