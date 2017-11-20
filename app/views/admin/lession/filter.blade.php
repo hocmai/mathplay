@@ -5,8 +5,18 @@
 			{{ Form::text('title', Input::get('title'), ['class' => 'form-control', 'placeholder' => 'Tiêu đề']) }}
 		</div>
 		<div class="input-group inline-block">
+			<label>Dạng bài</label>
+			<div class="clear clearfix"></div>
+			<select name="type" class="form-control selectpicker" data-live-search="true">
+				<option value="">-- Tất cả --</option>
+				@foreach( CommonQuestion::getAllType() as $index => $value )
+					<option{{ ($index == Input::get('type')) ? ' selected' : '' }} data-tokens="{{ Str::slug($value, ' ').' '.$value }}" value="{{ $index }}">{{ $value }}</option>
+				@endforeach
+			</select>
+		</div>
+		<div class="input-group inline-block">
 			<label style="display: block;">Chuyên đề</label>
-		  	{{ Form::select('chapter', ['' => '--Tất cả--'] + Common::getChapterList(), Input::get('chapter'), ['class' => 'form-control', 'style' => 'max-width: 220px']) }}
+		  	{{ Form::select('chapter', ['' => '--Tất cả--'] + Common::getChapterList(), Input::get('chapter'), ['class' => 'form-control', 'style' => 'max-width: 200px']) }}
 		</div>
 		<div class="input-group inline-block">
 			<label style="display: block;">Môn học</label>

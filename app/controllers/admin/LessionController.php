@@ -27,10 +27,15 @@ class LessionController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
-		dd($input);
+		// dd($input);
 		$data = Lession::select('lessions.*');
 		if( !empty($input['title']) ){
 			$data = $data->where('lessions.title', 'LIKE' , '%'.$input['title'].'%');
+		}
+		if( !empty($input['type']) ){
+			$data = $data->join('lession_question', 'lession_question.lession_id', '=', 'lessions.id')
+				->join('questions', 'lession_question.qid', '=', 'questions.id');
+			$data = $data->where('questions.type', 'LIKE' , '%'.$input['type'].'%');
 		}
 		$data = $data->join('chapters', 'lessions.chapter_id', '=', 'chapters.id')
 			->join('subjects', 'chapters.subject_id', '=', 'subjects.id')
