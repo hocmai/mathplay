@@ -49,7 +49,7 @@ $rand_shape = array_rand($shape);
 				@endif
 			</div>
 		@endif
-		<div class="form-group input">
+		<div class="form-group input inline-block">
 			{{ Form::hidden('answer', '') }}
 			<div class="pull-left">
 				{{ Form::number('answer_1', '', ['class' => 'form-control pull-left inline-block', 'style' => 'width: 60px', 'min' => 0, 'max' => 9]) }}
