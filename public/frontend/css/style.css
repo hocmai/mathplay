@@ -1652,12 +1652,12 @@ footer .leg .social a {
 .bg-box-lam-bai label {
   font-weight: 500;
   cursor: pointer;
-  background: #17bebb;
-  font-size: 18px;
+  background: #fff;
+  font-size: 16px;
   width: 140px;
   text-align: center;
-  border-radius: 8px;
-  color: #fff;
+  border-radius: 5px;
+  color: #666;
   padding: 10px 15px;
   -webkit-transition: 0.3s;
   -o-transition: 0.3s;

@@ -1,6 +1,6 @@
 <?php
 $min = !empty($config['min_value']) ? $config['min_value'] : 1;
-$max = !empty($config['max_value']) ? $config['max_value'] : 999;
+$max = !empty($config['max_value']) ? $config['max_value'] : 9999;
 $answer = rand($min, $max);
 $tens = floor($answer/10);
 $ones = $answer - ($tens*10);
@@ -51,16 +51,20 @@ $rand_shape = array_rand($shape);
 		@endif
 		<div class="form-group input inline-block">
 			{{ Form::hidden('answer', '') }}
-			<div class="pull-left">
+			<div class="pull-left {{ (($answer < 1000) ? 'hide' : '') }}">
 				{{ Form::number('answer_1', '', ['class' => 'form-control pull-left inline-block', 'style' => 'width: 60px', 'min' => 0, 'max' => 9]) }}
+				<strong class="pull-left" style="padding: 5px;font-size: 16px;">nghìn + </strong>
+			</div>
+			<div class="pull-left {{ (($answer < 100) ? 'hide' : '') }}">
+				{{ Form::number('answer_2', '', ['class' => 'form-control pull-left inline-block', 'style' => 'width: 60px', 'min' => 0, 'max' => 9]) }}
 				<strong class="pull-left" style="padding: 5px;font-size: 16px;">trăm + </strong>
 			</div>
 			<div class="pull-left">
-				{{ Form::number('answer_2', '', ['class' => 'form-control pull-left inline-block', 'style' => 'width: 60px', 'min' => 0, 'max' => 9]) }}
+				{{ Form::number('answer_3', '', ['class' => 'form-control pull-left inline-block', 'style' => 'width: 60px', 'min' => 0, 'max' => 9]) }}
 				<strong class="pull-left" style="padding: 5px;font-size: 16px;">chục + </strong>
 			</div>
 			<div class="pull-left">
-				{{ Form::number('answer_3', '', ['class' => 'form-control pull-left inline-block', 'style' => 'width: 60px', 'min' => 0, 'max' => 9]) }}
+				{{ Form::number('answer_4', '', ['class' => 'form-control pull-left inline-block', 'style' => 'width: 60px', 'min' => 0, 'max' => 9]) }}
 				<strong class="pull-left" style="padding: 5px;font-size: 16px;">đơn vị = {{ CommonQuestion::readNumber($answer) }}</strong>
 			</div>
 		</div>

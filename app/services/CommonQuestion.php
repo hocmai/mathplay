@@ -181,7 +181,7 @@ Class CommonQuestion {
 		if( $num >= 1000 ){
 			$text .= $text_[$thousand].' nghìn ';
 			$text .= $text_[$hundred].' trăm ';
-			$text .= (($tens == 0 && $one > 0 ) ? ' linh ' : '').self::readNumber($num-($hundred*100));
+			$text .= ' '.(($tens == 0 && $one > 0 ) ? 'linh ' : '').self::readNumber($num-($thousand*1000)-($hundred*100));
 		}
 		elseif( $num >= 100 ){
 			$text .= $text_[$hundred].' trăm';

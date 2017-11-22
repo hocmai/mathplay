@@ -507,11 +507,12 @@ body>.loading>span::after{
 
 .radio-box.form-group > label{
     width: auto;
-    border: 3px solid #b8b8b8;
+    border: 2px solid #b8b8b8;
 }
 .radio-box.form-group > input:checked + label{
-    background: #129694;
-    border-color: #ffc914;
+    background: #60e2e1;
+    border-color: #F1E1A7;
+    color: #fff;
 }
 
 
