@@ -16,7 +16,6 @@ $uique = str_random(10);
 	        <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-{{$key}}" aria-expanded="{{ ($key>0) ? 'false' : 'true' }}" aria-controls="collapse-{{$key}}">
 		        @if($question)
 		        	{{ $question->title }} (câu {{ !empty($lessionQuestionConf['question_start']) ? $lessionQuestionConf['question_start'] : '?'}} - câu {{ !empty($lessionQuestionConf['question_end']) ? $lessionQuestionConf['question_end'] : '?' }})
-		        	}
 		        @else
 		        	Tạo mới câu hỏi
 		        @endif

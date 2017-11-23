@@ -19,13 +19,18 @@ uploadfile,uploadimage,videoembed,youtube,htmlbuttons,autolink,autosave';
 
 
 **/
+// console.log(window.location);
 CKEDITOR.editorConfig = function( config ) {
 	// Define changes to default configuration here. For example:
 	// config.language = 'fr';
 	// config.uiColor = '#AADC6E';
 	// config.skin = 'moono';
 	config.toolbarCanCollapse = true;
-	// config.extraPlugins = 'toolbar,accordionList';
+	config.extraPlugins = 'mathjax';
+	// config.mathJaxLib = window.location.origin+'/admins/ckeditor/mathjax.js?config=TeX-AMS_HTML';
+	config.mathJaxLib = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML';
+	config.mathJaxClass = 'equation';
+	// config.extraPlugins = 'mathjax,toolbar,accordionList';
 	config.filebrowserBrowseUrl = "/admins/ckeditor/ckfinder/ckfinder.html";
 	config.filebrowserImageBrowseUrl = "/admins/ckeditor/ckfinder/ckfinder.html?type=Images";
 	config.filebrowserFlashBrowseUrl = "/admins/ckeditor/ckfinder/ckfinder.html?type=Flash";
@@ -33,13 +38,25 @@ CKEDITOR.editorConfig = function( config ) {
 	config.filebrowserImageUploadUrl = "/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images";
 	config.filebrowserFlashUploadUrl = "/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash";
 	config.toolbarGroups = [
+
+		// { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
+		// { name: 'editing', groups: [ 'find', 'selection', 'spellchecker', 'editing' ] },
+		// { name: 'forms', groups: [ 'forms' ] },
+		// '/',
 		{ name: 'basicstyles', groups: [ 'basicstyles' ] },
+		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'paragraph' ] },
 		{ name: 'links', groups: [ 'links' ] },
-		{ name: 'paragraph', groups: [ 'list', 'blocks', 'paragraph' ] },
 		{ name: 'insert', groups: [ 'insert' ] },
+		{ name: 'someName', groups: [ 'mathjax' ] },
+		// '/',
 		{ name: 'styles', groups: [ 'styles' ] },
-		{ name: 'document', groups: [ 'bootstrapTable', 'document', 'mode' ] }
+		{ name: 'colors', groups: [ 'colors' ] },
+		// { name: 'tools', groups: [ 'tools' ] },
+		// { name: 'others', groups: [ 'others' ] },
+		// { name: 'about', groups: [ 'about' ] }
+		{ name: 'document', groups: [ 'bootstrapTable', 'mode', 'document' ] },
+
 	];
 
-	config.removeButtons = 'Anchor,CreateDiv,Blockquote,Save,NewPage,Print,Preview,Font,Flash,Smiley';
+	config.removeButtons = 'Anchor,CreateDiv,Blockquote,Save,NewPage,Print,Preview,Font,Flash,Smiley,Styles,PageBreak,HorizontalRule,Iframe';
 };

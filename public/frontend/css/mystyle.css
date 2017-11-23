@@ -2,6 +2,8 @@
 body{
     line-height: 1.4;
     font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
 }
 img{
     max-width: 100%;
@@ -22,6 +24,9 @@ img{
 .modal-backdrop.fade.in{
     visibility: visible;
 }
+.form-control{
+    font-size: inherit;
+}
 
 .bg-box-lam-bai .radio>label{
     width: auto;
@@ -34,6 +39,7 @@ img{
     background: #37a09f;
 }
 .question-rendered .start{
+    font-size: 18px;
     background: none;
     padding-left: 0;
     padding-bottom: 20px;
@@ -41,6 +47,7 @@ img{
 .question-rendered .description{
     margin: -15px 0 40px;
     color: #17bebb;
+    font-size: 17px;
 }
 .bg-box-lam-bai .question-wrapper{
     padding-bottom: 150px;

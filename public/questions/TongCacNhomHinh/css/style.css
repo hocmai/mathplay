@@ -1,0 +1,19 @@
+#TongCacNhomHinh .circle{
+    float: left;
+    margin: 10px;
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    border: 2px solid #999;
+    padding: 25px;
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+}
+#TongCacNhomHinh .circle>.cont{
+	width: 100%;
+    text-align: center;
+}
+#TongCacNhomHinh .circle>.cont>span{
+	margin: 3px;
+}
