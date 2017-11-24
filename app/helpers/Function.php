@@ -3,14 +3,14 @@
 /**
  * Get random value of an array
  */
-function getRandArrayVal($arr, $num = 1){
+function getRandArrayVal($arr, $num = 1, $suffle = true){
 	if( $num > 1 ){
 		$rand = array_rand($arr, $num);
 		$return = [];
 		foreach ($rand as $key => $value) {
 			$return[] = $arr[$value];
 		}
-		shuffle($return);
+		if( $suffle ) shuffle($return);
 		return $return;
 	} else{
 		$rand = array_rand($arr);

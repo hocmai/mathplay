@@ -1,6 +1,16 @@
 <?php
 Class CommonQuestion {
 
+	public static function timUocSo($num){
+		$arr = [];
+		for ($i=1; $i < floor($num/2); $i++) { 
+			if( $num % $i == 0 ){
+				$arr[] = $i;
+			}
+		}
+		$arr[] = $num;
+		return $arr;
+	}
 
 	public static function getImgData($type = ''){
 		$config = CommonConfig::get("question_type.config.$type");
@@ -17,7 +27,6 @@ Class CommonQuestion {
         }
         return $randomdata;
 	}
-
 
 	public static function getAudioPath($text = ''){
 		$slug = Str::slug($text, '');
@@ -42,7 +51,6 @@ Class CommonQuestion {
 		return call_user_func_array($slug.'::'.$method, $para);
 	}
 	
-
 	/**
 	 * Get config form
 	 **/
@@ -53,7 +61,6 @@ Class CommonQuestion {
 		}
 		return Form::hidden('question_config[empty]['.$id.']').'<span>Không có cài đặt nào cho dạng bài này.</span>';
 	}
-
 
 	/**
 	 * Render all of questions in a lession
@@ -123,7 +130,6 @@ Class CommonQuestion {
 			'true_false' => 'Chọn Đúng/Sai'
 		];
 	}
-
 
 	/**
 	 * Get random image for render

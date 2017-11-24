@@ -8,22 +8,22 @@ for($i = 0; $i < $range; $i++){
 	$min += $plus;
 }
 
-$nums = getRandArrayVal($lines, 2);
+$nums = getRandArrayVal($lines, 2, false);
 $type = !empty($config['answer_type']) ? $config['answer_type'] : getRandArrayVal(['input', 'choose']);
 
 if( $type == 'input' ){
 	$answer = ($nums[1] - $nums[0]);
 }
 else if( $type == 'choose' ){
-	$answer = $nums[1].'-'.($nums[1] - $nums[0]).'='.$nums[0];
-	$num2 = getRandArrayVal($lines, 2);
-	$num3 = getRandArrayVal($lines, 2);
-	$num4 = getRandArrayVal($lines, 2);
+	$answer = $nums[1].'-'.abs($nums[1] - $nums[0]).'='.$nums[0];
+	$num2 = getRandArrayVal($lines, 2, false);
+	$num3 = getRandArrayVal($lines, 2, false);
+	$num4 = getRandArrayVal($lines, 2, false);
 	$answerArr = [
-		$nums[1].' - '.($nums[1] - $nums[0]).' = '.$nums[0],
-		$num2[1].' - '.($num2[1] - $num2[0]).' = '.$num2[0],
-		$num3[1].' - '.($num3[1] - $num3[0]).' = '.$num3[0],
-		$num4[1].' - '.($num4[1] - $num4[0]).' = '.$num4[0]
+		$nums[1].' - '.abs($nums[1] - $nums[0]).' = '.$nums[0],
+		$num2[1].' - '.abs($num2[1] - $num2[0]).' = '.$num2[0],
+		$num3[1].' - '.abs($num3[1] - $num3[0]).' = '.$num3[0],
+		$num4[1].' - '.abs($num4[1] - $num4[0]).' = '.$num4[0]
 	];
 	shuffle($answerArr);
 
