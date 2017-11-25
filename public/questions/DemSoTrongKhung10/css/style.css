@@ -10,6 +10,7 @@ td > div{
     margin: 5px;
     font-size: 30px;
     background: #6a8bf3;
+    color: #fff;
 }
 .question-wrapper .choose td>input:checked + label,
 .question-wrapper .choose td>label:hover{

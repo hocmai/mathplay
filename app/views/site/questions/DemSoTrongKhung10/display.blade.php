@@ -13,9 +13,8 @@
 		$max = ($max <= 10) ? $max : 9;
 	}
 	if( $countType == 'dem-hinh-anh' ){
-		$img_data = DemSoTrongKhung10::getImageData()['data'];
+		$img_data = CommonQuestion::getImgData('DemSoTrongKhung10');
 		$img_rand = array_rand($img_data);
-		$select_img = !empty($config['select_img']) ? $img_data[$config['select_img']] : $img_data[$img_rand];
 		$max = ($max <= 10) ? $max : 10;
 	}
 	if( $max > 10 ){
@@ -38,7 +37,7 @@ elseif( $countType == 'dem-o-con-thieu' ){
 	$str_arr = ['Đếm số ô trống trong khung dưới đây'];
 }
 else{
-	$str_arr = ['Có bao nhiêu', DemSoTrongKhung10::getImageData()['list'][$img_rand]];
+	$str_arr = ['Có bao nhiêu', $img_rand];
 }?>
 
 @include('site.questions.render-title', ['question' => $question, 'str_arr' => $str_arr])
@@ -53,7 +52,7 @@ else{
 			@if( $countType == 'dem-hinh-anh' )
 				@for($i = 1; $i <= $answer; $i++)
 					<div class="pull-left" style="margin: 10px">
-						<img src="{{ $select_img }}" width="70" class="pull-left" />
+						<img src="{{ $img_data[$img_rand] }}" width="70" class="pull-left" />
 					</div>
 					@if( $i == 5 ) <div class="clearfix"></div> @endif
 				@endfor

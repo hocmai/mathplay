@@ -14,6 +14,7 @@ Class CommonQuestion {
 
 	public static function getImgData($type = ''){
 		$config = CommonConfig::get("question_type.config.$type");
+		$randomdata = [];
         if( $config && !empty($config['images']) ){
             foreach ($config['images'] as $key => $value) {
                 $randomdata[$value['image_title']] = $value['image_url'];
@@ -56,7 +57,7 @@ Class CommonQuestion {
 	 **/
 	public static function getConfigForm($type = null, $config = null, $id = 0){
 		if (View::exists('site.questions.'.$type.'.form')) {
-			return View::make('site.questions.'.$type.'.form', ['config' => $config, 'id' => $id])->render();
+			return '<p><a target="_blank" href="'.action('QuestionTypeController@edit', ['type' => $type]).'">Cấu hình dạng bài</a></p>'.View::make('site.questions.'.$type.'.form', ['config' => $config, 'id' => $id])->render();
 			// .Form::hidden('question_config[config]['.$id.']', json_encode($config), ['class' => 'question-config-hidden']);
 		}
 		return Form::hidden('question_config[empty]['.$id.']').'<span>Không có cài đặt nào cho dạng bài này.</span>';
