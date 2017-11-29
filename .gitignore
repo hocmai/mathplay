@@ -1,6 +1,10 @@
 /bootstrap/compiled.php
 /vendor
 /app/config/database.php
+/public/upload
+/public/upload/*
+/public/ckfinder
+/public/ckfinder/*
 composer.phar
 composer.lock
 .env.*.php

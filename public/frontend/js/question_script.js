@@ -47,6 +47,18 @@ else {
 
 
 $(document).ready(function($) {
+
+	//////////////// Checkbox multi value [name="answer[]"]
+	$('form.answer-question-form').on('change', 'input[type="checkbox"][name="answer[]"]', function(){
+		var val = [];
+		$(this).parents('form.answer-question-form').find('input[type="checkbox"][name="answer[]"]').each(function(){
+			if( $(this).is(":checked") ){
+				val.push($(this).val());
+			}
+		})
+		$(this).parents('form.answer-question-form').find('input[name="answer"]').val(val.join(',')).change();
+		// console.log( val.join(',') );
+	})
 	
     ///////// Play question sound
     $('.play-question-sound>button.control').on('click', function(){

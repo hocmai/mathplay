@@ -33,10 +33,10 @@ CKEDITOR.editorConfig = function( config ) {
 	// config.extraPlugins = 'mathjax,toolbar,accordionList';
 	config.filebrowserBrowseUrl = "/admins/ckeditor/ckfinder/ckfinder.html";
 	config.filebrowserImageBrowseUrl = "/admins/ckeditor/ckfinder/ckfinder.html?type=Images";
-	config.filebrowserFlashBrowseUrl = "/admins/ckeditor/ckfinder/ckfinder.html?type=Flash";
-	config.filebrowserUploadUrl = "/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files";
-	config.filebrowserImageUploadUrl = "/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images";
-	config.filebrowserFlashUploadUrl = "/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash";
+	// config.filebrowserFlashBrowseUrl = "/admins/ckeditor/ckfinder/ckfinder.html?type=Flash";
+	// config.filebrowserUploadUrl = "/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files";
+	// config.filebrowserImageUploadUrl = "/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images";
+	// config.filebrowserFlashUploadUrl = "/admins/ckeditor/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash";
 	config.toolbarGroups = [
 
 		// { name: 'clipboard', groups: [ 'clipboard', 'undo' ] },
@@ -47,7 +47,6 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'paragraph', groups: [ 'list', 'indent', 'blocks', 'align', 'paragraph' ] },
 		{ name: 'links', groups: [ 'links' ] },
 		{ name: 'insert', groups: [ 'insert' ] },
-		{ name: 'someName', groups: [ 'mathjax' ] },
 		// '/',
 		{ name: 'styles', groups: [ 'styles' ] },
 		{ name: 'colors', groups: [ 'colors' ] },
@@ -58,5 +57,5 @@ CKEDITOR.editorConfig = function( config ) {
 
 	];
 
-	config.removeButtons = 'Anchor,CreateDiv,Blockquote,Save,NewPage,Print,Preview,Font,Flash,Smiley,Styles,PageBreak,HorizontalRule,Iframe';
+	config.removeButtons = 'Anchor,CreateDiv,Blockquote,Save,NewPage,Print,Preview,Font,Flash,Smiley,Styles,PageBreak,HorizontalRule,Iframe,Tab,UploadWidget,UploadFile,UploadImage';
 };

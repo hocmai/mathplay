@@ -1,7 +1,7 @@
 <?php $uique = str_random(10); ?>
 <div class="form-group">
 	{{ Form::label('', 'Hình thức câu hỏi') }}
-	{{ Form::select('question_config[type]['.$id.']', ['input' => 'Nhập đáp án', 'choose' => 'Trắc nghiệm'], !empty($config['type']) ? $config['type'] : '', ['class' => 'form-control choose-type-answer-nhap-dap-an']) }}
+	{{ Form::select('question_config[type]['.$id.']', ['input' => 'Nhập đáp án', 'choose' => 'Trắc nghiệm', 'multi' => 'Chọn nhiều đáp án'], !empty($config['type']) ? $config['type'] : '', ['class' => 'form-control choose-type-answer-nhap-dap-an']) }}
 </div>
 <div class="form-group">
 	{{ Form::label('', 'Nhập câu trả lời cho câu hỏi') }}

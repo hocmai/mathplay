@@ -48,21 +48,6 @@ $(document).ready(function(){
 					$(this).empty();
 						CKEDITOR.replace( rand );
 						CKEDITOR.add;
-
-						//////////// Change input name for all
-						// parent.find('>.row').each(function(index, el) {
-						// 	var name_input = $('input[type="text"]', this).attr('name'),
-						// 	name_match = name_input.match(/\[+[\w]+\]/gi);
-						// 	if( name_match.length == 2 ){
-						// 		// $('input[type="text"]', this).attr('name', name_input.replace(name_match[0], "[answer_key_"+ (index+1) +"]") );
-						// 	}
-
-						// 	var name_textarea = $('input[type="text"]', this).attr('name'),
-						// 	name_match = name_textarea.match(/\[+[\w]+\]/gi);
-						// 	if( name_match.length == 2 ){
-						// 		// $('textarea', this).attr('name', name_textarea.replace(name_match[0], "[answer_value_"+ (index+1) +"]") );
-						// 	}
-						// });
 				});
 			}
 			clone.show();
@@ -78,11 +63,15 @@ $(document).ready(function(){
 			$(this).remove();
 		})
 	})
-	/////////////////////// hide-show
+	/////////////////////// hide-show baiToanCoLoiVan
 	$('.form-add-question').on('change', 'select.choose-type-answer-nhap-dap-an', function(){
-		$(this).parents('#get-config-form').find('.multi-key-value-array').toggleClass('hide');
+		if( $(this).val() == 'input' ){
+			$(this).parents('#get-config-form').find('.multi-key-value-array').addClass('hide');
+		} else{
+			$(this).parents('#get-config-form').find('.multi-key-value-array').removeClass('hide');
+		}
 	})
-
+	/////////////////////////////////////////////////
 
 
 	//////////// Add question sound in form
