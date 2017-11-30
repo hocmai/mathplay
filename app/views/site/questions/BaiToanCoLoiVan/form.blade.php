@@ -6,7 +6,7 @@
 <div class="form-group">
 	{{ Form::label('', 'Nhập câu trả lời cho câu hỏi') }}
 	{{ Form::text('question_config[answer]['.$id.']', isset($config['answer']) ? $config['answer'] : '', ['class' => 'form-control', 'required' => true ]) }}
-	<span><i>Nhập bất kỳ số, ký tự, hoặc biểu thức,... cho đáp án của câu hỏi. không chứa "dấu cách".</i></span>
+	<span><i>Nhập bất kỳ số, ký tự, hoặc biểu thức,... cho đáp án của câu hỏi. không chứa "dấu cách", sử dụng dấu phấy để ngăn cách nhiều đáp án.</i></span>
 </div>
 <div class="form-group multi-key-value-array {{ ( (!empty($config['type']) && $config['type'] == 'input') | empty($config['type']) ) ? 'hide' : '' }}">
 	{{ Form::label('', 'Nhập các câu trả lời (Chỉ dành cho trắc nghiệm)') }}
