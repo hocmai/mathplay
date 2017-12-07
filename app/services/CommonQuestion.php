@@ -87,8 +87,7 @@ Class CommonQuestion {
 				$lessionQuestionConf = $lessionQuestionConf ? (array)json_decode($lessionQuestionConf) : [];
 				$question->conf = $lessionQuestionConf;
 				if( isset($lessionQuestionConf['question_start'], $lessionQuestionConf['question_end'])
-					&& $lessionQuestionConf['question_end'] > $lessionQuestionConf['question_start']
-					&& in_array($question->type, self::getAllType()) ){
+					&& $lessionQuestionConf['question_end'] > $lessionQuestionConf['question_start'] ){
 					for( $j = $lessionQuestionConf['question_start']; $j <= $lessionQuestionConf['question_end']; $j++ ){
 						$question_order[$j] = $question;
 					}
@@ -99,7 +98,7 @@ Class CommonQuestion {
 		/// hien thi du 20 cau hoi theo dung thu tu da config hoac tu dong lay random cac cau hoi cho cac vi tri con thieu
 		$html = '';
         $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question)) ? $history->current_question : 1;
-        if( $lession->question->count() && count($question_order) ){
+        if( $lession->question->count() ){
 			for($i = 1; $i <= $max_question; $i++){
 				if( !isset($question_order[$i]) ){
 					$rand = rand(0, count($lession->question) - 1);
