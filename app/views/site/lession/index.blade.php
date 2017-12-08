@@ -22,6 +22,7 @@
 
 @section('js_header')
 @parent
+{{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML')}}
 {{ HTML::script('frontend/js/question_script.js') }}
 @stop
 

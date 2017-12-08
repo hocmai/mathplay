@@ -9,6 +9,31 @@ img{
     max-width: 100%;
     height: auto;
 }
+hr{
+    margin: 6px 0;
+    border-color: #666;
+}
+.red{
+    color: red;
+}
+.orange{
+    color: orange;
+}
+.black{
+    color: black;
+}
+.font-thin{
+    font-weight: 300;
+}
+.font-normal{
+    font-weight: 400;
+}
+.font-semibold{
+    font-weight: 500;
+}
+.font-bold{
+    font-weight: 600;
+}
 .padding0{
 	padding: 0 !important;
 }
@@ -524,6 +549,18 @@ body>.loading>span::after{
     background: #60e2e1;
     border-color: #F1E1A7;
     color: #fff;
+}
+.huong-dan-giai{
+    text-align: left;
+    padding: 15px;
+    margin: 15px 0;
+    line-height: 2;
+}
+.huong-dan-giai >.wrapper{
+    padding: 15px;
+    border: 1px dashed yellow;
+    display: inline-block;
+    width: 100%;
 }
 
 

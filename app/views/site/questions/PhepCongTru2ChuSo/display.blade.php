@@ -149,3 +149,11 @@ $c = str_split($c);
 		</div>
 	{{ Form::close() }}
 </div>
+
+@include('site.questions.' .$question->type. '.guide', [
+	'question' => $question,
+	'config' => $config,
+	'a' => $a,
+	'b' => $b,
+	'c' => $c
+])

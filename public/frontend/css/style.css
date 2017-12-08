@@ -1428,38 +1428,6 @@ footer .leg .social a {
   position: relative;
 }
 
-.huong-dan-giai {
-  position: relative;
-  background: #fff;
-  border-radius: 0;
-  padding: 100px 30px 70px;
-  font-size: 22px;
-}
-
-.huong-dan-giai .button {
-  text-align: center;
-}
-
-.huong-dan-giai button {
-  margin-top: 15px;
-  font-weight: 700;
-  cursor: pointer;
-  background: #76b041;
-  font-size: 24px;
-  text-align: center;
-  border-radius: 8px;
-  color: #fff;
-  padding: 5px 30px;
-  -webkit-transition: 0.3s;
-  -o-transition: 0.3s;
-  transition: 0.3s;
-}
-
-.huong-dan-giai button:focus {
-  outline: 0 !important;
-  color: #fff !important;
-}
-
 .box-thong-tin-bai-lam {
   text-align: center;
   min-height: calc( 100vh - 66px );
@@ -1969,16 +1937,6 @@ footer .leg .social a {
 
 .modal-open .dap-an {
   border: 3px solid #17bebb;
-}
-
-.modal-open .huong-dan-giai {
-  display: block;
-  background: none;
-  border: 1px dashed #76b041;
-  color: #76b041;
-  padding: 7px 25px;
-  font-size: 18px;
-  font-weight: 700;
 }
 
 .modal-open .huong-dan-giai:hover {
