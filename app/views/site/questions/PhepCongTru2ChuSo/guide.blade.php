@@ -50,7 +50,6 @@ if( count($c) == 1 ){
 		
 		{{-- ///////////////////////////////	 --}}
 		
-
 		<hr style="border-top: 1px dashed #999; margin: 15px 0">
 		<p><strong>Cách 2: </strong></p>
 		<span class="pull-left text-right" style="font-size: 18px">
@@ -64,7 +63,7 @@ if( count($c) == 1 ){
 		<hr style="border-top: 1px dashed #eee; margin: 8px 0">
 
 		<span class="pull-left text-right" style="font-size: 18px">
-			<span>{{ $a1 }}<sup style="top: -15px;right: 8px;width: 0px;display: inline-block;font-size: 10px;">{{ $a1-1 }}</sup></span><span class="red font-bold">{{ $a2 }}<sup style="top: -15px;right: 8px;width: 0px;display: inline-block;font-size: 10px;">1</sup></span><br>
+			<span><del>{{ $a1 }}</del><sup style="top: -15px;right: 8px;width: 0px;display: inline-block;font-size: 10px;">{{ $a1-1 }}</sup></span><span class="red font-bold">{{ $a2 }}<sup style="top: -15px;right: 8px;width: 0px;display: inline-block;font-size: 10px;">1</sup></span><br>
 			- {{ $b1 }}<span class="red font-bold">{{ $b2 }}</span><br>
 			<hr>
 			<span class="red font-bold">{{ ($a2+10)-$b2 }}</span>
@@ -74,7 +73,7 @@ if( count($c) == 1 ){
 		<hr style="border-top: 1px dashed #eee; margin: 8px 0">
 		
 		<span class="pull-left text-right" style="font-size: 18px">
-			<span>{{ $a1 }}<sup style="top: -15px;right: 8px;width: 0px;display: inline-block;font-size: 10px;">{{ $a1-1 }}</sup></span><span>{{ $a2 }}<sup style="top: -15px;right: 8px;width: 0px;display: inline-block;font-size: 10px;">1</sup></span><br>
+			<span><del>{{ $a1 }}</del><sup style="top: -15px;right: 8px;width: 0px;display: inline-block;font-size: 10px;">{{ $a1-1 }}</sup></span><span>{{ $a2 }}<sup style="top: -15px;right: 8px;width: 0px;display: inline-block;font-size: 10px;">1</sup></span><br>
 			- <span class="red font-bold red">{{ $b1 }}</span>{{ $b2 }}<br>
 			<hr>
 			<span class="red font-bold">{{ $a1-$b1-1 }}</span>{{ $a2+10-$b2 }}
