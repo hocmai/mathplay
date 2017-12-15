@@ -18,6 +18,7 @@
         return false;
     }
 </script>
+{{ HTML::style( asset('frontend/css/huong-dan-giai.css') ) }} 
 @stop
 
 @section('js_header')

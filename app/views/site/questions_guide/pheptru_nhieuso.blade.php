@@ -59,7 +59,7 @@ $a_fake = $a_rr;
 				if( $a_fake[$i-1] > 0 ){
 					$a_sub[$i-1] = $a_fake[$i-1]-1;
 					$a_del[$i-1] = true;
-					$a_active[] = $i-1;
+					$a_active[$i-1] = true;
 					$a_fake[$i-1]--;
 				}
 				else{
@@ -139,78 +139,3 @@ $a_fake = $a_rr;
 		@endfor
 	</div>
 </div>
-<style type="text/css">
-.huong-dan-giai{
-	
-}
-.huong-dan-giai .line{
-	border-bottom: 1px dashed #eee;
-	margin: 10px 0;
-	padding: 10px 0;
-}
-.huong-dan-giai .line>.left{
-	
-}
-.huong-dan-giai .line>.left .content{
-	
-}
-.huong-dan-giai .line>.left .num{
-	
-}
-.huong-dan-giai .line>.left .num .sing{
-	position: relative;
-}
-.huong-dan-giai .line>.left .num .sing.bold,
-.huong-dan-giai .line>.left .num .sing.active{
-	font-weight: 600;
-	color: red;
-}
-.huong-dan-giai .line>.left .num .sing.del::before{
-	content: "";
-	position: absolute;
-	left: 45%;
-	top: 0;
-	height: 100%;
-	width: 1px;
-	background: #111;
-	transform: rotate(-45deg);
-	transform-origin: center;
-}
-.huong-dan-giai .line>.left .num .sub,
-.huong-dan-giai .line>.left .num .sub2{
-    position: absolute;
-    font-size: 11px;
-    width: 100%;
-    text-align: center;
-    top: -14px;
-    font-weight: 500;
-}
-.huong-dan-giai .line>.left .num .sub2{
-	top: -22px;
-	font-size: 9px;
-}
-.huong-dan-giai .line>.left .content hr{
-	
-}
-.huong-dan-giai .line>.left{
-	
-}
-.huong-dan-giai .line>.right{
-    padding: 0 15px 0 30px;
-}
-.huong-dan-giai .line{
-	
-}
-.huong-dan-giai{
-	
-}
-.huong-dan-giai{
-	
-}
-.huong-dan-giai{
-	
-}
-.huong-dan-giai{
-	
-}
-</style>
