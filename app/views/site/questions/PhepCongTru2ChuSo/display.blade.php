@@ -149,11 +149,12 @@ $c = str_split($c);
 		</div>
 	{{ Form::close() }}
 </div>
-
-@include('site.questions.' .$question->type. '.guide', [
-	'question' => $question,
-	'config' => $config,
-	'a' => $a,
-	'b' => $b,
-	'c' => $c
-])
+@if( $remember && $method == 'sub' && $find == 'c' )
+	@include('site.questions_guide.pheptru_conho', [
+		'question' => $question,
+		'config' => $config,
+		'a' => $a,
+		'b' => $b,
+	])
+@else
+@endif
