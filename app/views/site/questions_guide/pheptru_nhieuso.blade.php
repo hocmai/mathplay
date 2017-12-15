@@ -24,7 +24,9 @@ if( count($c_rr) < count($a_rr) ){
 }
 
 $a_sub = [];
+$a_sub2 = [];
 $a_del = [];
+$a_active = [];
 $point_re = count($a_rr)-1;
 $point = 0;
 
@@ -49,16 +51,21 @@ $a_fake = $a_rr;
 		
 		@for( $i = count($a_rr) -1 ; $i >= 0; $i-- )
 			<?php
-			if( !isset($a_sub[$i]) ) $a_sub[$i] = ( ($a_fake[$i] >= $b_rr[$i] ) ? '' : 1 );
+			$unit_ori = isset($rules[$point+1]) ? $rules[$point+1] : '';
+			$a_active = [];
+			$a_active[$i] = true;
 			if( $a_fake[$i] < $b_rr[$i] ){
+				if( isset($a_sub[$i]) ) $a_sub2[$i] = 1;
 				if( $a_fake[$i-1] > 0 ){
 					$a_sub[$i-1] = $a_fake[$i-1]-1;
 					$a_del[$i-1] = true;
+					$a_active[] = $i-1;
 					$a_fake[$i-1]--;
 				}
 				else{
 					for ($k= $i-1; $k >= 0 ; $k--) {
 						$a_del[$k] = true;
+						$a_active[$k] = true;
 						if( $a_fake[$k] > 0 ){
 							$a_fake[$k]--;
 							$a_sub[$k] = $a_fake[$k];
@@ -69,16 +76,17 @@ $a_fake = $a_rr;
 						}
 					}
 				}
-			}
-			?>
+				if( !isset($a_sub[$i]) ) $a_sub[$i] = ( ($a_fake[$i] >= $b_rr[$i] ) ? '' : 1 );
+			} ?>
 				
 			<div class="line clear clearfix">
 				<div class="text-right pull-left left">
 					<span class="content">
 						<div class="num a">
 							@foreach( $a_rr as $key => $value )
-								<span class="sing {{ isset($a_sub[$key]) ? 'bold' : '' }} {{ isset($a_del[$key]) ? 'del' : '' }}">
+								<span class="sing {{ isset($a_active[$key]) ? 'active' : '' }} {{ isset($a_del[$key]) ? 'del' : '' }}">
 									<span class="sub">{{ isset($a_sub[$key]) ? $a_sub[$key] : '' }}</span>
+									<span class="sub2">{{ isset($a_sub2[$key]) ? $a_sub2[$key] : '' }}</span>
 								{{ $value }}</span>
 							@endforeach
 						</div>
@@ -98,49 +106,37 @@ $a_fake = $a_rr;
 				<div class="text-left pull-left right">
 					<p>Trừ hàng {{ isset($rules[$point+1]) ? $rules[$point+1] : 'tiếp theo'; }}</p>
 					@if( $a_fake[$i] >= $b_rr[$i] )
-						{{ $a_fake[$i] .' - '. $b_rr[$i] .' = '.($a_fake[$i] - $b_rr[$i]) }}. Viết {{ ($c_rr[$i]) }} vào hàng {{ isset($rules[$point+1]) ? $rules[$point+1] : '' }}
+						<strong>{{ $a_fake[$i] .' - '. $b_rr[$i] .' = '.($a_fake[$i] - $b_rr[$i]) }}. Viết {{ ($c_rr[$i]) }} vào hàng {{ $unit_ori }}</strong>
 					@else
 						{{ $a_fake[$i] }} không trừ được {{ $b_rr[$i] }}.
-						@if( $a_fake[$i-1] > 0 )
+						@if( $a_rr[$i-1] > 0 )
 							Mượn 1 {{ isset($rules[$point+2]) ? $rules[$point+2].' ở hàng '.$rules[$point+2] : '' }}<br>
-							{{ ($a_fake[$i]+10) .' - '. $b_rr[$i] .' = '.($a_fake[$i]+10 - $b_rr[$i]) }}. Viết {{ $c_rr[$i] }} vào hàng {{ isset($rules[$point+1]) ? $rules[$point+1] : '' }}
-							<?php
-							// $a_fake[$i-1]--;
-							// $a_del = [$i-1];
-							?>
+							<strong>{{ ($a_fake[$i]+10) .' - '. $b_rr[$i] .' = '.($a_fake[$i]+10 - $b_rr[$i]) }}. Viết {{ $c_rr[$i] }} vào hàng {{ $unit_ori }}</strong>
 						@else
 							<?php
 							$point2 = $point+2;
 							for ($k= $i-1; $k >= 0 ; $k--) {
 								$unit = (isset($rules[$point2]) ? $rules[$point2] : '');
 								$unit_hight = (isset($rules[$point2+1]) ? $rules[$point2+1] : '');
-								// $a_del[] = $k;
-								if( $a_fake[$k] > 0 ){
-									// $a_fake[$k]--;
+								if( $a_rr[$k] > 0 ){
 									echo '<br>* Hàng '.$unit.': '. $a_rr[$k].' '.$unit.' cho mượn 1 '.$unit.' còn '.($a_rr[$k]-1).' '.$unit;
 									break;
 								} else{
-									// $a_fake[$k] = 9;
 									echo '<br>* Hàng '.$unit.': 1 '.$unit_hight.' = 10 '.$unit.', cho mượn 1 '.$unit.' còn 9 '.$unit;
 								}
 								$point2++;
-							}
-							?>
+							} ?>
+							<br><strong>{{ ($a_fake[$i] + 10).' - '.$b_rr[$i].' = '.$c_rr[$i] }}. Viết {{ $c_rr[$i] }} vào hàng {{ $unit_ori }}</strong>
 						@endif
 					@endif
 				</div> <!-- End right -->
 			</div> <!-- End line -->
 			<?php
-				
-				// $c_rr = [ ] + $c_rr;
-				
-				// dd($c_rr);
 				$point++;
 				$point_re--;
-				unset($a_sub[$i], $a_del[$i]);
+				// unset($a_sub[$i], $a_del[$i]);
 			?>
 		@endfor
-
 	</div>
 </div>
 <style type="text/css">
@@ -164,8 +160,10 @@ $a_fake = $a_rr;
 .huong-dan-giai .line>.left .num .sing{
 	position: relative;
 }
-.huong-dan-giai .line>.left .num .sing.bold{
+.huong-dan-giai .line>.left .num .sing.bold,
+.huong-dan-giai .line>.left .num .sing.active{
 	font-weight: 600;
+	color: red;
 }
 .huong-dan-giai .line>.left .num .sing.del::before{
 	content: "";
@@ -178,13 +176,18 @@ $a_fake = $a_rr;
 	transform: rotate(-45deg);
 	transform-origin: center;
 }
-.huong-dan-giai .line>.left .num .sub{
+.huong-dan-giai .line>.left .num .sub,
+.huong-dan-giai .line>.left .num .sub2{
     position: absolute;
-    font-size: 10px;
+    font-size: 11px;
     width: 100%;
     text-align: center;
-    top: -12px;
+    top: -14px;
     font-weight: 500;
+}
+.huong-dan-giai .line>.left .num .sub2{
+	top: -22px;
+	font-size: 9px;
 }
 .huong-dan-giai .line>.left .content hr{
 	
