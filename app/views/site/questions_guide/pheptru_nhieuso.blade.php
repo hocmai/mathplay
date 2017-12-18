@@ -39,13 +39,13 @@ $a_fake = $a_rr;
 <div class="huong-dan-giai text-left" style="display">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper" style="font-size: 18px">
-		<span class="pull-left text-right" style="font-size: 18px">
+		<span class="col-xs-4 col-sm-2 text-right" style="font-size: 18px">
 			{{ $a }}<br>
 			- {{ $b }}<br>
 			<hr>
 			?
 		</span>
-		<span class="pull-left" style="margin-left: 30px">Trừ các số thẳng cột theo chiều từ phải qua trái</span>
+		<span class="col-xs-8 col-sm-10" style="padding-left: 30px">Trừ các số thẳng cột theo chiều từ phải qua trái</span>
 		<div class="clear clearfix"></div>
 		<hr style="border-top: 1px dashed #eee; margin: 8px 0">
 		
@@ -80,7 +80,7 @@ $a_fake = $a_rr;
 			} ?>
 				
 			<div class="line clear clearfix">
-				<div class="text-right pull-left left">
+				<div class="text-right col-xs-4 col-sm-2 left">
 					<span class="content">
 						<div class="num a">
 							@foreach( $a_rr as $key => $value )
@@ -103,10 +103,10 @@ $a_fake = $a_rr;
 						</div>
 					</span>
 				</div> <!-- End left -->
-				<div class="text-left pull-left right">
-					<p>Trừ hàng {{ isset($rules[$point+1]) ? $rules[$point+1] : 'tiếp theo'; }}</p>
+				<div class="text-left col-xs-8 col-sm-10 right">
+					<p>Trừ hàng {{ $unit_ori }}</p>
 					@if( $a_fake[$i] >= $b_rr[$i] )
-						<strong>{{ $a_fake[$i] .' - '. $b_rr[$i] .' = '.($a_fake[$i] - $b_rr[$i]) }}. Viết {{ ($c_rr[$i]) }} vào hàng {{ $unit_ori }}</strong>
+						<strong>* Hàng {{ $unit_ori }}: {{ $a_fake[$i] .' - '. $b_rr[$i] .' = '.($a_fake[$i] - $b_rr[$i]) }}. Viết {{ ($c_rr[$i]) }} vào hàng {{ $unit_ori }}</strong>
 					@else
 						{{ $a_fake[$i] }} không trừ được {{ $b_rr[$i] }}.
 						@if( $a_rr[$i-1] > 0 )
@@ -116,17 +116,25 @@ $a_fake = $a_rr;
 						@else
 							<?php
 							$point2 = $point+2;
+							$print_unit = [];
+							$print_unit2 = [];;
 							for ($k= $i-1; $k >= 0 ; $k--) {
 								$unit = (isset($rules[$point2]) ? $rules[$point2] : '');
 								$unit_hight = (isset($rules[$point2+1]) ? $rules[$point2+1] : '');
+								echo ($k == $i-1) ? 'Mượn 1 '.$unit.' ở hàng '.$unit.'. ' : '';
+								$print_unit2[] = ( ($a_rr[$k] == 0) ? 'Hàng '.$unit.' là 0, ta mượn sang hàng '.$unit_hight : 'Mượn 1 '.$unit.' ở hàng '.$unit );
 								if( $a_rr[$k] > 0 ){
-									echo '<br>* Hàng '.$unit.': '. $a_rr[$k].' '.$unit.' cho mượn 1 '.$unit.' còn '.($a_rr[$k]-1).' '.$unit;
+									$print_unit[] = '<br>* Hàng '.$unit.': '. $a_rr[$k].' '.$unit.' cho mượn 1 '.$unit.' còn '.($a_rr[$k]-1).' '.$unit.'.';
 									break;
 								} else{
-									echo '<br>* Hàng '.$unit.': 1 '.$unit_hight.' = 10 '.$unit.', cho mượn 1 '.$unit.' còn 9 '.$unit;
+									$print_unit[] = '<br>* Hàng '.$unit.': 1 '.$unit_hight.' = 10 '.$unit.', cho mượn 1 '.$unit.' còn 9 '.$unit.'.';
 								}
 								$point2++;
-							} ?>
+							}
+							$print_unit = array_reverse($print_unit);
+							echo implode('. ',$print_unit2).'.';
+							echo implode('',$print_unit);
+							?>
 							<br><strong>{{ ($a_fake[$i] + 10).' - '.$b_rr[$i].' = '.$c_rr[$i] }}. Viết {{ $c_rr[$i] }} vào hàng {{ $unit_ori }}</strong>
 						@endif
 					@endif
