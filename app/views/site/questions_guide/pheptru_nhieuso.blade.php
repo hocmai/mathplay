@@ -111,8 +111,8 @@ $a_fake = $a_rr;
 						{{ $a_fake[$i] }} không trừ được {{ $b_rr[$i] }}.
 						@if( $a_rr[$i-1] > 0 )
 							Mượn 1 {{ isset($rules[$point+2]) ? $rules[$point+2].' ở hàng '.$rules[$point+2] : '' }}<br>
-							* Hàng {{ $rules[$point+2].': '.$a_rr[$i-1]. ' ' .$rules[$point+2]. ' cho mượn 1 '.$rules[$point+2]. ' còn '.($a_rr[$i-1] - 1).' '.$rules[$point+2] }}.<br>
-							<strong>* Hàng {{ $unit_ori }}: {{ ($a_fake[$i]+10) .' - '. $b_rr[$i] .' = '.($a_fake[$i]+10 - $b_rr[$i]) }}. Viết {{ $c_rr[$i] }} vào hàng {{ $unit_ori }}</strong>
+							<strong>* Hàng {{ $unit_ori }}: {{ ($a_fake[$i]+10) .' - '. $b_rr[$i] .' = '.($a_fake[$i]+10 - $b_rr[$i]) }}. Viết {{ $c_rr[$i] }} vào hàng {{ $unit_ori }}.</strong><br>
+							* Hàng {{ $rules[$point+2].': '.$a_rr[$i-1]. ' ' .$rules[$point+2]. ' cho mượn 1 '.$rules[$point+2]. ' còn '.($a_rr[$i-1] - 1).' '.$rules[$point+2] }}.
 						@else
 							<?php
 							$point2 = $point+2;
@@ -135,7 +135,7 @@ $a_fake = $a_rr;
 							echo implode('. ',$print_unit2).'.';
 							echo implode('',$print_unit);
 							?>
-							<br><strong>{{ ($a_fake[$i] + 10).' - '.$b_rr[$i].' = '.$c_rr[$i] }}. Viết {{ $c_rr[$i] }} vào hàng {{ $unit_ori }}</strong>
+							<br><strong>* Hàng {{ $unit_ori }}: {{ ($a_fake[$i] + 10).' - '.$b_rr[$i].' = '.$c_rr[$i] }}. Viết {{ $c_rr[$i] }} vào hàng {{ $unit_ori }}</strong>
 						@endif
 					@endif
 				</div> <!-- End right -->
@@ -143,7 +143,6 @@ $a_fake = $a_rr;
 			<?php
 				$point++;
 				$point_re--;
-				// unset($a_sub[$i], $a_del[$i]);
 			?>
 		@endfor
 	</div>

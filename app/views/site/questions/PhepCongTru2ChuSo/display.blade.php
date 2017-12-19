@@ -149,7 +149,7 @@ $c = str_split($c);
 		</div>
 	{{ Form::close() }}
 </div>
-@if( $remember && $method == 'sub' && $find == 'c' )
+@if( $method == 'sub' && $find == 'c' )
 	@include('site.questions_guide.pheptru_conho', [
 		'question' => $question,
 		'config' => $config,
