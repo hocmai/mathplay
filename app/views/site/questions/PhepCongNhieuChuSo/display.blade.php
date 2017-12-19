@@ -69,6 +69,7 @@ $answer = $c;
 			'config' => $config,
 			'a' => $a,
 			'b' => $b,
+			'c' => $c,
 		])
 	</div>
 </div>
