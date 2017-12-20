@@ -1,4 +1,49 @@
-## Mathplay Project
+
+Git global setup
+
+git config --global user.name "Nguyen Tan"
+
+git config --global user.email "tantanb2@gmail.com"
+
+Create a new repository
+
+git clone https://gitlab.com/hocmai/mathplay-v4 .
+
+cd folder
+
+touch README.md
+
+git add README.md
+
+git commit -m "add README"
+
+git push -u origin master
+
+Existing folder
+
+cd existing_folder
+
+git init
+
+git remote add origin https://gitlab.com/hocmai/mathplay-v4
+
+git add .
+
+git commit -m "Initial commit"
+
+git push -u origin master
+
+Existing Git repository
+
+cd existing_repo
+
+git remote add origin https://gitlab.com/hocmai/mathplay-v4
+
+git push -u origin --all
+
+git push -u origin --tags
+
+## Laravel PHP Framework
 
 [![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
 [![Total Downloads](https://poser.pugx.org/laravel/framework/downloads.svg)](https://packagist.org/packages/laravel/framework)
