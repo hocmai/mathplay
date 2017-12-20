@@ -84,9 +84,9 @@ $a_fake = $a_rr;
 					<span class="content">
 						<div class="num a">
 							@foreach( $a_rr as $key => $value )
-								<span class="sing {{ isset($a_active[$key]) ? 'active' : '' }} {{ isset($a_del[$key]) ? 'del' : '' }}">
-									<span class="sub">{{ isset($a_sub[$key]) ? $a_sub[$key] : '' }}</span>
-									<span class="sub2">{{ isset($a_sub2[$key]) ? $a_sub2[$key] : '' }}</span>
+								<span class="sing {{ returnStringClass($a_active, $key, 'active') }} {{ returnStringClass($a_del, $key, 'del') }}">
+									<span class="sub">{{ returnStringClass($a_sub, $key) }}</span>
+									<span class="sub2">{{ returnStringClass($a_sub2, $key) }}</span>
 								{{ $value }}</span>
 							@endforeach
 						</div>

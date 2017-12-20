@@ -309,48 +309,36 @@ function removeTagsHtml($text)
 	return $text;
 }
 
-if ( ! function_exists('renderUrl'))
+
+function renderUrl($action, $title = null, $parameters = array(), $attributes = array())
 {
-	/**
-	 * Generate a HTML link to a controller action.
-	 *
-	 * @param  string  $action
-	 * @param  string  $title
-	 * @param  array   $parameters
-	 * @param  array   $attributes
-	 * @return string
-	 */
-	function renderUrl($action, $title = null, $parameters = array(), $attributes = array())
-	{
-		if( action($action, $parameters) == Request::url() ){
-			if(!isset($attributes['class'])){
-				$attributes['class'] = 'active';
-			} else{
-				$attributes['class'] .= ' active';
-			}
+	if( action($action, $parameters) == Request::url() ){
+		if(!isset($attributes['class'])){
+			$attributes['class'] = 'active';
+		} else{
+			$attributes['class'] .= ' active';
 		}
-		return app('html')->linkAction($action, $title, $parameters, $attributes);
 	}
+	return app('html')->linkAction($action, $title, $parameters, $attributes);
 }
 
-if ( ! function_exists('get_order_link'))
+function get_order_link($field = '', $title = '', $route = '')
 {
-	/**
-	 * Generate a HTML link to a controller action.
-	 *
-	 * @param  string  $field
-	 * @param  string  $title
-	 * @param  array   $route
-	 * @return string
-	 */
-	function get_order_link($field = '', $title = '', $route = '')
-	{
-		$input = Input::all();
-		unset($input['order']);
-		if( Input::get('order_by') == $field && Input::get('order') != 'asc' ){
-			$input['order'] = 'asc';
-		}
-		$input['order_by'] = $field;
-		return '<a title="Sắp xếp theo '.$title.'" href="'. action($route, $input). '">'.$title. ((Input::get('order_by') == $field) ? ' <span class="'.( (Input::get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : ''). '</a>';
+	$input = Input::all();
+	unset($input['order']);
+	if( Input::get('order_by') == $field && Input::get('order') != 'asc' ){
+		$input['order'] = 'asc';
 	}
+	$input['order_by'] = $field;
+	return '<a title="Sắp xếp theo '.$title.'" href="'. action($route, $input). '">'.$title. ((Input::get('order_by') == $field) ? ' <span class="'.( (Input::get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : ''). '</a>';
+}
+
+function returnStringClass($array, $key = null, $text){
+	if (isset($array[$key])) {
+		if ($text) {
+			return $text;
+		}
+		return $array[$key];
+	}
+	return '';
 }

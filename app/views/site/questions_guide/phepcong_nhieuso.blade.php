@@ -27,7 +27,7 @@ $sub = [];
 			<span class="content">
 				<div class="num a">
 					@foreach( $a_rr as $key => $value )
-					<span class="sing {{ isset($a_active[$key]) ? 'active' : '' }} {{ isset($a_del[$key]) ? 'del' : '' }}">
+					<span class="sing {{ returnStringClass($a_active, $key, 'active') }} {{ isset($a_del[$key]) ? 'del' : '' }}">
 					{{ $value }}</span>
 					@endforeach
 				</div>
