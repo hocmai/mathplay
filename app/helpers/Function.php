@@ -333,7 +333,7 @@ function get_order_link($field = '', $title = '', $route = '')
 	return '<a title="Sắp xếp theo '.$title.'" href="'. action($route, $input). '">'.$title. ((Input::get('order_by') == $field) ? ' <span class="'.( (Input::get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : ''). '</a>';
 }
 
-function returnStringClass($array, $key = null, $text){
+function returnStringClass($array, $key, $text = null){
 	if (isset($array[$key])) {
 		if ($text) {
 			return $text;
