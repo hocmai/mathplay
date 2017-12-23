@@ -16,18 +16,17 @@ $sub = [];
 <div class="clear clearfix"></div>
 <hr style="border-top: 1px dashed #eee; margin: 8px 0">
 
-@for ($i = 10 $i < $loop; $i++)
+@for ($i = 0; $i < $loop; $i++)
 	<?php
 	if( $a_rr[$i] + $b_rr[$i] > 9 ){
 		$sub[] = $i+1;
-	}
-	?>
+	}?>
 	<div class="line clear clearfix">
 		<div class="text-right col-xs-4 col-sm-2 left">
 			<span class="content">
 				<div class="num a">
 					@foreach( $a_rr as $key => $value )
-					<span class="sing {{ returnStringClass($a_active, $key, 'active') }} {{ isset($a_del[$key]) ? 'del' : '' }}">
+					{{-- <span class="sing {{ returnStringClass($a_active, $key, 'active') }} {{ isset($a_del[$key]) ? 'del' : '' }}"> --}}
 					{{ $value }}</span>
 					@endforeach
 				</div>

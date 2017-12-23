@@ -1,7 +1,7 @@
 <?php
 class PhepCongNhieuChuSo extends CommonQuestion {
 
-	protected static $title = 'Phep cong nhieu chu so';
+	protected static $title = 'Phép cộng nhiều chữ số';
 	public static function getTitle(){
 		return self::$title;
 	}
