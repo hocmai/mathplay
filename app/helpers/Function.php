@@ -342,3 +342,10 @@ function returnStringClass($array, $key, $text = null){
 	}
 	return '';
 }
+
+function returnActiveClass($val1, $val2, $text = 'active'){
+	if( $val1 == $val2 ){
+		return $text;
+	}
+	return '';
+}

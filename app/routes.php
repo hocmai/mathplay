@@ -80,7 +80,6 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::get('search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
 	 	Route::resource('/user', 'UserController');
 
-	 	Route::resource('/user', 'UserController');
 		Route::get('user/changepassword/{id}', array('uses' => 'UserController@changePassword', 'as' => 'admin.user.changepassword'));
 		Route::post('user/updatepassword/{id}', array('uses' => 'UserController@updatePassword'));
 
