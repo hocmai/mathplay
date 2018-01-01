@@ -1,7 +1,12 @@
-@extends('site.layout.default')
+@extends('site.layout.no_header')
 
 @section('title')
     {{ $title = 'Danh mục chương trình '.$subject['title']; }}
+@stop
+
+@section('css_header')
+@parent
+{{ HTML::style('frontend/css/new-style.css')}}
 @stop
 
 @section('breadcrumb')
@@ -25,6 +30,11 @@
                 {{ Common::getObject($subject, 'title') }}
             </li>
         </ol>
+        <div class="box-dang-nhap pull-right">
+            {{-- <div class="container"> --}}
+                @include('site.common.user-menu')
+            {{-- </div> --}}
+        </div>
     </div>
 </div>
 @stop
