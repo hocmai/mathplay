@@ -191,4 +191,25 @@ class Common {
 	    }
 	    return $arrfiles;
 	}
+
+	/**
+	 * Get user name
+	 */
+	public static function getUserName(){
+		if( Auth::user()->check() ){
+			return self::getObject(Auth::user()->get(), 'username');
+		}
+		return 'Kid';
+	}
+
+	/**
+	 * Get user name
+	 */
+	public static function getUserAvatar(){
+		return asset('frontend/images/avata.jpg');
+		if( Auth::user()->check() ){
+			return self::getObject(Auth::user()->get(), 'username');
+		}
+		return 'Kid';
+	}
 }
