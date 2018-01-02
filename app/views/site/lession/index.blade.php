@@ -4,8 +4,11 @@
     {{ $title = $lession['title']; }}
 @stop
 
+@section('class'){{ $class = 'lession-page'; }}@stop
+
 @section('css_header')
 @parent
+{{ HTML::style('frontend/css/new-style.css')}}
 {{ HTML::script('frontend/js/soundmanager2-jsmin.js') }}
 <script type="text/javascript">
     audioList = [];
@@ -54,110 +57,156 @@ foreach($lession->question as $question){
 @endforeach
 
 @section('breadcrumb')
-<div class="bracum bracum-set-height">
-    <div class="row m0">
-        <div class="col-md-8">
-            <ol class="bracum-mobile">
-                <li><a href="#"><span class="glyphicon glyphicon-menu-left" style="padding-right: 15px"></span> CÁC SỐ ĐẾN 10, HÌNH VUÔNG , HÌNH TRÒN</a></li>
-            </ol>
-            <ol class="breadcrumb">
-                <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
-                <li><a href="/">Trang chủ</a></li>
-                <li>
-                    {{ link_to_action('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
-                </li>
-                <li class="active">
-                    {{ link_to_action('SiteSubjectController@show', Common::getObject($subject, 'title'), ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')])  }}
-                </li>
-            </ol>
-        </div>
-        <div class="inline-block">{{ $lession['title'] }}</div>
-        <div class="box-dang-nhap">
-            @include('site.common.user-menu')
+<div class="header">
+    <div class="container">
+        <ol class="breadcrumb">
+            <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
+            <li><a href="/">Trang chủ</a></li>
+            <li>
+                {{ link_to_action('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
+            </li>
+            <li class="active">
+                {{ link_to_action('SiteSubjectController@show', Common::getObject($subject, 'title'), ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')])  }}
+            </li>
+        </ol>
+        <div class="member-area">
+            {{-- <div class="container"> --}}
+                @include('site.common.user-menu')
+            {{-- </div> --}}
         </div>
     </div>
 </div>
+<div class="clear clearfix"></div>
 @stop
 
 @section('content')
-    <div class="box-bai-lam box-bai-lam-mobile">
+    <div class="box-bai-lam lession-wrapper">
         <div class="container">
-            <div class="row m0">
-                <div class="col-sm-12 col-md-10 p0 clr boxLeft">
-                    <div class="box-min-height">
-                        <div class="bg-box-lam-bai fullScreen rightHeight">
+            <h1 class="node-title bg">{{ Common::getValueOfObject($lession, 'chapter', 'title') }}</h1>
+            <div class="row margin0">
+                <div class="col-xs-12 col-sm-8 padding0 boxLeft">
+                    <div class="bg-box-lam-bai lession-content">
 
-                            <?php
-                            $history = Common::getLessionHistory($lession);
-                            $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question) ) ? $history->current_question : 1;
-                            $current_score = (!empty($history) && $history->status != 1 && !empty($history->score) ) ? $history->score : 0;
-                            $timeUsed = !empty($history->time_use) ? $history->time_use : 0;
-                            $convertTime = Common::convertTimeUsed($timeUsed);
-                            ?>
+                        <?php
+                        $history = Common::getLessionHistory($lession);
+                        $maxScore = !empty($config['max_score']) ? $config['max_score'] : 100;
+                        $maxQues = !empty($config['number_ques']) ? $config['number_ques'] : 20;
+                        $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question) ) ? $history->current_question : 1;
+                        $current_score = (!empty($history) && $history->status != 1 && !empty($history->score) ) ? $history->score : 0;
+                        $timeUsed = !empty($history->time_use) ? $history->time_use : 0;
+                        $convertTime = Common::convertTimeUsed($timeUsed);
+                        ?>
 
-                            {{ CommonQuestion::renderLession($lession, $history) }}
+                        {{ CommonQuestion::renderLession($lession, $history) }}
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal-true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <!-- <div class="audio">
-                                    <audio><source src="" type="audio/wav"></audio>
-                                </div> -->
-                                <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
-                                    <div class="modal-content col-sm-pull-2">
-                                        <div class="box-qua-chuan-luon">
-                                            <div>
-                                                <span><?php
-                                                $strings = ['QUÁ CHUẨN LUÔN!', 'BẠN THẬT TUYỆT VỜI!', 'XUẤT SẮC!', 'QUÁ ĐỈNH!', 'THẬT VI DIỆU!'];
-                                                echo $strings[array_rand($strings)];
-                                                ?></span>
-                                                <img src="{{ asset('frontend/images/cuoi.png') }}" class="img-responsive mauto" alt=""/>
-                                            </div>
-
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal-true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <!-- <div class="audio">
+                                <audio><source src="" type="audio/wav"></audio>
+                            </div> -->
+                            <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-content col-sm-pull-2">
+                                    <div class="box-qua-chuan-luon">
+                                        <div>
+                                            <span><?php
+                                            $strings = ['QUÁ CHUẨN LUÔN!', 'BẠN THẬT TUYỆT VỜI!', 'XUẤT SẮC!', 'QUÁ ĐỈNH!', 'THẬT VI DIỆU!'];
+                                            echo $strings[array_rand($strings)];
+                                            ?></span>
+                                            <img src="{{ asset('frontend/images/cuoi.png') }}" class="img-responsive mauto" alt=""/>
                                         </div>
-                                        <div class="text">Em đã trả lời đúng</div>
+
+                                    </div>
+                                    <div class="text">Em đã trả lời đúng</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal-false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <!-- <div class="audio">
+                                <audio><source src="" type="audio/wav"></audio>
+                            </div> -->
+                            <div class="bao-cao">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="btn-support col-sm-10">
+                                            <a href="#" class="btn huong-dan-giai">Hướng dẫn giải</a>
+                                            <button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+                                        </div>
+                                        {{-- <div class="notify-group">
+                                            <a href="#" class="like" data-toggle="tooltip" data-placement="top" title="Thích"></a>
+                                            <a href="#" class="dis-like" data-toggle="tooltip" data-placement="top" title="Không thích"></a>
+                                            <a href="#" class="bao-loi" data-toggle="tooltip" data-placement="top" title="Báo lỗi"></a>
+                                        </div> --}}
                                     </div>
                                 </div>
                             </div>
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal-false" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                                <!-- <div class="audio">
-                                    <audio><source src="" type="audio/wav"></audio>
-                                </div> -->
-                                <div class="bao-cao">
-                                    <div class="container">
-                                        <div class="row">
-                                            <div class="btn-support col-sm-10">
-                                                <a href="#" class="btn huong-dan-giai">Hướng dẫn giải</a>
-                                                <button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
-                                            </div>
-                                            {{-- <div class="notify-group">
-                                                <a href="#" class="like" data-toggle="tooltip" data-placement="top" title="Thích"></a>
-                                                <a href="#" class="dis-like" data-toggle="tooltip" data-placement="top" title="Không thích"></a>
-                                                <a href="#" class="bao-loi" data-toggle="tooltip" data-placement="top" title="Báo lỗi"></a>
-                                            </div> --}}
-                                        </div>
-                                    </div>
-                                </div>
 
-                                <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
-                                    <div class="modal-content col-sm-pull-2">
-                                        <div class="box-qua-chuan-luon">
-                                            <div>KHÔNG ĐÚNG RỒI!<br/>
-                                                CỐ GẮNG LÊN NHÉ!
-                                                <img src="{{ asset('frontend/images/meu.png') }}" class="img-responsive mauto" alt=""/>
-                                            </div>
-
+                            <div class="modal-dialog" role="document" data-dismiss="modal" aria-label="Close">
+                                <div class="modal-content col-sm-pull-2">
+                                    <div class="box-qua-chuan-luon">
+                                        <div>KHÔNG ĐÚNG RỒI!<br/>
+                                            CỐ GẮNG LÊN NHÉ!
+                                            <img src="{{ asset('frontend/images/meu.png') }}" class="img-responsive mauto" alt=""/>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
-                        </div> <!-- End bai lam -->
+                        </div>
+                    </div> <!-- End bai lam -->
                         
-                    </div>
                 </div> <!-- End left -->
 
-                <div class="col-sm-12 col-md-2 hidden-xs hidden-sm p0 boxRight">
-                    <div class="box-thong-tin-bai-lam fullScreen leftHeight">
+                <div class="col-xs-12 col-sm-4 boxRight">
+                    <div class="lession-process">
+                        <div class="progress">
+                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ ($current_score/$maxScore)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width: {{ ($current_score/$maxScore)*100 }}%">
+                            </div>
+                            <span class="star star-1"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star star-2"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star star-3"><i class="fa fa-star" aria-hidden="true"></i></span>
+                        </div>
+                        <p class="diem">
+                            <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}</span>
+                        </p>
+                    </div>
+                    <div class="lession-keyboard">
+                        <div class="col1 item item-number white-bg" data-number = "1" >1</div>
+                        <div class="col1 item item-number white-bg" data-number = "2" >2</div>
+                        <div class="col1 item item-number white-bg" data-number = "3" >3</div>
+                        <div class="col1 item item-number blue-bg" data-number = "+">+</div>
+                        <div class="col1 item item-number blue-bg" data-number = "-">-</div>
+                        <div class="col1 item item-number white-bg" data-number = "4" >4</div>
+                        <div class="col1 item item-number white-bg" data-number = "5" >5</div>
+                        <div class="col1 item item-number white-bg" data-number = "6" >6</div>
+                        <div class="col1 item item-number blue-bg" data-number = "x">x</div>
+                        <div class="col1 item item-number blue-bg" data-number = ":">:</div>
+                        <div class="col1 item item-number white-bg" data-number = "7" >7</div>
+                        <div class="col1 item item-number white-bg" data-number = "8" >8</div>
+                        <div class="col1 item item-number white-bg" data-number = "9" >9</div>
+                        <div class="col1 item item-number blue-bg" data-number = ">" >></div>
+                        <div class="col1 item item-number blue-bg" data-number = "<" ><</div>
+                        <div class="col1 item item-number white-bg" data-number = "0" >0</div>
+                        <div class="item delete col-2 red-bg" data-number = "delete" >Xóa</div>
+                        <div class="col1 item item-number blue-bg" data-number = "=" >=</div>
+                        <div class="col1 item item-number blue-bg" data-number = "," >,</div>
+
+                        <div class="clear clearfix"></div>
+                        <a class="gui-bai yellow-bg" href="#">Gửi bài</a>
+                        
+                        <div class="hd-gui-bai">
+                            <div class="cu-meo">
+                                <img src="{{ asset('frontend/images/cu-meo.png') }}" class="img-responsive mauto" alt=""/>
+                            </div>
+                            <div class="des">
+                                <p>
+                                    Sau khi lựa chọn đáp án, bạn hãy ấn nút gửi bài nhé
+                                </p>
+                            </div>
+                        </div>
+                        <div class="over"></div>
+                    </div>
+                    {{-- <div class="box-thong-tin-bai-lam lession-process">
                         <div class="box-s-1">
                             <div class="title bg1">Câu hỏi số</div>
                             <p class="total-number"><span class="current-question">{{ $current_ques }}</span>/{{ !empty($config['number_ques']) ? $config['number_ques'] : 20 }}</p>
@@ -185,7 +234,7 @@ foreach($lession->question as $question){
                             </div>
                         </div>
                         <div class="over"></div>
-                    </div>
+                    </div> --}}
                 </div>
 
                 <div class="hoan-thanh fullScreen2 hidden" style="display: none;">
@@ -222,7 +271,7 @@ foreach($lession->question as $question){
                     </div>
                 </div> <!-- End box hoan thanh -->
 
-                <div class="ban-phim clicked">
+                <div class="ban-phim clicked hidden">
                     <div class="text-show">
                         Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>
                     </div>

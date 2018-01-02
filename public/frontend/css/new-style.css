@@ -77,10 +77,24 @@ a:hover{
 .grey-color{
 	color: #7b8087;
 }
+.green-bg{
+    background: #8cc444
+}
+.white-bg{
+    background: #fff;
+}
+.blue-bg{
+    background: #17bcba;
+}
+.red-bg{
+    background: #e6592e;
+}
+.yellow-bg{
+    background: #fecc15;
+}
 
 .header{
 	background: #e4572e;
-	margin-bottom: 15px;
 }
 .header ol.breadcrumb{
     margin: 0;
@@ -153,7 +167,7 @@ a:hover{
 	background: url('../images/bg_top_bai_lam.png') no-repeat top center/contain,
 	 url('../images/bg-box-video.png') repeat-y top center/contain #fff;
 }
-.list-chapter-page h1.node-title.bg{
+h1.node-title.bg{
     font-family: HelveticaNeue, sans-serif;
     font-size: 16px;
     color: #fff;
@@ -256,6 +270,7 @@ a:hover{
     background: #ffde00;
     text-shadow: 1px 2px 2px #000;
     -webkit-text-stroke: 2px #fff;
+    white-space: nowrap;
 }
 .list-chapter .chapter-item.right h2.title-sub>span.head{
 	background: #feb913;
@@ -265,6 +280,7 @@ a:hover{
 	font-weight: 600;
 	min-width: 55%;
     text-align: center;
+    padding: 0 10px;
 }
 .list-chapter .chapter-item ul.nav{
 	top: -3px;
@@ -367,4 +383,117 @@ a:hover{
 .list-chapter-page footer .copy-right .content{
 	background: none;
 	padding: 10px 0;
+}
+
+/************************ Lession page ************************/
+.lession-page{
+
+}
+.lession-page .lession-content{
+    background: #ebebeb;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0, 0.5);
+    padding: 15px;
+}
+.lession-page .lession-content .question-rendered{
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #c8c7c7;
+    overflow: hidden;
+}
+.lession-page .boxRight{
+    padding-left: 10px;
+    padding-right: 0;
+}
+.lession-page .lession-process{
+    background: #009cdf;
+    padding: 20px 20px 15px;
+    text-align: center;
+    border-radius: 8px;
+    margin-bottom: 12px;
+}
+.lession-page .lession-process .progress{
+    position: relative;
+    background: #0e76bc;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0, 0.5);
+    overflow: visible;
+}
+.lession-page .lession-process .progress .star{
+    position: absolute;
+    z-index: 1;
+    color: #ffde00;
+    top: -23px;
+    font-size: 40px;
+}
+.lession-page .lession-process .progress .star-1{
+    left: -12px;
+}
+.lession-page .lession-process .progress .star-2{
+    left: 50%;
+    margin-left: -18px;
+}
+.lession-page .lession-process .progress .star-3{
+    right: -12px;
+}
+.lession-page .lession-process .diem{
+    -webkit-text-stroke: #fff 2px;
+    text-shadow: 0 2px 3px #111;
+    font-size: 64px;
+    color: #fff;
+    line-height: 60px;
+}
+.lession-page .lession-process .diem .max-score{
+    font-size: 25px;
+}
+.lession-page .lession-keyboard{
+    background: #ebebeb;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px 0px rgba(0,0,0, 0.5);
+    overflow: hidden;
+    padding: 8px;
+}
+.lession-page .lession-keyboard .item{
+    float: left;
+    display: inline-block;
+    width: 20%;
+    min-width: 70px;
+    height: 70px;
+    line-height: 65px;
+    border-radius: 8px;
+    border: 1px solid #c8c7c7;
+    text-align: center;
+    font-size: 27px;
+    font-weight: 600;
+    color: #fff;
+}
+.lession-page .lession-keyboard .item.white-bg{
+    color: #111;
+}
+.lession-page .lession-keyboard .item.col-2{
+    width: 40%;
+    min-width: 140px;
+}
+.lession-page .lession-keyboard .item:hover,
+.lession-page .lession-keyboard .item:focus{
+    color: #ffaf0e;
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 5px #ddd inset;
+}
+.lession-page .lession-keyboard a.gui-bai{
+    position: relative;
+    margin: 15px 0 0;
+    width: 100%;
+    display: inline-block;
+    border-radius: 8px;
+    border: 1px solid #f48e37;
+    text-transform: uppercase;
+    font-weight: 600;
+    padding: 5px;
+    font-size: 27px;
+}
+.lession-page{
+
+}
+.lession-page{
+
 }
