@@ -10,6 +10,10 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/demo', function(){
+	return View::make('site.demo');
+} );
+
 Route::get('/', 'SiteIndexController@index');
 
 Route::resource('user', 'SiteUserController');
