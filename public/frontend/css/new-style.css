@@ -162,6 +162,27 @@ a:hover{
     margin: 0 5px;
     box-shadow: none;
 }
+.header .member-area a.dang-ky,
+.header .member-area a.dang-nhap{
+    display: inline-block;
+    height: 45px;
+    font-family: HelveticaNeue;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 300;
+    text-align: center;
+    padding: 11px 10px;
+    margin: 7px 0;
+}
+.header .member-area a.dang-ky {
+  background: url("../images/bg-dangky.png") center top no-repeat;
+  width: 165px;
+  margin-right: 40px;
+}
+.header .member-area a.dang-nhap {
+  background: url("../images/bg-dangnhap.png") center top no-repeat;
+  width: 150px;
+}
 
 .list-chapter-page .main-content{
 	background: url('../images/bg_top_bai_lam.png') no-repeat top center/contain,

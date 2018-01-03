@@ -9,8 +9,8 @@
     @section('css_header')
     {{ HTML::style('frontend/css/bootstrap.min.css')}}
     {{ HTML::style('frontend/css/font-awesome.min.css')}}
-    {{-- {{ HTML::style('frontend/css/hover-min.css')}}
-    {{ HTML::style('frontend/css/slick-theme.css')}}
+    {{ HTML::style('frontend/css/hover-min.css')}}
+    {{-- {{ HTML::style('frontend/css/slick-theme.css')}}
     {{ HTML::style('frontend/css/slick.css')}}
     {{ HTML::style('frontend/css/menu.css')}}
     {{ HTML::style('frontend/css/default.css')}}
