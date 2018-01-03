@@ -414,11 +414,10 @@ h1.node-title.bg{
     border-radius: 10px;
     box-shadow: 2px 2px 5px 0px rgba(0,0,0, 0.5);
     padding: 0;
+    background: #fff;
+    overflow: hidden;
 }
 .lession-page .lession-content .question-rendered{
-    background: #fff;
-    border-radius: 8px;
-    border: 1px solid #c8c7c7;
     overflow: hidden;
 }
 .lession-page .boxRight{
