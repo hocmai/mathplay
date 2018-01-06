@@ -1,0 +1,217 @@
+img{
+	max-width: 100%;
+	height: auto;
+}
+a:hover{
+	text-decoration: none;
+}
+.padding0{
+	padding: 0 !important;
+}
+.margin0{
+	margin: 0 !important;
+}
+.clear{
+	clear: both !important;
+}
+.inline-block{
+	display: inline-block !important;
+}
+
+body{
+  font-family: 'ProximaNova', 'HelveticaNeue', sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #111;
+}
+
+header.header{
+	position: relative;
+	overflow: hidden;
+}
+header.header .fixed-nav{
+	position: fixed;
+}
+header.header{
+	height: 100vh;
+	background: url('../images/home/sea_img.png') no-repeat bottom left #0bc3fc;
+}
+header.header .banner .animation>div{
+	position: absolute;
+	z-index: 0;
+}
+header.header .animation .cloud{
+    margin-top: 50px;
+    -webkit-animation: cloud-motion 80s infinite;
+    -moz-animation: cloud-motion 80s infinite;
+    -ms-animation: cloud-motion 80s infinite;
+    -o-animation: cloud-motion 80s infinite;
+    animation: cloud-motion 80s infinite;
+}
+header.header .animation .cloud.cloud-1{
+    top: 2%;
+    left: 12%;
+}
+header.header .animation .cloud.cloud-2{
+	top: 7%;
+    left: 50%;
+}
+header.header .animation .cloud.cloud-3{
+    top: 2%;
+    left: 2%;
+}
+header.header .animation .cloud.cloud-4{
+    right: 2%;
+    top: 8%;
+}
+header.header .animation .cloud.cloud-5{
+    right: 30%;
+    top: 15%;
+}
+header.header .animation .cloud.cloud-6{
+	top: 20%;
+    left: 30%;
+}
+header.header .animation .cloud.cloud-7{
+	right: 5%;
+    bottom: 50%;
+}
+header.header .animation .balloon{
+}
+header.header .animation .balloon.balloon-1{
+	top: 7%;
+    left: 35%;
+    -webkit-animation: balloon-motion-1 110s infinite;
+    -moz-animation: balloon-motion-1 110s infinite;
+    -ms-animation: balloon-motion-1 110s infinite;
+    -o-animation: balloon-motion-1 110s infinite;
+    animation: balloon-motion-1 110s infinite;
+}
+header.header .animation .balloon.balloon-2{
+    top: 5%;
+    left: 8%;
+    -webkit-animation: balloon-motion-2 110s infinite;
+    -moz-animation: balloon-motion-2 110s infinite;
+    -ms-animation: balloon-motion-2 110s infinite;
+    -o-animation: balloon-motion-2 110s infinite;
+    animation: balloon-motion-2 110s infinite;
+}
+header.header .animation .balloon.balloon-3{
+    right: 10%;
+    top: 5%;
+    -webkit-animation: balloon-motion-3 110s infinite;
+    -moz-animation: balloon-motion-3 110s infinite;
+    -ms-animation: balloon-motion-3 110s infinite;
+    -o-animation: balloon-motion-3 110s infinite;
+    animation: balloon-motion-3 110s infinite;
+}
+header.header .animation .balloon.balloon-4{
+	top: 65%;
+    left: 30%;
+    -webkit-animation: balloon-motion-4 110s infinite;
+    -moz-animation: balloon-motion-4 110s infinite;
+    -ms-animation: balloon-motion-4 110s infinite;
+    -o-animation: balloon-motion-4 110s infinite;
+    animation: balloon-motion-4 110s infinite;
+}
+header.header .animation .ship{
+	-webkit-animation: ship-motion 250s linear infinite alternate;
+    -moz-animation: ship-motion 250s linear infinite alternate;
+    -ms-animation: ship-motion 250s linear infinite alternate;
+    -o-animation: ship-motion 250s linear infinite alternate;
+    animation: ship-motion 250s linear infinite alternate;
+}
+header.header .animation .ship.ship-1{
+    bottom: 9.5%;
+    left: 20%;
+}
+header.header .animation .ship.ship-2{
+	right: 8%;
+    bottom: 8%;
+}
+
+header.header .banner{
+	
+}
+header.header .banner{
+	
+}
+header.header .banner{
+	
+}
+header.header{
+	
+}
+header.header{
+	
+}
+header.header{
+	
+}
+header.header{
+	
+}
+header.header{
+	
+}
+header.header{
+	
+}
+header.header{
+	
+}
+header.header{
+	
+}
+
+/*************************/
+@font-face {
+  font-family: "ProximaNova";
+  src: url('../fonts/Proxima Nova Regular.otf');
+  font-weight: 400;
+}
+@font-face {
+  font-family: "ProximaNova";
+  src: url('../fonts/Proxima Nova Bold.otf');
+  font-weight: 500;
+}
+@font-face {
+  font-family: "ProximaNova";
+  src: url('../fonts/Proxima Nova Extrabold.otf');
+  font-weight: 600;
+}
+@font-face {
+  font-family: HelveticaNeue;
+  src: url(../fonts/HelveticaNeue-Light.otf);
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: HelveticaNeue;
+  src: url(../fonts/HelveticaNeue.otf);
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: HelveticaNeue;
+  src: url(../fonts/HelveticaNeue-Medium.otf);
+  font-style: normal;
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: HelveticaNeue;
+  src: url(../fonts/HelveticaNeue-Bold.otf);
+  font-style: normal;
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: HelveticaNeue;
+  src: url(../fonts/HELVETICANEUE-CONDENSEDBOLD.OTF);
+  font-style: normal;
+  font-weight: 700;
+}

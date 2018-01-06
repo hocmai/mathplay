@@ -9,6 +9,7 @@ class SiteIndexController extends SiteController {
 	 */
 	public function index()
 	{
+		return View::make('site.new_index');
 		return View::make('site.index');
 	}
 
