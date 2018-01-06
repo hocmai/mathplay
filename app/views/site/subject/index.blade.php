@@ -4,6 +4,11 @@
 
 @section('class'){{ $class = 'list-chapter-page'; }}@stop
 
+@section('css_header')
+@parent
+{{ HTML::style('frontend/css/new-style.css')}}
+@stop
+
 @section('breadcrumb')
 <div class="header">
     <div class="container">

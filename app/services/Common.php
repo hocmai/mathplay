@@ -137,10 +137,7 @@ class Common {
 
 	public static function getValueOfObject($ob, $method, $field)
 	{
-		if (!($ob)) {
-			return null;
-		}
-		if (!($ob->$method)) {
+		if (!self::getObject($ob, $method)) {
 			return null;
 		}
 		if (!($ob->$method->$field)) {
