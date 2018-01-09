@@ -18,3 +18,15 @@
 	@show
 	
 </head>
+<body>
+	 
+<header class="header">
+	<div class="container">
+		@section('breadcrumb')
+	    
+	    @show
+	    <div class=" logo">
+	        <p><span class="hello_logo">Xin chào<span class="name_hello">Trần Văn Bi</span></span><img src="{{ asset('frontend/images/avata.jpg') }}"></p>
+	    </div>
+	</div>      
+</header>

@@ -22,26 +22,25 @@
  </head>
 <body >
     <header class="header">
-        <div class="container">
-            <div class="txt">
-                <ol>
-                    <li><a href="#"><strong><</strong></a></li>
-                    <li><a href="/">Trang Chủ></a></li>
-                    <li><a href="#">Lớp 1></a></li>
-                    <li><a href="#">Môn toán</a></li>
-                </ol>
-            </div>
-            <div class=" logo">
-                <ol>
-                    <li><input type="text" name="" value="xin chào Trần Văn Bi "></li>
-                    <li><img src="{{ asset('frontend/images/avata.jpg') }}"></li>
-                </0l> 
-            </div>
+    <div class="container">
+        <ol class="txt">
+            <li><a href="#"><strong><</strong></a></li>
+            <li><a href="/">Trang Chủ></a></li>
+            <li><a href="#">Lớp 1></a></li>
+            <li><a href="#">Môn toán</a></li>
+        </ol>
+        <div class=" logo">
+            <p><span class="hello_logo">Xin chào<span class="name_logo">Trần Văn Bi</span></span><img src="{{ asset('frontend/images/avata.jpg') }}"></p>
         </div>
-    </header>       
+    </div>      
+</header>   
     <!-- end header -->
-
-  
+<div class="content">
+    <div class="container">
+        <h1 class="course">Bài làm</h1>
+        
+    </div>
+</div>
  <!-- end content -->
     <footer class="footer">
         <div class="container">
