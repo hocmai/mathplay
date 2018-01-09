@@ -407,9 +407,6 @@ h1.node-title.bg{
 }
 
 /************************ Lession page ************************/
-.lession-page{
-
-}
 .lession-page .lession-content{
     border-radius: 10px;
     box-shadow: 2px 2px 5px 0px rgba(0,0,0, 0.5);
@@ -509,10 +506,4 @@ h1.node-title.bg{
     font-weight: 600;
     padding: 5px;
     font-size: 27px;
-}
-.lession-page{
-
-}
-.lession-page{
-
 }

@@ -17,7 +17,8 @@
 	{{ HTML::script('frontend/js/jquery-ui.js')}}
 	{{ HTML::script('frontend/js/myscript.js')}}
 </head>
-<body>
+
+<body class="@yield('class')">
 	<div class="wrapper">
 		@yield('content')
 	</div> {{-- End wrapper --}}
