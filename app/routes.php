@@ -14,6 +14,9 @@ Route::get('/demo/{grade_slug}', 'SiteDemoController@show');
 Route::get('/bailam',function(){
 	return View::make('demo.bailam');
 });
+Route::get('/splashmath', function(){
+	return View::make('splashmaths.splashmath');
+});
 
 Route::get('/', 'SiteIndexController@index');
 
