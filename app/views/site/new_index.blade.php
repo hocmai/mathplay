@@ -85,10 +85,10 @@
             </div>
         </div>
     </div>
-
 </header>
+
 <div class="content-wrapper">
-    <section class="home-section map-section white-bg">
+    <section class="home-section map-section white-bg text-center">
         <div class="container">
             <h2 class="block-title">Get Personalized Learning Path Fit for Catching up,<br>Enrichment or Regular Practice</h2>
             <div class="block-content">
@@ -99,7 +99,7 @@
         </div>
     </section>
 
-    <section class="home-section intro-section grey-bg">
+    <section class="home-section intro-section grey-bg text-center">
         <div class="container">
             <h2 class="block-title">Interactive games and rewards motivate children <br>to learn and improve their scores</h2>
             <div class="block-content">
@@ -161,7 +161,7 @@
         </div>
     </section>
 
-    <section class="home-section comment-section grey-bg">
+    <section class="home-section comment-section grey-bg text-center">
         <div class="container">
             <h2 class="block-title">Over 15 Million kids and 50,000 schools love Splash Math</h2>
             <div class="block-content">
