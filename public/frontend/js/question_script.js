@@ -45,6 +45,26 @@ else {
 //////////////// End soundManager ////////////////
 //////////////////////////////////////////////////
 
+////// Ban phim ao//////////////////
+keyboardToggle = function(action = ''){
+    var $ = jQuery;
+    if( action == '' | action == 'toggle' ){
+        $('.ban-phim').toggleClass('clicked');
+    }
+    else if( action == 'show' ){
+        $('.ban-phim').removeClass('clicked');
+    } 
+    else{
+        $('.ban-phim').addClass('clicked');
+    }
+
+    if($('.ban-phim').hasClass('clicked')){
+        $('.ban-phim .text-show').html("Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>")
+    }else {
+        $('.ban-phim .text-show').html("Thu nhỏ <i class='fa fa-angle-double-down'></i>")
+    }
+}
+
 
 $(document).ready(function($) {
 
@@ -294,6 +314,62 @@ $(document).ready(function($) {
 	    }, 1000*60*60);
 	    // clearInterval(counter);
     }
+
+
+
+    /////////////////////// hien thi ban phim ao //////////////////////
+    // window.setTimeout(function(){
+        if( $('.question-rendered.active input[type="text"]').length ){
+            $('.question-rendered.active input[type="text"]:first').focus();
+            $('.question-rendered.active input[type="text"]:first').addClass('virtual-focus');
+            keyboardToggle('show');
+        }
+        else if( $('.question-rendered.active input[type="number"]').length ){
+            $('.question-rendered.active input[type="number"]:first').focus();
+            $('.question-rendered.active input[type="number"]:first').addClass('virtual-focus');
+            keyboardToggle('show');
+        }
+    // },300)
+
+    $(window).on('click', function(e){
+        if( $('.lession-keyboard').length == 0 ) return;
+
+        if( $(e.target).get(0).tagName != 'INPUT' 
+            && $.inArray($(e.target).attr('type'), ['text','number']) < 0 
+            && $(e.target).parents('.lession-keyboard').length == 0
+            && !$('.lession-keyboard').hasClass('clicked') )
+        {
+            $('input.virtual-focus').removeClass('virtual-focus');
+            keyboardToggle('hide');
+        }
+    })
+
+    $(document).on('focus', '.question-rendered input[type="text"], .question-rendered input[type="number"]', function(){
+        $('input.virtual-focus').removeClass('virtual-focus');
+        $(this).addClass('virtual-focus');
+        keyboardToggle('show');
+    })
+
+    $('.lession-keyboard .text-show').click(function () {
+        keyboardToggle();
+    });
+
+    /////// nhap input qua ban phim ao ///////////
+    $('.lession-keyboard').on('click', '.item-number', function(){
+        if( $('input.virtual-focus').is(":visible") ){
+            var origin = $('input.virtual-focus').val(),
+            value = $(this).text();
+            $('input.virtual-focus').val(origin + value).change();
+            $('input.virtual-focus').val(origin + value).focus();
+        }
+    })
+    $('.lession-keyboard').on('click', '.delete', function(){
+        if( $('input.virtual-focus').is(":visible") ){
+            var origin = $('input.virtual-focus').val();
+            $('input.virtual-focus').val(origin.substring(0, origin.length - 1)).change();
+            $('input.virtual-focus').val(origin.substring(0, origin.length - 1)).focus();
+        }
+    })
 
 
 });

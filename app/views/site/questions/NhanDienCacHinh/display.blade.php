@@ -49,7 +49,7 @@ shuffle($shapesList);
 				@endforeach
 			</div>
 		@elseif($answertype == 'multi')
-			<div class="content inline-block multi col-sm-8 col-sm-push-2">
+			<div class="content inline-block multi col-sm-10 col-sm-push-1 col-xs-12">
 				@foreach($shapesList as $key => $value)
 					<div class="col-sm-6">
 						<div class="form-group inline-block radio-box check-multi">

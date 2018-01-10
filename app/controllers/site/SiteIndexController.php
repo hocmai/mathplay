@@ -12,6 +12,16 @@ class SiteIndexController extends SiteController {
 		return View::make('site.index');
 	}
 
+	/**
+	 * Display a listing of the resource.
+	 *
+	 * @return Response
+	 */
+	public function home()
+	{
+		return View::make('site.new_index');
+	}
+
 
 	/**
 	 * Show the form for creating a new resource.

@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
     ////////////////////// An modal thong bao khi chua nhap dap an //////////////
-    $('.box-thong-tin-bai-lam .over').on('click', function(){
+    $('.box-thong-tin-bai-lam .over, .lession-wrapper .over').on('click', function(){
         $('body').removeClass('open-hd-giai');
     });
 
@@ -74,80 +74,7 @@ $(document).ready(function(){
 		return false;
 	})
 
-    /////////////////////// hien thi ban phim ao //////////////////////
-    // window.setTimeout(function(){
-        if( $('.question-rendered.active input[type="text"]').length ){
-            $('.question-rendered.active input[type="text"]:first').focus();
-            $('.question-rendered.active input[type="text"]:first').addClass('virtual-focus');
-            keyboardToggle('show');
-        }
-        else if( $('.question-rendered.active input[type="number"]').length ){
-            $('.question-rendered.active input[type="number"]:first').focus();
-            $('.question-rendered.active input[type="number"]:first').addClass('virtual-focus');
-            keyboardToggle('show');
-        }
-    // },300)
-
-    $(window).on('click', function(e){
-        if( $('.ban-phim').length == 0 ) return;
-
-        if( $(e.target).get(0).tagName != 'INPUT' 
-            && $.inArray($(e.target).attr('type'), ['text','number']) < 0 
-            && $(e.target).parents('.ban-phim').length == 0
-            && !$('.ban-phim').hasClass('clicked') )
-        {
-            $('input.virtual-focus').removeClass('virtual-focus');
-            keyboardToggle('hide');
-        }
-    })
-
-    $(document).on('focus', '.question-rendered input[type="text"], .question-rendered input[type="number"]', function(){
-        $('input.virtual-focus').removeClass('virtual-focus');
-        $(this).addClass('virtual-focus');
-        keyboardToggle('show');
-    })
-
-    $('.ban-phim .text-show').click(function () {
-        keyboardToggle();
-    });
-
-    /////// nhap input qua ban phim ao ///////////
-    $('.ban-phim').on('click', '.item-number', function(){
-        if( $('input.virtual-focus').is(":visible") ){
-            var origin = $('input.virtual-focus').val(),
-            value = $(this).text();
-            $('input.virtual-focus').val(origin + value).change();
-            $('input.virtual-focus').val(origin + value).focus();
-        }
-    })
-    $('.ban-phim').on('click', '.delete', function(){
-        if( $('input.virtual-focus').is(":visible") ){
-            var origin = $('input.virtual-focus').val();
-            $('input.virtual-focus').val(origin.substring(0, origin.length - 1)).change();
-            $('input.virtual-focus').val(origin.substring(0, origin.length - 1)).focus();
-        }
-    })
-
 });
-
-keyboardToggle = function(action = ''){
-    var $ = jQuery;
-    if( action == '' | action == 'toggle' ){
-        $('.ban-phim').toggleClass('clicked');
-    }
-    else if( action == 'show' ){
-        $('.ban-phim').removeClass('clicked');
-    } 
-    else{
-        $('.ban-phim').addClass('clicked');
-    }
-
-    if($('.ban-phim').hasClass('clicked')){
-        $('.ban-phim .text-show').html("Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>")
-    }else {
-        $('.ban-phim .text-show').html("Thu nhỏ <i class='fa fa-angle-double-down'></i>")
-    }
-}
 
 
 var hocmaiOAuth = (function () {

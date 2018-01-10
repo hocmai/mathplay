@@ -19,6 +19,7 @@ Route::get('/splashmath', function(){
 });
 
 Route::get('/', 'SiteIndexController@index');
+Route::get('/home-v1', 'SiteIndexController@home');
 
 Route::resource('user', 'SiteUserController');
 

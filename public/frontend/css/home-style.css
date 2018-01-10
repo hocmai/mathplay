@@ -1,0 +1,390 @@
+@import url('https://fonts.googleapis.com/css?family=Signika:300,400,600,700&subset=latin-ext');
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+a:hover{
+    text-decoration: none;
+}
+.padding0{
+    padding: 0 !important;
+}
+.margin0{
+    margin: 0 !important;
+}
+.clear{
+    clear: both !important;
+}
+.inline-block{
+    display: inline-block !important;
+}
+.white-bg{
+    background: #fff;
+}
+.grey-bg{
+    background: #f8f9f9;
+}
+
+body{
+    font-family: 'ProximaNova', 'HelveticaNeue', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #111;
+}
+
+header.header{
+    position: relative;
+    overflow: hidden;
+    margin-top: 55px;
+}
+header.header .fixed-nav{
+    background-color: #0ac2fd;
+    border: 0;
+    margin: 0;
+    min-height: 55px;
+    color: #fff;
+    padding: 10px 0;
+}
+header.header .fixed-nav .navbar-brand{
+    padding: 0;
+    margin: 0;
+    height: auto;
+}
+header.header .fixed-nav .navbar-brand>img{
+    height: 35px;
+    width: auto;
+}
+.fixed-nav ul.nav li a{
+    color: #fff;
+    padding: 0 15px;
+    font-size: 18px;
+    line-height: 35px;
+}
+.fixed-nav ul.nav>li.open.dropdown> a:hover,
+.fixed-nav ul.nav>li.open.dropdown> a:focus,
+.fixed-nav ul.nav>li.open.dropdown> a,
+.fixed-nav ul.nav li a:hover{
+    color: #75fffd;
+    background: none;
+}
+.fixed-nav ul.nav li a.user-link{
+    background: #0ac2fd;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-transform: none;
+    border: 1px solid #fff;
+    font-size: 18px;
+    margin-left: 15px;
+}
+header.header{
+    height: calc(100vh - 56px);
+    background: url('../images/home/sea_img.png') no-repeat bottom left #0bc3fc;
+}
+header.header .banner .animation>div{
+    position: absolute;
+    z-index: 0;
+}
+header.header .animation .cloud{
+    margin-top: 50px;
+    -webkit-animation: cloud-motion 80s infinite;
+    -moz-animation: cloud-motion 80s infinite;
+    -ms-animation: cloud-motion 80s infinite;
+    -o-animation: cloud-motion 80s infinite;
+    animation: cloud-motion 80s infinite;
+}
+header.header .animation .cloud.cloud-1{
+    top: 2%;
+    left: 12%;
+}
+header.header .animation .cloud.cloud-2{
+    top: 7%;
+    left: 50%;
+}
+header.header .animation .cloud.cloud-3{
+    top: 2%;
+    left: 2%;
+}
+header.header .animation .cloud.cloud-4{
+    right: 2%;
+    top: 8%;
+}
+header.header .animation .cloud.cloud-5{
+    right: 30%;
+    top: 15%;
+}
+header.header .animation .cloud.cloud-6{
+    top: 20%;
+    left: 30%;
+}
+header.header .animation .cloud.cloud-7{
+    right: 5%;
+    bottom: 50%;
+}
+header.header .animation .balloon.balloon-1{
+    top: 9%;
+    left: 35%;
+    -webkit-animation: balloon-motion-1 110s infinite;
+    -moz-animation: balloon-motion-1 110s infinite;
+    -ms-animation: balloon-motion-1 110s infinite;
+    -o-animation: balloon-motion-1 110s infinite;
+    animation: balloon-motion-1 110s infinite;
+}
+header.header .animation .balloon.balloon-2{
+    top: 7%;
+    left: 8%;
+    -webkit-animation: balloon-motion-2 110s infinite;
+    -moz-animation: balloon-motion-2 110s infinite;
+    -ms-animation: balloon-motion-2 110s infinite;
+    -o-animation: balloon-motion-2 110s infinite;
+    animation: balloon-motion-2 110s infinite;
+}
+header.header .animation .balloon.balloon-3{
+    right: 15%;
+    top: 5%;
+    -webkit-animation: balloon-motion-3 110s infinite;
+    -moz-animation: balloon-motion-3 110s infinite;
+    -ms-animation: balloon-motion-3 110s infinite;
+    -o-animation: balloon-motion-3 110s infinite;
+    animation: balloon-motion-3 110s infinite;
+}
+header.header .animation .balloon.balloon-4{
+    top: 63%;
+    left: 30%;
+    -webkit-animation: balloon-motion-4 110s infinite;
+    -moz-animation: balloon-motion-4 110s infinite;
+    -ms-animation: balloon-motion-4 110s infinite;
+    -o-animation: balloon-motion-4 110s infinite;
+    animation: balloon-motion-4 110s infinite;
+}
+header.header .animation .ship{
+    -webkit-animation: ship-motion 250s linear infinite alternate;
+    -moz-animation: ship-motion 250s linear infinite alternate;
+    -ms-animation: ship-motion 250s linear infinite alternate;
+    -o-animation: ship-motion 250s linear infinite alternate;
+    animation: ship-motion 250s linear infinite alternate;
+}
+header.header .animation .ship.ship-1{
+    bottom: 9.5%;
+    left: 20%;
+}
+header.header .animation .ship.ship-2{
+    right: 8%;
+    bottom: 8%;
+}
+
+header.header .pippo-animation{
+    position: relative;
+    display: inline-block;
+    -webkit-animation: hippo-swing 3s infinite;
+    -moz-animation: hippo-swing 3s infinite;
+    -ms-animation: hippo-swing 3s infinite;
+    -o-animation: hippo-swing 3s infinite;
+    animation: hippo-swing 3s infinite;
+}
+header.header .pippo-animation .blink-img{
+    background: url(../images/home/blink.png) no-repeat 0 0 transparent;
+    position: absolute;
+    height: 9%;
+    top: 34.4%;
+    left: 52.7%;
+    width: 17%;
+    -webkit-animation: hippo-blink 3.4s step-end infinite;
+    -moz-animation: hippo-blink 3.4s step-end infinite;
+    -ms-animation: hippo-blink 3.4s step-end infinite;
+    -o-animation: hippo-blink 3.4s step-end infinite;
+    animation: hippo-blink 3.4s step-end infinite;
+    background-size: 100% 300%;
+}
+header.header .banner .caption-wrap{
+    color: #fff;
+    text-shadow: 1px 1px #02a0cc;
+    max-width: 780px;
+    float: right;
+}
+header.header .banner .caption-wrap h1{
+    font-family: 'Signika', sans-serif;
+    font-size: 54px;
+    line-height: 60px;
+    font-weight: 700;
+}
+header.header .banner .caption-wrap p{
+    font-size: 29px;
+    line-height: 36px;
+    color: #fff;
+    padding-top: 23px;
+    font-family: 'ProximaNova';
+    font-weight: 500;
+}
+header.header .banner .caption-wrap a.button{
+    display: inline-block;
+    margin-top: 45px;
+    margin-right: 20px;
+    font-family: 'ProximaNova';
+    font-weight: 500;
+    padding: 10px 0px 13px 0px;
+    width: 323px;
+    background-color: #ff9000;
+    box-shadow: inset 0px -3px 0px 0px #e57100;
+    border-radius: 40px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    text-shadow: none;
+}
+header.header .banner .caption-wrap a.button:hover{
+    background: #c47402;
+}
+header.header .banner .banner-content{
+    display: inline-block;
+    position: absolute;
+    width: 100%;
+    height: auto;
+    bottom: 10%;
+    left: 0;
+}
+header.header .light-bar{
+    background: rgba(2,3,60,0.34);
+    min-height: 60px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+    font-size: 19px;
+    line-height: 22px;
+    font-weight: 400;
+    color: #fff;
+    padding: 5px 0;
+}
+header.header .light-bar .left>span{
+    float: left;
+    text-align: right;
+    padding: 5px 10px;
+}
+header.header .light-bar a.link-scroll{
+    position: absolute;
+    top: 15px;
+    left: 50%;
+    color: #eee;
+    font-size: 35px;
+    z-index: 1;
+}
+header.header .light-bar .right>span{
+    float: left;
+    padding: 5px 10px 5px 70px;
+    background: url(../images/home/icon-3.png) no-repeat 15px 10px;
+}
+header.header .light-bar .right>span.teacher{
+    background-position: 15px -119px;
+}
+
+/****** Content ******/
+.home-section{
+    text-align: center;
+    padding: 30px 0;
+}
+.home-section h2.block-title{
+    font-weight: 400;
+    color: #464a4d;
+    margin: 10px 0 40px;
+    font-size: 37px;
+    line-height: 42px;
+}
+.intro-section .intro-row{
+    margin-top: 50px;
+}
+.intro-section .intro-row .item{
+    margin: 15px 0;
+}
+.intro-section .intro-row .item .img{
+    margin-top: 10px;
+    text-align: right;
+}
+.intro-section .intro-row .item .text h3{
+    margin: 0;
+    font-weight: 400;
+    font-size: 22px;
+}
+.home-section.stastic-section .item h3{
+    color: #505050;
+    font-weight: 300;
+    font-size: 21px;
+    margin: 30px 0;
+}
+.home-section.stastic-section .item.email{
+    margin-top: 80px;
+}
+.home-section.stastic-section .item.mobile{
+    margin-top: 65px;
+}
+.home-section.comment-section{
+    padding-bottom: 60px;
+}
+.home-section.comment-section .block-content .content{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #d6e8ec;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #7C7367;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 10px;
+    padding: 15px;
+    position: relative;
+    vertical-align: top;
+}
+
+/*************************/
+@font-face {
+    font-family: "ProximaNova";
+    src: url('../fonts/Proxima Nova Regular.otf');
+    font-weight: 400;
+}
+@font-face {
+    font-family: "ProximaNova";
+    src: url('../fonts/Proxima Nova Bold.otf');
+    font-weight: 500;
+}
+@font-face {
+    font-family: "ProximaNova";
+    src: url('../fonts/Proxima Nova Extrabold.otf');
+    font-weight: 600;
+}
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HelveticaNeue-Light.otf);
+    font-style: normal;
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HelveticaNeue.otf);
+    font-style: normal;
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HelveticaNeue-Medium.otf);
+    font-style: normal;
+    font-weight: 500;
+}
+
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HelveticaNeue-Bold.otf);
+    font-style: normal;
+    font-weight: 600;
+}
+
+@font-face {
+    font-family: HelveticaNeue;
+    src: url(../fonts/HELVETICANEUE-CONDENSEDBOLD.OTF);
+    font-style: normal;
+    font-weight: 700;
+}
