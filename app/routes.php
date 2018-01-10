@@ -6,10 +6,18 @@
 |--------------------------------------------------------------------------
 |
 | Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
+| It's a breeze. Simply tell Laravel the URIs it should respond tư
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::get('/demo/{grade_slug}', 'SiteDemoController@show');
+Route::get('/bailam',function(){
+	return View::make('demo.bailam');
+});
+Route::get('/splashmath', function(){
+	return View::make('splashmaths.splashmath');
+});
+
 Route::get('/', 'SiteIndexController@index');
 Route::get('/home-v1', 'SiteIndexController@home');
 
