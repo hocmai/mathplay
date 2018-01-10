@@ -87,4 +87,95 @@
     </div>
 
 </header>
+<div class="content-wrapper">
+    <section class="home-section map-section white-bg">
+        <div class="container">
+            <h2 class="block-title">Get Personalized Learning Path Fit for Catching up,<br>Enrichment or Regular Practice</h2>
+            <div class="block-content">
+                <div class="map-wrap">
+                    <img src="{{ asset('frontend/images/home/personalized_report.png') }}">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-section intro-section grey-bg">
+        <div class="container">
+            <h2 class="block-title">Interactive games and rewards motivate children <br>to learn and improve their scores</h2>
+            <div class="block-content">
+                <img src="{{ asset('frontend/images/home/widescreen.gif') }}">
+                <div class="intro-row text-left">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-4 item padding0">
+                            <div class="col-xs-4 col-sm-3 img padding0">
+                                <img src="{{ asset('frontend/images/home/gamification.png') }}">
+                            </div>
+                            <div class="col-xs-9 col-sm-9 text">
+                                <h3>Fun Rewards</h3>
+                                <span>Get coins for each correct answer and redeem coins for virtual pets</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 item padding0">
+                            <div class="col-xs-4 col-sm-3 img padding0">
+                                <img src="{{ asset('frontend/images/home/multiple_thems.png') }}">
+                            </div>
+                            <div class="col-xs-9 col-sm-9 text">
+                                <h3>Multiple Themes</h3>
+                                <span>Children explore the world of math in a Jungle, Candy or a Space theme</span>
+                            </div>
+                        </div>
+                        <div class="col-xs-12 col-sm-4 item padding0">
+                            <div class="col-xs-4 col-sm-3 img padding0">
+                                <img src="{{ asset('frontend/images/home/device_agnostic.png') }}">
+                            </div>
+                            <div class="col-xs-9 col-sm-9 text">
+                                <h3>Anytime Anywhere</h3>
+                                <span>Play on device of your child’s choice - iPad, iPhone or desktop</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-section stastic-section white-bg">
+        <div class="container">
+            <h2 class="block-title">Get Real-Time Progress Dashboard that Pinpoints Trouble Spots</h2>
+            <div class="block-content">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-3 item email padding0">
+                        <img src="{{ asset('frontend/images/home/email.png') }}">
+                        <h3>Email reports in your inbox every week</h3>
+                    </div>
+                    <div class="col-xs-12 col-sm-6 item dashboard">
+                        <img src="{{ asset('frontend/images/home/laptop.png') }}">
+                        <h3>Dashboard with detailed progress reports</h3>
+                    </div>
+                    <div class="col-xs-12 col-sm-3 item mobile padding0">
+                        <img src="{{ asset('frontend/images/home/iPhone.png') }}">
+                        <h3>Monitor activity on your iPhone using our Parent Connect App</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="home-section comment-section grey-bg">
+        <div class="container">
+            <h2 class="block-title">Over 15 Million kids and 50,000 schools love Splash Math</h2>
+            <div class="block-content">
+                <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
+                    <div class="content">
+                        <img src="{{'frontend/images/home/kristie.jpg'}}">
+                        <p class="desc">Splash Math is great because as you get things correct it increases in complexity — so it continues to challenge even those learners that are ready to move on.</p>
+                        <span class="author">Kristi Meeuwse</span>
+                        <span class="address">Teacher, Drayton Hall Elementary School,<br>Charleston, SC</span>
+                        <span class="source">source: https://www.apple.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div> {{-- End content wrapper --}}
 @stop
