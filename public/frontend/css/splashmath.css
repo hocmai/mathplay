@@ -159,15 +159,30 @@ body{
     height: 400px;
     margin: 20px 244px;
  }
+ .teacher .item small{
+ 	font-size:10px;
+ 	color:#ddd;
+ }
  .item img{
  	max-width: 100%;
  	padding-bottom:25px;
  }
  /*end*/
  footer{
- 	background-color: #000;
+ 	background-color: #323232;
+	padding-top: 15px;
  }
- footer .one a{color: #fff}
+
+ footer .one a{
+ 	color: #fff;
+ }
+ footer p a{
+ 	color: #525252;
+ 	font-size: 12px;
+ }
+ footer p a:hover{
+ 	color: #fff;
+ }
  footer .bottom_fo{
  	text-align: center;
     font-size: 45px;
@@ -176,3 +191,17 @@ body{
  footer .bottom_fo i{
  	background-color: #fff;
  }
+.footer_left span a{
+	color: #252525;
+	font-size: 10px;
+}
+.footer_left span a:hover{
+	color: #fff;
+}
+.footer_right{
+	padding-top: 20px;
+}
+.footer_right span {
+	color: #252525;
+	font-size: 10px;
+}

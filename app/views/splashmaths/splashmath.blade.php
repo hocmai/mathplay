@@ -116,51 +116,76 @@
 			</div> {{-- end.content --}}			
 		</div>
 		<footer>
-				<div class="container">
+			<div class="container">
+				<div class="footer">
 					<div class="row">
 						<div class="col-sm-3">
 							<p class="one"><a href="">Math Games for Kids</a></p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
+							<p><a href="#">Multiplication</a></p>
+							<p><a href="">Fraction Games</a></p>
+							<p><a href="">Division Games</a></p>
+							<p><a href="">Number Games</a></p>
+							<p><a href="">Addition Games</a></p>
+							<p><a href="">Subtraction Games</a></p>
+							<p><a href="">Area and Perimeter Games</a></p>
+							<p><a href="">Counting Money Games</a></p>
 						</div>
 						<div class="col-sm-3">
-							<p class="one"><a href="">Math Games for Kids</a></p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
+							<p class="one"><a href="">Free Apps for iPad/iPhone</a></p>
+							<p ><a href="">Math Games for Kids</a></p>
+							<p ><a href="">Grade 1 Free Math App</a></p>
+							<p><a href="">Grade 2 Free Math App</a></p>
+							<p ><a href="">Grade 3 Free Math App</a></p>
+							<p ><a href="">Grade 4 Free Math App</a></p>
+							<p ><a href="">Grade 5 Free Math App</a></p>
 						</div>
 						<div class="col-sm-3">
-							<p class="one"><a href="">Math Games for Kids</a></p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
+							<p class="one"><a href="">Splash Math Content</a></p>
+							<p><a href="#"> Math Games</a> </p>
+							<p><a href="#"> Math Games for kindergarten</a> </p>
+							<p><a href="#"> Math Games for 1st Grader</a> </p>
+							<p><a href="#"> Math Gamesfor 2st Grader</a> </p>
+							<p><a href="#"> Math Gamesfor 3st Grader</a> </p>
+							<p><a href="#"> Math Gamesfor 4st Grader</a> </p>
+							<p><a href="#"> Math Gamesfor 5st Grader</a> </p>
+							<p><a href="#"> Common Core Math Vocabulary</a> </p>
+							<p><a href="#"> Common Core Currioulum</a> </p>
 						</div>
 						<div class="col-sm-3">
-							<p class="one"><a href="">Math Games for Kids</a></p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
-							<p>Math Games for Kids</p>
+							<p class="one"><a href="">Resources</a></p>
+							<p ><a href="">About Us</a></p>
+							<p ><a href="">Contact Us</a></p>
+							<p ><a href="">Splash Math Blog</a></p>
+							<p ><a href="">Splash Math Apps</a></p>
+							<p ><a href="">Affiliates</a></p>
+							<p ><a href="">Help</a></p>
+							<p ><a href="">Help@splashmath.com</a></p>
 						</div>
 					</div>
 				</div>
 				<div class="row">
-						<div class="bottom_fo">
-							<a href=""><i class="fa fa-facebook-official" aria-hidden="true" style="color: #344976"></i></a>
-							<a href=""><i class="fa fa-google-plus-square" aria-hidden="true" style="color: red"></i></a>
-							<a href="#"><i class="fa fa-twitter-square" aria-hidden="true" style="color:#477ca2"></i></a>
-							<a href="#"><i class="fa fa-pinterest-square" aria-hidden="true" style="color: #99211e"></i></a>
+					<div class="bottom_fo">
+						<a href=""><i class="fa fa-facebook-official" aria-hidden="true" style="color: #344976"></i></a>
+						<a href=""><i class="fa fa-google-plus-square" aria-hidden="true" style="color: red"></i></a>
+						<a href="#"><i class="fa fa-twitter-square" aria-hidden="true" style="color:#477ca2"></i></a>
+						<a href="#"><i class="fa fa-pinterest-square" aria-hidden="true" style="color: #99211e"></i></a>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="footer_left">
+							<img src="images/img_splashmath/avt_footer.png">
+							<span style="color: #fff">PRIVACY POLICY</span>  <span><a href="#">Terms of Use</a></span>
 						</div>
 					</div>
-			</footer>
+					<div class="col-sm-6">
+						<div class="footer_right">
+							<span>StudyPad & Splash Math are registered Trademarks of StudyPad, Inc.</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
 
 		<!-- jQuery -->
 	</body>
