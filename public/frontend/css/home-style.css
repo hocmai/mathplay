@@ -19,6 +19,12 @@ a:hover{
 .inline-block{
     display: inline-block !important;
 }
+.white-bg{
+    background: #fff;
+}
+.grey-bg{
+    background: #f8f9f9;
+}
 
 body{
     font-family: 'ProximaNova', 'HelveticaNeue', sans-serif;
@@ -274,41 +280,62 @@ header.header .light-bar .right>span{
 header.header .light-bar .right>span.teacher{
     background-position: 15px -119px;
 }
-header.header .light-bar{
 
+/****** Content ******/
+.home-section{
+    text-align: center;
+    padding: 30px 0;
 }
-header.header .light-bar{
-
+.home-section h2.block-title{
+    font-weight: 400;
+    color: #464a4d;
+    margin: 10px 0 40px;
+    font-size: 37px;
+    line-height: 42px;
 }
-header.header .light-bar{
-
+.intro-section .intro-row{
+    margin-top: 50px;
 }
-header.header .light-bar{
-
+.intro-section .intro-row .item{
+    margin: 15px 0;
 }
-header.header{
-
+.intro-section .intro-row .item .img{
+    margin-top: 10px;
+    text-align: right;
 }
-header.header{
-
+.intro-section .intro-row .item .text h3{
+    margin: 0;
+    font-weight: 400;
+    font-size: 22px;
 }
-header.header{
-
+.home-section.stastic-section .item h3{
+    color: #505050;
+    font-weight: 300;
+    font-size: 21px;
+    margin: 30px 0;
 }
-header.header{
-
+.home-section.stastic-section .item.email{
+    margin-top: 80px;
 }
-header.header{
-
+.home-section.stastic-section .item.mobile{
+    margin-top: 65px;
 }
-header.header{
-
+.home-section.comment-section{
+    padding-bottom: 60px;
 }
-header.header{
-
-}
-header.header{
-
+.home-section.comment-section .block-content .content{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #d6e8ec;
+    border-radius: 8px;
+    box-sizing: border-box;
+    color: #7C7367;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 22px;
+    margin: 0 10px;
+    padding: 15px;
+    position: relative;
+    vertical-align: top;
 }
 
 /*************************/
