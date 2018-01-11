@@ -81,12 +81,151 @@ h4{
  .teacher .item{
  	border: 10px solid #fff;
     background: #fff;
+ h1{
+    font-family: "museo-sans-n5", "museo-sans";
+    font-weight: 500;
+    color: #464a4d;
+    margin: 0;
+    text-align: center;
+    font-size: 37px;
+    line-height: 42px;
+} /*end header*/
+.content .nav .map {
+	/*background: url('../../images/img_splashmath/personalized_report.png') no-repeat center center /100%;*/
+	/*line-height: 500px;*/
+} 
+.content .next_top-left{
+    font-size: 12px;
+    text-align: justify;
+    padding-top: 140px;
+}
+.content .next_top-left h3{
+	font-size: 14px;
+}
+.content .next_top-right{
+    font-size: 12px;
+    text-align: justify;
+    padding-top: 0px;
+}
+.content .next_top-right h3{
+	font-size: 14px;
+}
+.content .next_bottom-right{
+    font-size: 12px;
+    text-align: justify;
+    padding-top: 75px;
+}
+.content .next_bottom-right h3{
+	font-size: 14px;
+}
+/*end *** next_topleft*/
+
+.content .nav .map .addition button{
+	position: relative;
+	width: 70px;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px #ad6e13;
+    right: -145px;
+    font-size: 12px;
+    top: 85px;
+    text-align: center;
+    background: bisque;
+    color: #aa6a0f;
+    border: 1px solid #fff6cc;
+}
+
+.content .nav .map .subtraction button{
+	position: relative;
+    border-radius: 3px;
+    box-shadow: 1px 1px 1px #ad6e13;
+    right: -200px;
+    font-size: 12px;
+    top: 85px;
+    text-align: center;
+    background: bisque;
+    color: #aa6a0f;
+    border: 1px solid #fff6cc;
+}
+.map .fa{
+	color: red;
+    font-size: 45px;
+    position: relative;
+    top: 60px;
+    left: 155px;
+    -webkit-text-stroke: 2px #ffff;
+    transition: margin-left 2s 0.5s ease-in-out;
+   -moz-transition: margin-left 2s 0.5s ease-in-out;
+   -webkit-transition: margin-left 2s 0.5s ease-in-out;
+}
+/*******/
+.section{
+	background: #f8f9f9;
+}
+.section h1{
+	margin-left: 60px;
+	margin-right: 60px;
+}
+.section .section_center img{
+	width: 100%;
+}
+.section .section_bt img{
+	float: left;
+    margin-left: 0px;
+    margin-top: 30px;
+}
+.section .section_bt h3{
+	font-size: 22px;
+}
+.section .section_bt p{
+	font-size: 12px;
+}
+ /*end section*/
+ .aside h1{
+ 	font-size: 30px;
+ 	
+ }
+ .aside img{
+ 	max-width: 100%;
+ }
+  .img_email span, .img_laptop span, .img_iphone span{
+ 	text-align: center;
+ 	display: inline-grid;
+ 	margin-top: 15px;
+ }
+ .aside .img_email{
+ 	margin-top: 75px;
+  	-webkit-transition: width 2s; /* Safari */
+    transition: width 2s;
+ }
+ .img_laptop span{
+ 	margin-left: 85px;
+ }
+ .aside .img_iphone{
+ 	margin-top: 60px;
+ }
+ .img_iphone img{
+ 	margin-left: 60px;
+ }
+ /*end */
+ .teacher{
+ 	background:#f8f9f9;
+ }
+ .teacher h2{
+ 	text-align: center;
+ }
+ .teacher .item{
+ 	border: 10px solid #fff;
+    width: 450px;
+    background: #fff;
+    height: 400px;
+    margin: 20px 244px;
  }
  .teacher .item small{
  	font-size:10px;
  	color:#ddd;
  }
   .teacher .item img{
+ 	max-width: 100%;
  	max-width: 100%;
  }
  /*end*/
