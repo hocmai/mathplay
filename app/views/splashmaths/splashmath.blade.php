@@ -24,8 +24,8 @@
 <div class="content">
 	<div class="home-section white-bg nav">
 		<div class="container">
-			<h2 class="text_name">Get Personalized Learning Path Fit for Catching up, 
-	    		<br>Enrichment or Regular Practice</h2>
+			<h2 class="text_name">Bài tập được cá nhân hóa dành riêng cho mỗi bé
+	    		<br>Gồm đầy đủ trình độ từ dễ đến khó</h2>
 			<div class="content_top">
 				<img src="images/img_splashmath/personalized_report.png">
 			</div>
@@ -33,7 +33,7 @@
 	</div>{{--  end.nav --}}
 	<div class="home-section grey-bg section">
 		<div class="container">
-			<h2 class="text_name">Interactive games and rewards motivate children<br>to learn and improve their scores</h2>
+			<h2 class="text_name"> Câu hỏi sinh động giúp trẻ hứng thú học<br>và hoàn thiện các năng lực toán học</h2>
 			<div class="section_center">
 				<div class="row">
 					<div class="col-sm-6 col-sm-offset-3 col-xs-12">
@@ -56,8 +56,8 @@
 								<img src="images/img_splashmath/multiple_thems.png">
 							</div>
 							<div class=" col-sm-9 text_box">
-								<h4>Multiple Themes</h4>
-								<p>Children explore the world of math in a Jungle, Candy or a Space theme</p>
+								<h4>Giao diện sống động</h4>
+								<p>Hình ảnh sống động, thân thiện giúp tăng hứng thú khi làm bài</p>
 							</div>
 						</div>
 						<div class=" col-sm-4 col-xs-12 ">
@@ -65,8 +65,8 @@
 								<img src="images/img_splashmath/device_agnostic.png">
 							</div>
 							<div class="col-sm-9 text_box">
-								<h4>Anytime Anywhere</h4>
-								<p>Play on device of your child’s choice - iPad, iPhone or desktop</p>
+								<h4>Mọi lúc, mọi nơi</h4>
+								<p>Sử dụng trên tất cả các thiết bị: máy tính, máy tính bảng, điện thoại</p>
 							</div>
 						</div>
 					</div>
@@ -76,25 +76,25 @@
 	</div> {{-- end section --}}
 	<div class="home-section white-bg aside">
 		<div class="container">	
-			<h2 class="text_name">Get Real-Time Progress Dashboard that Pinpoints Trouble Spots</h2>
+			<h2 class="text_name">Báo cáo kết quả học giúp chỉ rõ các kĩ năng còn yếu</h2>
 			<div class="content_bt">
 				<div class="row">
 					 <div class="col-sm-3 col-xs-12">
 						<div class="email">
 							<img src="images/img_splashmath/email.png" alt="email_img" class="big_device">
-							<p class="aside_text">Email reports in your inbox every week</p>
+							<p class="aside_text">Báo cáo học tập định kì qua email</p>
 						</div>
 					</div>
 					<div class="col-sm-6 col-xs-12">
 						<div class="laptop">
 							<img src="images/img_splashmath/laptop.png" alt="laptop_img" class="big_device">
-							<p class="aside_text">Dashboard with detailed progress reports</p>
+							<p class="aside_text">Bảng tiến độ học trực quan, dễ theo dõi</p>
 						</div>
 					</div>
 					<div class="col-sm-3 col-xs-12">
 						<div class="iphone">
 							<img src="images/img_splashmath/iphone.png" alt="iPhone_img" class="big_device" >
-						    <p class="aside_text">Monitor activity on your iPhone using our Parent Connect App</p>
+						    <p class="aside_text">Kiểm tra việc học của con ngay trên điện thoại</p>
 						</div>
 					</div>
 				</div>
@@ -103,12 +103,12 @@
 	</div> {{-- end aside --}}
 	<div class="home-section grey-bg teacher">
 		<div class="container">
-			<h2 class="text_name">Over 15 Million kids and 50,000 schools love Splash Math</h2>
+			<h2 class="text_name">Được hơn 1.000 bạn nhỏ tại 20 tỉnh thành trên cả nước tin tưởng sử dụng </h2>
 			<div class="col-sm-6 col-sm-offset-3 text-left">
 				<div class="item">
 					<img class="img_avata" src="images/img_splashmath/avata.jpg">
-					<span>Splash Math is great because as you get things correct it increases in complexity — so it continues to challenge even those learners that are ready to move on.</span><br>
-					<span style="color: #afaaa2">Kristi Meeuwse</span><br><small>Teacher, Drayton Hall Elementary School,<br>Charleston, SC</small><span style="float:right;"><small>source: https://www.apple.com</small></span></span>
+					<span>Ứng dụng học toán tuyệt vời cho các con lứa tuổi tiểu học.</span><br>
+					<span style="color: #afaaa2">Thầy Bùi Minh Mẫn</span><br><small>Giáo viên<br>Việt Trì, Phú Thọ</small><span style="float:right;"><small>source: https://www.hocmai.com</small></span></span>
 				</div>
 			</div>
 		</div>
