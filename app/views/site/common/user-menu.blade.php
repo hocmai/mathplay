@@ -20,7 +20,7 @@
                 @endforeach
             </ul>
         </li>
-        @if(Auth::user()->check())
+        {{-- @if(Auth::user()->check())
             <li class="box-info">
                 <div class="text">
                     <div class="avatar">
@@ -40,10 +40,10 @@
                     <div class="clr"></div>
                 </div>
             </li>
-        @else
+        @else --}}
             <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI); ?>
             <li><a class="dang-ky hvr-shadow hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng ký</a></li>
             <li><a class="dang-nhap hvr-shadow hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Đăng nhập</a></li>
-        @endif
+        {{-- @endif --}}
     </ul>
 </div>

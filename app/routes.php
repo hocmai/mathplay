@@ -21,8 +21,8 @@ Route::get('/splashmath', function(){
 	return View::make('splashmaths.splashmath');
 });
 
-Route::get('/', 'SiteIndexController@index');
-Route::get('/home-v1', 'SiteIndexController@home');
+Route::get('/', 'SiteIndexController@home');
+//Route::get('/home-v1', 'SiteIndexController@home');
 
 Route::resource('user', 'SiteUserController');
 
