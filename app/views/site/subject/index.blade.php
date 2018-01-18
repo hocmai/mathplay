@@ -6,7 +6,7 @@
 
 @section('css_header')
 @parent
-{{ HTML::style('frontend/css/new-style.css')}}
+
 @stop
 
 @section('breadcrumb')
@@ -34,7 +34,7 @@
     @section('content')
     <div class="main-content">
         <div class="container">
-            <h1 class="node-title bg">{{ Common::getObject($subject, 'title') }}</h1>
+            {{-- <h1 class="node-title bg">{{ Common::getObject($subject, 'title') }}</h1> --}}
             <div class="row">
                 <div class="col-xs-12 col-sm-10 content-left">
                     <div class="head-list">

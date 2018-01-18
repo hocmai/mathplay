@@ -1,0 +1,28 @@
+.header{
+	height: 56px;
+}
+.header .member-area{
+	padding: 10px 0;
+}
+.header .member-area a.dang-ky, .header .member-area a.dang-nhap{
+	background: #0ac2fd;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-transform: none;
+    border: 1px solid #fff;
+    font-size: 18px;
+    width: 125px;
+    text-align: center;
+    height: 37px;
+    padding:0 15px;
+    margin :0 0 0 15px;
+    line-height: 37px;
+    
+}
+ .header .member-area a:hove{
+ 	background-color: #0bc3fc;
+}
+.box-bai-lam, .main-content{
+	margin-top: 30px;
+}

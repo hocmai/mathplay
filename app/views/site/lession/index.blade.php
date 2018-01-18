@@ -9,6 +9,7 @@
 @section('css_header')
 @parent
 {{ HTML::style('frontend/css/new-style.css')}}
+{{ HTML::style('frontend/css/home_layout.css')}}
 {{ HTML::script('frontend/js/soundmanager2-jsmin.js') }}
 <script type="text/javascript">
     audioList = [];
@@ -82,7 +83,7 @@ foreach($lession->question as $question){
 @section('content')
     <div class="box-bai-lam lession-wrapper">
         <div class="container">
-            <h1 class="node-title bg">{{ Common::getValueOfObject($lession, 'chapter', 'title') }}</h1>
+           {{--  <h1 class="node-title bg">{{ Common::getValueOfObject($lession, 'chapter', 'title') }}</h1> --}}
             <div class="row margin0">
                 <div class="col-xs-12 col-sm-8 padding0 boxLeft">
                     <div class="bg-box-lam-bai lession-content">
