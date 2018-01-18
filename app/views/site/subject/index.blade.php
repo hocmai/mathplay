@@ -10,7 +10,7 @@
 @stop
 
 @section('breadcrumb')
-<div class="header">
+<header class="header">
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="/">Trang chủ</a></li>
@@ -27,7 +27,7 @@
             {{-- </div> --}}
         </div>
     </div>
-</div>
+</header>
 @stop
 
 <main>

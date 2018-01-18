@@ -11,7 +11,7 @@
     {{ HTML::style('frontend/css/font-awesome.min.css')}}
     {{ HTML::style('frontend/css/hover-min.css')}}
     {{ HTML::style('frontend/css/new-style.css')}}
-    {{ HTML::style('frontend/css/home_layout.css') }}
+    {{ HTML::style('frontend/css/home_layout.css')}}
     @show
     
     <!-- Hotjar Tracking Code for http://tieuhoc.hocmai.vn -->

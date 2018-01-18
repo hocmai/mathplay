@@ -5,37 +5,16 @@
 @stop
 
 @section('content')
-<header class="header">
+<header class="header home">
     <nav class="navbar fixed-nav navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-mathplay" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/"><img src="{{ asset('/frontend/images/logo_hocmai.png') }}"></a>
-            </div>
-            <div class="collapse navbar-collapse pull-right" id="main-menu-mathplay">
-                <ul class="nav navbar-nav">
-                    {{-- <li><a href="#">Curriculum <span class="caret"></span></a></li> --}}
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Chọn lớp Học</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Lớp 1</a></li>
-                            <li><a href="#">Lớp 2</a></li>
-                            <li><a href="#">Lớp 3</a></li>
-                            <li><a href="#">Lớp 4</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#" class="login user-link">Đăng nhập</a></li>
-                    <li><a href="#" class="register user-link">Đăng kí</a></li>
-                </ul>
+            <a class="navbar-brand" href="/"><img src="{{ asset('/frontend/images/logo_hocmai.png') }}"></a>
+            <div class="member-area">
+                @include('site.common.user-menu')
             </div>
         </div>
     </nav> {{-- End main menu --}}
-
+ 
     <div class="banner">
         <div class="animation">
             <div class="cloud cloud-1"><img src="{{ asset('/frontend/images/home/cloud-1.png') }}"></div>

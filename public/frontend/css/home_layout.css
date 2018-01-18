@@ -1,3 +1,9 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+header.header .banner .caption-wrap a.button{
+    margin-left: 415px;
+}
 .header{
 	height: 56px;
 }
@@ -18,11 +24,28 @@
     padding:0 15px;
     margin :0 0 0 15px;
     line-height: 37px;
-    
 }
  .header .member-area a:hove{
  	background-color: #0bc3fc;
 }
 .box-bai-lam, .main-content{
 	margin-top: 30px;
+}
+ li.dropdown a.dropdown-toggle{
+    color: #fff;
+    padding: 10px;
+    background-color:#0ac2fd;
+}
+li.dropdown a.dropdown-toggle ul.dropdown-menu{
+    color: #fff;
+}
+.fixed-nav ul.nav li a{
+    background-color:#0ac2fd; 
+}
+.fixed-nav ul.nav>li.open.dropdown> a:hover,
+.fixed-nav ul.nav>li.open.dropdown> a:focus,
+.fixed-nav ul.nav>li.open.dropdown> a,
+.fixed-nav ul.nav li a:hover{
+    color: #75fffd;
+    background: #0ac2fd;
 }

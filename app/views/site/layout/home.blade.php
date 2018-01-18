@@ -11,7 +11,7 @@
     {{ HTML::style('frontend/css/hover-min.css')}}
     {{ HTML::style('frontend/css/animation.css')}}
     {{ HTML::style('frontend/css/home-style.css')}}
-    {{HTML::style('frontend/css/home-style1.css')}}
+    {{ HTML::style('frontend/css/home_layout.css')}}
     
 	{{ HTML::script('frontend/js/jquery.min.js')}}
 	{{ HTML::script('frontend/js/bootstrap.min.js')}}

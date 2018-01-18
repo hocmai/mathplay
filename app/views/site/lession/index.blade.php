@@ -69,6 +69,9 @@ foreach($lession->question as $question){
             <li class="active">
                 {{ link_to_action('SiteSubjectController@show', Common::getObject($subject, 'title'), ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')])  }}
             </li>
+            <li>
+                {{ Common::getValueOfObject($lession, 'chapter', 'title') }}
+            </li>
         </ol>
         <div class="member-area">
             {{-- <div class="container"> --}}
