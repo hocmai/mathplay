@@ -20,6 +20,67 @@ body{
 .margin0{
     margin: 0;
 }
+.nav{
+    text-align: center;
+}
+ h2.text_name{
+    font-family: "museo-sans-n5", "museo-sans";
+    font-weight: 500;
+    color: #464a4d;
+    margin: 0 60px;
+    text-align: center;
+    font-size: 37px;
+    line-height: 42px;
+    padding: 36px 0;
+}
+h4{
+    font-size: 22px;
+    line-height: 26px;
+    margin-bottom: 2px;
+}
+.nav .content_top{
+    padding: 40px 0 20px 0;
+} /*end nav*/
+
+
+/*end *** next_topleft*/
+/*******/
+.grey-bg{
+	background: #f8f9f9;
+}
+.section_center .img_tivi{
+    padding-bottom: 20px;
+}
+ /*end section*/
+.content_center img{
+ margin-top: 25px;
+}
+
+ .email, .iphone, .laptop{
+    text-align: center;
+ }
+ .content_bt .email{
+    padding-top: 80px;
+ }
+ .content_bt .iphone{
+    padding-top: 20px;
+ }
+ .content_bt .aside_text{
+    color: #505050;
+    text-align: center;
+    font-size: 19px;
+    padding-top: 25px;
+    font-weight: 900;
+ }
+ .iphone .big_device{
+    padding-top: 40px;
+ }
+ .teacher{
+ 	background:#f8f9f9;
+ }
+ .teacher .item{
+ 	border: 10px solid #fff;
+    background: #fff;
  h1{
     font-family: "museo-sans-n5", "museo-sans";
     font-weight: 500;
@@ -163,9 +224,9 @@ body{
  	font-size:10px;
  	color:#ddd;
  }
- .item img{
+  .teacher .item img{
  	max-width: 100%;
- 	padding-bottom:25px;
+ 	max-width: 100%;
  }
  /*end*/
  footer{

@@ -78,6 +78,8 @@ header.header .fixed-nav .navbar-brand>img{
     border: 1px solid #fff;
     font-size: 18px;
     margin-left: 15px;
+    width: 125px;
+    text-align: center;
 }
 header.header{
     height: calc(100vh - 56px);

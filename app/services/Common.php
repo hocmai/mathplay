@@ -9,6 +9,11 @@ class Common {
         return ['hours' => $hours, 'minutes' => $minutes, 'seconds' => $seconds, 'text' => (($hours > 0) ? ' '.$hours.' giờ' : '').(($minutes > 0) ? ' '.$minutes.' phút' : '').(($seconds > 0) ? ' '.$seconds.' giây' : '')];
 	}
 
+	public static function getAllGrade(){
+		$grades = Grade::all();
+		return $grades;
+	}
+
 	public static function getLessionTree(){
 		$tree = [];
 		$gradeList = Grade::orderBy('created_at', 'asc')->get();
