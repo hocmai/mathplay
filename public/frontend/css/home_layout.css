@@ -1,0 +1,108 @@
+body{
+    font-family: 'Roboto', sans-serif;
+}
+header.header .banner .caption-wrap a.button{
+    margin-left: 235px;
+}
+.header{
+	min-height: 56px;
+}
+ header.home .fixed-nav{
+    padding: 0px;
+}
+header.home .fixed-nav .navbar-brand img{
+    margin: 12px 0 0 0;
+}
+
+.header .member-area{
+	padding: 10px 0;
+}
+.header .member-area .box-info{
+    padding: 5px 15px 0 25px;
+    margin: 5px;
+}
+.header .member-area .box-info .avatar{
+    margin: -15px -50px 0 0;
+}
+.header .member-area a.dang-ky, .header .member-area a.dang-nhap{
+	background: #0ac2fd;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-transform: none;
+    border: 1px solid #fff;
+    font-size: 18px;
+    width: 125px;
+    text-align: center;
+    height: 37px;
+    padding:0 15px;
+    margin :0 0 0 15px;
+    line-height: 37px;
+}
+ .header .member-area a:hove{
+ 	background-color: #0bc3fc;
+}
+header.header .banner .caption-wrap h1{
+    font-family: 'roboto', sans-serif;
+    font-size: 35px;
+    line-height: 60px;
+    font-weight: 700;
+}
+.header .member-area .box-info .avatar{
+     margin-right: -45px;
+    margin-top: -15px;   
+}
+.header .member-area .box-info{
+    margin: 5px 0 3px 15px;
+}
+/*// end header*/
+.box-bai-lam, .main-content{
+	margin-top: 30px;
+}
+ li.dropdown a.dropdown-toggle{
+    color: #fff;
+    padding: 10px;
+    background-color:#0ac2fd;
+}
+ ul.dropdown-menu{
+    color: #fff;
+    background: #0ac2fd
+
+}
+ul.dropdown-menu a{
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+}
+ul.dropdown-menu a:hove{
+    background-color:#0ac2fd;
+    color: #fff;
+}
+ #main-menu-mathplay ul.nav li a{
+    background-color:#0ac2fd; 
+    margin-top:5px; 
+}
+#main-menu-mathplay .navbar-nav .text span{
+    color: #000;
+}
+.fixed-nav ul.nav>li.open.dropdown> a:hover,
+.fixed-nav ul.nav>li.open.dropdown> a:focus,
+.fixed-nav ul.nav>li.open.dropdown> a,
+.fixed-nav ul.nav li a:hover{
+    color: #75fffd;
+    background: #0ac2fd;
+}
+/*************/
+.question-rendered .start{
+display: inline-block;
+    width: 100%;
+    font-size: 22px;
+    color: #fff;
+    background: #52c9f3;
+    padding: 5px 0;
+    margin-bottom: 15px;
+    text-transform: none;
+    -webkit-text-stroke: #fff 0px;
+    text-shadow:none;
+
+}

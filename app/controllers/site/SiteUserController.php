@@ -60,7 +60,6 @@ class SiteUserController extends SiteController {
 		);
         $input = Input::except(['_token', 'remember']);
         $validator = Validator::make($input, $rules, $messsages);
-
         if ($validator->fails()) {
             return Redirect::back()
             	->withErrors($validator)
@@ -73,7 +72,6 @@ class SiteUserController extends SiteController {
                 return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
             }
         }
-
 	}
 	
 	/**

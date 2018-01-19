@@ -6,11 +6,11 @@
 
 @section('css_header')
 @parent
-{{ HTML::style('frontend/css/new-style.css')}}
+
 @stop
 
 @section('breadcrumb')
-<div class="header">
+<header class="header">
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="/">Trang chủ</a></li>
@@ -27,14 +27,14 @@
             {{-- </div> --}}
         </div>
     </div>
-</div>
+</header>
 @stop
 
 <main>
     @section('content')
     <div class="main-content">
         <div class="container">
-            <h1 class="node-title bg">{{ Common::getObject($subject, 'title') }}</h1>
+            {{-- <h1 class="node-title bg">{{ Common::getObject($subject, 'title') }}</h1> --}}
             <div class="row">
                 <div class="col-xs-12 col-sm-10 content-left">
                     <div class="head-list">
