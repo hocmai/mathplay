@@ -5,36 +5,16 @@
 @stop
 
 @section('content')
-<header class="header">
+<header class="header home">
     <nav class="navbar fixed-nav navbar-default navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#main-menu-mathplay" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/"><img src="{{ asset('/frontend/images/icon-gioithieu.png') }}"></a>
-            </div>
-            <div class="collapse navbar-collapse pull-right" id="main-menu-mathplay">
-                <ul class="nav navbar-nav">
-                    <li><a href="#">Curriculum <span class="caret"></span></a></li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Features & Plans</a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Case Studies</a></li>
-                    <li><a href="#" class="login user-link">Sign in</a></li>
-                    <li><a href="#" class="register user-link">Sign up</a></li>
-                </ul>
+            <a class="navbar-brand" href="/"><img src="{{ asset('/frontend/images/logo_hocmai.png') }}"></a>
+            <div class="member-area">
+                @include('site.common.user-menu')
             </div>
         </div>
     </nav> {{-- End main menu --}}
-
+ 
     <div class="banner">
         <div class="animation">
             <div class="cloud cloud-1"><img src="{{ asset('/frontend/images/home/cloud-1.png') }}"></div>
@@ -62,10 +42,10 @@
                 </div>
                 <div class="caption col-xs-12 col-sm-8">
                     <div class="caption-wrap">
-                        <h1>The Complete K-5 Math Learning Program Built for Your Child</h1>
-                        <p>Boost Confidence. Increase Scores. Get Ahead.</p>
-                        <a class="button"href="#signup-modal">Parents, Get Started for Free</a>
-                        <a class="button"href="#signup-modal">Teachers, Get Started for Free</a>
+                        <h1>Chương trình học toán toàn diện cho các bé mẫu giáo và tiểu học</h1>
+                        <p>Tăng tự tin. Cải thiện điểm số. Hoàn thiện năng lực tư duy.</p>
+                       {{--  <a class="button"href="#signup-modal">Học thử</a> --}}
+                        <a class="button"href="#signup-modal">Học thử</a>
                     </div>
                 </div>
             </div>
@@ -75,22 +55,23 @@
     <div class="light-bar">
         <div class="container-fluid">
             <div class="left pull-left">
-                <span>Won Numerous<br>Awards & Honors</span>
-                <img src="{{ asset('frontend/images/home/awards-honors-badge-bed.png') }}">
+                <span></span>
+                <img src="{{-- {{ asset('frontend/images/home/awards-honors-badge-bed.png') }} --}}">
             </div>
             <a class="link-scroll pull-right" href="#"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
             <div class="right pull-right">
-                <span class="counter">50,000+<br>Schools</span>
-                <span class="teacher">15 Million+<br>Learners</span>
+                <span class="counter">{{-- 50,000+<br>Schools --}}</span>
+                <span class="teacher">{{-- 15 Million+<br>Learners --}}</span>
             </div>
         </div>
     </div>
-</header>
 
+</header>
 <div class="content-wrapper">
-    <section class="home-section map-section white-bg text-center">
+    <section class="home-section map-section white-bg">
         <div class="container">
-            <h2 class="block-title">Get Personalized Learning Path Fit for Catching up,<br>Enrichment or Regular Practice</h2>
+            <h2 class="block-title">Bài tập được cá nhân hóa dành riêng cho mỗi bé
+                <br>Gồm đầy đủ trình độ từ dễ đến khó</h2>
             <div class="block-content">
                 <div class="map-wrap">
                     <img src="{{ asset('frontend/images/home/personalized_report.png') }}">
@@ -99,9 +80,9 @@
         </div>
     </section>
 
-    <section class="home-section intro-section grey-bg text-center">
+    <section class="home-section intro-section grey-bg">
         <div class="container">
-            <h2 class="block-title">Interactive games and rewards motivate children <br>to learn and improve their scores</h2>
+            <h2 class="block-title">Câu hỏi sinh động giúp trẻ hứng thú học<br>và hoàn thiện các năng lực toán học</h2>
             <div class="block-content">
                 <img src="{{ asset('frontend/images/home/widescreen.gif') }}">
                 <div class="intro-row text-left">
@@ -120,8 +101,8 @@
                                 <img src="{{ asset('frontend/images/home/multiple_thems.png') }}">
                             </div>
                             <div class="col-xs-9 col-sm-9 text">
-                                <h3>Multiple Themes</h3>
-                                <span>Children explore the world of math in a Jungle, Candy or a Space theme</span>
+                                <h3>Giao diện sống động</h3>
+                                <span>Hình ảnh sống động, thân thiện giúp tăng hứng thú khi làm bài</span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 item padding0">
@@ -129,8 +110,8 @@
                                 <img src="{{ asset('frontend/images/home/device_agnostic.png') }}">
                             </div>
                             <div class="col-xs-9 col-sm-9 text">
-                                <h3>Anytime Anywhere</h3>
-                                <span>Play on device of your child’s choice - iPad, iPhone or desktop</span>
+                                <h3>Mọi lúc, mọi nơi</h3>
+                                <span>Sử dụng trên tất cả các thiết bị: máy tính, máy tính bảng, điện thoại</span>
                             </div>
                         </div>
                     </div>
@@ -141,37 +122,37 @@
 
     <section class="home-section stastic-section white-bg">
         <div class="container">
-            <h2 class="block-title">Get Real-Time Progress Dashboard that Pinpoints Trouble Spots</h2>
+            <h2 class="block-title">Báo cáo kết quả học giúp chỉ rõ các kĩ năng còn yếu</h2>
             <div class="block-content">
                 <div class="row">
                     <div class="col-xs-12 col-sm-3 item email padding0">
                         <img src="{{ asset('frontend/images/home/email.png') }}">
-                        <h3>Email reports in your inbox every week</h3>
+                        <h3>Báo cáo học tập định kì qua email</h3>
                     </div>
                     <div class="col-xs-12 col-sm-6 item dashboard">
                         <img src="{{ asset('frontend/images/home/laptop.png') }}">
-                        <h3>Dashboard with detailed progress reports</h3>
+                        <h3>Bảng tiến độ học trực quan, dễ theo dõi</h3>
                     </div>
                     <div class="col-xs-12 col-sm-3 item mobile padding0">
                         <img src="{{ asset('frontend/images/home/iPhone.png') }}">
-                        <h3>Monitor activity on your iPhone using our Parent Connect App</h3>
+                        <h3>Kiểm tra việc học của con ngay trên điện thoại</h3>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="home-section comment-section grey-bg text-center">
+    <section class="home-section comment-section grey-bg">
         <div class="container">
-            <h2 class="block-title">Over 15 Million kids and 50,000 schools love Splash Math</h2>
+            <h2 class="block-title">Được hơn 1.000 bạn nhỏ tại 20 tỉnh thành trên cả nước tin tưởng sử dụng</h2>
             <div class="block-content">
                 <div class="col-xs-12 col-sm-6 col-sm-offset-3 text-left">
                     <div class="content">
                         <img src="{{'frontend/images/home/kristie.jpg'}}">
-                        <p class="desc">Splash Math is great because as you get things correct it increases in complexity — so it continues to challenge even those learners that are ready to move on.</p>
-                        <span class="author">Kristi Meeuwse</span>
-                        <span class="address">Teacher, Drayton Hall Elementary School,<br>Charleston, SC</span>
-                        <span class="source">source: https://www.apple.com</span>
+                        <p class="desc">Ứng dụng học toán tuyệt vời cho các con lứa tuổi tiểu học.</p>
+                        <span class="author">Thầy Bùi Minh Mẫn</span>
+                        <span class="address">Giáo viên<br>Việt Trì, Phú Thọ</span>
+                        <span class="source">source: https://www.hocmai.com</span>
                     </div>
                 </div>
             </div>
