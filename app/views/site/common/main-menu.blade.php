@@ -26,11 +26,11 @@
                                 Lớp học
                             </a>
                             <ul>
-                                @foreach($grades as $grade)
+                               <!--  @foreach($grades as $grade)
                                     <li>
                                         {{ renderUrl('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
                                     </li>
-                                @endforeach
+                                @endforeach -->
                                 <li class="bg-color"></li>
                             </ul>
                         </li>

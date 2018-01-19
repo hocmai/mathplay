@@ -2,11 +2,18 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 header.header .banner .caption-wrap a.button{
-    margin-left: 415px;
+    margin-left: 235px;
 }
 .header{
-	height: 56px;
+	min-height: 56px;
 }
+ header.home .fixed-nav{
+    padding: 0px;
+}
+header.home .fixed-nav .navbar-brand img{
+    margin: 12px 0 0 0;
+}
+
 .header .member-area{
 	padding: 10px 0;
 }
@@ -29,11 +36,19 @@ header.header .banner .caption-wrap a.button{
  	background-color: #0bc3fc;
 }
 header.header .banner .caption-wrap h1{
-    font-family: 'Signika','roboto', sans-serif;
-    font-size: 29px;
+    font-family: 'roboto', sans-serif;
+    font-size: 35px;
     line-height: 60px;
     font-weight: 700;
 }
+.header .member-area .box-info .avatar{
+     margin-right: -45px;
+    margin-top: -15px;   
+}
+.header .member-area .box-info{
+    margin: 5px 0 3px 15px;
+}
+/*// end header*/
 .box-bai-lam, .main-content{
 	margin-top: 30px;
 }
@@ -56,8 +71,12 @@ ul.dropdown-menu a:hove{
     background-color:#0ac2fd;
     color: #fff;
 }
- ul.nav li a{
+ #main-menu-mathplay ul.nav li a{
     background-color:#0ac2fd; 
+    margin-top:5px; 
+}
+#main-menu-mathplay .navbar-nav .text span{
+    color: #000;
 }
 .fixed-nav ul.nav>li.open.dropdown> a:hover,
 .fixed-nav ul.nav>li.open.dropdown> a:focus,
@@ -65,4 +84,14 @@ ul.dropdown-menu a:hove{
 .fixed-nav ul.nav li a:hover{
     color: #75fffd;
     background: #0ac2fd;
+}
+.question-rendered .start{
+    text-transform: none;
+    -webkit-text-stroke: #fff 0px;
+    text-shadow: none;
+    font-size: 22px;
+}
+.play-question-sound>button.control:before{
+    position: relative;
+    top:-3px;
 }
