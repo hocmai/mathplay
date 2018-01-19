@@ -10,6 +10,13 @@ header.header .banner .caption-wrap a.button{
 .header .member-area{
 	padding: 10px 0;
 }
+.header .member-area .box-info{
+    padding: 5px 15px 0 25px;
+    margin: 5px;
+}
+.header .member-area .box-info .avatar{
+    margin: -15px -50px 0 0;
+}
 .header .member-area a.dang-ky, .header .member-area a.dang-nhap{
 	background: #0ac2fd;
     -webkit-border-radius: 20px;
@@ -56,7 +63,7 @@ ul.dropdown-menu a:hove{
     background-color:#0ac2fd;
     color: #fff;
 }
- ul.nav li a{
+ #main-menu-mathplay ul.nav li a{
     background-color:#0ac2fd; 
 }
 .fixed-nav ul.nav>li.open.dropdown> a:hover,

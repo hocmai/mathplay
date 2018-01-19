@@ -1,4 +1,4 @@
-@include('site.common.header')
+@include('site.common.header') 
     
 @include('site.common.main-menu')
 
