@@ -107,7 +107,7 @@ hr{
     font-family: 'Glyphicons Halflings';
     color: #fff;
     font-size: 13px;
-    top: -8px;
+    top: -3px;
     position: relative;
 }
 .play-question-sound>button.control.play:before{
