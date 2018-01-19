@@ -7,6 +7,13 @@ header.header .banner .caption-wrap a.button{
 .header{
 	min-height: 56px;
 }
+ header.home .fixed-nav{
+    padding: 0px;
+}
+header.home .fixed-nav .navbar-brand img{
+    margin: 12px 0 0 0;
+}
+
 .header .member-area{
 	padding: 10px 0;
 }
@@ -41,6 +48,14 @@ header.header .banner .caption-wrap h1{
     line-height: 60px;
     font-weight: 700;
 }
+.header .member-area .box-info .avatar{
+     margin-right: -45px;
+    margin-top: -15px;   
+}
+.header .member-area .box-info{
+    margin: 5px 0 3px 15px;
+}
+/*// end header*/
 .box-bai-lam, .main-content{
 	margin-top: 30px;
 }
@@ -65,6 +80,10 @@ ul.dropdown-menu a:hove{
 }
  #main-menu-mathplay ul.nav li a{
     background-color:#0ac2fd; 
+    margin-top:5px; 
+}
+#main-menu-mathplay .navbar-nav .text span{
+    color: #000;
 }
 .fixed-nav ul.nav>li.open.dropdown> a:hover,
 .fixed-nav ul.nav>li.open.dropdown> a:focus,
@@ -85,4 +104,5 @@ display: inline-block;
     text-transform: none;
     -webkit-text-stroke: #fff 0px;
     text-shadow:none;
+
 }
