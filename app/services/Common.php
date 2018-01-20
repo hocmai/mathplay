@@ -1,6 +1,20 @@
 <?php
 class Common {
 
+	public static function checkDoLesson($lessionId){
+		if(Auth::user()->check() == false){
+			return false;
+		}
+		$uid = Auth::user()->get()->id;
+		$result = StudyHistory::where('author',$uid)->where('lession_id', $lessionId)->count();
+		// dd($result);
+		if( $result ){
+			return true;
+		}
+		return false;
+	}
+
+
 	//////////// Doi so giay thanh gio - phut - giay
 	public static function convertTimeUsed($timeUsed = 0){
         $hours = floor($timeUsed/3600);

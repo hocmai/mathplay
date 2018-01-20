@@ -106,3 +106,19 @@ display: inline-block;
     text-shadow:none;
 
 }
+.list-chapter .chapter-item ul.nav li a i{
+    background: #999;
+    border-radius: 100%;
+    padding: 1px;
+    width: 20px;
+    text-align: center;
+    font-size: 18px;
+    float: right;
+    color: #ddd ;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+}
+.list-chapter .chapter-item ul.nav li a i.yellow-color{
+    color: #ffde00 !important;
+}

@@ -75,7 +75,17 @@
                                                 <ul class="nav">
                                                     <?php $lessions = Lession::orderBy('weight', 'asc')->where('chapter_id', $chapters[$i]->id)->get(); ?>
                                                     @foreach( $lessions as $lession)
-                                                        <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                        <li>
+                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
+                                                                {{ $lession->title }}
+                                                                
+                                                                @if( Common::checkDoLesson( $lession->id ) )
+                                                                    <i class="fa fa-star yellow-color"></i>
+                                                                @else
+                                                                    <i class="fa fa-star"></i>
+                                                                @endif
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div> <!-- End chuong -->
@@ -89,7 +99,15 @@
                                                 </h2>
                                                 <ul class="nav">
                                                     @foreach($chapters[$i]->lession as $lession)
-                                                        <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                        <li>
+                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}
+                                                                 @if( Common::checkDoLesson( $lession->id ) )
+                                                                    <i class="fa fa-star yellow-color"></i>
+                                                                @else
+                                                                    <i class="fa fa-star"></i>
+                                                                @endif
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div> <!-- End chuong -->
