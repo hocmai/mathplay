@@ -9,14 +9,18 @@ header.header .banner .caption-wrap a.button{
 	min-height: 56px;
 }
  header.home .fixed-nav{
-    padding: 0px;
+    padding: 8px;
+    min-height: 60px;
 }
+
 header.home .fixed-nav .navbar-brand img{
     margin: 12px 0 0 0;
 }
-
-header.header .member-area{
-	padding: 2px 0 0 0;
+header.header .member-area #main-menu-mathplay{
+	padding: 8px 0 0 0;
+}
+header.home .member-area #main-menu-mathplay{
+    padding: 1px 0 0 0;
 }
 .header .member-area .box-info{
     padding: 5px 15px 0 25px;
