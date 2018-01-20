@@ -1,8 +1,9 @@
-body{
-    font-family: 'Roboto', sans-serif;
-}
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=vietnamese');
+
 header.header .banner .caption-wrap a.button{
-    margin-left: 235px;
+    margin: auto;
+    display: block;
+    margin-top: 45px;
 }
 .header{
 	min-height: 56px;
@@ -14,8 +15,8 @@ header.home .fixed-nav .navbar-brand img{
     margin: 12px 0 0 0;
 }
 
-.header .member-area{
-	padding: 10px 0;
+header.header .member-area{
+	padding: 10px 0 0 0;
 }
 .header .member-area .box-info{
     padding: 5px 15px 0 25px;
@@ -43,10 +44,10 @@ header.home .fixed-nav .navbar-brand img{
  	background-color: #0bc3fc;
 }
 header.header .banner .caption-wrap h1{
-    font-family: 'roboto', sans-serif;
-    font-size: 35px;
-    line-height: 60px;
-    font-weight: 700;
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 45px;
+    line-height: 55px;
+    font-weight: 600;
 }
 .header .member-area .box-info .avatar{
      margin-right: -45px;
@@ -59,28 +60,38 @@ header.header .banner .caption-wrap h1{
 .box-bai-lam, .main-content{
 	margin-top: 30px;
 }
- li.dropdown a.dropdown-toggle{
+ #main-menu-mathplay li.dropdown a.dropdown-toggle{
     color: #fff;
-    padding: 10px;
+    
     background-color:#0ac2fd;
 }
- ul.dropdown-menu{
+ #main-menu-mathplay .dropdown-menu{
     color: #fff;
-    background: #0ac2fd
+    background: #0ac2fd;
+    position: absolute;
+    text-align: center;
+    min-width: 150px;
+    top: auto;
+    left: auto;
+    right: 0;
 
 }
-ul.dropdown-menu a{
+ #main-menu-mathplay ul.dropdown-menu a{
     color: #fff;
     font-weight: 400;
     font-size: 18px;
 }
-ul.dropdown-menu a:hove{
+ #main-menu-mathplay ul.dropdown-menu a:hove{
     background-color:#0ac2fd;
     color: #fff;
 }
  #main-menu-mathplay ul.nav li a{
     background-color:#0ac2fd; 
     margin-top:5px; 
+}
+#main-menu-mathplay ul.nav li a:hover {
+    color: #75fffd;
+    background: #0ac2fd;
 }
 #main-menu-mathplay .navbar-nav .text span{
     color: #000;
