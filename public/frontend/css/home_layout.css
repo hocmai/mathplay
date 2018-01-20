@@ -14,7 +14,7 @@ header.header .banner .caption-wrap a.button{
 }
 
 header.home .fixed-nav .navbar-brand img{
-    margin: 12px 0 0 0;
+    margin: 2px 0 0 0;
 }
 header.header .member-area #main-menu-mathplay{
 	padding: 8px 0 0 0;
@@ -54,11 +54,11 @@ header.header .banner .caption-wrap h1{
     font-weight: 600;
 }
 .header .member-area .box-info .avatar{
-     margin-right: -45px;
+     margin-right: -5px;
     margin-top: -15px;   
 }
 .header .member-area .box-info{
-    margin: 5px 0 3px 15px;
+    padding-right: 55px;
 }
 /*// end header*/
 .box-bai-lam, .main-content{
@@ -66,7 +66,8 @@ header.header .banner .caption-wrap h1{
 }
  #main-menu-mathplay li.dropdown a.dropdown-toggle{
     color: #fff;
-    
+    padding: 10px 15px;
+    line-height: 15px;
     background-color:#0ac2fd;
 }
  #main-menu-mathplay .dropdown-menu{
@@ -75,37 +76,27 @@ header.header .banner .caption-wrap h1{
     position: absolute;
     text-align: center;
     min-width: 150px;
-    top: auto;
     left: auto;
-    right: 0;
-
+    top: calc(100% + 5px);
+    right: -10px;
+    padding: 0;
 }
  #main-menu-mathplay ul.dropdown-menu a{
     color: #fff;
     font-weight: 400;
     font-size: 18px;
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
 }
- #main-menu-mathplay ul.dropdown-menu a:hove{
-    background-color:#0ac2fd;
-    color: #fff;
-}
- #main-menu-mathplay ul.nav li a{
-    background-color:#0ac2fd; 
-    margin-top:5px; 
-}
-#main-menu-mathplay ul.nav li a:hover {
-    color: #75fffd;
-    background: #0ac2fd;
+#main-menu-mathplay ul.dropdown-menu li a:hover,
+#main-menu-mathplay ul.dropdown-menu li a.active {
+    color: #0ac2fd;
+    background: #fff;
 }
 #main-menu-mathplay .navbar-nav .text span{
     color: #000;
-}
-.fixed-nav ul.nav>li.open.dropdown> a:hover,
-.fixed-nav ul.nav>li.open.dropdown> a:focus,
-.fixed-nav ul.nav>li.open.dropdown> a,
-.fixed-nav ul.nav li a:hover{
-    color: #75fffd;
-    background: #0ac2fd;
 }
 /*************/
 .question-rendered .start{

@@ -13,6 +13,7 @@
 <header class="header">
     <div class="container">
         <ol class="breadcrumb">
+            <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
             <li><a href="/">Trang chủ</a></li>
             <li>
                 {{ renderUrl('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
@@ -106,6 +107,7 @@
                                                                 @else
                                                                     <i class="fa fa-star"></i>
                                                                 @endif
+                                                                
                                                             </a>
                                                         </li>
                                                     @endforeach

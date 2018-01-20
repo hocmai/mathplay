@@ -58,7 +58,7 @@ foreach($lession->question as $question){
 @endforeach
 
 @section('breadcrumb')
-<div class="header">
+<header class="header">
     <div class="container">
         <ol class="breadcrumb">
             <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
@@ -77,7 +77,7 @@ foreach($lession->question as $question){
             {{-- </div> --}}
         </div>
     </div>
-</div>
+</header>
 <div class="clear clearfix"></div>
 @stop
 

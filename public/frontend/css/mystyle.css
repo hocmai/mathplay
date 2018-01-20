@@ -57,6 +57,10 @@ hr{
     width: auto;
     border-radius: 5px;
     opacity: 0.8;
+    color: #fff;
+    font-weight: 500;
+    font-size: inherit;
+    background: #17bcba
 }
 .bg-box-lam-bai .radio>input:checked + label,
 .bg-box-lam-bai .radio>input:checked ~ label{
@@ -76,7 +80,7 @@ hr{
     margin-bottom: 15px;
 }
 .question-rendered .description{
-    margin: -15px 0 40px;
+    margin: -5px 0 40px;
     color: #17bebb;
     font-size: 17px;
 }
