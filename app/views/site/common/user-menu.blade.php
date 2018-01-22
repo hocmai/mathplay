@@ -5,7 +5,7 @@
             <li class="dropdown pull-left">
                 <a href="#" class="dropdown-toggle hidden-sm hidden-md hidden-lg" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></i></a>
                 <a href="#" class="dropdown-toggle hidden-xs" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-chevron-down i_arrow" aria-hidden="true"></i></a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" id="menu">
                     @foreach(Common::getAllGrade() as $grade)
                         <li>
                             {{ renderUrl('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}

@@ -10,6 +10,7 @@
 @parent
 {{ HTML::style('frontend/css/new-style.css')}}
 {{ HTML::style('frontend/css/home_layout.css')}}
+{{ HTML::style('frontend/css/responsive_lesson.css') }}
 {{ HTML::script('frontend/js/soundmanager2-jsmin.js') }}
 <script type="text/javascript">
     audioList = [];
