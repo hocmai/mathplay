@@ -5,22 +5,13 @@ header.header .banner .caption-wrap a.button{
     display: block;
     margin-top: 45px;
 }
-.header{
-	min-height: 56px;
-}
- header.home .fixed-nav{
+.full_page header.header,
+header.home .fixed-nav{
     padding: 8px;
     min-height: 60px;
 }
-
 header.home .fixed-nav .navbar-brand img{
     margin: 2px 0 0 0;
-}
-header.header .member-area #main-menu-mathplay{
-	padding: 8px 0 0 0;
-}
-header.home .member-area #main-menu-mathplay{
-    padding: 1px 0 0 0;
 }
 .header .member-area .box-info{
     padding: 5px 15px 0 25px;
@@ -64,6 +55,16 @@ header.header .banner .caption-wrap h1{
 .box-bai-lam, .main-content{
 	margin-top: 30px;
 }
+#main-menu-mathplay{
+    margin-top: 6px;
+}
+#main-menu-mathplay .nav{
+    width: 100%;
+}
+#main-menu-mathplay .nav i.i_arrow{
+    margin-left: 110px;
+}
+
  #main-menu-mathplay li.dropdown a.dropdown-toggle{
     color: #fff;
     padding: 10px 15px;
@@ -74,7 +75,7 @@ header.header .banner .caption-wrap h1{
     color: #fff;
     background: #0ac2fd;
     position: absolute;
-    text-align: center;
+    text-align: right;
     min-width: 150px;
     left: auto;
     top: calc(100% + 5px);

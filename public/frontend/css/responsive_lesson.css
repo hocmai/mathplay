@@ -1,0 +1,36 @@
+@media only screen and (max-width: 960px) {
+}  
+/* 2 cot */
+@media only screen and (max-width: 800px) {
+}
+/* 1 cot */
+@media screen and (max-width: 767px){
+   .hinhs img {
+    margin-left: 0;
+    max-width: 15%;
+    width: 100%;
+	}
+}
+
+@media only screen and (max-width: 720px) {
+}
+@media only screen and (max-width: 600px) {
+}
+@media only screen and (max-width: 568px) {
+}
+@media only screen and (max-width: 563px) {
+}
+@media only screen and (max-width: 549px) {
+}
+@media only screen and (max-width: 534px) {
+}
+@media only screen and (max-width: 480px) {
+}
+@media only screen and (max-width: 360px) {
+}
+@media only screen and (max-width: 338px) {
+}
+@media only screen and (max-width: 330px) {
+}
+@media only screen and (min-width: 320px) {
+}

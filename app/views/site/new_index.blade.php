@@ -8,10 +8,8 @@
 <header class="header home">
     <nav class="navbar fixed-nav navbar-default navbar-fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="/"><img src="{{ asset('/frontend/images/logo_hocmai.png') }}"></a>
-            <div class="member-area">
-                @include('site.common.user-menu')
-            </div>
+            <a class="navbar-brand hidden-xs" href="/"><img src="{{ asset('/frontend/images/logo_hocmai.png') }}"></a>
+            @include('site.common.user-menu')
         </div>
     </nav> {{-- End main menu --}}
  

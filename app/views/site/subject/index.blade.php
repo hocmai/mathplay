@@ -12,7 +12,7 @@
 @section('breadcrumb')
 <header class="header">
     <div class="container">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb hidden-xs">
             <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
             <li><a href="/">Trang chủ</a></li>
             <li>
@@ -22,11 +22,7 @@
                 {{ Common::getObject($subject, 'title') }}
             </li>
         </ol>
-        <div class="member-area">
-            {{-- <div class="container"> --}}
-                @include('site.common.user-menu')
-            {{-- </div> --}}
-        </div>
+        @include('site.common.user-menu')
     </div>
 </header>
 @stop
@@ -127,7 +123,7 @@
                     </div> <!-- End chuong-trinh -->
                 </div> <!-- End content left -->
 
-                <div class="col-xs-12 col-sm-2 sidebar-right">
+                <div class="col-xs-12 col-sm-2 sidebar-right hidden-xs">
                     <div class="top-level">
                         <div class="box-top">
                             <h2 class="title">Bảng xếp hạng học sinh lớp 1</h2>
