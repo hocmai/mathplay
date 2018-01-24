@@ -126,3 +126,10 @@ display: inline-block;
 .list-chapter .chapter-item ul.nav li a i.yellow-color{
     color: #ffde00 !important;
 }
+.header .member-area .box-info .btn-group>button.btn{
+    font-size: 13px;
+    white-space: nowrap;
+    width: 12em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
