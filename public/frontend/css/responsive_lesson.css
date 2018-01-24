@@ -59,6 +59,9 @@
 		padding-right: 0;
 		padding-left: 0;
 	}
+	.list-chapter .chapter-item ul.nav li a{
+		padding: 5px 5px;
+	}
 	.list-chapter-page footer .des {
 		background: url(../images/bg-footer.png) no-repeat top left/100% 245px;
 	    font-weight: 700;

@@ -104,13 +104,14 @@ foreach($lession->question as $question){
                         <p class="diem">
                             <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}</span>
                         </p>
+                        <a class="gui-bai yellow-bg hidden-lg hidden-md hidden-ms" href="#">Gửi bài</a>
                     </div>
                     <div class="bg-box-lam-bai lession-content">
 
                         {{ CommonQuestion::renderLession($lession, $history) }}
 
                         <!-- Modal -->
-                        <a class="gui-bai yellow-bg hidden-lg hidden-md hidden-ms" href="#">Gửi bài</a>
+                        
                         <div class="modal fade" id="myModal-true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <!-- <div class="audio">
                                 <audio><source src="" type="audio/wav"></audio>
