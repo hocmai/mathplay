@@ -69,6 +69,12 @@
 	.clearfix .frame{
 		margin:10px -14px 0 !important;
 	}
+	header .member-area .box-info .btn-group>button.btn{
+		white-space: nowrap;
+	    overflow: hidden;
+	    font-size: 10px;
+	    text-overflow: ellipsis;
+	}
 	.list-chapter-page footer .des {
 		background: url(../images/bg-footer.png) no-repeat top left/100% 245px;
 	    font-weight: 700;
