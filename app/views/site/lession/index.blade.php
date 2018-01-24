@@ -110,6 +110,7 @@ foreach($lession->question as $question){
                         {{ CommonQuestion::renderLession($lession, $history) }}
 
                         <!-- Modal -->
+                        <a class="gui-bai yellow-bg hidden-lg hidden-md hidden-ms" href="#">Gửi bài</a>
                         <div class="modal fade" id="myModal-true" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                             <!-- <div class="audio">
                                 <audio><source src="" type="audio/wav"></audio>
