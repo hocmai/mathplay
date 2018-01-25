@@ -95,16 +95,15 @@ foreach($lession->question as $question){
                     ?>
                     <div class="lession-process hidden-lg hidden-md hidden-sm">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ ($current_score/$maxScore)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ ($current_score/$maxScore)*100 }}%">}}
+                            <div class="active progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ ($current_score/$maxScore)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ ($current_score/$maxScore)*100 }}%">
                             </div>
-                            <span class="star star-1"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            <span class="star star-2"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            <span class="star star-3"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-1 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 1) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-2 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 2) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-3 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 3) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
                         </div>
                         <p class="diem">
                             <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}</span>
                         </p>
-                       
                     </div>
                     <div class="bg-box-lam-bai lession-content">
 
