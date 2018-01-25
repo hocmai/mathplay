@@ -217,8 +217,12 @@ class AjaxController extends BaseController {
 			}
 			StudyHistory::find($study_history->id)->update($data);
 			$data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
-			return Response::json($data);
 		}
+		else{
+			$data['score'] = $data['current_question'] * $lessonConf['score'];
+			$data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
+		}
+		return Response::json($data);
 	}
 
 }

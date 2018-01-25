@@ -173,9 +173,9 @@ foreach($lession->question as $question){
                         <div class="progress">
                             <div class="active progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ ($current_score/$maxScore)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ ($current_score/$maxScore)*100 }}%">
                             </div>
-                            <span class="star-point star-1 {{ (Common::getRuleOfStar($history->score, $config) >= 1) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            <span class="star-point star-2 {{ (Common::getRuleOfStar($history->score, $config) >= 2) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            <span class="star-point star-3 {{ (Common::getRuleOfStar($history->score, $config) >= 3) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-1 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 1) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-2 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 2) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-3 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 3) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
                         </div>
                         <p class="diem">
                             <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}</span>

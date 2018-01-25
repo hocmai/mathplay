@@ -146,16 +146,16 @@ $(document).ready(function($) {
 			//////// Tra loi Dung
 
 			///// Cap nhat lich su
-			// data_history.score = your_score+score;
-			// data_history.current_question = q_order+1;
+			data_history.score = your_score+score;
+			data_history.current_question = q_order+1;
 			data_history.time_use = parseInt($('.times>.time-use').text());
 
 			// Neu la cau cuoi cung thi chuyen trang thai lich su
 			// data_history.completed = 0;
-			// if( q_order == q_num ){
+			if( q_order == q_num ){
 				// data_history.completed = 1;
-				// data_history.current_question = q_num;
-			// }
+				data_history.current_question = q_num;
+			}
 
 			$.ajax({
 				url: '/ajax/updatestudyhistory',
