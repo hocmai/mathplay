@@ -47,7 +47,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-6 next-lession">
                                 <div class="next-box">
-                                    <span>Con đang học bài 3</span>
+                                    <span></span>
                                     <a class="link" href="#">học tiếp</a>
                                 </div>
                             </div>
