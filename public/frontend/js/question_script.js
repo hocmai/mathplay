@@ -46,24 +46,24 @@ else {
 //////////////////////////////////////////////////
 
 ////// Ban phim ao//////////////////
-keyboardToggle = function(action = ''){
-    var $ = jQuery;
-    if( action == '' | action == 'toggle' ){
-        $('.ban-phim').toggleClass('clicked');
-    }
-    else if( action == 'show' ){
-        $('.ban-phim').removeClass('clicked');
-    } 
-    else{
-        $('.ban-phim').addClass('clicked');
-    }
+// keyboardToggle = function(action = ''){
+//     var $ = jQuery;
+//     if( action == '' | action == 'toggle' ){
+//         $('.ban-phim').toggleClass('clicked');
+//     }
+//     else if( action == 'show' ){
+//         $('.ban-phim').removeClass('clicked');
+//     } 
+//     else{
+//         $('.ban-phim').addClass('clicked');
+//     }
 
-    if($('.ban-phim').hasClass('clicked')){
-        $('.ban-phim .text-show').html("Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>")
-    }else {
-        $('.ban-phim .text-show').html("Thu nhỏ <i class='fa fa-angle-double-down'></i>")
-    }
-}
+//     if($('.ban-phim').hasClass('clicked')){
+//         $('.ban-phim .text-show').html("Hiển thị bàn phím <i class='fa fa-angle-double-up'></i>")
+//     }else {
+//         $('.ban-phim .text-show').html("Thu nhỏ <i class='fa fa-angle-double-down'></i>")
+//     }
+// }
 
 
 $(document).ready(function($) {
@@ -110,7 +110,11 @@ $(document).ready(function($) {
 	$(window).on('keypress', function(event) {
 		////////////// Submit form when press ENTER key
 		if( event.keyCode == 13 ){
-			$('.question-rendered.active form.answer-question-form').trigger('submit');
+			if( $('.question-rendered.active form.answer-question-form').find('input[type="text"]').length == 0
+				&& $('.question-rendered.active form.answer-question-form').find('input[type="number"]').length == 0 ){
+
+				$('.question-rendered.active form.answer-question-form').trigger('submit');
+			}
 		}
 	});
 
@@ -142,16 +146,16 @@ $(document).ready(function($) {
 			//////// Tra loi Dung
 
 			///// Cap nhat lich su
-			data_history.score = your_score+score;
-			data_history.current_question = q_order+1;
+			// data_history.score = your_score+score;
+			// data_history.current_question = q_order+1;
 			data_history.time_use = parseInt($('.times>.time-use').text());
 
 			// Neu la cau cuoi cung thi chuyen trang thai lich su
-			data_history.completed = 0;
-			if( q_order == q_num ){
-				data_history.completed = 1;
-				data_history.current_question = q_num;
-			}
+			// data_history.completed = 0;
+			// if( q_order == q_num ){
+				// data_history.completed = 1;
+				// data_history.current_question = q_num;
+			// }
 
 			$.ajax({
 				url: '/ajax/updatestudyhistory',
@@ -159,6 +163,21 @@ $(document).ready(function($) {
 				data: {data: JSON.stringify(data_history)},
 				success: function(result){
 					console.log(result);
+					$('.diem .your-score').text(result.score);
+					$('.lession-page .lession-process .progress>.progress-bar').animate(
+						{width: result.score+'%'},
+						400, function(){
+							if( result.star >= 1 )
+								$('.lession-page .lession-process .progress>.star-1').addClass('on');
+							if( result.star >= 2 )
+								$('.lession-page .lession-process .progress>.star-2').addClass('on');
+							if( result.star >= 3 )
+								$('.lession-page .lession-process .progress>.star-3').addClass('on');
+						}
+					);
+					if( q_order >= q_num ){
+						$('.box-bai-lam .hoan-thanh .point').text(result.score+' điểm');
+					}
 				},
 				error: function(error){
 					console.log(error.responseText);
@@ -169,12 +188,12 @@ $(document).ready(function($) {
 				$('#myModal-true').modal('hide'); // Hide modal chuc mung
 
 				// Hide cau hien tai, Hien cau tiep theo
-				$('.diem .your-score').text(your_score+score);
+				// $('.diem .your-score').text(your_score+score);
 				if( q_order < q_num ){
 					show_next_question(parent);
 				} else{
 					// Cau hoi cuoi cung, hien tong so diem
-					$('.box-bai-lam .hoan-thanh .point').text((your_score+score)+' điểm');
+					// $('.box-bai-lam .hoan-thanh .point').text((your_score+score)+' điểm');
 					window.setTimeout(function(){
 						$('.box-bai-lam .boxLeft, .box-bai-lam .boxRight').hide('400');
 						$('.box-bai-lam .hoan-thanh').removeClass('hidden').show();
@@ -184,16 +203,16 @@ $(document).ready(function($) {
 			},1000)
 
 			$('#myModal-true').modal('show');
-			var audio = $('#myModal-true').find('.audio > audio');
-			if(audio.length) audio.get(rand-1).play();
+			// var audio = $('#myModal-true').find('.audio > audio');
+			// if(audio.length) audio.get(rand-1).play();
 		}
 		else{
 			///////// Tra loi sai
 			// Hien modal
-			keyboardToggle('hide');
+			// keyboardToggle('hide');
 			$('#myModal-false').modal('show');
-			var audio = $('#myModal-false').find('.audio > audio');
-			if(audio.length) audio.get(rand-1).play();
+			// var audio = $('#myModal-false').find('.audio > audio');
+			// if(audio.length) audio.get(rand-1).play();
 		}
 
 	    // console.log(input);
@@ -271,9 +290,9 @@ $(document).ready(function($) {
 			else if(parent.next().find('input[type="text"]').length){
 				parent.next().find('input[type="text"]')[0].focus();
 			}
-			else{
-				keyboardToggle('hide');
-			}
+			// else{
+			// 	keyboardToggle('hide');
+			// }
 			$('.total-number .current-question').text(q_order+1);
 		});
 	}
@@ -318,41 +337,41 @@ $(document).ready(function($) {
 
 
     /////////////////////// hien thi ban phim ao //////////////////////
-    // window.setTimeout(function(){
+    window.setTimeout(function(){
         if( $('.question-rendered.active input[type="text"]').length ){
             $('.question-rendered.active input[type="text"]:first').focus();
             $('.question-rendered.active input[type="text"]:first').addClass('virtual-focus');
-            keyboardToggle('show');
+            // keyboardToggle('show');
         }
         else if( $('.question-rendered.active input[type="number"]').length ){
             $('.question-rendered.active input[type="number"]:first').focus();
             $('.question-rendered.active input[type="number"]:first').addClass('virtual-focus');
-            keyboardToggle('show');
+            // keyboardToggle('show');
         }
-    // },300)
+    },300)
 
-    $(window).on('click', function(e){
-        if( $('.lession-keyboard').length == 0 ) return;
+    // $(window).on('click', function(e){
+    //     if( $('.lession-keyboard').length == 0 ) return;
 
-        if( $(e.target).get(0).tagName != 'INPUT' 
-            && $.inArray($(e.target).attr('type'), ['text','number']) < 0 
-            && $(e.target).parents('.lession-keyboard').length == 0
-            && !$('.lession-keyboard').hasClass('clicked') )
-        {
-            $('input.virtual-focus').removeClass('virtual-focus');
-            keyboardToggle('hide');
-        }
-    })
+    //     if( $(e.target).get(0).tagName != 'INPUT' 
+    //         && $.inArray($(e.target).attr('type'), ['text','number']) < 0 
+    //         && $(e.target).parents('.lession-keyboard').length == 0
+    //         && !$('.lession-keyboard').hasClass('clicked') )
+    //     {
+    //         $('input.virtual-focus').removeClass('virtual-focus');
+    //         // keyboardToggle('hide');
+    //     }
+    // })
 
     $(document).on('focus', '.question-rendered input[type="text"], .question-rendered input[type="number"]', function(){
         $('input.virtual-focus').removeClass('virtual-focus');
         $(this).addClass('virtual-focus');
-        keyboardToggle('show');
+        // keyboardToggle('show');
     })
 
-    $('.lession-keyboard .text-show').click(function () {
-        keyboardToggle();
-    });
+    // $('.lession-keyboard .text-show').click(function () {
+    //     // keyboardToggle();
+    // });
 
     /////// nhap input qua ban phim ao ///////////
     $('.lession-keyboard').on('click', '.item-number', function(){

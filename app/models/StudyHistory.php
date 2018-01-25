@@ -17,6 +17,7 @@ class StudyHistory extends Eloquent
         'completed',
         'difficult',
         'time_use',
+        'star',
         'status',
     ];
 
