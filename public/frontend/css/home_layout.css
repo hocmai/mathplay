@@ -123,6 +123,9 @@ display: inline-block;
     right: 5px;
     top: 5px;
 }
+.list-chapter .chapter-item ul.nav li a{
+    padding: 5px 5px 0 1px;
+}
 .list-chapter .chapter-item ul.nav li a i.yellow-color{
     color: #ffde00 !important;
 }
