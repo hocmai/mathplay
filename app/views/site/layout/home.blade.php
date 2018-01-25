@@ -13,6 +13,7 @@
     {{ HTML::style('frontend/css/home-style.css')}}
     {{ HTML::style('frontend/css/new-style.css')}}
     {{ HTML::style('frontend/css/home_layout.css')}}
+    {{ HTML::style('frontend/css/responsive_lesson.css') }}
     
 	{{ HTML::script('frontend/js/jquery.min.js')}}
 	{{ HTML::script('frontend/js/bootstrap.min.js')}}

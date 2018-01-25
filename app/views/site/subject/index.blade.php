@@ -12,7 +12,8 @@
 @section('breadcrumb')
 <header class="header">
     <div class="container">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb hidden-xs">
+            <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
             <li><a href="/">Trang chủ</a></li>
             <li>
                 {{ renderUrl('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
@@ -21,11 +22,7 @@
                 {{ Common::getObject($subject, 'title') }}
             </li>
         </ol>
-        <div class="member-area">
-            {{-- <div class="container"> --}}
-                @include('site.common.user-menu')
-            {{-- </div> --}}
-        </div>
+        @include('site.common.user-menu')
     </div>
 </header>
 @stop
@@ -75,7 +72,17 @@
                                                 <ul class="nav">
                                                     <?php $lessions = Lession::orderBy('weight', 'asc')->where('chapter_id', $chapters[$i]->id)->get(); ?>
                                                     @foreach( $lessions as $lession)
-                                                        <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                        <li>
+                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
+                                                                {{ $lession->title }}
+                                                                
+                                                                @if( Common::checkDoLesson( $lession->id ) )
+                                                                    <i class="fa fa-star yellow-color"></i>
+                                                                @else
+                                                                    <i class="fa fa-star"></i>
+                                                                @endif
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div> <!-- End chuong -->
@@ -89,7 +96,16 @@
                                                 </h2>
                                                 <ul class="nav">
                                                     @foreach($chapters[$i]->lession as $lession)
-                                                        <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                        <li>
+                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}
+                                                                 @if( Common::checkDoLesson( $lession->id ) )
+                                                                    <i class="fa fa-star yellow-color"></i>
+                                                                @else
+                                                                    <i class="fa fa-star"></i>
+                                                                @endif
+                                                                
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div> <!-- End chuong -->
@@ -107,7 +123,7 @@
                     </div> <!-- End chuong-trinh -->
                 </div> <!-- End content left -->
 
-                <div class="col-xs-12 col-sm-2 sidebar-right">
+                <div class="col-xs-12 col-sm-2 sidebar-right hidden-xs">
                     <div class="top-level">
                         <div class="box-top">
                             <h2 class="title">Bảng xếp hạng học sinh lớp 1</h2>

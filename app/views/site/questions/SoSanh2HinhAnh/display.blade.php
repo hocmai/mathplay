@@ -104,6 +104,7 @@ else{
                     <input id="sosanh-answer-{{ $question_num }}2" type="radio" name="answer" value="{{ $num2 }}" class="">
                     <label for="sosanh-answer-{{ $question_num }}2">B</label>
                 </div>
+                
             @endif
         </div>
 	{{ Form::close() }}
