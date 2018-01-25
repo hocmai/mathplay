@@ -95,6 +95,44 @@ class Common {
 		return $output;
 	}
 
+	/**
+	 * Get max score & max_question in a lesson
+	 */
+	public static function getConfigOfLesson($lesson)
+	{
+		$config = CommonConfig::get($lesson->config);
+		$config['max_score'] = !empty($config['max_score']) ? $config['max_score'] : 100;
+        $config['number_ques'] = !empty($config['number_ques']) ? $config['number_ques'] : 20;
+        $config['score'] = floor($config['max_score']/$config['number_ques']);
+        return $config;
+	}
+
+	/**
+	 * Lay so sao theo so diem dat duoc
+	 */
+	public static function getRuleOfStar($score, $config){
+		if(empty($score)) $score = 0;
+		return self::getStarByPercent( ($score/$config['max_score'])*100 );
+	}
+
+	/**
+	 * Lay so sao theo so diem dat duoc
+	 */
+	public static function getStarByPercent($percent){
+		$star = 0;
+		if( $percent >= 30 && $percent < 60 ){
+			$star = 1;
+		} else if( $percent >= 60 && $percent < 100 ){
+			$star = 2;
+		} else if( $percent >= 100 ){
+			$star = 3;
+		}
+		return $star;
+	}
+
+	/**
+	 * Return object of history belongto an user logged in
+	 */
 	public static function getLessionHistory($lession){
 		if( Auth::user()->check() ){
 			$fields = [

@@ -198,19 +198,26 @@ class AjaxController extends BaseController {
 	public function updateStudyHistory(){
 		$data = Input::get('data');
 		if(empty($data)) return Response::json(false);
+		$data = json_decode($data, true);
+		$lesson = Lession::find($data['lession_id']);
+		$lessonConf = Common::getConfigOfLesson($lesson);
 
 		if( Auth::user()->check() ){
 			$author = Common::getObject(Auth::user()->get(), 'id');
-			$data = (array)json_decode($data);
 			$data['author'] = $author;
-			$data['status'] = 0;
+			$data['status'] = $data['completed'] = 0;
 
 			$study_history = StudyHistory::firstOrCreate(array_except($data, ['score' , 'current_question', 'completed', 'time_use']));
-			if( $data['completed'] == 1 ){
-				$data['status'] = 1;
+
+			$data['current_question'] = (($study_history->current_question > 0) ? $study_history->current_question : 1) + 1;
+			$data['score'] = $data['current_question'] * $lessonConf['score'];
+			if( $data['current_question'] >= $lessonConf['number_ques'] ){
+				$data['completed'] = $data['status'] = 1;
+				$data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
 			}
 			StudyHistory::find($study_history->id)->update($data);
-			return Response::json($study_history);
+			$data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
+			return Response::json($data);
 		}
 	}
 
