@@ -27,7 +27,7 @@ if( $answertype == 'rand' ){
 		
 		<div class="form-group row">
 			@for($i = 1; $i <= $answer; $i++)
-				<div class="col-xs-12 col-sm-3" style="margin: 15px 0"><img src="{{ $image }}" width="125"></div>
+				<div class="col-xs-4 col-sm-3" style="margin: 15px 0"><img src="{{ $image }}" width="125"></div>
 			@endfor
 		</div>
 		<div class="clearfix"></div>
