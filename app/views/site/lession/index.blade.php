@@ -8,9 +8,6 @@
 
 @section('css_header')
 @parent
-{{ HTML::style('frontend/css/new-style.css')}}
-{{ HTML::style('frontend/css/home_layout.css')}}
-{{ HTML::style('frontend/css/responsive_lesson.css') }}
 {{ HTML::script('frontend/js/soundmanager2-jsmin.js') }}
 <script type="text/javascript">
     audioList = [];
@@ -51,10 +48,10 @@ foreach($lession->question as $question){
         @endforeach
     @stop
     @section('css_header')
-        @parent
         @foreach( glob(public_path().'/questions/'.$type.'/css/*.css') as $file)
             {{ HTML::style( asset('/questions/'.$type.'/css/'.basename($file)) ) }} 
         @endforeach
+        @parent
     @stop
 @endforeach
 

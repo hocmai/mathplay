@@ -1,4 +1,4 @@
-<div class="member-area col-xs-12 col-sms-6 col-lg-6 padding0">
+<div class="member-area col-xs-12 col-sm-6 col-lg-6 padding0">
     <div id="main-menu-mathplay" >
         <ul class="nav navbar-nav">
             {{-- <li><a href="#">Curriculum <span class="caret"></span></a></li> --}}
