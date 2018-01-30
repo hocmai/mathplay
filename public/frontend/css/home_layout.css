@@ -100,7 +100,7 @@ header.header .banner .caption-wrap h1{
 }
 /*************/
 .question-rendered .start{
-display: inline-block;
+    display: inline-block;
     width: 100%;
     font-size: 22px;
     color: #fff;
@@ -112,6 +112,18 @@ display: inline-block;
     text-shadow:none;
 
 }
+.list-chapter .chapter-item ul.nav li a{
+    font-size: 16px;
+    padding-right: 70px;
+}
+.list-chapter .chapter-item ul.nav li a span.star-list{
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 20px;
+}
 .list-chapter .chapter-item ul.nav li a i{
     background: #999;
     border-radius: 100%;
@@ -119,11 +131,11 @@ display: inline-block;
     width: 20px;
     text-align: center;
     font-size: 18px;
-    float: right;
     color: #ddd ;
-    position: absolute;
-    right: 5px;
-    top: 5px;
+    
+}
+.list-chapter-page .content-left .head-list .next-lession .next-box>span{
+    font-size: 25px;
 }
 .list-chapter .chapter-item ul.nav li a i.yellow-color{
     color: #ffde00 !important;
