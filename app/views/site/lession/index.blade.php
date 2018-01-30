@@ -29,7 +29,7 @@
 {{ HTML::script('frontend/js/question_script.js') }}
 @stop
 
-<?php $config = CommonConfig::get($lession->config); ?>
+<?php $config = Common::getConfigOfLesson($lession); ?>
 
 <!-- Get style and script for each question type -->
 <?php
@@ -83,8 +83,8 @@ foreach($lession->question as $question){
                     <?php
                     $history = Common::getLessionHistory($lession);
                     // dd($history);
-                    $maxScore = !empty($config['max_score']) ? $config['max_score'] : 100;
-                    $maxQues = !empty($config['number_ques']) ? $config['number_ques'] : 20;
+                    $maxScore = $config['max_score'];
+                    $maxQues = $config['number_ques'];
                     $current_ques = (!empty($history) && $history->status != 1 && !empty($history->current_question) ) ? $history->current_question : 1;
                     $current_score = (!empty($history) && $history->status != 1 && !empty($history->score) ) ? $history->score : 0;
                     $timeUsed = !empty($history->time_use) ? $history->time_use : 0;
@@ -92,16 +92,15 @@ foreach($lession->question as $question){
                     ?>
                     <div class="lession-process hidden-lg hidden-md hidden-sm">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ ($current_score/$maxScore)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ ($current_score/$maxScore)*100 }}%">}}
+                            <div class="active progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ ($current_score/$maxScore)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ ($current_score/$maxScore)*100 }}%">
                             </div>
-                            <span class="star star-1"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            <span class="star star-2"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            <span class="star star-3"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-1 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 1) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-2 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 2) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-3 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 3) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
                         </div>
                         <p class="diem">
                             <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}</span>
                         </p>
-                       
                     </div>
                     <div class="bg-box-lam-bai lession-content">
 
@@ -163,20 +162,19 @@ foreach($lession->question as $question){
                             </div>
                         </div>
                     </div> <!-- End bai lam -->
-                        
                 </div> <!-- End left -->
 
                 <div class="col-xs-12 col-sm-4 boxRight">
                     <div class="lession-process hidden-xs">
                         <div class="progress">
-                            <div class="progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ ($current_score/$maxScore)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ ($current_score/$maxScore)*100 }}%">}}
+                            <div class="active progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="{{ ($current_score/$maxScore)*100 }}" aria-valuemin="0" aria-valuemax="100" style="width:{{ ($current_score/$maxScore)*100 }}%">
                             </div>
-                            <span class="star star-1"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            <span class="star star-2"><i class="fa fa-star" aria-hidden="true"></i></span>
-                            <span class="star star-3"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-1 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 1) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-2 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 2) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
+                            <span class="star-point star-3 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 3) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
                         </div>
                         <p class="diem">
-                            <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}</span>
+                            <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}đ</span>
                         </p>
                     </div>
                     <div class="lession-keyboard hidden-xs">
@@ -266,11 +264,11 @@ foreach($lession->question as $question){
                                 <li>
                                     <a href="" title="">
                                         <img src="{{ asset('frontend/images/quay-lai.png') }}" class="img-responsive mauto" alt=""/>
-                                        <div class="text">Quay lại</div>
+                                        <div class="text">Làm lại</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" title="">
+                                    <a href="{{ action('SiteGradeController@show', ['grade_slug' => Common::getObject($grade, 'slug')]) }}" title="">
                                         <img src="{{ asset('frontend/images/next-bai.png') }}" class="img-responsive mauto" alt=""/>
                                         <div class="text">Bài học tiếp theo</div>
                                     </a>

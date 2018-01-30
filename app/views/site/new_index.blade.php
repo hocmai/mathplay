@@ -63,10 +63,10 @@
             </div>
         </div>
     </div>
-
 </header>
+
 <div class="content-wrapper">
-    <section class="home-section map-section white-bg">
+    <section class="home-section map-section white-bg text-center">
         <div class="container">
             <h2 class="block-title">Bài tập được cá nhân hóa dành riêng cho mỗi bé
                 <br>Gồm đầy đủ trình độ từ dễ đến khó</h2>
@@ -78,7 +78,7 @@
         </div>
     </section>
 
-    <section class="home-section intro-section grey-bg">
+    <section class="home-section intro-section grey-bg text-center">
         <div class="container">
             <h2 class="block-title">Câu hỏi sinh động giúp trẻ hứng thú học<br>và hoàn thiện các năng lực toán học</h2>
             <div class="block-content">
@@ -140,7 +140,7 @@
         </div>
     </section>
 
-    <section class="home-section comment-section grey-bg">
+    <section class="home-section comment-section grey-bg text-center">
         <div class="container">
             <h2 class="block-title">Được hơn 1.000 bạn nhỏ tại 20 tỉnh thành trên cả nước tin tưởng sử dụng</h2>
             <div class="block-content">
