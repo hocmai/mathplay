@@ -17,6 +17,7 @@
 	{{ HTML::style('frontend/css/menu-mobile.css')}}
 	{{ HTML::style('frontend/css/style.css')}}
 	{{ HTML::style('frontend/css/mystyle.css')}}
+	{{ HTML::style('frontend/css/responsive_lesson.css') }}
 	@show
 	
 	<!-- Hotjar Tracking Code for http://tieuhoc.hocmai.vn -->

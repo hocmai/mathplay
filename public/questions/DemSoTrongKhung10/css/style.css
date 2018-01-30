@@ -1,8 +1,8 @@
-td > div{
+#DemSoTrongKhung10 td > div{
     width: 50px;
     height: 50px;
 }
-.question-wrapper .choose td>label{
+#DemSoTrongKhung10 .question-wrapper .choose td>label{
 	width: 64px;
     height: 64px;
     text-align: center;
@@ -12,29 +12,29 @@ td > div{
     background: #6a8bf3;
     color: #fff;
 }
-.question-wrapper .choose td>input:checked + label,
-.question-wrapper .choose td>label:hover{
+#DemSoTrongKhung10 .question-wrapper .choose td>input:checked + label,
+#DemSoTrongKhung10 .question-wrapper .choose td>label:hover{
 	background: #32437c;
 }
-.unknown.shape-none::before{content: "?";line-height: 50px;font-size: 35px;font-weight: 600;color: #ddd;}
-.shape-none{width: 50px; height: 50px;}
-.circle{border-radius: 100%; background: #8CC713}
-.star{
+#DemSoTrongKhung10 .unknown.shape-none::before{content: "?";line-height: 50px;font-size: 35px;font-weight: 600;color: #ddd;}
+#DemSoTrongKhung10 .shape-none{width: 50px; height: 50px;}
+#DemSoTrongKhung10 .circle{border-radius: 100%; background: #8CC713}
+#DemSoTrongKhung10 .star{
     -webkit-clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     background: #ffca19;
 }
-.pentagon{
+#DemSoTrongKhung10 .pentagon{
     -webkit-clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
     clip-path: polygon(50% 0%, 100% 38%, 82% 100%, 18% 100%, 0% 38%);
     background: yellow;
 }
-.heptagon{
+#DemSoTrongKhung10 .heptagon{
     -webkit-clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
     clip-path: polygon(50% 0%, 90% 20%, 100% 60%, 75% 100%, 25% 100%, 0% 60%, 10% 20%);
     background: red;
 }
-.octagon{
+#DemSoTrongKhung10 .octagon{
     -webkit-clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     background: orange;

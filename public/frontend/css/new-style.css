@@ -94,7 +94,7 @@ a:hover{
 }
 
 .header{
-	background: #e4572e;
+	background: #0ac2fd;
 }
 .header ol.breadcrumb{
     margin: 0;
@@ -122,8 +122,7 @@ a:hover{
     position: relative;
 }
 .header .member-area .box-info{
-    font-family: HelveticaNeue, sans-serif;
-	font-weight: 300;
+	font-weight: 400;
 	font-size: 15px;
     background: #fff;
     border-radius: 8px;
@@ -316,7 +315,7 @@ h1.node-title.bg{
 }
 .list-chapter .chapter-item ul.nav li a{
     font-size: 18px;
-    padding: 5px 10px;
+    padding: 5px;
     line-height: 20px;
 }
 .list-chapter .chapter-item ul.nav li a:hover{
@@ -434,18 +433,27 @@ h1.node-title.bg{
     box-shadow: 2px 2px 5px 0px rgba(0,0,0, 0.5);
     overflow: visible;
 }
-.lession-page .lession-process .progress .star{
+.lession-page .lession-process .progress .progress-bar{
+    max-width: 100%;
+    overflow: hidden;
+}
+.lession-page .lession-process .progress .star-point{
     position: absolute;
     z-index: 1;
-    color: #ffde00;
+    color: #17bebb;
+    text-shadow: -1px 2px 5px #565656;
     top: -23px;
     font-size: 40px;
 }
+.lession-page .lession-process .progress .star-point.on{
+    color: #ffde00;
+}
 .lession-page .lession-process .progress .star-1{
-    left: -12px;
+    left: 30%;
+    margin-left: -18px;
 }
 .lession-page .lession-process .progress .star-2{
-    left: 50%;
+    left: 60%;
     margin-left: -18px;
 }
 .lession-page .lession-process .progress .star-3{

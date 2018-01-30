@@ -6,13 +6,14 @@
 
 @section('css_header')
 @parent
-{{ HTML::style('frontend/css/new-style.css')}}
+
 @stop
 
 @section('breadcrumb')
-<div class="header">
+<header class="header">
     <div class="container">
-        <ol class="breadcrumb">
+        <ol class="breadcrumb hidden-xs">
+            <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
             <li><a href="/">Trang chủ</a></li>
             <li>
                 {{ renderUrl('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
@@ -21,20 +22,16 @@
                 {{ Common::getObject($subject, 'title') }}
             </li>
         </ol>
-        <div class="member-area">
-            {{-- <div class="container"> --}}
-                @include('site.common.user-menu')
-            {{-- </div> --}}
-        </div>
+        @include('site.common.user-menu')
     </div>
-</div>
+</header>
 @stop
 
 <main>
     @section('content')
     <div class="main-content">
         <div class="container">
-            <h1 class="node-title bg">{{ Common::getObject($subject, 'title') }}</h1>
+            {{-- <h1 class="node-title bg">{{ Common::getObject($subject, 'title') }}</h1> --}}
             <div class="row">
                 <div class="col-xs-12 col-sm-10 content-left">
                     <div class="head-list">
@@ -45,13 +42,16 @@
                                 </div>
                                 <div class="text col-sm-8 col-xs-8">
                                     <h3 class="hello">Xin chào {{ Common::getUserName() }}</h3>
-                                    <div class="star">20 <i class="fa fa-star" aria-hidden="true"></i></div>
+                                    <div class="star">{{ Common::getAllStarOfAnUser() }} <i class="fa fa-star" aria-hidden="true"></i></div>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 next-lession">
                                 <div class="next-box">
-                                    <span>Con đang học bài 3</span>
-                                    <a class="link" href="#">học tiếp</a>
+                                    <?php $LastLessonDo = Common::getLastLessonDo(Common::getObject($grade, 'id')); ?>
+                                    @if( $LastLessonDo )
+                                        <span>Con đang học {{ Common::getValueOfObject($LastLessonDo, 'chapter', 'title') }}</span>
+                                        <a class="link" href="{{ action('SiteLessionController@show', ['grade_slug' => $LastLessonDo->subject->grade->slug, 'subject_slug' => $LastLessonDo->subject->slug, 'lession_slug' => $LastLessonDo->lession->slug]) }}">học tiếp</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -75,7 +75,18 @@
                                                 <ul class="nav">
                                                     <?php $lessions = Lession::orderBy('weight', 'asc')->where('chapter_id', $chapters[$i]->id)->get(); ?>
                                                     @foreach( $lessions as $lession)
-                                                        <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                        <li>
+                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
+                                                                {{ $lession->title }}
+                                                                
+                                                                <?php $starLesson = Common::getMaxStarOfAnLesson($lession->id); ?>
+                                                                <span class="star-list">
+                                                                    <i class="fa fa-star {{ ($starLesson >= 1) ? 'yellow-color' : '' }}"></i>
+                                                                    <i class="fa fa-star {{ ($starLesson >= 2) ? 'yellow-color' : '' }}"></i>
+                                                                    <i class="fa fa-star {{ ($starLesson >= 3) ? 'yellow-color' : '' }}"></i>
+                                                                </span>
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div> <!-- End chuong -->
@@ -89,7 +100,17 @@
                                                 </h2>
                                                 <ul class="nav">
                                                     @foreach($chapters[$i]->lession as $lession)
-                                                        <li><a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}</a></li>
+                                                        <li>
+                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}
+                                                                
+                                                                <?php $starLesson = Common::getMaxStarOfAnLesson($lession->id); ?>
+                                                                <span class="star-list">
+                                                                    <i class="fa fa-star {{ ($starLesson >= 1) ? 'yellow-color' : '' }}"></i>
+                                                                    <i class="fa fa-star {{ ($starLesson >= 2) ? 'yellow-color' : '' }}"></i>
+                                                                    <i class="fa fa-star {{ ($starLesson >= 3) ? 'yellow-color' : '' }}"></i>
+                                                                </span>
+                                                            </a>
+                                                        </li>
                                                     @endforeach
                                                 </ul>
                                             </div> <!-- End chuong -->
@@ -107,7 +128,7 @@
                     </div> <!-- End chuong-trinh -->
                 </div> <!-- End content left -->
 
-                <div class="col-xs-12 col-sm-2 sidebar-right">
+                <div class="col-xs-12 col-sm-2 sidebar-right hidden-xs">
                     <div class="top-level">
                         <div class="box-top">
                             <h2 class="title">Bảng xếp hạng học sinh lớp 1</h2>

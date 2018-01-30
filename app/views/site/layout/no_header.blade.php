@@ -10,15 +10,12 @@
     {{ HTML::style('frontend/css/bootstrap.min.css')}}
     {{ HTML::style('frontend/css/font-awesome.min.css')}}
     {{ HTML::style('frontend/css/hover-min.css')}}
-    {{-- {{ HTML::style('frontend/css/slick-theme.css')}}
-    {{ HTML::style('frontend/css/slick.css')}}
-    {{ HTML::style('frontend/css/menu.css')}}
-    {{ HTML::style('frontend/css/default.css')}}
-    {{ HTML::style('frontend/css/menu-mobile.css')}}
-    {{ HTML::style('frontend/css/style.css')}} --}}
     {{ HTML::style('frontend/css/new-style.css')}}
+    {{ HTML::style('frontend/css/home_layout.css')}}
+    {{ HTML::style('frontend/css/responsive_lesson.css') }}
     @show
-    
+    <!--[if lt IE 9]>
+    <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->
     <!-- Hotjar Tracking Code for http://tieuhoc.hocmai.vn -->
     <script>
     (function(h,o,t,j,a,r){
