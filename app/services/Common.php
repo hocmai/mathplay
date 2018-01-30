@@ -1,6 +1,55 @@
 <?php
 class Common {
 
+	public static function getLastLessonDo($gradeId){
+		if( !Auth::user()->check() ){
+			return null;
+		}
+		$data = StudyHistory::where('grade_id', $gradeId)
+			->where('author', Auth::user()->get()->id)
+			->orderBy('created_at', 'desc')
+			->first();
+		return $data;
+	}
+
+	public static function getAllStarOfAnUser(){
+		if( !Auth::user()->check() ){
+			return null;
+		}
+		$data = StudyHistory::select( DB::raw('SUM(study_history.star) as star') )
+			->join(
+				DB::raw("(SELECT id, MAX(star) AS MaxStar, lession_id 
+				FROM study_history
+				WHERE study_history.status = '1'
+				GROUP BY lession_id) as groupedtt"), function($join){
+					$join->on('study_history.lession_id', '=', 'groupedtt.lession_id')
+				  		 ->on('study_history.star', '=', 'groupedtt.MaxStar');
+				})
+			->where('author', Auth::user()->get()->id)
+			->where('status', 1)
+			->first();
+		return self::getObject($data, 'star');
+	}
+
+	public static function getMaxStarOfAnLesson($lessonId){
+		if( !Auth::user()->check() ){
+			return null;
+		}
+		$data = StudyHistory::select('study_history.star')
+			->join(
+				DB::raw("(SELECT id, MAX(star) AS MaxStar, lession_id 
+				FROM study_history
+				WHERE study_history.lession_id = '$lessonId'
+				GROUP BY lession_id) as groupedtt"), function($join){
+					$join->on('study_history.lession_id', '=', 'groupedtt.lession_id')
+				  		 ->on('study_history.star', '=', 'groupedtt.MaxStar');
+				})
+			->where('author', Auth::user()->get()->id)
+			->where('study_history.lession_id', $lessonId)
+			->first();
+		return self::getObject($data, 'star');
+	}
+
 	public static function checkDoLesson($lessionId){
 		if(Auth::user()->check() == false){
 			return false;

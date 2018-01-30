@@ -42,13 +42,16 @@
                                 </div>
                                 <div class="text col-sm-8 col-xs-8">
                                     <h3 class="hello">Xin chào {{ Common::getUserName() }}</h3>
-                                    <div class="star">20 <i class="fa fa-star" aria-hidden="true"></i></div>
+                                    <div class="star">{{ Common::getAllStarOfAnUser() }} <i class="fa fa-star" aria-hidden="true"></i></div>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6 next-lession">
                                 <div class="next-box">
-                                    <span></span>
-                                    <a class="link" href="#">học tiếp</a>
+                                    <?php $LastLessonDo = Common::getLastLessonDo(Common::getObject($grade, 'id')); ?>
+                                    @if( $LastLessonDo )
+                                        <span>Con đang học {{ Common::getValueOfObject($LastLessonDo, 'chapter', 'title') }}</span>
+                                        <a class="link" href="{{ action('SiteLessionController@show', ['grade_slug' => $LastLessonDo->subject->grade->slug, 'subject_slug' => $LastLessonDo->subject->slug, 'lession_slug' => $LastLessonDo->lession->slug]) }}">học tiếp</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -76,11 +79,12 @@
                                                             <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
                                                                 {{ $lession->title }}
                                                                 
-                                                                @if( Common::checkDoLesson( $lession->id ) )
-                                                                    <i class="fa fa-star yellow-color"></i>
-                                                                @else
-                                                                    <i class="fa fa-star"></i>
-                                                                @endif
+                                                                <?php $starLesson = Common::getMaxStarOfAnLesson($lession->id); ?>
+                                                                <span class="star-list">
+                                                                    <i class="fa fa-star {{ ($starLesson >= 1) ? 'yellow-color' : '' }}"></i>
+                                                                    <i class="fa fa-star {{ ($starLesson >= 2) ? 'yellow-color' : '' }}"></i>
+                                                                    <i class="fa fa-star {{ ($starLesson >= 3) ? 'yellow-color' : '' }}"></i>
+                                                                </span>
                                                             </a>
                                                         </li>
                                                     @endforeach
@@ -98,12 +102,13 @@
                                                     @foreach($chapters[$i]->lession as $lession)
                                                         <li>
                                                             <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}
-                                                                 @if( Common::checkDoLesson( $lession->id ) )
-                                                                    <i class="fa fa-star yellow-color"></i>
-                                                                @else
-                                                                    <i class="fa fa-star"></i>
-                                                                @endif
                                                                 
+                                                                <?php $starLesson = Common::getMaxStarOfAnLesson($lession->id); ?>
+                                                                <span class="star-list">
+                                                                    <i class="fa fa-star {{ ($starLesson >= 1) ? 'yellow-color' : '' }}"></i>
+                                                                    <i class="fa fa-star {{ ($starLesson >= 2) ? 'yellow-color' : '' }}"></i>
+                                                                    <i class="fa fa-star {{ ($starLesson >= 3) ? 'yellow-color' : '' }}"></i>
+                                                                </span>
                                                             </a>
                                                         </li>
                                                     @endforeach
