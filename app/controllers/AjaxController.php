@@ -208,18 +208,23 @@ class AjaxController extends BaseController {
 			$data['status'] = $data['completed'] = 0;
 
 			$study_history = StudyHistory::firstOrCreate(array_except($data, ['score' , 'current_question', 'completed', 'time_use']));
-
-			$data['current_question'] = (($study_history->current_question > 0) ? $study_history->current_question : 1) + 1;
-			$data['score'] = $data['current_question'] * $lessonConf['score'];
-			if( $data['current_question'] >= $lessonConf['number_ques'] ){
-				$data['completed'] = $data['status'] = 1;
-				$data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
+			if( empty($data['current_question']) ){
+				$data['current_question'] = ($study_history->current_question > 0) ? $study_history->current_question + 1 : 1;
 			}
-			StudyHistory::find($study_history->id)->update($data);
+
+			if( $data['current_question'] > $lessonConf['number_ques'] ){
+				$data['completed'] = $data['status'] = 1;
+				$data['current_question'] = $lessonConf['number_ques'];
+			}
+			if( empty($data['score']) ){
+				$data['score'] = $study_history->score + $lessonConf['score'];
+			}
+			$data['score'] = ($data['score'] >= $lessonConf['max_score'] ) ? $lessonConf['max_score'] : $data['score'];
 			$data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
+			StudyHistory::find($study_history->id)->update($data);
 		}
 		else{
-			$data['score'] = $data['current_question'] * $lessonConf['score'];
+			$data['score'] = ($data['score'] >= $lessonConf['max_score'] ) ? $lessonConf['max_score'] : $data['score'];
 			$data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
 		}
 		return Response::json($data);

@@ -433,6 +433,10 @@ h1.node-title.bg{
     box-shadow: 2px 2px 5px 0px rgba(0,0,0, 0.5);
     overflow: visible;
 }
+.lession-page .lession-process .progress .progress-bar{
+    max-width: 100%;
+    overflow: hidden;
+}
 .lession-page .lession-process .progress .star-point{
     position: absolute;
     z-index: 1;

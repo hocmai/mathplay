@@ -100,9 +100,14 @@ class Common {
 	 */
 	public static function getConfigOfLesson($lesson)
 	{
+		return [
+			'max_score' => 100,
+			'number_ques' => 10,
+			'score' => 10
+		];
 		$config = CommonConfig::get($lesson->config);
 		$config['max_score'] = !empty($config['max_score']) ? $config['max_score'] : 100;
-        $config['number_ques'] = !empty($config['number_ques']) ? $config['number_ques'] : 20;
+        $config['number_ques'] = !empty($config['number_ques']) ? $config['number_ques'] : 10;
         $config['score'] = floor($config['max_score']/$config['number_ques']);
         return $config;
 	}
@@ -149,6 +154,17 @@ class Common {
 				$data = StudyHistory::create($fields)->first();
 			}
 			return $data;
+		}else{
+			return false;
+		}
+	}
+
+	/**
+	 * Return object of history belongto an user logged in
+	 */
+	public static function getHistory($fields){
+		if( Auth::user()->check() ){
+			return CommonNormal::multiWhere(StudyHistory::orderBy('updated_at', 'desc'), $fields);
 		}else{
 			return false;
 		}
