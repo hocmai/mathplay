@@ -315,7 +315,7 @@ h1.node-title.bg{
 }
 .list-chapter .chapter-item ul.nav li a{
     font-size: 18px;
-    padding: 5px 10px;
+    padding: 5px;
     line-height: 20px;
 }
 .list-chapter .chapter-item ul.nav li a:hover{
@@ -432,6 +432,10 @@ h1.node-title.bg{
     background: #0e76bc;
     box-shadow: 2px 2px 5px 0px rgba(0,0,0, 0.5);
     overflow: visible;
+}
+.lession-page .lession-process .progress .progress-bar{
+    max-width: 100%;
+    overflow: hidden;
 }
 .lession-page .lession-process .progress .star-point{
     position: absolute;

@@ -69,10 +69,10 @@ Class CommonQuestion {
 	 **/
 	public static function renderLession($lession, $history = []){
 		$quesions = $lession->question;
-		$lession_conf = CommonConfig::get($lession->config);
-		$max_question = !empty($lession_conf['number_ques']) ? $lession_conf['number_ques'] : 20;
-		$max_score = !empty($lession_conf['max_score']) ? $lession_conf['max_score'] : 100;
-		$score = floor($max_score/$max_question);
+		$lession_conf = Common::getConfigOfLesson($lession);
+		$max_question = $lession_conf['number_ques'];
+		$max_score = $lession_conf['max_score'];
+		$score = $lession_conf['score'];
 		$data_history = ['grade_id' => $lession->chapter->subject->grade->id, 'subject_id' => $lession->chapter->subject->id, 'chapter_id' => $lession->chapter->id, 'lession_id' => $lession->id, 'author' => Common::getObject(Auth::user()->get(), 'id')];
 		$question_order = [];
 

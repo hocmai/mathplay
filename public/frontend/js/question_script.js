@@ -137,25 +137,25 @@ $(document).ready(function($) {
 	    
 		////// chua co cau tra loi
 	    if( $.isEmptyObject(input.answer) ){
-	    	$('body').toggleClass('open-hd-giai');
+	    	// $('body').toggleClass('open-hd-giai');
 	    	return false;
 	    }
 
 		var rand = Math.floor((Math.random() * 2) + 1);
+
 		if( !$.isEmptyObject(input.true_answer) && input.answer == input.true_answer ){
 			//////// Tra loi Dung
 
 			///// Cap nhat lich su
-			data_history.score = your_score+score;
-			data_history.current_question = q_order+1;
+			// data_history.score = your_score+score;
 			data_history.time_use = parseInt($('.times>.time-use').text());
 
 			// Neu la cau cuoi cung thi chuyen trang thai lich su
 			// data_history.completed = 0;
-			if( q_order == q_num ){
-				// data_history.completed = 1;
-				data_history.current_question = q_num;
-			}
+			// if( q_order == q_num ){
+			// 	// data_history.completed = 1;
+			// 	data_history.current_question = q_num;
+			// }
 
 			$.ajax({
 				url: '/ajax/updatestudyhistory',
@@ -163,19 +163,21 @@ $(document).ready(function($) {
 				data: {data: JSON.stringify(data_history)},
 				success: function(result){
 					console.log(result);
-					$('.diem .your-score').text(result.score);
-					$('.lession-page .lession-process .progress>.progress-bar').animate(
-						{width: result.score+'%'},
-						400, function(){
-							if( result.star >= 1 )
-								$('.lession-page .lession-process .progress>.star-1').addClass('on');
-							if( result.star >= 2 )
-								$('.lession-page .lession-process .progress>.star-2').addClass('on');
-							if( result.star >= 3 )
-								$('.lession-page .lession-process .progress>.star-3').addClass('on');
-						}
-					);
-					if( q_order >= q_num ){
+					if( q_order < q_num ){
+						$('.diem .your-score').text(result.score);
+						$('.lession-page .lession-process .progress>.progress-bar').animate(
+							{width: result.score+'%'},
+							400, function(){
+								if( result.star >= 1 )
+									$('.lession-page .lession-process .progress>.star-1').addClass('on');
+								if( result.star >= 2 )
+									$('.lession-page .lession-process .progress>.star-2').addClass('on');
+								if( result.star >= 3 )
+									$('.lession-page .lession-process .progress>.star-3').addClass('on');
+							}
+						);
+					}
+					else {
 						$('.box-bai-lam .hoan-thanh .point').text(result.score+' điểm');
 					}
 				},
@@ -238,9 +240,10 @@ $(document).ready(function($) {
 		parent = $('.question-rendered.active'),
 		q_num = parent.parent().find('>.question-rendered').length,
 		q_order = parseInt(parent.attr('q-order')),
-		your_score = parseInt($('.diem .your-score').text()),
+		your_score = parseInt($('.diem .your-score').first().text()),
 		max_score = parseInt(parent.attr('max-score')),
 		data_history = $.parseJSON(parent.attr('data-history'));
+		// console.log(your_score);
 
 		data_history.score = your_score;
 		data_history.current_question = q_order+1;
@@ -248,9 +251,8 @@ $(document).ready(function($) {
 
 		// Neu la cau cuoi cung thi chuyen trang thai lich su
 		data_history.completed = 0;
-		if( q_order == q_num ){
+		if( q_order >= q_num ){
 			data_history.completed = 1;
-			data_history.current_question = q_num;
 		}
 
 		$.ajax({
@@ -259,7 +261,7 @@ $(document).ready(function($) {
 			data: {data: JSON.stringify(data_history)},
 			success: function(result){
 				console.log(result);
-				if( q_order == q_num ){
+				if( q_order >= q_num ){
 					// Cau hoi cuoi cung, hien tong so diem
 					$('.box-bai-lam .hoan-thanh .point').text((your_score)+' điểm');
 					window.setTimeout(function(){

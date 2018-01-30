@@ -177,7 +177,7 @@ foreach($lession->question as $question){
                             <span class="star-point star-3 {{ (Common::getRuleOfStar(Common::getObject($history, 'score'), $config) >= 3) ? 'on' : '' }}"><i class="fa fa-star" aria-hidden="true"></i></span>
                         </div>
                         <p class="diem">
-                            <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}</span>
+                            <span class="span1 your-score">{{ $current_score }}</span>/<span class="span2 max-score">{{ $maxScore }}đ</span>
                         </p>
                     </div>
                     <div class="lession-keyboard hidden-xs">
@@ -267,11 +267,11 @@ foreach($lession->question as $question){
                                 <li>
                                     <a href="" title="">
                                         <img src="{{ asset('frontend/images/quay-lai.png') }}" class="img-responsive mauto" alt=""/>
-                                        <div class="text">Quay lại</div>
+                                        <div class="text">Làm lại</div>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="" title="">
+                                    <a href="{{ action('SiteGradeController@show', ['grade_slug' => Common::getObject($grade, 'slug')]) }}" title="">
                                         <img src="{{ asset('frontend/images/next-bai.png') }}" class="img-responsive mauto" alt=""/>
                                         <div class="text">Bài học tiếp theo</div>
                                     </a>
