@@ -20,7 +20,7 @@
         min-width: auto;
     }
 }
-s
+
 @media screen and (max-width: 767px){
     #main-menu-mathplay .navbar-nav{
         width: 100%;
@@ -47,6 +47,17 @@ s
         right: 0px;
         left: -8px;
     }
+    /*********** css lesson dem so trong khung so 10*/
+    #DemSoTrongKhung10 .question-wrapper .choose td label{
+        width: 100%;
+    }
+    .clearfix table td{
+        width: 100%;
+        height: auto;
+    }
+    .clearfix table.frame{
+        margin: auto;
+    }
     .list-chapter-page .content-left .head-list .next-lession .next-box>span{
         font-size: 18px;
         width: 100%;
@@ -60,7 +71,7 @@ s
         height: auto;
         white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis
+        text-overflow: ellipsis;
     }
     .list-chapter-page .content-left .head-list .next-lession .next-box>span,
     .header .member-area .box-info .btn-group>button.btn{
@@ -79,10 +90,7 @@ s
         padding-left: 0;
     }
     .list-chapter .chapter-item ul.nav li a{
-        padding: 5px 5px 0 1px;
-    }
-    .clearfix .frame{
-        margin:10px -14px 0 !important;
+        padding: 5px 10px 0 1px;
     }
     header .member-area .box-info .btn-group>button.btn{
         white-space: nowrap;
@@ -101,6 +109,8 @@ s
     .btn-support{
         top:-200px;
     }
+
+    /*// fotter*/
     .list-chapter-page footer .copy-right {
         max-width: 100%;
         padding: 15px 0 0;
@@ -120,7 +130,7 @@ s
     .list-chapter-page footer{
         padding-top: 0;
     }
-    
+   
 }
 
 /*max-width: 800px (máy tính bảng, hiển thị chiều ngang)*/

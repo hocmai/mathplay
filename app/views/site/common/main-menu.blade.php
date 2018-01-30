@@ -6,7 +6,7 @@
             @include('site.common.user-menu')
         </div>
     </div>
-    <div class="box-menu">
+    {{-- <div class="box-menu">
         <div class="container">
             <a class="logo" href="/" title="">
                 <img src="{{ asset('frontend/images/logo.png')}}" class="img-responsive" alt=""/>
@@ -26,11 +26,11 @@
                                 Lớp học
                             </a>
                             <ul>
-                               <!--  @foreach($grades as $grade)
+                                @foreach($grades as $grade)
                                     <li>
                                         {{ renderUrl('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
                                     </li>
-                                @endforeach -->
+                                @endforeach
                                 <li class="bg-color"></li>
                             </ul>
                         </li>
@@ -50,5 +50,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 </header>

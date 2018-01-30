@@ -19,7 +19,9 @@ header.header .fixed-nav .navbar-brand{
 .header .member-area .box-info .avatar{
     margin: -15px -50px 0 0;
 }
-.header .member-area a.dang-ky, 
+.header .member-area a.dang-ky,
+.box-dang-nhap a.dang-nhap,
+.box-dang-nhap a.dang-ky,
 .header .member-area a.dang-nhap{
 	background: #0ac2fd;
     -webkit-border-radius: 20px;
