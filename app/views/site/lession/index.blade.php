@@ -48,10 +48,10 @@ foreach($lession->question as $question){
         @endforeach
     @stop
     @section('css_header')
+        @parent
         @foreach( glob(public_path().'/questions/'.$type.'/css/*.css') as $file)
             {{ HTML::style( asset('/questions/'.$type.'/css/'.basename($file)) ) }} 
         @endforeach
-        @parent
     @stop
 @endforeach
 

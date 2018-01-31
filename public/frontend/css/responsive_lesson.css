@@ -51,12 +51,18 @@
     #DemSoTrongKhung10 .question-wrapper .choose td label{
         width: 100%;
     }
-    .clearfix table td{
-        width: 100%;
-        height: auto;
+    #DemSoTrongKhung10 td{
+        width: 30px;
+        height: 30px;
     }
-    .clearfix table.frame{
-        margin: auto;
+    #DemSoTrongKhung10 .shape-none{
+        width: 30px;
+        height: 30px;
+    }
+    #DemSoTrongKhung10 td > div{
+        width: 30px;
+        height: 30px;
+        display: inline-block;
     }
     .list-chapter-page .content-left .head-list .next-lession .next-box>span{
         font-size: 18px;
@@ -95,7 +101,8 @@
         font-size: 10px;
         text-overflow: ellipsis;
     }
-    .list-chapter-page footer .des {
+    .list-chapter-page footer .des
+    ,.footer .des {
         background: url(../images/bg-footer.png) no-repeat top left/100% 245px;
         font-weight: 700;
         padding: 15px 40px;
