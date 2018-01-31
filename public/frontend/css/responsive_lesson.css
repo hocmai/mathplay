@@ -79,12 +79,13 @@
         overflow: hidden;
         text-overflow: ellipsis;
     }
-    .list-chapter-page .content-left .head-list .next-lession .next-box>span,
+    chapter-page .content-left .head-list .next-lession .next-box>span{
+        font-size: 16px;
+    }
     .header .member-area .box-info .btn-group>button.btn{
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
-        font-size: 10px;
     }
 
     .list-chapter-page .content-left .head-list .info .text .star{
