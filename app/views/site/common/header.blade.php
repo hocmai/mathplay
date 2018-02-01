@@ -19,7 +19,6 @@
 	{{ HTML::style('frontend/css/mystyle.css')}}
     {{ HTML::style('frontend/css/new-style.css')}}
     {{ HTML::style('frontend/css/home_layout.css')}}
-    {{HTML::style('questions/DemSoTrongKhung10/css/style.css')}}
 	{{ HTML::style('frontend/css/responsive_lesson.css') }}
 	@show
 	
