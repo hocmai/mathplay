@@ -67,7 +67,7 @@ class SiteUserController extends SiteController {
         } else {
         	$remember = Input::get('remember');
             if( Auth::user()->attempt($input, !empty($remember) ? true : false ) ) {
-        		return Redirect::back();
+        		return Redirect::to('/');
             } else {
                 return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
             }
