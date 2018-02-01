@@ -5,7 +5,7 @@
 @stop
 
 @section('breadcrumb')
-<div class="bracum">
+{{-- <div class="bracum">
     <div class="container">
         <ol class="breadcrumb">
             <li><a href="/">Trang chủ</a></li>
@@ -15,7 +15,7 @@
             <li class="active">Lịch sử làm bài</li>
         </ol>
     </div>
-</div>
+</div> --}}
 @stop
 
 <main>

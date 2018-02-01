@@ -128,7 +128,7 @@ class SubjectController extends AdminController {
 	 */
 	public function destroy($id)
 	{
-		SubjectModel::find($id)->delete();
+		Subject::find($id)->delete();
         return Redirect::action('SubjectController@index')->with('success', 'Xóa thành công!');
 	}
 
