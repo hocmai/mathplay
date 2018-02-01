@@ -126,7 +126,7 @@ $(document).ready(function($) {
 		q_num = parent.parent().find('>.question-rendered').length,
 		qid = parent.attr('qid'),
 		q_order = parseInt(parent.attr('q-order')),
-		your_score = parseInt($('.diem .your-score').text()),
+		your_score = parseInt($('.diem .your-score').first().text()),
 		max_score = parseInt(parent.attr('max-score')),
 		score = parseInt(parent.attr('score')),
 		data_history = $.parseJSON(parent.attr('data-history'));
@@ -147,7 +147,7 @@ $(document).ready(function($) {
 			//////// Tra loi Dung
 
 			///// Cap nhat lich su
-			// data_history.score = your_score+score;
+			data_history.score = your_score+score;
 			data_history.time_use = parseInt($('.times>.time-use').text());
 
 			// Neu la cau cuoi cung thi chuyen trang thai lich su
