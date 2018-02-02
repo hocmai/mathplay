@@ -102,7 +102,7 @@ header.header .banner .caption-wrap h1{
 .question-rendered .start{
     display: inline-block;
     width: 100%;
-    font-size: 22px;
+    font-size: 28px;
     color: #fff;
     background: #52c9f3;
     padding: 5px 0;
@@ -111,6 +111,10 @@ header.header .banner .caption-wrap h1{
     -webkit-text-stroke: #fff 0px;
     text-shadow:none;
 
+}
+.play-question-sound>button.control{
+    width: 35px;
+    height: 35px;
 }
 .list-chapter .chapter-item ul.nav li a{
     font-size: 16px;

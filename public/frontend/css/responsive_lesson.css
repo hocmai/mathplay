@@ -19,8 +19,26 @@
     .lession-page .lession-keyboard .item.delete{
         min-width: auto;
     }
+    .header .member-area .box-info .btn-group>button.btn{
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100px;
+    }
 }
-
+@media screen and (max-width: 768px){
+    .sidebar-right .content-rating .item .person .info{
+        width: calc(100% - 15px);
+        padding-left: 10px;
+    }
+    .list-chapter .chapter-item h2.title-sub>span.head{
+        font-size: 18px;
+    }
+    .list-chapter .chapter-item h2.title-sub>span.name{
+        min-width: 65%;
+        padding: 0 15px 0 0; 
+    }
+}
 @media screen and (max-width: 767px){
     #main-menu-mathplay .navbar-nav{
         width: 100%;
@@ -49,7 +67,8 @@
     }
     /*********** css lesson dem so trong khung so 10*/
     #DemSoTrongKhung10 .question-wrapper .choose td label{
-        width: 100%;
+        width: 50px  !important;
+        height: 50px  !important;
     }
     #DemSoTrongKhung10 td{
         width: 30px;
@@ -60,9 +79,9 @@
         height: 30px;
     }
     #DemSoTrongKhung10 td > div{
-        width: 30px;
-        height: 30px;
-        display: inline-block;
+        width: 30px !important;
+        height: 30px !important;
+        display: inline-block !important;
     }
     .list-chapter-page .content-left .head-list .next-lession .next-box>span{
         font-size: 18px;
@@ -86,6 +105,7 @@
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+        width: 100px;
     }
 
     .list-chapter-page .content-left .head-list .info .text .star{

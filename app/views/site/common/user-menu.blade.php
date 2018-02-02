@@ -26,7 +26,8 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li>{{ renderUrl('SiteMemberController@edit', 'Lịch sử làm bài', ['id' => Common::getObject(Auth::user()->get(), 'id')]) }}</li>
+                                <li>{{ renderUrl('SiteMemberController@profile', 'Thông tin cá nhân', ['id' => Common::getObject(Auth::user()->get(), 'id')]) }}</li>
+                                
                                 <li>{{ renderUrl('SiteMemberController@history', 'Lịch sử làm bài', ['uid' => Common::getObject(Auth::user()->get(), 'id')]) }}</li>
                                 <li>{{ renderUrl('SiteUserController@logout', 'Thoát') }}</li>
                             </ul>

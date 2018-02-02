@@ -6,6 +6,13 @@ class SiteMemberController extends BaseController {
         $this->beforeFilter('owner');
     }
 
+    public function profile($id){
+    	$data= User::findOrFail($id);
+    	$class = Grade::lists('title', 'id');
+    	return View::make('site.member.profile')->with(compact('data','class'));
+    }
+
+
 	/**
 	 * Bang diem.
 	 *
@@ -142,7 +149,7 @@ class SiteMemberController extends BaseController {
 	 */
 	public function edit($id)
 	{
-		//
+
 	}
 
 
