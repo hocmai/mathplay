@@ -71,7 +71,7 @@ Route::group(['prefix' => 'member'], function () {
 	Route::get('/{uid}/lich-su-lam-bai', ['as' => 'memeber.history.question', 'uses' => 'SiteMemberController@historyQuestion'])
 		->where('uid', '[0-9]+');
 
-	Route::get('/{uid}/profile', ['as' => 'memeber.profile', 'uses' => 'SiteMemberController@index'])
+	Route::get('/{uid}/profile', 'SiteMemberController@profile')
 		->where('uid', '[0-9]+');
 });
 
