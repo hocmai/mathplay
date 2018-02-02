@@ -10,6 +10,7 @@
     {{ HTML::style('frontend/css/bootstrap.min.css')}}
     {{ HTML::style('frontend/css/font-awesome.min.css')}}
     {{ HTML::style('frontend/css/hover-min.css')}}
+    {{ HTML::style('frontend/css/style.css')}}
     {{ HTML::style('frontend/css/new-style.css')}}
     {{ HTML::style('frontend/css/home_layout.css')}}
     {{ HTML::style('frontend/css/responsive_lesson.css') }}
@@ -43,7 +44,7 @@
 
 @section('footer_content')
 	@parent
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="des">
                 Cơ quan chủ quản: Công ty Cổ phần Đầu tư và Dịch vụ Giáo dục <br/>

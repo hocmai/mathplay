@@ -122,6 +122,14 @@
         font-size: 10px;
         text-overflow: ellipsis;
     }
+    .box-footer input{
+        color: #fff;
+        padding: 10px 35px ;
+        border-radius: 9px;
+        border: none;
+        font-size: 16px;
+        margin: 15px 0 15px 130px;
+    }
     .list-chapter-page footer .des
     ,.footer .des {
         background: url(../images/bg-footer.png) no-repeat top left/100% 245px;
