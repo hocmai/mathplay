@@ -17,11 +17,11 @@
 @stop
 
 @section('content')
-    <div class="box-chuong-trinh box-dang-ky">
+    <div class="box-chuong-trinh box-dang-ky profile-page">
         <div class="container" id="box-profile">
-            <h1 style="text-align: center; text-decoration: underline;">Thông tin cá nhân</h1>
+            <h1 class="page-title">Thông tin cá nhân</h1>
             <div class="row">
-                {{ Form::open(array('action' => ['SiteMemberController@saveProfile', $id])) }}
+                {{ Form::open(['action' => ['SiteMemberController@saveProfile', $id], 'class' => 'user-profile-form' ]) }}
                     <div class=" col-sm-6 col-xs-12">
                         <div class="box-body">
                             <div class="form-group">
