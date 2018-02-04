@@ -130,15 +130,9 @@
     div.canvas-container{
         right: 50px;
         position: relative;
-    }
     } /*// fotter*/
-    .box-footer input{
-        color: #fff;
-        padding: 10px 35px ;
-        border-radius: 9px;
-        border: none;
-        font-size: 16px;
-        margin: 15px 0 15px 130px;
+    .user-profile-form .box-footer input.btn{
+        margin: 5px 15px;
     }
     .list-chapter-page footer .des
     ,.footer .des {
@@ -152,17 +146,13 @@
     .btn-support{
         top:-200px;
     }
-    .list-chapter-page footer .copy-right {
-        max-width: 100%;
-        padding: 15px 0 0;
-    }
-    .list-chapter-page footer .copy-right .content{
+    footer .copy-right .content{
         background: none;
-        margin-top: 32px;
+        margin-top: 45px;
         min-width: 102%;
         text-align: center;
     }
-    .list-chapter-page footer .copy-right .social{
+    footer .copy-right .social{
         position: absolute;
         right: 0;
         left: 0;

@@ -10,7 +10,6 @@
     {{ HTML::style('frontend/css/bootstrap.min.css')}}
     {{ HTML::style('frontend/css/font-awesome.min.css')}}
     {{ HTML::style('frontend/css/hover-min.css')}}
-    {{ HTML::style('frontend/css/style.css')}}
     {{ HTML::style('frontend/css/new-style.css')}}
     {{ HTML::style('frontend/css/home_layout.css')}}
     {{ HTML::style('frontend/css/responsive_lesson.css') }}
