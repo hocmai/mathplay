@@ -6,8 +6,9 @@
 /*max-width: 1024px (máy tính bảng loại to, hiển thị chiều ngang)*/
 @media screen and (max-width: 1024px){
 
-    .list-chapter-page footer .des{
-        background: url(../images/bg-footer.png) no-repeat top left/100% 140px;
+    footer .des{
+        background: url(../images/bg-footer.png) no-repeat top left/100% 170px;
+        padding: 15px 30px;
     }
 }
 
@@ -28,12 +29,6 @@
         text-overflow: ellipsis;
         width: 100px;
     }
-    footer .des{
-        background: url(../images/bg-footer.png) no-repeat top left/100% 170px;
-        padding: 15px 30px;
-    }
-    
-
 }
 @media screen and (max-width: 768px){
     .sidebar-right .content-rating .item .person .info{
