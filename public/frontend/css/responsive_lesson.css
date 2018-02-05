@@ -28,6 +28,10 @@
         text-overflow: ellipsis;
         width: 100px;
     }
+    footer .des{
+        background: url(../images/bg-footer.png) no-repeat top left/100% 170px;
+        padding: 15px 30px;
+    }
     
 
 }
@@ -76,6 +80,7 @@
         right: 0px;
         left: -8px;
     }
+    
     .box-chuong-trinh.box-dang-ky .boxs-right .chuong-trinh .des{
         margin-right: 35px;
     }
@@ -122,9 +127,7 @@
         text-overflow: ellipsis;
         width: 100px;
     }
-
     .list-chapter-page .content-left .head-list .info .text .star{
-        font-size: 40px;
         line-height: 50px;
     }
     .list-chapter-page .list-chapter{
@@ -157,13 +160,16 @@
     .btn-support{
         top:-200px;
     }
-    .list-chapter-page footer .copy-right .content{
+    .list-chapter-page footer .copy-right .content,
+    footer .copy-right .content
+    {
         background: none;
         margin-top: 45px;
         min-width: 102%;
         text-align: center;
     }
-     .list-chapter-page footer .copy-right .social{
+     .list-chapter-page footer .copy-right .social,
+      footer .copy-right .social{
         position: absolute;
         right: 0;
         left: 0;
