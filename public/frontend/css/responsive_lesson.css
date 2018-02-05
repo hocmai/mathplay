@@ -4,8 +4,11 @@
 }
 
 /*max-width: 1024px (máy tính bảng loại to, hiển thị chiều ngang)*/
-@media screen and (min-width: 1024px){
+@media screen and (max-width: 1024px){
 
+    .list-chapter-page footer .des{
+        background: url(../images/bg-footer.png) no-repeat top left/100% 140px;
+    }
 }
 
 /*max-width: 768px (máy tính bảng loại to, hiển thị chiều dọc)*/
@@ -25,6 +28,8 @@
         text-overflow: ellipsis;
         width: 100px;
     }
+    
+
 }
 @media screen and (max-width: 768px){
     .sidebar-right .content-rating .item .person .info{
@@ -38,6 +43,12 @@
         min-width: 65%;
         padding: 0 15px 0 0; 
     }
+    .list-chapter-page footer .des{
+        background: url(../images/bg-footer.png) no-repeat center left/100% 170px;
+        font-weight: 600;
+        padding: 15px 30px;
+    }
+
 }
 @media screen and (max-width: 767px){
     #main-menu-mathplay .navbar-nav{
@@ -146,13 +157,13 @@
     .btn-support{
         top:-200px;
     }
-    footer .copy-right .content{
+    .list-chapter-page footer .copy-right .content{
         background: none;
         margin-top: 45px;
         min-width: 102%;
         text-align: center;
     }
-    footer .copy-right .social{
+     .list-chapter-page footer .copy-right .social{
         position: absolute;
         right: 0;
         left: 0;
