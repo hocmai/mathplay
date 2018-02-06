@@ -29,6 +29,9 @@
         text-overflow: ellipsis;
         width: 100px;
     }
+    .gui-bai{
+        display: none;
+    }
 }
 @media screen and (max-width: 768px){
     .sidebar-right .content-rating .item .person .info{
@@ -47,10 +50,6 @@
         font-weight: 600;
         padding: 15px 30px;
     }
-     .gui-bai{
-        display: none;
-    }
-
 }
 @media screen and (max-width: 767px){
     #main-menu-mathplay .navbar-nav{
