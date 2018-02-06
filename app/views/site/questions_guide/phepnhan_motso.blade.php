@@ -86,6 +86,11 @@ $rules = [
 					@endif
 				@endif
 			@else
+				@if( empty($sub[$i]) )
+					Viết {{ $a_rr[$i]*$b + $sub[$i] }}
+				@else
+					<br>* {{ $a_rr[$i]*$b }} nhớ {{ $sub[$i] }}. Viết {{ $a_rr[$i]*$b + $sub[$i] }}
+				@endif
 			@endif
 		</div> <!-- End right -->
 	</div> <!-- End line -->
