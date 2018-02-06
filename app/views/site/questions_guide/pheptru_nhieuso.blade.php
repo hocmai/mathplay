@@ -39,13 +39,13 @@ $a_fake = $a_rr;
 <div class="huong-dan-giai text-left" style="display">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper" style="font-size: 18px">
-		<span class="col-xs-4 col-sm-2 text-right" style="font-size: 18px">
+		<span class="col-xs-5 col-sm-3 text-right" style="font-size: 18px">
 			{{ $a }}<br>
 			- {{ $b }}<br>
 			<hr>
 			?
 		</span>
-		<span class="col-xs-8 col-sm-10" style="padding-left: 30px">Trừ các số thẳng cột theo chiều từ phải qua trái</span>
+		<span class="col-xs-7 col-sm-9" style="padding-left: 30px">Trừ các số thẳng cột theo chiều từ phải qua trái</span>
 		<div class="clear clearfix"></div>
 		<hr style="border-top: 1px dashed #eee; margin: 8px 0">
 		
@@ -80,7 +80,7 @@ $a_fake = $a_rr;
 			} ?>
 				
 			<div class="line clear clearfix">
-				<div class="text-right col-xs-4 col-sm-2 left">
+				<div class="text-right col-xs-5 col-sm-3 left">
 					<span class="content">
 						<div class="num a">
 							@foreach( $a_rr as $key => $value )
@@ -103,7 +103,7 @@ $a_fake = $a_rr;
 						</div>
 					</span>
 				</div> <!-- End left -->
-				<div class="text-left col-xs-8 col-sm-10 right">
+				<div class="text-left col-xs-7 col-sm-9 right">
 					<p>Trừ hàng {{ $unit_ori }}</p>
 					@if( $a_fake[$i] >= $b_rr[$i] )
 						<strong>* Hàng {{ $unit_ori }}: {{ $a_fake[$i] .' - '. $b_rr[$i] .' = '.($a_fake[$i] - $b_rr[$i]) }}. Viết {{ ($c_rr[$i]) }} vào hàng {{ $unit_ori }}</strong>

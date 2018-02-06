@@ -38,7 +38,7 @@ $b = rand($min_b, $max_b);
 		</div>
 	{{ Form::close() }}
 </div>
-<div class="huong-dan-giai text-left" style="display">
+<div class="huong-dan-giai text-left" style="display: none">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper" style="font-size: 18px">
 		@include('site.questions_guide.phepnhan_motso', [
@@ -47,5 +47,6 @@ $b = rand($min_b, $max_b);
 			'a' => $a,
 			'b' => $b,
 		])
+		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

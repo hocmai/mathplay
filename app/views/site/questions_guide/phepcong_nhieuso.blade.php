@@ -24,13 +24,13 @@ if( $count_b < $count_a ){
 	}
 }?>
 
-<span class="col-xs-4 col-sm-2 text-right" style="font-size: 18px">
+<span class="col-xs-5 col-sm-3 text-right" style="font-size: 18px">
 	{{ $a }}<br>
 	+ {{ $b }}<br>
 	<hr>
 	?
 </span>
-<span class="col-xs-8 col-sm-10" style="padding-left: 30px">Cộng lần lượt các số thẳng cột theo chiều từ phải qua trái</span>
+<span class="col-xs-7 col-sm-9" style="padding-left: 30px">Cộng lần lượt các số thẳng cột theo chiều từ phải qua trái</span>
 <div class="clear clearfix"></div>
 <hr style="border-top: 1px dashed #eee; margin: 8px 0">
 
@@ -47,7 +47,7 @@ if( $count_b < $count_a ){
 	ksort($c_rr);
 	?>
 	<div class="line clear clearfix">
-		<div class="text-right col-xs-4 col-sm-2 left">
+		<div class="text-right col-xs-5 col-sm-3 left">
 			<span class="content">
 				<div class="num a">
 					@foreach( $a_rr as $key => $value )
@@ -74,7 +74,7 @@ if( $count_b < $count_a ){
 				</div>
 			</span>
 		</div> <!-- End left -->
-		<div class="text-left col-xs-8 col-sm-10 right">
+		<div class="text-left col-xs-7 col-sm-9 right">
 			Cộng hàng {{ $rules[$point] }}<br>
 			* {{ !empty($sub[$i]) ? $sub[$i].' + ' : '' }}{{ $a_rr[$i] }} + {{ $b_rr[$i] }} = {{ $sub[$i] + $a_rr[$i] + $b_rr[$i] }}. Viết {{ ($i > 0 && ($a_rr[$i] + $b_rr[$i]) > 9 ) ? $c_rr[$i].', nhớ 1': $c_rr[$i] }}.
 		</div> <!-- End right -->

@@ -150,11 +150,16 @@ $c = str_split($c);
 	{{ Form::close() }}
 </div>
 @if( $method == 'sub' && $find == 'c' )
-	@include('site.questions_guide.pheptru_nhieuso', [
-		'question' => $question,
-		'config' => $config,
-		'a' => $a,
-		'b' => $b,
-	])
+	<div class="huong-dan-giai text-left" style="display: none;">
+		<h2>Hướng dẫn giải</h2>
+		<div class="wrapper" style="font-size: 18px">
+			@include('site.questions_guide.pheptru_nhieuso', [
+				'question' => $question,
+				'config' => $config,
+				'a' => $a,
+				'b' => $b,
+			])
+		</div>
+	</div>
 @else
 @endif
