@@ -16,7 +16,7 @@ $rules = [
 
 <span class="col-xs-5 col-sm-3 text-right" style="font-size: 18px">
 	{{ $a }}<br>
-	+ {{ $b }}<br>
+	x {{ $b }}<br>
 	<hr>
 	?
 </span>
@@ -31,8 +31,8 @@ $rules = [
 	if( !isset($sub[$i]) ) $sub[$i] = null;
 	$c_rr[$i] = ($a_rr[$i] * $b) + $sub[$i];
 	if( $c_rr[$i] > 9 && $i > 0 ){
-		$sub[$i-1] = floor(($a_rr[$i] * $b + $sub[$i])/10);
-		$c_rr[$i] = ($a_rr[$i] * $b)%10 + $sub[$i];
+		$sub[$i-1] = floor( ($a_rr[$i] * $b + $sub[$i]) / 10 );
+		$c_rr[$i] = ($a_rr[$i] * $b + $sub[$i])%10;
 		if( $c_rr[$i] > 9 && $i > 0 ){
 			$sub[$i-1] += floor($c_rr[$i]/10);
 			$c_rr[$i] = ($c_rr[$i])%10 ;
@@ -68,11 +68,22 @@ $rules = [
 		</div> <!-- End left -->
 		<div class="text-left col-xs-7 col-sm-9 right">
 			Nhân hàng {{ $rules[$point] }}<br>
-			* {{ $a_rr[$i].' x '.$b }}.
+			* {{ $a_rr[$i].' x '.$b. ' = '.($a_rr[$i]*$b)  }}.
 			
 			@if( $i > 0 )
-				@if( !empty($sub[$i]) && ($a_rr[$i]*$b) > 9 ) )
-					Viết 
+				@if( empty($sub[$i]) )
+					@if( $a_rr[$i]*$b > 9 )
+						Viết {{ floor($a_rr[$i]*$b % 10) }}, nhớ {{ floor($a_rr[$i]*$b / 10) }} sang hàng {{ $rules[$point+1] }}
+					@else
+						Viết {{ $a_rr[$i]*$b }}
+					@endif
+				@else
+					<br>* {{ $a_rr[$i]*$b }} nhớ {{ $sub[$i] }} là {{ $a_rr[$i]*$b + $sub[$i] }}.
+					@if( $a_rr[$i]*$b + $sub[$i] > 9 )
+						Viết {{ floor(($a_rr[$i]*$b + $sub[$i]) % 10) }}, nhớ {{ floor(($a_rr[$i]*$b + $sub[$i]) / 10) }} sang hàng {{ $rules[$point+1] }}
+					@else
+						Viết {{ $a_rr[$i]*$b + $sub[$i] }}
+					@endif
 				@endif
 			@else
 			@endif
