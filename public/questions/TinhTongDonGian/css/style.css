@@ -2,7 +2,7 @@
 #TinhTongDonGian .tong.doc .num2{
     display: block;
     text-align: right;
-    margin-right: 15px;
+    /*margin-right: 15px;*/
 }
 #TinhTongDonGian .tong.doc input{
 	width: 55px;
