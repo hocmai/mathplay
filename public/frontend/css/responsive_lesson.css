@@ -97,6 +97,21 @@
         height: 30px !important;
         display: inline-block !important;
     }
+    /* dem hinh anh*/
+    #DemHinhAnh .image-show-area{
+        width: auto !important;
+    }
+     /*demso con thiếu 100*/
+     .number-line-100 td> div.text{
+        width: 31px;
+        padding: 0;
+        margin: 0;
+        height: 30px;
+        line-height: 30px;
+     }
+     .number-line-100 td> div.text>input{
+        width: 30px;
+     }
     /***** dem sotung khung*/
     .list-chapter-page .content-left .head-list .next-lession .next-box>span{
         font-size: 18px;
