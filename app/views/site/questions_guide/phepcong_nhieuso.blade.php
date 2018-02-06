@@ -1,6 +1,7 @@
 <?php
-$a = max($a, $b);
-$b = min($a, $b);
+$a1 = $a;
+$a = max($a1, $b);
+$b = min($a1, $b);
 $a_rr = str_split($a);
 $b_rr = str_split($b);
 $c_rr = [];
