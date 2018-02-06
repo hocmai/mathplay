@@ -316,6 +316,9 @@ class Common {
 	 */
 	public static function getUserName(){
 		if( Auth::user()->check() ){
+			if( !empty(self::getObject(Auth::user()->get(), 'full_name')) ){
+				return self::getObject(Auth::user()->get(), 'full_name');
+			}
 			return self::getObject(Auth::user()->get(), 'username');
 		}
 		return 'Kid';
