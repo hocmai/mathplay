@@ -4,8 +4,12 @@
 }
 
 /*max-width: 1024px (máy tính bảng loại to, hiển thị chiều ngang)*/
-@media screen and (min-width: 1024px){
+@media screen and (max-width: 1024px){
 
+    footer .des{
+        background: url(../images/bg-footer.png) no-repeat top left/100% 170px;
+        padding: 15px 30px;
+    }
 }
 
 /*max-width: 768px (máy tính bảng loại to, hiển thị chiều dọc)*/
@@ -38,6 +42,12 @@
         min-width: 65%;
         padding: 0 15px 0 0; 
     }
+    .list-chapter-page footer .des{
+        background: url(../images/bg-footer.png) no-repeat center left/100% 170px;
+        font-weight: 600;
+        padding: 15px 30px;
+    }
+
 }
 @media screen and (max-width: 767px){
     #main-menu-mathplay .navbar-nav{
@@ -65,6 +75,10 @@
         right: 0px;
         left: -8px;
     }
+    
+    .box-chuong-trinh.box-dang-ky .boxs-right .chuong-trinh .des{
+        margin-right: 35px;
+    }
     /*********** css lesson dem so trong khung so 10*/
     #DemSoTrongKhung10 .question-wrapper .choose td label{
         width: 50px  !important;
@@ -83,6 +97,22 @@
         height: 30px !important;
         display: inline-block !important;
     }
+    /* dem hinh anh*/
+    #DemHinhAnh .image-show-area{
+        width: auto !important;
+    }
+     /*demso con thiếu 100*/
+     .number-line-100 td> div.text{
+        width: 31px;
+        padding: 0;
+        margin: 0;
+        height: 30px;
+        line-height: 30px;
+     }
+     .number-line-100 td> div.text>input{
+        width: 30px;
+     }
+    /***** dem sotung khung*/
     .list-chapter-page .content-left .head-list .next-lession .next-box>span{
         font-size: 18px;
         width: 100%;
@@ -107,10 +137,9 @@
         text-overflow: ellipsis;
         width: 100px;
     }
-
     .list-chapter-page .content-left .head-list .info .text .star{
-        font-size: 40px;
         line-height: 50px;
+        font-size: 50px;
     }
     .list-chapter-page .list-chapter{
         padding-right: 0;
@@ -121,6 +150,14 @@
         overflow: hidden;
         font-size: 10px;
         text-overflow: ellipsis;
+    }
+        /*bai toan cai can mobile*/
+    div.canvas-container{
+        right: 50px;
+        position: relative;
+    } /*// fotter*/
+    .user-profile-form .box-footer input.btn{
+        margin: 5px 15px;
     }
     .list-chapter-page footer .des
     ,.footer .des {
@@ -134,19 +171,16 @@
     .btn-support{
         top:-200px;
     }
-
-    /*// fotter*/
-    .list-chapter-page footer .copy-right {
-        max-width: 100%;
-        padding: 15px 0 0;
-    }
-    .list-chapter-page footer .copy-right .content{
+    .list-chapter-page footer .copy-right .content,
+    footer .copy-right .content
+    {
         background: none;
-        margin-top: 32px;
+        margin-top: 45px;
         min-width: 102%;
         text-align: center;
     }
-    .list-chapter-page footer .copy-right .social{
+     .list-chapter-page footer .copy-right .social,
+      footer .copy-right .social{
         position: absolute;
         right: 0;
         left: 0;

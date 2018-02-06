@@ -99,6 +99,10 @@ header.header .banner .caption-wrap h1{
     color: #000;
 }
 /*************/
+h1.page-title{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
 .question-rendered .start{
     display: inline-block;
     width: 100%;
@@ -154,9 +158,22 @@ header.header .banner .caption-wrap h1{
     overflow: hidden;
     text-overflow: ellipsis
 }
+.user-profile-form .box-footer input.btn{
+    color: #fff;
+    padding: 7px 35px;
+    border-radius: 8px;
+    border: none;
+    margin: -55px 0 45px 15px;
+    font-size: 18px;
+}
+#box-profile{
+    background: #fff;
+}
 footer{
     color: #fff;
+    background: url(../images/bg-body-footer.png) no-repeat bottom center/100%;
 }
+
 footer .des{
     max-width: 100%;
     margin: 1px auto;
@@ -165,4 +182,9 @@ footer .des{
     font-weight: 600;
     font-size: 16px;
     padding: 18px 115px
+}
+footer .copy-right{
+    background: #57b557;
+    margin-top:25px;
+    padding-top: 12px;
 }

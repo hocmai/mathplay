@@ -9,9 +9,16 @@ class SiteMemberController extends BaseController {
     public function profile($id){
     	$data= User::findOrFail($id);
     	$class = Grade::lists('title', 'id');
-    	return View::make('site.member.profile')->with(compact('data','class'));
+    	return View::make('site.member.profile')->with(compact('data','class','id'));
     }
 
+    public function saveProfile($id){
+    	$input = Input::except(['username', 'email']);
+    	// dd($input);
+    	User::findOrFail($id)->update($input);
+    	return Redirect::action( 'SiteMemberController@profile', [$id] )->withMessage('success','Lưu thành công!');
+
+    }
 
 	/**
 	 * Bang diem.
@@ -161,7 +168,7 @@ class SiteMemberController extends BaseController {
 	 */
 	public function update($id)
 	{
-		//
+		
 	}
 
 

@@ -43,7 +43,7 @@
 
 @section('footer_content')
 	@parent
-    <footer>
+    <footer class="footer">
         <div class="container">
             <div class="des">
                 Cơ quan chủ quản: Công ty Cổ phần Đầu tư và Dịch vụ Giáo dục <br/>
