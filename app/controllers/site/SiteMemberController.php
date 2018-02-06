@@ -16,7 +16,7 @@ class SiteMemberController extends BaseController {
     	$input = Input::except(['username', 'email']);
     	// dd($input);
     	User::findOrFail($id)->update($input);
-    	return Redirect::action( 'SiteMemberController@profile', [$id] )->withMessage('success','Lưu thành công!');
+    	return Redirect::action( 'SiteMemberController@profile', [$id] )->withMessage('Lưu thành công!');
 
     }
 
