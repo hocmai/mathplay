@@ -68,28 +68,28 @@ $rules = [
 		</div> <!-- End left -->
 		<div class="text-left col-xs-7 col-sm-9 right">
 			Nhân hàng {{ $rules[$point] }}<br>
-			* {{ $a_rr[$i].' x '.$b. ' = '.($a_rr[$i]*$b)  }}.
+			* {{ $a_rr[$i].' x '.$b. ' = '.($a_rr[$i]*$b)  }}
 			
 			@if( $i > 0 )
 				@if( empty($sub[$i]) )
 					@if( $a_rr[$i]*$b > 9 )
-						Viết {{ floor($a_rr[$i]*$b % 10) }}, nhớ {{ floor($a_rr[$i]*$b / 10) }} sang hàng {{ $rules[$point+1] }}
+						Viết {{ floor($a_rr[$i]*$b % 10) }}, nhớ {{ floor($a_rr[$i]*$b / 10) }} sang hàng {{ $rules[$point+1] }}.
 					@else
-						Viết {{ $a_rr[$i]*$b }}
+						Viết {{ $a_rr[$i]*$b }}.
 					@endif
 				@else
 					<br>* {{ $a_rr[$i]*$b }} nhớ {{ $sub[$i] }} là {{ $a_rr[$i]*$b + $sub[$i] }}.
 					@if( $a_rr[$i]*$b + $sub[$i] > 9 )
-						Viết {{ floor(($a_rr[$i]*$b + $sub[$i]) % 10) }}, nhớ {{ floor(($a_rr[$i]*$b + $sub[$i]) / 10) }} sang hàng {{ $rules[$point+1] }}
+						Viết {{ floor(($a_rr[$i]*$b + $sub[$i]) % 10) }}, nhớ {{ floor(($a_rr[$i]*$b + $sub[$i]) / 10) }} sang hàng {{ $rules[$point+1] }}.
 					@else
-						Viết {{ $a_rr[$i]*$b + $sub[$i] }}
+						Viết {{ $a_rr[$i]*$b + $sub[$i] }}.
 					@endif
 				@endif
 			@else
 				@if( empty($sub[$i]) )
 					Viết {{ $a_rr[$i]*$b + $sub[$i] }}
 				@else
-					<br>* {{ $a_rr[$i]*$b }} nhớ {{ $sub[$i] }}. Viết {{ $a_rr[$i]*$b + $sub[$i] }}
+					<br>* {{ $a_rr[$i]*$b }} nhớ {{ $sub[$i] }} là {{ $a_rr[$i]*$b + $sub[$i] }}. Viết {{ $a_rr[$i]*$b + $sub[$i] }}.
 				@endif
 			@endif
 		</div> <!-- End right -->
