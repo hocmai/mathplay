@@ -35,7 +35,6 @@
                     <a href="" title="" class="inline-block"><img src="{{ asset('frontend/images/g.png')}}" class="img-responsive" alt=""/></a>
                 </div>
             </div>
-
         </div>
     </footer>
 @stop

@@ -73,6 +73,8 @@ Route::group(['prefix' => 'member'], function () {
 
 	Route::get('/{uid}/profile', 'SiteMemberController@profile')
 		->where('uid', '[0-9]+');
+	Route::post('/{uid}/profile', 'SiteMemberController@saveProfile')
+		->where('uid', '[0-9]+');
 });
 
 ///////////////// Admin page //////////////////
