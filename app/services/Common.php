@@ -151,12 +151,12 @@ class Common {
 	{
 		return [
 			'max_score' => 100,
-			'number_ques' => 10,
-			'score' => 10
+			'number_ques' => 20,
+			'score' => 5
 		];
 		$config = CommonConfig::get($lesson->config);
 		$config['max_score'] = !empty($config['max_score']) ? $config['max_score'] : 100;
-        $config['number_ques'] = !empty($config['number_ques']) ? $config['number_ques'] : 10;
+        $config['number_ques'] = !empty($config['number_ques']) ? $config['number_ques'] : 20;
         $config['score'] = floor($config['max_score']/$config['number_ques']);
         return $config;
 	}
