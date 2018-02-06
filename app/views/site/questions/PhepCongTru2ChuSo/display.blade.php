@@ -161,5 +161,15 @@ $c = str_split($c);
 			])
 		</div>
 	</div>
-@else
+@elseif( $method == 'plus' && $find == 'c' )
+	<div class="huong-dan-giai text-left">
+		<h2>Hướng dẫn giải</h2>
+		<div class="wrapper" style="font-size: 18px">
+			@include('site.questions_guide.phepcong_nhieuso', [
+				'a' => $a,
+				'b' => $b,
+			])
+			<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+		</div>
+	</div>
 @endif
