@@ -30,7 +30,7 @@ $b = rand($min_b, $max_b);
 					<hr style="margin: 5px 0">
 					<span class="number-c">
 						<div class="multi-input-number">
-							{{ Form::text('answer', '', ['style'=>'text-align:right;width:100%;height:25px;letter-spacing: 1px;', 'maxlength'=>6]) }}
+							{{ Form::text('answer', '', ['style'=>'text-align:right;width:100%;height:25px;letter-spacing: 1px;', 'maxlength'=>7]) }}
 						</div>
 					</span>
 				</div>
