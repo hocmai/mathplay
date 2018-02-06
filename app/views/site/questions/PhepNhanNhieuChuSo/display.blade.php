@@ -19,18 +19,18 @@ $b = rand($min_b, $max_b);
 		
 		<div class="form-group">
 			<div class="content inline-block">
-				<div class="text-right" style="width:80px;line-height:25px;font-size:18px;font-weight:400;letter-spacing:1px;">
+				<div class="text-right" style="width:90px;line-height:25px;font-size:18px;font-weight:400;letter-spacing:1px;">
 					<span class="number-a clearfix">
-						<span style="display: table-cell;width: 19px;text-align: center;">{{ $a }}</span>
+						<span style="display: table-cell;width: 19px;text-align: right;">{{ $a }}</span>
 					</span>
 					<span class="number-b clearfix">
 						<span class="pull-left">x</span>
-						<span style="display: table-cell;width: 19px;text-align: center;">{{ $b }}</span>
+						<span style="display: table-cell;width: 19px;text-align: right;">{{ $b }}</span>
 					</span>
 					<hr style="margin: 5px 0">
 					<span class="number-c">
 						<div class="multi-input-number">
-							{{ Form::text('answer', '', ['style'=>'text-align:left;width:70px;height:25px;letter-spacing: 1px;', 'maxlength'=>6]) }}
+							{{ Form::text('answer', '', ['style'=>'text-align:right;width:100%;height:25px;letter-spacing: 1px;', 'maxlength'=>7]) }}
 						</div>
 					</span>
 				</div>

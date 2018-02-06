@@ -1,3 +1,6 @@
+.huong-dan-giai{
+	display: none;
+}
 .huong-dan-giai .line{
 	border-bottom: 1px dashed #eee;
 	margin: 10px 0;
