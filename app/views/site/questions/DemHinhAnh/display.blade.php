@@ -13,7 +13,7 @@ foreach ($imageRange as $key) {
 	$imageCount[] = ['img' => $key, 'num' => $numItem];
 	for ($i = 1; $i <= $numItem; $i++) { 
 		$imageShow[] = [
-			'count' => '<span class="count '.( ($i == $numItem) ? 'last' : '' ).'">'. $i . '</span>',
+			'count' => '<span class="count '.( ($i == $numItem) ? 'fa fa-star' : '' ).'">'. $i . '</span>',
 			'url' => $imageData[$key],
 			'margin' => 'margin: '. rand(0,30) .'px '. rand(0,30) .'px'
 		];

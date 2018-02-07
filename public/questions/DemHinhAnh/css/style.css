@@ -13,8 +13,9 @@
    	position: absolute;
     top: 15px;
     left: 15px;
+    background: #2c2aaf;
     font-weight: 600;
-    background: #eee;
+    color: #fff;
     width: 20px;
     height: 20px;
     border-radius: 100%;
@@ -23,7 +24,18 @@
     font-size: 13px;
     border: 1px solid #666;
 }
-#DemHinhAnh .image-show-area .img .count.last{
+#DemHinhAnh .image-show-area .img .count.fa{
 	transform: scale(1.6);
-    background: yellow;
+    border-radius: inherit;
+    border: none;
+    color: #fff;
+    background: none;
+    font-size: 12px;
+}
+#DemHinhAnh .fa-star:before{
+	color: #ff7f27;
+	font-size: 27px;
+    float: left;
+    margin-left: -2px;
+    margin-right: -22px;
 }
