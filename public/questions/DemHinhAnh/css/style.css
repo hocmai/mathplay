@@ -6,4 +6,36 @@
 }
 #DemHinhAnh .image-show-area .img{
 	display: inline-block;
+	position: relative;
+}
+#DemHinhAnh .image-show-area .img .count{
+	display: inline-block;
+   	position: absolute;
+    top: 15px;
+    left: 15px;
+    background: #2c2aaf;
+    font-weight: 600;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    line-height: 19px;
+    text-align: center;
+    font-size: 13px;
+    border: 1px solid #666;
+}
+#DemHinhAnh .image-show-area .img .count.fa{
+	transform: scale(1.6);
+    border-radius: inherit;
+    border: none;
+    color: #fff;
+    background: none;
+    font-size: 12px;
+}
+#DemHinhAnh .fa-star:before{
+	color: #ff7f27;
+	font-size: 27px;
+    float: left;
+    margin-left: -2px;
+    margin-right: -22px;
 }
