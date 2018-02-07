@@ -6,18 +6,23 @@ $imageData = CommonQuestion::getImgData('DemHinhAnh');
 $imageRange = array_rand($imageData, $num);
 $imageShow = [];
 $imageCount = [];
+// dd($imageData, $imageRange);
 
 foreach ($imageRange as $key) {
 	$numItem = rand(1, $max);
 	$imageCount[] = ['img' => $key, 'num' => $numItem];
 	for ($i = 1; $i <= $numItem; $i++) { 
-		$imageShow[] = $imageData[$key];
+		$imageShow[] = [
+			'count' => '<span class="count '.( ($i == $numItem) ? 'last' : '' ).'">'. $i . '</span>',
+			'url' => $imageData[$key],
+			'margin' => 'margin: '. rand(0,30) .'px '. rand(0,30) .'px'
+		];
 	}
 }
-shuffle($imageShow);
+// shuffle($imageShow);
+// dd($imageShow);
 $answer = $imageCount[0]['img']."-".$imageCount[0]['num']."-".$imageCount[0]['img']."-".$imageCount[0]['num'];
 ?>
-
 @include('site.questions.render-title', ['question' => $question, 'desc' => "Có bao nhiêu ".$imageCount[0]['img']." và ".$imageCount[1]['img'] ])
 
 <div class="container-fluid question-wrapper">
@@ -30,9 +35,9 @@ $answer = $imageCount[0]['img']."-".$imageCount[0]['num']."-".$imageCount[0]['im
 		<div class="form-group">
 			<div class="content inline-block">
 				<div class="image-show-area">
-					@foreach ($imageShow as $img)
-						<div class="img pull-left" style="margin: {{ rand(0,30) }}px {{ rand(0,30) }}px">
-							<img src="{{ asset($img) }}" width="50px;">
+					@foreach ($imageShow as $key => $img)
+						<div class="img pull-left" style="{{ $img['margin'] }}">
+							<img src="{{ asset($img['url']) }}" width="50px;">
 						</div>
 					@endforeach
 				</div>
@@ -60,3 +65,8 @@ $answer = $imageCount[0]['img']."-".$imageCount[0]['num']."-".$imageCount[0]['im
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.dem_hinhanh', [
+	'imageShow' => $imageShow,
+	'imageCount' => $imageCount,
+])
+
