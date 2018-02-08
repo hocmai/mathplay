@@ -33,8 +33,9 @@
     font-size: 12px;
 }
 #DemHinhAnh .fa-star:before{
-	color: #ff7f27;
+	color: yellow;
 	font-size: 27px;
     float: left;
     margin-left: -2px;
+    margin-right: -22px;
 }

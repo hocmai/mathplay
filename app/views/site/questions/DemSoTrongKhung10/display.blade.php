@@ -6,9 +6,9 @@
 		$answertype = ['trac-nghiem', 'dien-dap-an'];
 		$answertype = $answertype[array_rand($answertype)];
 	}
-
+	// dd( $answertype);
 	$countType = !empty($config['count_type']) ? $config['count_type'] : getRandArrayVal(['dem-o-trong-khung', 'dem-o-con-thieu', 'dem-hinh-anh']);
-	
+
 	if( $countType == 'dem-o-con-thieu' ){
 		$max = ($max <= 10) ? $max : 9;
 	}
@@ -26,6 +26,7 @@
 
 	$shape = ['circle', 'pentagon', 'star', 'heptagon' ,'octagon'];
 	$rand_shape = array_rand($shape);
+	// dd($rand_shape);
 ?>
 
 
@@ -58,7 +59,7 @@ else{
 				@endfor
 
 			@else
-				@for( $j = 1; $j <= floor($answer/10); $j++ )
+				{{-- @for( $j = 1; $j <= floor($answer/10); $j++ )
 					<table class="frame pull-left" style="margin: 10px">
 						<tr>
 							@for($i = 1; $i <= 5; $i++)
@@ -77,7 +78,7 @@ else{
 					</table>
 				@endfor
 
-				@if( $answer % 10 > 0 )
+				@if( $answer % 10 > 0 ) --}}
 					<table class="frame pull-left" style="margin: 10px">
 						<tr>
 							@for($i = 1; $i <= 5; $i++)
@@ -102,8 +103,7 @@ else{
 							@endfor
 						</tr>
 					</table>
-
-				@endif
+				{{-- @endif --}}
 			@endif
 		</div>
 		<div class="clearfix"></div>
@@ -138,3 +138,9 @@ else{
 		@endif
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.dem_otrongkhung10',[
+	'answertype'=>$answertype,
+	'countType'=>$countType,
+	'rand_shape'=>$rand_shape,
+	'answer' => $answer,
+])
