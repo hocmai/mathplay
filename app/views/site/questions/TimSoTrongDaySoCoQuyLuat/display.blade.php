@@ -24,3 +24,6 @@ $answer = $start+( $plus*($position -1) );
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.diensotrongdaysocoquyluatcongdonngaunhien',[
+	'answer'=>$answer
+])
