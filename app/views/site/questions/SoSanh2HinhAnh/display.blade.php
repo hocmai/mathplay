@@ -108,9 +108,4 @@ else{
         </div>
 	{{ Form::close() }}
 </div>
-@include('site.questions_guide.SoSanh2Hinhanh',[
-    'images'=>$images,
-    'answer_range'=>$answer_range,
-    'image_rand'=>$image_rand,
-    'type'=>$type
-])
+@include('site.questions_guide.so_sanh_2_hinh_anh')

@@ -1,4 +1,4 @@
-<div class="huong-dan-giai text-left" style="display: block">
+<div class="huong-dan-giai text-left" style="display">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper" style="font-size: 18px">
 		<p>- Đếm từ ô đầu tiên để tìm vị trí thứ {{ CommonQuestion::readNumber($position) }}</p>
