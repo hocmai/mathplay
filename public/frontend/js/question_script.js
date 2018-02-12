@@ -65,6 +65,21 @@ else {
 //     }
 // }
 
+//////////// Move cursor to first letter of an input
+jQuery.fn.setCaret = function (pos) {
+    var input = this[0];
+    if (input.setSelectionRange) {
+        input.focus();
+        input.setSelectionRange(pos, pos);
+    } else if (input.createTextRange) {
+        var range = input.createTextRange();
+        range.collapse(true);
+        range.moveEnd('character', pos);
+        range.moveStart('character', pos);
+        range.select();
+    }
+};
+
 
 $(document).ready(function($) {
 
@@ -225,6 +240,20 @@ $(document).ready(function($) {
 	//////////////////// Lam bai tiep ///////////////////
 	$('.bg-box-lam-bai .lam-bai-tiep').on('click', function(){
 		next_question_anyway();
+	})
+
+	//////////////////// Huong dan giai ///////////////////
+	$('.bg-box-lam-bai .btn-support .huong-dan-giai').on('click', function(){
+		console.log('test');
+		$('#myModal-false').modal('hide');
+		if( $('.question-rendered.active .huong-dan-giai').length ){
+			$('.question-rendered.active .question-wrapper').fadeOut();
+			$('.question-rendered.active .huong-dan-giai').fadeIn('300', function() {
+				var top = $(this).offset().top;
+				$('body, html').animate({scrollTop: top}, 300);
+			});
+		}
+		return false;
 	})
 
 	///////////////// loai bo khoang trang khi nhap dap an ///////////////

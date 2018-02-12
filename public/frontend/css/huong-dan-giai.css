@@ -1,3 +1,6 @@
+.huong-dan-giai{
+	display: none;
+}
 .huong-dan-giai .line{
 	border-bottom: 1px dashed #eee;
 	margin: 10px 0;
@@ -5,6 +8,9 @@
 }
 .huong-dan-giai .line>.left .num .sing{
 	position: relative;
+	min-width: 12px;
+    display: inline-block;
+    text-align: center;
 }
 .huong-dan-giai .line>.left .num .sing.bold,
 .huong-dan-giai .line>.left .num .sing.active,
