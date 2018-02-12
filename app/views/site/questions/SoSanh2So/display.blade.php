@@ -5,6 +5,7 @@ $max = !empty($config['max']) ? $config['max'] : 100;
 
 $num1 = rand($min, $max);
 $num2 = rand($min, $max);
+
 if( $num1 > $num2 ){
 	$answer = '>';
 }
@@ -16,7 +17,8 @@ else {
 }
 
 $method = !empty($config['method']) ? $config['method'] : getRandArrayVal(['tong-so', 'tong-tong', 'hieu-so', 'hieu-hieu']);
-switch ($method) {
+switch ($method)
+ {
 	case 'tong-so':
 		$tong = rand(0, $num1);
 		$num1 = $tong.' + '.($num1 - $tong);
@@ -96,4 +98,5 @@ switch ($method) {
 @include('site.questions_guide.sosanh2so',[
 	'num1'=>$num1,
 	'num2'=>$num2,
+	'answer'=>$answer
 ])
