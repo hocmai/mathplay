@@ -77,3 +77,6 @@ elseif($type == 'input-total'){
 		@endif
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.timsotrentiaso',[
+	'answer'=>$answer
+])

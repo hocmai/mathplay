@@ -8,11 +8,10 @@ $images = SoSanh2HinhAnh::getRandomData();
 if( count($images) ) {
     $image_rand = array_rand($images, 2);
 }
-
+// dd($image_rand);
 $num1 = $answer_range[0];
 $num2 = $answer_range[1];
 $answer = $num1;
-
 $str_arr = [];
 $desc = '';
 if( $type == 'true-false' ){
@@ -109,3 +108,9 @@ else{
         </div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.SoSanh2Hinhanh',[
+    'images'=>$images,
+    'answer_range'=>$answer_range,
+    'image_rand'=>$image_rand,
+    'type'=>$type
+])
