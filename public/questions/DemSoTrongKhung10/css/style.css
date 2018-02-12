@@ -39,3 +39,47 @@
     clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
     background: orange;
 }
+/***************huong dan giai******/
+div.shape-none .num{
+    display: inline-block;
+    height: 27px;
+    line-height: 27px;
+    text-align: center;
+    font-size: 27px;
+    color: #2dea0a;
+}
+
+ins{
+    margin-left: 15px;
+}
+/*end dem o trong trong khung*/
+.content span.fa{
+    font-size: 40px;
+    margin-top: -10px;
+    position: relative;
+    left: 28px;
+    color: #17bcba;
+}
+.content span.last{
+    position: relative;
+    display: inline-block;
+    top: -8px;
+    transform: inherit;
+    background: #17bcba;
+    font-weight: 600;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    line-height: 19px;
+    text-align: center;
+    font-size: 16px;
+    border: 1px solid #17bcba;
+}
+ /*end dem hinh trong khung*/
+ .content .num{
+    display: inline-block;
+    text-align: center;
+    font-size: 22px;
+    color: #fff;
+}
