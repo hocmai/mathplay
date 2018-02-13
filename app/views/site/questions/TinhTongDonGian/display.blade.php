@@ -8,7 +8,7 @@ $max_b = isset($config['max_value_b']) ? $config['max_value_b'] : 10;
 $answer1 = rand($min_a, $max_a);
 $answer2 = rand($min_b, $max_b);
 $display = ['ngang', 'doc'];
-// dd($images);
+// dd($answer1, $answer2);
 ?>
 
 @include('site.questions.render-title', ['question' => $question])
@@ -27,4 +27,15 @@ $display = ['ngang', 'doc'];
 			</div>
 		</div>
 	{{ Form::close() }}
+</div>
+
+<div class="huong-dan-giai text-left">
+	<h2>Hướng dẫn giải</h2>
+	<div class="wrapper" style="font-size: 18px">
+		@include('site.questions_guide.phepcong_nhieuso', [
+			'a' => $answer1,
+			'b' => $answer2,
+		])
+		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+	</div>
 </div>

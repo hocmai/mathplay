@@ -1,5 +1,5 @@
 .question-rendered#TimSoTrenTiaSo .start{
-    padding-bottom: 50px;
+    margin-bottom: 50px;
 }
 .number-line .content{
 	padding: 0 15px;
@@ -23,7 +23,7 @@
 	left: auto;
 	right: 0;
 }
-.number-line .line{
+.number-line div.line{
     float: left;
     width: 30px;
     font-size: 18px;

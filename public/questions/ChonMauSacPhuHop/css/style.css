@@ -8,6 +8,24 @@
     text-shadow: 0 0 1px #fff;
     font-weight: 500;
 }
+.huong-dan-giai .find-color .color-item{
+    position: relative;
+    margin-bottom: 30px;
+    margin-top: 40px;
+}
+.huong-dan-giai .find-color .color-item >span{
+    position: absolute;
+    top: -100%;
+    left: 0;
+    line-height: 20px;
+}
+.huong-dan-giai .find-color .color-item.active::before{
+    content: "\e093";
+    font-family: 'Glyphicons Halflings';
+    margin-top: 50px;
+    display: inline-block;
+    font-size: 35px;
+}
 .find-color-answer{
 	float: left;
 }

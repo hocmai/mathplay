@@ -42,7 +42,7 @@ $answer = $c;
 		
 		<div class="form-group">
 			<div class="content inline-block">
-				<div class="text-right" style="width:80px;line-height:25px;font-size:18px;font-weight:400;letter-spacing:1px;">
+				<div class="text-right" style="width:90px;line-height:25px;font-size:18px;font-weight:400;letter-spacing:1px;">
 					<span class="number-a clearfix">
 						<span style="display: table-cell;width: 19px;text-align: center;">{{ $a }}</span>
 					</span>
@@ -53,7 +53,7 @@ $answer = $c;
 					<hr style="margin: 5px 0">
 					<span class="number-c">
 						<div class="multi-input-number">
-							{{ Form::text('answer', '', ['style'=>'text-align:left;width:70px;height:25px;letter-spacing: 1px;', 'maxlength'=>6]) }}
+							{{ Form::text('answer', '', ['style'=>'text-align:right;width:100%;height:25px;letter-spacing: 1px;', 'maxlength'=>7]) }}
 						</div>
 					</span>
 				</div>
@@ -61,7 +61,7 @@ $answer = $c;
 		</div>
 	{{ Form::close() }}
 </div>
-<div class="huong-dan-giai text-left" style="display">
+<div class="huong-dan-giai text-left" style="display: none;">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper" style="font-size: 18px">
 		@include('site.questions_guide.phepcong_nhieuso', [
@@ -71,5 +71,6 @@ $answer = $c;
 			'b' => $b,
 			'c' => $c,
 		])
+		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>
