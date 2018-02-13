@@ -19,6 +19,6 @@
 				</tr>
 			@endfor
 		</table>
-		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

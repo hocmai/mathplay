@@ -166,6 +166,9 @@ h1.page-title{
     margin: -55px 0 45px 15px;
     font-size: 18px;
 }
+.modal-open .bao-cao{
+    z-index: 10;
+}
 #box-profile{
     background: #fff;
 }

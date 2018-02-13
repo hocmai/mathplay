@@ -20,3 +20,7 @@
     width: 40px;
     text-align: center;
 }
+.huong-dan-giai .number-line-100 td>.text>input{
+    background: #00ffe7;
+    font-weight: 600;
+}
