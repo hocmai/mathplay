@@ -1,0 +1,52 @@
+#DemHangChuc{
+
+}
+#DemHangChuc .question-wrapper .choose td>label{
+	width: 64px;
+	height: 64px;
+	text-align: center;
+	line-height: 45px;
+	margin: 5px;
+	font-size: 25px;
+	background: #6a8bf3;
+}
+#DemHangChuc .question-wrapper .choose td>input:checked + label,
+#DemHangChuc .question-wrapper .choose td>label:hover{
+	background: #32437c;
+}
+#DemHangChuc .img-area .item{
+	position: relative;
+}
+#DemHangChuc .img-area .item>span{
+	font-size: 18px;
+	font-weight: 600;
+	color: #fff;
+	position: absolute;
+	width: 45px;
+	height: 45px;
+	line-height: 44px;
+	background: #6a8bf3;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	margin: auto;
+	z-index: 1;
+	text-align: center;
+	border-radius: 100%;	
+}
+#DemHangChuc .img-area .item>span.last{
+	background: none;
+}
+#DemHangChuc .img-area .item>span.last:before{
+	content: "\f005";
+	position: absolute;
+    font: normal normal normal 14px/1 FontAwesome;
+    text-align: center;
+    left: -5px;
+    top: -2px;
+    line-height: 50px;
+    color: #ffc914;
+    font-size: 60px;
+    z-index: -1;
+}
