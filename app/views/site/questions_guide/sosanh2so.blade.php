@@ -1,74 +1,72 @@
 <?php 
-	if( $num1 > $num2 ){
-		$answer = 'lớn hơn';
-	}
-	else if( $num1 < $num2 ){
-		$answer = 'nhỏ hơn';
-	}
-	else {
-		$answer = 'bằng';
+if( $num1 > $num2 ){
+	$answer = 'lớn hơn';
 }
+else if( $num1 < $num2 ){
+	$answer = 'nhỏ hơn';
+}
+else {
+	$answer = 'bằng';
+}
+
+// $sum = (($num1+$tong));
+$number = explode('+', $num1); //explode tach chuoi
+$sum = 0;
+foreach ($number as $value) {
+	$sum = $sum + $value;
+}
+if( $sum > $num2 ){
+	$answer = 'lớn hơn';
+}
+else if( $sum < $num2 ){
+	$answer = 'nhỏ hơn';
+}
+else {
+	$answer = 'bằng';
+}
+// tong voi 1 so
+
+$number =explode('+', $num2);
+$sum1 = 0;
+foreach ($number as $key1){
+	$sum1 = $sum1 + $key1;
+} 
+if ($sum > $sum1) {
+	$answer = 'lớn hơn';
+}elseif ($sum < $sum1) {
+	$answer = 'nhỏ hơn';
+}else {
+	$answer = 'bằng';
+} // tong voi tong
+
+$number = explode('-', $num1); //explode tach chuoi
+$sum = 0;
+$sum = $number[0]- $number[1];
+
+if( $sum > $num2 ){
+	$answer = 'lớn hơn';
+}
+else if( $sum < $num2 ){
+	$answer = 'nhỏ hơn';
+}
+else {
+	$answer = 'bằng';
+}// hiệu với 1 số
+
+$number =explode('-', $num2);
+$sum1 = 0;
+$sum1 = $number[0]- $number[1];
+
+if ($sum > $sum1) {
+	$answer = 'lớn hơn';
+}elseif ($sum < $sum1) {
+	$answer = 'nhỏ hơn';
+}else {
+	$answer = 'bằng';
+} // hiệu voi hiệu
+// $sum = $number[0]+$number[1];
 ?>
-<?php
-	 // $sum = (($num1+$tong));
-	 $number = explode('+', $num1); //explode tach chuoi
-	 $sum = 0;
-	 foreach ($number as $value) {
-	 	$sum = $sum + $value;
-	 }
-	 if( $sum > $num2 ){
-		$answer = 'lớn hơn';
-	}
-	else if( $sum < $num2 ){
-		$answer = 'nhỏ hơn';
-	}
-	else {
-		$answer = 'bằng';
-	}
-	  // tong voi 1 so
 
-
-	$number =explode('+', $num2);
-	$sum1 = 0;
-	foreach ($number as $key1){
-		$sum1 = $sum1 + $key1;
-	} 
-	if ($sum > $sum1) {
-		$answer = 'lớn hơn';
-	}elseif ($sum < $sum1) {
-		$answer = 'nhỏ hơn';
-	}else {
-		$answer = 'bằng';
-	} // tong voi tong
-
-	$number = explode('-', $num1); //explode tach chuoi
-	 $sum = 0;
-	 $sum = $number[0]- $number[1];
-
-	 if( $sum > $num2 ){
-		$answer = 'lớn hơn';
-	}
-	else if( $sum < $num2 ){
-		$answer = 'nhỏ hơn';
-	}
-	else {
-		$answer = 'bằng';
-	}// hiệu với 1 số
-
-	$number =explode('-', $num2);
-	$sum1 = 0;
-	$sum1 = $number[0]- $number[1];
-
-	if ($sum > $sum1) {
-		$answer = 'lớn hơn';
-	}elseif ($sum < $sum1) {
-		$answer = 'nhỏ hơn';
-	}else {
-		$answer = 'bằng';
-	} // hiệu voi hiệu
-	 // $sum = $number[0]+$number[1];
-	
- ?>
 <div class="huong-dan-giai text-left" style="display">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper" style="font-size: 18px">
@@ -97,6 +95,7 @@
 		<br>
 			<strong>Khi em quan sát 2 số thì vế bên trái <span style="color:red">{{ $answer }}</span> vế bên phải</strong>
 		<hr>
-			<strong>Đáp án là dấu:<span style="color:red">{{ $answer }}</span></strong>
+			<strong>Đáp án là dấu: <b style="color:red">{{ $answer }}</b></strong>
+		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

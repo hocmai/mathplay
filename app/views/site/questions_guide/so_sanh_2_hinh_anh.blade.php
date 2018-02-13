@@ -36,11 +36,11 @@ if($answer_range[0] > $answer_range[1]){
 			<br>
 
 			<ins>Đáp án đúng là:</ins>
-			<span>{{  $answer_range[0].' '.$image_rand[0].' '.$sosanh.' '. $answer_range[1].' '.$image_rand[1]}}</span>
+			<b style="color: red" >{{  $answer_range[0].' '.$image_rand[0].' '.$sosanh.' '. $answer_range[1].' '.$image_rand[1]}}</b>
 		@else
-	        <span><ins>Đáp án đúng là:</ins> Có {{ $answer_range[0].' '.$image_rand[0] }}</span>
+	        <span><ins>Đáp án đúng là:</ins> Có <b style="color: red"> {{ $answer_range[0].' '.$image_rand[0] }}</b></span>
 		@endif
 		
-		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

@@ -11,13 +11,13 @@ for($i = 0; $i < $range; $i++){
 $type = !empty($config['answer_type']) ? $config['answer_type'] : getRandArrayVal(['input-total', 'input','inline']);
 $position = 0;
 if($type == 'inline'){
-	$answer = $lines[array_rand($lines)];
+	$position = array_rand($lines);
+	$answer = $lines[$position];
 } else{
 	$position = rand(1, $range - 2);
 	$answer = $lines[$position];
 	$target = rand($position-1,$position+1);
 }
-
 if($type == 'inline'){
 	$str_arr = ['Điền số còn thiếu trong tia số'];
 }
@@ -77,6 +77,4 @@ elseif($type == 'input-total'){
 		@endif
 	{{ Form::close() }}
 </div>
-@include('site.questions_guide.timsotrentiaso',[
-	'answer'=>$answer
-])
+@include('site.questions_guide.timsotrentiaso')

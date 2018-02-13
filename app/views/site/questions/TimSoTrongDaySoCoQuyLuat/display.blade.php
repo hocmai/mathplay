@@ -24,6 +24,4 @@ $answer = $start+( $plus*($position -1) );
 		</div>
 	{{ Form::close() }}
 </div>
-@include('site.questions_guide.diensotrongdaysocoquyluatcongdonngaunhien',[
-	'answer'=>$answer
-])
+@include('site.questions_guide.dien_so_trong_day_so_co_quy_luat')

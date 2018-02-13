@@ -6,6 +6,7 @@ $answer_rand = (array)array_rand(range($min, $max), $num_ans);
 foreach ($answer_rand as $value) {
 	$answer[] = range($min, $max)[$value];
 }
+// dd($answer_rand);
 ?>
 
 @include('site.questions.render-title', ['question' => $question])
@@ -24,7 +25,7 @@ foreach ($answer_rand as $value) {
 					@for($i = 0; $i < 10; $i++)
 						<tr>
 							@for($j = ($i*10)+1; $j <= ($i*10)+10; $j++)
-								<td><div class="text">{{ in_array($j, $answer) ? Form::text('answer_'.$j, '', ['required' => true]) : $j }}</div></td>
+								<td><div class="text">{{ in_array($j, $answer) ? Form::text('answer_'.$j,'', ['required' => true]) : $j }}</div></td>
 							@endfor
 						</tr>
 					@endfor
@@ -33,3 +34,4 @@ foreach ($answer_rand as $value) {
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.dien_so_con_thieu_100')
