@@ -39,7 +39,7 @@
 				<p>Số đằng sau: {{ $lines[$position+1].' - '.$plus.' = '.$answer }}</p>
 			@endif
 		@endif
-		<ins>Đáp án đúng là: {{ $answer }}</ins>
-		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+		<ins>Đáp án đúng là:<b style="color: red">{{ $answer }}</b></ins>
+		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

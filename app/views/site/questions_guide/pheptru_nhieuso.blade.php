@@ -146,4 +146,6 @@ $a_fake = $a_rr;
 			?>
 		@endfor
 	</div>
+	<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 </div>
+

@@ -95,6 +95,7 @@ if ($sum > $sum1) {
 		<br>
 			<strong>Khi em quan sát 2 số thì vế bên trái <span style="color:red">{{ $answer }}</span> vế bên phải</strong>
 		<hr>
-			<strong>Đáp án là dấu: <span style="color:red">{{ $answer }}</span></strong>
+			<strong>Đáp án là dấu: <b style="color:red">{{ $answer }}</b></strong>
+		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>
