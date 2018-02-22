@@ -1,5 +1,6 @@
 .huong-dan-giai{
 	display: none;
+	font-size: 18px;
 }
 .huong-dan-giai .line{
 	border-bottom: 1px dashed #eee;

@@ -4,7 +4,7 @@ $max = !empty($config['max_value']) ? $config['max_value'] : 9999;
 $answer = rand($min, $max);
 $tens = floor($answer/10);
 $ones = $answer - ($tens*10);
-// dd($answer);
+// dd($answer,$tens,$ones);
 
 $shape = ['circle', 'pentagon', 'star', 'heptagon' ,'octagon'];
 $rand_shape = array_rand($shape);
@@ -70,3 +70,4 @@ $rand_shape = array_rand($shape);
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.dien_so_hang_chuc_va_don_vi')
