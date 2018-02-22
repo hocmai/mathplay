@@ -46,7 +46,7 @@ else if( $answer == '<' ){
 			<p>Nên: {{ $num1.' '.$answer.' '.$num2 }}</p>
 		@endif
 		<div class="clear clear-fix"></div>
-		<strong class="answers">Đáp án là: {{ $answer_string }}</strong>
+		<p class="answers">Đáp án là: {{ $answer_string }}</p>
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>
