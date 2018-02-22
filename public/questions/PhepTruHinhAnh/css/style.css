@@ -2,8 +2,8 @@
     margin: 5px;
 }
 #PhepTruHinhAnh .images .item img{
-	min-height: 50px;
-	min-width: 50px;
+	min-height: 30px;
+	min-width: 30px;
 }
 #PhepTruHinhAnh .images>.item.ignore,
 #PhepTruHinhAnh .images>label>.item.ignore{
