@@ -50,8 +50,7 @@
 				{{-- @endfor --}}
 			@endif
 		</div>
-		<ins>Đáp án đúng là: {{ $answer }}</ins>
-		
-	<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+	<p class="answers"><ins>Đáp án đúng là: <b>{{ $answer }}</b></ins></p>
+	<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

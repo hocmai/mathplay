@@ -10,7 +10,7 @@
 			@endforeach
 		</div>
 		<br>
-		<ins>Đáp án đúng là:</ins>
+		<p class="answers"><ins>Đáp án đúng là:</ins></p>
 		<table class="table table-bordered margin0">
 			@for( $i = 0; $i < 2; $i++ )
 				<tr>
@@ -19,6 +19,6 @@
 				</tr>
 			@endfor
 		</table>
-		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

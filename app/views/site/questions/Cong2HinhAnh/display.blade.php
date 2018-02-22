@@ -40,8 +40,9 @@ $images = $images[array_rand($images)];
 				@endforeach
 
 				<div class="pull-left plus">=</div>
-				<div class="tong pull-left">{{ Form::text('answer') }}</div>
+				<div class="tong pull-left">{{ Form::text('answer' ) }}</div>
 			</div>
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.cong_2_hinh_anh')

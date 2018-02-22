@@ -1,5 +1,9 @@
 .huong-dan-giai{
 	display: none;
+<<<<<<< HEAD
+=======
+	font-size: 18px;
+>>>>>>> dangnv
 }
 .huong-dan-giai .line{
 	border-bottom: 1px dashed #eee;
@@ -50,4 +54,9 @@
 }
 .huong-dan-giai .line>.right{
     padding: 0 15px 0 30px;
+}
+.answers{
+	color: red;
+    margin: 10px 0;
+    display: inline-block;
 }
