@@ -3,7 +3,7 @@
 	<div class="wrapper" style="font-size: 18px">
 		<div class="form-group number-line-100">
 			<div class="content">
-				<ins>Đáp án đúng là:</ins>
+				<p class="answers"><ins>Đáp án đúng là:</ins></p>
 				<table border="1">
 					@for($i = 0; $i < 10; $i++)
 						<tr>
