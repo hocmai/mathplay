@@ -1,5 +1,6 @@
 <?php
 $type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['choose', 'input']);
+$method = !empty($config['method']) ? $config['method'] : getRandArrayVal(['2so', 'tong-so', 'tong-tong', 'hieu-so', 'hieu-hieu']);
 $min = !empty($config['min']) ? $config['min'] : 1;
 $max = !empty($config['max']) ? $config['max'] : 100;
 
@@ -16,9 +17,7 @@ else {
 	$answer = '=';
 }
 
-$method = !empty($config['method']) ? $config['method'] : getRandArrayVal(['tong-so', 'tong-tong', 'hieu-so', 'hieu-hieu']);
-switch ($method)
- {
+switch ($method) {
 	case 'tong-so':
 		$tong = rand(0, $num1);
 		$num1 = $tong.' + '.($num1 - $tong);

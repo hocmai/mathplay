@@ -52,3 +52,8 @@
 .huong-dan-giai .line>.right{
     padding: 0 15px 0 30px;
 }
+.answers{
+	color: red;
+    margin: 10px 0;
+    display: inline-block;
+}
