@@ -10,7 +10,7 @@
 			</div>
 		</div>
 		<p>Như vậy, Ô thứ {{ ($position == 0) ? 'nhất' : CommonQuestion::readNumber($position) }} có <b>{{ $answer_string }}</b></p>
-		<p class="answers"><ins>Đáp án đúng là:<b> {{ $answer_string }} </b></ins></p>
+		<p><ins>Đáp án đúng là: <b style="color: red">{{ $answer_string }}</b></ins></p>
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>
