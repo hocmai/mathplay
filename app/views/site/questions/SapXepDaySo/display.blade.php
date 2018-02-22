@@ -4,7 +4,6 @@ $rule = (empty($config['rule']) | (!empty($config['rule']) && $config['rule'] !=
 $numValue = (!empty($config['num_value']) && (int)$config['num_value'] > 3) ? (int)$config['num_value'] : rand(5,10); //// So luong phan tu cua day so
 $min = (!empty($config['min_value']) && (int)$config['min_value'] > 0) ? (int)$config['min_value'] : rand(1,100);
 $max = (!empty($config['max_value']) && (int)$config['max_value'] > ($min + $numValue)) ? (int)$config['max_value'] : rand($min + $numValue + 10, $min + $numValue + 15); ///// Gia tri max phai lon hon gia tri nho nhat + so luong phan tu
-
 $answer = '';
 $Arr = [];
 if( $rule ){
@@ -20,7 +19,6 @@ if( $rule ){
 		$numArr[] = $range[$value];
 	}
 }
-
 //////////// sap xep
 if($sort == 'desc'){
 	//// sap xep giam dan
@@ -30,6 +28,7 @@ else{
 	//// Sap xep tang dan
 	asort($numArr, SORT_NUMERIC);
 }
+$trueArr = $numArr;
 
 /////////// lay cau tra loi theo dung thu tu
 foreach($numArr as $value){
@@ -56,3 +55,4 @@ foreach($numArr as $value){
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.sap_xep_day_so')

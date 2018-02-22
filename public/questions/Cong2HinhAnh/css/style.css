@@ -36,8 +36,10 @@
     padding: 0 5px;
 }
 .plus-with-img .tong>input{
-    width: 50px;
-    margin-top: 65px;
-    margin-left: 10px;
+    width: 30px;
     text-align: center;
+}
+.plus-with-img .tong{
+    margin-top: 65px;
+    margin-left: 15px;  
 }

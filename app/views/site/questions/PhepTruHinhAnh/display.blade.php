@@ -75,3 +75,4 @@ elseif( $type == 'write' ){
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.phep_tru_hinh_anh')

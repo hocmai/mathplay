@@ -10,7 +10,7 @@
 			@endforeach
 		</div>
 		<br>
-		<ins>Đáp án đúng là:</ins>
+		<p class="answers"><ins>Đáp án đúng là:</ins></p>
 		<table class="table table-bordered margin0">
 			@for( $i = 0; $i < 2; $i++ )
 				<tr>
