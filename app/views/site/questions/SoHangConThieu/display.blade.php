@@ -26,3 +26,4 @@ $answer2 = rand($min, $max);
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.so_hang_con_thieu')
