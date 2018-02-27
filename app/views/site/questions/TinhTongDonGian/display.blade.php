@@ -36,6 +36,5 @@ $display = ['ngang', 'doc'];
 			'a' => $answer1,
 			'b' => $answer2,
 		])
-		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

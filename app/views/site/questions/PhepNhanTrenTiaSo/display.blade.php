@@ -6,7 +6,6 @@ $lines = [];
 for($i = 0; $i < $range; $i++){
 	$lines[] = $plus*$i;
 }
-
 $position = rand(1, $range - 1);
 ?>
 
@@ -22,17 +21,16 @@ $position = rand(1, $range - 1);
 		<div class="form-group number-line">
 			<div class="content inline-block">
 				@foreach($lines as $key => $value)
-						<div class="line inline-block {{ ( $key <= $position ) ? 'active'.( ($key < $position) ? ' first' : '' ) : '' }}">
-							{{ ( $key < $position ) ? '<div class="sub">x '.($key+1).'</div>' : '' }}
-							{{ $value }}
-						</div>
-					
+					<div class="line inline-block {{ ( $key <= $position ) ? 'active'.( ($key < $position) ? ' first' : '' ) : '' }}">
+						{{ ( $key < $position ) ? '<div class="sub">x '.($key+1).'</div>' : '' }}
+						{{ $value }}
+					</div>
 				@endforeach
 			</div>
 		</div>
-
 		<div class="form-group inline-block" style="font-size:18px">
 			{{ $position.' x '.Form::text('answer', '', ['class' => 'form-control inline-block text-center', 'style' => 'width:50px']).' = '.$position*$plus }}
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.phep_nhan_tren_tia_So')
