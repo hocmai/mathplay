@@ -28,3 +28,4 @@ $length = rand(1,10);
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.do_do_dai_doan_thang')

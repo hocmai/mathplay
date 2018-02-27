@@ -69,3 +69,9 @@
     margin-left: 50%;
     top: -24px;
 }
+div.huong-dan-giai >.wrapper{
+    padding-top:30px; 
+}
+div.huong-dan-giai .line{
+    margin: 20px 15px; 
+}

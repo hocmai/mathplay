@@ -1,10 +1,13 @@
 #DoDoDaiDoanThang .work-area{
     width: 100%;
+    text-align: left;
+    margin-left: 15px;
 }
 #DoDoDaiDoanThang .work-area .line-wrapper{
 	display: inline-block;
     width: 300px;
     margin-bottom: 5px;
+    margin-left: 15px;
 }
 #DoDoDaiDoanThang .work-area .line-wrapper .line{
     height: 5px;
@@ -15,6 +18,10 @@
 	cursor: move;
     opacity: 0.85;
 }
-#DoDoDaiDoanThang{
-	
+#DoDoDaiDoanThang .huong-dan-giai{
+	text-align: left;
+    margin-left: 15px;
+}
+div.huong-dan-giai .line{
+    padding: 0;
 }
