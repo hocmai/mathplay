@@ -1,4 +1,4 @@
-<?php $color = getRandArrayVal(['#F7B2E6', '#ffc914', '#e4572e', '#17bebb', '#d7d7d7', '#ffd443']); ?>
+<?php $color = isset($color) ? $color : getRandArrayVal(['#F7B2E6', '#ffc914', '#e4572e', '#17bebb', '#d7d7d7', '#ffd443']); ?>
 
 <svg xmlns="http://www.w3.org/2000/svg" class="analog-clock-body" x="0px" y="0px" viewBox="-10 -10 399.47749196838436 399.1" enable-background="new 0 0 387 387" xml:space="preserve" height="100%" width="100%" id="yui_3_14_0_1_1508756192488_928">
 	 <defs>
