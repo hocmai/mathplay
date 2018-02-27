@@ -126,3 +126,4 @@ if( $type == 'min' ){
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.xem_gio_dong_ho')
