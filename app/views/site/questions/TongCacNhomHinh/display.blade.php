@@ -9,9 +9,9 @@ $group = rand($min_group, $max_group);
 $each = rand($each_min, $each_max);
 $imagesData = CommonQuestion::getImgData('TongCacNhomHinh');
 $imageShow = array_rand($imagesData);
-// dd($imageShow);
+// dd($imageShow);	
 $answer = $group.$each;
-
+// dd($answer);
 if( $type == 'nhan' | $type == 'phan-tich' ){
 	$position = array_rand([0,1,2]);
 	$answer = $group*$each;
@@ -42,7 +42,7 @@ if( $type == 'phan-tich' ){
 						<div class="circle" style="transform: rotate({{ rand(0, 360) }}deg);">
 							<div class="cont">
 								@for ($j = 0; $j < $each; $j++)
-									<span class="inline-block text-center"><img src="{{ asset($imagesData[$imageShow]) }}" width="45px" height="45px"></span>
+									<span class="inline-block text-center"><img src="{{ asset($imagesData[$imageShow]) }}" width="30px" height="30px"></span>
 								@endfor
 							</div>
 						</div>
@@ -82,3 +82,4 @@ if( $type == 'phan-tich' ){
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.tong_cac_nhom_hinh')
