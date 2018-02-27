@@ -1,8 +1,8 @@
 #TongCacNhomHinh .circle{
     float: left;
     margin: 10px;
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     border-radius: 100%;
     border: 2px solid #999;
     padding: 25px;
@@ -16,4 +16,13 @@
 }
 #TongCacNhomHinh .circle>.cont>span{
 	margin: 3px;
+}
+div.huong-dan-giai .question-content{
+    width: 100%;
+}
+#TongCacNhomHinh div.huong-dan-giai span.count{
+    font-size: 25px;
+    display: inline-block;
+    width: 100%;
+    font-weight: 700;
 }

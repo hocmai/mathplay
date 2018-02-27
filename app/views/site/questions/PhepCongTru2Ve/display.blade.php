@@ -3,8 +3,7 @@ $min = isset($config['min']) ? $config['min'] : 1;
 $max = isset($config['max']) ? $config['max'] : 100;
 
 $type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['plus', 'sub']);
-$find_arr = ['a', 'b', 'c', 'd'];
-$find = !empty($config['find']) ? $config['find'] : array_rand($find_arr);
+$find = !empty($config['find']) ? $config['find'] : getRandArrayVal(['a', 'b', 'c', 'd']);
 
 $valueRange = rand($min, $max);
 
@@ -13,14 +12,14 @@ $c = rand(1, $valueRange);
 $b = $valueRange - $a;
 $d = $valueRange - $c;
 
-if( $type == 'sub' ){
+if( $type == 'sub' )
+{
 	$a = rand($valueRange, $max);
 	$c = rand($valueRange, $max);
 	$b = $a - $valueRange;
 	$d = $c - $valueRange;
 }
-
-$_arr = [$a, $b, $c, $d];
+$_arr = ['a' => $a, 'b' => $b, 'c' => $c, 'd' => $d];
 ?>
 @include('site.questions.render-title', ['question' => $question])
 
@@ -33,14 +32,15 @@ $_arr = [$a, $b, $c, $d];
 		
 		<div class="form-group">
 			<div class="content inline-block" style="font-size: 16px; font-weight: 500">
-				<span class="a-side inline-block">{{ ($find_arr[$find] == 'a') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $a }}</span>
+				<span class="a-side inline-block">{{ ($find == 'a') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $a }}</span>
 				<span class="type inline-block">{{ ($type == 'plus') ? '+' : '-' }}</span>
-				<span class="b-side inline-block">{{ ($find_arr[$find] == 'b') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $b }}</span>
+				<span class="b-side inline-block">{{ ($find == 'b') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $b }}</span>
 				<span class="comp inline-block">=</span>
-				<span class="c-side inline-block">{{ ($find_arr[$find] == 'c') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $c }}</span>
+				<span class="c-side inline-block">{{ ($find == 'c') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $c }}</span>
 				<span class="type inline-block">{{ ($type == 'plus') ? '+' : '-' }}</span>
-				<span class="d-side inline-block">{{ ($find_arr[$find] == 'd') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $d }}</span>
+				<span class="d-side inline-block">{{ ($find == 'd') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $d }}</span>
 			</div>
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.phep_cong_tru_2_ve')

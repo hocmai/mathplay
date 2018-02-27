@@ -71,3 +71,4 @@ $position = rand(1, $range - 2);
 		@endif
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.phep_tru_tren_tia_so')

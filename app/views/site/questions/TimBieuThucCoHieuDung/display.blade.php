@@ -8,6 +8,7 @@ if( $type == 'input' | $type == 'input_a' ){
 	$sentence = [];
 	$answer = rand(3,10);
 	$limit = rand(5,8);
+
 	if( $type == 'input' ){
 		for( $i = 0; $i <= $answer; $i++ ){
 			$sentence[] = $answer.' - '.$i.' = '.($answer-$i);
@@ -19,7 +20,7 @@ if( $type == 'input' | $type == 'input_a' ){
 		}
 		$positionAnswer = rand(1, count($sentence)-1);
 	}
-	$answer_text = str_replace(' ', '', $sentence[$positionAnswer]);
+	$answer_text = str_replace(' ','', $sentence[$positionAnswer]);
 }
 else if( $type == 'choose' ){
 	$answer = [];
@@ -28,6 +29,7 @@ else if( $type == 'choose' ){
 		$rand = rand($value, $max);
 		$answer[] = ['label' => $rand.' - '.($rand-$value), 'val' => $value];
 	}
+	$answerArr = $answer;
 	$answer_text = $_arr[0];
 }
 
@@ -39,7 +41,8 @@ elseif( $type == 'choose' ){
 }
 else{
 	$str_arr = [$question->title];
-}?>
+}
+?>
 
 @include('site.questions.render-title', ['question' => $question, 'str_arr' => $str_arr ])
 
@@ -69,10 +72,12 @@ else{
 				@foreach($answer as $key => $value)
 					<div class="form-group inline-block radio-box">
 						<input class="hidden" id="answer-{{ $question_num.'-'.$key }}" type="radio" name="answer" value="{{ $value['val'] }}">
-						<label for="answer-{{ $question_num.'-'.$key }}">{{ $value['label'] }}</label>
+						<label for="answer-{{ $question_num.'-'.$key }}"> {{ $value['label'] }} </label>
 					</div>
 				@endforeach
 			</div>
 		@endif
 	{{ Form::close() }}
 </div>
+
+@include('site.questions_guide.tim_bieu_thuc_co_hieu_dung')

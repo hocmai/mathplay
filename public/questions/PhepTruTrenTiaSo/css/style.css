@@ -1,6 +1,15 @@
 .question-rendered#PhepTruTrenTiaSo .start{
     padding-bottom: 50px;
 }
+div.huong-dan-giai .line{
+    padding: 0;
+    margin-top: 15px;
+    margin-left: 15px;
+}
+.number-line{
+    margin-top: 15px; 
+}
+
 .number-line .content{
 	padding: 0 15px;
 	position: relative;

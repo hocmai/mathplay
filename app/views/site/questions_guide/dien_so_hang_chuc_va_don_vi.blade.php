@@ -38,7 +38,7 @@
 				<p>=> Số hàng đơn vị là số từ 0 đến 9 nằm sau số hàng chục: <b>{{ $ones }}</b></p>
 			</div>
 		@endif
-		<p class="answer"><ins>Đáp án đúng là:</ins> <b>{{ $tens }}</b> chục + <b>{{ $ones }}</b> đơn vị = {{ CommonQuestion::readNumber($answer) }}</p>
+		<p class="answers"><ins>Đáp án đúng là:</ins> <b>{{ $tens }}</b> chục + <b>{{ $ones }}</b> đơn vị = {{ CommonQuestion::readNumber($answer) }}</p>
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>
