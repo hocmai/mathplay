@@ -33,4 +33,4 @@ $position = rand(1, $range - 1);
 		</div>
 	{{ Form::close() }}
 </div>
-@include('site.questions_guide.phep_nhan_tren_tia_So')
+@include('site.questions_guide.phep_nhan_tren_tia_so')
