@@ -8,9 +8,9 @@ if($answer_range[0] > $answer_range[1]){
 
 
  ?>
-<div class="huong-dan-giai text-left" style="display">
+<div class="huong-dan-giai text-left" >
 	<h2>Hướng dẫn giải</h2>
-	<div class="wrapper" style="font-size: 18px">
+	<div class="wrapper" >
 		<span class> Đếm số {{ $image_rand[0] }}:</span>
 		<div class="hinh">
             @for($i = 1; $i <= $answer_range[0]; $i++)

@@ -11,7 +11,6 @@ foreach ($range1 as $key => $value) {
 	$range2[] = $total - $value;
 }
 shuffle($range2);
-
 // dd($range1, $range2);
 
 
@@ -34,3 +33,4 @@ shuffle($range2);
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.noi_cac_so_thanh_tong')

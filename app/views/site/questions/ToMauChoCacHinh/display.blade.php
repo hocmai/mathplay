@@ -24,3 +24,4 @@
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.to_mau_cho_hinh')
