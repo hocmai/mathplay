@@ -62,3 +62,4 @@ shuffle($shapesList);
 		@endif
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.nhan_dien_hinh_anh')
