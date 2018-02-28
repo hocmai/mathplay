@@ -55,3 +55,4 @@ if( ((strtotime($time1[0].':'.$time1[1].':00') < strtotime($time2[0].':'.$time2[
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.so_sanh_thoi_gian')

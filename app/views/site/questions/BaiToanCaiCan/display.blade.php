@@ -55,3 +55,4 @@ if( $type == 'basic' ){
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.bai_toan_cai_can')
