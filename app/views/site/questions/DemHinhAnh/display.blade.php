@@ -65,8 +65,5 @@ $answer = $imageCount[0]['img']."-".$imageCount[0]['num']."-".$imageCount[0]['im
 		</div>
 	{{ Form::close() }}
 </div>
-@include('site.questions_guide.dem_hinhanh', [
-	'imageShow' => $imageShow,
-	'imageCount' => $imageCount,
-])
+@include('site.questions_guide.dem_hinhanh')
 
