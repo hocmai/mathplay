@@ -10,7 +10,8 @@
 			</div>
 			<div class="clearfix"></div>
 			<p>-Đặt thước kẻ dọc theo đoạn thẳng, vạch số 0 trùng với một đầu đoạn thẳng</p>
-			<p>-Từ vạch số 0 đến vạch số {{ $length }}. Đó chính là số đo chiều dài của đoạn thẳng</p>
+			<p>-Nhìn vào vạch gần nhất với đầu kia của đoạn thẳng. Đó chính là số đo chiều dài của đoạn thẳng.</p>
+			<p>-Vạch đầu tiên (vạch 0) đến vạch số {{ $length }} cm. Đó chính là số đo chiều dài của đoạn thẳng</p>
 			<p class="answers">Đoạn thẳng trên dài {{ $length }} cm</p>		
 		</div>	
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
