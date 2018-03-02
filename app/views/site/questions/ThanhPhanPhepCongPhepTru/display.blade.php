@@ -65,3 +65,4 @@ $total = [$num1, $num2, $num3];
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.thanh_phan_phep_cong_phep_tru')
