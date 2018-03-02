@@ -1,4 +1,4 @@
-<div class="huong-dan-giai text-left" style="display: block;">
+<div class="huong-dan-giai text-left">
     <h2>Hướng dẫn giải</h2>
     <div class="wrapper">
         <p>Một cột đầy đủ có 10 ô, đếm theo hàng chục và cộng với cột cuối cùng</p>
