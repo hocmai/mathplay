@@ -1,1 +1,0 @@
-ALTER TABLE `tbl_data` ADD `created_date` DATETIME NOT NULL AFTER `address`;
