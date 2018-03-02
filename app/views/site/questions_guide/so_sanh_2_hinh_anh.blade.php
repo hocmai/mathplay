@@ -34,11 +34,10 @@ if($answer_range[0] > $answer_range[1]){
 	       	</div>
 	       	<span>Có {{ $answer_range[1].' '.$image_rand[1] }}</span>
 			<br>
-
-			<ins>Đáp án đúng là:</ins>
-			<b style="color: red" >{{  $answer_range[0].' '.$image_rand[0].' '.$sosanh.' '. $answer_range[1].' '.$image_rand[1]}}</b>
+			<p class="answers">Đáp án đúng là: 
+				{{ $answer_range[0].' '.$image_rand[0].' '.$compare.' hơn '. $answer_range[1].' '.$image_rand[1]  }}</p>
 		@else
-	        <p class="answers"><ins>Đáp án đúng là:</ins> Có <b style="color: red"> {{ $answer_range[0].' '.$image_rand[0] }}</b></p>
+	        <p class="answers">Đáp án đúng là: Có <b> {{ $answer_range[0].' '.$image_rand[0] }}</b></p>
 		@endif
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>

@@ -2,6 +2,7 @@
 /vendor
 /app/config/*
 /app/config/database.php
+/public/thukhoa
 /public/upload
 /public/upload/*
 /public/ckfinder

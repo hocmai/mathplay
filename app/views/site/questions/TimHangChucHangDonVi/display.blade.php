@@ -30,3 +30,4 @@ $answer = array_rand([$tens, $ones]);
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.tim_hang_chuc_hang_don_vi')
