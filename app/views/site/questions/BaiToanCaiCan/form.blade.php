@@ -1,6 +1,6 @@
 <div class="form-group">
 	{{ Form::label('', 'Dạng câu hỏi') }}
-	{{ Form::select('question_config[type][]', [
+	{{ Form::select('question_config[type]['.$id.']', [
 		'' => 'Mặc định',
 		'coin' => 'Thả đồng xu',
 		'basic' => 'Chọn đáp án'
