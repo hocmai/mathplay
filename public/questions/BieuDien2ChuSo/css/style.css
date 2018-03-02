@@ -5,6 +5,7 @@
     height: 270px;
     padding: 5px;
     margin: 0 2px;
+    text-align: center;
 }
 #BieuDien2ChuSo .number>div:nth-child(2n){
 	transform: scale(0.98);
