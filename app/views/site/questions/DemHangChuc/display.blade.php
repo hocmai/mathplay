@@ -60,20 +60,9 @@ if( $answertype == 'rand' ){
 				</tr>
 			</table>
 			<style type="text/css">
-				.question-wrapper .choose td>label{
-					width: 64px;
-				    height: 64px;
-				    text-align: center;
-				    line-height: 45px;
-				    margin: 5px;
-				    font-size: 25px;
-				    background: #6a8bf3;
-				}
-				.question-wrapper .choose td>input:checked + label,
-				.question-wrapper .choose td>label:hover{
-					background: #32437c;
-				}
+				
 			</style>
 		@endif
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.dem_hang_chuc')

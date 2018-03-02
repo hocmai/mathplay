@@ -36,3 +36,4 @@ $answer = $start*$position;
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.tim_so_theo_quy_luat')
