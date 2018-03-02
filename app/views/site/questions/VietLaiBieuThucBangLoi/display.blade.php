@@ -36,3 +36,4 @@ shuffle($range);
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.viet_lai_bieu_thuc_bang_loi')
