@@ -66,3 +66,4 @@ if( $type == 'giao-hoan' ){
 		@endif
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.tim_bieu_thuc_giao_hoan')

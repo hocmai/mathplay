@@ -1,7 +1,7 @@
 #TongCacNhomHinh .circle{
     float: left;
-    margin: 10px;
-    width: 150px;
+    margin: 2px;
+    width: 152px;
     height: 150px;
     border-radius: 100%;
     border: 2px solid #999;
@@ -15,7 +15,7 @@
     text-align: center;
 }
 #TongCacNhomHinh .circle>.cont>span{
-	margin: 3px;
+	margin: -5px;
 }
 div.huong-dan-giai .question-content{
     width: 100%;

@@ -25,6 +25,8 @@ if( $type == 'min' ){
 		Kim giờ đang chỉ số mấy (không chứa số 0 ở đầu)
 	@elseif( $type == 'min' )
 		Kim phút đang chỉ số mấy (không chứa số 0 ở đầu)
+	@else
+	 Đồng hồ chỉ mấy giờ?(chọn đáp án đúng)
 	@endif
 </div>
 
