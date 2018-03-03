@@ -48,3 +48,4 @@ $true_answer = '';
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.keo_tha_thanh_cac_hinh_bang_nhau')

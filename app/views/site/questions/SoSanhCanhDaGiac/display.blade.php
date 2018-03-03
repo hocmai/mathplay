@@ -1,10 +1,10 @@
 <?php
-$range = range(3,8);
-$num = array_rand($range, 2);
-$answer = $range[getRandArrayVal($num)];
+$num = getRandArrayVal(range(3,8), 2);
+$answer = getRandArrayVal($num);
+$find = getRandArrayVal(['cạnh', 'đỉnh']);
 ?>
 
-@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Hình nào có số', getRandArrayVal(['cạnh', 'đỉnh']), ($answer < $range[$num[1]]) ? 'bé hơn' : 'lớn hơn'] ])
+@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Hình nào có số', $find, ($answer < $num[1]) ? 'bé hơn' : 'lớn hơn'] ])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
@@ -14,13 +14,12 @@ $answer = $range[getRandArrayVal($num)];
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
 		
 		<div class="content inline-block">
-			<?php shuffle($num); ?>
 			@for($i = 0; $i < 2; $i++)
 				<div class="form-group inline-block radio-box">
-					<input class="hidden" type="radio" value="{{ $range[$num[$i]] }}" name="answer" id="answer-{{ $question->id.'-'.$question_num.'-'.$i }}">
+					<input class="hidden" type="radio" value="{{ $num[$i] }}" name="answer" id="answer-{{ $question->id.'-'.$question_num.'-'.$i }}">
 					<label for="answer-{{ $question->id.'-'.$question_num.'-'.$i }}">
 						<div class="shape">
-							{{ SoSanhCanhDaGiac::renderShape($range[$num[$i]]) }}
+							{{ SoSanhCanhDaGiac::renderShape($num[$i]) }}
 						</div>
 					</label>
 				</div>
@@ -28,3 +27,4 @@ $answer = $range[getRandArrayVal($num)];
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.so_sanh_cach_da_giac')

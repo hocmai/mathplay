@@ -36,3 +36,7 @@ else if( $find == 'b' ){
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.pheptru_nhieuso', [
+	'a' => $answer1,
+	'b' => $answer2
+])
