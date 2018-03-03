@@ -45,3 +45,4 @@ $rand_title = array_rand($text);
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.dem_so_lon_nho_voi_don_vi')

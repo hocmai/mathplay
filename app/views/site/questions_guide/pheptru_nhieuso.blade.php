@@ -145,7 +145,8 @@ $a_fake = $a_rr;
 				$point_re--;
 			?>
 		@endfor
+		<p class="answers">Đáp án đúng là: <b>{{ $a-$b }}</b></p>
+		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
-	<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 </div>
 

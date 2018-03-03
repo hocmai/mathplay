@@ -4,7 +4,7 @@ $max = !empty($option['max']) ? $option['max'] : rand(3,10);
 
 $num = rand($min, $max);
 $sub = rand(1, $num-1);
-$images = CommonQuestion::getImgData('ClickXoaHinhAnh');
+$images = CommonQuestion::getImgData('ClickXoaHinhAnh');	
 $imageRand = array_rand($images);
 ?>
 @include('site.questions.render-title', ['question' => $question, 'desc' => "Có $num $imageRand. Hãy sử dụng chuột bỏ đi $sub $imageRand và để lại ".($num - $sub)." quả (nháy chuột lần nữa để thêm lại)"])
@@ -28,3 +28,4 @@ $imageRand = array_rand($images);
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.click_xoa_hinh_anh')
