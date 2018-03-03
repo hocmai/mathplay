@@ -10,8 +10,13 @@ if( $type == 'plus' ){
 }
 else{
 	$num = getRandArrayVal(range(1, $max),2);
-	$num1 = $num[1]*10;
-	$num2 = $num[0]*10;
+	$num1 = (int)$num[0]*10;
+	$num2 = (int)$num[1]*10;
+	if( $num1 < $num2 ){
+		$num = $num1;
+		$num1 = $num2;
+		$num2 = $num1;
+	}
 	$answer = $num1-$num2;
 }?>
 
@@ -31,3 +36,8 @@ else{
 		</div>
 	{{ Form::close() }}
 </div>
+@if( $type == 'plus' )
+	@include('site.questions_guide.phepcong_nhieuso', ['a' => $num1, 'b' => $num2])
+@else
+	@include('site.questions_guide.pheptru_nhieuso', ['a' => $num1, 'b' => $num2])
+@endif
