@@ -29,9 +29,7 @@ $display = ['ngang', 'doc'];
 	{{ Form::close() }}
 </div>
 
-<div class="huong-dan-giai text-left">
-	<h2>Hướng dẫn giải</h2>
-	<div class="wrapper" style="font-size: 18px">
-		@include('site.questions_guide.phepcong_nhieuso')
-	</div>
-</div>
+@include('site.questions_guide.phepcong_nhieuso', [
+	'a' => $answer1,
+	'b' => $answer2
+])
