@@ -29,3 +29,4 @@ $num = ($answer == 'tam-giac') ? 3 : 4;
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.dem_canh_da_giac')

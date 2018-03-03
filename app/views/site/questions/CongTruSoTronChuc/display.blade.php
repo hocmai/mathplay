@@ -41,3 +41,4 @@ else{
 @else
 	@include('site.questions_guide.pheptru_nhieuso', ['a' => $num1, 'b' => $num2])
 @endif
+	
