@@ -61,16 +61,4 @@ $answer = $c;
 		</div>
 	{{ Form::close() }}
 </div>
-<div class="huong-dan-giai text-left" style="display: none;">
-	<h2>Hướng dẫn giải</h2>
-	<div class="wrapper" style="font-size: 18px">
-		@include('site.questions_guide.phepcong_nhieuso', [
-			'question' => $question,
-			'config' => $config,
-			'a' => $a,
-			'b' => $b,
-			'c' => $c,
-		])
-		<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
-	</div>
-</div>
+@include('site.questions_guide.phepcong_nhieuso')

@@ -1,7 +1,7 @@
 <?php $count = 1; ?>
 <div class="huong-dan-giai text-left" style="display">
 	<h2>Hướng dẫn giải</h2>
-	<div class="wrapper" style="font-size: 18px">
+	<div class="wrapper">
 		<div class="content form-group clearfix text-center">
 			@if( $countType == 'dem-hinh-anh' )
 				@for($i = 1; $i <= $answer; $i++)

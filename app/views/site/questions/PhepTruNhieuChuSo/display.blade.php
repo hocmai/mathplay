@@ -61,9 +61,4 @@ $answer = $c;
 		</div>
 	{{ Form::close() }}
 </div>
-@include('site.questions_guide.pheptru_nhieuso', [
-	'question' => $question,
-	'config' => $config,
-	'a' => $a,
-	'b' => $b,
-])
+@include('site.questions_guide.pheptru_nhieuso')

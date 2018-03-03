@@ -40,3 +40,4 @@ for ($i=($numTotal - $numHide); $i < $numTotal; $i++) {
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.ghep_hinh_thanh_day')
