@@ -1,7 +1,10 @@
 #PhepTinhZicZac .wrap-zz{
-	font-size: 16px;
-	font-weight: 500;
+	font-size: 14px;
+	font-weight: 600;
 	line-height: 30px;
+}
+#PhepTinhZicZac .huong-dan-giai .wrap-zz{
+    width: 110%;
 }
 #PhepTinhZicZac .wrap-zz>.sub{
     margin-top: 50px;
@@ -9,9 +12,14 @@
 }
 #PhepTinhZicZac .wrap-zz>.sub>span{
     position: absolute;
-    left: -30px;
+    left: -33px;
     z-index: 2;
     width: 50px;
+}
+#PhepTinhZicZac .huong-dan-giai .wrap-zz span.active{
+    text-decoration: underline;
+    font-size: 15px;
+    color: red;
 }
 #PhepTinhZicZac .wrap-zz>.sub.up.has-input>span{
     top: -16px;
