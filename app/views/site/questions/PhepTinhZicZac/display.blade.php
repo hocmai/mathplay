@@ -1,7 +1,7 @@
 <?php
 $min = !empty($config['min']) ? $config['min'] : 1;
 $max = !empty($config['max']) ? $config['max'] : 100;
-$num = !empty($config['num']) ? $config['num'] : rand(7,10);
+$num = !empty($config['num']) ? $config['num'] : rand(5,8);
 $firstNum = !empty($config['first']) ? $config['first'] : rand($min,$max);
 
 $range = [$firstNum];
@@ -15,7 +15,7 @@ for ($i = 1; $i < $num*2 - 1; $i++) {
 	}
 }
 $rangeRand = $_rangeRand = array_rand($range, rand(5,8));
-$answer = '';
+$answer = [];
 
 ///////// Dam bao rang khong co 3 o input nam lien nhau, khong the dien dap an.
 for ( $i = 1; $i < count($rangeRand) - 1; $i++ ) {
@@ -25,8 +25,9 @@ for ( $i = 1; $i < count($rangeRand) - 1; $i++ ) {
 }
 $rangeRand = $_rangeRand;
 foreach ($rangeRand as $key => $value) {
-	$answer .= abs($range[$value]);
+	$answer[] = abs($range[$value]);
 }
+$answer = implode(',', $answer);
 // dd($range);
 ?>
 @include('site.questions.render-title', ['question' => $question])
@@ -66,3 +67,4 @@ foreach ($rangeRand as $key => $value) {
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.phep_tinh_zic_zac')
