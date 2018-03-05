@@ -10,7 +10,7 @@
 				</div>
 			@endfor
 		</div>
-		<ins>Đáp án đúng là: <strong>{{ $answer*10 }}</strong></ins><p></p>
+		<p class="answers">Đáp án đúng là: <b>{{ $answer*10 }}</b></p>
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

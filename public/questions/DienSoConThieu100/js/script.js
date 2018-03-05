@@ -1,12 +1,13 @@
 $(document).ready(function($) {
 	
 	//////////// Submit answer form
-	$('.question-wrapper').on('submit', 'form.answer-question-form', function(e){
+	$('#DienSoConThieu100 .question-wrapper form.answer-question-form').on('change', 'table input[type="text"]', function(e){
 		var num = [];
-		$(this).find('table input[type="text"]').each(function(index, el) {
+		console.log('test');
+		$(this).parents('table').find('input[type="text"]').each(function(index, el) {
 			num.push($(this).val());
 		});
-		$(this).find('[name="answer"]').val(JSON.stringify(num).replace(/"/g, ''));
+		$(this).parents('form').find('[name="answer"]').val(JSON.stringify(num).replace(/"/g, ''));
 	})
 
 })
