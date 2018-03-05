@@ -57,3 +57,4 @@ $answer = $a*$b.','.($a*$b + ( $method == 'sub' ? -$c : $c ));
 		</div>
 	{{ Form::close() }}
 </div>
+@include('site.questions_guide.phep_nhan_va_phep_cong_tru')
