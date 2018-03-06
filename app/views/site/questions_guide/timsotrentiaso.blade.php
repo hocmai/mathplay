@@ -11,7 +11,7 @@
 						</div>
 					@else
 						<div class="line inline-block {{ ( $key == $position ) ? 'active' : '' }}">
-							{{ ( $value == $answer && $type == 'inline' ) ? Form::text('answer', '', ['class' => 'form-control padding0 text-center']) : $value }}
+							{{ ( $value == $answer && $type == 'inline' ) ? Form::text('answer', $answer, ['class' => 'form-control padding0 text-center']) : $value }}
 						</div>
 					@endif
 					
