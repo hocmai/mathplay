@@ -1,6 +1,6 @@
 <?php
 	$min = (!empty($config['min_value']) ) ? $config['min_value'] : 1;
-	$max = (!empty($config['max_value']) ) ? $config['max_value'] : 10;
+	$max = (!empty($config['max_value']) ) ? $config['max_value'] : 100;
 	$answertype = !empty($config['answer_type']) ? $config['answer_type'] : 'rand';
 	if( $answertype == 'rand' ){
 		$answertype = ['trac-nghiem', 'dien-dap-an'];
@@ -138,9 +138,4 @@ else{
 		@endif
 	{{ Form::close() }}
 </div>
-@include('site.questions_guide.dem_otrongkhung10',[
-	'answertype'=>$answertype,
-	'countType'=>$countType,
-	'rand_shape'=>$rand_shape,
-	'answer' => $answer,
-])
+@include('site.questions_guide.dem_otrongkhung10')

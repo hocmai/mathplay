@@ -1,6 +1,6 @@
-<div class="huong-dan-giai text-left" style="display">
+<div class="huong-dan-giai text-left" ">
 	<h2>Hướng dẫn giải</h2>
-	<div class="wrapper" style="font-size: 18px;padding-top:50px">
+	<div class="wrapper" style="padding-top:50px">
 		<div class="form-group number-line">
 			<div class="content inline-block">
 				@foreach($lines as $key => $value)
@@ -11,7 +11,7 @@
 						</div>
 					@else
 						<div class="line inline-block {{ ( $key == $position ) ? 'active' : '' }}">
-							{{ ( $value == $answer && $type == 'inline' ) ? Form::text('answer', '', ['class' => 'form-control padding0 text-center']) : $value }}
+							{{ ( $value == $answer && $type == 'inline' ) ? Form::text('answer', $answer, ['class' => 'form-control padding0 text-center']) : $value }}
 						</div>
 					@endif
 					
