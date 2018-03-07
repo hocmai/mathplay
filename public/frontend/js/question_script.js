@@ -244,10 +244,9 @@ $(document).ready(function($) {
 
 	//////////////////// Huong dan giai ///////////////////
 	$('.bg-box-lam-bai .btn-support .huong-dan-giai').on('click', function(){
-		console.log('test');
 		$('#myModal-false').modal('hide');
 		if( $('.question-rendered.active .huong-dan-giai').length ){
-			// $('.question-rendered.active .question-wrapper').fadeOut();
+			$('.question-rendered.active .question-wrapper form input').attr('disabled', 'disabled');
 			$('.question-rendered.active .huong-dan-giai').fadeIn('300', function() {
 				var top = $(this).offset().top;
 				$('body, html').animate({scrollTop: top}, 300);

@@ -173,7 +173,7 @@ Class CommonQuestion {
 			1 => 'một',
 			2 => 'hai',
 			3 => 'ba',
-			4 => 'bốn',
+			4 => 'tư',
 			5 => 'năm',
 			6 => 'sáu',
 			7 => 'bảy',
