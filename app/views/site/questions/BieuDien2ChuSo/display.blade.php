@@ -14,7 +14,7 @@ if( $type == 'choose' ){
     $str_arr = ['Hình nào dưới đây biểu diễn số', $answer];
 }?>
 
-@include('site.questions.render-title'.['question' => $question, 'str_arr' => $str_arr ] )
+@include('site.questions.render-title', ['question' => $question, 'str_arr' => $str_arr ] )
 
 <div class="container-fluid question-wrapper">
     {{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}

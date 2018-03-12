@@ -4,8 +4,8 @@ Tiêu đề và nội dung câu hỏi sẽ được tạo tự động
 	{{ Form::label('', 'Hình thức') }}
 	{{ Form::select('question_config[answer_type]['.$id.']', 
 		[
-			'input' => 'Nhập biểu thức còn thiếu với số c cố định',
-			'input_a' => 'Nhập biểu thức còn thiếu với số a cố định',
+			'input' => 'Nhập biểu thức còn thiếu với số a cố định',
+			'input_a' => 'Nhập biểu thức còn thiếu với số c cố định',
 			'choose' => 'Chọn biểu thức đúng',
 		],
 	!empty($config['answer_type']) ? $config['answer_type'] : '', ['class' => 'form-control pull-left']) }}
