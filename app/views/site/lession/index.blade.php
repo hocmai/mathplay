@@ -118,7 +118,7 @@ foreach($lession->question as $question){
                                         <div>
                                             <span><?php
                                             $strings = ['QUÁ CHUẨN LUÔN!', 'BẠN THẬT TUYỆT VỜI!', 'XUẤT SẮC!', 'QUÁ ĐỈNH!', 'THẬT VI DIỆU!'];
-                                            echo $strings[array_rand($strings)];
+                                            echo getRandArrayVal($strings);
                                             ?></span>
                                             <img src="{{ asset('frontend/images/cuoi.png') }}" class="img-responsive mauto" alt=""/>
                                         </div>
