@@ -1,4 +1,5 @@
-<div class="huong-dan-giai text-left" >
+<?php $count = 1 ?> 
+<div class="huong-dan-giai text-left">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper">
 		<div class="form-group plus-with-img">
@@ -10,9 +11,10 @@
 							@for($j = 1; $j <= $value; $j++)
 								<div class="item">
 									<img src="{{ $images }}" width="30"><br>
-									<span>{{ $j }}</span>
+								<span>{{ $count++ }}</span>
 								</div>
 							@endfor
+
 						</div>
 						<span class="number">{{ $value }}</span>
 					</div>

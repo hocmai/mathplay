@@ -1,9 +1,8 @@
-<div class="huong-dan-giai text-left" style="display">
+<div class="huong-dan-giai text-left" >
 	<h2>Hướng dẫn giải</h2>
-	<div class="wrapper" style="font-size: 18px">
+	<div class="wrapper" >
 		<div class="form-group number-line-100">
 			<div class="content">
-				<p class="answers"><ins>Đáp án đúng là:</ins></p>
 				<table border="1">
 					@for($i = 0; $i < 10; $i++)
 						<tr>
@@ -15,6 +14,7 @@
 				</table>
 			</div>
 		</div>
+		<p class="answers">Như vậy: số còn thiếu trong bảng là {{ json_encode($answer) }}</p>
 	<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>
