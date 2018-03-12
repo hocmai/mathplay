@@ -11,10 +11,10 @@
 						{{ $value }}
 					</div>
 				@endforeach
-				<hr>
-				<p>Nên: {{ $nums[1].' - '.$answer.' = '.$nums[0] }}</p>
 			</div>
 		</div>
+		<div class="clear clear fix"></div>
+		<p>Như vậy, phép trừ được biểu diễn ở trên tia số là: {{ $nums[1].' - '.$answer.' = '.$nums[0] }}</p>
 		@elseif($type == 'choose')
 			<p>Bắt đầu từ số {{ $nums[1] }} đếm ngược {{ $nums[0] }}  kết quả nhận được là {{ $answer }}</p>
 			<div class="form-group number-line">
