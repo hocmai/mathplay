@@ -1,4 +1,5 @@
 <?php
+$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['coin', 'basic']);
 $max = (!empty($config['max']) ) ? $config['max'] : 20;
 
 $numRand = rand(1,$max);
@@ -7,15 +8,19 @@ $imageRand = getRandArrayVal($imageData);
 
 ?>
 
+@if($type == 'coin')
 	@include('site.questions.render-title', ['question' => $question, 'desc' => "Số lượng dưới đây là số chẵn hay số lẻ?"])
-	
+@else
+	@include('site.questions.render-title', ['question' => $question, 'desc' => $numRand." là số chẵn hay số lẻ?"])
+@endif
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
 		<input type="hidden" name="true_answer" value="{{ $numRand%2 }}" />
 		<input type="hidden" name="qid" value="{{ $question->id }}" />
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
-
+		
+		@if($type == 'coin')
 		<div class="form-group">
 			<div class="content inline-block">
 				<div class="image-show">
@@ -33,6 +38,7 @@ $imageRand = getRandArrayVal($imageData);
 				</div>
 			</div>
 		</div>
+		@endif
 		<div class="inline-block">
 			<div class="radio">
                 <input id="chanle-answer-{{ $question_num }}1" type="radio" name="answer" value="0" class="">
