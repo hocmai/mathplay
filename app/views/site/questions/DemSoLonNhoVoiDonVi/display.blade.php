@@ -26,9 +26,18 @@ $rand_title = array_rand($text);
 ?>
 
 @if( $rand_title == 0 )
-	@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Đếm với', $plus, 'đơn vị.', 'Đứng trước số', $number, 'là số mấy?',] ] )
+	@if( $method == 'plus' )
+		@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Đếm với', $plus, 'đơn vị.', 'Đứng sau số', $number, 'là số mấy?',] ] )
+	@else
+		@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Đếm với', $plus, 'đơn vị.', 'Đứng trước số', $number, 'là số mấy?',] ] )
+	@endif
+	
 @else
-	@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Số nào đứng trước số', $number, 'nếu trừ đi', $plus,'đơn vị?'] ] )
+	@if( $method == 'plus' )
+		@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Số nào đứng sau số', $number, 'nếu cộng đi', $plus,'đơn vị?'] ] )
+	@else
+		@include('site.questions.render-title', ['question' => $question, 'str_arr' => ['Số nào đứng trước số', $number, 'nếu trừ đi', $plus,'đơn vị?'] ] )
+	@endif
 @endif
 
 <div class="container-fluid question-wrapper">
