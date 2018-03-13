@@ -24,7 +24,7 @@ for( $i = 0; $i < 3; $i++ ){
 }
 // dd($rand_arr, $number);
 ?>
-@include('site.questions.render-title', ['question' => $question])
+@include('site.questions.render-title', ['question' => $question, 'desc' => $question->content])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
