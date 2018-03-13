@@ -21,6 +21,7 @@ $find = getRandArrayVal(['cạnh', 'đỉnh']);
 						<div class="shape">
 							{{ SoSanhCanhDaGiac::renderShape($num[$i]) }}
 						</div>
+						<span><b>{{ $i+1 }}</b></span>
 					</label>
 				</div>
 			@endfor
