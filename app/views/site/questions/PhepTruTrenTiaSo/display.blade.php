@@ -7,7 +7,7 @@ for($i = 0; $i < $range; $i++){
 	$lines[] = $min;
 	$min += $plus;
 }
-
+dd($lines);
 $nums = getRandArrayVal($lines, 2, false);
 $type = !empty($config['answer_type']) ? $config['answer_type'] : getRandArrayVal(['input', 'choose']);
 
