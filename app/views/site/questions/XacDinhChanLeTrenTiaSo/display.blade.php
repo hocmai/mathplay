@@ -1,10 +1,20 @@
 <?php
+$min = !empty($config['min_value']) ? $config['min_value'] : rand(1,10);
+$plus = !empty($config['number_plus']) ? $config['number_plus'] : rand(1,10);
 $range = (!empty($config['number_count']) && $config['number_count'] >= 3) ? $config['number_count'] : rand(5, 10);
-$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['input', 'choose']);
-
 $lines = [];
-for($i = 1; $i < $range; $i++){
-	$lines[] = $i;
+for($i = 0; $i < $range; $i++){
+	$lines[] = $min;
+	$min += $plus;
+}
+$type = !empty($config['answer_type']) ? $config['answer_type'] : getRandArrayVal(['input','inline']);
+$position = 0;
+if($type == 'inline'){
+	$position = array_rand($lines, 4);
+	$answer = getRandArrayVal($lines);
+	
+ } else{
+
 }
 
 if($type == 'input'){
