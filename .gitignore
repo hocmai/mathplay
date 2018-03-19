@@ -7,6 +7,7 @@
 /public/upload/*
 /public/ckfinder
 /public/ckfinder/*
+/app/storage/cache/*
 composer.phar
 composer.lock
 .env.*.php
