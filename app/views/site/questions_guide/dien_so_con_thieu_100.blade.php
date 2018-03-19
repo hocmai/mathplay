@@ -14,6 +14,7 @@
 				</table>
 			</div>
 		</div>
+		<p>Để xác định số còn thiếu trong bảng số 100. từ 1 đến 100 xem số nào còn thiếu thì điền vào ô trống</p>
 		<p class="answers">Như vậy: số còn thiếu trong bảng là {{ json_encode($answer) }}</p>
 	<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>

@@ -9,7 +9,7 @@ foreach ($answer_rand as $value) {
 // dd($answer_rand);
 ?>
 
-@include('site.questions.render-title', ['question' => $question])
+@include('site.questions.render-title', ['question' => $question,'desc' => 'Điền vào chỗ trống số còn thiếu để hoàn thành bảng số 100.'])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
