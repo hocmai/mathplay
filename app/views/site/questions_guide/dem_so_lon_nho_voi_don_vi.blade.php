@@ -2,10 +2,11 @@
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper">
 		@if( $method == 'plus' )
-			<p>Bạn lấy số {{ $number.' cộng '.$plus.' đơn vị' }}</p>
+		<p></p>
+			<p>Tìm số đứng sau {{ $number.', '.$plus.' đơn vị thực hiện phép tính sau:' }}</p>
 			<p>Biểu thức là: {{ $number.' + '.$plus.' = '.$answer }}</p>
 		@else
-			<p>Bạn lấy số {{ $number.' trừ '.$plus.' đơn vị' }}</p>
+			<p>Tìm số đứng trước {{ $number.', '.$plus.' đơn vị thực hiện phép tính sau:' }}</p>
 			<p>Biểu thức là: {{ $number.' - '.$plus.' = '.$answer }}</p>
 		@endif
 			<p class="answers"> Đáp án Đúng là: {{ $answer }}</p>

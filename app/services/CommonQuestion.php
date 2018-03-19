@@ -31,7 +31,14 @@ Class CommonQuestion {
 
 	public static function getAudioPath($text = ''){
 		$slug = Str::slug($text, '');
-		return Common::getObject( Audio::where('slug', $slug)->first(), 'url' );
+		if( !Cache::has('audio_'.$slug) ){
+			$audioUrl = Common::getObject( Audio::where('slug', $slug)->first(), 'url' );
+			if( empty($audioUrl) ){
+				$audioUrl = '';
+			}
+			Cache::put('audio_'.$slug, $audioUrl, 15);
+		}
+		return Cache::get('audio_'.$slug);
 	}
 
 	public static function getAllType(){

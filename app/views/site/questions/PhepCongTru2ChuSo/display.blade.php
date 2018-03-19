@@ -91,9 +91,9 @@ else{
 	$answer = $c;
 }
 
-$a = str_split($a);
-$b = str_split($b);
-$c = str_split($c);
+$a_rr = str_split($a);
+$b_rr = str_split($b);
+$c_rr = str_split($c);
 ?>
 
 @include('site.questions.render-title', ['question' => $question])
@@ -112,36 +112,36 @@ $c = str_split($c);
 					<span class="number-a clearfix">
 						@if( $find == 'a' )
 							<div class="multi-input-number">
-								{{ isset($a[1]) ? Form::text('answer2', '', ['style'=>'margin-right:-5px;text-align:center;width:20px;height:25px', 'maxlength'=>1]) : '' }}
+								{{ isset($a_rr[1]) ? Form::text('answer2', '', ['style'=>'margin-right:-5px;text-align:center;width:20px;height:25px', 'maxlength'=>1]) : '' }}
 								{{ Form::text('answer1', '', ['style'=>'text-align:center;width:20px;height:25px', 'maxlength'=>1]) }}
 							</div>
 						@else
-							<span style="display: table-cell;width: 19px;text-align: center;">{{ $a[0] }}</span>
-							{{ isset($a[1]) ? '<span style="display: table-cell;width: 19px;text-align: center;">'.$a[1].'</span>' : '' }}
+							<span style="display: table-cell;width: 19px;text-align: center;">{{ $a_rr[0] }}</span>
+							{{ isset($a_rr[1]) ? '<span style="display: table-cell;width: 19px;text-align: center;">'.$a_rr[1].'</span>' : '' }}
 						@endif
 					</span>
 					<span class="number-b clearfix">
 						<span class="pull-left">{{ ($method == 'plus') ? '+' : '-' }}</span>
 						@if( $find == 'b' )
 							<div class="multi-input-number">
-								{{ isset($b[1]) ? Form::text('answer2', '', ['style'=>'margin-right:-5px;text-align:center;width:20px;height:25px', 'maxlength'=>1]) : '' }}
+								{{ isset($b_rr[1]) ? Form::text('answer2', '', ['style'=>'margin-right:-5px;text-align:center;width:20px;height:25px', 'maxlength'=>1]) : '' }}
 								{{ Form::text('answer1', '', ['style'=>'text-align:center;width:20px;height:25px', 'maxlength'=>1]) }}
 							</div>
 						@else
-							<span style="display: table-cell;width: 19px;text-align: center;">{{ $b[0] }}</span>
-							{{ isset($b[1]) ? '<span style="display: table-cell;width: 19px;text-align: center;">'.$b[1].'</span>' : '' }}
+							<span style="display: table-cell;width: 19px;text-align: center;">{{ $b_rr[0] }}</span>
+							{{ isset($b_rr[1]) ? '<span style="display: table-cell;width: 19px;text-align: center;">'.$b_rr[1].'</span>' : '' }}
 						@endif
 					</span>
 					<hr style="margin: 5px 0">
 					<span class="number-c">
 						@if( $find == 'c' )
 							<div class="multi-input-number">
-								{{ isset($c[1]) ? Form::text('answer2', '', ['style'=>'margin-right:-5px;text-align:center;width:20px;height:25px', 'maxlength'=>1]) : '' }}
+								{{ isset($c_rr[1]) ? Form::text('answer2', '', ['style'=>'margin-right:-5px;text-align:center;width:20px;height:25px', 'maxlength'=>1]) : '' }}
 								{{ Form::text('answer1', '', ['style'=>'text-align:center;width:20px;height:25px', 'maxlength'=>1]) }}
 							</div>
 						@else
-							<span style="display: table-cell;width: 19px;text-align: center;">{{ $c[0] }}</span>
-							{{ isset($c[1]) ? '<span style="display: table-cell;width: 19px;text-align: center;">'.$c[1].'</span>' : '' }}
+							<span style="display: table-cell;width: 19px;text-align: center;">{{ $c_rr	[0] }}</span>
+							{{ isset($c_rr[1]) ? '<span style="display: table-cell;width: 19px;text-align: center;">'.$c_rr[1].'</span>' : '' }}
 						@endif
 					</span>
 				</div>
@@ -150,26 +150,16 @@ $c = str_split($c);
 	{{ Form::close() }}
 </div>
 @if( $method == 'sub' && $find == 'c' )
-	<div class="huong-dan-giai text-left" style="display: none;">
-		<h2>Hướng dẫn giải</h2>
-		<div class="wrapper" style="font-size: 18px">
-			@include('site.questions_guide.pheptru_nhieuso', [
-				'question' => $question,
-				'config' => $config,
-				'a' => $a,
-				'b' => $b,
-			])
-		</div>
-	</div>
+	@include('site.questions_guide.pheptru_nhieuso')
+@elseif( $method == 'sub' && $find == 'a' )
+	@include('site.questions_guide.phepcong_nhieuso',['a' => $b,'b' => $c, 'c' => $a])
+@elseif( $method == 'sub' && $find == 'b' )
+	@include('site.questions_guide.pheptru_nhieuso',['b' => $c, 'c' => $b])
+
 @elseif( $method == 'plus' && $find == 'c' )
-	<div class="huong-dan-giai text-left">
-		<h2>Hướng dẫn giải</h2>
-		<div class="wrapper" style="font-size: 18px">
-			@include('site.questions_guide.phepcong_nhieuso', [
-				'a' => $a,
-				'b' => $b,
-			])
-			<button class="btn lam-bai-tiep" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
-		</div>
-	</div>
+	@include('site.questions_guide.phepcong_nhieuso')
+@elseif( $method == 'plus' && $find == 'a' )
+	@include('site.questions_guide.pheptru_nhieuso',['a' => $c, 'c'=> $a])
+@elseif( $method == 'plus' && $find == 'b' )
+	@include('site.questions_guide.pheptru_nhieuso',['a' => $c, 'b'=> $a, 'c' => $b])
 @endif

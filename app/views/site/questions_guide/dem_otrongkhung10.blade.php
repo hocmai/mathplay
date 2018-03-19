@@ -1,16 +1,17 @@
 <?php $count = 1; ?>
-<div class="huong-dan-giai text-left" style="display">
+<div class="huong-dan-giai text-left">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper">
 		<div class="content form-group clearfix text-center">
 			@if( $countType == 'dem-hinh-anh' )
+				<p class="pull-left">Đếm số {{ $img_rand.'.' }} </p>
+				<div class="clearfix"></div>
 				@for($i = 1; $i <= $answer; $i++)
 					<div class="pull-left" style="margin: 10px">
 						<img src="{{ $img_data[$img_rand] }}" width="70" class="pull-left" />
 						<?php if( $i == $answer ) print "<span class='fa fa-star'></span>";
 							if( $i == ($count) ) print "<span class='last'>$i</span>";
 						?>
-						
 					</div>
 					@if( $i == 5 ) <div class="clearfix"></div> @endif
 					<?php if( $i <= $count && $count < $answer ) $count++; ?>

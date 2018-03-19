@@ -5,8 +5,6 @@ if($answer_range[0] > $answer_range[1]){
 }elseif($answer_range[0] < $answer_range[1]) {
 	$sosanh = 'bé hơn';
 }
-
-
  ?>
 <div class="huong-dan-giai text-left" >
 	<h2>Hướng dẫn giải</h2>
@@ -36,7 +34,9 @@ if($answer_range[0] > $answer_range[1]){
 			<br>
 			<p class="answers">Đáp án đúng là: 
 				{{ $answer_range[0].' '.$image_rand[0].' '.$compare.' hơn '. $answer_range[1].' '.$image_rand[1]  }}</p>
-		@else
+		@elseif($type == 'select')
+	        <p class="answers">Đáp án đúng là: Có <b> {{ $answer_range[0].' '.$image_rand[0] }}</b></p>
+	    @else
 	        <p class="answers">Đáp án đúng là: Có <b> {{ $answer_range[0].' '.$image_rand[0] }}</b></p>
 		@endif
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>

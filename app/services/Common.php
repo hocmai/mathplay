@@ -73,8 +73,11 @@ class Common {
 	}
 
 	public static function getAllGrade(){
-		$grades = Grade::all();
-		return $grades;
+		if( !Cache::has('list_all_grades') ){
+			$grades = Grade::all();
+			Cache::put('list_all_grades', $grades, 15);
+		}
+		return Cache::get('list_all_grades');
 	}
 
 	public static function getLessionTree(){

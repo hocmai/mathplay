@@ -1,6 +1,7 @@
 <div class="huong-dan-giai text-left">
 	<h2>Hướng dẫn giải</h2>
-	<div class="wrapper" style="font-size: 18px">
+	<div class="wrapper">
+		<p>Đếm số {{ $imageCount[0]['img']." và ".$imageCount[1]['img'] }}</p>
 		<div class="image-show-area">
 			@foreach ($imageShow as $key => $img)
 				<div class="img pull-left" style="{{ $img['margin'] }}">

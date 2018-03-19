@@ -34,7 +34,7 @@ else if( $type == 'choose' ){
 }
 
 if( $type == 'input' | $type == 'input_a' ){
-	$str_arr = ['Dưới đây là các cách tính hiệu của', $answer.'.', 'Hãy viết biểu thức còn thiếu.'];
+	$str_arr = ['Dưới đây là các cách tính hiệu của', $answer.'.', 'Điền biểu thức còn thiếu vào ô trống.'];
 }
 elseif( $type == 'choose' ){
 	$str_arr = ['Biểu thức nào có hiệu bằng', $_arr[0].'?'];

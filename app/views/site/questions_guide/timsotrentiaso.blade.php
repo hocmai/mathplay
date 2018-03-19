@@ -35,8 +35,8 @@
 			@elseif($position == count($lines)-1)
 				<p>Số cuối cùng: {{ $lines[$position-1].' + '.$plus. ' = '.$answer }}</p>
 			@else
-				<p>Số đằng trước: {{ $lines[$position-1].' + '.$plus.' = '.$answer }}</p>
-				<p>Số đằng sau: {{ $lines[$position+1].' - '.$plus.' = '.$answer }}</p>
+				<p>Tìm số giữa {{ $lines[$position-1].' và '.$lines[$position+1].' Bắt đầu đếm từ '.$lines[$position-1].' trở đi.' }}</p>
+				<p>Thực hiện phép tính: {{ $lines[$position-1].' + '.$plus.' = '.$answer }}</p>
 			@endif
 		@endif
 		<p class="answers"><ins>Đáp án đúng là:<b>{{ $answer }}</b></ins></p>

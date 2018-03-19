@@ -2,6 +2,8 @@
     <h2>Hướng dẫn giải</h2>
     <div class="wrapper">
         <p>Đếm cách hình cùng màu ở vế trái và vế phải</p>
+        @if($type_answer == 'trac-nghiem')
+        <p class="answers">Hình ảnh dưới đây đúng với biểu thức ở trên</p>
         <div class="form-group plus-with-puzzle text-left">
             <div class="form-group">
                 <div class="preview">
@@ -17,6 +19,7 @@
                 </div>
             </div>
         </div>
+        @else
         <div class="form-group plus-with-puzzle text-left">
             <div class="form-group">
                 <div class="preview">
@@ -36,7 +39,8 @@
                 </div>
             </div>
         </div>
-        <p class="answers">Đáp án đúng là: <b>{{ $answer_rand[$position]['num1']." + ".$answer_rand[$position]['num2'].' = '.$position }}</b></p>
+        <p class="answers"> Biểu thức tương ứng với hình ảnh bên dưới là: <b>{{ $answer_rand[$position]['num1']." + ".$answer_rand[$position]['num2'].' = '.$position }}</b></p>
+        @endif
         <button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
     </div>
 </div>
