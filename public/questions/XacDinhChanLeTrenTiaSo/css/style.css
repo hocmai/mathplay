@@ -1,14 +1,14 @@
 .question-rendered#XacDinhChanLeTrenTiaSo .start{
     padding-bottom: 50px;
 }
-.number-line .content{
+#XacDinhChanLeTrenTiaSo .number-line .content{
     padding: 0 15px;
     position: relative;
     border-top: 2px solid #ddd;
     margin-top: 15px;
 }
-.number-line .content:before,
-.number-line .content:after{
+#XacDinhChanLeTrenTiaSo .number-line .content:before,
+#XacDinhChanLeTrenTiaSo .number-line .content:after{
     content: "<";
     position: absolute;
     line-height: 15px;
@@ -16,14 +16,14 @@
     font-weight: 400;
     color: #ddd;
     font-size: 26px;
-    top: -9px;
+    top: -11px;
 }
-.number-line .content:after{
+#XacDinhChanLeTrenTiaSo .number-line .content:after{
     content: ">";
     left: auto;
     right: 0;
 }
-.number-line .line{
+#XacDinhChanLeTrenTiaSo .number-line .line{
     float: left;
     width: 30px;
     font-size: 18px;
@@ -33,11 +33,11 @@
     text-align: center;
     line-height: 35px;
 }
-.number-line .line.active{
+#XacDinhChanLeTrenTiaSo .number-line .line.active{
     box-shadow: 0px 0px 0px 2px #1fb2e4;
     border-radius: 2px;
 }
-.number-line .line.active.first::after{
+#XacDinhChanLeTrenTiaSo .number-line .line.active.first::after{
     content: "";
     position: absolute;
     z-index: 1;
@@ -48,7 +48,7 @@
     top: -50px;
     left: 50%;
 }
-.number-line .line.active.first .sub{
+#XacDinhChanLeTrenTiaSo .number-line .line.active.first .sub{
     position: absolute;
     top: -75px;
     z-index: 2;
@@ -59,7 +59,7 @@
     font-size: 16px;
     font-weight: 500;
 }
-.number-line .line::before{
+#XacDinhChanLeTrenTiaSo .number-line .line::before{
     content: "";
     width: 0px;
     height: 15px;
@@ -68,4 +68,23 @@
     left: 0;
     margin-left: 50%;
     top: -24px;
+}
+#XacDinhChanLeTrenTiaSo  input[type="checkbox"] {
+    display:none;
+}
+#XacDinhChanLeTrenTiaSo input[type="checkbox"] + label  {
+    padding: 0;
+    text-align: center;
+    position: relative;
+    font-weight: 600;
+}
+#XacDinhChanLeTrenTiaSo input[type="checkbox"]:checked + label:before{
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-radius: 100%;
+    position: absolute;
+    background: #52c9f3;
+    top: -24px;
+    left: 8px;
 }

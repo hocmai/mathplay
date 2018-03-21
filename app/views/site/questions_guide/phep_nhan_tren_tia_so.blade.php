@@ -1,4 +1,4 @@
-<div class="huong-dan-giai text-left" >
+<div class="huong-dan-giai text-left">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper">
 		<div class="form-group number-line">
@@ -11,8 +11,9 @@
 				@endforeach
 			</div>
 		</div>
-		<p>-Có tất cả {{ ($position) }} mũi tên, đếm từ điểm xuất phát về bên phải {{ ($position) }} đơn vị .</p>
-		<p>-Độ dài của mỗi khoảng cách trên tia số là {{ $plus }}</p>
+		<p>Đầu tiên, ta quan sát các mũi tên trên tia số. Điểm bắt đầu tại số {{ $lines[0] }}, điểm kết thúc tại số {{ $position*$plus }}. Vì thế, độ dài của mỗi mũi tên trên tia số là {{ $plus }} </p>
+		<p>Có  {{ $position }} mũi tên giống nhau</p>
+		<p>Mũi tên cuối cùng chỉ số {{ $position*$plus }}</p>
 		<p class="answers">Như vậy, phép nhân được biểu diễn ở trên tia số là<b> {{ $position.' x '.$plus.' = '.$position*$plus }}</b></p>
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>

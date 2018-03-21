@@ -23,6 +23,7 @@
 		<p>	-Số chẵn là số có chữ số tận cùng là 2, 4, 6, 8, hoặc 0.</p>
 		<p>	-Số lẻ là số có chữ số tận cùng là 1, 3, 5, 7, hoặc 9</p>
 		@endif
+		<div class="clear clear-fix"></div> 
 		<p class="answers">Đáp án đúng là: {{ ($numRand%2 == 0) ? 'Chẵn' : 'Lẻ'}}</p>
         <button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
     </div>
