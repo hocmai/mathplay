@@ -1,10 +1,6 @@
 Tiêu đề và nội dung câu hỏi sẽ được tạo tự động
 
 <div class="form-group">
-	{{ Form::label('', 'Hình thức') }}
-	{{ Form::select('question_config[answer_type]['.$id.']', ['' => 'Mặc định', 'input' => 'Nhập số', 'choose' => 'Chọn đáp án đúng'], !empty($config['answer_type']) ? $config['answer_type'] : '', ['class' => 'form-control']) }}
-</div>
-<div class="form-group">
 	{{ Form::label('', 'Bắt đầu từ số:') }}
 	{{ Form::number('question_config[min_value]['.$id.']', !empty($config['min_value']) ? $config['min_value'] : 0, ['class' => 'form-control', 'placeholder' => 'Số đầu tiên', 'min' => -1]) }}
 	<div class="description">Số đầu tiên trên tia số. Nhập -1 để lấy 1 số ngẫu nhiên.</div>

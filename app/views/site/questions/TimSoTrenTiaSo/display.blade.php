@@ -1,5 +1,6 @@
 <?php
 $min = !empty($config['min_value']) ? $config['min_value'] : rand(1,10);
+$max = !empty($config['max_value']) ? $config['max_value'] : 100;
 $plus = !empty($config['number_plus']) ? $config['number_plus'] : rand(1,10);
 $range = (!empty($config['number_count']) && $config['number_count'] >= 3) ? $config['number_count'] : rand(5, 10);
 $lines = [];
@@ -19,13 +20,13 @@ if($type == 'inline'){
 	$target = rand($position-1,$position+1);
 }
 if($type == 'inline'){
-	$str_arr = ['Điền số còn thiếu trong tia số'];
+	$str_arr = ['Điền vào chỗ trống số còn thiếu trong tia số'];
 }
 elseif($type == 'input'){
 	if($target < $position)
-		$str_arr = ['Số nào bên phải cạnh số', $lines[$target] ];
+		$str_arr = ['Số nào bên phải cạnh số', $lines[$target],'trên tia số là số ?' ];
 	elseif( $target > $position ){
-		$str_arr = ['Số nào bên trái cạnh số', $lines[$target] ];
+		$str_arr = ['Số nào bên trái cạnh số', $lines[$target],'trên tia số là số ?' ];
 	}
 	else{
 		$str_arr = ['Ở vị trí số', $position + 1, 'là số mấy'];

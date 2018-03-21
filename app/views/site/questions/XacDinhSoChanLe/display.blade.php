@@ -9,7 +9,7 @@ $imageRand = getRandArrayVal($imageData);
 ?>
 
 @if($type == 'coin')
-	@include('site.questions.render-title', ['question' => $question, 'desc' => "Số lượng dưới đây là số chẵn hay số lẻ?"])
+	@include('site.questions.render-title', ['question' => $question, 'desc' => "Số lượng hinh ảnh dưới đây là số chẵn hay số lẻ?"])
 @else
 	@include('site.questions.render-title', ['question' => $question, 'desc' => $numRand." là số chẵn hay số lẻ?"])
 @endif
