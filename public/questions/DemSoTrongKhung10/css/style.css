@@ -1,6 +1,18 @@
-#DemSoTrongKhung10 td > div{
-    width: 50px;
-    height: 50px;
+#DemSoTrongKhung10 .frame{
+    margin: 10px 5px;
+}
+#DemSoTrongKhung10 .frame td {
+    border: 3px solid #bee8fb;
+    position: relative;
+    padding: 5px
+}
+#DemSoTrongKhung10 .frame td > div{
+    width: 30px;
+    height: 30px;
+
+}
+#DemSoTrongKhung10 .content .item-img{
+    padding: 5px;
 }
 #DemSoTrongKhung10 .question-wrapper .choose td>label{
 	width: 64px;
@@ -16,7 +28,13 @@
 #DemSoTrongKhung10 .question-wrapper .choose td>label:hover{
 	background: #32437c;
 }
-#DemSoTrongKhung10 .unknown.shape-none::before{content: "?";line-height: 50px;font-size: 35px;font-weight: 600;color: #ddd;}
+#DemSoTrongKhung10 .unknown.shape-none::before{
+    content: "?";
+    line-height: 20px;
+    font-size: 19px;
+    font-weight: 600;
+    color: #ddd;
+    }
 #DemSoTrongKhung10 .shape-none{width: 50px; height: 50px;}
 #DemSoTrongKhung10 .circle{border-radius: 100%; background: #8CC713}
 #DemSoTrongKhung10 .star{
@@ -40,31 +58,122 @@
     background: orange;
 }
 /***************huong dan giai******/
-div.shape-none .num{
+
+#DemSoTrongKhung10 .huong-dan-giai .frame .show-number{
+    margin: 24px;
+
+}
+
+#DemSoTrongKhung10 .huong-dan-giai .frame tr{
+    line-height: 18px;
+}
+
+#DemSoTrongKhung10 .huong-dan-giai .frame .sample td{
+    border: 3px solid #bee8fb;
+    padding: 5px;
+    color: #189881;
+    font-weight: 600;
+}
+#DemSoTrongKhung10 .huong-dan-giai .show-number td.last{
+    color: #64de0a;
+}
+#DemSoTrongKhung10 .huong-dan-giai table.answer_ten span.small{
+    font-size: 27px;
+    position: absolute;
+    left: 15px;
+    top: 6px;
+    color: #dfec0a
+}
+
+#DemSoTrongKhung10 .huong-dan-giai table.answer_ten .num{
+    font-size: 11px;
+    background: #10c6ef;
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+    font-weight: 600;
+    position: absolute;
+    top: -7px;
+    left: 19px;
+    z-index: 1;
+}
+#DemSoTrongKhung10 .huong-dan-giai table.answer_ten .num.last{
+    background: none;
+    line-height: 30px;
+    font-size: 12px;
+    text-align: center;
+    display: inline-block;
+    width: 25px;
+}
+#DemSoTrongKhung10 .huong-dan-giai table.answer_ten .num.last *{
+    z-index:  1;
+}
+#DemSoTrongKhung10 .huong-dan-giai table.answer_ten .num.last::after{
+    content: "\f005";
+    font: normal normal normal 14px/1 FontAwesome;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ffc914;
+    z-index: -1;
+    font-size: 28px;
+}
+/*sao cuoi tren dem o trong khung*/
+#DemSoTrongKhung10 .huong-dan-giai .frame td > div{
+    width: 30px;
+    height: 30px;
+}
+#DemSoTrongKhung10 .huong-dan-giai span.count-text{
+    color: #fff;
+    width: 35px;
+    display: inline-block;
+    border-radius: 20px;
+    background: #009cdf;
+    text-align: center;
+    font-weight: 700;
+}
+
+#DemSoTrongKhung10 .huong-dan-giai div.shape-none .num{
     display: inline-block;
     height: 27px;
     line-height: 27px;
     text-align: center;
-    font-size: 27px;
+    font-size: 14px;
     color: #2dea0a;
 }
 
-ins{
-    margin-left: 15px;
-}
 /*end dem o trong trong khung*/
-.content span.fa{
-    font-size: 40px;
-    margin-top: -10px;
-    position: relative;
-    left: 28px;
-    color: #17bcba;
+ /*sao cuoi cùng trong dem hinh anh*/
+#DemSoTrongKhung10 .huong-dan-giai .content .img-item .count.last{
+    border: none;
+        background: none;
+        line-height: 30px;
+        font-size: 13px;
+        text-align: center;
+        display: inline-block;
+        width: 25px;
 }
-.content span.last{
+#DemSoTrongKhung10 .huong-dan-giai .content .img-item .count.last > *{
+    z-index: -1;
+}
+#DemSoTrongKhung10 .huong-dan-giai .content .img-item .count.last::after{
+    content: "\f005";
+    font: normal normal normal 14px/1 FontAwesome;
+    position: absolute;
+    top: 0;
+    left: 0;
+    color: #ffc914;
+    z-index: -1;
+    font-size: 30px;
+}
+#DemSoTrongKhung10 .huong-dan-giai .content .img-item{
+    padding: 5px;
     position: relative;
-    display: inline-block;
+}
+#DemSoTrongKhung10 .huong-dan-giai .content .img-item .count{
+    position: absolute;
     top: -8px;
-    transform: inherit;
     background: #17bcba;
     font-weight: 600;
     color: #fff;
@@ -74,12 +183,16 @@ ins{
     line-height: 19px;
     text-align: center;
     font-size: 16px;
-    border: 1px solid #17bcba;
+    z-index: 9;
+    right: 22px;
 }
  /*end dem hinh trong khung*/
- .content .num{
+ #DemSoTrongKhung10 .huong-dan-giai .content .num{
     display: inline-block;
     text-align: center;
-    font-size: 22px;
+    font-size: 14px;
     color: #fff;
+}
+#DemSoTrongKhung10 .huong-dan-giai .content .num b{
+    font-weight: 900;
 }
