@@ -11,11 +11,13 @@
 
 	if( $countType == 'dem-o-con-thieu' ){
 		$max = ($max <= 10) ? $max : 9;
+		$min = ($min <= 10) ? $min : 1;
 	}
 	if( $countType == 'dem-hinh-anh' ){
 		$img_data = CommonQuestion::getImgData('DemSoTrongKhung10');
 		$img_rand = array_rand($img_data);
 		$max = ($max <= 10) ? $max : 10;
+		$min = ($min <= 10) ? $min : 1;
 	}
 	if( $max > 10 ){
 		$answertype = 'dien-dap-an';
@@ -52,58 +54,14 @@ else{
 		<div class="content form-group clearfix">
 			@if( $countType == 'dem-hinh-anh' )
 				@for($i = 1; $i <= $answer; $i++)
-					<div class="pull-left" style="margin: 10px">
-						<img src="{{ $img_data[$img_rand] }}" width="70" class="pull-left" />
+					<div class="pull-left item-img">
+						<img src="{{ $img_data[$img_rand] }}" width="50" class="pull-left" />
 					</div>
 					@if( $i == 5 ) <div class="clearfix"></div> @endif
 				@endfor
 
 			@else
-				{{-- @for( $j = 1; $j <= floor($answer/10); $j++ )
-					<table class="frame pull-left" style="margin: 10px">
-						<tr>
-							@for($i = 1; $i <= 5; $i++)
-								<td style="border: 5px solid #bee8fb; padding: 10px">
-									<div class="{{ $shape[$rand_shape] }}"></div>
-								</td>
-							@endfor
-						</tr>
-						<tr>
-							@for($i = 6; $i <= 10; $i++)
-								<td style="border: 5px solid #bee8fb; padding: 10px">
-									<div class="{{ $shape[$rand_shape] }}"></div>
-								</td>
-							@endfor
-						</tr>
-					</table>
-				@endfor
-
-				@if( $answer % 10 > 0 ) --}}
-					<table class="frame pull-left" style="margin: 10px">
-						<tr>
-							@for($i = 1; $i <= 5; $i++)
-								<td style="border: 5px solid #bee8fb; padding: 10px">
-									@if( $countType == 'dem-o-con-thieu' )
-										<div class="{{ ($i <= (10 - $answer) % 10 ) ? $shape[$rand_shape] : 'unknown shape-none' }}"></div>
-									@else
-										<div class="{{ ($i <= $answer % 10 ) ? $shape[$rand_shape] : 'shape-none' }}"></div>
-									@endif
-								</td>
-							@endfor
-						</tr>
-						<tr>
-							@for($i = 6; $i <= 10; $i++)
-								<td style="border: 5px solid #bee8fb; padding: 10px">
-									@if( $countType == 'dem-o-con-thieu' )
-										<div class="{{ ($i <= (10 - $answer) % 10 ) ? $shape[$rand_shape] : 'unknown shape-none' }}"></div>
-									@else
-										<div class="{{ ($i <= $answer % 10 ) ? $shape[$rand_shape] : 'shape-none' }}"></div>
-									@endif
-								</td>
-							@endfor
-						</tr>
-					</table>
-				{{-- @endif --}}
+				{{ DemSoTrongKhung10::getTableHtml($answer, $countType, $shape[$rand_shape]) }}
 			@endif
 		</div>
 		<div class="clearfix"></div>

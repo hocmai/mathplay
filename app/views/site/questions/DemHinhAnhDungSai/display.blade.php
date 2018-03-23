@@ -1,7 +1,7 @@
 <?php
 $min = (!empty($config['min_value']) && $config['min_value'] > 0) ? $config['min_value'] : 1;
-$max = !empty($config['max_value']) ? $config['max_value'] : 10;
-$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['choose']);
+$max = !empty($config['max_value']) ? $config['max_value'] : 20;
+$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['choose', 'input']);
 
 $answer_range = getRandArrayVal(range($min, $max), 2);
 $images = CommonQuestion::getImgData('DemHinhAnhDungSai');
