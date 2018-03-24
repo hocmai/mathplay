@@ -1,3 +1,11 @@
+<div class="form-group">
+	{{ Form::label('', 'Phép tính') }}
+	{{ Form::select('question_config[calculate]['.$id.']', [
+		'' => 'Mặc định',
+		'plus' => 'Phép cộng',
+		'sub' => 'Phép trừ'
+	], !empty($config['calculate']) ? $config['calculate'] : '', ['class' => 'form-control']) }}
+</div>
 <div class="row">
 	<div class="form-group col-sm-5">
 		{{ Form::label('', 'Số hạng nhỏ nhất') }}
