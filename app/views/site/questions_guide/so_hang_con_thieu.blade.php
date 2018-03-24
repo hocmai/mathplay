@@ -28,6 +28,7 @@
 				<p>{{ $answer1.' - '.'<b>'.'?'.'</b>'.' = '.($answer1-$answer2) }}</p>
 				<p>Thực hiện phép trừ 2 vế cho {{ ($answer1-$answer2) }}</p>
 				<p>{{ $answer1.' - '.'<b>'.'?'.'</b>'.' - '.'<b style = "color:blue">'.($answer1-$answer2).'</b>'.' = '.($answer1-$answer2).' - '.'<b style = "color:blue">'.($answer1-$answer2).'</b>' }}</p>
+				<p> {{ $answer2.' - '.'<b>'.'?'.'</b>'.' = '.'0' }}</p>
 				<p>{{ '<b>'.'?'.'</b>'.' = '.$answer2 }}</p>
 				<p class="answers">Như vậy, số còn thiếu trong ô trống là: {{ $answer2 }}</p>
 			@endif
