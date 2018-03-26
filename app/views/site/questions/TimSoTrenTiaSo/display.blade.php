@@ -20,7 +20,7 @@ if($type == 'inline'){
 	$target = rand($position-1,$position+1);
 }
 if($type == 'inline'){
-	$str_arr = ['Điền vào chỗ trống số còn thiếu trong tia số'];
+	$str_arr = ['Điền vào chỗ trống số còn thiếu trên tia số'];
 }
 elseif($type == 'input'){
 	if($target < $position)
