@@ -1,9 +1,9 @@
 <?php 
 $sort = !empty($config['sort']) ? $config['sort'] : getRandArrayVal(['asc', 'desc']); /////// Thu tu sap xep desc lớn nhất , asc bé nhất
 $numValue = (!empty($config['num_value']) && (int)$config['num_value'] > 3) ? (int)$config['num_value'] : rand(5,10); //// So luong phan tu cua day so
-$min = (!empty($config['min_value']) && (int)$config['min_value'] > 0) ? (int)$config['min_value'] : rand(1,100);
-$max = (!empty($config['max_value']) && (int)$config['max_value'] > ($min + $numValue)) ? (int)$config['max_value'] : rand($min + $numValue + 10, $min + $numValue + 15); ///// Gia tri max phai lon hon gia tri nho nhat + so luong phan tu
-$answer = '';
+$min = !empty($config['min_value']) ? $config['min_value'] : 1;
+$max = !empty($config['max_value']) ? $config['max_value'] : 100; ///// Gia tri max phai lon hon gia tri nho nhat + so luong phan tu
+
 // $Arr = [];
 // if( $rule ){
 // 	////////// Tao day so tang dan
