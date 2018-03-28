@@ -23,3 +23,15 @@ Tiêu đề và nội dung câu hỏi sẽ được tạo tự động
 	{{ Form::number('question_config[number_count]['.$id.']', !empty($config['number_count']) ? $config['number_count'] : 0,  ['class' => 'form-control', 'placeholder' => 'Số lượng phần tử', 'min' => 0, 'max' => 15]) }}
 	<div class="description">Nhập 0 để tạo ngẫu nhiên n số (n <= 10).</div>
 </div>
+<div class="form-group">
+	<div class="row">
+		<div class="col-xs-12 col-sm-6">
+			{{ Form::label('', 'Số nhỏ nhất dãy số') }}
+			{{ Form::text('question_config[min_value]['.$id.']', !empty($config['min_value']) ? $config['min_value'] : '', ['class' => 'form-control', 'max' => 100]) }}
+		</div>
+		<div class="col-xs-12 col-sm-6">
+			{{ Form::label('', 'Số lượng lớn nhất') }}
+			{{ Form::number('question_config[max_value]['.$id.']', !empty($config['max_value']) ? $config['max_value'] : '', ['class' => 'form-control','max'=> 100]) }}
+		</div>
+	</div>
+</div>
