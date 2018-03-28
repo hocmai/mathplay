@@ -24,7 +24,7 @@ for( $i = 0; $i < 3; $i++ ){
 }
 // dd($rand_arr, $number);
 ?>
-@include('site.questions.render-title', ['question' => $question])
+@include('site.questions.render-title', ['question' => $question, 'desc' => $question->content])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
@@ -51,7 +51,7 @@ for( $i = 0; $i < 3; $i++ ){
 						<div class="drop-grid-area"></div>
 					</div>
 					<div class="item equal">
-						<span class="head">bằng {{ $number }}</span>
+						<span class="head">Bằng {{ $number }}</span>
 						<div class="drop-grid-area"></div>
 					</div>
 					<div class="item greater">

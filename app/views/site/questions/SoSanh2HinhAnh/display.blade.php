@@ -2,7 +2,6 @@
 $min = (!empty($config['min_value']) && $config['min_value'] > 0) ? $config['min_value'] : 1;
 $max = !empty($config['max_value']) ? $config['max_value'] : 10;
 $type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['choose','true-false','select']);
-
 $answer_range = getRandArrayVal(range($min, $max), 2);
 $images = SoSanh2HinhAnh::getRandomData();
 if( count($images) ) {

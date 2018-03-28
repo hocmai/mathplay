@@ -43,7 +43,8 @@
                         <h1>Chương trình học toán toàn diện cho các bé mẫu giáo và tiểu học</h1>
                         <p>Tăng tự tin. Cải thiện điểm số. Hoàn thiện năng lực tư duy.</p>
                        {{--  <a class="button"href="#signup-modal">Học thử</a> --}}
-                        <a class="button"href="#signup-modal">Học thử</a>
+                       <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI); ?>
+                        <a class="button" href="{{ $ssoLib->getAuthorizeUri() }}">Học thử</a>
                     </div>
                 </div>
             </div>
@@ -82,7 +83,7 @@
         <div class="container">
             <h2 class="block-title">Câu hỏi sinh động giúp trẻ hứng thú học<br>và hoàn thiện các năng lực toán học</h2>
             <div class="block-content">
-                <img src="{{ asset('frontend/images/home/widescreen.gif') }}">
+                <img src="{{ asset('frontend/images/home/widescreen.png') }}">
                 <div class="intro-row text-left">
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 item padding0">
@@ -90,8 +91,8 @@
                                 <img src="{{ asset('frontend/images/home/gamification.png') }}">
                             </div>
                             <div class="col-xs-9 col-sm-9 text">
-                                <h3>Fun Rewards</h3>
-                                <span>Get coins for each correct answer and redeem coins for virtual pets</span>
+                                <h3>Học mà chơi</h3>
+                                <span>Chương trình học dành cho học sinh lớp 1 đến lớp 3</span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 item padding0">

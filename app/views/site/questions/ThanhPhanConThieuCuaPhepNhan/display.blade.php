@@ -30,4 +30,4 @@ $answer = $b;
 		</div>
 	{{ Form::close() }}
 </div>
-@include('site.questions_guide.so_hang_con_thieu_phep_nhan')
+@include('site.questions_guide.thanh_phan_con_thieu_cua_phep_nhan')
