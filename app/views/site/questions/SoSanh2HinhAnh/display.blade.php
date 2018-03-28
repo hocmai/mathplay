@@ -25,8 +25,7 @@ else if( $type == 'select' ){
     $desc = 'Hãy chọn nhóm có số '.$image_rand[0].' bằng nhóm dưới đây.';
 }
 else{
-    $compare = !empty($config['compare']) ? $config['compare'] : getRandArrayVal(['nhiều hơn','ít hơn']);
-    // $compare = getRandArrayVal(['nhiều hơn', 'ít hơn']);
+    $compare = getRandArrayVal(['nhiều hơn', 'ít hơn']);
     $answer = $num2;
     if( ($compare == 'nhiều hơn' && $num1 > $num2) | ($compare == 'ít hơn' && $num1 < $num2) ){
         $answer = $num1;
