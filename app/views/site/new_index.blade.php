@@ -91,8 +91,8 @@
                                 <img src="{{ asset('frontend/images/home/gamification.png') }}">
                             </div>
                             <div class="col-xs-9 col-sm-9 text">
-                                <h3>Chương trình tiểu học</h3>
-                                <span>Giới thiệu chương trình toán tiểu học từ lớp 1 đến lớp 3</span>
+                                <h3>Học mà chơi</h3>
+                                <span>Chương trình học dành cho học sinh lớp 1 đến lớp 3</span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 item padding0">
