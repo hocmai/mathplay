@@ -51,7 +51,7 @@ for( $i = 0; $i < 3; $i++ ){
 						<div class="drop-grid-area"></div>
 					</div>
 					<div class="item equal">
-						<span class="head">bằng {{ $number }}</span>
+						<span class="head">Bằng {{ $number }}</span>
 						<div class="drop-grid-area"></div>
 					</div>
 					<div class="item greater">
