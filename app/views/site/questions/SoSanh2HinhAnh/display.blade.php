@@ -2,7 +2,6 @@
 $min = (!empty($config['min_value']) && $config['min_value'] > 0) ? $config['min_value'] : 1;
 $max = !empty($config['max_value']) ? $config['max_value'] : 10;
 $type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['choose','true-false','select']);
-
 $answer_range = getRandArrayVal(range($min, $max), 2);
 $images = SoSanh2HinhAnh::getRandomData();
 if( count($images) ) {
@@ -26,7 +25,8 @@ else if( $type == 'select' ){
     $desc = 'Hãy chọn nhóm có số '.$image_rand[0].' bằng nhóm dưới đây.';
 }
 else{
-    $compare = getRandArrayVal(['nhiều hơn', 'ít hơn']);
+    $compare = !empty($config['compare']) ? $config['compare'] : getRandArrayVal(['nhiều hơn','ít hơn']);
+    // $compare = getRandArrayVal(['nhiều hơn', 'ít hơn']);
     $answer = $num2;
     if( ($compare == 'nhiều hơn' && $num1 > $num2) | ($compare == 'ít hơn' && $num1 < $num2) ){
         $answer = $num1;
