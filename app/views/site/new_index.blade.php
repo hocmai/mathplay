@@ -43,8 +43,13 @@
                         <h1>Chương trình học toán toàn diện cho các bé mẫu giáo và tiểu học</h1>
                         <p>Tăng tự tin. Cải thiện điểm số. Hoàn thiện năng lực tư duy.</p>
                        {{--  <a class="button"href="#signup-modal">Học thử</a> --}}
-                       <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI); ?>
-                        <a class="button" href="{{ $ssoLib->getAuthorizeUri() }}">Học thử</a>
+                        <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
+                         ?>
+                        @if(Auth::user()->check())
+                            {{-- <a class="button" href="{{ action('SiteGradeController@show','',['id' => common::getAllGrade()]) }}">Học Thử</a> --}}
+                        @else
+                            <a class="dang-ky button hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Học Thử</a>
+                        @endif
                     </div>
                 </div>
             </div>
@@ -91,8 +96,8 @@
                                 <img src="{{ asset('frontend/images/home/gamification.png') }}">
                             </div>
                             <div class="col-xs-9 col-sm-9 text">
-                                <h3>Học mà chơi</h3>
-                                <span>Chương trình học dành cho học sinh lớp 1 đến lớp 3</span>
+                                <h3>Mô hình học mà chơi</h3>
+                                <span>Mô hình học mà chơi giúp trẻ có tư duy tốt, hoàn thiện cả về thể chất và tinh thần</span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 item padding0">

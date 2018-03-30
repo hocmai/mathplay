@@ -30,7 +30,7 @@
 				</table>
 				<div class="clear clearfix"></div>
 				@if( $answer <= 10 )
-					<p>- Đếm số ô  trong khung.</p>
+					<p>- Đếm {{ ($countType == 'dem-o-con-thieu') ? 'số ô trống trong khung dưới đây':'số hình có trong khung' }}.</p>
 					{{ DemSoTrongKhung10::getTableGuideHtml($answer, $countType, $shape[$rand_shape]) }}
 				@else
 				<p>* Đầu tiên đếm các khung đủ 10 ô<br>
