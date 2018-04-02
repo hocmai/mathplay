@@ -178,6 +178,10 @@ h1.page-title{
 #box-profile{
     background: #fff;
 }
+.intro-section .intro-row span{
+    font-size: 17px;
+}
+/*// footer//*/
 footer{
     color: #fff;
     background: url(../images/bg-body-footer.png) no-repeat bottom center/100%;
