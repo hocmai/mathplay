@@ -28,6 +28,17 @@ if( $count_b < $count_a ){
 <div class="huong-dan-giai text-left">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper">
+	@if($a == 0 || $b == 0)
+		<p>Bất cứ số nào cộng với 0 thì kết quả cũng bằng chính số đó.</p>
+		<span class="col-xs-5 col-sm-3 text-right">
+			{{ $a }}<br>
+			+ {{ $b }}<br>
+			<hr>
+			{{ $a+$b }}
+		</span>
+		<div class="clear clear-fix"></div>
+		<p class="answers">Đáp án đúng là: {{ $a+$b }}</p>
+	@else
 		<span class="col-xs-5 col-sm-3 text-right">
 			{{ $a }}<br>
 			+ {{ $b }}<br>
@@ -85,6 +96,7 @@ if( $count_b < $count_a ){
 			</div> <!-- End line -->	
 		@endfor
 		<p class="answers">Đáp án đúng là: <b>{{ $a+$b }}</b></p>
+	@endif
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>
