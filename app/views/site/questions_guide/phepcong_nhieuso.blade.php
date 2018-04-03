@@ -30,14 +30,22 @@ if( $count_b < $count_a ){
 	<div class="wrapper">
 	@if($a == 0 || $b == 0)
 		<p>Bất cứ số nào cộng với 0 thì kết quả cũng bằng chính số đó.</p>
-		<span class="col-xs-5 col-sm-3 text-right">
-			{{ $a }}<br>
-			+ {{ $b }}<br>
-			<hr>
-			{{ $a+$b }}
-		</span>
+		<div class=" col-xs-5 col-sm-3 text-right plus-table ">
+			@for($i = 0; $i < 10; $i++ )
+				<div class="inline-block">{{ $i.' + '.$a.' = '.($i+$a) }}</div>
+			@endfor
+		</div>
 		<div class="clear clear-fix"></div>
-		<p class="answers">Đáp án đúng là: {{ $a+$b }}</p>
+		<p class="answers"> Như vậy đáp án đúng là: {{ $a.' + '.$b.' = '.($a+$b) }}</p>
+	@elseif($a > 1 && $a <20 || $b >1 && $b < 20)
+		<p>Ghi nhớ bảng cộng {{ $a }}</p>
+		<div class=" col-xs-5 col-sm-3 text-right plus-table">
+			@for($i = 1; $i < 15; $i++ )
+				<div class="inline-block">{{ $i.' + '.$a.' = '.($i+$a) }}</div>
+			@endfor
+		</div>
+		<div class="clear clear-fix"></div>
+		<p class="answers"> Như vậy đáp án đúng là: {{ $a.' + '.$b.' = '.($a+$b) }}</p>
 	@else
 		<span class="col-xs-5 col-sm-3 text-right">
 			{{ $a }}<br>
