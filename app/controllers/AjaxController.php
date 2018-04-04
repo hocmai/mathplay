@@ -224,6 +224,11 @@ class AjaxController extends BaseController {
             StudyHistory::find($study_history->id)->update($data);
         }
         else{
+            ///////////// Neu nguoi dung chua dang nhap thi thi luu thong tin lam bai vao session
+            $_lessons = Session::has('anonymous_lesson') ? Session::get('anonymous_lesson') : [];
+            $_lessons[$data['lession_id']] = $data;
+            Session::put('anonymous_lesson', $_lessons);
+
             $data['score'] = ( $data['score'] >= $lessonConf['max_score'] ) ? $lessonConf['max_score'] : $data['score'];
             $data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
         }

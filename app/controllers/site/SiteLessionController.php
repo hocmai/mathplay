@@ -2,7 +2,8 @@
 
 class SiteLessionController extends BaseController {
 	public function __construct() {
-        // $this->beforeFilter('user');
+        // $this->beforeFilter('user', array('only'=>['show']));
+        $this->beforeFilter('limit_question', ['only' => 'show']);
     }
 
 

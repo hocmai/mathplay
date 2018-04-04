@@ -18,7 +18,7 @@
 				@endforeach
 			</div>
 		</div>
-		<p>Khoảng cách giữa 2 số là: {{ $plus }}</p>
+		<p>Khoảng cách giữa 2 số trên tia số là: {{ $plus }}</p>
 		@if($type == 'input-total')
 			<p>{{ $lines[$position-1].' + '.$plus.' = '.$answer }}</p>
 		@elseif($type == 'input')
@@ -31,9 +31,9 @@
 			@endif
 		@elseif($type == 'inline')
 			@if($position == 0)
-				<p>Số đầu tiên: {{ $lines[1].' - '.$plus. ' = '.$answer }}</p>
+				<p>Số đầu tiên trên tia số : {{ $lines[1].' - '.$plus. ' = '.$answer }}</p>
 			@elseif($position == count($lines)-1)
-				<p>Số cuối cùng: {{ $lines[$position-1].' + '.$plus. ' = '.$answer }}</p>
+				<p>Số cuối cùng trên tia số: {{ $lines[$position-1].' + '.$plus. ' = '.$answer }}</p>
 			@else
 				<p>Tìm số giữa {{ $lines[$position-1].' và '.$lines[$position+1].' Bắt đầu đếm từ '.$lines[$position-1].' trở đi.' }}</p>
 				<p>Thực hiện phép tính: {{ $lines[$position-1].' + '.$plus.' = '.$answer }}</p>
