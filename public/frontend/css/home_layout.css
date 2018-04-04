@@ -204,7 +204,7 @@ footer .copy-right{
 /*// css error_lesson*/
 .box-bai-lam p.text-error{
     background: #009cdf;
-    margin: 60px 150px;
+    margin: 50px auto 0px;
     text-align: center;
     width: 400px;
     border: 2px solid #97f6fc;
