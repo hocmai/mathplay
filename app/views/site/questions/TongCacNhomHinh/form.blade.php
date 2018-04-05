@@ -1,6 +1,6 @@
 <div class="form-group">
 	{{ Form::label('', 'Phép tính') }}
-	{{ Form::select('question_config[type]['.$id.']', [''=>'Mặc định', 'count'=>'Phép đếm', 'nhan'=>'Phép nhân', 'phan-tich'=>'Phân tích phép cộng thành phép nhân','nhan-chia' => 'Quan hệ phép nhân và phép chia'], !empty($config['type']) ? $config['type'] : '', ['class' => 'form-control']) }}
+	{{ Form::select('question_config[type]['.$id.']', [''=>'Mặc định', 'count'=>'Phép đếm', 'nhan'=>'Phép nhân', 'phan-tich'=>'Phân tích phép cộng thành phép nhân'], !empty($config['type']) ? $config['type'] : '', ['class' => 'form-control']) }}
 </div>
 <div class="form-group">
 	{{ Form::label('', 'Số lượng các nhóm hình') }}

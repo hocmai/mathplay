@@ -8,9 +8,9 @@ $max_a = !empty($config['max_a']) ? $config['max_a'] : 100;
 $min_b = !empty($config['min_b']) ? $config['min_b'] : 1;
 $max_b = !empty($config['max_b']) ? $config['max_b'] : 10;
 
-$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['chia_img', 'chia']);
+$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['chia_img', 'chia','nhan-chia']);
 $desc ='';
-if( $type == 'chia_img'){
+if( $type == 'chia_img'| $type == 'nhan-chia'){
 	$group = rand($min_group, $max_group);
 	$each = rand($each_min, $each_max);
 	$imagesData = CommonQuestion::getImgData('TongCacNhomHinh');
@@ -53,6 +53,23 @@ if( $type == 'chia_img'){
 					</div>
 					<div class="clear clear-fix"></div>
 					<div class="chia_img inline-block">
+						{{ ($group*$each).' : '.$group.' = ' }}<span class="answer">{{ Form::text('answer', ' ',['class' => 'inline-block','style' => 'width:40px']) }}</span>
+					</div>
+				@elseif($type == 'nhan-chia')
+					<div class="question-content inline-block">
+						@for ($i = 0; $i < $group; $i++)
+							<div class="circle" style="transform: rotate({{ rand(0, 360) }}deg);">
+								<div class="cont">
+									@for ($j = 0; $j < $each; $j++)
+										<span class="inline-block text-center"><img src="{{ asset($imagesData[$imageShow]) }}" width="30px" height="30px"></span>
+									@endfor
+								</div>
+							</div>
+						@endfor
+					</div>
+					<div class="clear clear-fix"></div>
+					<div class="nhan-chia inline-block">
+						<p>{{ $group.' x '.$each.' = '.($group*$each)}}</p>
 						{{ ($group*$each).' : '.$group.' = ' }}<span class="answer">{{ Form::text('answer', ' ',['class' => 'inline-block','style' => 'width:40px']) }}</span>
 					</div>
 				@else

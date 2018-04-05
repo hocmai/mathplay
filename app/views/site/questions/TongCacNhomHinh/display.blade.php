@@ -3,7 +3,7 @@ $min_group = !empty($config['group_min']) ? $config['group_min'] : 2;
 $max_group = !empty($config['group_max']) ? $config['group_max'] : 5;
 $each_min = !empty($config['each_min']) ? $config['each_min'] : 2;
 $each_max = !empty($config['each_max']) ? $config['each_max'] : 5;
-$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['count', 'nhan','phan-tich','nhan-chia']);
+$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['count', 'nhan','phan-tich']);
 
 $group = rand($min_group, $max_group);
 $each = rand($each_min, $each_max);
@@ -25,9 +25,7 @@ if( $type == 'nhan' | $type == 'phan-tich' ){
 if( $type == 'phan-tich' ){
 	$answer = $group.$group;
 }
-if($type == 'nhan-chia'){
-	$answer = ($group*$each)/($group);
-}
+
 ?>
 @include('site.questions.render-title', ['question' => $question])
 
@@ -58,10 +56,6 @@ if($type == 'nhan-chia'){
 							{{ ($position == 1) ? Form::text('answer', '', ['class' => 'text-center form-control inline-block', 'style' => 'width: 50px']) : $each }} = 
 							{{ ($position == 2) ? Form::text('answer', '', ['class' => 'text-center form-control inline-block', 'style' => 'width: 50px']) : $group*$each }}
 						</p>
-					@elseif($type == 'nhan-chia')
-						<p>{{ $group.' x '.$each.' = '.($group*$each) }}</p>
-						<p>{{ ($group*$each).' : '.$group.' = ' }}<span> {{ Form::text('answer','',['class' => 'text-center form-control inline-block', 'style' => 'width: 50px']) }}</span></p>
-
 					@elseif ($type == 'phan-tich')
 						<div class="phan-tich text-left inline-block">
 							<input type="hidden" name="answer" value="" />
