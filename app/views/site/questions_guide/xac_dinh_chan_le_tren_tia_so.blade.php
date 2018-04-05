@@ -2,8 +2,8 @@
     <h2>Hướng dẫn giải</h2>
     <div class="wrapper">
     	<p>* Nhớ<br>
-			Số chẵn là số có chữ số tận cùng là 2, 4, 6, 8, hoặc 0.<br>
-			Số lẻ là số có chữ số tận cùng là 1, 3, 5, 7, hoặc 9.
+			Ở trên tia số, ta đi tìm các số có chữ số tận cùng là 1, 3, 5, 7, hoặc 9. (đối với trường hợp số lẻ)<br>
+			Ở trên tia số, ta đi tìm các số có chữ số tận cùng là 0, 2, 4, 6, hoặc 8. (đối với trường hợp số chẵn)
 		</p>
     	<div class="form-group number-line">
 			<div class="content inline-block">
