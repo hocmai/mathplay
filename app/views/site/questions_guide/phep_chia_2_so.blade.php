@@ -45,7 +45,7 @@
 			<p class="answers"> Như vậy số cần điền là : {{ $answer }}</p>	
 		@else
 			<p>Ta có thể trả lời câu hỏi này nhờ các mối liên hệ về số đã biết:</p>
-			<div class=" inline-block text-right" style="border:2px solid #eee">
+			<div class=" inline-block text-center" style="border:2px solid #eee">
 				@for ($x = 1; $x <= 10; $x++)
 					<p class=" item">{{ ($x*$a).' : '.$a.' = '.(($x*$a)/$a) }}</p>
 				@endfor

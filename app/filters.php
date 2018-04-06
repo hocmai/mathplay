@@ -36,9 +36,10 @@ App::after(function($request, $response)
 Route::filter('limit_question', function()
 {
 	if (!Auth::user()->check()){
-		if( count( Session::get('anonymous_lesson') ) > 3 ){
-			return View::make('site.lession.error');
-		}
+		// if( count( Session::get('anonymous_lesson') ) > 3 ){
+		// 	return View::make('site.lession.error');
+		// }
+		return View::make('site.lession.error');
 	}
 });
 
