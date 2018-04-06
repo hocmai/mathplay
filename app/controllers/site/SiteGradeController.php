@@ -30,10 +30,11 @@ class SiteGradeController extends SiteController {
 			App::abort(403);
 		}
 
-		$chapters = [];
-		if( $data->subject()->count() && $data->subject()->first()->chapter()->count() ){
-			$chapters = $data->subject()->first()->chapter()->orderBy('weight', 'asc')->get();
+		if( !Cache::has('grade_chapters_list_'.$gradeSlug) ){
+			$listChapter = $grade->chapter()->orderBy('weight', 'asc')->get();
+			Cache::put('grade_chapters_list_'.$gradeSlug, $listChapter, 60);
 		}
+		$chapters = Cache::get('grade_chapters_list_'.$gradeSlug);
 		return View::make('site.grade.default')->with(compact(['data', 'chapters']));
 	}
 
@@ -52,10 +53,11 @@ class SiteGradeController extends SiteController {
 		
 		$subject = $grade->subject()->first();
 		
-		$chapters = [];
-		if( $grade->subject()->count() && $grade->subject()->first()->chapter()->count() ){
-			$chapters = $grade->subject()->first()->chapter()->orderBy('weight', 'asc')->get();
+		if( !Cache::has('grade_chapters_list_'.$gradeSlug) ){
+			$listChapter = $grade->chapter()->orderBy('weight', 'asc')->get();
+			Cache::put('grade_chapters_list_'.$gradeSlug, $listChapter, 60);
 		}
+		$chapters = Cache::get('grade_chapters_list_'.$gradeSlug);
 		return View::make('site.subject.index')->with(compact(['grade', 'chapters', 'subject']));
 	}
 

@@ -41,6 +41,9 @@ Route::filter('limit_question', function()
 		// }
 		return View::make('site.lession.error');
 	}
+	else {
+		
+	}
 });
 
 Route::filter('auth', function()

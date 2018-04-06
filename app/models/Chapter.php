@@ -16,6 +16,7 @@ class Chapter extends Eloquent implements SluggableInterface
         'title',
         'subject_id',
         'author_id',
+        'grade_id',
         'status',
         'weight',
         'slug',
@@ -41,6 +42,11 @@ class Chapter extends Eloquent implements SluggableInterface
     public function lession()
     {
         return $this->hasMany('Lession', 'chapter_id', 'id');
+    }
+
+    public function grade()
+    {
+        return $this->belongsTo('Grade', 'grade_id', 'id');
     }
  
 }

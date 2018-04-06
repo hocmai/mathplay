@@ -10,6 +10,10 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+Route::group(['prefix' => '/test'], function(){
+	Route::controller('','TestController');
+});
+
 Route::get('/demo/{grade_slug}', 'SiteDemoController@show');
 Route::get('/bailam',function(){
 	return View::make('demo.bailam');
