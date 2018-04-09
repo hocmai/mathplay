@@ -7,9 +7,13 @@
             <div class="row margin0">
                 <div class="col-xs-12 col-sm-8 padding0 boxLeft">
                 	<div class="bg-box-lam-bai lession-content">
-		            	<p class="text-error"> Bạn phải là thành viên, mới được làm tiếp bài!</p>
-				        <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);?>
-		            	<a href="{{ $ssoLib->getAuthorizeUri() }}" class="dangky_hocmai"> Đăng ký tại đây!</a>
+                        @if($logged)
+    		            	<p class="text-error">Bạn phải đăng ký khóa học mới được làm tiếp chương này!</p>
+                        @else
+                            <p class="text-error"> Bạn phải là thành viên, mới được làm tiếp bài!</p>
+                            <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);?>
+                            <a href="{{ $ssoLib->getAuthorizeUri() }}" class="dang-ky button hocmai-oauth-login"> Đăng ký tại đây!</a>
+                        @endif
 		            </div>
                 </div> <!-- End left -->
 	            <div class="col-xs-12 col-sm-4 boxRight">

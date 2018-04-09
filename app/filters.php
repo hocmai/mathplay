@@ -39,10 +39,39 @@ Route::filter('limit_question', function()
 		// if( count( Session::get('anonymous_lesson') ) > 3 ){
 		// 	return View::make('site.lession.error');
 		// }
-		return View::make('site.lession.error');
+		return View::make('site.lession.error')->with('logged', false);
 	}
+	// neu chua dang nhap thi k lam dc bai
 	else {
+
+		$user_id = Auth::user()->get()->id ;
+		$grade_slug = UserCourse::where('user_id', $user_id)->get()->lists('grade_slug');
+		$currentGrade = Request::segment(1);
 		
+		//da dang nhap nhu  chua mua khoa hoc se lm dc 3 bai dau tien cua moi chuong
+		if(!in_array($currentGrade ,$grade_slug )){
+			if( !Cache::has('list_three_of_first_lesson') ){
+				$grades = Grade::all();
+				$lessons = [];
+				foreach ($grades as $grade) {
+					$chapter = $grade->chapter()->orderBy('weight', 'asc')->first();
+					if( $chapter != null && $chapter->lession() != null ){
+						$lesson = $chapter->lession()->limit(3)->lists('slug');
+						foreach ($lesson as $value) {
+							$lessons[] = $value;
+						}
+					}
+				}
+				Cache::put('list_three_of_first_lesson', $lessons, 30);
+			}
+			else{
+				$lessons = Cache::get('list_three_of_first_lesson');
+			}
+			$currentLesson = Request::segment(3);
+			if(!in_array($currentLesson, $lessons)){
+				return View::make('site.lession.error')->with('logged',true);
+			}
+		}
 	}
 });
 

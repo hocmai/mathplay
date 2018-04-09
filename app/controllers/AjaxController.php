@@ -148,6 +148,16 @@ class AjaxController extends BaseController {
                 if( !$exists | (Common::getObject($checkUserExists, 'deleted_at') == null &&  Common::getObject($checkUserExists, 'status') == 1) ){
                     // $uid = Common::getObject($checkUserExists, 'id');
                     if(Auth::user()->loginUsingId($uid, true)){
+                        /*
+                        | --------------------------------------------------------------------------
+                        | TODO: Lay danh sach khoa hoc tu hoc mai, insert vao bang user_cource
+                        | --------------------------------------------------------------------------
+                        | @params $input['something']
+                        | @autho : dangnv
+                        | @suggest: Chay vong lap $input['xxx'] de lay danh sach ma khoa hoc cua hoc mai
+                        |           Lay nhung ma khoa hoc cua cac lop 1, 2, 3 (neu co), doi chieu voi cac record
+                        |           trong bang grade de insert database
+                        */
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
                     }
                 }else{

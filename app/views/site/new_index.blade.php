@@ -47,7 +47,7 @@
                         $grade = common::getAllGrade();
                          ?>
                         @if(Auth::user()->check())
-                             <a class="button" href="{{('/lop-1/') }}">Học Tiếp</a>
+                             <a class="button" href="{{ url('lop-1') }}">Học Tiếp</a>
                         @else
                             <a class="dang-ky button hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Học Thử</a>
                         @endif
