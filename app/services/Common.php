@@ -338,4 +338,22 @@ class Common {
 		}
 		return 'Kid';
 	}
+
+	// dangnv duong dan cho the <a> 
+	public static function getGradeLinkOfUser(){
+		$ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
+		if(!Auth::user()->check()){
+			return '<a class="dang-ky button hocmai-oauth-login" href= "'.$ssoLib->getAuthorizeUri().'" title="">Học Thử</a>';
+		}else {
+			
+			$user_id = Auth::user()->get()->id ;
+			$grade = UserCourse::where('user_id', $user_id)->whereNotNull('grade_slug')->first();
+
+			if($grade != null){
+				return '<a class="button" href="'.$grade->grade_slug.'">Học Tiếp</a>';		
+			}
+			return ' <a href= "lop-1" class="button">Học tiếp</a>';
+		}
+	}
+
 }

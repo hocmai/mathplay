@@ -29,7 +29,6 @@ class SiteLessionController extends BaseController {
 		$grade   = Grade::findBySlug($grade_slug);
 		$subject = Subject::findBySlug($subject_slug);
 		$lession = Lession::findBySlug($lession_slug);
-
 		if( !$grade | !$subject | !$lession ){
 			App::abort(404);
 		}

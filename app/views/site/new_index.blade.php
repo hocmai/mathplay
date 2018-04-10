@@ -42,15 +42,10 @@
                     <div class="caption-wrap">
                         <h1>Chương trình học toán toàn diện cho các bé mẫu giáo và tiểu học</h1>
                         <p>Tăng tự tin. Cải thiện điểm số. Hoàn thiện năng lực tư duy.</p>
-                       {{--  <a class="button"href="#signup-modal">Học thử</a> --}}
-                        <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
-                        $grade = common::getAllGrade();
-                         ?>
-                        @if(Auth::user()->check())
-                             <a class="button" href="{{ url('lop-1') }}">Học Tiếp</a>
-                        @else
-                            <a class="dang-ky button hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Học Thử</a>
-                        @endif
+                      
+                           {{--   <a class="button" href="{{ url('lop-1') }}">Học Tiếp</a>
+                            <a class="dang-ky button hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Học Thử</a> --}}
+                        {{ common::getGradeLinkOfUser() }}
                     </div>
                 </div>
             </div>
