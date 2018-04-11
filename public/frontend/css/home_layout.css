@@ -256,43 +256,15 @@ footer .copy-right{
 }
 /*css text mien phi trong subject*/
 .list-chapter .chapter-item ul.nav li span.free_text{
-   color: white;
-    cursor: pointer;
     display: inline-block;
-    font-family: roboto;
-    font-size: 16px;
+    font-size: 12px;
     font-weight: 600;
+    color: red;
     padding: 5px 10px;
     text-align: center;
+    text-shadow: 1px 2px 1px #eee;
     text-decoration: none;
+    -webkit-animation: mymove 5s ease infinite;
+    -moz-animation: mymove 2s ease infinite;
 }
-@-webkit-keyframes glowing {
-  0% { background-color: #53c8f3; -webkit-box-shadow: 0 0 3px #53c8f3; }
-  50% { background-color: #0094FF; -webkit-box-shadow: 0 0 10px #0094FF; }
-  100% { background-color: #53c8f3; -webkit-box-shadow: 0 0 3px #53c8f3; }
-}
- 
-@-moz-keyframes glowing {
-  0% { background-color: #53c8f3; -moz-box-shadow: 0 0 3px #53c8f3; }
-  50% { background-color: #0094FF; -moz-box-shadow: 0 0 10px #0094FF; }
-  100% { background-color: #53c8f3; -moz-box-shadow: 0 0 3px #53c8f3; }
-}
- 
-@-o-keyframes glowing {
-  0% { background-color: #53c8f3; box-shadow: 0 0 3px #53c8f3; }
-  50% { background-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
-  100% { background-color: #53c8f3; box-shadow: 0 0 3px #53c8f3; }
-}
- 
-@keyframes glowing {
-  0% { background-color: #53c8f3; box-shadow: 0 0 3px #53c8f3; }
-  50% { background-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
-  100% { background-color: #53c8f3; box-shadow: 0 0 3px #53c8f3; }
-}
- 
-.chapter-item ul.nav li span.free_text {
-  -webkit-animation: glowing 1500ms infinite;
-  -moz-animation: glowing 1500ms infinite;
-  -o-animation: glowing 1500ms infinite;
-  animation: glowing 1500ms infinite;
-}
+
