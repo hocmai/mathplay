@@ -202,27 +202,97 @@ footer .copy-right{
     padding-top: 12px;
 }
 /*// css error_lesson*/
-.box-bai-lam p.text-error{
-    background: #009cdf;
-    margin: 50px auto 0px;
+.box-bai-lam div.text-error{
+    background-image: url(../images/hd-gui-bai.png);
+    height: 180px;
+    width: 210px;
+    line-height: 1;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 12px;
     text-align: center;
-    width: 400px;
-    border: 2px solid #97f6fc;
-    border-radius: 10px;
-    color: #fff;
-    font-size: 20px;
+    right: 0;
+}
+.box-bai-lam div.text-error p.item-text{
     font-weight: 600;
-    -webkit-text-stroke: #fff;
+    font-size: 18px;
+    width: 170px;
+    margin: 25px;
+    text-shadow: 2px 2px 1px #ECF;
+    padding: 3px 15px 15px;
+    -webkit-animation: mymove 5s ease infinite;
+    -moz-animation: mymove 5s ease infinite;
+}
+/* Simple Animation */
+@-webkit-keyframes mymove
+{
+0% {opacity:1.0; text-shadow:0 0 20px #fff;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #fff;}
+}
+
+@-moz-keyframes mymove
+{
+0% {opacity:1.0; text-shadow:0 0 20px #fff;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #fff; }
+}
+
+/*//end */
+.box-bai-lam div.notification p.img_err{
+    margin: 150px 15px 0;
 }
 .box-bai-lam a.dang-ky{
     border: 1px solid #97f6fc;
-    border-radius: 5px;
-    font-size: 20px;
-    font-weight: 500;
+    border-radius: 15px;
+    font-size: 16px;
+    line-height: 1;
+    font-weight: 600;
     color: #fff;
     background-color: #06BA89;
-    width: 200px;
+    width: 160px;
     display: block;
-    margin: 50px auto 0px;
-
+    margin: 0px auto 50px;
+}
+/*css text mien phi trong subject*/
+.list-chapter .chapter-item ul.nav li span.free_text{
+   color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-family: roboto;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+}
+@-webkit-keyframes glowing {
+  0% { background-color: #53c8f3; -webkit-box-shadow: 0 0 3px #53c8f3; }
+  50% { background-color: #0094FF; -webkit-box-shadow: 0 0 10px #0094FF; }
+  100% { background-color: #53c8f3; -webkit-box-shadow: 0 0 3px #53c8f3; }
+}
+ 
+@-moz-keyframes glowing {
+  0% { background-color: #53c8f3; -moz-box-shadow: 0 0 3px #53c8f3; }
+  50% { background-color: #0094FF; -moz-box-shadow: 0 0 10px #0094FF; }
+  100% { background-color: #53c8f3; -moz-box-shadow: 0 0 3px #53c8f3; }
+}
+ 
+@-o-keyframes glowing {
+  0% { background-color: #53c8f3; box-shadow: 0 0 3px #53c8f3; }
+  50% { background-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
+  100% { background-color: #53c8f3; box-shadow: 0 0 3px #53c8f3; }
+}
+ 
+@keyframes glowing {
+  0% { background-color: #53c8f3; box-shadow: 0 0 3px #53c8f3; }
+  50% { background-color: #0094FF; box-shadow: 0 0 10px #0094FF; }
+  100% { background-color: #53c8f3; box-shadow: 0 0 3px #53c8f3; }
+}
+ 
+.chapter-item ul.nav li span.free_text {
+  -webkit-animation: glowing 1500ms infinite;
+  -moz-animation: glowing 1500ms infinite;
+  -o-animation: glowing 1500ms infinite;
+  animation: glowing 1500ms infinite;
 }

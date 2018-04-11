@@ -93,7 +93,7 @@
                                                             <a href="{{ action('SiteLessionController@show', ['grade_slug' => $grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
                                                                     {{  $lession->title }}
                                                                     @if(in_array($lession->slug, $lessonfree))
-                                                                        <span>(Miễn phí)</span>
+                                                                        <span class="free_text">(Miễn phí)</span>
                                                                     @endif
                                                                 <?php $starLesson = Common::getMaxStarOfAnLesson($lession->id); ?>
                                                                 <span class="star-list">

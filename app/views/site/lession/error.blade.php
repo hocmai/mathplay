@@ -6,17 +6,27 @@
            {{--  <h1 class="node-title bg">{{ Common::getValueOfObject($lession, 'chapter', 'title') }}</h1> --}}
             <div class="row margin0">
                 <div class="col-xs-12 col-sm-8 padding0 boxLeft">
-                	<div class="bg-box-lam-bai lession-content">
+                    <div class="bg-box-lam-bai lession-content">
                         @if($logged)
-    		            	<p class="text-error">Bạn phải đăng ký khóa học mới được làm tiếp chương này!</p>
+                            <div class="notification">
+                                <div class="text-error" >
+                                    <p class="item-text">Bạn phải đăng ký khóa học mới được làm tiếp chương này!</p>
+                                </div>
+                                <p class="img_err"><img src="{{ asset('/errors/images/owl_night.png') }}" /></p>
+                            </div>
                         @else
-                            <p class="text-error"> Bạn phải là thành viên, mới được làm tiếp bài!</p>
-                            <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);?>
-                            <a href="{{ $ssoLib->getAuthorizeUri() }}" class="dang-ky button hocmai-oauth-login"> Đăng ký tại đây!</a>
+                            <div class="notification">
+                                <div class="text-error">
+                                    <p class="item-text">Bạn phải là thành viên, mới được làm bài!</p>
+                                </div>
+                                <p class="img_err"><img src="{{ asset('/errors/images/owl_night.png') }}" /></p>
+                                <?php $ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);?>
+                                <a href="{{ $ssoLib->getAuthorizeUri() }}" class="dang-ky button hocmai-oauth-login"> Đăng ký thành viên mới tại đây!</a>
+                            </div>
                         @endif
-		            </div>
+                    </div>
                 </div> <!-- End left -->
-	            <div class="col-xs-12 col-sm-4 boxRight">
+                <div class="col-xs-12 col-sm-4 boxRight">
                     <div class="lession-process hidden-xs">
                         <div class="progress">
                             <div class="active progress-bar progress-bar-warning progress-bar-striped" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0">
