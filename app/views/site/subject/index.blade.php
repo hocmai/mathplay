@@ -144,9 +144,9 @@
                     </div> <!-- End chuong-trinh -->
                 </div> <!-- End content left -->
 
-                <div class="col-xs-12 col-sm-2 sidebar-right hidden-xs">
-                    <div class="top-level">
-                        <div class="box-top">
+                <div class="col-xs-12 col-sm-2 sidebar-right hidden-xs" >
+                    <div class="top-level" >
+                       {{--  <div class="box-top">
                             <h2 class="title">Bảng xếp hạng học sinh lớp 1</h2>
                         </div>
                         <div class="content-rating">
@@ -249,10 +249,10 @@
                                         <span class="name">ANNA T.</span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        
                     </div>
+
                 </div> <!-- End sidebar right -->
             </div> <!-- End row -->
 
