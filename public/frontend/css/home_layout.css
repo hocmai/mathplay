@@ -243,16 +243,21 @@ footer .copy-right{
     margin: 150px 15px 0;
 }
 .box-bai-lam a.dang-ky{
-    border: 1px solid #97f6fc;
-    border-radius: 15px;
-    font-size: 16px;
-    line-height: 1;
-    font-weight: 600;
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    font-family: 'ProximaNova';
+    font-weight: 500;
+    padding: 10px 0px 13px 0px;
+    width: 320px;
+    background-color: #17bcba;
+    box-shadow: inset 0px -3px 0px 0px #00e5c5;
+    border-radius: 40px;
     color: #fff;
-    background-color: #06BA89;
-    width: 160px;
-    display: block;
-    margin: 0px auto 50px;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    text-shadow: none;
 }
 /*css text mien phi trong subject*/
 .list-chapter .chapter-item ul.nav li span.free_text{

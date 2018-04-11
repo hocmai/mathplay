@@ -356,4 +356,23 @@ class Common {
 		}
 	}
 
+	// lay 3 bai dau tien cua chuong 1
+	public static function getLessonThereFree(){
+		$lessons = Cache::get('list_three_of_first_lesson');
+		if( !Cache::has('list_three_of_first_lesson') | $lessons === null ){
+			$grades = Grade::all();
+			$lessons = [];
+			foreach ($grades as $grade) {
+				$chapter = $grade->chapter()->orderBy('weight', 'asc')->first();
+				if( $chapter != null && $chapter->lession() != null ){
+					$lesson = $chapter->lession()->limit(3)->lists('slug');
+					foreach ($lesson as $value) {
+						$lessons[] = $value;
+					}
+				}
+			}
+			Cache::put('list_three_of_first_lesson', $lessons, 30);
+		}
+		return $lessons;
+	} 
 }

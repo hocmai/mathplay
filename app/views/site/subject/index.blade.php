@@ -64,19 +64,7 @@
                                 <?php
                                 $count = count($chapters);
                                 $middle = ($count % 2 == 0) ? $count/2 : ($count+1)/2;
-                                $lessonfree = Cache::get('list_three_of_first_lesson');
-                                if( $lessonfree == null ){
-                                    foreach (Grade::all() as $grade) {
-                                        $chapter = $grade->chapter()->orderBy('weight', 'asc')->first();
-                                        if( $chapter != null && $chapter->lession() != null ){
-                                            $lesson = $chapter->lession()->limit(3)->lists('slug');
-                                            foreach ($lesson as $value) {
-                                                $lessonfree[] = $value;
-                                            }
-                                        }
-                                    }
-                                }
-                                // dd($lessonfree);
+                                $lessonfree = common::getLessonThereFree();
                                 ?>
                                 <div class="row">
                                     <div class="col-sm-6 col-1">
