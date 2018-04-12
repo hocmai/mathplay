@@ -50,8 +50,7 @@ Route::filter('limit_question', function()
 		
 		//da dang nhap nhu  chua mua khoa hoc se lm dc 3 bai dau tien cua moi chuong
 		if(!in_array($currentGrade ,$grade_slug )){
-			
-			$lessons = common::getLessonThereFree();
+			$lessons =Common::getLessonThereFree();
 			$currentLesson = Request::segment(3);
 			if(!in_array($currentLesson, $lessons)){
 				return View::make('site.lession.error')->with('logged',true);
