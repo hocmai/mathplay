@@ -158,6 +158,7 @@ class AjaxController extends BaseController {
                         |           Lay nhung ma khoa hoc cua cac lop 1, 2, 3 (neu co), doi chieu voi cac record
                         |           trong bang grade de insert database
                         */
+                        
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
                     }
                 }else{

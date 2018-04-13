@@ -11,7 +11,13 @@
         padding: 15px 30px;
     }
 }
-
+@media screen and (max-width: 991px){
+    .gui-bai{
+        padding: 0 5px 5px;
+        font-size: 18px;
+        font-weight: 700;
+    }
+}
 /*max-width: 768px (máy tính bảng loại to, hiển thị chiều dọc)*/
 @media screen and (min-width: 768px) and (max-width: 1366px){
     #NhanDienCacHinh .check-multi label,
@@ -31,6 +37,7 @@
     }
     .gui-bai{
         display: none;
+        padding: 5px;
     }
 }
 @media screen and (max-width: 768px){
@@ -98,6 +105,12 @@
         width: 30px !important;
         height: 30px !important;
         display: inline-block !important;
+    }
+    /*nut gui bai trong man hinh mobiphone*/
+    .huong-dan-giai a.gui-bai {
+        padding: 5px;
+        font-size: 16px;
+        font-weight: 700;
     }
     /* dem hinh anh*/
     #DemHinhAnh .image-show-area{

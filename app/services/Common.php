@@ -73,11 +73,18 @@ class Common {
 	}
 
 	public static function getAllGrade(){
-		if( !Cache::has('list_all_grades') ){
-			$grades = Grade::all();
-			Cache::put('list_all_grades', $grades, 15);
+		if(Auth::admin()->check()){
+			if( !Cache::has('list_admin_grades') ){
+				$grades = Grade::all();
+				Cache::put('list_admin_grades', $grades, 10);
+			}
+			return Cache::get('list_admin_grades');	
 		}
-		return Cache::get('list_all_grades');
+		if( !Cache::has('list_anonymous_grades') ){
+			$grades = Grade::all();
+			Cache::put('list_anonymous_grades', $grades, 10);
+		}
+		return Cache::get('list_anonymous_grades');
 	}
 
 	public static function getLessionTree(){
@@ -358,6 +365,24 @@ class Common {
 
 	// lay 3 bai dau tien cua chuong 1
 	public static function getLessonThereFree(){
+		if(Auth::admin()->check()){
+			$lessons = Cache::get('list_three_of_admin_first_lesson');
+			if( !Cache::has('list_three_of_admin_first_lesson') | $lessons === null ){
+				$grades = Grade::all();
+				$lessons = [];
+				foreach ($grades as $grade) {
+					$chapter = $grade->chapter()->orderBy('weight', 'asc')->first();
+					if( $chapter != null && $chapter->lession() != null ){
+						$lesson = $chapter->lession()->limit(3)->lists('slug');
+						foreach ($lesson as $value) {
+							$lessons[] = $value;
+						}
+					}
+				}
+				Cache::put('list_three_of_admin_first_lesson', $lessons, 30);
+			}
+			return $lessons;
+		}
 		$lessons = Cache::get('list_three_of_first_lesson');
 		if( !Cache::has('list_three_of_first_lesson') | $lessons === null ){
 			$grades = Grade::all();

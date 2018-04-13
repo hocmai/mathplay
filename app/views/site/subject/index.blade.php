@@ -64,7 +64,7 @@
                                 <?php
                                 $count = count($chapters);
                                 $middle = ($count % 2 == 0) ? $count/2 : ($count+1)/2;
-                                $lessonfree = common::getLessonThereFree();
+                                $lessonfree = Common::getLessonThereFree();
                                 ?>
                                 <div class="row">
                                     <div class="col-sm-6 col-1">
