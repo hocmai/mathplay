@@ -154,9 +154,35 @@ class AjaxController extends BaseController {
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
                         $accessToken = $input['access_token'];
                         $packages = $this->HocmaiOAuth->getResource('/me/packages', $accessToken);
-                        return Response::json([$packages, $accessToken]);
+                        if( is_array($packages) && count($packages) ){
+                            UserCourse::where('user_id', $uid)->delete();
+                            foreach ($packages as $value) {
+                                if( !empty($value['id']) && !empty($value['name']) ){
+                                    if( $value['id'] == 1425 | $value['name'] == 'Mathplay lớp 1' ){
+                                        UserCourse::create([
+                                            'user_id' => $uid,
+                                            'hocmai_course_id' => $value['id'],
+                                            'grade_slug' => 'lop-1',
+                                        ])
+                                    } else if( $value['id'] == 1423 | $value['name'] == 'Mathplay lớp 2' ){
+                                        UserCourse::create([
+                                            'user_id' => $uid,
+                                            'hocmai_course_id' => $value['id'],
+                                            'grade_slug' => 'lop-2',
+                                        ])
+                                    } else if( $value['id'] == 1424 | $value['name'] == 'Mathplay lớp 3' ){
+                                        UserCourse::create([
+                                            'user_id' => $uid,
+                                            'hocmai_course_id' => $value['id'],
+                                            'grade_slug' => 'lop-3',
+                                        ])
+                                    }
+                                }
+                            }
+                        }
+                        // return Response::json([$packages, $accessToken]);
                     }
-                    return Response::json($input);
+                    // return Response::json($input);
                 }else{
                     $messages['message'] = 'Tài khoản đã bị xóa hoặc tạm khóa! Vui lòng liên hệ với Admin để được hỗ trợ.';
                 }
