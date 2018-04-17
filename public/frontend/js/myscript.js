@@ -55,7 +55,7 @@ $(document).ready(function(){
                         $('body>.loading').html('<span>'+data.message+'</span>');
                         window.setTimeout(function(){
                             if( typeof data.status != 'undefined' && data.status == 'success' ){
-                                //window.location.href = '';
+                                window.location.href = '';
                             } else{
                                 $('body>.loading').hide('normal');
                             }
