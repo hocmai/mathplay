@@ -1,5 +1,5 @@
 <?php
-$num_col = !empty($config['number_count']) ? $config['number_count'] : rand(5,10);
+$num_col = !empty($config['number_count']) ? $config['number_count'] : rand(5,10); //tổng số trong dãy số
 $start = !empty($config['start_value']) ? $config['start_value'] : rand(1,10);
 $plus = !empty($config['number_plus']) ? $config['number_plus'] : rand(1,10);
 $position = rand(1,$num_col);

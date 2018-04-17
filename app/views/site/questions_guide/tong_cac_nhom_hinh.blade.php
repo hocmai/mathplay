@@ -19,7 +19,7 @@
 		@if($type == 'nhan')
 			<p>-Có tất cả {{ $group }} nhóm, mỗi nhóm {{ $each }} {{ $imageShow }}.</p>
 			<p class="answers">Viết biểu thức nhân biểu diễn {{ $group.' x '.$each.' = '.($group*$each) }}</p>
-		@elseif($type=='phan-tich')
+		@elseif($type == 'phan-tich')
 			<p>-Có <b>{{ $group }}</b> nhóm<b> {{ $imageShow }}</b></p>
 			<p class="answers">Đáp án {{ $group.' x '.$each.' = '.($group*$each) }}</p>
 		@else

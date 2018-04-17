@@ -140,10 +140,22 @@ class AjaxController extends BaseController {
                 if( !$exists | (Common::getObject($checkUserExists, 'deleted_at') == null &&  Common::getObject($checkUserExists, 'status') == 1) ){
                     // $uid = Common::getObject($checkUserExists, 'id');
                     if(Auth::user()->loginUsingId($uid, true)){
+                        /*
+                        | --------------------------------------------------------------------------
+                        | TODO: Lay danh sach khoa hoc tu hoc mai, insert vao bang user_cource
+                        | --------------------------------------------------------------------------
+                        | @params $input['something']
+                        | @autho : dangnv
+                        | @suggest: Chay vong lap $input['xxx'] de lay danh sach ma khoa hoc cua hoc mai
+                        |           Lay nhung ma khoa hoc cua cac lop 1, 2, 3 (neu co), doi chieu voi cac record
+                        |           trong bang grade de insert database
+                        */
+                        
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
                         $accessToken = $input['access_token'];
                         $packages = $this->HocmaiOAuth->getResource('/me/packages', $accessToken);
-                        return Response::json([$packages, $messages, $accessToken, $this->HocmaiOAuth->getAccessToken()]);
+                        $packages = json_decode($packages);
+                        return Response::json($packages);
                     }
                     return Response::json($input);
                 }else{
@@ -220,6 +232,11 @@ class AjaxController extends BaseController {
             StudyHistory::find($study_history->id)->update($data);
         }
         else{
+            ///////////// Neu nguoi dung chua dang nhap thi thi luu thong tin lam bai vao session
+            $_lessons = Session::has('anonymous_lesson') ? Session::get('anonymous_lesson') : [];
+            $_lessons[$data['lession_id']] = $data;
+            Session::put('anonymous_lesson', $_lessons);
+
             $data['score'] = ( $data['score'] >= $lessonConf['max_score'] ) ? $lessonConf['max_score'] : $data['score'];
             $data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
         }

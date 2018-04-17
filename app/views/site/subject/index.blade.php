@@ -50,7 +50,7 @@
                                     <?php $LastLessonDo = Common::getLastLessonDo(Common::getObject($grade, 'id')); ?>
                                     @if( $LastLessonDo )
                                         <span>Con đang học {{ Common::getValueOfObject($LastLessonDo, 'chapter', 'title') }}</span>
-                                        <a class="link" href="{{ action('SiteLessionController@show', ['grade_slug' => $LastLessonDo->subject->grade->slug, 'subject_slug' => $LastLessonDo->subject->slug, 'lession_slug' => $LastLessonDo->lession->slug]) }}">học tiếp</a>
+                                        <a class="link" href="{{ action('SiteLessionController@show', ['grade_slug' => Common::getObject($LastLessonDo->grade,'slug'), 'subject_slug' => Common::getObject($LastLessonDo->subject, 'slug'), 'lession_slug' => Common::getObject($LastLessonDo->lession, 'slug')]) }}">học tiếp</a>
                                     @endif
                                 </div>
                             </div>
@@ -64,6 +64,7 @@
                                 <?php
                                 $count = count($chapters);
                                 $middle = ($count % 2 == 0) ? $count/2 : ($count+1)/2;
+                                $lessonfree = Common::getLessonThereFree();
                                 ?>
                                 <div class="row">
                                     <div class="col-sm-6 col-1">
@@ -74,11 +75,14 @@
                                                 </h2>
                                                 <ul class="nav">
                                                     <?php $lessions = Lession::orderBy('weight', 'asc')->where('chapter_id', $chapters[$i]->id)->get(); ?>
+
                                                     @foreach( $lessions as $lession)
                                                         <li>
-                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
-                                                                {{ $lession->title }}
-                                                                
+                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
+                                                                    {{  $lession->title }}
+                                                                    @if(in_array($lession->slug, $lessonfree))
+                                                                        <span class="free_text">(Miễn phí)</span>
+                                                                    @endif
                                                                 <?php $starLesson = Common::getMaxStarOfAnLesson($lession->id); ?>
                                                                 <span class="star-list">
                                                                     <i class="fa fa-star {{ ($starLesson >= 1) ? 'yellow-color' : '' }}"></i>
@@ -101,7 +105,7 @@
                                                 <ul class="nav">
                                                     @foreach($chapters[$i]->lession as $lession)
                                                         <li>
-                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $chapters[$i]->subject->grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}
+                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}
                                                                 
                                                                 <?php $starLesson = Common::getMaxStarOfAnLesson($lession->id); ?>
                                                                 <span class="star-list">
@@ -128,9 +132,9 @@
                     </div> <!-- End chuong-trinh -->
                 </div> <!-- End content left -->
 
-                <div class="col-xs-12 col-sm-2 sidebar-right hidden-xs">
-                    <div class="top-level">
-                        <div class="box-top">
+                <div class="col-xs-12 col-sm-2 sidebar-right hidden-xs" >
+                    <div class="top-level" >
+                       {{--  <div class="box-top">
                             <h2 class="title">Bảng xếp hạng học sinh lớp 1</h2>
                         </div>
                         <div class="content-rating">
@@ -233,10 +237,10 @@
                                         <span class="name">ANNA T.</span>
                                     </div>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
-                        
                     </div>
+
                 </div> <!-- End sidebar right -->
             </div> <!-- End row -->
 

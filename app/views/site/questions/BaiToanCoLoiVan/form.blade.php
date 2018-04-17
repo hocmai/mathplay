@@ -56,3 +56,12 @@
 		<button type="button" style="margin-top: -135px;" class="btn btn btn-info add-new-answer-arr"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
 	</div>
 </div>
+<?php $uique = str_random(10); ?>
+<div class="form-group">
+	{{ Form::label('', 'Nhập hướng dẫn giải') }}
+	{{ Form::textarea('question_config[question_guide]['.$id.']', isset($config['question_guide']) ? $config['question_guide'] : '', ['class' => 'form-control', 'required' => true, 'id' => 'editor-'.$uique ]) }}
+	<script type="text/javascript">
+		CKEDITOR.replace( 'editor-{{ $uique }}' );
+		CKEDITOR.add
+	</script>
+</div>

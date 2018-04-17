@@ -1,5 +1,5 @@
 <?php
-$min = !empty($config['min_value']) ? $config['min_value'] : rand(1,10);
+$min = !empty($config['min_value']) ? $config['min_value'] : 1;
 $max = !empty($config['max_value']) ? $config['max_value'] : 100;
 $plus = !empty($config['number_plus']) ? $config['number_plus'] : rand(1,10);
 $range = (!empty($config['number_count']) && $config['number_count'] >= 3) ? $config['number_count'] : rand(5, 10);
@@ -20,7 +20,7 @@ if($type == 'inline'){
 	$target = rand($position-1,$position+1);
 }
 if($type == 'inline'){
-	$str_arr = ['Điền vào chỗ trống số còn thiếu trong tia số'];
+	$str_arr = ['Điền vào chỗ trống số còn thiếu trên tia số'];
 }
 elseif($type == 'input'){
 	if($target < $position)

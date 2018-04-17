@@ -3,7 +3,7 @@ $min_group = !empty($config['group_min']) ? $config['group_min'] : 2;
 $max_group = !empty($config['group_max']) ? $config['group_max'] : 5;
 $each_min = !empty($config['each_min']) ? $config['each_min'] : 2;
 $each_max = !empty($config['each_max']) ? $config['each_max'] : 5;
-$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['count', 'nhan']);
+$type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['count', 'nhan','phan-tich']);
 
 $group = rand($min_group, $max_group);
 $each = rand($each_min, $each_max);
@@ -25,6 +25,7 @@ if( $type == 'nhan' | $type == 'phan-tich' ){
 if( $type == 'phan-tich' ){
 	$answer = $group.$group;
 }
+
 ?>
 @include('site.questions.render-title', ['question' => $question])
 

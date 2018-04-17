@@ -32,6 +32,7 @@ else if( $answer == '<' ){
 			<p>Vế trái: {{ $left[0].' + '.$left[1].' = '.($left[0]+$left[1]) }}</p>
 			<p>Vế phải: {{ $right[0].' + '.$right[1].' = '.($right[0]+$right[1]) }}</p>
 			<p>Thực hiện so sánh 2 vế: {{ ($left[0]+$left[1]).' '.$answer.' '.($right[0]+$right[1]) }} Như vậy: {{ $num1.' '.$answer.' '.$num2 }}</p>
+
 		@elseif($method == 'hieu-so')
 			<?php $left = explode(' - ', $num1); ?>
 			<p>Vế trái: {{ $left[0].' - '.$left[1].' = '.($left[0]-$left[1]) }}</p>

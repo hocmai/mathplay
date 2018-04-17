@@ -2,7 +2,8 @@
 
 class SiteLessionController extends BaseController {
 	public function __construct() {
-        // $this->beforeFilter('user');
+        // $this->beforeFilter('user', array('only'=>['show']));
+        $this->beforeFilter('limit_question', ['only' => 'show']);
     }
 
 
@@ -28,7 +29,6 @@ class SiteLessionController extends BaseController {
 		$grade   = Grade::findBySlug($grade_slug);
 		$subject = Subject::findBySlug($subject_slug);
 		$lession = Lession::findBySlug($lession_slug);
-
 		if( !$grade | !$subject | !$lession ){
 			App::abort(404);
 		}

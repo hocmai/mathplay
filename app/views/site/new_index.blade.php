@@ -42,8 +42,10 @@
                     <div class="caption-wrap">
                         <h1>Chương trình học toán toàn diện cho các bé mẫu giáo và tiểu học</h1>
                         <p>Tăng tự tin. Cải thiện điểm số. Hoàn thiện năng lực tư duy.</p>
-                       {{--  <a class="button"href="#signup-modal">Học thử</a> --}}
-                        <a class="button"href="#signup-modal">Học thử</a>
+                      
+                           {{--   <a class="button" href="{{ url('lop-1') }}">Học Tiếp</a>
+                            <a class="dang-ky button hocmai-oauth-login" href="{{ $ssoLib->getAuthorizeUri() }}" title="">Học Thử</a> --}}
+                        {{ common::getGradeLinkOfUser() }}
                     </div>
                 </div>
             </div>
@@ -56,7 +58,7 @@
                 <span></span>
                 <img src="{{-- {{ asset('frontend/images/home/awards-honors-badge-bed.png') }} --}}">
             </div>
-            <a class="link-scroll pull-right" href="#"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
+            <a class="link-scroll pull-right" href="#content"><i class="fa fa-chevron-down" aria-hidden="true"></i></a>
             <div class="right pull-right">
                 <span class="counter">{{-- 50,000+<br>Schools --}}</span>
                 <span class="teacher">{{-- 15 Million+<br>Learners --}}</span>
@@ -67,7 +69,7 @@
 
 <div class="content-wrapper">
     <section class="home-section map-section white-bg text-center">
-        <div class="container">
+        <div class="container" id="content">
             <h2 class="block-title">Bài tập được cá nhân hóa dành riêng cho mỗi bé
                 <br>Gồm đầy đủ trình độ từ dễ đến khó</h2>
             <div class="block-content">
@@ -82,7 +84,7 @@
         <div class="container">
             <h2 class="block-title">Câu hỏi sinh động giúp trẻ hứng thú học<br>và hoàn thiện các năng lực toán học</h2>
             <div class="block-content">
-                <img src="{{ asset('frontend/images/home/widescreen.gif') }}">
+                <img src="{{ asset('frontend/images/home/widescreen.png') }}">
                 <div class="intro-row text-left">
                     <div class="row">
                         <div class="col-xs-12 col-sm-4 item padding0">
@@ -90,8 +92,8 @@
                                 <img src="{{ asset('frontend/images/home/gamification.png') }}">
                             </div>
                             <div class="col-xs-9 col-sm-9 text">
-                                <h3>Fun Rewards</h3>
-                                <span>Get coins for each correct answer and redeem coins for virtual pets</span>
+                                <h3>Mô hình học mà chơi</h3>
+                                <span>Giúp trẻ có tư duy tốt, năng động vui vẻ trong quá trình học tập</span>
                             </div>
                         </div>
                         <div class="col-xs-12 col-sm-4 item padding0">
@@ -150,7 +152,6 @@
                         <p class="desc">Ứng dụng học toán tuyệt vời cho các con lứa tuổi tiểu học.</p>
                         <span class="author">Thầy Bùi Minh Mẫn</span>
                         <span class="address">Giáo viên<br>Việt Trì, Phú Thọ</span>
-                        <span class="source">source: https://www.hocmai.com</span>
                     </div>
                 </div>
             </div>
