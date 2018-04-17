@@ -60,13 +60,16 @@ class HocmaiOAuth2 {
         return $this->setAccessToken($accessToken);
     }
 
-    function getResource($resource) {
+    function getResource($resource, $accessToken = null) {
         $fields = array(
             'resource' => $resource,
         );
+        if( $accessToken == null ){
+            $accessToken = $this->getAccessToken();
+        }
 
         return $this->doRequest(self::$RESOURCE_ENDPOINT, $fields, array(
-            'Authorization: Bearer ' . $this->getAccessToken()
+            'Authorization: Bearer ' . $accessToken
         ));
     }
 
