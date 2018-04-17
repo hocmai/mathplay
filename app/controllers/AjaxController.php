@@ -153,10 +153,11 @@ class AjaxController extends BaseController {
                         
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
                         $accessToken = $input['access_token'];
-                        $packages = $this->HocmaiOAuth->getResource('/me/packages', $accessToken);
+                        $packages = (array)$this->HocmaiOAuth->getResource('/me/packages', $accessToken);
                         if( is_array($packages) && count($packages) ){
                             UserCourse::where('user_id', $uid)->delete();
                             foreach ($packages as $value) {
+                                $value = (array)$value;
                                 if( !empty($value['id']) && !empty($value['name']) ){
                                     if( $value['id'] == 1425 | $value['name'] == 'Mathplay lớp 1' ){
                                         UserCourse::create([
