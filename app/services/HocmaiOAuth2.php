@@ -4,10 +4,11 @@ class HocmaiOAuth2 {
     private static $TOKEN_ENDPOINT = 'https://hocmai.vn/sso/token.php';
     private static $RESOURCE_ENDPOINT = 'https://hocmai.vn/sso/resource.php';
     private static $AUTHORIZE_ENDPOINT = 'https://hocmai.vn/loginv2/index.php';
-
-    private $CLIENT_ID = NULL;
-    private $CLIENT_SECRET = NULL;
-    private $CLIENT_REDIRECT_URI = NULL;
+    private static $CLIENT_VERSION = '1.2';
+    private $CLIENT_ID = '4UMMmM26a43SZL8nPFDcz3DM7YpFxGyh';
+    private $CLIENT_SECRET = 'fmHCxaFZQsRfaAgeZj2ctUpPULCP3k4T';
+    private $CLIENT_REDIRECT_URI = 'http://tieuhoc.hocmai.vn/sso/index.php';
+    private $ACCESS_TOKEN = NULL;
 
     function __construct($client_id, $client_secret, $client_uri) {
         $this->CLIENT_ID = $client_id ? $client_id : NULL;
@@ -18,7 +19,7 @@ class HocmaiOAuth2 {
     function getAuthorizeUri() {
         $params = array(
             'response_type' => 'code',
-            'state' => '1000',
+            'state' => time(),
             'client_id' => $this->CLIENT_ID,
             'redirect_uri' => $this->CLIENT_REDIRECT_URI
         );
@@ -31,46 +32,78 @@ class HocmaiOAuth2 {
     }
 
     // if app is not authorized, get access token form authorization_code
-    function getAccessToken($code = '') {
-        // define client information
+    function getAccessToken() {
+        if (!is_null($this->ACCESS_TOKEN)) {
+            return $this->ACCESS_TOKEN;
+        }
+
         $fields = array(
+            'grant_type'    => 'authorization_code',
+            'code'          => $this->getAuthorizeCode()
+        );
+
+        $token          = $this->doRequest(self::$TOKEN_ENDPOINT, $fields);
+        $accessToken    = isset($token->access_token) ? $token->access_token : NULL;
+
+        return $this->setAccessToken($accessToken);
+    }
+
+    function getAccessTokenByRefreshToken($refresh_token) {
+        $fields = array(
+            'grant_type'    => 'refresh_token',
+            'refresh_token'    => $refresh_token,
+        );
+
+        $token          = $this->doRequest(self::$TOKEN_ENDPOINT, $fields);
+        $accessToken    = isset($token->access_token) ? $token->access_token : NULL;
+
+        return $this->setAccessToken($accessToken);
+    }
+
+    function getResource($resource) {
+        $fields = array(
+            'resource' => $resource,
+        );
+
+        return $this->doRequest(self::$RESOURCE_ENDPOINT, $fields, array(
+            'Authorization: Bearer ' . $this->getAccessToken()
+        ));
+    }
+
+    function doRequest($endpoint, $fields, $headers = array()) {
+        if (!is_array($headers)) {
+            $headers = array();
+        }
+
+        if (!is_array($fields)) {
+            $fields = array();
+        }
+
+        $fields = array_merge(array(
+            'client_version' => self::$CLIENT_VERSION,
             'client_id'     => $this->CLIENT_ID,
             'client_secret' => $this->CLIENT_SECRET,
             'redirect_uri'  => $this->CLIENT_REDIRECT_URI,
-            'grant_type'    => 'authorization_code',
-            'code'          => !empty($code) ? $code : $this->getAuthorizeCode()
-        );
-        // submit authorize code to token endpoint
+        ), $fields);
+
         $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, self::$TOKEN_ENDPOINT);
-        curl_setopt($curl, CURLOPT_POST, sizeof($fields));
-        curl_setopt($curl, CURLOPT_POSTFIELDS, $fields);
+        curl_setopt($curl, CURLOPT_URL, $endpoint);
+        curl_setopt($curl, CURLOPT_POST, true);
+        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($fields, '', '&'));
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($curl, CURLOPT_HTTPHEADER, array_merge(array(
+            'Content-Type: application/x-www-form-urlencoded',
+        ), $headers));
 
         $result = curl_exec($curl);
         curl_close($curl);
-        // get access token
-        $token          = json_decode($result);
-        $accessToken    = isset($token->access_token) ? $token->access_token : NULL;
 
-        return $accessToken;
+        // get access token
+        return json_decode($result);
     }
 
-    function getResource($access_token) {
-        $fields = array(
-            'access_token' => $access_token
-        );
-
-        $curl = curl_init();
-        curl_setopt($curl, CURLOPT_URL, self::$RESOURCE_ENDPOINT);
-        curl_setopt($curl, CURLOPT_POST, true);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, http_build_query($fields));
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, array('Content-Type: application/x-www-form-urlencoded'));
-
-        $result = curl_exec($curl);
-        curl_close($curl);
-
-        return json_decode($result);
+    function setAccessToken($accessToken) {
+        $this->ACCESS_TOKEN = $accessToken;
+        return $this->ACCESS_TOKEN;
     }
 }

@@ -150,6 +150,7 @@ class AjaxController extends BaseController {
                     if(Auth::user()->loginUsingId($uid, true)){
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
                     }
+                    return Response::json($input);
                 }else{
                     $messages['message'] = 'Tài khoản đã bị xóa hoặc tạm khóa! Vui lòng liên hệ với Admin để được hỗ trợ.';
                 }
