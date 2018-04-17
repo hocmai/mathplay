@@ -33,6 +33,16 @@ class Grade extends Eloquent implements SluggableInterface
         return $this->hasMany('Subject', 'grade_id', 'id');
     }
 
+    public function chapter()
+    {
+        return $this->hasMany('Chapter', 'grade_id', 'id');
+    }
+
+    public function lession()
+    {
+        return $this->hasMany('Lession', 'grade_id', 'id');
+    }
+
     public function author(){
         return $this->belongsTo('Admin', 'author_id', 'id');
     }

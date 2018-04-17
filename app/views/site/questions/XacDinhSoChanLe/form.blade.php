@@ -10,6 +10,6 @@
 	</div>
 	<div class="form-group">
 		{{ Form::label('','Giá trị lớn nhất') }}
-		{{ Form::text('question_config[max]['.$id.']', !empty($config['max']) ? $config['max'] : 100, ['class' => 'form-control']) }}
+		{{ Form::number('question_config[max]['.$id.']', isset($config['max_value']) ? $config['max_value'] : 20, ['class' => 'form-control pull-left', 'placeholder' => 'Số  lớn nhất','max' => 20]) }}
 	</div>
 </div>

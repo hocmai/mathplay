@@ -28,6 +28,25 @@ if( $count_b < $count_a ){
 <div class="huong-dan-giai text-left">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper">
+	@if($a == 0 || $b == 0)
+		<p>Bất cứ số nào cộng với 0 thì kết quả cũng bằng chính số đó.</p>
+		<div class=" col-xs-5 col-sm-3 text-center plus-table " style="border: 1px solid #eee">
+			@for($i = 0; $i < 10; $i++ )
+				<div class="inline-block">{{ $i.' + '.$a.' = '.($i+$a) }}</div>
+			@endfor
+		</div>
+		<div class="clear clear-fix"></div>
+		<p class="answers"> Như vậy đáp án đúng là: {{ $a.' + '.$b.' = '.($a+$b) }}</p>
+	@elseif($a > 1 && $a <20 || $b >1 && $b < 20)
+		<p>Ghi nhớ bảng cộng {{ $a }}</p>
+		<div class=" col-xs-5 col-sm-3 text-center plus-table " style="border: 1px solid #eee">
+			@for($i = 1; $i < 15; $i++ )
+				<div class="inline-block">{{ $i.' + '.$a.' = '.($i+$a) }}</div>
+			@endfor
+		</div>
+		<div class="clear clear-fix"></div>
+		<p class="answers"> Như vậy đáp án đúng là: {{ $a.' + '.$b.' = '.($a+$b) }}</p>
+	@else
 		<span class="col-xs-5 col-sm-3 text-right">
 			{{ $a }}<br>
 			+ {{ $b }}<br>
@@ -85,6 +104,7 @@ if( $count_b < $count_a ){
 			</div> <!-- End line -->	
 		@endfor
 		<p class="answers">Đáp án đúng là: <b>{{ $a+$b }}</b></p>
+	@endif
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>

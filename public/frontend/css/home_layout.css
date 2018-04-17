@@ -178,6 +178,10 @@ h1.page-title{
 #box-profile{
     background: #fff;
 }
+.intro-section .intro-row span{
+    font-size: 17px;
+}
+/*// footer//*/
 footer{
     color: #fff;
     background: url(../images/bg-body-footer.png) no-repeat bottom center/100%;
@@ -197,3 +201,80 @@ footer .copy-right{
     margin-top:25px;
     padding-top: 12px;
 }
+/*// css error_lesson*/
+.box-bai-lam div.text-error{
+    background-image: url(../images/hd-gui-bai.png);
+    height: 180px;
+    width: 210px;
+    line-height: 1;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 12px;
+    text-align: center;
+    right: 0;
+}
+.box-bai-lam div.text-error p.item-text{
+    font-weight: 600;
+    font-size: 18px;
+    width: 170px;
+    margin: 25px;
+    text-shadow: 2px 2px 1px #ECF;
+    padding: 3px 15px 15px;
+    -webkit-animation: mymove 5s ease infinite;
+    -moz-animation: mymove 5s ease infinite;
+}
+/* Simple Animation */
+@-webkit-keyframes mymove
+{
+0% {opacity:1.0; text-shadow:0 0 20px #fff;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #fff;}
+}
+
+@-moz-keyframes mymove
+{
+0% {opacity:1.0; text-shadow:0 0 20px #fff;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #fff; }
+}
+
+/*//end */
+.box-bai-lam div.notification p.img_err{
+    margin: 150px 15px 0;
+}
+.box-bai-lam a.dang-ky{
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    font-family: 'ProximaNova';
+    font-weight: 500;
+    padding: 10px 0px 13px 0px;
+    width: 320px;
+    background-color: #17bcba;
+    box-shadow: inset 0px -3px 0px 0px #00e5c5;
+    border-radius: 40px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    text-shadow: none;
+}
+/*css text mien phi trong subject*/
+.list-chapter .chapter-item ul.nav li span.free_text{
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: red;
+    padding: 5px 10px;
+    text-align: center;
+    text-shadow: 1px 2px 1px #eee;
+    text-decoration: none;
+    -webkit-animation: mymove 5s ease infinite;
+    -moz-animation: mymove 2s ease infinite;
+}
+/*css background top-level trong index subject*/
+.list-chapter-page .sidebar-right .top-level{
+    height: 1040px;
+    width: 100%;
+}
+

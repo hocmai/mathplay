@@ -45,3 +45,12 @@ $type = isset($config['type']) ? $config['type'] : 'input';
 		</div>
 	{{ Form::close() }}
 </div>
+@if( !empty($config['question_guide']))
+<div class="huong-dan-giai text-left">
+	<h2>Hướng dẫn giải</h2>
+	<div class="wrapper">
+		{{ $config['question_guide'] }}
+		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
+	</div>
+</div>
+@endif

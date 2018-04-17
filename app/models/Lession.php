@@ -16,6 +16,8 @@ class Lession extends Eloquent implements SluggableInterface
         'title',
         'chapter_id',
         'author_id',
+        'subject_id',
+        'grade_id',
         'status',
         'weight',
         'slug',
@@ -45,5 +47,14 @@ class Lession extends Eloquent implements SluggableInterface
     {
         return $this->belongsToMany('Question', 'lession_question', 'lession_id', 'qid');
     }
- 
+
+    public function grade()
+    {
+        return $this->belongsTo('Grade', 'grade_id', 'id');
+    }
+
+    public function subject()
+    {
+        return $this->belongsTo('Subject', 'subject_id', 'id');
+    }
 }

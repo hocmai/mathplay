@@ -1,10 +1,10 @@
 <?php
 $type = !empty($config['type']) ? $config['type'] : getRandArrayVal(['coin', 'basic']);
-$max = (!empty($config['max']) ) ? $config['max'] : 20;
+$max = (!empty($config['max_value']) ) ? $config['max_value'] : 20;
 
 $numRand = rand(1,$max);
 $imageData = CommonQuestion::getImgData('XacDinhSoChanLe');
-$imageRand = getRandArrayVal($imageData);
+$imageRand = array_rand($imageData);
 
 ?>
 
@@ -26,13 +26,13 @@ $imageRand = getRandArrayVal($imageData);
 				<div class="image-show">
 					@for($i = 1; $i <= floor($numRand/2); $i++)
 						<div class="pull-left" style="margin: 10px">
-							<img src="{{ $imageRand }}" width="30" />
+							<img src="{{ asset($imageData[$imageRand]) }}" width="30" />
 						</div>
 					@endfor
 					<div class="clear clear fix"></div>
 					@for($i = floor($numRand/2)+1; $i <= $numRand; $i++)
 						<div class="pull-left" style="margin: 10px">
-							<img src="{{ $imageRand }}" width="30" />
+							<img src="{{ asset($imageData[$imageRand]) }}" width="30" />
 						</div>
 					@endfor
 				</div>
