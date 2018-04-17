@@ -154,8 +154,8 @@ class AjaxController extends BaseController {
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
                         $accessToken = $input['access_token'];
                         $packages = $this->HocmaiOAuth->getResource('/me/packages', $accessToken);
-                        $packages = json_decode($packages);
-                        return Response::json($packages);
+                        $packages = $packages;
+                        return Response::json($packages, $accessToken);
                     }
                     return Response::json($input);
                 }else{
