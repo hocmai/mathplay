@@ -163,19 +163,19 @@ class AjaxController extends BaseController {
                                             'user_id' => $uid,
                                             'hocmai_course_id' => $value['id'],
                                             'grade_slug' => 'lop-1',
-                                        ])
+                                        ]);
                                     } else if( $value['id'] == 1423 | $value['name'] == 'Mathplay lớp 2' ){
                                         UserCourse::create([
                                             'user_id' => $uid,
                                             'hocmai_course_id' => $value['id'],
                                             'grade_slug' => 'lop-2',
-                                        ])
+                                        ]);
                                     } else if( $value['id'] == 1424 | $value['name'] == 'Mathplay lớp 3' ){
                                         UserCourse::create([
                                             'user_id' => $uid,
                                             'hocmai_course_id' => $value['id'],
                                             'grade_slug' => 'lop-3',
-                                        ])
+                                        ]);
                                     }
                                 }
                             }
