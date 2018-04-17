@@ -1,19 +1,11 @@
 <?php
-
+use HocmaiOAuth2;
 class AjaxController extends BaseController {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | You may wish to use controllers instead of, or in addition to, Closure
-    | based routes. That's great! Here is an example controller method to
-    | get you started. To route to this controller, just add the route:
-    |
-    |   Route::get('/', 'HomeController@showWelcome');
-    |
-    */
+    protected $HocmaiOAuth;
+    function __construct(HocmaiOAuth2 $HocmaiOAuth){
+        $this->HocmaiOAuth = $HocmaiOAuth;
+    }
 
     /**
      * Display a listing of the resource.
@@ -149,6 +141,9 @@ class AjaxController extends BaseController {
                     // $uid = Common::getObject($checkUserExists, 'id');
                     if(Auth::user()->loginUsingId($uid, true)){
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
+                        $accessToken = $input['access_token'];
+                        $packages = $this->HocmaiOAuth->getResource('/me/packages');
+                        return Response::json($packages);
                     }
                     return Response::json($input);
                 }else{
