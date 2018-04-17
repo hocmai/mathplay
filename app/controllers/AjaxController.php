@@ -1,8 +1,8 @@
 <?php
-use HocmaiOAuth2;
+use \HocmaiOAuth2;
 class AjaxController extends BaseController {
 
-    protected $HocmaiOAuth;
+    private $HocmaiOAuth;
     function __construct(HocmaiOAuth2 $HocmaiOAuth){
         $this->HocmaiOAuth = $HocmaiOAuth;
     }
