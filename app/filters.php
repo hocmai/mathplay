@@ -34,29 +34,34 @@ App::after(function($request, $response)
 */
 
 Route::filter('limit_question', function()
-{
-	if (!Auth::user()->check()){
-		// if( count( Session::get('anonymous_lesson') ) > 3 ){
-		// 	return View::make('site.lession.error');
-		// }
-		return View::make('site.lession.error')->with('logged', false);
-	}
-	// neu chua dang nhap thi k lam dc bai
-	else {
+{	
+	// neu la admin thi co the lam tat ca cac dang bai.
+	if(!Auth::admin()->check()){
 
-		$user_id = Auth::user()->get()->id ;
-		$grade_slug = UserCourse::where('user_id', $user_id)->get()->lists('grade_slug');
-		$currentGrade = Request::segment(1);
-		
-		//da dang nhap nhu  chua mua khoa hoc se lm dc 3 bai dau tien cua moi chuong
-		if(!in_array($currentGrade ,$grade_slug )){
-			$lessons =Common::getLessonThereFree();
-			$currentLesson = Request::segment(3);
-			if(!in_array($currentLesson, $lessons)){
-				return View::make('site.lession.error')->with('logged',true);
+		if (!Auth::user()->check()){
+			// if( count( Session::get('anonymous_lesson') ) > 3 ){
+			// 	return View::make('site.lession.error');
+			// }
+			return View::make('site.lession.error')->with('logged', false);
+		}
+		// neu chua dang nhap thi k lam dc bai
+		else {
+
+			$user_id = Auth::user()->get()->id ;
+			$grade_slug = UserCourse::where('user_id', $user_id)->get()->lists('grade_slug');
+			$currentGrade = Request::segment(1);
+			
+			//da dang nhap nhu  chua mua khoa hoc se lm dc 3 bai dau tien cua moi chuong
+			if(!in_array($currentGrade ,$grade_slug )){
+				$lessons =Common::getLessonThereFree();
+				$currentLesson = Request::segment(3);
+				if(!in_array($currentLesson, $lessons)){
+					return View::make('site.lession.error')->with('logged',true);
+				}
 			}
 		}
 	}
+
 });
 
 Route::filter('auth', function()
