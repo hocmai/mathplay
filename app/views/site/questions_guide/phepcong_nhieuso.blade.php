@@ -40,12 +40,12 @@ if( $count_b < $count_a ){
 	@elseif($a > 1 && $a <20 || $b >1 && $b < 20)
 		<p>Ghi nhớ bảng cộng {{ $a }}</p>
 		<div class=" col-xs-5 col-sm-3 text-center plus-table " style="border: 1px solid #eee">
-			@for($i = 1; $i < 15; $i++ )
-				<div class="inline-block">{{ $i.' + '.$a.' = '.($i+$a) }}</div>
+			@for($i = 1; $i <= 15; $i++ )
+				<div>{{ $a.' + '.$i.' = '.($i+$a) }}</div>
 			@endfor
 		</div>
 		<div class="clear clear-fix"></div>
-		<p class="answers"> Như vậy đáp án đúng là: {{ $a.' + '.$b.' = '.($a+$b) }}</p>
+		<p class="answers">Như vậy đáp án đúng là: {{ $a.' + '.$b.' = '.($a+$b) }}</p>
 	@else
 		<span class="col-xs-5 col-sm-3 text-right">
 			{{ $a }}<br>

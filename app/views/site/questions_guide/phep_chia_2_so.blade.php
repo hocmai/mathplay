@@ -44,14 +44,14 @@
 			<p>{{ ($group*$each).' : '.$group.' = '.$answer }}</p>
 			<p class="answers"> Như vậy số cần điền là : {{ $answer }}</p>	
 		@else
-			<p>Ta có thể trả lời câu hỏi này nhờ các mối liên hệ về số đã biết:</p>
+			<p>Theo bảng chia {{ $a }} ta có</p>
 			<div class=" inline-block text-center" style="border:2px solid #eee">
-				@for ($x = 1; $x <= 10; $x++)
+				@for ($x = 1; $x <= 12; $x++)
 					<p class=" item">{{ ($x*$a).' : '.$a.' = '.(($x*$a)/$a) }}</p>
 				@endfor
 			</div>
 			<div class="clear clear-fix"></div>
-			<p class="answers">Như vậy: {{ ($a*$b).' : '.$a.' = '.$b}}</p>
+			<p class="answers">Vậy số cần điền vào ô trống là: {{ ($a*$b).' : '.$a.' = '.$b}}</p>
 		@endif
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>

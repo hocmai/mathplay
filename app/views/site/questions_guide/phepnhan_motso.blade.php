@@ -17,12 +17,7 @@ $rules = [
     <div class="huong-dan-giai text-left">
         <h2>Hướng dẫn giải</h2>
         <div class="wrapper">
-            <span class="col-xs-5 col-sm-3 text-right" >
-                {{ $a }}<br>
-                x {{ $b }}<br>
-                <hr>
-                ?
-            </span>
+            
             @if($b == 0)
                 <div class="clear clearfix"></div>
                 <p>Các số nhân với 0 đều bằng 0</p>
@@ -31,13 +26,19 @@ $rules = [
                 <p>Các số nhân với 1 đều bằng chính nó</p>
             @elseif($a <=12)
                 <div class="clearfix"></div>
-                <p>Ghi nhớ bảng nhân {{ $b }}</p>
+                <p>Theo bảng nhân {{ $b }} ta có</p>
                 <div class=" col-xs-5 col-sm-3 text-center plus-table " style="border: 1px solid #eee">
-                    @for($i = 1; $i < 12; $i++ )
-                    <div class="inline-block">{{ $i.' x '.$b.' = '.($i*$b) }}</div>
+                    @for($i = 1; $i <= 12; $i++ )
+                        <div class="inline-block">{{ $i.' x '.$b.' = '.($i*$b) }}</div>
                     @endfor
                 </div>
             @else
+                <span class="col-xs-5 col-sm-3 text-right" >
+                    {{ $a }}<br>
+                    x {{ $b }}<br>
+                    <hr>
+                    ?
+                </span>
                 <span class="col-xs-7 col-sm-9" style="padding-left: 30px">Nhân lần lượt thừa số thứ hai với các chữ số của thừa số thứ nhất theo chiều từ <b>phải qua trái.</b></span>
                 <div class="clear clearfix"></div>
                 <hr style="border-top: 1px dashed #eee; margin: 8px 0">
@@ -115,7 +116,7 @@ $rules = [
                 @endfor
             @endif
             <div class="clear clearfix"></div>
-            <p class="answers"> Đáp án đúng phép nhân là: {{ $a * $b }}</p>
+            <p class="answers"> Vậy số cần điền vào ô trống là: {{ $a * $b }}</p>
             <button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
         </div>
     </div>
