@@ -1,19 +1,11 @@
 <?php
-
+use \HocmaiOAuth2;
 class AjaxController extends BaseController {
 
-    /*
-    |--------------------------------------------------------------------------
-    | Default Home Controller
-    |--------------------------------------------------------------------------
-    |
-    | You may wish to use controllers instead of, or in addition to, Closure
-    | based routes. That's great! Here is an example controller method to
-    | get you started. To route to this controller, just add the route:
-    |
-    |   Route::get('/', 'HomeController@showWelcome');
-    |
-    */
+    private $HocmaiOAuth;
+    function __construct(HocmaiOAuth2 $HocmaiOAuth){
+        $this->HocmaiOAuth = $HocmaiOAuth;
+    }
 
     /**
      * Display a listing of the resource.
@@ -160,7 +152,38 @@ class AjaxController extends BaseController {
                         */
                         
                         $messages = ['message' => 'Đăng nhập thành công! Tải lại trang...', 'status' => 'success'];
+                        $accessToken = $input['access_token'];
+                        $packages = (array)$this->HocmaiOAuth->getResource('/me/packages', $accessToken);
+                        if( is_array($packages) && count($packages) ){
+                            UserCourse::where('user_id', $uid)->delete();
+                            foreach ($packages as $value) {
+                                $value = (array)$value;
+                                if( !empty($value['id']) && !empty($value['name']) ){
+                                    if( $value['id'] == 1425 | $value['name'] == 'Mathplay lớp 1' ){
+                                        UserCourse::create([
+                                            'user_id' => $uid,
+                                            'hocmai_course_id' => $value['id'],
+                                            'grade_slug' => 'lop-1',
+                                        ]);
+                                    } else if( $value['id'] == 1423 | $value['name'] == 'Mathplay lớp 2' ){
+                                        UserCourse::create([
+                                            'user_id' => $uid,
+                                            'hocmai_course_id' => $value['id'],
+                                            'grade_slug' => 'lop-2',
+                                        ]);
+                                    } else if( $value['id'] == 1424 | $value['name'] == 'Mathplay lớp 3' ){
+                                        UserCourse::create([
+                                            'user_id' => $uid,
+                                            'hocmai_course_id' => $value['id'],
+                                            'grade_slug' => 'lop-3',
+                                        ]);
+                                    }
+                                }
+                            }
+                        }
+                        // return Response::json([$packages, $accessToken]);
                     }
+                    // return Response::json($input);
                 }else{
                     $messages['message'] = 'Tài khoản đã bị xóa hoặc tạm khóa! Vui lòng liên hệ với Admin để được hỗ trợ.';
                 }

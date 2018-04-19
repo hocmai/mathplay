@@ -47,7 +47,7 @@ $(document).ready(function(){
                     method: 'POST',
                     data: response,
                     success: function(data){
-                        console.log(data);
+                        // console.log(data);
                         var timeOut = 800;
                         if( typeof data.status != 'undefined' && data.status == 'error' ){
                             timeOut = 5000;

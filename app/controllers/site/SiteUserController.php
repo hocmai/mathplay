@@ -7,7 +7,7 @@ class SiteUserController extends SiteController {
 	 */
 	public function hocmaiOAuth2(){
     	$messsages = [];
-		$ssoLib = new HocmaiOAuth2(CLIENT_ID, CLIENT_SECRET, CLIENT_REDIRECT_URI);
+		$ssoLib = new HocmaiOAuth2();
 
 		// get access token from authorize code
 		$authCode = $ssoLib->getAuthorizeCode();
@@ -19,6 +19,7 @@ class SiteUserController extends SiteController {
 		    if ($accessToken) {   
 		        $messsages = (array)$ssoLib->getResource($accessToken);
 		        $messsages['success'] = 'Đăng nhập thành công';
+		        $messsages['access_token'] = $accessToken;
 		    }
 		}
 		return '
