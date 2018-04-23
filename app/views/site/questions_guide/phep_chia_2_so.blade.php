@@ -48,13 +48,13 @@
 			{{-- phep chia 2 so chia het --}}
 		@else
 			<p>Theo bảng chia {{ $a }} ta có</p>
-			<div class=" inline-block text-center" style="border:2px solid #eee">
+			<div class=" inline-block text-center chia-2-so" style="border:2px solid #eee">
 				@for ($x = 1; $x <= 12; $x++)
-					<p class="{{ ($b == 0) ? 'active': 'item' }}">{{ ($x*$a).' : '.$a.' = '.(($x*$a)/$a) }}</p>
+					<p class="{{ ($x == $b) ? 'text_item' : 'item' }}">{{ ($x*$a).' : '.$a.' = '.(($x*$a)/$a) }}</p>
 				@endfor
 			</div>
 			<div class="clear clear-fix"></div>
-			<p class="answers">Vậy số cần điền vào ô trống là: {{ ($a*$b).' : '.$a.' = '.$b}}</p>
+			<p class="answers">Vậy số cần điền vào ô trống là: {{ $b }}</p>
 		@endif
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>

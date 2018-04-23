@@ -3,7 +3,7 @@
 @section('content')
     <div class="box-bai-lam lession-wrapper">
         <div class="container">
-           {{--  <h1 class="node-title bg">{{ Common::getValueOfObject($lession, 'chapter', 'title') }}</h1> --}}
+            {{-- <h1 class="node-title bg">{{ Common::getValueOfObject($lession, 'chapter', 'title') }}</h1> --}}
             <div class="row margin0">
                 <div class="col-xs-12 col-sm-8 padding0 boxLeft">
                     <div class="bg-box-lam-bai lession-content">
@@ -13,6 +13,11 @@
                                     <p class="item-text">Bạn phải đăng ký khóa học mới được làm tiếp chương này!</p>
                                 </div>
                                 <p class="img_err"><img src="{{ asset('/errors/images/owl_night.png') }}" /></p>
+                                 {{-- danh sach dang ky khoa học --}}
+                                <p class="button-dang-ky-khoa-hoc">
+                                    <a href="https://hocmai.vn/course/view.php?id=1084" class="khoa-hoc">Đăng ký khóa học lớp 1</a>
+                                    <a href="https://hocmai.vn/course/view.php?id=1078&cid=7" class="khoa-hoc">Đăng ký khóa học lớp 2</a>
+                                    <a href="https://hocmai.vn/course/view.php?id=1076" class="khoa-hoc">Đăng ký khóa học lớp 3</a>
                             </div>
                         @else
                             <div class="notification">

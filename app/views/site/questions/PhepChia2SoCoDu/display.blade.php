@@ -1,9 +1,9 @@
 <?php
 $display =!empty($config['display']) ? $config['display'] : getRandArrayVal(['ngang', 'doc']);
-$min_a = !empty($config['min_a']) ? $config['min_a'] : 10;
-$max_a = !empty($config['max_a']) ? $config['max_a'] : 100;
+$min_a = !empty($config['min_a']) ? $config['min_a'] : 1;
+$max_a = !empty($config['max_a']) ? $config['max_a'] : 99999;
 $min_b = !empty($config['min_b']) ? $config['min_b'] : 1;
-$max_b = !empty($config['max_b']) ? $config['max_b'] : 10;
+$max_b = !empty($config['max_b']) ? $config['max_b'] : 9;
 
 $a = rand($min_a, $max_a);
 $b = rand($min_b, $max_b);

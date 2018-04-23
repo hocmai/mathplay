@@ -13,7 +13,7 @@ class UserController extends AdminController {
 		// dd(User::all());
 		return View::make('admin.user.index')->with(compact('data'));
 	}
-
+	
 
 	/**
 	 * Show the form for creating a new resource.
