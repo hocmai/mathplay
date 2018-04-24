@@ -13,7 +13,17 @@ class UserController extends AdminController {
 		// dd(User::all());
 		return View::make('admin.user.index')->with(compact('data'));
 	}
-	
+
+	// search user
+	public function search()
+	{
+		$input = Input::all();
+		if (!$input['keyword'] && !$input['username'] && $input['start_date'] && $input['end_date']) {
+			return Redirect::action('UserController@index');
+		}
+		$data = AdminManager::searchUserOperation($input);
+		return View::make('admin.user.index')->with(compact('data'));
+	}
 
 	/**
 	 * Show the form for creating a new resource.
@@ -78,7 +88,8 @@ class UserController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		//
+		$data = User::findOrFail($id);
+        return View::make('admin.user.edit', array('data'=>$data));
 	}
 
 
@@ -90,7 +101,9 @@ class UserController extends AdminController {
 	 */
 	public function update($id)
 	{
-		//
+		$input = Input::except('_token');
+    	CommonNormal::update($id, $input, 'User');
+		return Redirect::action('UserController@index')->with('success', 'Lưu thành công!');
 	}
 
 
