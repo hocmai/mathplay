@@ -19,7 +19,7 @@ class ManagerController extends AdminController {
 		if (!$input['keyword'] && !$input['role_id'] && $input['start_date'] && $input['end_date']) {
 			return Redirect::action('ManagerController@index');
 		}
-		$data = AdminManager::searchUserOperation($input);
+		$data = AdminManager::searchAdminOperation($input);
 		return View::make('admin.manager.index')->with(compact('data'));
 	}
 
@@ -85,6 +85,7 @@ class ManagerController extends AdminController {
 	public function edit($id)
 	{
 		$currentUserId = Auth::admin()->get()->id;
+		dd($currentRoleId);
 		$currentRoleId = Auth::admin()->get()->role_id;
 		if($currentRoleId <> ADMIN) {
 			if($id <> $currentUserId) {

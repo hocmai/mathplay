@@ -14,17 +14,7 @@ Route::group(['prefix' => '/test'], function(){
 	Route::controller('','TestController');
 });
 
-Route::get('/demo/{grade_slug}', 'SiteDemoController@show');
-Route::get('/bailam',function(){
-	return View::make('demo.bailam');
-});
-Route::get('/task', function(){
-	return View::make('demo.layout.task');
-});
-Route::get('/splashmath', function(){
-	return View::make('splashmaths.splashmath');
-});
-
+// Route::get('/demo/{grade_slug}', 'SiteDemoController@show');
 Route::get('/', 'SiteIndexController@home');
 //Route::get('/home-v1', 'SiteIndexController@home');
 
@@ -47,10 +37,6 @@ Route::get('/grade/{id}', array(
 	'uses' => 'SiteGradeController@detail',
 	'as' =>'showGradeDetail'
 ))->where('uid', '[0-9]+');
-// Route::get('mon-hoc/{subject_slug}/{lession_slug}', array(
-// 	'uses' => 'SiteLessionController@show',
-// 	'as' =>'showlession'
-// ));
 
 Route::group(['prefix' => 'ajax'], function(){
 	Route::post('/getquestionformconfig',array('as'=>'getquestionformconfig','uses'=>'AjaxController@getQuestionConfigForm'));
@@ -89,18 +75,19 @@ Route::group(['prefix' => 'admin'], function () {
 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
 	Route::post('/operation', array('uses' => 'AdminController@operation', 'as' => 'admin.operation'));
 
-	Route::resource('/', 'ManagerController');
+	Route::get('/', 'ManagerController@index');
 
 	Route::group(['prefix' => 'manage'], function(){
-		Route::get('/', ['uses' => 'ManagerController@index', 'as' => 'admin.dashboard']);
+		Route::resource('/admin', 'ManagerController');
 		Route::get('changepassword/{id}', array('uses' => 'ManagerController@changePassword', 'as' => 'admin.manager.changepassword'));
 		Route::post('updatePassword/{id}', array('uses' => 'ManagerController@updatePassword'));
-		Route::get('search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
-	 	Route::resource('/user', 'UserController');
 
+		Route::get('search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
+	 	
+	 	Route::get('/user/search', 'UserController@search');
+	 	Route::resource('/user', 'UserController');
 		Route::get('user/changepassword/{id}', array('uses' => 'UserController@changePassword', 'as' => 'admin.user.changepassword'));
 		Route::post('user/updatepassword/{id}', array('uses' => 'UserController@updatePassword'));
-
 
 	 	Route::get('/grade/search', ['uses' => 'GradeController@search', 'as' => 'GradeFilter']);
 	 	Route::resource('/grade', 'GradeController');
@@ -123,53 +110,7 @@ Route::group(['prefix' => 'admin'], function () {
 	 	Route::resource('/lession', 'LessionController');
 	});
 	
-// 	Route::get('/feedback', 'AdminContactController@feedback');
-// 	Route::resource('/contact', 'AdminContactController');
-// 	Route::resource('/bottomtext', 'BottomTextController');
-// 	Route::resource('/newstype', 'NewsTypeController');
-// 	Route::get('/news/search', array('uses' => 'NewsController@search', 'as' => 'admin.news.search'));
-// 	Route::resource('/news', 'NewsController');
-// 	Route::post('/image_slider/delete/{id}', 'AdminSlideController@deleteSlide');
-// 	Route::get('/slider/search', array('uses' => 'AdminSlideController@search', 'as' => 'admin.slide.search'));
-// 	Route::resource('/slider', 'AdminSlideController');
-// 	Route::resource('/des_content', 'DesContentController');
-// 	Route::resource('/introduce', 'AdminIntroduceController');
-// 	Route::resource('/about_us_company', 'AdminAboutUsController');
-// 	Route::resource('/type_about_us', 'AdminTypeAboutController');
 });
-
-// Route::group(
-// 	array(
-// 		'prefix' => LaravelLocalization::setLocale(),
-// 		'before' => 'LaravelLocalizationRoutes' // Route translate filter
-// 	),
-// 	function()
-// 	{
-
-// 		Route::post('/sendLang', 'SiteIndexController@sendLang');
-
-// 		Route::post('/sendContact', array('uses' => 'ContactController@contact', 'as' => 'contact'));
-
-// 		// Route::get('/tin-tuc/{slug}', array('uses' => 'SiteNewsController@show', 'as' =>'showNews'));
-// 		// Route::get('/tin-tuc', array('uses' => 'SiteNewsController@index', 'as' => 'listNews'));
-
-// 		/** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
-// 		Route::resource('/', 'SiteIndexController');
-// 		// Route::resource(LaravelLocalization::transRoute('routes.slug'), 'SiteTypeController');
-
-// 		// Route::get(LaravelLocalization::transRoute('routes.about'),function(){
-// 		// 	return View::make('about');
-// 		// });
-// 		Route::get(LaravelLocalization::transRoute('routes.about'), 'AboutController@index');
-// 		Route::get(LaravelLocalization::transRoute('routes.contact'), 'ContactController@index');
-// 		Route::get(LaravelLocalization::transRoute('routes.slug'), 'SiteTypeController@showSlug');
-// 		Route::get(LaravelLocalization::transRoute('routes.slugDetail'), 'SiteTypeController@showChildSlug');
-// 		// Route::get(LaravelLocalization::transRoute('routes.view'),function($id){
-// 		// 	return View::make('view',array('id'=>$id));
-// 		// });
-// 	}
-// );
-
 
 App::error( function(Exception $exception, $code){
 	$pathInfo = Request::getPathInfo();

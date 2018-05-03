@@ -139,7 +139,7 @@ class AdminController extends BaseController {
         } else {
             $checkLogin = Auth::admin()->attempt($input, true);
             if($checkLogin) {
-        		return Redirect::route('admin.dashboard');
+        		return Redirect::action('ManagerController@index');
             } else {
                 return Redirect::route('admin.login');
             }
