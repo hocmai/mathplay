@@ -25,7 +25,7 @@ class AdminManager
 	{
 		$user = User::where(function ($query) use ($input){
 			if ($input['username']) {
-				$query = $query->where('username', $input['username']);
+				$query = $query->where('id', $input['username']);
 			}
 			if ($input['keyword']) {
 				$query = $query->where('email', 'like', '%'.$input['keyword'].'%')

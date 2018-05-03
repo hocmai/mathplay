@@ -20,9 +20,11 @@ class UserController extends AdminController {
 		$input = Input::all();
 		if (!$input['keyword'] && !$input['username'] && $input['start_date'] && $input['end_date']) {
 			return Redirect::action('UserController@index');
+			// lay tat ca cac du lieu tu cot input ... nếu k tìm thấy các thuộc tinh trên thì trả về index
 		}
 		$data = AdminManager::searchUserOperation($input);
 		return View::make('admin.user.index')->with(compact('data'));
+		
 	}
 
 	/**
