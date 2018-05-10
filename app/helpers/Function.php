@@ -45,6 +45,12 @@ function selectRoleId()
 	);
 }
 
+function selectUserName()
+{
+	$list_user = User::lists('username','id');
+	return $list_user;
+}
+
 function textParentCategory($input, $isSeoMeta = NULL, $id = NULL)
 {
 	if(!Admin::isSeo() || $isSeoMeta) {

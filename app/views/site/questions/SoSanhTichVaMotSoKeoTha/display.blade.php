@@ -1,6 +1,6 @@
 <?php
-$min = !empty($option['min']) ? $option['min'] : 5;
-$max = !empty($option['max']) ? $option['max'] : 100;
+$min = !empty($config['min']) ? $config['min'] : 5;
+$max = !empty($config['max']) ? $config['max'] : 100;
 
 $number = rand($min, $max);
 $uocSo[] = getRandArrayVal(CommonQuestion::timUocSo($number), 1, true);

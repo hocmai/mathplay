@@ -1,4 +1,4 @@
-<div class="huong-dan-giai text-left" style="display: block;">
+<div class="huong-dan-giai text-left">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper">
 		<div class="shapes {{ $answer }}">

@@ -1,3 +1,4 @@
+/*// css dang chia 2 hinh anh*/
 #PhepChia2So .circle{
     float: left;
     margin: 2px;
@@ -25,4 +26,9 @@ div.huong-dan-giai .question-content{
     display: inline-block;
     width: 100%;
     font-weight: 700;
+}
+/*// css hdg text trong bang chia*/
+#PhepChia2So .huong-dan-giai .chia-2-so p.text_item{
+    font-size: 18px;
+    font-weight: 600;
 }

@@ -7,7 +7,7 @@
 @section('content')
 
 	<!-- inclue Search form -->
-	@include('admin.manager.search')
+	@include('admin.user.search')
 
 	<div class="row margin-bottom">
 		<div class="col-xs-12">
