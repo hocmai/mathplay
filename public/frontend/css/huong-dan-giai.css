@@ -1,0 +1,59 @@
+.huong-dan-giai{
+	display: none;
+	font-size: 18px;
+}
+.huong-dan-giai .line{
+	border-bottom: 1px dashed #eee;
+	margin: 10px 0;
+	padding: 10px 0;
+}
+.huong-dan-giai .line>.left .num .sing{
+	position: relative;
+	min-width: 12px;
+    display: inline-block;
+    text-align: center;
+}
+.huong-dan-giai .line>.left .num .sing.bold,
+.huong-dan-giai .line>.left .num .sing.active,
+.huong-dan-giai .line>.left .num .sing.active .sub,
+.huong-dan-giai .line>.left .num .sing.active .sub2{
+	font-weight: 600;
+	color: red;
+}
+.huong-dan-giai .line>.left .num .sing.del.active{
+	color: #111;
+	font-weight: 400;
+}
+.huong-dan-giai .line>.left .num .sing.del::before{
+	content: "";
+	position: absolute;
+	left: 45%;
+	top: 0;
+	height: 100%;
+	width: 1px;
+	background: #111;
+	transform: rotate(-45deg);
+	transform-origin: center;
+}
+.huong-dan-giai .line>.left .num .sub,
+.huong-dan-giai .line>.left .num .sub2{
+    position: absolute;
+    font-size: 11px;
+    width: 100%;
+    text-align: center;
+    top: -14px;
+    font-weight: 500;
+    left: -2px;
+}
+.huong-dan-giai .line>.left .num .sub2{
+	top: -22px;
+	font-size: 9px;
+}
+.huong-dan-giai .line>.right{
+    padding: 0 15px 0 30px;
+}
+.answers{
+	color: red;
+    margin: 10px 0;
+    display: inline-block;
+}

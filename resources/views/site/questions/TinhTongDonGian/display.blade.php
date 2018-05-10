@@ -1,0 +1,35 @@
+<?php
+$min_a = isset($config['min_value_a']) ? $config['min_value_a'] : 0;
+$max_a = isset($config['max_value_a']) ? $config['max_value_a'] : 9999;
+
+$min_b = isset($config['min_value_b']) ? $config['min_value_b'] : 0;
+$max_b = isset($config['max_value_b']) ? $config['max_value_b'] : 9999;
+$answer1 = rand($min_a, $max_a);
+$answer2 = rand($min_b, $max_b);
+$display = ['ngang', 'doc'];
+// dd($answer1, $answer2);
+
+?>
+
+@include('site.questions.render-title', ['question' => $question])
+
+<div class="container-fluid question-wrapper">
+	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
+		<input type="hidden" name="true_answer" value="{{ $answer1 + $answer2 }}" />
+		<input type="hidden" name="qid" value="{{ $question->id }}" />
+		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
+		<input type="hidden" name="question_number" value="{{ $question_num }}" />
+		
+		<div class="form-group plus-with-0">
+			<div class="content inline-block">
+				
+				<div class="tong pull-left {{ !empty($config['display']) ? $config['display'] : $display[array_rand($display)] }}" style="font-size: 18px;"><span class="num1">{{ $answer1 }}</span><span class="num2"><span class="plus"> + </span>{{ $answer2 }}</span><span class="result"> = {{ Form::text('answer', '') }}</span></div>
+			</div>
+		</div>
+	{{ Form::close() }}
+</div>
+
+@include('site.questions_guide.phepcong_nhieuso', [
+	'a' => $answer1,
+	'b' => $answer2
+])

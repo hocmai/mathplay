@@ -1,0 +1,297 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=vietnamese');
+
+header.header .banner .caption-wrap a.button{
+    margin: auto;
+    display: block;
+    margin-top: 45px;
+}
+.full_page header.header,
+header.home .fixed-nav{
+    min-height: 60px;
+    padding: 0;
+}
+header.header .fixed-nav .navbar-brand{
+    margin-top: 10px;
+}
+.header .member-area .box-info{
+    margin: 8px 0;
+}
+.header .member-area .box-info .avatar{
+    margin: -15px -50px 0 0;
+}
+.header .member-area a.dang-ky,
+.box-dang-nhap a.dang-nhap,
+.box-dang-nhap a.dang-ky,
+.header .member-area a.dang-nhap{
+	background: #0ac2fd;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    border-radius: 20px;
+    text-transform: none;
+    border: 1px solid #fff;
+    font-size: 18px;
+    width: 125px;
+    text-align: center;
+    height: 37px;
+    padding:0 15px;
+    margin :5px 0 0 15px;
+    line-height: 37px;
+}
+ .header .member-area a:hove{
+ 	background-color: #0bc3fc;
+}
+header.header .banner .caption-wrap h1{
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 45px;
+    line-height: 55px;
+    font-weight: 600;
+}
+.header .member-area .box-info .avatar{
+     margin-right: -5px;
+    margin-top: -15px;   
+}
+.header .member-area .box-info{
+    padding-right: 55px;
+}
+/*// end header*/
+.box-bai-lam, .main-content{
+	margin-top: 30px;
+}
+div.bg-box-lam-bai{
+    min-height: calc( 100vh - 110px );
+}
+.bg-box-lam-bai .question-wrapper{
+    padding-bottom: 0;
+}
+#main-menu-mathplay{
+    margin-top: 6px;
+}
+#main-menu-mathplay .nav{
+    width: auto;
+    float: right;
+}
+#main-menu-mathplay li.dropdown a.dropdown-toggle{
+    color: #fff;
+    line-height: 15px;
+    background-color:#0ac2fd;
+    padding: 15px 15px;
+}
+ #main-menu-mathplay .dropdown-menu{
+    color: #fff;
+    background: #0ac2fd;
+    position: absolute;
+    text-align: center;
+    min-width: 150px;
+    left: auto;
+    top: calc(100% + 5px);
+    right: -10px;
+    padding: 0;
+}
+ #main-menu-mathplay ul.dropdown-menu a{
+    color: #fff;
+    font-weight: 400;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+}
+#main-menu-mathplay ul.dropdown-menu li a:hover,
+#main-menu-mathplay ul.dropdown-menu li a.active {
+    color: #0ac2fd;
+    background: #fff;
+}
+#main-menu-mathplay .navbar-nav .text span{
+    color: #000;
+}
+/*************/
+h1.page-title{
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 15px;
+}
+.question-rendered .start{
+    display: inline-block;
+    width: 100%;
+    font-size: 28px;
+    color: #fff;
+    background: #52c9f3;
+    padding: 5px 0;
+    margin-bottom: 15px;
+    text-transform: none;
+    -webkit-text-stroke: #fff 0px;
+    text-shadow:none;
+
+}
+.play-question-sound>button.control{
+    width: 35px;
+    height: 35px;
+}
+.list-chapter .chapter-item ul.nav li a{
+    font-size: 16px;
+    padding-right: 80px;
+}
+.list-chapter .chapter-item ul.nav li a span.star-list{
+    position: absolute;
+    right: 5px;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+    height: 20px;
+}
+.list-chapter .chapter-item ul.nav li a i{
+    background: #999;
+    border-radius: 100%;
+    padding: 1px;
+    width: 20px;
+    text-align: center;
+    font-size: 18px;
+    color: #ddd ;
+    
+}
+.list-chapter-page .content-left .head-list .next-lession .next-box>span{
+    font-size: 18px;
+    text-shadow: none;
+    text-transform: none;
+    -webkit-text-stroke:#fff;
+    line-height: 1.1;
+}
+.list-chapter .chapter-item ul.nav li a i.yellow-color{
+    color: #ffde00 !important;
+}
+.list-chapter-page .content-left .head-list h3.hello{
+    height: auto;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
+}
+.user-profile-form .box-footer input.btn{
+    color: #fff;
+    padding: 7px 35px;
+    border-radius: 8px;
+    border: none;
+    margin: -55px 0 45px 15px;
+    font-size: 18px;
+}
+.modal-open .bao-cao{
+    z-index: 10;
+}
+#box-profile{
+    background: #fff;
+}
+.intro-section .intro-row span{
+    font-size: 17px;
+}
+/*// footer//*/
+footer{
+    color: #fff;
+    background: url(../images/bg-body-footer.png) no-repeat bottom center/100%;
+}
+
+footer .des{
+    max-width: 100%;
+    margin: 1px auto;
+    color: #fff;
+    background: url(../images/bg-footer.png) no-repeat top left/100%;
+    font-weight: 600;
+    font-size: 16px;
+    padding: 18px 115px
+}
+footer .copy-right{
+    background: #57b557;
+    margin-top:25px;
+    padding-top: 12px;
+}
+/*// css error_lesson*/
+.box-bai-lam div.text-error{
+    background-image: url(../images/hd-gui-bai.png);
+    height: 180px;
+    width: 210px;
+    line-height: 1;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 12px;
+    text-align: center;
+    right: 0;
+}
+.box-bai-lam div.text-error p.item-text{
+    font-weight: 600;
+    font-size: 18px;
+    width: 170px;
+    margin: 25px;
+    text-shadow: 2px 2px 1px #ECF;
+    padding: 3px 15px 15px;
+    -webkit-animation: mymove 5s ease infinite;
+    -moz-animation: mymove 5s ease infinite;
+}
+.box-bai-lam p.button-dang-ky-khoa-hoc a.khoa-hoc{
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    font-family: 'ProximaNova';
+    font-weight: 500;
+    padding: 10px 0px 13px 0px;
+    width: 190px;
+    background-color: #17bcba;
+    box-shadow: inset 0px -3px 0px 0px #00e5c5;
+    border-radius: 40px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    text-shadow: none;
+}
+/* Simple Animation */
+@-webkit-keyframes mymove
+{
+0% {opacity:1.0; text-shadow:0 0 20px #fff;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #fff;}
+}
+
+@-moz-keyframes mymove
+{
+0% {opacity:1.0; text-shadow:0 0 20px #fff;}
+50% {opacity:0; text-shadow:none; }
+100% {opacity:1.0; text-shadow:0 0 20px #fff; }
+}
+
+/*//end */
+.box-bai-lam div.notification p.img_err{
+    margin: 150px 15px 0;
+}
+.box-bai-lam a.dang-ky{
+    display: inline-block;
+    margin-bottom: 20px;
+    margin-right: 20px;
+    font-family: 'ProximaNova';
+    font-weight: 500;
+    padding: 10px 0px 13px 0px;
+    width: 320px;
+    background-color: #17bcba;
+    box-shadow: inset 0px -3px 0px 0px #00e5c5;
+    border-radius: 40px;
+    color: #fff;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    text-shadow: none;
+}
+/*css text mien phi trong subject*/
+.list-chapter .chapter-item ul.nav li span.free_text{
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: red;
+    padding: 5px 10px;
+    text-align: center;
+    text-shadow: 1px 2px 1px #eee;
+    text-decoration: none;
+    -webkit-animation: mymove 5s ease infinite;
+    -moz-animation: mymove 2s ease infinite;
+}
+/*css background top-level trong index subject*/
+.list-chapter-page .sidebar-right .top-level{
+    height: 1040px;
+    width: 100%;
+}
+

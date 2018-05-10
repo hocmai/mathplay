@@ -1,0 +1,1 @@
+<em>Không có cài đặt nào cho dạng bài này, nội dung sẽ được tạo tự động</em>
