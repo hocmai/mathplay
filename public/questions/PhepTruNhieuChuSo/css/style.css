@@ -1,0 +1,20 @@
+#PhepTruNhieuChuSo .content .text-right{
+	width:80px;
+	line-height:25px;
+	font-size:24px;
+	font-weight:400;
+}
+#PhepTruNhieuChuSo .content .text-right span.number-a,
+#PhepTruNhieuChuSo .content .text-right span.number-b{
+	width: 19px;
+	text-align: center;
+	letter-spacing: 2px;
+}
+#PhepTruNhieuChuSo .multi-input-number {
+	display: inline-flex;
+}
+#PhepTruNhieuChuSo .multi-input-number .form-answer{
+	width: 20px;
+	padding-left: -10px;
+	text-align: center;
+}
