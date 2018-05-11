@@ -28,10 +28,15 @@ else{
 		<input type="hidden" name="qid" value="{{ $question->id }}" />
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
+		{{ Form::hidden('answer') }}
 		
 		<div class="form-group">
 			<div class="content inline-block text-center">
-				<span style="font-size: 17px;font-weight: 500;">{{ ($type == 'plus') ? $num1.' + '.$num2 : $num1.' - '.$num2 }} = {{ Form::text('answer', '', ['style'=>'width: 45px;text-align: center']) }}</span>
+				<span style="font-size: 17px;font-weight: 500;">{{ ($type == 'plus') ? $num1.' + '.$num2 : $num1.' - '.$num2 }} =
+				@for($i = strlen((string)$answer); $i >= 1; $i--)		
+				 {{ Form::number('answer_', '', ['class'=> 'form-answer'.(($i == 1) ? ' virtual-focus' : ''), 'maxlength'=>1, 'tabindex' => $i, 'max' => 9, 'min' =>0 ]) }}
+				@endfor
+				</span>
 			</div>
 		</div>
 	{{ Form::close() }}

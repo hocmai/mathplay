@@ -20,17 +20,27 @@ $c = rand($min_c, $max_c);
         <input type="hidden" name="qid" value="{{ $question->id }}" />
         <input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
         <input type="hidden" name="question_number" value="{{ $question_num }}" />
-        
+        {{ Form::hidden('answer') }}
+
         <div class="form-group">
             <div class="content inline-block">
                 <div class="nhan pull-left {{$display }}">
                     @if($display == 'ngang')
-                        <span class="num1">{{ $a }}</span><span class="num2"><span class="human"> x </span>{{ $b }}</span><span class="human"> x </span><span class="num3">{{ $c }}</span><span class="result"> = {{ Form::text('answer','',(['style' => 'width:40px']))}}</span>
+                        <span class="num1">{{ $a }}</span><span class="num2"><span class="human"> x </span>{{ $b }}</span><span class="human"> x </span><span class="num3">{{ $c }}</span>
+                        <span class="result"> = 
+                            @for($i = strlen(($a*$b*$c)); $i >= 1; $i--)
+                                {{ Form::number('answer_','',(['class'=> 'form-answer'.(($i == 1) ? ' virtual-focus' : ''), 'maxlength'=>1, 'tabindex' => $i, 'max' => 9, 'min' => 0,'style' => 'width:20px;margin-right:-5px']))}}
+                            @endfor
+                        </span>
                     @else
                         <span class="num1">{{ $a }}</span><br>
                         <span class="human"> x </span> <span class="num1">{{ $b }}</span><br>
                         <span class="human"> x </span> <span class="num1">{{ $c }}</span><hr>
-                        <span class="result"> = {{ Form::text('answer','',(['style' => 'width:40px']))}}</span>
+                        <span class="result"> =
+                            @for($i = strlen(($a*$b*$c)); $i >= 1; $i--)
+                                {{ Form::number('answer_','',(['class'=> 'form-answer'.(($i == 1) ? ' virtual-focus' : ''), 'maxlength'=>1, 'tabindex' => $i, 'max' => 9, 'min' => 0,'style' => 'width:20px;margin-right:-5px']))}}
+                            @endfor
+                        </span>
                     @endif
                 </div>
             </div>

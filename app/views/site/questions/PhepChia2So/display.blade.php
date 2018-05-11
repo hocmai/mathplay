@@ -36,7 +36,8 @@ if( $type == 'chia_img'| $type == 'nhan-chia'){
 		<input type="hidden" name="qid" value="{{ $question->id }}" />
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
-		
+		{{ Form::hidden('answer') }}
+
 		<div class="form-group">
 			<div class="content inline-block">
 				@if($type == 'chia_img')
@@ -74,7 +75,12 @@ if( $type == 'chia_img'| $type == 'nhan-chia'){
 					</div>
 				@else
 					<div class="chia_img inline-block">
-						{{ ($a*$b).' : '.$a.' = ' }}<span class="answer">{{ Form::text('answer', ' ',['class' => 'inline-block','style' => 'width:40px']) }}</span>
+						{{ ($a*$b).' : '.$a.' = ' }}
+						<span class="answer">
+							@for($i = strlen($b) ; $i >= 1 ; $i--)
+								{{ Form::number('answer_', ' ',['class'=> 'form-answer'.(($i ==1) ? ' virtual-focus' : ''), 'maxlength'=>1, 'tabindex' => $i, 'max' => 9, 'min' =>0, 'style' => 'width:20px;margin-right:-5px' ]) }}
+							@endfor
+						</span>
 					</div>
 				@endif	
 			</div>
