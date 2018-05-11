@@ -32,13 +32,13 @@ $_arr = ['a' => $a, 'b' => $b, 'c' => $c, 'd' => $d];
 		
 		<div class="form-group">
 			<div class="content inline-block" style="font-size: 16px; font-weight: 500">
-				<span class="a-side inline-block">{{ ($find == 'a') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $a }}</span>
+				<span class="a-side inline-block">{{ ($find == 'a') ? Form::number('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $a }}</span>
 				<span class="type inline-block">{{ ($type == 'plus') ? '+' : '-' }}</span>
-				<span class="b-side inline-block">{{ ($find == 'b') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $b }}</span>
+				<span class="b-side inline-block">{{ ($find == 'b') ? Form::number('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $b }}</span>
 				<span class="comp inline-block">=</span>
-				<span class="c-side inline-block">{{ ($find == 'c') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $c }}</span>
+				<span class="c-side inline-block">{{ ($find == 'c') ? Form::number('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $c }}</span>
 				<span class="type inline-block">{{ ($type == 'plus') ? '+' : '-' }}</span>
-				<span class="d-side inline-block">{{ ($find == 'd') ? Form::text('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $d }}</span>
+				<span class="d-side inline-block">{{ ($find == 'd') ? Form::number('answer', '', ['class'=>'form-control text-center', 'style' => 'width:55px']) : $d }}</span>
 			</div>
 		</div>
 	{{ Form::close() }}
