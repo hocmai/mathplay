@@ -1,0 +1,10 @@
+.find-number-in-list .number{
+	font-size: 20px;
+    margin-right: 10px;
+}
+.find-number-in-list .number>input{
+	width: 50px;
+    line-height: 22px;
+    padding: 0 5px;
+    text-align: center;
+}

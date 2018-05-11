@@ -1,23 +1,22 @@
 <?php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
-
-class Role extends Eloquent
+class Role extends Model
 {
-	use SoftDeletingTrait;
+	use SoftDeletes;
     protected $table = 'roles';
     protected $fillable = ['name', 'description'];
     protected $dates = ['deleted_at'];
 
     public function admins()
     {
-        return $this->hasMany('Admin', 'role_id', 'id');
+        return $this->hasMany('App\Models\Admin', 'role_id', 'id');
     }
 
     public function user()
     {
-        return $this->hasMany('Users', 'role_id', 'id');
+        return $this->hasMany('App\Models\Users', 'role_id', 'id');
     }
 }

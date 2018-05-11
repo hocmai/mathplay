@@ -38,22 +38,22 @@ class Chapter extends Model
     
     public function author()
     {
-        return $this->belongsTo('Admin', 'author_id', 'id');
+        return $this->belongsTo('App\Models\Admin', 'author_id', 'id');
     }
     
     public function subject()
     {
-        return $this->belongsTo('Subject', 'subject_id', 'id');
+        return $this->belongsTo('App\Models\Subject', 'subject_id', 'id');
     }
 
     public function lession()
     {
-        return $this->hasMany('Lession', 'chapter_id', 'id');
+        return $this->hasMany('App\Models\Lession', 'chapter_id', 'id');
     }
 
     public function grade()
     {
-        return $this->belongsTo('Grade', 'grade_id', 'id');
+        return $this->belongsTo('App\Models\Grade', 'grade_id', 'id');
     }
  
 }

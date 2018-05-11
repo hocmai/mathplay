@@ -1,0 +1,19 @@
+#PhepNhanVaPhepCongTru form .cal-line{
+    font-size: 18px;
+    font-weight: 500;
+}
+#PhepNhanVaPhepCongTru form .cal-line .num{
+	display: inline-block;
+    width: 100%;
+    position: relative;
+    margin-top: 8px;
+}
+#PhepNhanVaPhepCongTru form .cal-line .num>.sym{
+	position: absolute;
+    left: 35px;
+    top: -10px;
+}
+#PhepNhanVaPhepCongTru form .cal-line hr{
+	margin: 10px 0;
+    border-color: #666;
+}

@@ -9,7 +9,7 @@
                     <li><a href="/">Trang chủ</a></li>
                     @foreach(Common::getAllGrade() as $grade)
                         <li>
-                            {{ renderUrl('SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
+                            {{ renderUrl('Site\SiteGradeController@show', $grade->title, ['grade_slug' => $grade->slug], []) }}
                         </li>
                     @endforeach
                 </ul>
@@ -26,9 +26,9 @@
                                 <span class="caret"></span>
                             </button>
                             <ul class="dropdown-menu">
-                                <li>{{ renderUrl('SiteMemberController@profile', 'Thông tin cá nhân', ['id' => Common::getObject(Auth::user()->get(), 'id')]) }}</li>
-                                <li>{{ renderUrl('SiteMemberController@history', 'Lịch sử làm bài', ['uid' => Common::getObject(Auth::user()->get(), 'id')]) }}</li>
-                                <li>{{ renderUrl('SiteUserController@logout', 'Thoát') }}</li>
+                                <li>{{ renderUrl('Site\SiteMemberController@profile', 'Thông tin cá nhân', ['id' => Common::getObject(Auth::user(), 'id')]) }}</li>
+                                <li>{{ renderUrl('Site\SiteMemberController@history', 'Lịch sử làm bài', ['uid' => Common::getObject(Auth::user(), 'id')]) }}</li>
+                                <li>{{ renderUrl('Site\SiteUserController@logout', 'Thoát') }}</li>
                             </ul>
                         </div>
                         <span>Xin chào</span>

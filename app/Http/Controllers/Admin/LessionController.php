@@ -15,7 +15,7 @@ class LessionController extends AdminController {
 	{
 		$data = Lession::orderBy('weight', 'asc')->orderBy('created_at', 'desc')->paginate(PAGINATE);
 		// dd($data->first());
-		return View::make('admin.lession.index')->with(compact('data'));
+		return view('admin.lession.index')->with(compact('data'));
 	}
 
 
@@ -60,7 +60,7 @@ class LessionController extends AdminController {
 		}
 		$data = $data->paginate(PAGINATE);
 		// dd(Input::get('order'));
-		return View::make('admin.lession.index')->with(compact('data'))->with(compact('input'));
+		return view('admin.lession.index')->with(compact('data'))->with(compact('input'));
 	}
 
 
@@ -71,7 +71,7 @@ class LessionController extends AdminController {
 	 */
 	public function create()
 	{	
-		return View::make('admin.lession.edit');
+		return view('admin.lession.edit');
 	}
 
 
@@ -138,7 +138,7 @@ class LessionController extends AdminController {
 					$data = curl_exec($ch);
 					$http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 					if(curl_errno($ch) == 0 && $http == 200 && !empty($data)) {
-		        		$sound_path = !empty($config['sound_title']) ? $config['sound_title'] : '/upload/question_sound_'.Str::slug($value['title'],'-').'.mp3';
+		        		$sound_path = !empty($config['sound_title']) ? $config['sound_title'] : '/upload/question_sound_'.str_slug($value['title'],'-').'.mp3';
 		        		file_put_contents(public_path().$sound_path, $data);
 		        		$config['sound_title'] = $sound_path;
 		        		$notice = 'Tải file âm thanh thành công từ Google Translate';
@@ -149,7 +149,7 @@ class LessionController extends AdminController {
         		else{
         			$file = Input::file('question_config');
         			if( !empty($file['sound_input'][$key]) ){
-        				$fileName = 'question_sound_'.Str::slug($value['title'],'-').'.mp3';
+        				$fileName = 'question_sound_'.str_slug($value['title'],'-').'.mp3';
         				$sound = $file['sound_input'][$key];
         				$sound->move(public_path().'/upload', $fileName);
         				$config['sound_title'] = '/upload/'.$fileName;
@@ -191,7 +191,7 @@ class LessionController extends AdminController {
 	{
 		$data = Lession::find($id);
 		// dd($data->question->toArray());
-        return View::make('admin.lession.edit', array('lession'=>$data));
+        return view('admin.lession.edit', array('lession'=>$data));
 	}
 
 
@@ -271,7 +271,7 @@ class LessionController extends AdminController {
 					$data = curl_exec($ch);
 					$http = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 					if(curl_errno($ch) == 0 && $http == 200 && !empty($data)) {
-		        		$sound_path = !empty($config['sound_title']) ? $config['sound_title'] : '/upload/question_sound_'.Str::slug($value['title'],'-').'.mp3';
+		        		$sound_path = !empty($config['sound_title']) ? $config['sound_title'] : '/upload/question_sound_'.str_slug($value['title'],'-').'.mp3';
 		        		file_put_contents(public_path().$sound_path, $data);
 		        		$config['sound_title'] = $sound_path;
 		        		$notice = 'Tải file âm thanh thành công từ Google Translate';
@@ -282,7 +282,7 @@ class LessionController extends AdminController {
         		else{
         			$file = Input::file('question_config');
         			if( !empty($file['sound_input'][$key]) ){
-        				$fileName = 'question_sound_'.Str::slug($value['title'],'-').'.mp3';
+        				$fileName = 'question_sound_'.str_slug($value['title'],'-').'.mp3';
         				$sound = $file['sound_input'][$key];
         				$sound->move(public_path().'/upload', $fileName);
         				$config['sound_title'] = '/upload/'.$fileName;

@@ -12,7 +12,7 @@ class SiteGradeController extends Controller {
 	 */
 	public function index()
 	{
-		return View::make('site.grade.default');
+		return view('site.grade.default');
 	}
 
 
@@ -26,11 +26,11 @@ class SiteGradeController extends Controller {
 	{
 		$data = \App\Models\Grade::find($id);
 		if(!$data){
-			App::abort(404);
+			abort(404);
 		}
 
 		if( !Auth::admin()->check() && $data->status == 0 ){
-			App::abort(403);
+			abort(403);
 		}
 
 		if( !Cache::has('grade_chapters_list_'.$gradeSlug) ){
@@ -38,7 +38,7 @@ class SiteGradeController extends Controller {
 			Cache::put('grade_chapters_list_'.$gradeSlug, $listChapter, 60);
 		}
 		$chapters = Cache::get('grade_chapters_list_'.$gradeSlug);
-		return View::make('site.grade.default')->with(compact(['data', 'chapters']));
+		return view('site.grade.default')->with(compact(['data', 'chapters']));
 	}
 
 	/**
@@ -51,7 +51,7 @@ class SiteGradeController extends Controller {
 	{
 		$grade = \App\Models\Grade::findBySlug($gradeSlug);
 		if(!$grade){
-			App::abort(404);
+			abort(404);
 		}
 		
 		$subject = $grade->subject()->first();
@@ -61,7 +61,7 @@ class SiteGradeController extends Controller {
 			Cache::put('grade_chapters_list_'.$gradeSlug, $listChapter, 60);
 		}
 		$chapters = Cache::get('grade_chapters_list_'.$gradeSlug);
-		return View::make('site.subject.index')->with(compact(['grade', 'chapters', 'subject']));
+		return view('site.subject.index')->with(compact(['grade', 'chapters', 'subject']));
 	}
 
 }

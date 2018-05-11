@@ -1,7 +1,7 @@
 @extends('site.layout.default')
 
 @section('title')
-    {{ $title = 'Lịch sử làm bài'; }}
+    {!! $title = 'Lịch sử làm bài' !!}
 @stop
 
 @section('breadcrumb')
@@ -10,7 +10,7 @@
         <ol class="breadcrumb">
             <li><a href="/">Trang chủ</a></li>
             <li>
-                {{ renderUrl('SiteMemberController@index', Auth::user()->get()->username, ['uid' => Auth::user()->get()->id]) }}
+                {{ renderUrl('Site\SiteMemberController@index', Auth::user()->username, ['uid' => Auth::user()->id]) }}
             </li>
             <li class="active">Lịch sử làm bài</li>
         </ol>
@@ -31,7 +31,7 @@
             <div class="main-content">
                 <h1 class="page-title">Lịch sử làm bài</h1>
                 <div class="question-log-filter">
-                    {{ Form::open(['action' => ['SiteMemberController@historyQuestion', Auth::user()->get()->id], 'method' => 'GET', 'id' => 'filter-question-log-form']) }}
+                    {{ Form::open(['action' => ['Site\SiteMemberController@historyQuestion', Auth::user()->id], 'method' => 'GET', 'id' => 'filter-question-log-form']) }}
                         {{ Form::hidden('lession') }}
                         <div class="dropdown">
                             <button class="btn btn-default dropdown-toggle" type="button" id="dropdownLesionTree" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
@@ -50,7 +50,7 @@
                 <div class="question-log-result">
                     <h2 class="title">Lịch sử làm bài</h2>
                     <div class="result-content alert box">
-                        @if( Input::get('lession') )
+                        @if( request()->get('lession') )
                             @if(count($data))
                                 <div class="panel-group" id="accordionLog" role="tablist" aria-multiselectable="true">
                                     @foreach($data as $key => $value)

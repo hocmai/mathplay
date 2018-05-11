@@ -10,7 +10,7 @@ class AdminTypeAboutController extends AdminController {
 	public function index()
 	{
 		$typeAboutUs = AdminLanguage::where('model_name', 'TypeAboutUs')->orderBy('position', 'asc')->get();
-		return View::make('admin.typeabout.index')->with(compact('typeAboutUs'));
+		return view('admin.typeabout.index')->with(compact('typeAboutUs'));
 	}
 
 
@@ -21,7 +21,7 @@ class AdminTypeAboutController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.typeabout.create');
+		return view('admin.typeabout.create');
 	}
 
 
@@ -86,7 +86,7 @@ class AdminTypeAboutController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		return View::make('admin.typeabout.edit')->with(compact('id'));
+		return view('admin.typeabout.edit')->with(compact('id'));
 	}
 
 

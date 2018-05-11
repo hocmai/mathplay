@@ -1,6 +1,11 @@
 <?php
 namespace App\Http\Controllers\Site;
-class SiteUserController extends SiteController {
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Validator;
+
+class SiteUserController extends Controller {
 
 	/**
 	 * Hoc mai OAuth2
@@ -36,12 +41,13 @@ class SiteUserController extends SiteController {
 	 */
 	public function loginForm()
 	{	
-		if( Auth::user()->check() ){
+		if( Auth::check() ){
 			// return Redirect::action('SiteUserController@show', ['id' => Auth::user()->get()->id]);
-			return Redirect::to('/');
+			// return Redirect::to('/');
+			return redirect()->action('Site\SiteIndexController@home');
 			// return Redirect::back()->with('success', 'Đăng nhập thành công!');
 		} else{
-			return View::make('site.user.login');
+			return view('site.user.login');
 		}
 	}
 
@@ -59,15 +65,15 @@ class SiteUserController extends SiteController {
 			'username.required'=>'Tên đăng nhập/Email chưa được nhập',
 			'password.required'=>'Mật khẩu không thể bỏ trống',
 		);
-        $input = Input::except(['_token', 'remember']);
+        $input = $this->request->except(['_token', 'remember']);
         $validator = Validator::make($input, $rules, $messsages);
         if ($validator->fails()) {
             return Redirect::back()
             	->withErrors($validator)
                 ->withInput(Input::except('password'));
         } else {
-        	$remember = Input::get('remember');
-            if( Auth::user()->attempt($input, !empty($remember) ? true : false ) ) {
+        	$remember = $this->request->get('remember');
+            if( Auth::attempt($input, !empty($remember) ? true : false ) ) {
         		return Redirect::to('/');
             } else {
                 return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
@@ -81,7 +87,7 @@ class SiteUserController extends SiteController {
 	 */
 	public function registerForm()
 	{
-		return View::make('site.user.register');
+		return view('site.user.register');
 	}
 
 	/**
@@ -93,7 +99,7 @@ class SiteUserController extends SiteController {
 	{
 		//$auth = Auth;
 		//dd($auth);
-		return View::make('site.user.login');
+		return view('site.user.login');
 	}
 
 

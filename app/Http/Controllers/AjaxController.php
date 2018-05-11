@@ -1,11 +1,30 @@
 <?php
 namespace App\Http\Controllers;
-use \HocmaiOAuth2 as HocmaiOAuth2;
-class AjaxController extends BaseController {
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
+use Services\CommonNormal;
+use Services\HocmaiOAuth2;
+use Services\CommonConfig;
+use Services\Common;
+use Services\CommonQuestion;
+
+use App\Models\UserCourse;
+use App\Models\StudyHistory;
+use App\Models\Grade;
+use App\Models\Chapter;
+use App\Models\Subject;
+use App\Models\Lession;
+
+class AjaxController extends Controller {
 
     private $HocmaiOAuth;
-    function __construct(HocmaiOAuth2 $HocmaiOAuth){
+    protected $request;
+
+    function __construct(HocmaiOAuth2 $HocmaiOAuth, Request $request){
         $this->HocmaiOAuth = $HocmaiOAuth;
+        $this->request = $request;
     }
 
     /**
@@ -16,7 +35,7 @@ class AjaxController extends BaseController {
     public function nodeSort($model)
     {
         try{
-            $nodeIds = Input::get('node_ids');
+            $nodeIds = $this->request->get('node_ids');
             if( count($nodeIds) && !empty($model) ){
                 $model = studly_case($model);
                 foreach ($nodeIds as $key => $value) {
@@ -24,11 +43,11 @@ class AjaxController extends BaseController {
                         CommonNormal::update($value['id'], ['weight' => $value['weight']], $model);
                     }
                 }
-                return Response::json('Thứ tự được sắp xếp thành công');
+                return response()->json('Thứ tự được sắp xếp thành công');
             }
         }
         catch( Exception $e ){
-            return Response::json($e->getMessage());
+            return response()->json($e->getMessage());
         }
     }
 
@@ -39,19 +58,19 @@ class AjaxController extends BaseController {
         try{
             if( !empty($_FILES['file']) ){
                 move_uploaded_file( $_FILES['file']['tmp_name'], public_path().'/upload/tmp/'.time().'.wav');
-                return Response::json(['data' => '/upload/tmp/'.time().'.wav']);
+                return response()->json(['data' => '/upload/tmp/'.time().'.wav']);
             }
         }
         catch( Exception $e ){
-            return Response::json($e->getMessage());
+            return response()->json($e->getMessage());
         }
     }
 
     public function removeQuestionTypeImgage(){
         try{
             $this->removeFile();
-            $path = Input::get('path');
-            $type = Input::get('type');
+            $path = $this->request->get('path');
+            $type = $this->request->get('type');
             $config = CommonConfig::get('question_type.config.'.$type);
 
             if( !empty($config['images']) ){
@@ -63,12 +82,12 @@ class AjaxController extends BaseController {
                 }
                 CommonConfig::set('question_type', 'question_type.config.'.$type, $config);
             }
-            return Response::json($config['images']);
+            return response()->json($config['images']);
         }
         catch( Exception $e ){
-            return Response::json($e->getMessage());
+            return response()->json($e->getMessage());
         }
-        // return Response::json(CommonConfig::get('question_type.config.'.$type));
+        // return response()->json(CommonConfig::get('question_type.config.'.$type));
     }
 
     /**
@@ -78,16 +97,16 @@ class AjaxController extends BaseController {
         try{
             if( !empty($_FILES['file']) ){
                 $name = $_FILES['file']['name'];
-                $path = Input::get('path') ? Input::get('path') : "/uploads/".date('Y').'/'.date('m');
+                $path = $this->request->get('path') ? $this->request->get('path') : "/uploads/".date('Y').'/'.date('m');
                 if ( move_uploaded_file($_FILES['file']['tmp_name'], public_path().$path.'/'.$name) ) {
-                    return Response::json(['url' => $path.'/'.$name, 'name' => $name]);
+                    return response()->json(['url' => $path.'/'.$name, 'name' => $name]);
                 }
             }
         }
         catch( Exception $e ){
-            return Response::json($e->getMessage());
+            return response()->json($e->getMessage());
         }
-        return Response::json(false);
+        return response()->json(false);
     }
 
 
@@ -96,14 +115,14 @@ class AjaxController extends BaseController {
      **/
     public function removeFile($path = ''){
         try{
-            if( Input::get('path') ){
-                return Response::Json( File::delete(public_path().Input::get('path')) );
+            if( $this->request->get('path') ){
+                return response()->json( File::delete(public_path().$this->request->get('path')) );
             }
         }
         catch( Exception $e ){
-            return Response::json($e->getMessage());
+            return response()->json($e->getMessage());
         }
-        return Response::json(false);
+        return response()->json(false);
     }
 
 
@@ -182,16 +201,16 @@ class AjaxController extends BaseController {
                                 }
                             }
                         }
-                        // return Response::json([$packages, $accessToken]);
+                        // return response()->json([$packages, $accessToken]);
                     }
-                    // return Response::json($input);
+                    // return response()->json($input);
                 }else{
                     $messages['message'] = 'Tài khoản đã bị xóa hoặc tạm khóa! Vui lòng liên hệ với Admin để được hỗ trợ.';
                 }
             }
         }
         // return '';
-        return Response::json($messages);
+        return response()->json($messages);
     }
 
 
@@ -200,7 +219,7 @@ class AjaxController extends BaseController {
      */
     public function deleteQuestion(){
         if (Auth::admin()->guest() | !Request::ajax()){
-            App::abort(403);
+            abort(403);
         }
         $input = Input::all();
         try{
@@ -210,10 +229,10 @@ class AjaxController extends BaseController {
             //////// Xoa question
             CommonNormal::delete($input['qid'], 'Question');
         } catch (Exception $e) {
-            return Response::json($e);
+            return response()->json($e);
         }
 
-        return Response::json(true);
+        return response()->json(true);
     }
 
     /**
@@ -221,24 +240,24 @@ class AjaxController extends BaseController {
      */
     public function getQuestionConfigForm()
     {
-        $type = Input::get('type');
-        $id = Input::get('id');
+        $type = $this->request->get('type');
+        $id = $this->request->get('id');
         $form = CommonQuestion::getConfigForm($type, null, $id);
-        return Response::json($form);
+        return response()->json($form);
     }
 
     /**
      * Update study history
      */
-    public function updateStudyHistory(){
-        $data = Input::get('data');
-        if(empty($data)) return Response::json(false);
+    public function updateStudyHistory(Request $request){
+        $data = $this->request->get('data');
+        if(empty($data)) return response()->json(false);
         $data = json_decode($data, true);
         $lesson = Lession::find($data['lession_id']);
         $lessonConf = Common::getConfigOfLesson($lesson);
 
-        if( Auth::user()->check() ){
-            $author = Common::getObject(Auth::user()->get(), 'id');
+        if( Auth::check() ){
+            $author = Common::getObject(Auth::user(), 'id');
             $data['author'] = $author;
             $data['status'] = $data['completed'] = 0;
 
@@ -267,7 +286,7 @@ class AjaxController extends BaseController {
             $data['score'] = ( $data['score'] >= $lessonConf['max_score'] ) ? $lessonConf['max_score'] : $data['score'];
             $data['star'] = Common::getRuleOfStar($data['score'], $lessonConf);
         }
-        return Response::json($data);
+        return response()->json($data);
     }
 
 }

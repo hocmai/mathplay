@@ -7,16 +7,24 @@
 </div>
 
 @section('js_header')
-{{ HTML::script('frontend/js/jquery.min.js')}}
-{{ HTML::script('frontend/js/bootstrap.min.js')}}
+{!! app('html')->script('frontend/js/jquery.min.js') !!}
+<script type="text/javascript">
+	$.ajaxSetup({
+	    headers: {
+	        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+	    }
+	});
+</script>
+	
+{!! app('html')->script('frontend/js/bootstrap.min.js') !!}
 
-{{ HTML::script('frontend/js/slick.min.js')}}
-{{ HTML::script('frontend/js/menu-mobile.js')}}
-{{ HTML::script('frontend/js/jquery-ui.js')}}
-{{ HTML::script('frontend/js/touch-punch.jquery.ui.js')}}
-{{ HTML::script('frontend/js/myscript.js')}}
+{!! app('html')->script('frontend/js/slick.min.js') !!}
+{!! app('html')->script('frontend/js/menu-mobile.js') !!}
+{!! app('html')->script('frontend/js/jquery-ui.js') !!}
+{!! app('html')->script('frontend/js/touch-punch.jquery.ui.js') !!}
+{!! app('html')->script('frontend/js/myscript.js') !!}
 
-{{-- {{ HTML::script('frontend/js/main.js') }} --}}
+{{-- {!! app('html')->script('frontend/js/main.js') }} --}}
 @show
 <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
 <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

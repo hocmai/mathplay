@@ -79,7 +79,7 @@ $uique = str_random(10);
 				<select name="question[type][{{$key}}]" class="form-control get-question-form-config{{ ($key>0) ? ' selectpicker' : '' }}" required="1" data-live-search="true">
 					<option value="">-- Chọn --</option>
 					@foreach( CommonQuestion::getAllType() as $index => $value )
-						<option{{ ($index == Common::getObject($question, 'type')) ? ' selected' : '' }} data-tokens="{{ Str::slug($value, ' ').' '.$value }}" value="{{ $index }}">{{ $value }}</option>
+						<option{{ ($index == Common::getObject($question, 'type')) ? ' selected' : '' }} data-tokens="{{ str_slug($value, ' ').' '.$value }}" value="{{ $index }}">{{ $value }}</option>
 					@endforeach
 				</select>
 			</div>

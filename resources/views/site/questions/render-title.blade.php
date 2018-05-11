@@ -7,9 +7,9 @@
 	<script type="text/javascript">
 		@foreach( $str_arr as $key => $str )
 			<?php
-			$str_lug = Str::slug($str, '');
+			$str_lug = str_slug($str, '');
 			$title[] = trim($str);
-			$title_slug[] = Str::slug($str, '');
+			$title_slug[] = str_slug($str, '');
 			?>
 			if( !checkIdExist('{{ $str_lug }}') ){
 				audioList.push({id: '{{ $str_lug }}', url: '{{ CommonQuestion::getAudioPath($str) }}' });

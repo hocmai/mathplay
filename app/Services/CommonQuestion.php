@@ -1,5 +1,17 @@
 <?php
-Class CommonQuestion {
+namespace Services;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
+use App\Models\LessionQuestion;
+use App\Models\Audio;
+use Illuminate\Support\Facades\View;
+
+class CommonQuestion {
+	private $auth;
+
+	function __construct(Auth $auth){
+		$this->auth = $auth;
+	}
 
 	public static function timUocSo($num){
 		$arr = [];
@@ -30,7 +42,7 @@ Class CommonQuestion {
 	}
 
 	public static function getAudioPath($text = ''){
-		$slug = Str::slug($text, '');
+		$slug = str_slug($text, '');
 		if( !Cache::has('audio_'.$slug) ){
 			$audioUrl = Common::getObject( Audio::where('slug', $slug)->first(), 'url' );
 			if( empty($audioUrl) ){
@@ -64,7 +76,7 @@ Class CommonQuestion {
 	 **/
 	public static function getConfigForm($type = null, $config = null, $id = 0){
 		if (View::exists('site.questions.'.$type.'.form')) {
-			return '<p><a target="_blank" href="'.action('QuestionTypeController@edit', ['type' => $type]).'">Cấu hình dạng bài</a></p>'.View::make('site.questions.'.$type.'.form', ['config' => $config, 'id' => $id])->render();
+			return '<p><a target="_blank" href="'.action('QuestionTypeController@edit', ['type' => $type]).'">Cấu hình dạng bài</a></p>'.view('site.questions.'.$type.'.form', ['config' => $config, 'id' => $id])->render();
 			// .Form::hidden('question_config[config]['.$id.']', json_encode($config), ['class' => 'question-config-hidden']);
 		}
 		return Form::hidden('question_config[empty]['.$id.']').'<span>Không có cài đặt nào cho dạng bài này.</span>';
@@ -80,7 +92,7 @@ Class CommonQuestion {
 		$max_question = $lession_conf['number_ques'];
 		$max_score = $lession_conf['max_score'];
 		$score = $lession_conf['score'];
-		$data_history = ['grade_id' => $lession->chapter->subject->grade->id, 'subject_id' => $lession->chapter->subject->id, 'chapter_id' => $lession->chapter->id, 'lession_id' => $lession->id, 'author' => Common::getObject(Auth::user()->get(), 'id')];
+		$data_history = ['grade_id' => $lession->chapter->subject->grade->id, 'subject_id' => $lession->chapter->subject->id, 'chapter_id' => $lession->chapter->id, 'lession_id' => $lession->id, 'author' => Common::getObject(Auth::user(), 'id')];
 		$question_order = [];
 
 		//////// kiem tra thu tu cac cau hoi va sap xep dung vi tri nhu config, 1 cau hoi co the duoc lap lai nhieu lan
@@ -127,7 +139,7 @@ Class CommonQuestion {
 	public static function renderQuestion($question, $config = [], $lession = null, $question_num = 1){
 		// $config = json_decode($config);
 		if (View::exists('site.questions.'.$question->type.'.display')) {
-			return View::make('site.questions.'.$question->type.'.display')->with(compact(['question', 'config', 'lession', 'question_num']))->render();
+			return view('site.questions.'.$question->type.'.display')->with(compact(['question', 'config', 'lession', 'question_num']))->render();
 		}
 	}
 

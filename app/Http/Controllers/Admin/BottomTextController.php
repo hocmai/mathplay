@@ -55,7 +55,7 @@ class BottomTextController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		return View::make('admin.bottomtext.edit')->with(compact('id'));
+		return view('admin.bottomtext.edit')->with(compact('id'));
 	}
 
 

@@ -1,5 +1,8 @@
 <?php
-class ConfigModel  extends Eloquent
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
+
+class ConfigModel  extends Model
 {
     protected $table = 'config';
     protected $fillable = ['name', 'collection', 'data'];

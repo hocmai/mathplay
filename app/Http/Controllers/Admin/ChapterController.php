@@ -15,7 +15,7 @@ class ChapterController extends AdminController {
 	{
 		$data = Chapter::orderBy('created_at', 'desc')->paginate(PAGINATE);
 		// dd($data);
-		return View::make('admin.chapter.index')->with(compact('data'));
+		return view('admin.chapter.index')->with(compact('data'));
 	}
 
 	/**
@@ -52,7 +52,7 @@ class ChapterController extends AdminController {
 		}
 		$data = $data->paginate(PAGINATE);
 		// dd(Input::get('order'));
-		return View::make('admin.chapter.index')->with(compact('data'))->with(compact('input'));
+		return view('admin.chapter.index')->with(compact('data'))->with(compact('input'));
 	}
 
 
@@ -63,7 +63,7 @@ class ChapterController extends AdminController {
 	 */
 	public function create()
 	{	
-		return View::make('admin.chapter.create');
+		return view('admin.chapter.create');
 	}
 
 
@@ -103,7 +103,7 @@ class ChapterController extends AdminController {
 	public function edit($id)
 	{
 		$data = Chapter::find($id);
-        return View::make('admin.chapter.edit', array('data'=>$data));
+        return view('admin.chapter.edit', array('data'=>$data));
 	}
 
 

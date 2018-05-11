@@ -161,6 +161,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        App\Providers\ListServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Barryvdh\Debugbar\ServiceProvider::class,
         // Models\Model::class,
@@ -216,10 +217,15 @@ return [
 
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
 
         'Common' => Services\Common::class,
+        'CommonQuestion' => Services\CommonQuestion::class,
+        'AdminManager' => Services\AdminManager::class,
+        'CommonNormal' => Services\CommonNormal::class,
+        'CommonUpload' => Services\CommonUpload::class,
+        'CommonConfig' => Services\CommonConfig::class,
         'HocmaiOAuth2' => Services\HocmaiOAuth2::class,
-        'Debugbar' => Barryvdh\Debugbar\Facade::class,
     ],
 
 ];

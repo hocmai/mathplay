@@ -13,7 +13,7 @@ class SiteNewsController extends SiteController {
 		$inputListNews = AdminNew::where('start_date', '<=', Carbon\Carbon::now())
 							->orderBy('id', 'desc')
 							->paginate(FRONENDPAGINATE);
-		return View::make('site.news.listNews')->with(compact('inputListNews'));
+		return view('site.news.listNews')->with(compact('inputListNews'));
 	}
 
 
@@ -54,7 +54,7 @@ class SiteNewsController extends SiteController {
 								->orderBy('id', 'desc')
 								->limit(PAGINATE_RELATED)
 								->get();
-		return View::make('site.news.showNews')->with(compact('inputNew', 'inputRelated'));
+		return view('site.news.showNews')->with(compact('inputNew', 'inputRelated'));
 	}
 
 	/**

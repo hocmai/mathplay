@@ -2,6 +2,12 @@
 namespace Services;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
+use App\Models\UserCourse;
+use App\Models\StudyHistory;
+use App\Models\Grade;
+use App\Models\Chapter;
+use App\Models\Subject;
 
 class Common {
 
@@ -10,7 +16,7 @@ class Common {
             return null;
         }
         $data = StudyHistory::where('grade_id', $gradeId)
-            ->where('author', Auth::get()->id)
+            ->where('author', Auth::user()->id)
             ->orderBy('created_at', 'desc')
             ->first();
         return $data;
@@ -25,11 +31,11 @@ class Common {
                 DB::raw("(SELECT id, MAX(star) AS MaxStar, lession_id 
                 FROM study_history
                 WHERE study_history.status = '1'
-                GROUP BY lession_id) as groupedtt"), function($join){
+                GROUP BY lession_id, id) as groupedtt"), function($join){
                     $join->on('study_history.lession_id', '=', 'groupedtt.lession_id')
                          ->on('study_history.star', '=', 'groupedtt.MaxStar');
                 })
-            ->where('author', Auth::get()->id)
+            ->where('author', Auth::user()->id)
             ->where('status', 1)
             ->first();
         return self::getObject($data, 'star');
@@ -44,11 +50,11 @@ class Common {
                 DB::raw("(SELECT id, MAX(star) AS MaxStar, lession_id 
                 FROM study_history
                 WHERE study_history.lession_id = '$lessonId'
-                GROUP BY lession_id) as groupedtt"), function($join){
+                GROUP BY lession_id, id) as groupedtt"), function($join){
                     $join->on('study_history.lession_id', '=', 'groupedtt.lession_id')
                          ->on('study_history.star', '=', 'groupedtt.MaxStar');
                 })
-            ->where('author', Auth::get()->id)
+            ->where('author', Auth::user()->id)
             ->where('study_history.lession_id', $lessonId)
             ->first();
         return self::getObject($data, 'star');
@@ -58,7 +64,7 @@ class Common {
         if(Auth::check() == false){
             return false;
         }
-        $uid = Auth::get()->id;
+        $uid = Auth::user()->id;
         $result = StudyHistory::where('author',$uid)->where('lession_id', $lessionId)->count();
         // dd($result);
         if( $result ){
@@ -79,13 +85,13 @@ class Common {
     public static function getAllGrade(){
         if(Auth::guard('admin')->check()){
             if( !Cache::has('list_admin_grades') ){
-                $grades = \App\Models\Grade::all();
+                $grades = Grade::all();
                 Cache::put('list_admin_grades', $grades, 10);
             }
             return Cache::get('list_admin_grades'); 
         }
         if( !Cache::has('list_anonymous_grades') ){
-            $grades = \App\Models\Grade::all();
+            $grades = Grade::all();
             Cache::put('list_anonymous_grades', $grades, 10);
         }
         return Cache::get('list_anonymous_grades');
@@ -93,7 +99,7 @@ class Common {
 
     public static function getLessionTree(){
         $tree = [];
-        $gradeList = \App\Models\Grade::orderBy('created_at', 'asc')->get();
+        $gradeList = Grade::orderBy('created_at', 'asc')->get();
         foreach ($gradeList as $key => $grade) {
             $subjectTree = [];
             $subjectList = $grade->subject()->orderBy('created_at', 'asc')->get();
@@ -208,7 +214,7 @@ class Common {
                 'subject_id' => $lession->chapter->subject->id,
                 'chapter_id' => $lession->chapter->id,
                 'lession_id' => $lession->id,
-                'author' => Common::getObject(Auth::get(), 'id'),
+                'author' => Common::getObject(Auth::user(), 'id'),
                 'status' => 0
             ];
 
@@ -235,7 +241,7 @@ class Common {
 
     public static function getGradeList()
     {
-        return \App\Models\Grade::orderBy('created_at', 'desc')->lists('title','id');
+        return Grade::orderBy('created_at', 'desc')->lists('title','id');
     }
 
     public static function getSubjectList()
@@ -264,7 +270,7 @@ class Common {
         foreach ($chapter_group as $key => $value) {
             $chapterOption .= '<optgroup label="'. $key .'">';
             foreach ($value as $key2 => $chapter) {
-                $chapterOption .= '<option'.(  ($default == $chapter->chapter_id) ? ' selected="selected"' : '' ).' data-tokens="'. Str::slug($chapter->chapter_title, ' ').' '.$chapter->chapter_title .'" value="'. $chapter->chapter_id .'">'.$chapter->chapter_title.'</option>';
+                $chapterOption .= '<option'.(  ($default == $chapter->chapter_id) ? ' selected="selected"' : '' ).' data-tokens="'. str_slug($chapter->chapter_title, ' ').' '.$chapter->chapter_title .'" value="'. $chapter->chapter_id .'">'.$chapter->chapter_title.'</option>';
             }
             $chapterOption .= '</optgroup>';
         }
@@ -299,7 +305,7 @@ class Common {
         if( isset($chapter)) $subjectId = $chapter->subject_id;
         if( isset($subjectId)) $subject = Subject::find($subjectId);
         if( isset($subject)) $classID = $subject->grade_id;
-        if( isset($classID)) $class = \App\Models\Grade::find($classID);
+        if( isset($classID)) $class = Grade::find($classID);
         if( isset($class)) return $class;
         return null;
     }
@@ -330,11 +336,11 @@ class Common {
      */
     public static function getUserName(){
         if( Auth::check() ){
-            $fullName = self::getObject(Auth::get(), 'full_name');
+            $fullName = self::getObject(Auth::user(), 'full_name');
             if( !empty($fullName) ){
                 return $fullName;
             }
-            return self::getObject(Auth::get(), 'username');
+            return self::getObject(Auth::user(), 'username');
         }
         return 'Kid';
     }
@@ -345,7 +351,7 @@ class Common {
     public static function getUserAvatar(){
         return asset('frontend/images/avata.jpg');
         if( Auth::check() ){
-            return self::getObject(Auth::get(), 'username');
+            return self::getObject(Auth::user(), 'username');
         }
         return 'Kid';
     }
@@ -357,7 +363,7 @@ class Common {
             return '<a class="dang-ky button hocmai-oauth-login" href= "'.$ssoLib->getAuthorizeUri().'" title="">Học Thử</a>';
         }else {
             
-            $user_id = Auth::get()->id ;
+            $user_id = Auth::user()->id ;
             $grade = UserCourse::where('user_id', $user_id)->whereNotNull('grade_slug')->first();
 
             if($grade != null){
@@ -371,7 +377,7 @@ class Common {
     public static function getLessonThereFree(){
         $lessons = Cache::get('list_three_of_first_lesson');
         if( !Cache::has('list_three_of_first_lesson') | $lessons === null ){
-            $grades = \App\Models\Grade::all();
+            $grades = Grade::all();
             $lessons = [];
             foreach ($grades as $grade) {
                 $chapter = $grade->chapter()->orderBy('weight', 'asc')->first();

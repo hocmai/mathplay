@@ -1,0 +1,79 @@
+.weight-vr{
+    position: relative;
+    width: 300px;
+    display: inline-block;
+    text-align: center;
+    font-size: 16px;
+    font-weight: 500;
+}
+.weight-vr .num>span{
+	background: #fff;
+	z-index: 2;
+	position: relative;
+}
+.weight-vr .num{
+	position: relative;
+    border: 2px solid #666;
+    padding: 5px;
+    width: 80px;
+}
+.weight-vr .num::before{
+	content: "";
+	z-index: 1;
+	position: absolute;
+    width: calc(100% + 4px);
+    height: 45%;
+    top: -2px;
+    left: -2px;
+    background: #fff;
+}
+.weight-vr .num::after{
+	content: "";
+	position: absolute;
+	z-index: 2;
+	bottom: -18px;
+	background: #666;
+	width: 2px;
+	height: 18px;
+	left: 50%;
+}
+.weight-vr.lower-right .right,
+.weight-vr.lower-left .left{
+	margin-top: 30px;
+}
+.weight-vr .bottom{
+    border-bottom: 2px solid #666;
+    width: 20px;
+    height: 30px;
+    display: inline-block;
+    position: relative;
+    /*margin-top: 20px;*/
+}
+.weight-vr .bottom::before{
+	content: "";
+	position: absolute;
+	left: calc(50% - 1px);
+	background: #666;
+	bottom: 0;
+    width: 2px;
+    height: 100%;
+}
+.weight-vr.lower-balance .bottom {
+    margin-top: 15px;
+}
+.weight-vr .balance{
+    position: absolute;
+    width: calc(100% - 77px);
+    height: 2px;
+    background: #666;
+    left: 40px;
+}
+.weight-vr.lower-balance .balance {
+    margin-top: 15px;
+}
+.weight-vr.lower-right .balance{
+	transform: rotate(8deg);
+}
+.weight-vr.lower-left .balance{
+	transform: rotate(-8deg);
+}

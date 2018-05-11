@@ -9,7 +9,7 @@ class AudioController extends \BaseController {
 	 */
 	public function saveConfirm(){
 		$data = Session::get('data');
-		return View::make('admin.audio.confirm');
+		return view('admin.audio.confirm');
 		dd($data);
 	}
 
@@ -22,7 +22,7 @@ class AudioController extends \BaseController {
 	public function index()
 	{
 		$data = Audio::orderBy('created_at', 'desc')->paginate(PAGINATE);
-		return View::make('admin.audio.index')->with(compact('data'));
+		return view('admin.audio.index')->with(compact('data'));
 	}
 
 
@@ -33,7 +33,7 @@ class AudioController extends \BaseController {
 	 */
 	public function create()
 	{
-		return View::make('admin.audio.create');
+		return view('admin.audio.create');
 	}
 
 
@@ -45,7 +45,7 @@ class AudioController extends \BaseController {
 	public function store()
 	{
 		$title = Input::get('title');
-		$slug = Str::slug($title, '');
+		$slug = str_slug($title, '');
 		$url = '';
 		// dd(Input::all());
 
@@ -97,9 +97,9 @@ class AudioController extends \BaseController {
 	{
 		$data = Audio::find($id);
 		if( !($data) ){
-			return App::abort(404);
+			return abort(404);
 		}
-		return View::make('admin.audio.create')->with(compact('data'));
+		return view('admin.audio.create')->with(compact('data'));
 	}
 
 
@@ -113,7 +113,7 @@ class AudioController extends \BaseController {
 	{
 		$data = Audio::find($id);
 		$title = Input::get('title');
-		$slug = Str::slug($title, '');
+		$slug = str_slug($title, '');
 
 		// if( Common::getObject($data, 'slug') != $slug ){
 		// 	//// Slug & title changed

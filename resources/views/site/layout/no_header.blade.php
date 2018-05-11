@@ -7,12 +7,12 @@
     <title>@yield('title')</title>
 
     @section('css_header')
-    {{ HTML::style('frontend/css/bootstrap.min.css')}}
-    {{ HTML::style('frontend/css/font-awesome.min.css')}}
-    {{ HTML::style('frontend/css/hover-min.css')}}
-    {{ HTML::style('frontend/css/new-style.css')}}
-    {{ HTML::style('frontend/css/home_layout.css')}}
-    {{ HTML::style('frontend/css/responsive_lesson.css') }}
+    {!! app('html')->style('frontend/css/bootstrap.min.css') !!}
+    {!! app('html')->style('frontend/css/font-awesome.min.css') !!}
+    {!! app('html')->style('frontend/css/hover-min.css') !!}
+    {!! app('html')->style('frontend/css/new-style.css') !!}
+    {!! app('html')->style('frontend/css/home_layout.css') !!}
+    {!! app('html')->style('frontend/css/responsive_lesson.css') !!}
     @show
     <!--[if lt IE 9]>
     <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script><![endif]-->

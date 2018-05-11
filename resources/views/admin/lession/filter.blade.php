@@ -10,7 +10,7 @@
 			<select name="type" class="form-control selectpicker" data-live-search="true">
 				<option value="">-- Tất cả --</option>
 				@foreach( CommonQuestion::getAllType() as $index => $value )
-					<option{{ ($index == Input::get('type')) ? ' selected' : '' }} data-tokens="{{ Str::slug($value, ' ').' '.$value }}" value="{{ $index }}">{{ $value }}</option>
+					<option{{ ($index == Input::get('type')) ? ' selected' : '' }} data-tokens="{{ str_slug($value, ' ').' '.$value }}" value="{{ $index }}">{{ $value }}</option>
 				@endforeach
 			</select>
 		</div>

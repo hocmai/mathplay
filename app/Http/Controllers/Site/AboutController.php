@@ -30,7 +30,7 @@ class AboutController extends SiteController {
 		// 				->orderBy('languages.position', 'asc')
 		// 				->get();
 
-		return View::make('site.about.showAbout')->with(compact('viData', 'enData'));
+		return view('site.about.showAbout')->with(compact('viData', 'enData'));
 
 	}
 

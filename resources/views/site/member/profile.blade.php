@@ -1,7 +1,7 @@
 @extends('site.layout.no_header')
 
 @section('title')
-    {{ $title = 'Thông tin cá nhân'; }}
+    {!! $title = 'Thông tin cá nhân' !!}
 @stop
 
 @section('breadcrumb')
@@ -22,7 +22,7 @@
             <h1 class="page-title">Thông tin cá nhân</h1>
             @include('admin.common.message')
             <div class="row">
-                {{ Form::open(['action' => ['SiteMemberController@saveProfile', $id], 'class' => 'user-profile-form' ]) }}
+                {{ Form::open(['action' => ['Site\SiteMemberController@saveProfile', $id], 'class' => 'user-profile-form' ]) }}
                     <div class=" col-sm-6 col-xs-12">
                         <div class="box-body">
                             <div class="form-group">

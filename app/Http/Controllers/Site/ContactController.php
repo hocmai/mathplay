@@ -10,7 +10,7 @@ class ContactController extends SiteController {
 	public function index()
 	{
 		$data = Common::objectLanguage('Contact', 1, getLang());
-		return View::make('site.contact.contact')->with(compact('data'));
+		return view('site.contact.contact')->with(compact('data'));
 	}
 
 	/**

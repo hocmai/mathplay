@@ -1,7 +1,7 @@
 @extends('site.layout.default')
 
 @section('title')
-    {{ $title = 'Bảng điểm'; }}
+    {!! $title = 'Bảng điểm' !!}
 @stop
 
 @section('breadcrumb')
@@ -10,7 +10,7 @@
         <ol class="breadcrumb">
             <li><a href="/">Trang chủ</a></li>
             <li>
-                {{ renderUrl('SiteMemberController@index', Auth::user()->get()->username, ['uid' => Auth::user()->get()->id]) }}
+                {{ renderUrl('Site\SiteMemberController@index', Auth::user()->username, ['uid' => Auth::user()->id]) }}
             </li>
             <li class="active">Lịch sử làm bài</li>
         </ol>
@@ -34,12 +34,12 @@
                 <div class="class-history-log">
                     <div class="dropdown clearfix">
                         <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                            Chọn lớp: {{ !empty($gradeList[Input::get('grade')]) ? $gradeList[Input::get('grade')] : '' }}
+                            Chọn lớp: {{ !empty($gradeList[request()->get('grade')]) ? $gradeList[request()->get('grade')] : '' }}
                             <span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                             @foreach($gradeList as $id => $title)
-                                <li>{{ link_to_action('SiteMemberController@history', $title, ['uid' => Auth::user()->get()->id, 'grade' => $id]) }}</li>
+                                <li>{{ link_to_action('Site\SiteMemberController@history', $title, ['uid' => Auth::user()->id, 'grade' => $id]) }}</li>
                             @endforeach
                         </ul>
                     </div> <!-- End dropdown -->
@@ -47,7 +47,7 @@
                     <div class="question-log-result">
                         <!-- <h2 class="title">Học bạ</h2> -->
                         <div class="result-content">
-                            @if( Input::get('grade') )
+                            @if( request()->get('grade') )
                                     @if(count($data) && count($chapter))
                                         <?php
                                         $historyData = [];
@@ -76,7 +76,7 @@
                                                         if(isset($historyData[$lession->id])){
                                                             $lessionH = $historyData[$lession->id];
                                                         }?>
-                                                        <tr onclick="window.location.href='{{ action('SiteMemberController@historyQuestion', ['uid' => Auth::user()->get()->id, 'lession' => $lession->id]) }}'">
+                                                        <tr onclick="window.location.href='{{ action('Site\SiteMemberController@historyQuestion', ['uid' => Auth::user()->id, 'lession' => $lession->id]) }}'">
                                                             <td class="title">{{ $lession->title }}</td>
                                                             <td>{{ Common::getObject($lessionH, 'score') }}</td>
                                                             <td>{{ Common::getObject($lessionH, 'current_question') }}</td>
@@ -88,7 +88,7 @@
                                             @endforeach
                                         </table>
                                     @else
-                                    <em>Bạn chưa học chương trình {{ link_to( action('SiteGradeController@show', 'lop-'.Input::get('grade')), !empty($gradeList[Input::get('grade')]) ? $gradeList[Input::get('grade')] : Lớp) }} này.</em>
+                                    <em>Bạn chưa học chương trình {{ link_to( action('Site\SiteGradeController@show', 'lop-'.request()->get('grade')), !empty($gradeList[request()->get('grade')]) ? $gradeList[request()->get('grade')] : Lớp) }} này.</em>
                                 @endif
                             @else
                                 <em>Hãy chọn lớp mà bạn muốn xem.</em>

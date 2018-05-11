@@ -1,15 +1,16 @@
 <?php
 // use Illuminate\Contracts\Auth;
-use Illuminate\Auth\UserTrait;
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableTrait;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+namespace App\Models;
+use Hash;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Foundation\Auth\User as Authentical;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class User extends Eloquent implements UserInterface, RemindableInterface
+class User extends Authentical implements Authenticatable
 {
-    use UserTrait, RemindableTrait;
-	use SoftDeletingTrait;
+    use Notifiable;
+	use SoftDeletes;
 
     protected $table = 'users';
 
@@ -23,7 +24,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface
      */
     public function grades()
     {
-        return $this->belongsTo('Grade', 'grade_id', 'id');
+        return $this->belongsTo('App\Models\Grade', 'grade_id', 'id');
     }
 
 }

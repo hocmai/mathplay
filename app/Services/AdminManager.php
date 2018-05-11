@@ -1,4 +1,6 @@
 <?php
+namespace Services;
+
 class AdminManager
 {
 	public static function searchAdminOperation($input)

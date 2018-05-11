@@ -1,4 +1,8 @@
 <?php
+namespace Services;
+use App\Models\ConfigModel;
+use Services\Common;
+
 class CommonConfig
 {
 	/**

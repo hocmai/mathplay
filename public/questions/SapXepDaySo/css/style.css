@@ -1,0 +1,19 @@
+#SapXepDaySo .item.sort{
+    margin: 5px;
+    padding: 10px;
+    background: #17bebb;
+    box-shadow: 3px 3px 3px -1px #ddd;
+    border-radius: 5px;
+    border: 1px solid #f1f1f1;
+    font-weight: 600;
+    min-width: 50px;
+    font-size: 20px;
+    cursor: move;
+    color: #fff;
+    text-shadow: 2px 2px 3px #999;
+    transition: all 0.05s ease;
+    line-height: 30px;
+}
+#SapXepDaySo .item.sort:hover{
+	transform: scale(1.1);
+}

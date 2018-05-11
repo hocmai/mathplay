@@ -1,9 +1,11 @@
 <?php
+namespace App\Models;
+use Illuminate\Database\Eloquent\Model;
 // use Illuminate\Database\Eloquent\SoftDeletingTrait;
 // use Cviebrock\EloquentSluggable\SluggableInterface;
 // use Cviebrock\EloquentSluggable\SluggableTrait;
 
-class Question extends Eloquent
+class Question extends Model
 {
     // use SoftDeletingTrait;
     // use SluggableTrait;
@@ -18,13 +20,13 @@ class Question extends Eloquent
 
     public function author()
     {
-        return $this->belongsTo('Admin', 'author_id', 'id');
+        return $this->belongsTo('App\Models\Admin', 'author_id', 'id');
     }
 
 
     public function lession()
     {
-        return $this->belongsToMany('Lession', 'lession_question', 'qid', 'lession_id');
+        return $this->belongsToMany('App\Models\Lession', 'lession_question', 'qid', 'lession_id');
     }
  
 }

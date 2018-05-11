@@ -1,0 +1,87 @@
+#PhepTinhZicZac .wrap-zz{
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 30px;
+}
+#PhepTinhZicZac .huong-dan-giai .wrap-zz{
+    width: 110%;
+}
+#PhepTinhZicZac .wrap-zz>.sub{
+    margin-top: 50px;
+    height: 35px;
+}
+#PhepTinhZicZac .wrap-zz>.sub>span{
+    position: absolute;
+    left: -33px;
+    z-index: 2;
+    width: 50px;
+}
+#PhepTinhZicZac .huong-dan-giai .wrap-zz span.active{
+    text-decoration: underline;
+    font-size: 15px;
+    color: red;
+}
+#PhepTinhZicZac .wrap-zz>.sub.up.has-input>span{
+    top: -16px;
+    left: -35px;
+}
+#PhepTinhZicZac .wrap-zz>.sub.down.has-input>span{
+    left: -23px;
+    top: 10px;
+}
+#PhepTinhZicZac .wrap-zz input{
+	padding: 2px;
+    float: right;
+    width: 35px;
+    font-size: 16px;
+    height: 30px;
+    border-radius: 3px;
+    margin: 0 2px;
+    text-align: center;
+    border: 1px solid #00BCD4;
+}
+#PhepTinhZicZac .wrap-zz>.sub.down::before,
+#PhepTinhZicZac .wrap-zz>.sub.up::before{
+    content: "";
+    width: 85px;
+    height: 2px;
+    background: #666;
+    position: absolute;
+    left: -17px;
+    top: 8px;
+    transform: rotate(42deg);
+}
+#PhepTinhZicZac .wrap-zz>.sub.down::after,
+#PhepTinhZicZac .wrap-zz>.sub.up::after{
+	content: "";
+    position: absolute;
+    border-left: 15px solid #666;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    transform: rotate(42deg);
+    bottom: -12px;
+    right: -21px;
+}
+#PhepTinhZicZac .wrap-zz>.sub.up::before{
+    top: 13px;
+    left: -29px;
+    width: 93px;
+}
+#PhepTinhZicZac .wrap-zz>.sub.up::before,
+#PhepTinhZicZac .wrap-zz>.sub.up::after{
+    transform: rotate(-42deg);
+}
+#PhepTinhZicZac .wrap-zz>.sub.up::after{
+    bottom: auto;
+    top: -20px;
+    right: -10px;
+}
+#PhepTinhZicZac .wrap-zz>.num,
+#PhepTinhZicZac .wrap-zz>.sub{
+	position: relative;
+    width: 48px;
+    text-align: center;
+}
+#PhepTinhZicZac .wrap-zz>.num.up{
+	margin-top: 100px;
+}

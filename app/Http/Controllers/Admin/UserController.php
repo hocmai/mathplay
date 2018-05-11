@@ -11,7 +11,7 @@ class UserController extends AdminController {
 	{
 		$data = User::orderBy('created_at', 'desc')->paginate(PAGINATE);
 		// dd(User::all());
-		return View::make('admin.user.index')->with(compact('data'));
+		return view('admin.user.index')->with(compact('data'));
 	}
 
 	// search user
@@ -23,7 +23,7 @@ class UserController extends AdminController {
 			// lay tat ca cac du lieu tu cot input ... nếu k tìm thấy các thuộc tinh trên thì trả về index
 		}
 		$data = AdminManager::searchUserOperation($input);
-		return View::make('admin.user.index')->with(compact('data'));
+		return view('admin.user.index')->with(compact('data'));
 		
 	}
 
@@ -34,7 +34,7 @@ class UserController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.user.create');
+		return view('admin.user.create');
 	}
 
 
@@ -91,7 +91,7 @@ class UserController extends AdminController {
 	public function edit($id)
 	{
 		$data = User::findOrFail($id);
-        return View::make('admin.user.edit', array('data'=>$data));
+        return view('admin.user.edit', array('data'=>$data));
 	}
 
 
@@ -135,7 +135,7 @@ class UserController extends AdminController {
 		}
 
 		$data = User::find($id);
-        return View::make('admin.user.changepassword')->with(compact('data'));
+        return view('admin.user.changepassword')->with(compact('data'));
 	}
 
 

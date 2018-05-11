@@ -1,0 +1,45 @@
+.plus-with-img{
+	font-size: 18px;
+    line-height: 22px;
+}
+.plus-with-img .so-hang .img{
+    display: inline-block;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+}
+.plus-with-img .so-hang .item{
+	float: left;
+    padding: 5px;
+}
+.plus-with-img .so-hang .number{
+	display: block;
+    font-weight: 500;
+}
+.plus-with-img .so-hang .item.none{
+    width: 60px;
+    height: 60px;
+    position: relative;
+}
+.plus-with-img .so-hang .item.none::before{
+	content: "";
+	position: absolute;
+    left: 10%;
+    top: 10%;
+    width: 80%;
+    height: 80%;
+    border: 2px dashed #e991e9;
+    border-radius: 100%;
+}
+.plus-with-img .plus{
+    margin-top: 65px;
+    font-weight: 500;
+    padding: 0 5px;
+}
+.plus-with-img .tong>input{
+    width: 30px;
+    text-align: center;
+}
+.plus-with-img .tong{
+    margin-top: 65px;
+    margin-left: 15px;  
+}

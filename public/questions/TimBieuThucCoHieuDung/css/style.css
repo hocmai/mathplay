@@ -1,0 +1,21 @@
+#TimBieuThucCoHieuDung .radio-box.form-group > label{
+    border: 2px solid #d7d7d7;
+    background: #f1f1f1;
+    color: #666;
+    border-radius: 3px;
+    margin: 5px;
+}
+#TimBieuThucCoHieuDung .radio-box.form-group > input:checked + label{
+    border-color: #ffc914;
+    background: #ddd;
+}
+#TimBieuThucCoHieuDung .missing-addition-sentence>.content{
+    width: 125px;
+    padding: 5px;
+    text-align: right;
+    border: 2px solid #17bebb;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 26px;
+}

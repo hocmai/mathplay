@@ -15,7 +15,7 @@ class SubjectController extends AdminController {
 	{
 		$data = Subject::orderBy('weight', 'asc')->paginate(PAGINATE);
 		// dd($data);
-		return View::make('admin.subject.index')->with(compact('data'));
+		return view('admin.subject.index')->with(compact('data'));
 	}
 
 	/**
@@ -45,7 +45,7 @@ class SubjectController extends AdminController {
 		}
 		$data = $data->paginate(PAGINATE);
 		// dd(Input::get('order'));
-		return View::make('admin.subject.index')->with(compact('data'))->with(compact('input'));
+		return view('admin.subject.index')->with(compact('data'))->with(compact('input'));
 	}
 
 
@@ -56,7 +56,7 @@ class SubjectController extends AdminController {
 	 */
 	public function create()
 	{	
-		return View::make('admin.subject.create');
+		return view('admin.subject.create');
 	}
 
 
@@ -96,7 +96,7 @@ class SubjectController extends AdminController {
 	public function edit($id)
 	{
 		$data = Subject::find($id);
-        return View::make('admin.subject.edit', array('data'=>$data));
+        return view('admin.subject.edit', array('data'=>$data));
 	}
 
 

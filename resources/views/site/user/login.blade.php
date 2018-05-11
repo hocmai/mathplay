@@ -1,6 +1,6 @@
 @extends('site.layout.default')
 @section('title')
-    {{ $title = trans('Đăng nhập'); }}
+    {!! $title = trans('Đăng nhập') !!}
 @stop
 
 @section('content')
@@ -10,7 +10,7 @@
         <div class="container">
             <div class="row m0 bg-ff">
                 <div class="col-sm-5 bor">
-                    {{ Form::open(['action' => array('SiteUserController@doLogin'), 'method' => 'POST']) }}
+                    {{ Form::open(['action' => array('Site\SiteUserController@doLogin'), 'method' => 'POST']) }}
                         <div class="chuong-trinh">
                             <h3 class="title">Đăng nhập tài khoản</h3>
                             <div class="des">

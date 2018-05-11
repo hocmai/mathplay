@@ -55,7 +55,7 @@ class AdminContactController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		return View::make('admin.contact.edit')->with(compact('id'));
+		return view('admin.contact.edit')->with(compact('id'));
 	}
 
 
@@ -108,7 +108,7 @@ class AdminContactController extends AdminController {
 	public function feedback()
 	{
 		$data = Customer::orderBy('id', 'desc')->paginate(PAGINATE);
-		return View::make('admin.contact.index')->with(compact('data'));
+		return view('admin.contact.index')->with(compact('data'));
 	}
 
 }

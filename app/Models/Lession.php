@@ -1,15 +1,20 @@
 <?php
 // use Illuminate\Database\Eloquent\SoftDeletingTrait;
-use Cviebrock\EloquentSluggable\SluggableInterface;
-use Cviebrock\EloquentSluggable\SluggableTrait;
+namespace App\Models;
+use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+use Cviebrock\EloquentSluggable\SluggableScopeHelpers;
 
-class Lession extends Eloquent implements SluggableInterface
+class Lession extends Model
 {
     // use SoftDeletingTrait;
-    use SluggableTrait;
-
+    // use SluggableTrait;
+    use SoftDeletes;
+    use Sluggable;
+    use SluggableScopeHelpers;
     //// Use custom publish status, get only published
-    use PublishedTrait;
+    // use PublishedTrait;
 
     protected $table = 'lessions';
     protected $fillable = [
@@ -26,35 +31,39 @@ class Lession extends Eloquent implements SluggableInterface
     ];
     // protected $dates = ['deleted_at'];
 
-    protected $sluggable = array(
-        'build_from' => 'title',
-        'save_to'    => 'slug',
-    );
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     protected $include_trashed = true;
 
     public function author()
     {
-        return $this->belongsTo('Admin', 'author_id', 'id');
+        return $this->belongsTo('App\Models\Admin', 'author_id', 'id');
     }
     
     public function chapter()
     {
-        return $this->belongsTo('Chapter', 'chapter_id', 'id');
+        return $this->belongsTo('App\Models\Chapter', 'chapter_id', 'id');
     }
     
     public function question()
     {
-        return $this->belongsToMany('Question', 'lession_question', 'lession_id', 'qid');
+        return $this->belongsToMany('App\Models\Question', 'lession_question', 'lession_id', 'qid');
     }
 
     public function grade()
     {
-        return $this->belongsTo('Grade', 'grade_id', 'id');
+        return $this->belongsTo('App\Models\Grade', 'grade_id', 'id');
     }
 
     public function subject()
     {
-        return $this->belongsTo('Subject', 'subject_id', 'id');
+        return $this->belongsTo('App\Models\Subject', 'subject_id', 'id');
     }
 }

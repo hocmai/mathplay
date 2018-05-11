@@ -1,0 +1,38 @@
+#SoSanhCanhDaGiac{
+	
+}
+#SoSanhCanhDaGiac .radio-box{
+	
+}
+#SoSanhCanhDaGiac label{
+    margin: 10px;
+    background: #fff;
+    border: 3px solid #17bebb;
+    border-radius: 3px;
+    padding-bottom: 20px;
+    opacity: 0.6;
+}
+#SoSanhCanhDaGiac label>div{
+	transform: scale(0.8);
+}
+#SoSanhCanhDaGiac input:checked ~ label{
+    opacity: 1;
+    position: relative;
+}
+#SoSanhCanhDaGiac input:checked + label:after{
+    content: "\e013";
+    font-family: 'Glyphicons Halflings';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    z-index: 1;
+    font-size: 13px;
+    background: #17bebb;
+}
+#SoSanhCanhDaGiac{
+	
+}

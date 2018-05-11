@@ -14,7 +14,7 @@ class GradeController extends AdminController {
 	public function index()
 	{
 		$data = Grade::orderBy('weight', 'asc')->paginate(PAGINATE);
-		return View::make('admin.grade.index')->with(compact('data'));
+		return view('admin.grade.index')->with(compact('data'));
 	}
 
 	/**
@@ -39,7 +39,7 @@ class GradeController extends AdminController {
 		}
 		$data = $data->paginate(PAGINATE);
 		// dd(Input::get('order'));
-		return View::make('admin.grade.index')->with(compact('data'))->with(compact('input'));
+		return view('admin.grade.index')->with(compact('data'))->with(compact('input'));
 	}
 
 	/**
@@ -49,7 +49,7 @@ class GradeController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.grade.create')->with(compact('data'));
+		return view('admin.grade.create')->with(compact('data'));
 	}
 
 
@@ -89,7 +89,7 @@ class GradeController extends AdminController {
 	public function edit($id)
 	{
 		$data = Grade::findOrFail($id);
-        return View::make('admin.grade.edit', array('data'=>$data));
+        return view('admin.grade.edit', array('data'=>$data));
 	}
 
 

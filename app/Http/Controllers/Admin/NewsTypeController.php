@@ -10,7 +10,7 @@ class NewsTypeController extends AdminController {
 	public function index()
 	{
 		$inputNewType = AdminLanguage::where('model_name', 'TypeNew')->orderBy('position', 'asc')->get();
-		return View::make('admin.typenew.index')->with(compact('inputNewType'));
+		return view('admin.typenew.index')->with(compact('inputNewType'));
 	}
 
 
@@ -21,7 +21,7 @@ class NewsTypeController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.typenew.create');
+		return view('admin.typenew.create');
 	}
 
 
@@ -81,7 +81,7 @@ class NewsTypeController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		return View::make('admin.typenew.edit')->with(compact('id'));
+		return view('admin.typenew.edit')->with(compact('id'));
 	}
 
 

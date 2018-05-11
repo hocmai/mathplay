@@ -10,7 +10,7 @@ class AdminSlideController extends AdminController {
 	public function index()
 	{
 		$slides = AdminSlide::orderBy('id', 'desc')->get();
-		return View::make('admin.slider.index')->with(compact('slides'));
+		return view('admin.slider.index')->with(compact('slides'));
 	}
 
 	/**
@@ -20,7 +20,7 @@ class AdminSlideController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.slider.create');
+		return view('admin.slider.create');
 	}
 
 
@@ -60,7 +60,7 @@ class AdminSlideController extends AdminController {
 	public function edit($id)
 	{
 		$slide = AdminSlide::find($id);
-		return View::make('admin.slider.edit')->with(compact('slide'));
+		return view('admin.slider.edit')->with(compact('slide'));
 	}
 
 
@@ -102,7 +102,7 @@ class AdminSlideController extends AdminController {
 	// 	}
 	// 	$slides = AdminSlide::where('name', 'like', '%'.$input['keyword'].'%')->paginate(PAGINATE_SLIDE);
 	// 	// dd($input);
-	// 	return View::make('admin.slider.index')->with(compact('slides'));
+	// 	return view('admin.slider.index')->with(compact('slides'));
 	// }
 
 }

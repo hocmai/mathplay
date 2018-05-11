@@ -1,6 +1,8 @@
 <?php
 namespace App\Http\Controllers\Site;
-class SiteSubjectController extends BaseController {
+use App\Http\Controllers\Controller;
+
+class SiteSubjectController extends Controller {
 
 	/**
 	 * Display a listing of the resource.
@@ -9,7 +11,7 @@ class SiteSubjectController extends BaseController {
 	 */
 	public function index()
 	{
-		return View::make('site.subject.index');
+		return view('site.subject.index');
 	}
 
 
@@ -21,13 +23,13 @@ class SiteSubjectController extends BaseController {
 	 */
 	public function show($gradeSlug, $subjectSlug)
 	{
-		$subject = Subject::findBySlug($subjectSlug);
-		$grade = Grade::findBySlug($gradeSlug);
+		$subject = \App\Models\Subject::findBySlug($subjectSlug);
+		$grade = \App\Models\Grade::findBySlug($gradeSlug);
 		if(!$subject | !$grade){
-			App::abort(404);
+			abort(404);
 		} else{
 			$chapters = $subject->chapter()->orderBy('weight', 'asc')->get();
-			return View::make('site.subject.index')->with(compact(['grade', 'subject', 'chapters']));
+			return view('site.subject.index')->with(compact(['grade', 'subject', 'chapters']));
 		}
 	}
 

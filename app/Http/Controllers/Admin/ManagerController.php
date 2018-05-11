@@ -10,7 +10,7 @@ class ManagerController extends AdminController {
 	public function index()
 	{
 		$data = Admin::orderBy('id', 'asc')->paginate(PAGINATE);
-		return View::make('admin.manager.index')->with(compact('data'));
+		return view('admin.manager.index')->with(compact('data'));
 	}
 
 	public function search()
@@ -20,7 +20,7 @@ class ManagerController extends AdminController {
 			return Redirect::action('ManagerController@index');
 		}
 		$data = AdminManager::searchAdminOperation($input);
-		return View::make('admin.manager.index')->with(compact('data'));
+		return view('admin.manager.index')->with(compact('data'));
 	}
 
 	/**
@@ -30,7 +30,7 @@ class ManagerController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.manager.create');
+		return view('admin.manager.create');
 	}
 
 	/**
@@ -94,7 +94,7 @@ class ManagerController extends AdminController {
 		}
 
 		$data = Admin::find($id);
-        return View::make('admin.manager.edit', array('data'=>$data));
+        return view('admin.manager.edit', array('data'=>$data));
 	}
 
 
@@ -162,7 +162,7 @@ class ManagerController extends AdminController {
 		}
 
 		$data = Admin::find($id);
-        return View::make('admin.manager.changepassword')->with(compact('data'));
+        return view('admin.manager.changepassword')->with(compact('data'));
 	}
 
 	public function updatePassword($id){

@@ -10,7 +10,6 @@ $answer = array_rand($range, $num_count);
 
 $images = Cong2HinhAnh::getRandomData();
 $images = $images[array_rand($images)];
-// dd($images);
 ?>
 
 @include('site.questions.render-title', ['question' => $question, 'str_arr' => [] ] )

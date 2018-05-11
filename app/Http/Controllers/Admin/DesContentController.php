@@ -20,7 +20,7 @@ class DesContentController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.des_content.create');
+		return view('admin.des_content.create');
 	}
 
 
@@ -57,7 +57,7 @@ class DesContentController extends AdminController {
 	{
 		$viDes = DesContent::find(1);
 		$enDes = DesContent::find(2);
-		return View::make('admin.des_content.edit')->with(compact('viDes', 'enDes'));
+		return view('admin.des_content.edit')->with(compact('viDes', 'enDes'));
 	}
 
 

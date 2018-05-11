@@ -1,22 +1,36 @@
 <?php
 namespace App\Http\Controllers\Site;
-class SiteMemberController extends BaseController {
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+use App\Models\User; 
+use App\Models\Grade; 
+use App\Models\Subject; 
+use App\Models\StudyHistory; 
+use App\Models\Lession; 
+use Services\Common;
+use Illuminate\Support\Facades\DB;
 
-	public function __construct() {
-        $this->beforeFilter('owner');
+class SiteMemberController extends Controller {
+
+    protected $request;
+
+	public function __construct(Request $request) {
+        // $this->beforeFilter('owner');
+        $this->request = $request;
     }
 
     public function profile($id){
     	$data= User::findOrFail($id);
     	$class = Grade::lists('title', 'id');
-    	return View::make('site.member.profile')->with(compact('data','class','id'));
+    	return view('site.member.profile')->with(compact('data','class','id'));
     }
 
     public function saveProfile($id){
-    	$input = Input::except(['username', 'email']);
+    	$input = $this->request->except(['username', 'email']);
     	// dd($input);
     	User::findOrFail($id)->update($input);
-    	return Redirect::action( 'SiteMemberController@profile', [$id] )->withMessage('Lưu thành công!');
+    	return redirect()->action( 'Site\SiteMemberController@profile', [$id] )->withMessage('Lưu thành công!');
 
     }
 
@@ -28,9 +42,9 @@ class SiteMemberController extends BaseController {
 	public function history()
 	{
 		$data = [];
-		$input = Input::get('grade');
+		$input = $this->request->get('grade');
 		if( !empty($input) ){
-			$uid = Auth::user()->get()->id;
+			$uid = Auth::user()->id;
 			$subject = Subject::where('grade_id', $input)->orderBy('updated_at', 'desc')->first();
 			$chapter = Common::getObject($subject, 'chapter');
 			// $data = StudyHistory::orderBy('updated_at', 'desc')->where('grade_id', $input)->where('author', $uid)->get();
@@ -39,16 +53,16 @@ class SiteMemberController extends BaseController {
 					DB::raw("(SELECT id, MAX(score) AS MaxScore, lession_id 
 					FROM study_history
 					WHERE grade_id = $input
-					GROUP BY lession_id) as groupedtt"), function($join){
+					GROUP BY lession_id, id) as groupedtt"), function($join){
 						$join->on('study_history.lession_id', '=', 'groupedtt.lession_id')
 						  ->on('study_history.score', '=', 'groupedtt.MaxScore');
 					})
-				->where('author', Auth::user()->get()->id)
+				->where('author', Auth::user()->id)
 				->where('grade_id', $input)
 				->get();
 			// dd($data);
 		}
-		return View::make('site.member.history.history-score')->with(compact(['data', 'chapter']));
+		return view('site.member.history.history-score')->with(compact(['data', 'chapter']));
 	}
 
 	/**
@@ -58,7 +72,7 @@ class SiteMemberController extends BaseController {
 	 */
 	public function historyScore()
 	{
-		$uid = Auth::user()->get()->id;
+		$uid = Auth::user()->id;
 		$data = StudyHistory::select('study_history.*', 'grades.title as grade_title', 'chapters.title as chapter_title', 'lessions.title as lession_title')
 			->join( 
 				DB::raw("(SELECT id, MAX(score) AS MaxScore, lession_id 
@@ -81,7 +95,7 @@ class SiteMemberController extends BaseController {
 			$dataH[$value->grade_id]['chapters'][$value->chapter_id]['lessions'][$value->lession_id] = $value;
 		}
 		// dd($data->count());
-		return View::make('site.member.history.history-progress')->with(['data' => $dataH]);
+		return view('site.member.history.history-progress')->with(['data' => $dataH]);
 	}
 
 	/**
@@ -93,14 +107,14 @@ class SiteMemberController extends BaseController {
 	{
 		$tree = Common::getLessionTree();		
 		$data = [];
-		$input = Input::get('lession');
+		$input = $this->request->get('lession');
 		if( !empty($input) ){
-			$uid = Auth::user()->get()->id;
+			$uid = Auth::user()->id;
 			$lession = Common::getObject(Lession::find($input), 'title');
 			$data = StudyHistory::orderBy('updated_at', 'desc')->where('lession_id', $input)->where('author', $uid)->get();
 		}
 
-		return View::make('site.member.history.question-log')->with(compact(['tree', 'data', 'lession']));
+		return view('site.member.history.question-log')->with(compact(['tree', 'data', 'lession']));
 	}
 
 

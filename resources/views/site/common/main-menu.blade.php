@@ -1,4 +1,4 @@
-<?php $grades = Grade::all(); ?>
+<?php $grades = App\Models\Grade::all(); ?>
 <!-- Desktop screen -->
 <header class="header">
         <div class="container">

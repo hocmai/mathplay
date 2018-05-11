@@ -1,14 +1,14 @@
 @extends('site.layout.lession')
 
 @section('title')
-    {{ $title = $lession['title']; }}
+    {!! $title = $lession['title'] !!}
 @stop
 
-@section('class'){{ $class = 'lession-page'; }}@stop
+@section('class'){!! $class = 'lession-page' !!}@stop
 
 @section('css_header')
 @parent
-{{ HTML::script('frontend/js/soundmanager2-jsmin.js') }}
+{{ app('html')->script('frontend/js/soundmanager2-jsmin.js') }}
 <script type="text/javascript">
     audioList = [];
     function checkIdExist(id){
@@ -20,13 +20,13 @@
         return false;
     }
 </script>
-{{ HTML::style( asset('frontend/css/huong-dan-giai.css') ) }} 
+{{ app('html')->style( asset('frontend/css/huong-dan-giai.css') ) }} 
 @stop
 
 @section('js_header')
 @parent
-{{ HTML::script('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML')}}
-{{ HTML::script('frontend/js/question_script.js') }}
+{{ app('html')->script('https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML')}}
+{{ app('html')->script('frontend/js/question_script.js') }}
 @stop
 
 <?php $config = Common::getConfigOfLesson($lession); ?>
@@ -44,13 +44,13 @@ foreach($lession->question as $question){
     @section('js_header')
         @parent
         @foreach( glob(public_path().'/questions/'.$type.'/js/*.js') as $file)
-            {{ HTML::script( asset('/questions/'.$type.'/js/'.basename($file)) ) }} 
+            {{ app('html')->script( asset('/questions/'.$type.'/js/'.basename($file)) ) }} 
         @endforeach
     @stop
     @section('css_header')
         @parent
         @foreach( glob(public_path().'/questions/'.$type.'/css/*.css') as $file)
-            {{ HTML::style( asset('/questions/'.$type.'/css/'.basename($file)) ) }} 
+            {{ app('html')->style( asset('/questions/'.$type.'/css/'.basename($file)) ) }} 
         @endforeach
     @stop
 @endforeach
@@ -62,10 +62,10 @@ foreach($lession->question as $question){
             <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
             <li><a href="/">Trang chủ</a></li>
             <li>
-                {{ link_to_action('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
+                {{ link_to_action('Site\SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
             </li>
             <li class="active">
-                {{ link_to_action('SiteSubjectController@show', Common::getObject($subject, 'title'), ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')])  }}
+                {{ link_to_action('Site\SiteSubjectController@show', Common::getObject($subject, 'title'), ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')])  }}
             </li>
         </ol>
         @include('site.common.user-menu')
@@ -104,7 +104,7 @@ foreach($lession->question as $question){
                     </div>
                     <div class="bg-box-lam-bai lession-content">
 
-                        {{ CommonQuestion::renderLession($lession, $history) }}
+                        {!! CommonQuestion::renderLession($lession, $history) !!}
 
                         <!-- Modal -->
                          <a class="gui-bai yellow-bg hidden-lg hidden-md hidden-ms" href="#">Gửi bài</a>
@@ -117,7 +117,7 @@ foreach($lession->question as $question){
                                     <div class="box-qua-chuan-luon">
                                         <div>
                                             <span><?php
-                                            $strings = ['QUÁ CHUẨN LUÔN!', 'BẠN THẬT TUYỆT VỜI!', 'XUẤT SẮC!', 'QUÁ ĐỈNH!', 'THẬT VI DIỆU!'];
+                                            $strings = ['QUÁ CHUẨN LUÔN!', 'BẠN THẬT TUYỆT VỜI!', 'XUẤT SẮC!', 'QUÁ ĐỈNH!', 'CHÍNH XÁC!'];
                                             echo getRandArrayVal($strings);
                                             ?></span>
                                             <img src="{{ asset('frontend/images/cuoi.png') }}" class="img-responsive mauto" alt=""/>
@@ -256,7 +256,7 @@ foreach($lession->question as $question){
                         <div class="button-uls">
                             <ul class="inline button-ul">
                                 <li>
-                                    <a href="{{ action('SiteSubjectController@show', ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')]) }}" title="">
+                                    <a href="{{ action('Site\SiteSubjectController@show', ['grade_slug' => Common::getObject($grade, 'slug'), 'subject_slug' => Common::getObject($subject, 'slug')]) }}" title="">
                                         <img src="{{ asset('frontend/images/list-bai-hoc.png') }}" class="img-responsive mauto" alt=""/>
                                         <div class="text">Danh mục bài học</div>
                                     </a>
@@ -268,7 +268,7 @@ foreach($lession->question as $question){
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="{{ action('SiteGradeController@show', ['grade_slug' => Common::getObject($grade, 'slug')]) }}" title="">
+                                    <a href="{{ action('Site\SiteGradeController@show', ['grade_slug' => Common::getObject($grade, 'slug')]) }}" title="">
                                         <img src="{{ asset('frontend/images/next-bai.png') }}" class="img-responsive mauto" alt=""/>
                                         <div class="text">Bài học tiếp theo</div>
                                     </a>

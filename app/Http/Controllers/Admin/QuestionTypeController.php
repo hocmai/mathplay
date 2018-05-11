@@ -16,7 +16,7 @@ class QuestionTypeController extends AdminController {
 		$data = ConfigModel::where('collection', '=', 'question_type')->paginate(50);
 		// $data = Lession::orderBy('weight', 'asc')->paginate(15);
 		// dd($data);
-		return View::make('admin.lession.question_type')->with(compact('data'));
+		return view('admin.lession.question_type')->with(compact('data'));
 	}
 
 	/**
@@ -52,7 +52,7 @@ class QuestionTypeController extends AdminController {
 		$data = ConfigModel::where('collection', '=', 'question_type')
 			->where('name', '=', 'question_type.config.'.$type)
 			->firstOrFail();
-        return View::make('admin.lession.question_type_edit', array('data'=>$data));
+        return view('admin.lession.question_type_edit', array('data'=>$data));
 	}
 
 
@@ -108,7 +108,7 @@ class QuestionTypeController extends AdminController {
 	 */
 	public function create()
 	{	
-		return View::make('admin.lession.create');
+		return view('admin.lession.create');
 	}
 
 

@@ -10,7 +10,7 @@ class NewsController extends AdminController {
 	public function index()
 	{
 		$inputNew = AdminLanguage::where('model_name', 'AdminNew')->orderBy('id', 'desc')->paginate(PAGINATE);
-		return View::make('admin.news.index')->with(compact('inputNew'));
+		return view('admin.news.index')->with(compact('inputNew'));
 	}
 
 	public function search()
@@ -18,7 +18,7 @@ class NewsController extends AdminController {
 		$input = Input::all();
 		// dd($input);
 		$inputNew = NewsManager::searchNews($input);
-		return View::make('admin.news.index')->with(compact('inputNew', 'input'));
+		return view('admin.news.index')->with(compact('inputNew', 'input'));
 	}
 
 	/**
@@ -28,7 +28,7 @@ class NewsController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.news.create');
+		return view('admin.news.create');
 	}
 
 
@@ -105,10 +105,10 @@ class NewsController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		return View::make('admin.news.edit')->with(compact('id'));
+		return view('admin.news.edit')->with(compact('id'));
 		// $inputNew = AdminNew::find($id);
 		// $inputSeo = AdminSeo::where('model_id', $id)->where('model_name', 'AdminNew')->first();
-		// return View::make('admin.news.edit')->with(compact('inputNew','inputSeo'));
+		// return view('admin.news.edit')->with(compact('inputNew','inputSeo'));
 	}
 
 

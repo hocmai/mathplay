@@ -288,7 +288,6 @@ $(document).ready(function($) {
 			type: 'POST',
 			data: {data: JSON.stringify(data_history)},
 			success: function(result){
-				console.log(result);
 				if( q_order >= q_num ){
 					// Cau hoi cuoi cung, hien tong so diem
 					$('.box-bai-lam .hoan-thanh .point').text((your_score)+' điểm');

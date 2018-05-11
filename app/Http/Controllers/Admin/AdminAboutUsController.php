@@ -10,7 +10,7 @@ class AdminAboutUsController extends AdminController {
 	public function index()
 	{
 		$data = AdminLanguage::where('model_name', 'AboutUs')->orderBy('id', 'desc')->paginate(PAGINATE);
-		return View::make('admin.about.index')->with(compact('data'));
+		return view('admin.about.index')->with(compact('data'));
 	}
 
 	/**
@@ -20,7 +20,7 @@ class AdminAboutUsController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.about.create');
+		return view('admin.about.create');
 	}
 
 
@@ -100,7 +100,7 @@ class AdminAboutUsController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		return View::make('admin.about.edit')->with(compact('id'));
+		return view('admin.about.edit')->with(compact('id'));
 	}
 
 

@@ -10,7 +10,7 @@ class AdminIntroduceController extends AdminController {
 	public function index()
 	{
 		$introduces = AdminLanguage::where('model_name', 'Introduce')->orderBy('position', 'asc')->get();
-		return View::make('admin.introduce.index')->with(compact('introduces'));
+		return view('admin.introduce.index')->with(compact('introduces'));
 	}
 
 
@@ -21,7 +21,7 @@ class AdminIntroduceController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.introduce.create');
+		return view('admin.introduce.create');
 	}
 
 
@@ -82,7 +82,7 @@ class AdminIntroduceController extends AdminController {
 	{
 		$introduce = AdminLanguage::where('model_id', $id)->where('model_name', 'Introduce')->first();
 		if ($introduce) {
-			return View::make('admin.introduce.edit')->with(compact('introduce'));
+			return view('admin.introduce.edit')->with(compact('introduce'));
 		}
 		return Redirect::action('AdminIntroduceController@index');
 	}

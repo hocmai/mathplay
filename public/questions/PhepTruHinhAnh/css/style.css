@@ -1,0 +1,45 @@
+#PhepTruHinhAnh .images>.item{
+    margin: 5px;
+}
+#PhepTruHinhAnh .images .item img{
+	min-height: 30px;
+	min-width: 30px;
+}
+#PhepTruHinhAnh .images>.item.ignore,
+#PhepTruHinhAnh .images>label>.item.ignore{
+	opacity: 0.6;
+	position: relative;
+}
+#PhepTruHinhAnh .images>.item.ignore::before,
+#PhepTruHinhAnh .images>.item.ignore::after,
+#PhepTruHinhAnh .images>label>.item.ignore:before,
+#PhepTruHinhAnh .images>label>.item.ignore:after{
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	background: #666;
+    width: 135%;
+    height: 3px;
+    transform: rotate(45deg);
+    transform-origin: 0;
+}
+#PhepTruHinhAnh .images>label>.item.ignore:after,
+#PhepTruHinhAnh .images>.item.ignore::after{
+	transform: rotate(-45deg);
+    top: 95%;
+}
+#PhepTruHinhAnh .images>label{
+	background: #fff;
+    border: 2px solid #d7d7d7;
+    border-radius: 3px;
+    padding: 10px;
+    width: auto;
+}
+#PhepTruHinhAnh .images>label>.item{
+	margin: 0 5px;
+}
+#PhepTruHinhAnh .images>input:checked + label{
+	background: #f1f1f1;
+    border-color: #ffc914;
+}

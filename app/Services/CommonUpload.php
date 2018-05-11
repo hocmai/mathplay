@@ -1,4 +1,6 @@
 <?php
+namespace Services;
+
 use Carbon\Carbon;
 class CommonUpload
 {
@@ -37,7 +39,7 @@ class CommonUpload
 	 * Form file element
 	 */
 	public static function file($name, $default = [], $attributes = [], $options = []){
-		return View::make('form_element.field_file')->with(compact('name', 'default', 'attributes', 'options'))->render();
+		return view('form_element.field_file')->with(compact('name', 'default', 'attributes', 'options'))->render();
 	}
 
 

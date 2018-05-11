@@ -1,0 +1,14 @@
+#TinhTongDonGian .tong.doc .num1,
+#TinhTongDonGian .tong.doc .num2{
+    display: block;
+    text-align: right;
+    /*margin-right: 15px;*/
+}
+#TinhTongDonGian .tong.doc input{
+	width: 55px;
+    text-align: right;
+}
+#TinhTongDonGian .tong input{
+	width: 55px;
+	padding-left: 5px;
+}

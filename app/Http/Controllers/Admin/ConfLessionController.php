@@ -10,7 +10,7 @@ class ConfLessionController extends AdminController {
 	{
 		$data = CommonConfig::collect('lession');
 		// dd($data[0]->name);
-		return View::make('admin.lession.config')->with(compact('data'));
+		return view('admin.lession.config')->with(compact('data'));
 	}
 
 
@@ -21,7 +21,7 @@ class ConfLessionController extends AdminController {
 	 */
 	public function create()
 	{
-		return View::make('admin.lession.add_config');
+		return view('admin.lession.add_config');
 	}
 
 
@@ -38,7 +38,7 @@ class ConfLessionController extends AdminController {
 				$input[$key] = trim($value);
 			}
 		}
-		CommonConfig::set('lession', 'lession.config.'.Str::slug($input['name'], '_'), $input);
+		CommonConfig::set('lession', 'lession.config.'.str_slug($input['name'], '_'), $input);
 		return Redirect::action('ConfLessionController@index')->with('success', 'Lưu thành công!');
 		// dd($input);
 	}
@@ -67,10 +67,10 @@ class ConfLessionController extends AdminController {
 		$data = ConfigModel::where('name', '=', $name)->get()->first();
 		$config = CommonConfig::get($name);
 		if(!$config | !$data){
-			App::abort(404);
+			abort(404);
 		}
 		// dd($config);
-		return View::make('admin.lession.add_config')->with(compact('config', 'data'));
+		return view('admin.lession.add_config')->with(compact('config', 'data'));
 	}
 
 
@@ -88,7 +88,7 @@ class ConfLessionController extends AdminController {
 				$input[$key] = trim($value);
 			}
 		}
-		CommonConfig::set('lession', 'lession.config.'.Str::slug($input['name'], '_'), $input);
+		CommonConfig::set('lession', 'lession.config.'.str_slug($input['name'], '_'), $input);
 		return Redirect::back()->with('success', 'Cập nhật thành công!');
 	}
 

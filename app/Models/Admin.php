@@ -1,14 +1,15 @@
 <?php
 namespace App\Models;
 
-use Illuminate\Notifications\Notifiable;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as Authentical;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Contracts\Auth\Authenticatable;
 
-class Admin extends Authenticatable {
-
-	use Notifiable, SoftDeletes;
-
+class Admin extends Authentical implements Authenticatable
+{
+    use Notifiable;
+	use SoftDeletes;
 	/**
 	 * The database table used by the model.
 	 *
@@ -54,6 +55,6 @@ class Admin extends Authenticatable {
     }
     public function role()
     {
-        return $this->belongsTo('Role', 'role_id', 'id');
+        return $this->belongsTo('App\Models\Role', 'role_id', 'id');
     }
 }

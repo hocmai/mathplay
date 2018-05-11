@@ -88,7 +88,7 @@ class SiteTypeController extends SiteController {
 
 		$data = Common::getNews($type->id, getLang());
 
-		return View::make('site.news.listNews')->with(compact('data', 'typeName', 'slug'));
+		return view('site.news.listNews')->with(compact('data', 'typeName', 'slug'));
 	}
 
 	public function showChildSlug($slug, $childSlug)
@@ -104,6 +104,6 @@ class SiteTypeController extends SiteController {
 								->limit(PAGINATE_RELATED)
 								->get();
 
-		return View::make('site.news.showNews')->with(compact('data', 'related', 'typeName', 'slug'));
+		return view('site.news.showNews')->with(compact('data', 'related', 'typeName', 'slug'));
 	}
 }

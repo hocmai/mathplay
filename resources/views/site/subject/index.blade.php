@@ -1,8 +1,8 @@
 @extends('site.layout.no_header')
 
-@section('title'){{ $title = 'Danh mục chương trình '.$subject['title']; }}@stop
+@section('title'){!! $title = 'Danh mục chương trình '.$subject['title'] !!}@stop
 
-@section('class'){{ $class = 'list-chapter-page'; }}@stop
+@section('class'){!! $class = 'list-chapter-page' !!}@stop
 
 @section('css_header')
 @parent
@@ -16,7 +16,7 @@
             <a href="#" class="glyphicon glyphicon-chevron-left" style="padding-right: 5px; color: #fff"></a>
             <li><a href="/">Trang chủ</a></li>
             <li>
-                {{ renderUrl('SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
+                {{ renderUrl('Site\SiteGradeController@show', Common::getObject($grade, 'title'), ['grade_slug' => Common::getObject($grade, 'slug')])  }}
             </li>
             <li class="active">
                 {{ Common::getObject($subject, 'title') }}
@@ -50,7 +50,7 @@
                                     <?php $LastLessonDo = Common::getLastLessonDo(Common::getObject($grade, 'id')); ?>
                                     @if( $LastLessonDo )
                                         <span>Con đang học {{ Common::getValueOfObject($LastLessonDo, 'chapter', 'title') }}</span>
-                                        <a class="link" href="{{ action('SiteLessionController@show', ['grade_slug' => Common::getObject($LastLessonDo->grade,'slug'), 'subject_slug' => Common::getObject($LastLessonDo->subject, 'slug'), 'lession_slug' => Common::getObject($LastLessonDo->lession, 'slug')]) }}">học tiếp</a>
+                                        <a class="link" href="{{ action('Site\SiteLessionController@show', ['grade_slug' => Common::getObject($LastLessonDo->grade,'slug'), 'subject_slug' => Common::getObject($LastLessonDo->subject, 'slug'), 'lession_slug' => Common::getObject($LastLessonDo->lession, 'slug')]) }}">học tiếp</a>
                                     @endif
                                 </div>
                             </div>
@@ -74,11 +74,11 @@
                                                     <span class="head">Chương {{ $i+1 }}</span><span class="name">{{ $chapters[$i]['title'] }}</span>
                                                 </h2>
                                                 <ul class="nav">
-                                                    <?php $lessions = Lession::orderBy('weight', 'asc')->where('chapter_id', $chapters[$i]->id)->get(); ?>
+                                                    <?php $lessions = App\Models\Lession::orderBy('weight', 'asc')->where('chapter_id', $chapters[$i]->id)->get(); ?>
 
                                                     @foreach( $lessions as $lession)
                                                         <li>
-                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
+                                                            <a href="{{ action('Site\SiteLessionController@show', ['grade_slug' => $grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">
                                                                     {{  $lession->title }}
                                                                     @if(in_array($lession->slug, $lessonfree))
                                                                         <span class="free_text">(Miễn phí)</span>
@@ -105,7 +105,7 @@
                                                 <ul class="nav">
                                                     @foreach($chapters[$i]->lession as $lession)
                                                         <li>
-                                                            <a href="{{ action('SiteLessionController@show', ['grade_slug' => $grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}
+                                                            <a href="{{ action('Site\SiteLessionController@show', ['grade_slug' => $grade->slug, 'subject_slug' => $chapters[$i]->subject->slug, 'lession_slug' => $lession->slug]) }}">{{ $lession->title }}
                                                                 
                                                                 <?php $starLesson = Common::getMaxStarOfAnLesson($lession->id); ?>
                                                                 <span class="star-list">

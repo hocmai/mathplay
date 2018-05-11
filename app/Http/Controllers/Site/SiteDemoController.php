@@ -48,7 +48,7 @@ class SiteDemoController extends \BaseController {
 		$grade = Grade::findBySlug($grade_slug);
 		if( $grade == null ){
 			/// neu khong tim thay thi tra ve trang bao loi 404
-			App::abort(404);
+			abort(404);
 		}
 		$subjects = $grade->subject->first();
 		$chapters = [];
@@ -56,7 +56,7 @@ class SiteDemoController extends \BaseController {
 			$chapters = $subjects->chapter()->orderBy('weight', 'asc')->get();
 		}
 		
-		return View::make('demo.demo')->with(compact('grade', 'subjects', 'chapters'));
+		return view('demo.demo')->with(compact('grade', 'subjects', 'chapters'));
 		// //// lay mon hoc dau tien cua lop nay
 		// $subject = $grade->subject->first();
 		// if( $subject ){

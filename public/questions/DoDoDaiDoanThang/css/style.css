@@ -1,0 +1,27 @@
+#DoDoDaiDoanThang .work-area{
+    width: 100%;
+    text-align: left;
+    margin-left: 15px;
+}
+#DoDoDaiDoanThang .work-area .line-wrapper{
+	display: inline-block;
+    width: 300px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+#DoDoDaiDoanThang .work-area .line-wrapper .line{
+    height: 5px;
+    background: #17bebb;
+    display: inline-block;
+}
+#DoDoDaiDoanThang .sort-area .ruller{
+	cursor: move;
+    opacity: 0.85;
+}
+#DoDoDaiDoanThang .huong-dan-giai{
+	text-align: left;
+    margin-left: 15px;
+}
+div.huong-dan-giai .line{
+    padding: 0;
+}

@@ -1,13 +1,13 @@
 <div class="tab-content">
     <ul class="nav nav-tabs nav-justified">
         <li>
-            {{ renderUrl('SiteMemberController@history', 'Bảng điểm', ['uid' => Auth::user()->get()->id], ['class' => 'history']) }}
+            {{ renderUrl('Site\SiteMemberController@history', 'Bảng điểm', ['uid' => Auth::user()->id], ['class' => 'history']) }}
         </li>
         <li>
-            {{ renderUrl('SiteMemberController@historyScore', 'Tiến trình', ['uid' => Auth::user()->get()->id], ['class' => 'score']) }}
+            {{ renderUrl('Site\SiteMemberController@historyScore', 'Tiến trình', ['uid' => Auth::user()->id], ['class' => 'score']) }}
         </li>
         <li>
-            {{ renderUrl('SiteMemberController@historyQuestion', 'Lịch sử làm bài', ['uid' => Auth::user()->get()->id], ['class' => 'log']) }}
+            {{ renderUrl('Site\SiteMemberController@historyQuestion', 'Lịch sử làm bài', ['uid' => Auth::user()->id], ['class' => 'log']) }}
         </li>
     </ul>
 </div>

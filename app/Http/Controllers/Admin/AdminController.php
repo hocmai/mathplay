@@ -12,9 +12,9 @@ class AdminController extends BaseController {
 	{
 		$checkLogin = Auth::admin()->check();
         if($checkLogin) {
-    		return View::make('admin.dashboard');
+    		return view('admin.dashboard');
         } else {
-            return View::make('admin.layout.login');
+            return view('admin.layout.login');
         }
 	}
 
@@ -114,13 +114,13 @@ class AdminController extends BaseController {
     	$checkLogin = Auth::admin()->check();
         if($checkLogin) {
 	    	if (Auth::admin()->get()->status == ACTIVE) {
-	    		return View::make('admin.dashboard');
+	    		return view('admin.dashboard');
 	    		//return Redirect::route('admin.dashboard');
 	    	}else{
-	    		return View::make('admin.layout.login')->with(compact('message','chưa kich hoat'));
+	    		return view('admin.layout.login')->with(compact('message','chưa kich hoat'));
 	    	}
         } else {
-            return View::make('admin.layout.login');
+            return view('admin.layout.login');
         }
     }
 
