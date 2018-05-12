@@ -126,6 +126,9 @@
         width: auto !important;
     }
      /*demso con thiếu 100*/
+     #DienSoConThieu100 table{
+        margin: -12px;
+     }
      .number-line-100 td> div.text{
         width: 31px;
         padding: 0;

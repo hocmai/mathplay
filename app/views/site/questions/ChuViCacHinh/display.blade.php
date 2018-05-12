@@ -1,34 +1,29 @@
 <?php
 $shapes = ChuViCacHinh::getShape(); // hinh vuông ,hình chữ nhật hinh binh hanh, hinh tam giac
 $answer = array_rand($shapes);
+$answer = !empty($config['shape']) ? $config['shape'] : array_rand($shapes);
 $a =  rand(2,10); // chieu dai
 $b = rand(2,10); // chieu rong
 $unit = !empty($config['unit']) ? $config['unit'] : getRandArrayVal(['cm','dm','m']);
-$title = [];
 $perimeter = []; //chu vi
 if($answer == 'tam-giac'){
 	$perimeter = $a*$a*$b;
-	$title = ' Tính chu vi hình tam giác sau?';
 }
 // chu vi tam giac bang canh a nhan canh b nhan canh c
 if($answer =='vuong'){
 	$perimeter = $a*4;
-	$title = ' Tính chu vi hình vuông sau?';
 }
 // chu vi hinh vuông = a x4
 if($answer =='chu-nhat'){
 	$perimeter = ($b+$a)*2;
-	$title = ' Tính chu vi hình chữ nhật sau?';
-
 }
 // chu vi hinh chu nhat = (chieu dai + chieu rong) x 2
 if($answer == 'binh-hanh'){
 	$perimeter = ($a+$b)*2;
-	$title =' Tính chu vi hình bình hành sau?';
 }
  // chu vi hinh binh hanh = (a+b)x2
 ?>
-@include('site.questions.render-title', ['question' => $question ,'title' => $title])
+@include('site.questions.render-title', ['question' => $question])
 
 <div class="container-fluid question-wrapper">
 	{{ Form::open(['method' => 'GET', 'class' => 'answer-question-form', 'id' => 'question-'.$question->id]) }}
