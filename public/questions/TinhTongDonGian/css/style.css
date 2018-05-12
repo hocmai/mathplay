@@ -5,10 +5,11 @@
     /*margin-right: 15px;*/
 }
 #TinhTongDonGian .tong.doc input{
-	width: 55px;
+	width: 20px;
     text-align: right;
+    margin-right: -5px;
 }
 #TinhTongDonGian .tong input{
-	width: 55px;
-	padding-left: 5px;
+    margin-right: -5px;
+	width: 20px;
 }
