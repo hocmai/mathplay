@@ -1,7 +1,8 @@
 <?php
 namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
-
+use App\Models\Grade; 
+use App\Models\Subject;
 class SiteSubjectController extends Controller {
 
 	/**
@@ -23,8 +24,8 @@ class SiteSubjectController extends Controller {
 	 */
 	public function show($gradeSlug, $subjectSlug)
 	{
-		$subject = \App\Models\Subject::findBySlug($subjectSlug);
-		$grade = \App\Models\Grade::findBySlug($gradeSlug);
+		$subject = Subject::findBySlug($subjectSlug);
+		$grade = Grade::findBySlug($gradeSlug);
 		if(!$subject | !$grade){
 			abort(404);
 		} else{

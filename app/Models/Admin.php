@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authentical;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Facades\Auth;
 
 class Admin extends Authentical implements Authenticatable
 {
@@ -28,7 +29,10 @@ class Admin extends Authentical implements Authenticatable
 
     public static function isAdmin()
     {
-    	if(Auth::admin()->get()->role_id == ADMIN){
+    	if(!Auth::guard('admin')->check()){
+    		return false;
+    	}
+    	if(Auth::guard('admin')->user()->role_id == ADMIN){
 			return true;
 		}
 		else{
@@ -37,7 +41,7 @@ class Admin extends Authentical implements Authenticatable
     }
     public static function isEditor()
     {
-    	if(Auth::admin()->get()->role_id == EDITOR){
+    	if(Auth::guard('admin')->user()->role_id == EDITOR){
 			return true;
 		}
 		else{
@@ -46,7 +50,7 @@ class Admin extends Authentical implements Authenticatable
     }
     public static function isSeo()
     {
-    	if(Auth::admin()->get()->role_id == SEO){
+    	if(Auth::guard('admin')->user()->role_id == SEO){
 			return true;
 		}
 		else{

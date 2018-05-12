@@ -1,5 +1,10 @@
 <?php
 
+namespace App\Http\Controllers\Admin;
+use App\Models\User;
+use Services\CommonNormal;
+use Services\AdminManager;
+use Hash;
 class UserController extends AdminController {
 
 	/**
@@ -17,9 +22,9 @@ class UserController extends AdminController {
 	// search user
 	public function search()
 	{
-		$input = Input::all();
+		$input = request()->all();
 		if (!$input['keyword'] && !$input['username'] && $input['start_date'] && $input['end_date']) {
-			return Redirect::action('UserController@index');
+			return redirect()->action('UserController@index');
 			// lay tat ca cac du lieu tu cot input ... nếu k tìm thấy các thuộc tinh trên thì trả về index
 		}
 		$data = AdminManager::searchUserOperation($input);
@@ -50,21 +55,21 @@ class UserController extends AdminController {
             'password'   => 'required|confirmed|min:6',
             'email'      => 'required|email|unique:users',
 		);
-		$input = Input::all();
+		$input = request()->all();
 		$validator = Validator::make($input,$rules);
 		// dd($input);
 
 		if($validator->fails()) {
-			return Redirect::action('UserController@create')
+			return redirect()->action('UserController@create')
 	            ->withErrors($validator)
-	            ->withInput(Input::except('password'));
+	            ->withInput(request()->except('password'));
         } else {
         	$input['password'] = Hash::make($input['password']);
         	$id = User::create($input)->id;
         	if($id) {
-        		return Redirect::action('UserController@index')->with('message', 'Người dùng <ins>'.$input['username'].'<ins> được tạo thành công!');
+        		return redirect()->action('UserController@index')->with('message', 'Người dùng <ins>'.$input['username'].'<ins> được tạo thành công!');
         	} else {
-        		return Redirect::back()->with('error', 'Lưu thất bại!');
+        		return redirect()->back()->with('error', 'Lưu thất bại!');
         	}
         }
 	}
@@ -103,9 +108,9 @@ class UserController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_token');
+		$input = request()->except('_token');
     	CommonNormal::update($id, $input, 'User');
-		return Redirect::action('UserController@index')->with('success', 'Lưu thành công!');
+		return redirect()->action('UserController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -118,7 +123,7 @@ class UserController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id, 'User');
-		return Redirect::action('UserController@index')->with('success', 'Tài khoản đã bị xóa!');;
+		return redirect()->action('UserController@index')->with('success', 'Tài khoản đã bị xóa!');;
 	}
 
 
@@ -128,8 +133,8 @@ class UserController extends AdminController {
 	 * @param int $id
 	 **/
 	public function changePassword($id){
-		$currentUserId = Auth::admin()->get()->id;
-		$currentRoleId = Auth::admin()->get()->role_id;
+		$currentUserId = Auth::guard('admin')->user()->id;
+		$currentRoleId = Auth::guard('admin')->user()->role_id;
 		if($currentRoleId <> ADMIN) {
 			dd('error permission');
 		}
@@ -148,17 +153,17 @@ class UserController extends AdminController {
 		$rules = array(
 			'password'   => 'required|min:6|confirmed',
 		);
-		$input = Input::except('_token');
+		$input = request()->except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
-			return Redirect::action('UserController@changePassword',$id)
+			return redirect()->action('UserController@changePassword',$id)
 	            ->withErrors($validator)
-	            ->withInput(Input::except('password'));
+	            ->withInput(request()->except('password'));
         } else {
     		$inputPass['password'] = Hash::make($input['password']);
     		CommonNormal::update($id, $inputPass, 'User');
         }
-        return Redirect::action('UserController@changePassword', $id)->with('success', 'Đổi mật khẩu thành công!');
+        return redirect()->action('UserController@changePassword', $id)->with('success', 'Đổi mật khẩu thành công!');
 	}
 
 

@@ -1,5 +1,5 @@
 <div class="margin-bottom">
-	{{ Form::open(array('action' => 'ManagerController@search', 'method' => 'GET')) }}
+	{{ Form::open(array('action' => 'Admin\ManagerController@search', 'method' => 'GET')) }}
 		<div class="input-group" style="width: 150px; display:inline-block;">
 			<label>Từ khóa</label>
 		  	<input type="text" name="keyword" class="form-control" placeholder="Search" />

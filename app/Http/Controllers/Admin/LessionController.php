@@ -1,8 +1,10 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+namespace App\Http\Controllers\Admin;
+use App\Models\Lession;
+use App\Models\LessionQuestion;
+use Services\CommonNormal;
+use Services\Common;
 
 class LessionController extends AdminController {
 
@@ -26,7 +28,7 @@ class LessionController extends AdminController {
 	 */
 	public function search()
 	{
-		$input = Input::all();
+		$input = request()->all();
 		// dd($input);
 		$data = Lession::select('lessions.*');
 		if( !empty($input['title']) ){
@@ -59,7 +61,7 @@ class LessionController extends AdminController {
 			$data = $data->orderBy('lessions.weight', 'asc')->orderBy('lessions.created_at', 'desc');
 		}
 		$data = $data->paginate(PAGINATE);
-		// dd(Input::get('order'));
+		// dd(request()->get('order'));
 		return view('admin.lession.index')->with(compact('data'))->with(compact('input'));
 	}
 
@@ -83,11 +85,11 @@ class LessionController extends AdminController {
 	public function store()
 	{
 		$notice = '';
-        $input = Input::except(['_token']);
-        $input['author_id'] = Auth::admin()->get()->id;
+        $input = request()->except(['_token']);
+        $input['author_id'] = Auth::guard('admin')->user()->id;
         // dd($input);
 
-    	$LessionId = CommonNormal::create(Input::except(['_token', 'question_config', 'question']));
+    	$LessionId = CommonNormal::create(request()->except(['_token', 'question_config', 'question']));
     	// dd($LessionId);
     	//// Get query input to array
 		$question_input = [];
@@ -147,7 +149,7 @@ class LessionController extends AdminController {
 					}
         		}
         		else{
-        			$file = Input::file('question_config');
+        			$file = request()->file('question_config');
         			if( !empty($file['sound_input'][$key]) ){
         				$fileName = 'question_sound_'.str_slug($value['title'],'-').'.mp3';
         				$sound = $file['sound_input'][$key];
@@ -165,7 +167,7 @@ class LessionController extends AdminController {
         	}
         }
 
-		return Redirect::action('LessionController@edit', ['id' => $LessionId])->with(['success'=>'Lưu thành công!', 'notice'=>$notice]);
+		return redirect()->action('LessionController@edit', ['id' => $LessionId])->with(['success'=>'Lưu thành công!', 'notice'=>$notice]);
 	}
 
 
@@ -210,9 +212,9 @@ class LessionController extends AdminController {
 	public function update($id)
 	{
 		$notice = '';
-        $input = Input::except('_token');
+        $input = request()->except('_token');
         // dd($input);
-    	CommonNormal::update($id, Input::except(['_token', 'question_config', 'question', 'sound_title']));
+    	CommonNormal::update($id, request()->except(['_token', 'question_config', 'question', 'sound_title']));
 
     	//// Get Question infomations -> fetch array
 		$question_input = [];
@@ -280,7 +282,7 @@ class LessionController extends AdminController {
 					}
         		}
         		else{
-        			$file = Input::file('question_config');
+        			$file = request()->file('question_config');
         			if( !empty($file['sound_input'][$key]) ){
         				$fileName = 'question_sound_'.str_slug($value['title'],'-').'.mp3';
         				$sound = $file['sound_input'][$key];
@@ -302,7 +304,7 @@ class LessionController extends AdminController {
         	}
         }
 
-		return Redirect::action('LessionController@edit', ['id'=>$id])->with(['success'=>'Lưu thành công!', 'notice' => $notice]);
+		return redirect()->action('LessionController@edit', ['id'=>$id])->with(['success'=>'Lưu thành công!', 'notice' => $notice]);
 	}
 
 
@@ -323,7 +325,7 @@ class LessionController extends AdminController {
 				->delete();
 		}
 		CommonNormal::delete($id);
-        return Redirect::action('LessionController@index');
+        return redirect()->action('LessionController@index');
 	}
 
 

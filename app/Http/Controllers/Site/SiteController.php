@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers\Site;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Controller;
 
-class SiteController extends HomeController {
+class SiteController extends Controller {
 
 	public function __construct() {
 		// $viTypes = Common::getObjectLanguage('TypeNew', LANG_VI, 'position');

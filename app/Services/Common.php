@@ -290,10 +290,11 @@ class Common {
 
     public static function getObject($ob, $method)
     {
-        if (!($ob)) {
+        // dd($ob);
+        if (!($ob) | $ob == null) {
             return null;
         }
-        if (!($ob->$method)) {
+        if ( !($ob->$method) ) {
             return null;
         }
         return $ob->$method;

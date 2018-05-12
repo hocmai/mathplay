@@ -1,8 +1,8 @@
 <?php
-
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+namespace App\Http\Controllers\Admin;
+use App\Models\Grade;
+use App\Models\Chapter;
+use Services\CommonNormal;
 
 class GradeController extends AdminController {
 
@@ -24,7 +24,7 @@ class GradeController extends AdminController {
 	 */
 	public function search()
 	{
-		$input = Input::all();
+		$input = request()->all();
 		$data = Chapter::select('grades.*');
 		if( !empty($input['title']) ){
 			$data = $data->where('grades.title', 'LIKE' , '%'.$input['title'].'%');
@@ -38,7 +38,7 @@ class GradeController extends AdminController {
 			$data = $data->orderBy('grades.created_at', 'desc');
 		}
 		$data = $data->paginate(PAGINATE);
-		// dd(Input::get('order'));
+		// dd(request()->get('order'));
 		return view('admin.grade.index')->with(compact('data'))->with(compact('input'));
 	}
 
@@ -60,11 +60,11 @@ class GradeController extends AdminController {
 	 */
 	public function store()
 	{
-		$input = Input::except('_token');
-        $input['author_id'] = Auth::admin()->get()->id;
+		$input = request()->except('_token');
+        $input['author_id'] = Auth::guard('admin')->user()->id;
         // dd($input);
     	$enId = CommonNormal::create($input, 'Grade');
-		return Redirect::action('GradeController@index')->with('success', 'Lưu thành công!');
+		return redirect()->action('GradeController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -107,9 +107,9 @@ class GradeController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except('_token');
+		$input = request()->except('_token');
     	CommonNormal::update($id, $input, 'Grade');
-		return Redirect::action('GradeController@index')->with('success', 'Lưu thành công!');
+		return redirect()->action('GradeController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -122,7 +122,7 @@ class GradeController extends AdminController {
 	public function destroy($id)
 	{
 		Grade::find($id)->delete();
-        return Redirect::action('GradeController@index')->with('success', 'Xóa thành công!');
+        return redirect()->action('GradeController@index')->with('success', 'Xóa thành công!');
 	}
 
 

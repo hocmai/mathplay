@@ -14,7 +14,7 @@ class PublishedScope implements ScopeInterface {
 	public function apply(Builder $builder)
 	{
 		// dd();
-		if( Auth::admin()->check() && Admin::isAdmin() ) {
+		if( Auth::guard('admin')->check() && Admin::isAdmin() ) {
 			return;
 		}
 

@@ -130,7 +130,7 @@ class AjaxController extends Controller {
      * Hoc mai oauthCallback ajax
      **/
     public function oauthCallback(){
-        $input = Input::all();
+        $input = request()->all();
         $messages = ['message' => 'Đăng nhập không thành công! Có thể tài khoản đang bị tạm khóa, hãy liên hệ với quản trị viên để được hỗ trợ', 'status' => 'error'];
 
         if( Auth::user()->check() ){
@@ -218,10 +218,10 @@ class AjaxController extends Controller {
      * Delete question of a lession
      */
     public function deleteQuestion(){
-        if (Auth::admin()->guest() | !Request::ajax()){
+        if (Auth::guard('admin')->user()->guest() | !Request::ajax()){
             abort(403);
         }
-        $input = Input::all();
+        $input = request()->all();
         try{
             //////// Xoa quan he n-n
             LessionQuestion::where('lession_id', '=', $input['lession_id'])->where('qid', '=', $input['qid'])->delete();

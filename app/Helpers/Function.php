@@ -329,13 +329,13 @@ function renderUrl($action, $title = null, $parameters = array(), $attributes = 
 
 function get_order_link($field = '', $title = '', $route = '')
 {
-	$input = Input::all();
+	$input = request()->all();
 	unset($input['order']);
-	if( Input::get('order_by') == $field && Input::get('order') != 'asc' ){
+	if( request()->get('order_by') == $field && request()->get('order') != 'asc' ){
 		$input['order'] = 'asc';
 	}
 	$input['order_by'] = $field;
-	return '<a title="Sắp xếp theo '.$title.'" href="'. action($route, $input). '">'.$title. ((Input::get('order_by') == $field) ? ' <span class="'.( (Input::get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : ''). '</a>';
+	return '<a title="Sắp xếp theo '.$title.'" href="'. action($route, $input). '">'.$title. ((request()->get('order_by') == $field) ? ' <span class="'.( (request()->get('order') == 'asc') ? 'dropup' : 'dropdown' ).'"><span class="caret"></span></span>' : ''). '</a>';
 }
 
 function returnStringClass($array, $key, $text = null){

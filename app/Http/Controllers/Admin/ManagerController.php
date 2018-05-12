@@ -1,4 +1,10 @@
 <?php
+namespace App\Http\Controllers\Admin;
+use App\Models\Admin;
+use Services\CommonNormal;
+use Services\Common;
+use Services\AdminManager;
+use Hash;
 
 class ManagerController extends AdminController {
 
@@ -15,9 +21,9 @@ class ManagerController extends AdminController {
 
 	public function search()
 	{
-		$input = Input::all();
+		$input = request()->all();
 		if (!$input['keyword'] && !$input['role_id'] && $input['start_date'] && $input['end_date']) {
-			return Redirect::action('ManagerController@index');
+			return redirect()->action('ManagerController@index');
 		}
 		$data = AdminManager::searchAdminOperation($input);
 		return view('admin.manager.index')->with(compact('data'));
@@ -46,17 +52,17 @@ class ManagerController extends AdminController {
             'email'      => 'required|email|unique:admins,deleted_at,NULL|unique_delete',
             'role_id'    => 'required',
 		);
-		$input = Input::except('_token');
+		$input = request()->except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
-			return Redirect::action('ManagerController@create')
+			return redirect()->action('ManagerController@create')
 	            ->withErrors($validator)
-	            ->withInput(Input::except('password'));
+	            ->withInput(request()->except('password'));
         } else {
         	$input['password'] = Hash::make($input['password']);
         	$id = Admin::create($input)->id;
         	if($id) {
-        		return Redirect::action('ManagerController@index');
+        		return redirect()->action('ManagerController@index');
         	} else {
         		dd('Error');
         	}
@@ -84,9 +90,9 @@ class ManagerController extends AdminController {
 	 */
 	public function edit($id)
 	{
-		$currentUserId = Auth::admin()->get()->id;
+		$currentUserId = Auth::guard('admin')->user()->id;
 		// dd($currentRoleId);
-		$currentRoleId = Auth::admin()->get()->role_id;
+		$currentRoleId = Auth::guard('admin')->user()->role_id;
 		if($currentRoleId <> ADMIN) {
 			if($id <> $currentUserId) {
 				dd('error permission');
@@ -116,26 +122,26 @@ class ManagerController extends AdminController {
         if (!Admin::isAdmin()) {
         	unset($rules['role_id']);
         }
-        $input = Input::except('_token');
+        $input = request()->except('_token');
 
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
-			return Redirect::action('ManagerController@edit', $id)
+			return redirect()->action('ManagerController@edit', $id)
 	            ->withErrors($validator)
-	            ->withInput(Input::except('password'));
+	            ->withInput(request()->except('password'));
         } else {
         	if($input['password'] != '') {
         		$input['password'] = Hash::make($input['password']);
         	} else {
-        		$input['password'] = Auth::admin()->get()->password;
+        		$input['password'] = Auth::guard('admin')->user()->password;
         	}
         	CommonNormal::update($id, $input, 'Admin');
-        	$currentUserId = Auth::admin()->get()->id;
-			$currentRoleId = Auth::admin()->get()->role_id;
+        	$currentUserId = Auth::guard('admin')->user()->id;
+			$currentRoleId = Auth::guard('admin')->user()->role_id;
 			if($currentRoleId <> ADMIN) {
-				return Redirect::action('ManagerController@edit', $id);
+				return redirect()->action('ManagerController@edit', $id);
 			}
-    		return Redirect::action('ManagerController@index');
+    		return redirect()->action('ManagerController@index');
         }
 	}
 
@@ -149,12 +155,12 @@ class ManagerController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id, 'Admin');
-        return Redirect::action('ManagerController@index');
+        return redirect()->action('ManagerController@index');
 	}
 
 	public function changePassword($id){
-		$currentUserId = Auth::admin()->get()->id;
-		$currentRoleId = Auth::admin()->get()->role_id;
+		$currentUserId = Auth::guard('admin')->user()->id;
+		$currentRoleId = Auth::guard('admin')->user()->role_id;
 		if($currentRoleId <> ADMIN) {
 			if($id <> $currentUserId) {
 				dd('error permission');
@@ -170,17 +176,17 @@ class ManagerController extends AdminController {
 			'password'   => 'required',
 			'repassword' => 'required|same:password'
 		);
-		$input = Input::except('_token');
+		$input = request()->except('_token');
 		$validator = Validator::make($input,$rules);
 		if($validator->fails()) {
-			return Redirect::action('ManagerController@changePassword',$id)
+			return redirect()->action('ManagerController@changePassword',$id)
 	            ->withErrors($validator)
-	            ->withInput(Input::except('password'));
+	            ->withInput(request()->except('password'));
         } else {
         		$inputPass['password'] = Hash::make($input['password']);
         		CommonNormal::update($id, $inputPass, 'Admin');
         }
-        return Redirect::action('ManagerController@changePassword', $id)->with('message', 'Đổi mật khẩu thành công!');
+        return redirect()->action('ManagerController@changePassword', $id)->with('message', 'Đổi mật khẩu thành công!');
 	}
 
 }

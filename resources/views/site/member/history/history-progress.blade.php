@@ -1,7 +1,7 @@
 @extends('site.layout.default')
 
 @section('title')
-    {{ $title = 'Lịch sử làm bài'; }}
+    {!! $title = 'Lịch sử làm bài' !!}
 @stop
 
 @section('breadcrumb')
@@ -10,7 +10,7 @@
         <ol class="breadcrumb">
             <li><a href="/">Trang chủ</a></li>
             <li>
-                {{ renderUrl('SiteMemberController@index', Auth::user()->get()->username, ['uid' => Auth::user()->get()->id]) }}
+                {{ renderUrl('Site\SiteMemberController@index', Auth::user()->username, ['uid' => Auth::user()->id]) }}
             </li>
             <li class="active">Chương trình đã học</li>
         </ol>
@@ -54,7 +54,7 @@
 			                            	</div>
 			                                <div class="collapse in" id="collapseChapter-{{ $chapterId }}"><tr>
 		                                		@foreach($chapter['lessions'] as $lessionId => $history)
-		                                			<a class="tb-row tb-body" href="{{ action('SiteMemberController@historyQuestion', ['uid' => Auth::user()->get()->id, 'lession' => Common::getObject($history, 'lession_id')]) }}">
+		                                			<a class="tb-row tb-body" href="{{ action('Site\SiteMemberController@historyQuestion', ['uid' => Auth::user()->id, 'lession' => Common::getObject($history, 'lession_id')]) }}">
 					                            		<div class="tb-col col-title">{{ Common::getObject($history, 'lession_title') }}</div>
 					                            		<div class="tb-col col-time">{{ !empty($history->time_use) ? Common::convertTimeUsed($history->time_use)['text'] : '' }}</div>
 					                            		<div class="tb-col col-number text-center">{{ Common::getObject($history, 'current_question') }}</div>

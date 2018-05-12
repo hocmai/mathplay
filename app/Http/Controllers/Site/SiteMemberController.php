@@ -78,7 +78,7 @@ class SiteMemberController extends Controller {
 				DB::raw("(SELECT id, MAX(score) AS MaxScore, lession_id 
 				FROM study_history
 				WHERE author = $uid
-				GROUP BY lession_id) as groupedtt"), function($join){
+				GROUP BY lession_id, id) as groupedtt"), function($join){
 					$join->on('study_history.lession_id', '=', 'groupedtt.lession_id')
 					  ->on('study_history.score', '=', 'groupedtt.MaxScore');
 				})

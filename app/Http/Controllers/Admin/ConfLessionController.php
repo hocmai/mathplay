@@ -1,4 +1,9 @@
 <?php
+
+namespace App\Http\Controllers\Admin;
+use App\Models\Chapter;
+use App\Models\ConfigModel;
+use Services\CommonConfig;
 class ConfLessionController extends AdminController {
 
 	/**
@@ -32,14 +37,14 @@ class ConfLessionController extends AdminController {
 	 */
 	public function store()
 	{
-		$input = Input::except(['_token', '_method']);
+		$input = request()->except(['_token', '_method']);
 		foreach ($input as $key => $value) {
 			if( is_string($value) ){
 				$input[$key] = trim($value);
 			}
 		}
 		CommonConfig::set('lession', 'lession.config.'.str_slug($input['name'], '_'), $input);
-		return Redirect::action('ConfLessionController@index')->with('success', 'Lưu thành công!');
+		return redirect()->action('ConfLessionController@index')->with('success', 'Lưu thành công!');
 		// dd($input);
 	}
 
@@ -82,14 +87,14 @@ class ConfLessionController extends AdminController {
 	 */
 	public function update($id)
 	{
-		$input = Input::except(['_token', '_method']);
+		$input = request()->except(['_token', '_method']);
 		foreach ($input as $key => $value) {
 			if( is_string($value) ){
 				$input[$key] = trim($value);
 			}
 		}
 		CommonConfig::set('lession', 'lession.config.'.str_slug($input['name'], '_'), $input);
-		return Redirect::back()->with('success', 'Cập nhật thành công!');
+		return redirect()->back()->with('success', 'Cập nhật thành công!');
 	}
 
 
@@ -102,7 +107,7 @@ class ConfLessionController extends AdminController {
 	public function destroy($name)
 	{
 		ConfigModel::where('name', '=', $name)->delete();
-		return Redirect::action('ConfLessionController@index');
+		return redirect()->action('ConfLessionController@index');
 	}
 
 

@@ -22,7 +22,7 @@ Route::get('/', 'Site\SiteIndexController@home');
 Route::resource('user', 'Site\SiteUserController');
 
 Route::get('/login', array('uses' => 'Site\SiteUserController@loginForm', 'as' => 'user.login'));
-Route::get('/sso/index.php', array('uses' => 'Site\SiteUserController@hocmaiOAuth2', 'as' => 'user.hocmaiOAuth2'));
+Route::get('/sso/index', array('uses' => 'Site\SiteUserController@hocmaiOAuth2', 'as' => 'user.hocmaiOAuth2'));
 Route::get('/register', array('uses' => 'Site\SiteUserController@registerForm', 'as' => 'user.register'));
 Route::get('/logout', array('uses' => 'Site\SiteUserController@logout', 'as' => 'user.logout'));
 
@@ -68,50 +68,50 @@ Route::group(['prefix' => 'member'], function () {
 		->where('uid', '[0-9]+');
 });
 
-// ///////////////// Admin page //////////////////
-// Route::group(['prefix' => 'admin'], function () {
+///////////////// Admin page //////////////////
+Route::group(['prefix' => 'admin'], function () {
 
-//  	Route::get('/login', array('uses' => 'AdminController@login', 'as' => 'admin.login'));
-// 	Route::post('/login', array('uses' => 'AdminController@doLogin'));
-// 	Route::get('/logout', array('uses' => 'AdminController@logout', 'as' => 'admin.logout'));
-// 	Route::post('/operation', array('uses' => 'AdminController@operation', 'as' => 'admin.operation'));
+ 	Route::get('/login', array('uses' => 'Admin\AdminController@login', 'as' => 'admin.login'));
+	Route::post('/login', array('uses' => 'Admin\AdminController@doLogin'));
+	Route::get('/logout', array('uses' => 'Admin\AdminController@logout', 'as' => 'admin.logout'));
+	Route::post('/operation', array('uses' => 'Admin\AdminController@operation', 'as' => 'admin.operation'));
 
-// 	Route::get('/', 'ManagerController@index');
+	Route::get('/', 'Admin\ManagerController@index');
 
-// 	Route::group(['prefix' => 'manage'], function(){
-// 		Route::resource('/admin', 'ManagerController');
-// 		Route::get('changepassword/{id}', array('uses' => 'ManagerController@changePassword', 'as' => 'admin.manager.changepassword'));
-// 		Route::post('updatePassword/{id}', array('uses' => 'ManagerController@updatePassword'));
+	Route::group(['prefix' => 'manage'], function(){
+		Route::resource('/admin', 'Admin\ManagerController');
+		Route::get('changepassword/{id}', array('uses' => 'Admin\ManagerController@changePassword', 'as' => 'admin.manager.changepassword'));
+		Route::post('updatePassword/{id}', array('uses' => 'Admin\ManagerController@updatePassword'));
 
-// 		Route::get('search', array('uses' => 'ManagerController@search', 'as' => 'admin.manager.search'));
+		Route::get('search', array('uses' => 'Admin\ManagerController@search', 'as' => 'admin.manager.search'));
 	 	
-// 	 	Route::get('/user/search', 'UserController@search');
-// 	 	Route::resource('/user', 'UserController');
-// 		Route::get('user/changepassword/{id}', array('uses' => 'UserController@changePassword', 'as' => 'admin.user.changepassword'));
-// 		Route::post('user/updatepassword/{id}', array('uses' => 'UserController@updatePassword'));
+	 	Route::get('/user/search', 'Admin\UserController@search');
+	 	Route::resource('/user', 'Admin\UserController');
+		Route::get('user/changepassword/{id}', array('uses' => 'Admin\UserController@changePassword', 'as' => 'admin.user.changepassword'));
+		Route::post('user/updatepassword/{id}', array('uses' => 'Admin\UserController@updatePassword'));
 
-	 	Route::get('/grade/search', ['uses' => 'Site\GradeController@search', 'as' => 'GradeFilter']);
-	 	Route::resource('/grade', 'GradeController');
+	 	Route::get('/grade/search', ['uses' => 'Admin\GradeController@search', 'as' => 'GradeFilter']);
+	 	Route::resource('/grade', 'Admin\GradeController');
 
-	 	Route::get('/audio/save-confirm', 'Site\AudioController@saveConfirm');
-	 	Route::resource('/audio', 'AudioController');
+	 	Route::get('/audio/save-confirm', 'Admin\AudioController@saveConfirm');
+	 	Route::resource('/audio', 'Admin\AudioController');
 
-	 	Route::get('/subject/search', ['uses' => 'Site\SubjectController@search', 'as' => 'SubjectFilter']);
-	 	Route::resource('/subject', 'SubjectController');
+	 	Route::get('/subject/search', ['uses' => 'Admin\SubjectController@search', 'as' => 'SubjectFilter']);
+	 	Route::resource('/subject', 'Admin\SubjectController');
 
-	 	Route::get('/chapter/search', ['uses' => 'Site\ChapterController@search', 'as' => 'ChapterFilter']);
-	 	Route::resource('/chapter', 'Site\ChapterController');
+	 	Route::get('/chapter/search', ['uses' => 'Admin\ChapterController@search', 'as' => 'ChapterFilter']);
+	 	Route::resource('/chapter', 'Admin\ChapterController');
 
-// 	 	Route::get('/lession/question-type/refresh', ['uses' => 'QuestionTypeController@refresh', 'as' => 'QuestionTypeRefresh']);
-// 	 	Route::get('/lession/search', ['uses' => 'LessionController@search', 'as' => 'LessionFilter']);
-// 	 	Route::get('/lession/question-type/{type}/edit', ['uses' => 'QuestionTypeController@edit', 'as' => 'QuestionTypeEdit']);
-// 	 	Route::post('/lession/question-type/{type}/update', ['uses' => 'QuestionTypeController@update', 'as' => 'QuestionTypeUpdate']);
-// 	 	Route::resource('/lession/config', 'ConfLessionController');
-// 	 	Route::resource('/lession/question-type', 'QuestionTypeController');
-// 	 	Route::resource('/lession', 'LessionController');
-// 	});
+	 	Route::get('/lession/question-type/refresh', ['uses' => 'Admin\QuestionTypeController@refresh', 'as' => 'QuestionTypeRefresh']);
+	 	Route::get('/lession/search', ['uses' => 'Admin\LessionController@search', 'as' => 'LessionFilter']);
+	 	Route::get('/lession/question-type/{type}/edit', ['uses' => 'Admin\QuestionTypeController@edit', 'as' => 'QuestionTypeEdit']);
+	 	Route::post('/lession/question-type/{type}/update', ['uses' => 'Admin\QuestionTypeController@update', 'as' => 'QuestionTypeUpdate']);
+	 	Route::resource('/lession/config', 'Admin\ConfLessionController');
+	 	Route::resource('/lession/question-type', 'Admin\QuestionTypeController');
+	 	Route::resource('/lession', 'Admin\LessionController');
+	});
 	
-// });
+});
 
 // App::error( function(Exception $exception, $code){
 // 	$pathInfo = Request::getPathInfo();

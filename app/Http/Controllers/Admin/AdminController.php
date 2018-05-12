@@ -1,7 +1,13 @@
 <?php
-class AdminController extends BaseController {
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
+use Services\CommonNormal;
+use Illuminate\Support\Facades\Auth;
+use Validator;
+
+class AdminController extends Controller {
     public function __construct() {
-        $this->beforeFilter('admin', array('except'=>array('login','doLogin')));
+        // $this->beforeFilter('admin', array('except'=>array('login','doLogin')));
     }
 	/**
 	 * Display a listing of the resource.
@@ -10,7 +16,7 @@ class AdminController extends BaseController {
 	 */
 	public function index()
 	{
-		$checkLogin = Auth::admin()->check();
+		$checkLogin = Auth::guard('admin')->check();
         if($checkLogin) {
     		return view('admin.dashboard');
         } else {
@@ -23,13 +29,13 @@ class AdminController extends BaseController {
 	 *
 	 */
 	public function operation(){
-		$model = Input::get('model');
-		if( empty($model) ) return Redirect::back()->with('success', 'Xóa thành công!');
+		$model = request()->get('model');
+		if( empty($model) ) return redirect()->back()->with('success', 'Xóa thành công!');
 
-		$data = (array)json_decode(Input::get('data'));
-		$action = Input::get('action');
+		$data = (array)json_decode(request()->get('data'));
+		$action = request()->get('action');
 		if(count($data) == 0 | empty($action)){
-			return Redirect::back()->with('error', 'Không có nội dung nào được chọn.');
+			return redirect()->back()->with('error', 'Không có nội dung nào được chọn.');
 		}
 
 		$message = '';
@@ -48,7 +54,7 @@ class AdminController extends BaseController {
 			}
 		}
 		// dd($data);
-		return Redirect::back()->with('success', $message);
+		return redirect()->back()->with('success', $message);
 	}
 	/**
 	 * Show the form for creating a new resource.
@@ -111,11 +117,11 @@ class AdminController extends BaseController {
 
     public function login()
     {
-    	$checkLogin = Auth::admin()->check();
+    	$checkLogin = Auth::guard('admin')->check();
         if($checkLogin) {
-	    	if (Auth::admin()->get()->status == ACTIVE) {
+	    	if (Auth::guard('admin')->user()->status == ACTIVE) {
 	    		return view('admin.dashboard');
-	    		//return Redirect::route('admin.dashboard');
+	    		//return redirect()->route('admin.dashboard');
 	    	}else{
 	    		return view('admin.layout.login')->with(compact('message','chưa kich hoat'));
 	    	}
@@ -130,27 +136,27 @@ class AdminController extends BaseController {
             'username'   => 'required',
             'password'   => 'required',
         );
-        $input = Input::except('_token');
+        $input = request()->except('_token');
         $validator = Validator::make($input, $rules);
         if ($validator->fails()) {
-            return Redirect::route('admin.login')
+            return redirect()->route('admin.login')
                 ->withErrors($validator)
-                ->withInput(Input::except('password'));
+                ->withInput(request()->except('password'));
         } else {
-            $checkLogin = Auth::admin()->attempt($input, true);
+            $checkLogin = Auth::guard('admin')->attempt($input, true);
             if($checkLogin) {
-        		return Redirect::action('ManagerController@index');
+        		return redirect()->action('Admin\ManagerController@index');
             } else {
-                return Redirect::route('admin.login');
+                return redirect()->route('admin.login');
             }
         }
     }
 
     public function logout()
     {
-        Auth::admin()->logout();
-        Session::flush();
-        return Redirect::route('admin.login');
+        Auth::guard('admin')->logout();
+        // Session::flush();
+        return redirect()->route('admin.login');
     }
 }
 

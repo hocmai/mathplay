@@ -9,13 +9,13 @@ class HocmaiOAuth2 {
     private static $CLIENT_VERSION = '1.2';
     private $CLIENT_ID = '4UMMmM26a43SZL8nPFDcz3DM7YpFxGyh';
     private $CLIENT_SECRET = 'fmHCxaFZQsRfaAgeZj2ctUpPULCP3k4T';
-    private $CLIENT_REDIRECT_URI = 'http://tieuhoc.hocmai.vn/sso/index.php';
+    private $CLIENT_REDIRECT_URI = 'http://tieuhoc.hocmai.vn/sso/index';
     private $ACCESS_TOKEN = NULL;
 
     function __construct($client_id = null, $client_secret = null, $client_uri = null) {
         $this->CLIENT_ID = $client_id ? $client_id : '4UMMmM26a43SZL8nPFDcz3DM7YpFxGyh';
         $this->CLIENT_SECRET = $client_secret ? $client_secret : 'fmHCxaFZQsRfaAgeZj2ctUpPULCP3k4T';
-        $this->CLIENT_REDIRECT_URI = $client_uri ? $client_uri : 'http://tieuhoc.hocmai.vn/sso/index.php';
+        $this->CLIENT_REDIRECT_URI = $client_uri ? $client_uri : 'http://tieuhoc.hocmai.vn/sso/index';
     }
 
     function getAuthorizeUri() {

@@ -1,8 +1,8 @@
 <?php
-
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Session;
+use App\Models\Chapter;
+use Services\CommonNormal;
 
 class ChapterController extends AdminController {
 
@@ -25,7 +25,7 @@ class ChapterController extends AdminController {
 	 */
 	public function search()
 	{
-		$input = Input::all();
+		$input = request()->all();
 		$data = Chapter::select('chapters.*');
 		if( !empty($input['title']) ){
 			$data = $data->where('chapters.title', 'LIKE' , '%'.$input['title'].'%');
@@ -51,7 +51,7 @@ class ChapterController extends AdminController {
 			$data = $data->orderBy('chapters.weight', 'asc')->orderBy('chapters.created_at', 'desc');
 		}
 		$data = $data->paginate(PAGINATE);
-		// dd(Input::get('order'));
+		// dd(request()->get('order'));
 		return view('admin.chapter.index')->with(compact('data'))->with(compact('input'));
 	}
 
@@ -74,11 +74,11 @@ class ChapterController extends AdminController {
 	 */
 	public function store()
 	{
-        $input = Input::except('_token');
-        $input['author_id'] = Auth::admin()->get()->id;
+        $input = request()->except('_token');
+        $input['author_id'] = Auth::guard('admin')->user()->id;
         // dd($input);
     	$enId = CommonNormal::create($input);
-		return Redirect::action('ChapterController@index')->with('success', 'Lưu thành công!');
+		return redirect()->action('ChapterController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -121,10 +121,10 @@ class ChapterController extends AdminController {
 	 */
 	public function update($id)
 	{
-        $input = Input::except('_token');
+        $input = request()->except('_token');
         // dd($input);
     	CommonNormal::update($id, $input);
-		return Redirect::action('ChapterController@index')->with('success', 'Lưu thành công!');
+		return redirect()->action('ChapterController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -137,7 +137,7 @@ class ChapterController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
-        return Redirect::action('ChapterController@index');
+        return redirect()->action('ChapterController@index');
 	}
 
 

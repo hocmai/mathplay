@@ -1,6 +1,10 @@
 <?php
 namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
+use App\Models\Grade;
+use App\Models\Subject;
+use App\Models\Lession;
+use Services\Common;
 class SiteLessionController extends Controller {
 	public function __construct() {
         // $this->beforeFilter('user', array('only'=>['show']));
@@ -26,10 +30,10 @@ class SiteLessionController extends Controller {
 	 */
 	public function show($grade_slug, $subject_slug, $lession_slug)
 	{
-		// dd(Common::getObject(Auth::user()->get(), 'id'));
-		$grade   = \App\Models\Grade::findBySlug($grade_slug);
-		$subject = \App\Models\Subject::findBySlug($subject_slug);
-		$lession = \App\Models\Lession::findBySlug($lession_slug);
+		// dd(Common::getObject(Auth::user(), 'id'));
+		$grade   = Grade::findBySlug($grade_slug);
+		$subject = Subject::findBySlug($subject_slug);
+		$lession = Lession::findBySlug($lession_slug);
 		if( !$grade | !$subject | !$lession ){
 			abort(404);
 		}
@@ -44,7 +48,7 @@ class SiteLessionController extends Controller {
 	 */
 	public function detail($id)
 	{
-		$lession = \App\Models\Lession::find($id);
+		$lession = Lession::find($id);
 		if( !$lession ){
 			abort(404);
 		}

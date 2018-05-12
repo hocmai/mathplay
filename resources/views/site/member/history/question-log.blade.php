@@ -39,7 +39,7 @@
                                 <span class="caret"></span>
                             </button>
                             <div class="dropdown-menu" aria-labelledby="dropdownLesionTree">
-                                {{ $tree }}
+                                {!! $tree !!}
                                 <div class="menu-footer">
                                     {{ Form::submit('Xem',['class' => 'btn btn-primary', 'disabled' => true]) }}
                                 </div>
@@ -77,7 +77,7 @@
                                     @endforeach
                                 </div>
                             @else
-                                <em>Bạn chưa làm bài {{ link_to('/lession/'.Input::get('lession'), 'kiểm tra') }} này.</em>
+                                <em>Bạn chưa làm bài {{ link_to('/lession/'.request()->get('lession'), 'kiểm tra') }} này.</em>
                             @endif
                         @else
                             <em>Hãy chọn bài kiểm tra mà bạn muốn xem.</em>

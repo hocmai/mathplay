@@ -1,14 +1,14 @@
 @extends('admin.layout.default')
 @if(Admin::isAdmin())
 @section('title')
-{{ $title='Thêm thành viên' }}
+{!! $title='Thêm thành viên' !!}
 @stop
 
 @section('content')
 
 <div class="row margin-bottom">
   <div class="col-xs-12">
-    <a href="{{ action('ManagerController@index') }}" class="btn btn-success">Danh sách thành viên</a>
+    <a href="{{ action('Admin\ManagerController@index') }}" class="btn btn-success">Danh sách thành viên</a>
   </div>
 </div>
 
@@ -16,7 +16,7 @@
 	<div class="col-xs-12">
 		<div class="box box-primary">
         <!-- form start -->
-        {{ Form::open(array('action' => 'ManagerController@store')) }}
+        {{ Form::open(array('action' => 'Admin\ManagerController@store')) }}
           <div class="box-body">
             <div class="form-group">
               <label for="username">Tên đăng nhập</label>

@@ -8,13 +8,13 @@
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
  
 
-  {{HTML::style('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css') }}
+  {!! app('html')->style('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css') !!}
   <!-- Font Awesome -->
-  {{HTML::style('adminlte/bower_components/font-awesome/css/font-awesome.min.css') }}
+  {!! app('html')->style('adminlte/bower_components/font-awesome/css/font-awesome.min.css') !!}
   <!-- Ionicons -->
-  {{HTML::style('adminlte/bower_components/Ionicons/css/ionicons.min.css') }}
+  {!! app('html')->style('adminlte/bower_components/Ionicons/css/ionicons.min.css') !!}
   <!-- Theme style -->
-  {{HTML::style('adminlte/dist/css/AdminLTE.min.css') }}
+  {!! app('html')->style('adminlte/dist/css/AdminLTE.min.css') !!}
 
 
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -38,7 +38,7 @@
   <div class="login-box-body">
     <p class="login-box-msg">Đăng nhập tài khoản quản trị</p>
 
-    {{ Form::open(array('action' => 'AdminController@doLogin')) }}
+    {{ Form::open(array('action' => 'Admin\AdminController@doLogin')) }}
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="User name" name="username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -60,9 +60,9 @@
 
 <!-- AdminLTE Skins. Choose a skin from the css/skins
      <!-- jQuery 2.1.4 -->
-  {{ HTML::script('adminlte/bower_components/jquery/dist/jquery.min.js') }}
+  {!! app('html')->script('adminlte/bower_components/jquery/dist/jquery.min.js') !!}
   <!-- jQuery UI 1.11.4 -->
-  {{ HTML::script('adminlte/bower_components/jquery-ui/jquery-ui.min.js') }}
+  {!! app('html')->script('adminlte/bower_components/jquery-ui/jquery-ui.min.js') !!}
 
 </body>
 </html>

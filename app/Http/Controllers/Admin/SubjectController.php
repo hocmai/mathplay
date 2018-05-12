@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+namespace App\Http\Controllers\Admin;
+use App\Models\Subject;
+use App\Models\Chapter;
+use Services\CommonNormal;
 
 class SubjectController extends AdminController {
 
@@ -25,7 +26,7 @@ class SubjectController extends AdminController {
 	 */
 	public function search()
 	{
-		$input = Input::all();
+		$input = request()->all();
 		$data = Chapter::select('subjects.*');
 		if( !empty($input['title']) ){
 			$data = $data->where('subjects.title', 'LIKE' , '%'.$input['title'].'%');
@@ -44,7 +45,7 @@ class SubjectController extends AdminController {
 			$data = $data->orderBy('subjects.created_at', 'desc');
 		}
 		$data = $data->paginate(PAGINATE);
-		// dd(Input::get('order'));
+		// dd(request()->get('order'));
 		return view('admin.subject.index')->with(compact('data'))->with(compact('input'));
 	}
 
@@ -67,11 +68,11 @@ class SubjectController extends AdminController {
 	 */
 	public function store()
 	{
-        $input = Input::except('_token');
-        $input['author_id'] = Auth::admin()->get()->id;
+        $input = request()->except('_token');
+        $input['author_id'] = Auth::guard('admin')->user()->id;
         // dd($input);
     	$enId = CommonNormal::create($input);
-		return Redirect::action('SubjectController@index')->with('success', 'Lưu thành công!');
+		return redirect()->action('SubjectController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -114,9 +115,9 @@ class SubjectController extends AdminController {
 	 */
 	public function update($id)
 	{
-        $input = Input::except('_token');
+        $input = request()->except('_token');
     	CommonNormal::update($id, $input, 'Subject');
-		return Redirect::action('SubjectController@index')->with('success', 'Lưu thành công!');
+		return redirect()->action('SubjectController@index')->with('success', 'Lưu thành công!');
 	}
 
 
@@ -129,7 +130,7 @@ class SubjectController extends AdminController {
 	public function destroy($id)
 	{
 		Subject::find($id)->delete();
-        return Redirect::action('SubjectController@index')->with('success', 'Xóa thành công!');
+        return redirect()->action('SubjectController@index')->with('success', 'Xóa thành công!');
 	}
 
 

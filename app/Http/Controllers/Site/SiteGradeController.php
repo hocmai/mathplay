@@ -1,8 +1,9 @@
 <?php
 namespace App\Http\Controllers\Site;
-use Illuminate\Http\Request;
+// use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use App\Models\Grade;
 
 class SiteGradeController extends Controller {
 	/**
@@ -24,12 +25,12 @@ class SiteGradeController extends Controller {
 	 */
 	public function detail($id)
 	{
-		$data = \App\Models\Grade::find($id);
+		$data = Grade::find($id);
 		if(!$data){
 			abort(404);
 		}
 
-		if( !Auth::admin()->check() && $data->status == 0 ){
+		if( !Auth::guard('admin')->check() && $data->status == 0 ){
 			abort(403);
 		}
 
@@ -49,7 +50,7 @@ class SiteGradeController extends Controller {
 	 */
 	public function show($gradeSlug)
 	{
-		$grade = \App\Models\Grade::findBySlug($gradeSlug);
+		$grade = Grade::findBySlug($gradeSlug);
 		if(!$grade){
 			abort(404);
 		}

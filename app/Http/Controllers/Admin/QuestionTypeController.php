@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Auth\UserInterface;
-use Illuminate\Auth\Reminders\RemindableInterface;
-use Illuminate\Database\Eloquent\SoftDeletingTrait;
+namespace App\Http\Controllers\Admin;
+use App\Models\ConfigModel;
+use App\Models\LessionQuestion;
+use Services\CommonQuestion;
+use Services\CommonConfig;
+use Services\CommonUpload;
+use Services\CommonNormal;
 
 class QuestionTypeController extends AdminController {
 
@@ -37,7 +41,7 @@ class QuestionTypeController extends AdminController {
 			}
 		}
 		// dd(CommonConfig::collect('question_type'));
-		return Redirect::action('QuestionTypeController@index')->with('success', 'Cập nhật thành công!');
+		return redirect()->action('QuestionTypeController@index')->with('success', 'Cập nhật thành công!');
 	}
 
 
@@ -70,10 +74,10 @@ class QuestionTypeController extends AdminController {
 	 */
 	public function update($type)
 	{
-        $input = Input::except('_token');
+        $input = request()->except('_token');
         $config = ['description' => $input['description']];
         $config['images'] = [];
-        $new_images = Input::get('images_new');
+        $new_images = request()->get('images_new');
     	// dd($new_images);
         if( !empty($new_images['image_url']) ){
         	foreach ($new_images['image_url'] as $key => $value) {
@@ -84,20 +88,20 @@ class QuestionTypeController extends AdminController {
         	}
         }
 
-        $thumb = Input::file('thumb');
+        $thumb = request()->file('thumb');
 		if( !empty($thumb) ){
 			$ext = pathinfo($thumb->getClientOriginalName());
 			$config['thumb_url'] = CommonUpload::uploadImage( '/upload/question_type', 'thumb', $type.'.'.$ext['extension'] );
 		}
   //      	if (Input::hasFile('images_new')){
   //       	$path = '/questions/'. str_replace('question_type.config.', '', $type).'/img';
-  //       	$file = Input::file('image');
+  //       	$file = request()->file('image');
 		//     $file->move( public_path().$path, $file->getClientOriginalName());
   //       	$config['images'][] = $path.'/'.$file->getClientOriginalName();
 		// }
 
         CommonConfig::set('question_type', $type, $config);
-		return Redirect::back()->with('success', 'Cập nhật thành công!');
+		return redirect()->back()->with('success', 'Cập nhật thành công!');
 	}
 
 
@@ -119,10 +123,10 @@ class QuestionTypeController extends AdminController {
 	 */
 	public function store()
 	{
-        $input = Input::except(['_token']);
-        $input['author'] = Auth::admin()->get()->id;
+        $input = request()->except(['_token']);
+        $input['author'] = Auth::guard('admin')->user()->id;
 
-		return Redirect::action('QuestionTypeController@index');
+		return redirect()->action('QuestionTypeController@index');
 	}
 
 
@@ -147,7 +151,7 @@ class QuestionTypeController extends AdminController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id);
-        return Redirect::action('QuestionTypeController@index');
+        return redirect()->action('QuestionTypeController@index');
 	}
 
 

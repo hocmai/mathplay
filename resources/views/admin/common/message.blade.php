@@ -1,11 +1,11 @@
 @if (count($errors->all()) > 0)
 <div class="alert alert-danger alert-block">
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
-	{{ HTML::ul($errors->all()) }}
+	{!! app('html')->ul($errors->all()) !!}
 </div>
 @endif
 
-@if ($message = Session::get('success'))
+@if ($message = session()->get('success'))
 <div class="alert alert-success alert-block">
     <i class="fa fa-check"></i>
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -19,7 +19,7 @@
 </div>
 @endif
 
-@if ($message = Session::get('error'))
+@if ($message = session()->get('error'))
 <div class="alert alert-danger alert-dismissable">
     <i class="fa fa-ban"></i>
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
@@ -33,7 +33,7 @@
 </div>
 @endif
 
-@if ($message = Session::get('warning'))
+@if ($message = session()->get('warning'))
 <div class="alert alert-warning alert-block">
     <i class="fa fa-warning"></i>
     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -47,7 +47,7 @@
 </div>
 @endif
 
-@if ($message = Session::get('notice'))
+@if ($message = session()->get('notice'))
 <div class="alert alert-warning alert-block">
     <i class="fa fa-warning"></i>
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -61,7 +61,7 @@
 </div>
 @endif
 
-@if ($message = Session::get('info'))
+@if ($message = session()->get('info'))
 <div class="alert alert-info alert-block">
     <i class="fa fa-info"></i>
 	<button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -75,9 +75,9 @@
 </div>
 @endif
 
-@if (Session::has('message'))
+@if (session()->has('message'))
     <div class="alert alert-success">
         <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-        <strong><center>{{ Session::get('message') }}</center></strong>
+        <strong><center>{{ session()->get('message') }}</center></strong>
     </div>
 @endif

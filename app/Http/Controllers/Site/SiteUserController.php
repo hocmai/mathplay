@@ -2,8 +2,10 @@
 namespace App\Http\Controllers\Site;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Http\RedirectResponse;
 use Validator;
+use Services\HocmaiOAuth2;
 
 class SiteUserController extends Controller {
 
@@ -42,10 +44,10 @@ class SiteUserController extends Controller {
 	public function loginForm()
 	{	
 		if( Auth::check() ){
-			// return Redirect::action('SiteUserController@show', ['id' => Auth::user()->get()->id]);
+			// return redirect()->action('SiteUserController@show', ['id' => Auth::user()->id]);
 			// return Redirect::to('/');
 			return redirect()->action('Site\SiteIndexController@home');
-			// return Redirect::back()->with('success', 'Đăng nhập thành công!');
+			// return redirect()->back()->with('success', 'Đăng nhập thành công!');
 		} else{
 			return view('site.user.login');
 		}
@@ -68,15 +70,15 @@ class SiteUserController extends Controller {
         $input = $this->request->except(['_token', 'remember']);
         $validator = Validator::make($input, $rules, $messsages);
         if ($validator->fails()) {
-            return Redirect::back()
+            return redirect()->back()
             	->withErrors($validator)
-                ->withInput(Input::except('password'));
+                ->withInput(request()->except('password'));
         } else {
         	$remember = $this->request->get('remember');
             if( Auth::attempt($input, !empty($remember) ? true : false ) ) {
-        		return Redirect::to('/');
+        		return redirect()->to('/');
             } else {
-                return Redirect::back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
+                return redirect()->back()->withErrors(['failed' => 'Tên đăng nhập hoặc mật khẩu không đúng!']);
             }
         }
 	}
@@ -174,9 +176,9 @@ class SiteUserController extends Controller {
 
     public function logout()
     {
-        Auth::user()->logout();
+        Auth::logout();
         Session::flush();
-        return Redirect::back();
+        return redirect()->back();
     }
 
 }

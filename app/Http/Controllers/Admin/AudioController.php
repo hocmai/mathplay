@@ -1,6 +1,11 @@
 <?php
+namespace App\Http\Controllers\Admin;
+use Illuminate\Support\Facades\Session;
+use App\Models\Audio;
+use Services\CommonUpload;
+use Services\CommonNormal;
 
-class AudioController extends \BaseController {
+class AudioController extends AdminController {
 
 	/**
 	 * Display a listing of the resource.
@@ -44,14 +49,14 @@ class AudioController extends \BaseController {
 	 */
 	public function store()
 	{
-		$title = Input::get('title');
+		$title = request()->get('title');
 		$slug = str_slug($title, '');
 		$url = '';
-		// dd(Input::all());
+		// dd(request()->all());
 
-		if( Input::get('use-record') ){
+		if( request()->get('use-record') ){
 			/// record sound
-			$tmp_record = Input::get('tmp_record');
+			$tmp_record = request()->get('tmp_record');
 			if( !empty($tmp_record) ){
 				$url = '/upload/studio/'.$slug.'.wav';
 				@rename( public_path().$tmp_record, public_path().$url );
@@ -59,7 +64,7 @@ class AudioController extends \BaseController {
 			}
 		} else{
 			//// upload file
-			$file = Input::file('sound');
+			$file = request()->file('sound');
 			if( !empty($file) ){
 				$url = '/upload/studio/'.$slug.'.wav';
 				CommonUpload::uploadImage('/upload/studio/', 'sound', $slug.'.wav');
@@ -71,7 +76,7 @@ class AudioController extends \BaseController {
 			'slug' => $slug,
 			'url' => $url,
 		], 'Audio');
-		return Redirect::action('AudioController@edit', ['id' => $id])->with('success', 'Lưu thành công!');
+		return redirect()->action('AudioController@edit', ['id' => $id])->with('success', 'Lưu thành công!');
 	}
 
 
@@ -112,7 +117,7 @@ class AudioController extends \BaseController {
 	public function update($id)
 	{
 		$data = Audio::find($id);
-		$title = Input::get('title');
+		$title = request()->get('title');
 		$slug = str_slug($title, '');
 
 		// if( Common::getObject($data, 'slug') != $slug ){
@@ -120,15 +125,15 @@ class AudioController extends \BaseController {
 		// 	$checkExists = Audio::where('slug', $slug)->whereNotIn('id', [$id])->count();
 		// 	if( $checkExists > 0 ){
 		// 		/// Neu da ton tai 1 ban ghi trung ten
-		// 		return Redirect::action('AudioController@saveConfirm')->with(['data' => Input::all()]);
+		// 		return redirect()->action('AudioController@saveConfirm')->with(['data' => request()->all()]);
 		// 	}
 		// }
-		$url = Input::get('url');
-		// dd(Input::all());
+		$url = request()->get('url');
+		// dd(request()->all());
 
-		if( Input::get('use-record') ){
+		if( request()->get('use-record') ){
 			/// record sound
-			$tmp_record = Input::get('tmp_record');
+			$tmp_record = request()->get('tmp_record');
 			if( !empty($tmp_record) ){
 				if( !empty($url) ){
 					///// Remove old file
@@ -140,7 +145,7 @@ class AudioController extends \BaseController {
 			}
 		} else{
 			//// upload file
-			$file = Input::file('sound');
+			$file = request()->file('sound');
 			if( !empty($file) ){
 				if( !empty($url) ){
 					///// Remove old file
@@ -156,7 +161,7 @@ class AudioController extends \BaseController {
 			'url' => $url,
 		]);
 
-		return Redirect::back()->with('success', 'Lưu thành công!');
+		return redirect()->back()->with('success', 'Lưu thành công!');
 	}
 
 
@@ -169,7 +174,7 @@ class AudioController extends \BaseController {
 	public function destroy($id)
 	{
 		CommonNormal::delete($id, 'Audio');
-		return Redirect::action('AudioController@index')->with('success', 'Xóa thành công!');
+		return redirect()->action('AudioController@index')->with('success', 'Xóa thành công!');
 	}
 
 

@@ -98,20 +98,20 @@ class SiteIndexController extends Controller {
 		//from $slug to get model_name and model_id in the menus table
 		$menu = Menu::findBySlug($slug);
 		if (empty($menu)) {
-			return Redirect::action('SiteIndexController@404');
+			return redirect()->action('SiteIndexController@404');
 		}
 		if ($menu->model_name == 'AboutUs') {
-			return Redirect::action('SiteIndexController@aboutUs');
+			return redirect()->action('SiteIndexController@aboutUs');
 		}
 		if ($menu->model_name == 'Contact') {
-			return Redirect::action('SiteIndexController@contact');
+			return redirect()->action('SiteIndexController@contact');
 		}
-		return Redirect::action('SiteIndexController@typeNew');
+		return redirect()->action('SiteIndexController@typeNew');
 	}
 
 	// public function sendLang()
 	// {
-	// 	$input = Input::all();
+	// 	$input = request()->all();
 	// 	if ($input['lang'] == $input['lang_current']) {
 	// 		return $input['url'];
 	// 	}

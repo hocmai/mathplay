@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
-@if(Admin::isAdmin())
+@if(App\Models\Admin::isAdmin())
 @section('title')
-{{ $title='Quản lý thành viên quản trị' }}
+{!! $title='Quản lý thành viên quản trị' !!}
 @stop
 
 @section('content')
@@ -11,7 +11,7 @@
 
 	<div class="row margin-bottom">
 		<div class="col-xs-12">
-			<a href="{{ action('ManagerController@create') }}" class="btn btn-primary">Thêm thành viên</a>
+			<a href="{{ action('Admin\ManagerController@create') }}" class="btn btn-primary">Thêm thành viên</a>
 		</div>
 	</div>
 
@@ -39,9 +39,9 @@
 				  <td>{{ $value->updated_at }}</td>
 				  <td>
 					{{-- <a href="#" class="btn btn-success">Xem</a> --}}
-					<a href="{{action('ManagerController@changePassword', $value->id) }}" class="btn btn-primary">Change Pass</a>
-					<a href="{{ action('ManagerController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
-					{{ Form::open(array('method'=>'DELETE', 'action' => array('ManagerController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
+					<a href="{{action('Admin\ManagerController@changePassword', $value->id) }}" class="btn btn-primary">Change Pass</a>
+					<a href="{{ action('Admin\ManagerController@edit', $value->id) }}" class="btn btn-primary">Sửa</a>
+					{{ Form::open(array('method'=>'DELETE', 'action' => array('Admin\ManagerController@destroy', $value->id), 'style' => 'display: inline-block;')) }}
 					<button class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</button>
 					{{ Form::close() }}
 

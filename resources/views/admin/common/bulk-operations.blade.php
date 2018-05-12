@@ -1,4 +1,4 @@
-{{ Form::open(['action' => 'AdminController@operation', 'method' => 'POST', 'id' => 'bulk-operation-form', 'class' => 'inline-block']) }}
+{{ Form::open(['action' => 'Admin\AdminController@operation', 'method' => 'POST', 'id' => 'bulk-operation-form', 'class' => 'inline-block']) }}
 	{{ Form::hidden('model', $model) }}
 	{{ Form::hidden('data') }}
 	<div class="inline-block input-group">

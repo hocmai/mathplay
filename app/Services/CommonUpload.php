@@ -12,7 +12,7 @@ class CommonUpload
 	{
 		$destinationPath = public_path().$path;
 		if(Input::hasFile($imageFile)){
-			$file = Input::file($imageFile);
+			$file = request()->file($imageFile);
 			if( empty($filename) ){
 				$filename = $file->getClientOriginalName();
 			}
@@ -48,7 +48,7 @@ class CommonUpload
 	 **/
 	public function uploadFile($file, $path){
 		if(Input::hasFile($path)){
-			$file = Input::file($imageUrlFile);
+			$file = request()->file($imageUrlFile);
 		}
 		$uploadSuccess = $file->move( public_path().'/'.$path, $file->getClientOriginalName());
 		return $file;

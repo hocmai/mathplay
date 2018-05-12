@@ -6,30 +6,30 @@
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
 	<!-- Bootstrap 3.3.5 -->
 	
-	{{HTML::style('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css') }}
+	{!! app('html')->style('adminlte/bower_components/bootstrap/dist/css/bootstrap.min.css') !!}
 	<!-- Font Awesome -->
-	{{HTML::style('adminlte/bower_components/font-awesome/css/font-awesome.min.css') }}
+	{!! app('html')->style('adminlte/bower_components/font-awesome/css/font-awesome.min.css') !!}
 	<!-- Ionicons -->
-	{{HTML::style('adminlte/bower_components/Ionicons/css/ionicons.min.css') }}
+	{!! app('html')->style('adminlte/bower_components/Ionicons/css/ionicons.min.css') !!}
 	<!-- Theme style -->
-	{{HTML::style('adminlte/dist/css/AdminLTE.min.css') }}
+	{!! app('html')->style('adminlte/dist/css/AdminLTE.min.css') !!}
 
 	<!-- AdminLTE Skins. Choose a skin from the css/skins
 			 folder instead of downloading all of them to reduce the load. -->
-	{{HTML::style('adminlte/dist/css/skins/_all-skins.min.css') }}
+	{!! app('html')->style('adminlte/dist/css/skins/_all-skins.min.css') !!}
 
 	<!-- Date Picker -->
-	{{HTML::style('adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}
+	{!! app('html')->style('adminlte/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') !!}
 	<!-- Daterange picker -->
-	{{HTML::style('adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}
+	{!! app('html')->style('adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.css') !!}
 	<!-- bootstrap wysihtml5 - text editor -->
-	{{HTML::style('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}
+	{!! app('html')->style('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') !!}
 	<!-- Google Font -->
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 
 	<!-- Date Picker -->
-	{{HTML::style('frontend/css/bootstrap-select.min.css') }}
-	{{HTML::style('adminlte/custom/mystyle.css') }}
+	{!! app('html')->style('frontend/css/bootstrap-select.min.css') !!}
+	{!! app('html')->style('adminlte/custom/mystyle.css') !!}
 	
 	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -39,32 +39,32 @@
 	<![endif]-->
 
 	<!-- jQuery 2.1.4 -->
-	{{ HTML::script('adminlte/bower_components/jquery/dist/jquery.min.js') }}
+	{!! app('html')->script('adminlte/bower_components/jquery/dist/jquery.min.js') !!}
 	<!-- jQuery UI 1.11.4 -->
-	{{ HTML::script('adminlte/bower_components/jquery-ui/jquery-ui.min.js') }}
+	{!! app('html')->script('adminlte/bower_components/jquery-ui/jquery-ui.min.js') !!}
 	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 
 	<script>
 		$.widget.bridge('uibutton', $.ui.button);
 	</script>
 	<!-- Bootstrap 3.3.5 -->
-	{{ HTML::script('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') }}
+	{!! app('html')->script('adminlte/bower_components/bootstrap/dist/js/bootstrap.min.js') !!}
 	<!-- daterangepicker -->
-	{{-- {{ HTML::script('adminlte/bower_components/moment/min/moment.min.js') }} --}}
-	{{-- {{ HTML::script('adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js') }} --}}
+	{{-- {!! app('html')->script('adminlte/bower_components/moment/min/moment.min.js') !!} --}}
+	{{-- {!! app('html')->script('adminlte/bower_components/bootstrap-daterangepicker/daterangepicker.js') !!} --}}
 	<!-- datepicker -->
-	{{ HTML::script('adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') }}
-	{{ HTML::script('adminlte/bower_components/bootstrap-timepicker/js/bootstrap-timepicker	.js') }}
+	{!! app('html')->script('adminlte/bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js') !!}
+	{!! app('html')->script('adminlte/bower_components/bootstrap-timepicker/js/bootstrap-timepicker	.js') !!}
 
 	<!-- Bootstrap WYSIHTML5 -->
-	{{-- {{ HTML::script('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }} --}}
+	{{-- {!! app('html')->script('adminlte/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') !!} --}}
 	<!-- FastClick -->
-	{{ HTML::script('adminlte/bower_components/fastclick/lib/fastclick.js') }}
+	{!! app('html')->script('adminlte/bower_components/fastclick/lib/fastclick.js') !!}
 	<!-- AdminLTE App -->
-	{{ HTML::script('adminlte/dist/js/app.min.js') }}
-	{{ HTML::script('frontend/js/bootstrap-select.min.js')}}
+	{!! app('html')->script('adminlte/dist/js/app.min.js') !!}
+	{!! app('html')->script('frontend/js/bootstrap-select.min.js') !!}
 
-	{{-- {{ HTML::script('admins/ckeditor/ckeditor.js') }} --}}
+	{{-- {!! app('html')->script('admins/ckeditor/ckeditor.js') !!} --}}
 	{{-- <script type="text/javascript">
 		var ckeditor_config = {
 			// entities_latin: false,
@@ -96,7 +96,7 @@
 		};
 	</script> --}}
 
-	{{ HTML::script('adminlte/custom/script.js') }}
+	{!! app('html')->script('adminlte/custom/script.js') !!}
 	{{-- <script>
 	  $(function () {
 	    $('#start_date').timepicker({
