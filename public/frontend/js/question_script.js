@@ -82,7 +82,16 @@ jQuery.fn.setCaret = function (pos) {
         range.select();
     }
 };
-
+// enter chuyển ô d
+$(document).ready(function(eOuter) {
+	var id;
+    $('input').bind('keypress', function(eInner) {
+        var tabindex = $(this).attr('tabindex');
+        tabindex++; //increment tabindex
+        $('[tabindex=' + tabindex + ']').focus();
+        // to cancel out Onenter page postback in asp.net
+    });
+});
 
 $(document).ready(function($) {
 
