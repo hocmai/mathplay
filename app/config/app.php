@@ -12,7 +12,7 @@ return array(
 	|
 	*/
 
-	'debug' => false,
+	'debug' => true,
 
 	/*
 	|--------------------------------------------------------------------------
@@ -123,7 +123,7 @@ return array(
 		"Ollieread\Multiauth\MultiauthServiceProvider",
 		'Cviebrock\EloquentSluggable\SluggableServiceProvider',
 	    //'Mcamara\LaravelLocalization\LaravelLocalizationServiceProvider',
-	    //'Barryvdh\Debugbar\ServiceProvider',
+	    'Barryvdh\Debugbar\ServiceProvider',
 	    // 'Way\Generators\GeneratorsServiceProvider',
 	),
 
@@ -192,7 +192,7 @@ return array(
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
 		'LaravelLocalization'   => 'Mcamara\LaravelLocalization\Facades\LaravelLocalization',
-		//'Debugbar' 	      => 'Barryvdh\Debugbar\Facade',
+		'Debugbar' 	      => 'Barryvdh\Debugbar\Facade',
 	),
 
 );

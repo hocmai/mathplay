@@ -24,18 +24,16 @@ class AdminManager
 	public static function searchUserOperation($input)
 	{
 		$user = User::where(function ($query) use ($input){
-			if ($input['username']) {
-				$query = $query->where('id', $input['username']);
-			}
+			
 			if ($input['keyword']) {
 				$query = $query->where('email', 'like', '%'.$input['keyword'].'%')
 								->orWhere('username', 'like', '%'.$input['keyword'].'%');
 			}
 			// todo
-			// if ($input['start_date']) 
-			// 	$query = $query->where('updated_at', '>=' ,$input['start_date']);
-			// if ($input['end_date']) 
-			// 	$query = $query->where('updated_at', '<=' ,$input['end_date'].' 23:59:59');
+			if ($input['start_date']) 
+				$query = $query->where('updated_at', '>=' ,$input['start_date']);
+			if ($input['end_date']) 
+				$query = $query->where('updated_at', '<=' ,$input['end_date'].' 23:59:59');
 		})->orderBy('id', 'asc')->paginate(PAGINATE);
 		return $user;
 	}

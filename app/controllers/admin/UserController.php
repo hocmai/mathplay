@@ -18,7 +18,7 @@ class UserController extends AdminController {
 	public function search()
 	{
 		$input = Input::all();
-		if (!$input['keyword'] && !$input['username'] && $input['start_date'] && $input['end_date']) {
+		if (!$input['keyword'] && !$input['start_date'] && !$input['end_date']) {
 			return Redirect::action('UserController@index');
 			// lay tat ca cac du lieu tu cot input ... nếu k tìm thấy các thuộc tinh trên thì trả về index
 		}

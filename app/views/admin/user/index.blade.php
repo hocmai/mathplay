@@ -1,7 +1,7 @@
 @extends('admin.layout.default')
 @if(Admin::isAdmin())
 @section('title')
-{{ $title='Quản lý thành viên quản trị' }}
+{{ $title='Quản lý Người Dùng' }}
 @stop
 
 @section('content')

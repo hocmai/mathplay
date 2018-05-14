@@ -1,12 +1,12 @@
 <?php
 $sosanh = 'bằng';
-if($answer_range[0] > $answer_range[1]){
-	$sosanh = 'lớn hơn';
-}elseif($answer_range[0] < $answer_range[1]) {
-	$sosanh = 'bé hơn';
+if($answer_range[0] > $answer_range[1] && $num1 > $num2){
+	$sosanh = 'nhiều hơn';
+}elseif($answer_range[0] < $answer_range[1] && $num1 < $num2) {
+	$sosanh = 'ít hơn';
 }
  ?>
-<div class="huong-dan-giai text-left" >
+<div class="huong-dan-giai text-left" style="display: block;" >
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper" >
 		<span class> Đếm số {{ $image_rand[0] }}:</span>
@@ -33,7 +33,7 @@ if($answer_range[0] > $answer_range[1]){
 	       	<span>Có {{ $answer_range[1].' '.$image_rand[1] }}</span>
 			<br>
 			<p class="answers">Đáp án đúng là: 
-				{{ $answer_range[0].' '.$image_rand[0].' '.$compare.' hơn '. $answer_range[1].' '.$image_rand[1]  }}</p>
+				{{ $answer_range[0].' '.$image_rand[0].' '.$sosanh.' '. $answer_range[1].' '.$image_rand[1]  }}</p>
 		@elseif($type == 'select')
 	        <p class="answers">Đáp án đúng là: Có <b> {{ $answer_range[0].' '.$image_rand[0] }}</b></p>
 	    @else
