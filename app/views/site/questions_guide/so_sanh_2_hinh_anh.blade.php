@@ -6,7 +6,7 @@ if($answer_range[0] > $answer_range[1] && $num1 > $num2){
 	$sosanh = 'ít hơn';
 }
  ?>
-<div class="huong-dan-giai text-left" style="display: block;" >
+<div class="huong-dan-giai text-left">
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper" >
 		<span class> Đếm số {{ $image_rand[0] }}:</span>
