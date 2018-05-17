@@ -14,7 +14,8 @@
 				</table>
 			</div>
 		</div>
-		<p>Để xác định số còn thiếu trong bảng số 100. từ 1 đến 100 xem số nào còn thiếu thì điền vào ô trống</p>
+		<p>Các số liên tiếp trong bảng số hơn kém nhau 1 đơn vị. </p>
+		<p>Để tìm số còn thiếu ở ô trống, ta thực hiện cộng 1 đơn vị với số ở trước ô trống hoặc trừ 1 đơn vị với số ở sau ô trống</p>
 		<p class="answers">Như vậy: số còn thiếu trong bảng là {{ json_encode($answer) }}</p>
 	<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>

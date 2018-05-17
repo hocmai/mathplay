@@ -5,7 +5,7 @@ if($num[0] > $num[1]){
 	$sosanh = '<';
 }
  ?>
-<div class="huong-dan-giai text-left" style="display: block;" >
+<div class="huong-dan-giai text-left">
     <h2>Hướng dẫn giải</h2>
     <div class="wrapper">
     	<p>Hình thứ nhất có {{ $num[0].' '.$find }}</p>

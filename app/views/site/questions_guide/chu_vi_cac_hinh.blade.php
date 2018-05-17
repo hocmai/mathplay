@@ -14,13 +14,12 @@
 				{{ $a.' '.$unit.', '.$a.' '.$unit.', '.$a.' '.$unit.', '.$a.' '.$unit }}
 			@elseif($answer == 'chu-nhat')
 				{{ $a.' '.$unit.','.$b.' '.$unit.','.$a.' '.$unit.','.$b.' '.$unit }}
-
 			@else
 				{{ $a.' '.$unit.', '.$a.' '.$unit.', '.$b.' '.$unit }}
 
 			@endif
 		</p>
-		<p class="answers">Như vậy, chu vi của hình đã cho là:
+		<p>Như vậy, chu vi của hình đã cho là:
 			@if($answer == 'binh-hanh')
 				{{ '2'.'x'.'('.$a.'+'.$b.')'.' = '.$perimeter.$unit }}
 			@elseif($answer =='vuong')
@@ -33,6 +32,8 @@
 
 			@endif
 		</p>
+		<div class="clearfix"></div>
+		<p  class="answers"> Đáp án: {{ $perimeter.' '.$unit }}</p>
 		<button class="btn lam-bai-tiep margin0" data-dismiss="modal" aria-label="Close">Làm bài tiếp</button>
 	</div>
 </div>
