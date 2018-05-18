@@ -1,5 +1,5 @@
 <?php
-use \HocmaiOAuth2;
+use \HocmaiOAuth2 as HocmaiOAuth2;
 class AjaxController extends BaseController {
 
     private $HocmaiOAuth;
