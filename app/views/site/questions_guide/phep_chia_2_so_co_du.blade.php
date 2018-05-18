@@ -12,7 +12,7 @@ $a_rr = str_split($a); // a_rr dãy chuỗi số bị chia
 $pont = 0;
 $surplus = floor($a/$b); // số dư
 ?>
-<div class="huong-dan-giai text-left" style="display:block;">
+<div class="huong-dan-giai text-left">
     <h2>Hướng dẫn giải</h2>
     <div class="wrapper">
         <span class="col-xs-5 col-sm-3 text-right">

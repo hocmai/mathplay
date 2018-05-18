@@ -1,0 +1,20 @@
+#PhepNhanNhieuChuSo .text-right{
+	width: 90px;
+    line-height: 25px;
+    font-size: 18px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+#PhepNhanNhieuChuSo .text-right span.number-a{
+    width: 19px;
+    text-align: right;
+}
+#PhepNhanNhieuChuSo .text-right span.number-b{
+	display: inline-block;
+    width: 19px;
+    text-align: right;
+}
+#PhepNhanNhieuChuSo .text-right .form-answer{
+	width: 20px;
+	margin-right: -7px;
+}

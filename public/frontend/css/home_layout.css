@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans:400,700&subset=vietnamese');
-
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
 header.header .banner .caption-wrap a.button{
     margin: auto;
     display: block;

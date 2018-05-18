@@ -68,6 +68,9 @@ else {
 //////////// Move cursor to first letter of an input
 jQuery.fn.setCaret = function (pos) {
     var input = this[0];
+    if( input.type == 'number' ){
+    	return;
+    }
     if (input.setSelectionRange) {
         input.focus();
         input.setSelectionRange(pos, pos);
@@ -368,16 +371,21 @@ $(document).ready(function($) {
 
     /////////////////////// hien thi ban phim ao //////////////////////
     window.setTimeout(function(){
-        if( $('.question-rendered.active input[type="text"]').length ){
-            $('.question-rendered.active input[type="text"]:first').focus();
-            $('.question-rendered.active input[type="text"]:first').addClass('virtual-focus');
-            // keyboardToggle('show');
-        }
-        else if( $('.question-rendered.active input[type="number"]').length ){
-            $('.question-rendered.active input[type="number"]:first').focus();
-            $('.question-rendered.active input[type="number"]:first').addClass('virtual-focus');
-            // keyboardToggle('show');
-        }
+    	if( $('.question-rendered.active input.virtual-focus').length == 0 ){
+	        if( $('.question-rendered.active input[type="text"]').length ){
+	            $('.question-rendered.active input[type="text"]:first').focus();
+	            $('.question-rendered.active input[type="text"]:first').addClass('virtual-focus');
+	            // keyboardToggle('show');
+	        }
+	        else if( $('.question-rendered.active input[type="number"]').length ){
+	            $('.question-rendered.active input[type="number"]:first').focus();
+	            $('.question-rendered.active input[type="number"]:first').addClass('virtual-focus');
+	            // keyboardToggle('show');
+	        }
+    	}
+    	else{
+            $('.question-rendered.active input.virtual-focus').focus();
+    	}
     },300)
 
     // $(window).on('click', function(e){

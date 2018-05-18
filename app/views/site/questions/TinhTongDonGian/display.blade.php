@@ -19,11 +19,22 @@ $display = ['ngang', 'doc'];
 		<input type="hidden" name="qid" value="{{ $question->id }}" />
 		<input type="hidden" name="lession_id" value="{{ !empty($lession->id) ? $lession->id : '' }}" />
 		<input type="hidden" name="question_number" value="{{ $question_num }}" />
-		
+		{{ Form::hidden('answer') }}
+
 		<div class="form-group plus-with-0">
 			<div class="content inline-block">
 				
-				<div class="tong pull-left {{ !empty($config['display']) ? $config['display'] : $display[array_rand($display)] }}" style="font-size: 18px;"><span class="num1">{{ $answer1 }}</span><span class="num2"><span class="plus"> + </span>{{ $answer2 }}</span><span class="result"> = {{ Form::text('answer', '') }}</span></div>
+				<div class="tong pull-left {{ !empty($config['display']) ? $config['display'] : $display[array_rand($display)] }}">
+					<span class="num1">{{ $answer1 }}</span>
+					<span class="num2"><span class="plus"> + </span>
+						{{ $answer2 }}
+					</span>
+					<span class="result"> = 
+						@for($i = strlen($answer1 + $answer2); $i >= 1; $i--)
+							{{ Form::number('answer_', '', ['class'=> 'form-answer'.(($i == 1) ? ' virtual-focus' : ''), 'maxlength'=>1, 'tabindex' => $i, 'max' => 9, 'min' =>0 ]) }}
+						@endfor
+					</span>
+				</div>
 			</div>
 		</div>
 	{{ Form::close() }}

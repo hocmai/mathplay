@@ -1,0 +1,21 @@
+#PhepCongNhieuChuSo .content{
+	display: inline-block;
+}
+#PhepCongNhieuChuSo .text_right{
+	width:90px;
+	line-height:25px;
+	font-size:18px;
+	font-weight:400;
+	letter-spacing:1px;
+}
+#PhepCongNhieuChuSo .text_right span{
+	display: inline-flex;
+	text-align: center;
+}
+#PhepCongNhieuChuSo .text_right hr{
+	margin: 5px 0;
+}
+#PhepCongNhieuChuSo .text_right .form-answer{
+	width: 20px;
+	margin-right: 0;
+}

@@ -34,7 +34,7 @@ $answer = $a*$b.','.($a*$b + ( $method == 'sub' ? -$c : $c ));
 		<div class="form-group">
 			<div class="content inline-block">
 				@if( $display == 'hor' )
-					<strong class="">{{ $a.' x '.$b.( ($method == 'sub') ? ' - ' : ' + ').$c }} = {{ Form::text('answer[]', '', ['class' => 'form-control inline-block text-center', 'style' => 'width: 65px']).( ($method == 'sub') ? ' - ' : ' + ').$c }} = {{ Form::text('answer[]', '', ['class' => 'form-control inline-block text-center', 'style' => 'width: 65px']) }}</strong>
+					<strong class="">{{ $a.' x '.$b.( ($method == 'sub') ? ' - ' : ' + ').$c }} ={{ Form::number('answer[]', '', ['class' => 'form-control inline-block text-center', 'style' => 'width: 65px']).( ($method == 'sub') ? ' - ' : ' + ').$c }} = {{ Form::number('answer[]', '', ['class' => 'form-control inline-block text-center', 'style' => 'width: 65px']) }}</strong>
 				@else
 					<div class="cal-line text-right">
 						<div class="line line-1">

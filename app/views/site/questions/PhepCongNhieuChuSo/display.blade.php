@@ -22,12 +22,12 @@ if( $min_b > $max_b ){
 }
 $b = rand($min_b, $max_b);
 
-$c = $a + $b;
+$c= $a + $b;
 $answer = $c;
-
+// $c = str_split($c);
 // $a = str_split($a);
 // $b = str_split($b);
-// $c = str_split($c);
+// dd($c);
 ?>
 
 @include('site.questions.render-title', ['question' => $question])
@@ -41,20 +41,23 @@ $answer = $c;
 		{{ Form::hidden('answer') }}
 		
 		<div class="form-group">
-			<div class="content inline-block">
-				<div class="text-right" style="width:90px;line-height:25px;font-size:18px;font-weight:400;letter-spacing:1px;">
+			<div class="content ">
+				<div class="text_right">
 					<span class="number-a clearfix">
-						<span style="display: table-cell;width: 19px;text-align: center;">{{ $a }}</span>
+						<span >{{ $a }}</span>
 					</span>
+					<div class="clearfix"></div>
 					<span class="number-b clearfix">
 						<span class="pull-left">+</span>
-						<span style="display: table-cell;width: 19px;text-align: center;">{{ $b }}</span>
+						<span >{{ $b }}</span>
 					</span>
 					<hr style="margin: 5px 0">
 					<span class="number-c">
-						<div class="multi-input-number">
-							{{ Form::text('answer', '', ['style'=>'text-align:right;width:100%;height:25px;letter-spacing: 1px;', 'maxlength'=>7]) }}
-						</div>
+						@for($i = strlen((string)$a + $b); $i >= 1; $i--)
+							<div class="multi-input-number inline-block">
+								{{ Form::number('answer_', '', ['class'=> 'form-answer'.(($i == 1) ? ' virtual-focus' : ''), 'maxlength'=>1, 'tabindex' => $i, 'max' => 9, 'min' =>0 ]) }}
+							</div>
+						@endfor
 					</span>
 				</div>
 			</div>

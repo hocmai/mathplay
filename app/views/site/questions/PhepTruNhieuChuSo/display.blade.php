@@ -42,18 +42,20 @@ $answer = $c;
 		
 		<div class="form-group">
 			<div class="content inline-block">
-				<div class="text-right" style="width:80px;line-height:25px;font-size:18px;font-weight:400;letter-spacing:1px;">
+				<div class="text-right">
 					<span class="number-a clearfix">
-						<span style="display: table-cell;width: 19px;text-align: center;">{{ $a }}</span>
+						<span >{{ $a }}</span>
 					</span>
 					<span class="number-b clearfix">
 						<span class="pull-left">-</span>
-						<span style="display: table-cell;width: 19px;text-align: center;">{{ $b }}</span>
+						<span>{{ $b }}</span>
 					</span>
-					<hr style="margin: 5px 0">
+					<hr style="margin: 5px -25px 5px 2px">
 					<span class="number-c">
 						<div class="multi-input-number">
-							{{ Form::text('answer', '', ['style'=>'text-align:left;width:70px;height:25px;letter-spacing: 1px;', 'maxlength'=>6]) }}
+							@for($i = strlen($answer); $i >= 1; $i--)
+								{{ Form::number('answer_', '', ['class'=> 'form-answer'.(($i == 1) ? ' virtual-focus' : ''), 'maxlength'=>1, 'tabindex' => $i, 'max' => 9, 'min' =>0 ]) }}
+							@endfor
 						</div>
 					</span>
 				</div>

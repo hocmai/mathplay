@@ -2,9 +2,10 @@
 	<h2>Hướng dẫn giải</h2>
 	<div class="wrapper">
 		<p>* Nhớ<br>
-			Độ dài đường bao quanh mép của một hình được gọi là chu vi của nó. Ví dụ, khi bạn đi bộ xung quanh các cạnh của một cánh đồng nghĩa là bạn đi dọc theo chu vi của nó. Chu vi là độ dài nên ta thường tính chu vi bằng các đơn vị đo độ dài (mi-li-mét, xăng-ti-mét, mét, …)
-			Để tìm chu vi của một hình bất kì, bạn cộng độ dài của tất cả các cạnh của hình đó.
-			Chu vi = tổng của các cạnh</p>
+			-Độ dài đường bao quanh mép của một hình được gọi là chu vi của nó.<br>
+			- Để tìm chu vi của một hình bất kì, ta cộng độ dài của tất cả các cạnh của hình đó.<br>
+			- Ta thường tính chu vi bằng các đơn vị đo độ dài như: mi-li-mét, xăng-ti-mét, mét, …
+		</p>
 		<p>* Giải <br>
 			Hình đã cho có độ dài các cạnh lần lượt là 
 			@if($answer == 'binh-hanh')

@@ -43,7 +43,7 @@ if( $type == 'choose' ){
                                 </div>
                             @endif
                         </div>
-                        {{ Form::text('answer', '', ['class'=>'form-control inline-block', 'style'=>'width:65px']) }}
+                        {{ Form::number('answer', '', ['class'=>'form-control inline-block', 'style'=>'width:65px']) }}
                     @else
                         @for( $i = 1; $i <=2; $i++ )
                             <?php $num = ($i == 1) ? $num1 : $num2; ?>
